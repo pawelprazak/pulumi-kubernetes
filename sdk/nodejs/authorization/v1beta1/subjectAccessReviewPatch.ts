@@ -43,15 +43,15 @@ export class SubjectAccessReviewPatch extends pulumi.CustomResource {
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
     public readonly kind!: pulumi.Output<"SubjectAccessReview">;
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec holds information about the request being evaluated
      */
-    public readonly spec!: pulumi.Output<outputs.authorization.v1beta1.SubjectAccessReviewSpec>;
+    public readonly spec!: pulumi.Output<outputs.authorization.v1beta1.SubjectAccessReviewSpecPatch>;
     /**
      * Status is filled in by the server and indicates whether the request is allowed or not
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.authorization.v1beta1.SubjectAccessReviewStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.authorization.v1beta1.SubjectAccessReviewStatusPatch>;
 
     /**
      * Create a SubjectAccessReviewPatch resource with the given unique name, arguments, and options.
@@ -77,7 +77,7 @@ export class SubjectAccessReviewPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:authorization.k8s.io/v1:SubjectAccessReview" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:authorization.k8s.io/v1:SubjectAccessReviewPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SubjectAccessReviewPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -95,9 +95,9 @@ export interface SubjectAccessReviewPatchArgs {
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
     kind?: pulumi.Input<"SubjectAccessReview">;
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec holds information about the request being evaluated
      */
-    spec?: pulumi.Input<inputs.authorization.v1beta1.SubjectAccessReviewSpec>;
+    spec?: pulumi.Input<inputs.authorization.v1beta1.SubjectAccessReviewSpecPatch>;
 }

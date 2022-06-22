@@ -38,7 +38,7 @@ export class ClusterRolePatch extends pulumi.CustomResource {
     /**
      * AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.
      */
-    public readonly aggregationRule!: pulumi.Output<outputs.rbac.v1alpha1.AggregationRule>;
+    public readonly aggregationRule!: pulumi.Output<outputs.rbac.v1alpha1.AggregationRulePatch>;
     /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
@@ -50,11 +50,11 @@ export class ClusterRolePatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata.
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Rules holds all the PolicyRules for this ClusterRole
      */
-    public readonly rules!: pulumi.Output<outputs.rbac.v1alpha1.PolicyRule[]>;
+    public readonly rules!: pulumi.Output<outputs.rbac.v1alpha1.PolicyRulePatch[]>;
 
     /**
      * Create a ClusterRolePatch resource with the given unique name, arguments, and options.
@@ -80,7 +80,7 @@ export class ClusterRolePatch extends pulumi.CustomResource {
             resourceInputs["rules"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:rbac.authorization.k8s.io/v1:ClusterRole" }, { type: "kubernetes:rbac.authorization.k8s.io/v1beta1:ClusterRole" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:rbac.authorization.k8s.io/v1:ClusterRolePatch" }, { type: "kubernetes:rbac.authorization.k8s.io/v1beta1:ClusterRolePatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ClusterRolePatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -93,7 +93,7 @@ export interface ClusterRolePatchArgs {
     /**
      * AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.
      */
-    aggregationRule?: pulumi.Input<inputs.rbac.v1alpha1.AggregationRule>;
+    aggregationRule?: pulumi.Input<inputs.rbac.v1alpha1.AggregationRulePatch>;
     /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
@@ -105,9 +105,9 @@ export interface ClusterRolePatchArgs {
     /**
      * Standard object's metadata.
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Rules holds all the PolicyRules for this ClusterRole
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.rbac.v1alpha1.PolicyRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.rbac.v1alpha1.PolicyRulePatch>[]>;
 }

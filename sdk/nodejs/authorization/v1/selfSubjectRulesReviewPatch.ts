@@ -46,15 +46,15 @@ export class SelfSubjectRulesReviewPatch extends pulumi.CustomResource {
     /**
      * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec holds information about the request being evaluated.
      */
-    public readonly spec!: pulumi.Output<outputs.authorization.v1.SelfSubjectRulesReviewSpec>;
+    public readonly spec!: pulumi.Output<outputs.authorization.v1.SelfSubjectRulesReviewSpecPatch>;
     /**
      * Status is filled in by the server and indicates the set of actions a user can perform.
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.authorization.v1.SubjectRulesReviewStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.authorization.v1.SubjectRulesReviewStatusPatch>;
 
     /**
      * Create a SelfSubjectRulesReviewPatch resource with the given unique name, arguments, and options.
@@ -80,7 +80,7 @@ export class SelfSubjectRulesReviewPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:authorization.k8s.io/v1beta1:SelfSubjectRulesReview" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:authorization.k8s.io/v1beta1:SelfSubjectRulesReviewPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SelfSubjectRulesReviewPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -101,9 +101,9 @@ export interface SelfSubjectRulesReviewPatchArgs {
     /**
      * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec holds information about the request being evaluated.
      */
-    spec?: pulumi.Input<inputs.authorization.v1.SelfSubjectRulesReviewSpec>;
+    spec?: pulumi.Input<inputs.authorization.v1.SelfSubjectRulesReviewSpecPatch>;
 }

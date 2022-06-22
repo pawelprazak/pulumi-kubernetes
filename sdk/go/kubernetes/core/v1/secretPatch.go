@@ -34,7 +34,7 @@ type SecretPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// stringData allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API.
 	StringData pulumi.StringMapOutput `pulumi:"stringData"`
 	// Used to facilitate programmatic handling of secret data. More info: https://kubernetes.io/docs/concepts/configuration/secret/#secret-types
@@ -50,17 +50,6 @@ func NewSecretPatch(ctx *pulumi.Context,
 
 	args.ApiVersion = pulumi.StringPtr("v1")
 	args.Kind = pulumi.StringPtr("Secret")
-	if args.Data != nil {
-		args.Data = pulumi.ToSecret(args.Data).(pulumi.StringMapOutput)
-	}
-	if args.StringData != nil {
-		args.StringData = pulumi.ToSecret(args.StringData).(pulumi.StringMapOutput)
-	}
-	secrets := pulumi.AdditionalSecretOutputs([]string{
-		"data",
-		"stringData",
-	})
-	opts = append(opts, secrets)
 	var resource SecretPatch
 	err := ctx.RegisterResource("kubernetes:core/v1:SecretPatch", name, args, &resource, opts...)
 	if err != nil {
@@ -102,7 +91,7 @@ type secretPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// stringData allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API.
 	StringData map[string]string `pulumi:"stringData"`
 	// Used to facilitate programmatic handling of secret data. More info: https://kubernetes.io/docs/concepts/configuration/secret/#secret-types
@@ -120,7 +109,7 @@ type SecretPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// stringData allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API.
 	StringData pulumi.StringMapInput
 	// Used to facilitate programmatic handling of secret data. More info: https://kubernetes.io/docs/concepts/configuration/secret/#secret-types
@@ -235,8 +224,8 @@ func (o SecretPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o SecretPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *SecretPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o SecretPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *SecretPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // stringData allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API.

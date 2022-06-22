@@ -28,19 +28,19 @@ namespace Pulumi.Kubernetes.Authorization.V1Beta1
         public Output<string> Kind { get; private set; } = null!;
 
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Spec holds information about the request being evaluated.  spec.namespace must be equal to the namespace you made the request against.  If empty, it is defaulted.
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Authorization.V1Beta1.SubjectAccessReviewSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Authorization.V1Beta1.SubjectAccessReviewSpecPatch> Spec { get; private set; } = null!;
 
         /// <summary>
         /// Status is filled in by the server and indicates whether the request is allowed or not
         /// </summary>
         [Output("status")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Authorization.V1Beta1.SubjectAccessReviewStatus> Status { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Authorization.V1Beta1.SubjectAccessReviewStatusPatch> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Pulumi.Kubernetes.Authorization.V1Beta1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:authorization.k8s.io/v1:LocalSubjectAccessReview"},
+                    new Pulumi.Alias { Type = "kubernetes:authorization.k8s.io/v1:LocalSubjectAccessReviewPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -119,13 +119,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Authorization.V1Beta1
         public Input<string>? Kind { get; set; }
 
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// Spec holds information about the request being evaluated.  spec.namespace must be equal to the namespace you made the request against.  If empty, it is defaulted.
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Authorization.V1Beta1.SubjectAccessReviewSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Authorization.V1Beta1.SubjectAccessReviewSpecPatchArgs>? Spec { get; set; }
 
         public LocalSubjectAccessReviewPatchArgs()
         {

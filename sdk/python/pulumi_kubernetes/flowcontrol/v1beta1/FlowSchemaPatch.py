@@ -19,14 +19,14 @@ class FlowSchemaPatchArgs:
     def __init__(__self__, *,
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']] = None,
-                 spec: Optional[pulumi.Input['FlowSchemaSpecArgs']] = None):
+                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']] = None,
+                 spec: Optional[pulumi.Input['FlowSchemaSpecPatchArgs']] = None):
         """
         The set of arguments for constructing a FlowSchemaPatch resource.
         :param pulumi.Input[str] api_version: APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-        :param pulumi.Input['_meta.v1.ObjectMetaArgs'] metadata: `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-        :param pulumi.Input['FlowSchemaSpecArgs'] spec: `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+        :param pulumi.Input['_meta.v1.ObjectMetaPatchArgs'] metadata: `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+        :param pulumi.Input['FlowSchemaSpecPatchArgs'] spec: `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         """
         if api_version is not None:
             pulumi.set(__self__, "api_version", 'flowcontrol.apiserver.k8s.io/v1beta1')
@@ -63,26 +63,26 @@ class FlowSchemaPatchArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]:
         """
         `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['FlowSchemaSpecArgs']]:
+    def spec(self) -> Optional[pulumi.Input['FlowSchemaSpecPatchArgs']]:
         """
         `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['FlowSchemaSpecArgs']]):
+    def spec(self, value: Optional[pulumi.Input['FlowSchemaSpecPatchArgs']]):
         pulumi.set(self, "spec", value)
 
 
@@ -93,8 +93,8 @@ class FlowSchemaPatch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['FlowSchemaSpecArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
+                 spec: Optional[pulumi.Input[pulumi.InputType['FlowSchemaSpecPatchArgs']]] = None,
                  __props__=None):
         """
         FlowSchema defines the schema of a group of flows. Note that a flow is made up of a set of inbound API requests with similar attributes and is identified by a pair of strings: the name of the FlowSchema and a "flow distinguisher".
@@ -103,8 +103,8 @@ class FlowSchemaPatch(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_version: APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-        :param pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']] metadata: `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-        :param pulumi.Input[pulumi.InputType['FlowSchemaSpecArgs']] spec: `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+        :param pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']] metadata: `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+        :param pulumi.Input[pulumi.InputType['FlowSchemaSpecPatchArgs']] spec: `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         """
         ...
     @overload
@@ -132,17 +132,12 @@ class FlowSchemaPatch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['FlowSchemaSpecArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
+                 spec: Optional[pulumi.Input[pulumi.InputType['FlowSchemaSpecPatchArgs']]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -153,7 +148,7 @@ class FlowSchemaPatch(pulumi.CustomResource):
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["spec"] = spec
             __props__.__dict__["status"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:flowcontrol.apiserver.k8s.io/v1alpha1:FlowSchema"), pulumi.Alias(type_="kubernetes:flowcontrol.apiserver.k8s.io/v1beta2:FlowSchema")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:flowcontrol.apiserver.k8s.io/v1alpha1:FlowSchemaPatch"), pulumi.Alias(type_="kubernetes:flowcontrol.apiserver.k8s.io/v1beta2:FlowSchemaPatch")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(FlowSchemaPatch, __self__).__init__(
             'kubernetes:flowcontrol.apiserver.k8s.io/v1beta1:FlowSchemaPatch',
@@ -202,7 +197,7 @@ class FlowSchemaPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Optional['_meta.v1.outputs.ObjectMeta']]:
+    def metadata(self) -> pulumi.Output[Optional['_meta.v1.outputs.ObjectMetaPatch']]:
         """
         `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         """
@@ -210,7 +205,7 @@ class FlowSchemaPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def spec(self) -> pulumi.Output[Optional['outputs.FlowSchemaSpec']]:
+    def spec(self) -> pulumi.Output[Optional['outputs.FlowSchemaSpecPatch']]:
         """
         `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         """
@@ -218,7 +213,7 @@ class FlowSchemaPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> pulumi.Output[Optional['outputs.FlowSchemaStatus']]:
+    def status(self) -> pulumi.Output[Optional['outputs.FlowSchemaStatusPatch']]:
         """
         `status` is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         """

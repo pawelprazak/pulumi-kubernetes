@@ -227,9 +227,9 @@ type LeasePatchType struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec *LeaseSpec `pulumi:"spec"`
+	Spec *LeaseSpecPatch `pulumi:"spec"`
 }
 
 // LeasePatchTypeInput is an input type that accepts LeasePatchTypeArgs and LeasePatchTypeOutput values.
@@ -250,9 +250,9 @@ type LeasePatchTypeArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrInput `pulumi:"metadata"`
 	// Specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec LeaseSpecPtrInput `pulumi:"spec"`
+	Spec LeaseSpecPatchPtrInput `pulumi:"spec"`
 }
 
 func (LeasePatchTypeArgs) ElementType() reflect.Type {
@@ -293,13 +293,13 @@ func (o LeasePatchTypeOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o LeasePatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v LeasePatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o LeasePatchTypeOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v LeasePatchType) *metav1.ObjectMetaPatch { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o LeasePatchTypeOutput) Spec() LeaseSpecPtrOutput {
-	return o.ApplyT(func(v LeasePatchType) *LeaseSpec { return v.Spec }).(LeaseSpecPtrOutput)
+func (o LeasePatchTypeOutput) Spec() LeaseSpecPatchPtrOutput {
+	return o.ApplyT(func(v LeasePatchType) *LeaseSpecPatch { return v.Spec }).(LeaseSpecPatchPtrOutput)
 }
 
 // LeaseSpec is a specification of a Lease.
@@ -569,6 +569,47 @@ func (i LeaseSpecPatchArgs) ToLeaseSpecPatchOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(LeaseSpecPatchOutput)
 }
 
+func (i LeaseSpecPatchArgs) ToLeaseSpecPatchPtrOutput() LeaseSpecPatchPtrOutput {
+	return i.ToLeaseSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (i LeaseSpecPatchArgs) ToLeaseSpecPatchPtrOutputWithContext(ctx context.Context) LeaseSpecPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LeaseSpecPatchOutput).ToLeaseSpecPatchPtrOutputWithContext(ctx)
+}
+
+// LeaseSpecPatchPtrInput is an input type that accepts LeaseSpecPatchArgs, LeaseSpecPatchPtr and LeaseSpecPatchPtrOutput values.
+// You can construct a concrete instance of `LeaseSpecPatchPtrInput` via:
+//
+//          LeaseSpecPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type LeaseSpecPatchPtrInput interface {
+	pulumi.Input
+
+	ToLeaseSpecPatchPtrOutput() LeaseSpecPatchPtrOutput
+	ToLeaseSpecPatchPtrOutputWithContext(context.Context) LeaseSpecPatchPtrOutput
+}
+
+type leaseSpecPatchPtrType LeaseSpecPatchArgs
+
+func LeaseSpecPatchPtr(v *LeaseSpecPatchArgs) LeaseSpecPatchPtrInput {
+	return (*leaseSpecPatchPtrType)(v)
+}
+
+func (*leaseSpecPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LeaseSpecPatch)(nil)).Elem()
+}
+
+func (i *leaseSpecPatchPtrType) ToLeaseSpecPatchPtrOutput() LeaseSpecPatchPtrOutput {
+	return i.ToLeaseSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *leaseSpecPatchPtrType) ToLeaseSpecPatchPtrOutputWithContext(ctx context.Context) LeaseSpecPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LeaseSpecPatchPtrOutput)
+}
+
 // LeaseSpec is a specification of a Lease.
 type LeaseSpecPatchOutput struct{ *pulumi.OutputState }
 
@@ -582,6 +623,16 @@ func (o LeaseSpecPatchOutput) ToLeaseSpecPatchOutput() LeaseSpecPatchOutput {
 
 func (o LeaseSpecPatchOutput) ToLeaseSpecPatchOutputWithContext(ctx context.Context) LeaseSpecPatchOutput {
 	return o
+}
+
+func (o LeaseSpecPatchOutput) ToLeaseSpecPatchPtrOutput() LeaseSpecPatchPtrOutput {
+	return o.ToLeaseSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (o LeaseSpecPatchOutput) ToLeaseSpecPatchPtrOutputWithContext(ctx context.Context) LeaseSpecPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LeaseSpecPatch) *LeaseSpecPatch {
+		return &v
+	}).(LeaseSpecPatchPtrOutput)
 }
 
 // acquireTime is a time when the current lease was acquired.
@@ -609,6 +660,80 @@ func (o LeaseSpecPatchOutput) RenewTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LeaseSpecPatch) *string { return v.RenewTime }).(pulumi.StringPtrOutput)
 }
 
+type LeaseSpecPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (LeaseSpecPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LeaseSpecPatch)(nil)).Elem()
+}
+
+func (o LeaseSpecPatchPtrOutput) ToLeaseSpecPatchPtrOutput() LeaseSpecPatchPtrOutput {
+	return o
+}
+
+func (o LeaseSpecPatchPtrOutput) ToLeaseSpecPatchPtrOutputWithContext(ctx context.Context) LeaseSpecPatchPtrOutput {
+	return o
+}
+
+func (o LeaseSpecPatchPtrOutput) Elem() LeaseSpecPatchOutput {
+	return o.ApplyT(func(v *LeaseSpecPatch) LeaseSpecPatch {
+		if v != nil {
+			return *v
+		}
+		var ret LeaseSpecPatch
+		return ret
+	}).(LeaseSpecPatchOutput)
+}
+
+// acquireTime is a time when the current lease was acquired.
+func (o LeaseSpecPatchPtrOutput) AcquireTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LeaseSpecPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcquireTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// holderIdentity contains the identity of the holder of a current lease.
+func (o LeaseSpecPatchPtrOutput) HolderIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LeaseSpecPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HolderIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
+// leaseDurationSeconds is a duration that candidates for a lease need to wait to force acquire it. This is measure against time of last observed RenewTime.
+func (o LeaseSpecPatchPtrOutput) LeaseDurationSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LeaseSpecPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LeaseDurationSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// leaseTransitions is the number of transitions of a lease between holders.
+func (o LeaseSpecPatchPtrOutput) LeaseTransitions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LeaseSpecPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LeaseTransitions
+	}).(pulumi.IntPtrOutput)
+}
+
+// renewTime is a time when the current holder of a lease has last updated the lease.
+func (o LeaseSpecPatchPtrOutput) RenewTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LeaseSpecPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RenewTime
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LeaseTypeInput)(nil)).Elem(), LeaseTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LeaseTypeArrayInput)(nil)).Elem(), LeaseTypeArray{})
@@ -617,6 +742,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LeaseSpecInput)(nil)).Elem(), LeaseSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LeaseSpecPtrInput)(nil)).Elem(), LeaseSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LeaseSpecPatchInput)(nil)).Elem(), LeaseSpecPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LeaseSpecPatchPtrInput)(nil)).Elem(), LeaseSpecPatchArgs{})
 	pulumi.RegisterOutputType(LeaseTypeOutput{})
 	pulumi.RegisterOutputType(LeaseTypeArrayOutput{})
 	pulumi.RegisterOutputType(LeaseListTypeOutput{})
@@ -624,4 +750,5 @@ func init() {
 	pulumi.RegisterOutputType(LeaseSpecOutput{})
 	pulumi.RegisterOutputType(LeaseSpecPtrOutput{})
 	pulumi.RegisterOutputType(LeaseSpecPatchOutput{})
+	pulumi.RegisterOutputType(LeaseSpecPatchPtrOutput{})
 }

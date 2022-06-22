@@ -57,11 +57,11 @@ export class EndpointsPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * The set of all endpoints is the union of all subsets. Addresses are placed into subsets according to the IPs they share. A single address with multiple ports, some of which are ready and some of which are not (because they come from different containers) will result in the address being displayed in different subsets for the different ports. No address will appear in both Addresses and NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service.
      */
-    public readonly subsets!: pulumi.Output<outputs.core.v1.EndpointSubset[]>;
+    public readonly subsets!: pulumi.Output<outputs.core.v1.EndpointSubsetPatch[]>;
 
     /**
      * Create a EndpointsPatch resource with the given unique name, arguments, and options.
@@ -104,9 +104,9 @@ export interface EndpointsPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * The set of all endpoints is the union of all subsets. Addresses are placed into subsets according to the IPs they share. A single address with multiple ports, some of which are ready and some of which are not (because they come from different containers) will result in the address being displayed in different subsets for the different ports. No address will appear in both Addresses and NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service.
      */
-    subsets?: pulumi.Input<pulumi.Input<inputs.core.v1.EndpointSubset>[]>;
+    subsets?: pulumi.Input<pulumi.Input<inputs.core.v1.EndpointSubsetPatch>[]>;
 }

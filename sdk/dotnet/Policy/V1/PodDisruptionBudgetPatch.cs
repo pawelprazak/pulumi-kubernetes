@@ -31,19 +31,19 @@ namespace Pulumi.Kubernetes.Policy.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Specification of the desired behavior of the PodDisruptionBudget.
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Policy.V1.PodDisruptionBudgetSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Policy.V1.PodDisruptionBudgetSpecPatch> Spec { get; private set; } = null!;
 
         /// <summary>
         /// Most recently observed status of the PodDisruptionBudget.
         /// </summary>
         [Output("status")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Policy.V1.PodDisruptionBudgetStatus> Status { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Policy.V1.PodDisruptionBudgetStatusPatch> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.Kubernetes.Policy.V1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:policy/v1beta1:PodDisruptionBudget"},
+                    new Pulumi.Alias { Type = "kubernetes:policy/v1beta1:PodDisruptionBudgetPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -125,13 +125,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Policy.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// Specification of the desired behavior of the PodDisruptionBudget.
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Policy.V1.PodDisruptionBudgetSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Policy.V1.PodDisruptionBudgetSpecPatchArgs>? Spec { get; set; }
 
         public PodDisruptionBudgetPatchArgs()
         {

@@ -22,9 +22,9 @@ type ControllerRevisionPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Revision indicates the revision of the state represented by Data.
-	Revision pulumi.IntOutput `pulumi:"revision"`
+	Revision pulumi.IntPtrOutput `pulumi:"revision"`
 }
 
 // NewControllerRevisionPatch registers a new resource with the given unique name, arguments, and options.
@@ -38,10 +38,10 @@ func NewControllerRevisionPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("ControllerRevision")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:apps/v1beta1:ControllerRevision"),
+			Type: pulumi.String("kubernetes:apps/v1beta1:ControllerRevisionPatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:apps/v1beta2:ControllerRevision"),
+			Type: pulumi.String("kubernetes:apps/v1beta2:ControllerRevisionPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -84,7 +84,7 @@ type controllerRevisionPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Revision indicates the revision of the state represented by Data.
 	Revision *int `pulumi:"revision"`
 }
@@ -98,7 +98,7 @@ type ControllerRevisionPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Revision indicates the revision of the state represented by Data.
 	Revision pulumi.IntPtrInput
 }
@@ -206,13 +206,13 @@ func (o ControllerRevisionPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o ControllerRevisionPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *ControllerRevisionPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o ControllerRevisionPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *ControllerRevisionPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Revision indicates the revision of the state represented by Data.
-func (o ControllerRevisionPatchOutput) Revision() pulumi.IntOutput {
-	return o.ApplyT(func(v *ControllerRevisionPatch) pulumi.IntOutput { return v.Revision }).(pulumi.IntOutput)
+func (o ControllerRevisionPatchOutput) Revision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ControllerRevisionPatch) pulumi.IntPtrOutput { return v.Revision }).(pulumi.IntPtrOutput)
 }
 
 type ControllerRevisionPatchArrayOutput struct{ *pulumi.OutputState }

@@ -211,6 +211,31 @@ func (i CustomResourceColumnDefinitionPatchArgs) ToCustomResourceColumnDefinitio
 	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceColumnDefinitionPatchOutput)
 }
 
+// CustomResourceColumnDefinitionPatchArrayInput is an input type that accepts CustomResourceColumnDefinitionPatchArray and CustomResourceColumnDefinitionPatchArrayOutput values.
+// You can construct a concrete instance of `CustomResourceColumnDefinitionPatchArrayInput` via:
+//
+//          CustomResourceColumnDefinitionPatchArray{ CustomResourceColumnDefinitionPatchArgs{...} }
+type CustomResourceColumnDefinitionPatchArrayInput interface {
+	pulumi.Input
+
+	ToCustomResourceColumnDefinitionPatchArrayOutput() CustomResourceColumnDefinitionPatchArrayOutput
+	ToCustomResourceColumnDefinitionPatchArrayOutputWithContext(context.Context) CustomResourceColumnDefinitionPatchArrayOutput
+}
+
+type CustomResourceColumnDefinitionPatchArray []CustomResourceColumnDefinitionPatchInput
+
+func (CustomResourceColumnDefinitionPatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomResourceColumnDefinitionPatch)(nil)).Elem()
+}
+
+func (i CustomResourceColumnDefinitionPatchArray) ToCustomResourceColumnDefinitionPatchArrayOutput() CustomResourceColumnDefinitionPatchArrayOutput {
+	return i.ToCustomResourceColumnDefinitionPatchArrayOutputWithContext(context.Background())
+}
+
+func (i CustomResourceColumnDefinitionPatchArray) ToCustomResourceColumnDefinitionPatchArrayOutputWithContext(ctx context.Context) CustomResourceColumnDefinitionPatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceColumnDefinitionPatchArrayOutput)
+}
+
 // CustomResourceColumnDefinition specifies a column for server side printing.
 type CustomResourceColumnDefinitionPatchOutput struct{ *pulumi.OutputState }
 
@@ -254,6 +279,26 @@ func (o CustomResourceColumnDefinitionPatchOutput) Priority() pulumi.IntPtrOutpu
 // type is an OpenAPI type definition for this column. See https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for details.
 func (o CustomResourceColumnDefinitionPatchOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomResourceColumnDefinitionPatch) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type CustomResourceColumnDefinitionPatchArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomResourceColumnDefinitionPatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomResourceColumnDefinitionPatch)(nil)).Elem()
+}
+
+func (o CustomResourceColumnDefinitionPatchArrayOutput) ToCustomResourceColumnDefinitionPatchArrayOutput() CustomResourceColumnDefinitionPatchArrayOutput {
+	return o
+}
+
+func (o CustomResourceColumnDefinitionPatchArrayOutput) ToCustomResourceColumnDefinitionPatchArrayOutputWithContext(ctx context.Context) CustomResourceColumnDefinitionPatchArrayOutput {
+	return o
+}
+
+func (o CustomResourceColumnDefinitionPatchArrayOutput) Index(i pulumi.IntInput) CustomResourceColumnDefinitionPatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomResourceColumnDefinitionPatch {
+		return vs[0].([]CustomResourceColumnDefinitionPatch)[vs[1].(int)]
+	}).(CustomResourceColumnDefinitionPatchOutput)
 }
 
 // CustomResourceConversion describes how to convert different versions of a CR.
@@ -425,7 +470,7 @@ type CustomResourceConversionPatch struct {
 	//   is needed for this option. This requires spec.preserveUnknownFields to be false, and spec.conversion.webhook to be set.
 	Strategy *string `pulumi:"strategy"`
 	// webhook describes how to call the conversion webhook. Required when `strategy` is set to `Webhook`.
-	Webhook *WebhookConversion `pulumi:"webhook"`
+	Webhook *WebhookConversionPatch `pulumi:"webhook"`
 }
 
 // CustomResourceConversionPatchInput is an input type that accepts CustomResourceConversionPatchArgs and CustomResourceConversionPatchOutput values.
@@ -445,7 +490,7 @@ type CustomResourceConversionPatchArgs struct {
 	//   is needed for this option. This requires spec.preserveUnknownFields to be false, and spec.conversion.webhook to be set.
 	Strategy pulumi.StringPtrInput `pulumi:"strategy"`
 	// webhook describes how to call the conversion webhook. Required when `strategy` is set to `Webhook`.
-	Webhook WebhookConversionPtrInput `pulumi:"webhook"`
+	Webhook WebhookConversionPatchPtrInput `pulumi:"webhook"`
 }
 
 func (CustomResourceConversionPatchArgs) ElementType() reflect.Type {
@@ -458,6 +503,47 @@ func (i CustomResourceConversionPatchArgs) ToCustomResourceConversionPatchOutput
 
 func (i CustomResourceConversionPatchArgs) ToCustomResourceConversionPatchOutputWithContext(ctx context.Context) CustomResourceConversionPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceConversionPatchOutput)
+}
+
+func (i CustomResourceConversionPatchArgs) ToCustomResourceConversionPatchPtrOutput() CustomResourceConversionPatchPtrOutput {
+	return i.ToCustomResourceConversionPatchPtrOutputWithContext(context.Background())
+}
+
+func (i CustomResourceConversionPatchArgs) ToCustomResourceConversionPatchPtrOutputWithContext(ctx context.Context) CustomResourceConversionPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceConversionPatchOutput).ToCustomResourceConversionPatchPtrOutputWithContext(ctx)
+}
+
+// CustomResourceConversionPatchPtrInput is an input type that accepts CustomResourceConversionPatchArgs, CustomResourceConversionPatchPtr and CustomResourceConversionPatchPtrOutput values.
+// You can construct a concrete instance of `CustomResourceConversionPatchPtrInput` via:
+//
+//          CustomResourceConversionPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type CustomResourceConversionPatchPtrInput interface {
+	pulumi.Input
+
+	ToCustomResourceConversionPatchPtrOutput() CustomResourceConversionPatchPtrOutput
+	ToCustomResourceConversionPatchPtrOutputWithContext(context.Context) CustomResourceConversionPatchPtrOutput
+}
+
+type customResourceConversionPatchPtrType CustomResourceConversionPatchArgs
+
+func CustomResourceConversionPatchPtr(v *CustomResourceConversionPatchArgs) CustomResourceConversionPatchPtrInput {
+	return (*customResourceConversionPatchPtrType)(v)
+}
+
+func (*customResourceConversionPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomResourceConversionPatch)(nil)).Elem()
+}
+
+func (i *customResourceConversionPatchPtrType) ToCustomResourceConversionPatchPtrOutput() CustomResourceConversionPatchPtrOutput {
+	return i.ToCustomResourceConversionPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *customResourceConversionPatchPtrType) ToCustomResourceConversionPatchPtrOutputWithContext(ctx context.Context) CustomResourceConversionPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceConversionPatchPtrOutput)
 }
 
 // CustomResourceConversion describes how to convert different versions of a CR.
@@ -475,6 +561,16 @@ func (o CustomResourceConversionPatchOutput) ToCustomResourceConversionPatchOutp
 	return o
 }
 
+func (o CustomResourceConversionPatchOutput) ToCustomResourceConversionPatchPtrOutput() CustomResourceConversionPatchPtrOutput {
+	return o.ToCustomResourceConversionPatchPtrOutputWithContext(context.Background())
+}
+
+func (o CustomResourceConversionPatchOutput) ToCustomResourceConversionPatchPtrOutputWithContext(ctx context.Context) CustomResourceConversionPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomResourceConversionPatch) *CustomResourceConversionPatch {
+		return &v
+	}).(CustomResourceConversionPatchPtrOutput)
+}
+
 // strategy specifies how custom resources are converted between versions. Allowed values are: - `None`: The converter only change the apiVersion and would not touch any other field in the custom resource. - `Webhook`: API Server will call to an external webhook to do the conversion. Additional information
 //   is needed for this option. This requires spec.preserveUnknownFields to be false, and spec.conversion.webhook to be set.
 func (o CustomResourceConversionPatchOutput) Strategy() pulumi.StringPtrOutput {
@@ -482,8 +578,53 @@ func (o CustomResourceConversionPatchOutput) Strategy() pulumi.StringPtrOutput {
 }
 
 // webhook describes how to call the conversion webhook. Required when `strategy` is set to `Webhook`.
-func (o CustomResourceConversionPatchOutput) Webhook() WebhookConversionPtrOutput {
-	return o.ApplyT(func(v CustomResourceConversionPatch) *WebhookConversion { return v.Webhook }).(WebhookConversionPtrOutput)
+func (o CustomResourceConversionPatchOutput) Webhook() WebhookConversionPatchPtrOutput {
+	return o.ApplyT(func(v CustomResourceConversionPatch) *WebhookConversionPatch { return v.Webhook }).(WebhookConversionPatchPtrOutput)
+}
+
+type CustomResourceConversionPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomResourceConversionPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomResourceConversionPatch)(nil)).Elem()
+}
+
+func (o CustomResourceConversionPatchPtrOutput) ToCustomResourceConversionPatchPtrOutput() CustomResourceConversionPatchPtrOutput {
+	return o
+}
+
+func (o CustomResourceConversionPatchPtrOutput) ToCustomResourceConversionPatchPtrOutputWithContext(ctx context.Context) CustomResourceConversionPatchPtrOutput {
+	return o
+}
+
+func (o CustomResourceConversionPatchPtrOutput) Elem() CustomResourceConversionPatchOutput {
+	return o.ApplyT(func(v *CustomResourceConversionPatch) CustomResourceConversionPatch {
+		if v != nil {
+			return *v
+		}
+		var ret CustomResourceConversionPatch
+		return ret
+	}).(CustomResourceConversionPatchOutput)
+}
+
+// strategy specifies how custom resources are converted between versions. Allowed values are: - `None`: The converter only change the apiVersion and would not touch any other field in the custom resource. - `Webhook`: API Server will call to an external webhook to do the conversion. Additional information
+//   is needed for this option. This requires spec.preserveUnknownFields to be false, and spec.conversion.webhook to be set.
+func (o CustomResourceConversionPatchPtrOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomResourceConversionPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Strategy
+	}).(pulumi.StringPtrOutput)
+}
+
+// webhook describes how to call the conversion webhook. Required when `strategy` is set to `Webhook`.
+func (o CustomResourceConversionPatchPtrOutput) Webhook() WebhookConversionPatchPtrOutput {
+	return o.ApplyT(func(v *CustomResourceConversionPatch) *WebhookConversionPatch {
+		if v == nil {
+			return nil
+		}
+		return v.Webhook
+	}).(WebhookConversionPatchPtrOutput)
 }
 
 // CustomResourceDefinition represents a resource that should be exposed on the API server.  Its name MUST be in the format <.spec.name>.<.spec.group>.
@@ -809,6 +950,31 @@ func (i CustomResourceDefinitionConditionPatchArgs) ToCustomResourceDefinitionCo
 	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceDefinitionConditionPatchOutput)
 }
 
+// CustomResourceDefinitionConditionPatchArrayInput is an input type that accepts CustomResourceDefinitionConditionPatchArray and CustomResourceDefinitionConditionPatchArrayOutput values.
+// You can construct a concrete instance of `CustomResourceDefinitionConditionPatchArrayInput` via:
+//
+//          CustomResourceDefinitionConditionPatchArray{ CustomResourceDefinitionConditionPatchArgs{...} }
+type CustomResourceDefinitionConditionPatchArrayInput interface {
+	pulumi.Input
+
+	ToCustomResourceDefinitionConditionPatchArrayOutput() CustomResourceDefinitionConditionPatchArrayOutput
+	ToCustomResourceDefinitionConditionPatchArrayOutputWithContext(context.Context) CustomResourceDefinitionConditionPatchArrayOutput
+}
+
+type CustomResourceDefinitionConditionPatchArray []CustomResourceDefinitionConditionPatchInput
+
+func (CustomResourceDefinitionConditionPatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomResourceDefinitionConditionPatch)(nil)).Elem()
+}
+
+func (i CustomResourceDefinitionConditionPatchArray) ToCustomResourceDefinitionConditionPatchArrayOutput() CustomResourceDefinitionConditionPatchArrayOutput {
+	return i.ToCustomResourceDefinitionConditionPatchArrayOutputWithContext(context.Background())
+}
+
+func (i CustomResourceDefinitionConditionPatchArray) ToCustomResourceDefinitionConditionPatchArrayOutputWithContext(ctx context.Context) CustomResourceDefinitionConditionPatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceDefinitionConditionPatchArrayOutput)
+}
+
 // CustomResourceDefinitionCondition contains details for the current condition of this pod.
 type CustomResourceDefinitionConditionPatchOutput struct{ *pulumi.OutputState }
 
@@ -847,6 +1013,26 @@ func (o CustomResourceDefinitionConditionPatchOutput) Status() pulumi.StringPtrO
 // type is the type of the condition. Types include Established, NamesAccepted and Terminating.
 func (o CustomResourceDefinitionConditionPatchOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomResourceDefinitionConditionPatch) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type CustomResourceDefinitionConditionPatchArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomResourceDefinitionConditionPatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomResourceDefinitionConditionPatch)(nil)).Elem()
+}
+
+func (o CustomResourceDefinitionConditionPatchArrayOutput) ToCustomResourceDefinitionConditionPatchArrayOutput() CustomResourceDefinitionConditionPatchArrayOutput {
+	return o
+}
+
+func (o CustomResourceDefinitionConditionPatchArrayOutput) ToCustomResourceDefinitionConditionPatchArrayOutputWithContext(ctx context.Context) CustomResourceDefinitionConditionPatchArrayOutput {
+	return o
+}
+
+func (o CustomResourceDefinitionConditionPatchArrayOutput) Index(i pulumi.IntInput) CustomResourceDefinitionConditionPatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomResourceDefinitionConditionPatch {
+		return vs[0].([]CustomResourceDefinitionConditionPatch)[vs[1].(int)]
+	}).(CustomResourceDefinitionConditionPatchOutput)
 }
 
 // CustomResourceDefinitionList is a list of CustomResourceDefinition objects.
@@ -1221,6 +1407,47 @@ func (i CustomResourceDefinitionNamesPatchArgs) ToCustomResourceDefinitionNamesP
 	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceDefinitionNamesPatchOutput)
 }
 
+func (i CustomResourceDefinitionNamesPatchArgs) ToCustomResourceDefinitionNamesPatchPtrOutput() CustomResourceDefinitionNamesPatchPtrOutput {
+	return i.ToCustomResourceDefinitionNamesPatchPtrOutputWithContext(context.Background())
+}
+
+func (i CustomResourceDefinitionNamesPatchArgs) ToCustomResourceDefinitionNamesPatchPtrOutputWithContext(ctx context.Context) CustomResourceDefinitionNamesPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceDefinitionNamesPatchOutput).ToCustomResourceDefinitionNamesPatchPtrOutputWithContext(ctx)
+}
+
+// CustomResourceDefinitionNamesPatchPtrInput is an input type that accepts CustomResourceDefinitionNamesPatchArgs, CustomResourceDefinitionNamesPatchPtr and CustomResourceDefinitionNamesPatchPtrOutput values.
+// You can construct a concrete instance of `CustomResourceDefinitionNamesPatchPtrInput` via:
+//
+//          CustomResourceDefinitionNamesPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type CustomResourceDefinitionNamesPatchPtrInput interface {
+	pulumi.Input
+
+	ToCustomResourceDefinitionNamesPatchPtrOutput() CustomResourceDefinitionNamesPatchPtrOutput
+	ToCustomResourceDefinitionNamesPatchPtrOutputWithContext(context.Context) CustomResourceDefinitionNamesPatchPtrOutput
+}
+
+type customResourceDefinitionNamesPatchPtrType CustomResourceDefinitionNamesPatchArgs
+
+func CustomResourceDefinitionNamesPatchPtr(v *CustomResourceDefinitionNamesPatchArgs) CustomResourceDefinitionNamesPatchPtrInput {
+	return (*customResourceDefinitionNamesPatchPtrType)(v)
+}
+
+func (*customResourceDefinitionNamesPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomResourceDefinitionNamesPatch)(nil)).Elem()
+}
+
+func (i *customResourceDefinitionNamesPatchPtrType) ToCustomResourceDefinitionNamesPatchPtrOutput() CustomResourceDefinitionNamesPatchPtrOutput {
+	return i.ToCustomResourceDefinitionNamesPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *customResourceDefinitionNamesPatchPtrType) ToCustomResourceDefinitionNamesPatchPtrOutputWithContext(ctx context.Context) CustomResourceDefinitionNamesPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceDefinitionNamesPatchPtrOutput)
+}
+
 // CustomResourceDefinitionNames indicates the names to serve this CustomResourceDefinition
 type CustomResourceDefinitionNamesPatchOutput struct{ *pulumi.OutputState }
 
@@ -1234,6 +1461,16 @@ func (o CustomResourceDefinitionNamesPatchOutput) ToCustomResourceDefinitionName
 
 func (o CustomResourceDefinitionNamesPatchOutput) ToCustomResourceDefinitionNamesPatchOutputWithContext(ctx context.Context) CustomResourceDefinitionNamesPatchOutput {
 	return o
+}
+
+func (o CustomResourceDefinitionNamesPatchOutput) ToCustomResourceDefinitionNamesPatchPtrOutput() CustomResourceDefinitionNamesPatchPtrOutput {
+	return o.ToCustomResourceDefinitionNamesPatchPtrOutputWithContext(context.Background())
+}
+
+func (o CustomResourceDefinitionNamesPatchOutput) ToCustomResourceDefinitionNamesPatchPtrOutputWithContext(ctx context.Context) CustomResourceDefinitionNamesPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomResourceDefinitionNamesPatch) *CustomResourceDefinitionNamesPatch {
+		return &v
+	}).(CustomResourceDefinitionNamesPatchPtrOutput)
 }
 
 // categories is a list of grouped resources this custom resource belongs to (e.g. 'all'). This is published in API discovery documents, and used by clients to support invocations like `kubectl get all`.
@@ -1266,6 +1503,90 @@ func (o CustomResourceDefinitionNamesPatchOutput) Singular() pulumi.StringPtrOut
 	return o.ApplyT(func(v CustomResourceDefinitionNamesPatch) *string { return v.Singular }).(pulumi.StringPtrOutput)
 }
 
+type CustomResourceDefinitionNamesPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomResourceDefinitionNamesPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomResourceDefinitionNamesPatch)(nil)).Elem()
+}
+
+func (o CustomResourceDefinitionNamesPatchPtrOutput) ToCustomResourceDefinitionNamesPatchPtrOutput() CustomResourceDefinitionNamesPatchPtrOutput {
+	return o
+}
+
+func (o CustomResourceDefinitionNamesPatchPtrOutput) ToCustomResourceDefinitionNamesPatchPtrOutputWithContext(ctx context.Context) CustomResourceDefinitionNamesPatchPtrOutput {
+	return o
+}
+
+func (o CustomResourceDefinitionNamesPatchPtrOutput) Elem() CustomResourceDefinitionNamesPatchOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionNamesPatch) CustomResourceDefinitionNamesPatch {
+		if v != nil {
+			return *v
+		}
+		var ret CustomResourceDefinitionNamesPatch
+		return ret
+	}).(CustomResourceDefinitionNamesPatchOutput)
+}
+
+// categories is a list of grouped resources this custom resource belongs to (e.g. 'all'). This is published in API discovery documents, and used by clients to support invocations like `kubectl get all`.
+func (o CustomResourceDefinitionNamesPatchPtrOutput) Categories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionNamesPatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Categories
+	}).(pulumi.StringArrayOutput)
+}
+
+// kind is the serialized kind of the resource. It is normally CamelCase and singular. Custom resource instances will use this value as the `kind` attribute in API calls.
+func (o CustomResourceDefinitionNamesPatchPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionNamesPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// listKind is the serialized kind of the list for this resource. Defaults to "`kind`List".
+func (o CustomResourceDefinitionNamesPatchPtrOutput) ListKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionNamesPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ListKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// plural is the plural name of the resource to serve. The custom resources are served under `/apis/<group>/<version>/.../<plural>`. Must match the name of the CustomResourceDefinition (in the form `<names.plural>.<group>`). Must be all lowercase.
+func (o CustomResourceDefinitionNamesPatchPtrOutput) Plural() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionNamesPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Plural
+	}).(pulumi.StringPtrOutput)
+}
+
+// shortNames are short names for the resource, exposed in API discovery documents, and used by clients to support invocations like `kubectl get <shortname>`. It must be all lowercase.
+func (o CustomResourceDefinitionNamesPatchPtrOutput) ShortNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionNamesPatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ShortNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// singular is the singular name of the resource. It must be all lowercase. Defaults to lowercased `kind`.
+func (o CustomResourceDefinitionNamesPatchPtrOutput) Singular() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionNamesPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Singular
+	}).(pulumi.StringPtrOutput)
+}
+
 // CustomResourceDefinition represents a resource that should be exposed on the API server.  Its name MUST be in the format <.spec.name>.<.spec.group>.
 type CustomResourceDefinitionPatchType struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -1273,11 +1594,11 @@ type CustomResourceDefinitionPatchType struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// spec describes how the user wants the resources to appear
-	Spec *CustomResourceDefinitionSpec `pulumi:"spec"`
+	Spec *CustomResourceDefinitionSpecPatch `pulumi:"spec"`
 	// status indicates the actual state of the CustomResourceDefinition
-	Status *CustomResourceDefinitionStatus `pulumi:"status"`
+	Status *CustomResourceDefinitionStatusPatch `pulumi:"status"`
 }
 
 // CustomResourceDefinitionPatchTypeInput is an input type that accepts CustomResourceDefinitionPatchTypeArgs and CustomResourceDefinitionPatchTypeOutput values.
@@ -1298,11 +1619,11 @@ type CustomResourceDefinitionPatchTypeArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Standard object's metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrInput `pulumi:"metadata"`
 	// spec describes how the user wants the resources to appear
-	Spec CustomResourceDefinitionSpecPtrInput `pulumi:"spec"`
+	Spec CustomResourceDefinitionSpecPatchPtrInput `pulumi:"spec"`
 	// status indicates the actual state of the CustomResourceDefinition
-	Status CustomResourceDefinitionStatusPtrInput `pulumi:"status"`
+	Status CustomResourceDefinitionStatusPatchPtrInput `pulumi:"status"`
 }
 
 func (CustomResourceDefinitionPatchTypeArgs) ElementType() reflect.Type {
@@ -1343,18 +1664,18 @@ func (o CustomResourceDefinitionPatchTypeOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o CustomResourceDefinitionPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v CustomResourceDefinitionPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o CustomResourceDefinitionPatchTypeOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v CustomResourceDefinitionPatchType) *metav1.ObjectMetaPatch { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // spec describes how the user wants the resources to appear
-func (o CustomResourceDefinitionPatchTypeOutput) Spec() CustomResourceDefinitionSpecPtrOutput {
-	return o.ApplyT(func(v CustomResourceDefinitionPatchType) *CustomResourceDefinitionSpec { return v.Spec }).(CustomResourceDefinitionSpecPtrOutput)
+func (o CustomResourceDefinitionPatchTypeOutput) Spec() CustomResourceDefinitionSpecPatchPtrOutput {
+	return o.ApplyT(func(v CustomResourceDefinitionPatchType) *CustomResourceDefinitionSpecPatch { return v.Spec }).(CustomResourceDefinitionSpecPatchPtrOutput)
 }
 
 // status indicates the actual state of the CustomResourceDefinition
-func (o CustomResourceDefinitionPatchTypeOutput) Status() CustomResourceDefinitionStatusPtrOutput {
-	return o.ApplyT(func(v CustomResourceDefinitionPatchType) *CustomResourceDefinitionStatus { return v.Status }).(CustomResourceDefinitionStatusPtrOutput)
+func (o CustomResourceDefinitionPatchTypeOutput) Status() CustomResourceDefinitionStatusPatchPtrOutput {
+	return o.ApplyT(func(v CustomResourceDefinitionPatchType) *CustomResourceDefinitionStatusPatch { return v.Status }).(CustomResourceDefinitionStatusPatchPtrOutput)
 }
 
 // CustomResourceDefinitionSpec describes how a user wants their resource to appear
@@ -1412,47 +1733,6 @@ func (i CustomResourceDefinitionSpecArgs) ToCustomResourceDefinitionSpecOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceDefinitionSpecOutput)
 }
 
-func (i CustomResourceDefinitionSpecArgs) ToCustomResourceDefinitionSpecPtrOutput() CustomResourceDefinitionSpecPtrOutput {
-	return i.ToCustomResourceDefinitionSpecPtrOutputWithContext(context.Background())
-}
-
-func (i CustomResourceDefinitionSpecArgs) ToCustomResourceDefinitionSpecPtrOutputWithContext(ctx context.Context) CustomResourceDefinitionSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceDefinitionSpecOutput).ToCustomResourceDefinitionSpecPtrOutputWithContext(ctx)
-}
-
-// CustomResourceDefinitionSpecPtrInput is an input type that accepts CustomResourceDefinitionSpecArgs, CustomResourceDefinitionSpecPtr and CustomResourceDefinitionSpecPtrOutput values.
-// You can construct a concrete instance of `CustomResourceDefinitionSpecPtrInput` via:
-//
-//          CustomResourceDefinitionSpecArgs{...}
-//
-//  or:
-//
-//          nil
-type CustomResourceDefinitionSpecPtrInput interface {
-	pulumi.Input
-
-	ToCustomResourceDefinitionSpecPtrOutput() CustomResourceDefinitionSpecPtrOutput
-	ToCustomResourceDefinitionSpecPtrOutputWithContext(context.Context) CustomResourceDefinitionSpecPtrOutput
-}
-
-type customResourceDefinitionSpecPtrType CustomResourceDefinitionSpecArgs
-
-func CustomResourceDefinitionSpecPtr(v *CustomResourceDefinitionSpecArgs) CustomResourceDefinitionSpecPtrInput {
-	return (*customResourceDefinitionSpecPtrType)(v)
-}
-
-func (*customResourceDefinitionSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomResourceDefinitionSpec)(nil)).Elem()
-}
-
-func (i *customResourceDefinitionSpecPtrType) ToCustomResourceDefinitionSpecPtrOutput() CustomResourceDefinitionSpecPtrOutput {
-	return i.ToCustomResourceDefinitionSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *customResourceDefinitionSpecPtrType) ToCustomResourceDefinitionSpecPtrOutputWithContext(ctx context.Context) CustomResourceDefinitionSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceDefinitionSpecPtrOutput)
-}
-
 // CustomResourceDefinitionSpec describes how a user wants their resource to appear
 type CustomResourceDefinitionSpecOutput struct{ *pulumi.OutputState }
 
@@ -1466,16 +1746,6 @@ func (o CustomResourceDefinitionSpecOutput) ToCustomResourceDefinitionSpecOutput
 
 func (o CustomResourceDefinitionSpecOutput) ToCustomResourceDefinitionSpecOutputWithContext(ctx context.Context) CustomResourceDefinitionSpecOutput {
 	return o
-}
-
-func (o CustomResourceDefinitionSpecOutput) ToCustomResourceDefinitionSpecPtrOutput() CustomResourceDefinitionSpecPtrOutput {
-	return o.ToCustomResourceDefinitionSpecPtrOutputWithContext(context.Background())
-}
-
-func (o CustomResourceDefinitionSpecOutput) ToCustomResourceDefinitionSpecPtrOutputWithContext(ctx context.Context) CustomResourceDefinitionSpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomResourceDefinitionSpec) *CustomResourceDefinitionSpec {
-		return &v
-	}).(CustomResourceDefinitionSpecPtrOutput)
 }
 
 // conversion defines conversion settings for the CRD.
@@ -1508,104 +1778,20 @@ func (o CustomResourceDefinitionSpecOutput) Versions() CustomResourceDefinitionV
 	return o.ApplyT(func(v CustomResourceDefinitionSpec) []CustomResourceDefinitionVersion { return v.Versions }).(CustomResourceDefinitionVersionArrayOutput)
 }
 
-type CustomResourceDefinitionSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (CustomResourceDefinitionSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomResourceDefinitionSpec)(nil)).Elem()
-}
-
-func (o CustomResourceDefinitionSpecPtrOutput) ToCustomResourceDefinitionSpecPtrOutput() CustomResourceDefinitionSpecPtrOutput {
-	return o
-}
-
-func (o CustomResourceDefinitionSpecPtrOutput) ToCustomResourceDefinitionSpecPtrOutputWithContext(ctx context.Context) CustomResourceDefinitionSpecPtrOutput {
-	return o
-}
-
-func (o CustomResourceDefinitionSpecPtrOutput) Elem() CustomResourceDefinitionSpecOutput {
-	return o.ApplyT(func(v *CustomResourceDefinitionSpec) CustomResourceDefinitionSpec {
-		if v != nil {
-			return *v
-		}
-		var ret CustomResourceDefinitionSpec
-		return ret
-	}).(CustomResourceDefinitionSpecOutput)
-}
-
-// conversion defines conversion settings for the CRD.
-func (o CustomResourceDefinitionSpecPtrOutput) Conversion() CustomResourceConversionPtrOutput {
-	return o.ApplyT(func(v *CustomResourceDefinitionSpec) *CustomResourceConversion {
-		if v == nil {
-			return nil
-		}
-		return v.Conversion
-	}).(CustomResourceConversionPtrOutput)
-}
-
-// group is the API group of the defined custom resource. The custom resources are served under `/apis/<group>/...`. Must match the name of the CustomResourceDefinition (in the form `<names.plural>.<group>`).
-func (o CustomResourceDefinitionSpecPtrOutput) Group() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CustomResourceDefinitionSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Group
-	}).(pulumi.StringPtrOutput)
-}
-
-// names specify the resource and kind names for the custom resource.
-func (o CustomResourceDefinitionSpecPtrOutput) Names() CustomResourceDefinitionNamesPtrOutput {
-	return o.ApplyT(func(v *CustomResourceDefinitionSpec) *CustomResourceDefinitionNames {
-		if v == nil {
-			return nil
-		}
-		return &v.Names
-	}).(CustomResourceDefinitionNamesPtrOutput)
-}
-
-// preserveUnknownFields indicates that object fields which are not specified in the OpenAPI schema should be preserved when persisting to storage. apiVersion, kind, metadata and known fields inside metadata are always preserved. This field is deprecated in favor of setting `x-preserve-unknown-fields` to true in `spec.versions[*].schema.openAPIV3Schema`. See https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/#pruning-versus-preserving-unknown-fields for details.
-func (o CustomResourceDefinitionSpecPtrOutput) PreserveUnknownFields() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CustomResourceDefinitionSpec) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.PreserveUnknownFields
-	}).(pulumi.BoolPtrOutput)
-}
-
-// scope indicates whether the defined custom resource is cluster- or namespace-scoped. Allowed values are `Cluster` and `Namespaced`.
-func (o CustomResourceDefinitionSpecPtrOutput) Scope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CustomResourceDefinitionSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Scope
-	}).(pulumi.StringPtrOutput)
-}
-
-// versions is the list of all API versions of the defined custom resource. Version names are used to compute the order in which served versions are listed in API discovery. If the version string is "kube-like", it will sort above non "kube-like" version strings, which are ordered lexicographically. "Kube-like" versions start with a "v", then are followed by a number (the major version), then optionally the string "alpha" or "beta" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.
-func (o CustomResourceDefinitionSpecPtrOutput) Versions() CustomResourceDefinitionVersionArrayOutput {
-	return o.ApplyT(func(v *CustomResourceDefinitionSpec) []CustomResourceDefinitionVersion {
-		if v == nil {
-			return nil
-		}
-		return v.Versions
-	}).(CustomResourceDefinitionVersionArrayOutput)
-}
-
 // CustomResourceDefinitionSpec describes how a user wants their resource to appear
 type CustomResourceDefinitionSpecPatch struct {
 	// conversion defines conversion settings for the CRD.
-	Conversion *CustomResourceConversion `pulumi:"conversion"`
+	Conversion *CustomResourceConversionPatch `pulumi:"conversion"`
 	// group is the API group of the defined custom resource. The custom resources are served under `/apis/<group>/...`. Must match the name of the CustomResourceDefinition (in the form `<names.plural>.<group>`).
 	Group *string `pulumi:"group"`
 	// names specify the resource and kind names for the custom resource.
-	Names *CustomResourceDefinitionNames `pulumi:"names"`
+	Names *CustomResourceDefinitionNamesPatch `pulumi:"names"`
 	// preserveUnknownFields indicates that object fields which are not specified in the OpenAPI schema should be preserved when persisting to storage. apiVersion, kind, metadata and known fields inside metadata are always preserved. This field is deprecated in favor of setting `x-preserve-unknown-fields` to true in `spec.versions[*].schema.openAPIV3Schema`. See https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/#pruning-versus-preserving-unknown-fields for details.
 	PreserveUnknownFields *bool `pulumi:"preserveUnknownFields"`
 	// scope indicates whether the defined custom resource is cluster- or namespace-scoped. Allowed values are `Cluster` and `Namespaced`.
 	Scope *string `pulumi:"scope"`
 	// versions is the list of all API versions of the defined custom resource. Version names are used to compute the order in which served versions are listed in API discovery. If the version string is "kube-like", it will sort above non "kube-like" version strings, which are ordered lexicographically. "Kube-like" versions start with a "v", then are followed by a number (the major version), then optionally the string "alpha" or "beta" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.
-	Versions []CustomResourceDefinitionVersion `pulumi:"versions"`
+	Versions []CustomResourceDefinitionVersionPatch `pulumi:"versions"`
 }
 
 // CustomResourceDefinitionSpecPatchInput is an input type that accepts CustomResourceDefinitionSpecPatchArgs and CustomResourceDefinitionSpecPatchOutput values.
@@ -1622,17 +1808,17 @@ type CustomResourceDefinitionSpecPatchInput interface {
 // CustomResourceDefinitionSpec describes how a user wants their resource to appear
 type CustomResourceDefinitionSpecPatchArgs struct {
 	// conversion defines conversion settings for the CRD.
-	Conversion CustomResourceConversionPtrInput `pulumi:"conversion"`
+	Conversion CustomResourceConversionPatchPtrInput `pulumi:"conversion"`
 	// group is the API group of the defined custom resource. The custom resources are served under `/apis/<group>/...`. Must match the name of the CustomResourceDefinition (in the form `<names.plural>.<group>`).
 	Group pulumi.StringPtrInput `pulumi:"group"`
 	// names specify the resource and kind names for the custom resource.
-	Names CustomResourceDefinitionNamesPtrInput `pulumi:"names"`
+	Names CustomResourceDefinitionNamesPatchPtrInput `pulumi:"names"`
 	// preserveUnknownFields indicates that object fields which are not specified in the OpenAPI schema should be preserved when persisting to storage. apiVersion, kind, metadata and known fields inside metadata are always preserved. This field is deprecated in favor of setting `x-preserve-unknown-fields` to true in `spec.versions[*].schema.openAPIV3Schema`. See https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/#pruning-versus-preserving-unknown-fields for details.
 	PreserveUnknownFields pulumi.BoolPtrInput `pulumi:"preserveUnknownFields"`
 	// scope indicates whether the defined custom resource is cluster- or namespace-scoped. Allowed values are `Cluster` and `Namespaced`.
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// versions is the list of all API versions of the defined custom resource. Version names are used to compute the order in which served versions are listed in API discovery. If the version string is "kube-like", it will sort above non "kube-like" version strings, which are ordered lexicographically. "Kube-like" versions start with a "v", then are followed by a number (the major version), then optionally the string "alpha" or "beta" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.
-	Versions CustomResourceDefinitionVersionArrayInput `pulumi:"versions"`
+	Versions CustomResourceDefinitionVersionPatchArrayInput `pulumi:"versions"`
 }
 
 func (CustomResourceDefinitionSpecPatchArgs) ElementType() reflect.Type {
@@ -1645,6 +1831,47 @@ func (i CustomResourceDefinitionSpecPatchArgs) ToCustomResourceDefinitionSpecPat
 
 func (i CustomResourceDefinitionSpecPatchArgs) ToCustomResourceDefinitionSpecPatchOutputWithContext(ctx context.Context) CustomResourceDefinitionSpecPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceDefinitionSpecPatchOutput)
+}
+
+func (i CustomResourceDefinitionSpecPatchArgs) ToCustomResourceDefinitionSpecPatchPtrOutput() CustomResourceDefinitionSpecPatchPtrOutput {
+	return i.ToCustomResourceDefinitionSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (i CustomResourceDefinitionSpecPatchArgs) ToCustomResourceDefinitionSpecPatchPtrOutputWithContext(ctx context.Context) CustomResourceDefinitionSpecPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceDefinitionSpecPatchOutput).ToCustomResourceDefinitionSpecPatchPtrOutputWithContext(ctx)
+}
+
+// CustomResourceDefinitionSpecPatchPtrInput is an input type that accepts CustomResourceDefinitionSpecPatchArgs, CustomResourceDefinitionSpecPatchPtr and CustomResourceDefinitionSpecPatchPtrOutput values.
+// You can construct a concrete instance of `CustomResourceDefinitionSpecPatchPtrInput` via:
+//
+//          CustomResourceDefinitionSpecPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type CustomResourceDefinitionSpecPatchPtrInput interface {
+	pulumi.Input
+
+	ToCustomResourceDefinitionSpecPatchPtrOutput() CustomResourceDefinitionSpecPatchPtrOutput
+	ToCustomResourceDefinitionSpecPatchPtrOutputWithContext(context.Context) CustomResourceDefinitionSpecPatchPtrOutput
+}
+
+type customResourceDefinitionSpecPatchPtrType CustomResourceDefinitionSpecPatchArgs
+
+func CustomResourceDefinitionSpecPatchPtr(v *CustomResourceDefinitionSpecPatchArgs) CustomResourceDefinitionSpecPatchPtrInput {
+	return (*customResourceDefinitionSpecPatchPtrType)(v)
+}
+
+func (*customResourceDefinitionSpecPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomResourceDefinitionSpecPatch)(nil)).Elem()
+}
+
+func (i *customResourceDefinitionSpecPatchPtrType) ToCustomResourceDefinitionSpecPatchPtrOutput() CustomResourceDefinitionSpecPatchPtrOutput {
+	return i.ToCustomResourceDefinitionSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *customResourceDefinitionSpecPatchPtrType) ToCustomResourceDefinitionSpecPatchPtrOutputWithContext(ctx context.Context) CustomResourceDefinitionSpecPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceDefinitionSpecPatchPtrOutput)
 }
 
 // CustomResourceDefinitionSpec describes how a user wants their resource to appear
@@ -1662,9 +1889,19 @@ func (o CustomResourceDefinitionSpecPatchOutput) ToCustomResourceDefinitionSpecP
 	return o
 }
 
+func (o CustomResourceDefinitionSpecPatchOutput) ToCustomResourceDefinitionSpecPatchPtrOutput() CustomResourceDefinitionSpecPatchPtrOutput {
+	return o.ToCustomResourceDefinitionSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (o CustomResourceDefinitionSpecPatchOutput) ToCustomResourceDefinitionSpecPatchPtrOutputWithContext(ctx context.Context) CustomResourceDefinitionSpecPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomResourceDefinitionSpecPatch) *CustomResourceDefinitionSpecPatch {
+		return &v
+	}).(CustomResourceDefinitionSpecPatchPtrOutput)
+}
+
 // conversion defines conversion settings for the CRD.
-func (o CustomResourceDefinitionSpecPatchOutput) Conversion() CustomResourceConversionPtrOutput {
-	return o.ApplyT(func(v CustomResourceDefinitionSpecPatch) *CustomResourceConversion { return v.Conversion }).(CustomResourceConversionPtrOutput)
+func (o CustomResourceDefinitionSpecPatchOutput) Conversion() CustomResourceConversionPatchPtrOutput {
+	return o.ApplyT(func(v CustomResourceDefinitionSpecPatch) *CustomResourceConversionPatch { return v.Conversion }).(CustomResourceConversionPatchPtrOutput)
 }
 
 // group is the API group of the defined custom resource. The custom resources are served under `/apis/<group>/...`. Must match the name of the CustomResourceDefinition (in the form `<names.plural>.<group>`).
@@ -1673,8 +1910,8 @@ func (o CustomResourceDefinitionSpecPatchOutput) Group() pulumi.StringPtrOutput 
 }
 
 // names specify the resource and kind names for the custom resource.
-func (o CustomResourceDefinitionSpecPatchOutput) Names() CustomResourceDefinitionNamesPtrOutput {
-	return o.ApplyT(func(v CustomResourceDefinitionSpecPatch) *CustomResourceDefinitionNames { return v.Names }).(CustomResourceDefinitionNamesPtrOutput)
+func (o CustomResourceDefinitionSpecPatchOutput) Names() CustomResourceDefinitionNamesPatchPtrOutput {
+	return o.ApplyT(func(v CustomResourceDefinitionSpecPatch) *CustomResourceDefinitionNamesPatch { return v.Names }).(CustomResourceDefinitionNamesPatchPtrOutput)
 }
 
 // preserveUnknownFields indicates that object fields which are not specified in the OpenAPI schema should be preserved when persisting to storage. apiVersion, kind, metadata and known fields inside metadata are always preserved. This field is deprecated in favor of setting `x-preserve-unknown-fields` to true in `spec.versions[*].schema.openAPIV3Schema`. See https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/#pruning-versus-preserving-unknown-fields for details.
@@ -1688,8 +1925,92 @@ func (o CustomResourceDefinitionSpecPatchOutput) Scope() pulumi.StringPtrOutput 
 }
 
 // versions is the list of all API versions of the defined custom resource. Version names are used to compute the order in which served versions are listed in API discovery. If the version string is "kube-like", it will sort above non "kube-like" version strings, which are ordered lexicographically. "Kube-like" versions start with a "v", then are followed by a number (the major version), then optionally the string "alpha" or "beta" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.
-func (o CustomResourceDefinitionSpecPatchOutput) Versions() CustomResourceDefinitionVersionArrayOutput {
-	return o.ApplyT(func(v CustomResourceDefinitionSpecPatch) []CustomResourceDefinitionVersion { return v.Versions }).(CustomResourceDefinitionVersionArrayOutput)
+func (o CustomResourceDefinitionSpecPatchOutput) Versions() CustomResourceDefinitionVersionPatchArrayOutput {
+	return o.ApplyT(func(v CustomResourceDefinitionSpecPatch) []CustomResourceDefinitionVersionPatch { return v.Versions }).(CustomResourceDefinitionVersionPatchArrayOutput)
+}
+
+type CustomResourceDefinitionSpecPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomResourceDefinitionSpecPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomResourceDefinitionSpecPatch)(nil)).Elem()
+}
+
+func (o CustomResourceDefinitionSpecPatchPtrOutput) ToCustomResourceDefinitionSpecPatchPtrOutput() CustomResourceDefinitionSpecPatchPtrOutput {
+	return o
+}
+
+func (o CustomResourceDefinitionSpecPatchPtrOutput) ToCustomResourceDefinitionSpecPatchPtrOutputWithContext(ctx context.Context) CustomResourceDefinitionSpecPatchPtrOutput {
+	return o
+}
+
+func (o CustomResourceDefinitionSpecPatchPtrOutput) Elem() CustomResourceDefinitionSpecPatchOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionSpecPatch) CustomResourceDefinitionSpecPatch {
+		if v != nil {
+			return *v
+		}
+		var ret CustomResourceDefinitionSpecPatch
+		return ret
+	}).(CustomResourceDefinitionSpecPatchOutput)
+}
+
+// conversion defines conversion settings for the CRD.
+func (o CustomResourceDefinitionSpecPatchPtrOutput) Conversion() CustomResourceConversionPatchPtrOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionSpecPatch) *CustomResourceConversionPatch {
+		if v == nil {
+			return nil
+		}
+		return v.Conversion
+	}).(CustomResourceConversionPatchPtrOutput)
+}
+
+// group is the API group of the defined custom resource. The custom resources are served under `/apis/<group>/...`. Must match the name of the CustomResourceDefinition (in the form `<names.plural>.<group>`).
+func (o CustomResourceDefinitionSpecPatchPtrOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionSpecPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Group
+	}).(pulumi.StringPtrOutput)
+}
+
+// names specify the resource and kind names for the custom resource.
+func (o CustomResourceDefinitionSpecPatchPtrOutput) Names() CustomResourceDefinitionNamesPatchPtrOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionSpecPatch) *CustomResourceDefinitionNamesPatch {
+		if v == nil {
+			return nil
+		}
+		return v.Names
+	}).(CustomResourceDefinitionNamesPatchPtrOutput)
+}
+
+// preserveUnknownFields indicates that object fields which are not specified in the OpenAPI schema should be preserved when persisting to storage. apiVersion, kind, metadata and known fields inside metadata are always preserved. This field is deprecated in favor of setting `x-preserve-unknown-fields` to true in `spec.versions[*].schema.openAPIV3Schema`. See https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/#pruning-versus-preserving-unknown-fields for details.
+func (o CustomResourceDefinitionSpecPatchPtrOutput) PreserveUnknownFields() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionSpecPatch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreserveUnknownFields
+	}).(pulumi.BoolPtrOutput)
+}
+
+// scope indicates whether the defined custom resource is cluster- or namespace-scoped. Allowed values are `Cluster` and `Namespaced`.
+func (o CustomResourceDefinitionSpecPatchPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionSpecPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+// versions is the list of all API versions of the defined custom resource. Version names are used to compute the order in which served versions are listed in API discovery. If the version string is "kube-like", it will sort above non "kube-like" version strings, which are ordered lexicographically. "Kube-like" versions start with a "v", then are followed by a number (the major version), then optionally the string "alpha" or "beta" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.
+func (o CustomResourceDefinitionSpecPatchPtrOutput) Versions() CustomResourceDefinitionVersionPatchArrayOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionSpecPatch) []CustomResourceDefinitionVersionPatch {
+		if v == nil {
+			return nil
+		}
+		return v.Versions
+	}).(CustomResourceDefinitionVersionPatchArrayOutput)
 }
 
 // CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition
@@ -1873,9 +2194,9 @@ func (o CustomResourceDefinitionStatusPtrOutput) StoredVersions() pulumi.StringA
 // CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition
 type CustomResourceDefinitionStatusPatch struct {
 	// acceptedNames are the names that are actually being used to serve discovery. They may be different than the names in spec.
-	AcceptedNames *CustomResourceDefinitionNames `pulumi:"acceptedNames"`
+	AcceptedNames *CustomResourceDefinitionNamesPatch `pulumi:"acceptedNames"`
 	// conditions indicate state for particular aspects of a CustomResourceDefinition
-	Conditions []CustomResourceDefinitionCondition `pulumi:"conditions"`
+	Conditions []CustomResourceDefinitionConditionPatch `pulumi:"conditions"`
 	// storedVersions lists all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so a migration controller can finish a migration to another version (ensuring no old objects are left in storage), and then remove the rest of the versions from this list. Versions may not be removed from `spec.versions` while they exist in this list.
 	StoredVersions []string `pulumi:"storedVersions"`
 }
@@ -1894,9 +2215,9 @@ type CustomResourceDefinitionStatusPatchInput interface {
 // CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition
 type CustomResourceDefinitionStatusPatchArgs struct {
 	// acceptedNames are the names that are actually being used to serve discovery. They may be different than the names in spec.
-	AcceptedNames CustomResourceDefinitionNamesPtrInput `pulumi:"acceptedNames"`
+	AcceptedNames CustomResourceDefinitionNamesPatchPtrInput `pulumi:"acceptedNames"`
 	// conditions indicate state for particular aspects of a CustomResourceDefinition
-	Conditions CustomResourceDefinitionConditionArrayInput `pulumi:"conditions"`
+	Conditions CustomResourceDefinitionConditionPatchArrayInput `pulumi:"conditions"`
 	// storedVersions lists all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so a migration controller can finish a migration to another version (ensuring no old objects are left in storage), and then remove the rest of the versions from this list. Versions may not be removed from `spec.versions` while they exist in this list.
 	StoredVersions pulumi.StringArrayInput `pulumi:"storedVersions"`
 }
@@ -1911,6 +2232,47 @@ func (i CustomResourceDefinitionStatusPatchArgs) ToCustomResourceDefinitionStatu
 
 func (i CustomResourceDefinitionStatusPatchArgs) ToCustomResourceDefinitionStatusPatchOutputWithContext(ctx context.Context) CustomResourceDefinitionStatusPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceDefinitionStatusPatchOutput)
+}
+
+func (i CustomResourceDefinitionStatusPatchArgs) ToCustomResourceDefinitionStatusPatchPtrOutput() CustomResourceDefinitionStatusPatchPtrOutput {
+	return i.ToCustomResourceDefinitionStatusPatchPtrOutputWithContext(context.Background())
+}
+
+func (i CustomResourceDefinitionStatusPatchArgs) ToCustomResourceDefinitionStatusPatchPtrOutputWithContext(ctx context.Context) CustomResourceDefinitionStatusPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceDefinitionStatusPatchOutput).ToCustomResourceDefinitionStatusPatchPtrOutputWithContext(ctx)
+}
+
+// CustomResourceDefinitionStatusPatchPtrInput is an input type that accepts CustomResourceDefinitionStatusPatchArgs, CustomResourceDefinitionStatusPatchPtr and CustomResourceDefinitionStatusPatchPtrOutput values.
+// You can construct a concrete instance of `CustomResourceDefinitionStatusPatchPtrInput` via:
+//
+//          CustomResourceDefinitionStatusPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type CustomResourceDefinitionStatusPatchPtrInput interface {
+	pulumi.Input
+
+	ToCustomResourceDefinitionStatusPatchPtrOutput() CustomResourceDefinitionStatusPatchPtrOutput
+	ToCustomResourceDefinitionStatusPatchPtrOutputWithContext(context.Context) CustomResourceDefinitionStatusPatchPtrOutput
+}
+
+type customResourceDefinitionStatusPatchPtrType CustomResourceDefinitionStatusPatchArgs
+
+func CustomResourceDefinitionStatusPatchPtr(v *CustomResourceDefinitionStatusPatchArgs) CustomResourceDefinitionStatusPatchPtrInput {
+	return (*customResourceDefinitionStatusPatchPtrType)(v)
+}
+
+func (*customResourceDefinitionStatusPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomResourceDefinitionStatusPatch)(nil)).Elem()
+}
+
+func (i *customResourceDefinitionStatusPatchPtrType) ToCustomResourceDefinitionStatusPatchPtrOutput() CustomResourceDefinitionStatusPatchPtrOutput {
+	return i.ToCustomResourceDefinitionStatusPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *customResourceDefinitionStatusPatchPtrType) ToCustomResourceDefinitionStatusPatchPtrOutputWithContext(ctx context.Context) CustomResourceDefinitionStatusPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceDefinitionStatusPatchPtrOutput)
 }
 
 // CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition
@@ -1928,19 +2290,87 @@ func (o CustomResourceDefinitionStatusPatchOutput) ToCustomResourceDefinitionSta
 	return o
 }
 
+func (o CustomResourceDefinitionStatusPatchOutput) ToCustomResourceDefinitionStatusPatchPtrOutput() CustomResourceDefinitionStatusPatchPtrOutput {
+	return o.ToCustomResourceDefinitionStatusPatchPtrOutputWithContext(context.Background())
+}
+
+func (o CustomResourceDefinitionStatusPatchOutput) ToCustomResourceDefinitionStatusPatchPtrOutputWithContext(ctx context.Context) CustomResourceDefinitionStatusPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomResourceDefinitionStatusPatch) *CustomResourceDefinitionStatusPatch {
+		return &v
+	}).(CustomResourceDefinitionStatusPatchPtrOutput)
+}
+
 // acceptedNames are the names that are actually being used to serve discovery. They may be different than the names in spec.
-func (o CustomResourceDefinitionStatusPatchOutput) AcceptedNames() CustomResourceDefinitionNamesPtrOutput {
-	return o.ApplyT(func(v CustomResourceDefinitionStatusPatch) *CustomResourceDefinitionNames { return v.AcceptedNames }).(CustomResourceDefinitionNamesPtrOutput)
+func (o CustomResourceDefinitionStatusPatchOutput) AcceptedNames() CustomResourceDefinitionNamesPatchPtrOutput {
+	return o.ApplyT(func(v CustomResourceDefinitionStatusPatch) *CustomResourceDefinitionNamesPatch {
+		return v.AcceptedNames
+	}).(CustomResourceDefinitionNamesPatchPtrOutput)
 }
 
 // conditions indicate state for particular aspects of a CustomResourceDefinition
-func (o CustomResourceDefinitionStatusPatchOutput) Conditions() CustomResourceDefinitionConditionArrayOutput {
-	return o.ApplyT(func(v CustomResourceDefinitionStatusPatch) []CustomResourceDefinitionCondition { return v.Conditions }).(CustomResourceDefinitionConditionArrayOutput)
+func (o CustomResourceDefinitionStatusPatchOutput) Conditions() CustomResourceDefinitionConditionPatchArrayOutput {
+	return o.ApplyT(func(v CustomResourceDefinitionStatusPatch) []CustomResourceDefinitionConditionPatch {
+		return v.Conditions
+	}).(CustomResourceDefinitionConditionPatchArrayOutput)
 }
 
 // storedVersions lists all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so a migration controller can finish a migration to another version (ensuring no old objects are left in storage), and then remove the rest of the versions from this list. Versions may not be removed from `spec.versions` while they exist in this list.
 func (o CustomResourceDefinitionStatusPatchOutput) StoredVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CustomResourceDefinitionStatusPatch) []string { return v.StoredVersions }).(pulumi.StringArrayOutput)
+}
+
+type CustomResourceDefinitionStatusPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomResourceDefinitionStatusPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomResourceDefinitionStatusPatch)(nil)).Elem()
+}
+
+func (o CustomResourceDefinitionStatusPatchPtrOutput) ToCustomResourceDefinitionStatusPatchPtrOutput() CustomResourceDefinitionStatusPatchPtrOutput {
+	return o
+}
+
+func (o CustomResourceDefinitionStatusPatchPtrOutput) ToCustomResourceDefinitionStatusPatchPtrOutputWithContext(ctx context.Context) CustomResourceDefinitionStatusPatchPtrOutput {
+	return o
+}
+
+func (o CustomResourceDefinitionStatusPatchPtrOutput) Elem() CustomResourceDefinitionStatusPatchOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionStatusPatch) CustomResourceDefinitionStatusPatch {
+		if v != nil {
+			return *v
+		}
+		var ret CustomResourceDefinitionStatusPatch
+		return ret
+	}).(CustomResourceDefinitionStatusPatchOutput)
+}
+
+// acceptedNames are the names that are actually being used to serve discovery. They may be different than the names in spec.
+func (o CustomResourceDefinitionStatusPatchPtrOutput) AcceptedNames() CustomResourceDefinitionNamesPatchPtrOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionStatusPatch) *CustomResourceDefinitionNamesPatch {
+		if v == nil {
+			return nil
+		}
+		return v.AcceptedNames
+	}).(CustomResourceDefinitionNamesPatchPtrOutput)
+}
+
+// conditions indicate state for particular aspects of a CustomResourceDefinition
+func (o CustomResourceDefinitionStatusPatchPtrOutput) Conditions() CustomResourceDefinitionConditionPatchArrayOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionStatusPatch) []CustomResourceDefinitionConditionPatch {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(CustomResourceDefinitionConditionPatchArrayOutput)
+}
+
+// storedVersions lists all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so a migration controller can finish a migration to another version (ensuring no old objects are left in storage), and then remove the rest of the versions from this list. Versions may not be removed from `spec.versions` while they exist in this list.
+func (o CustomResourceDefinitionStatusPatchPtrOutput) StoredVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionStatusPatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.StoredVersions
+	}).(pulumi.StringArrayOutput)
 }
 
 // CustomResourceDefinitionVersion describes a version for CRD.
@@ -2111,7 +2541,7 @@ func (o CustomResourceDefinitionVersionArrayOutput) Index(i pulumi.IntInput) Cus
 // CustomResourceDefinitionVersion describes a version for CRD.
 type CustomResourceDefinitionVersionPatch struct {
 	// additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. If no columns are specified, a single column displaying the age of the custom resource is used.
-	AdditionalPrinterColumns []CustomResourceColumnDefinition `pulumi:"additionalPrinterColumns"`
+	AdditionalPrinterColumns []CustomResourceColumnDefinitionPatch `pulumi:"additionalPrinterColumns"`
 	// deprecated indicates this version of the custom resource API is deprecated. When set to true, API requests to this version receive a warning header in the server response. Defaults to false.
 	Deprecated *bool `pulumi:"deprecated"`
 	// deprecationWarning overrides the default warning returned to API clients. May only be set when `deprecated` is true. The default warning indicates this version is deprecated and recommends use of the newest served version of equal or greater stability, if one exists.
@@ -2119,13 +2549,13 @@ type CustomResourceDefinitionVersionPatch struct {
 	// name is the version name, e.g. “v1”, “v2beta1”, etc. The custom resources are served under this version at `/apis/<group>/<version>/...` if `served` is true.
 	Name *string `pulumi:"name"`
 	// schema describes the schema used for validation, pruning, and defaulting of this version of the custom resource.
-	Schema *CustomResourceValidation `pulumi:"schema"`
+	Schema *CustomResourceValidationPatch `pulumi:"schema"`
 	// served is a flag enabling/disabling this version from being served via REST APIs
 	Served *bool `pulumi:"served"`
 	// storage indicates this version should be used when persisting custom resources to storage. There must be exactly one version with storage=true.
 	Storage *bool `pulumi:"storage"`
 	// subresources specify what subresources this version of the defined custom resource have.
-	Subresources *CustomResourceSubresources `pulumi:"subresources"`
+	Subresources *CustomResourceSubresourcesPatch `pulumi:"subresources"`
 }
 
 // CustomResourceDefinitionVersionPatchInput is an input type that accepts CustomResourceDefinitionVersionPatchArgs and CustomResourceDefinitionVersionPatchOutput values.
@@ -2142,7 +2572,7 @@ type CustomResourceDefinitionVersionPatchInput interface {
 // CustomResourceDefinitionVersion describes a version for CRD.
 type CustomResourceDefinitionVersionPatchArgs struct {
 	// additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. If no columns are specified, a single column displaying the age of the custom resource is used.
-	AdditionalPrinterColumns CustomResourceColumnDefinitionArrayInput `pulumi:"additionalPrinterColumns"`
+	AdditionalPrinterColumns CustomResourceColumnDefinitionPatchArrayInput `pulumi:"additionalPrinterColumns"`
 	// deprecated indicates this version of the custom resource API is deprecated. When set to true, API requests to this version receive a warning header in the server response. Defaults to false.
 	Deprecated pulumi.BoolPtrInput `pulumi:"deprecated"`
 	// deprecationWarning overrides the default warning returned to API clients. May only be set when `deprecated` is true. The default warning indicates this version is deprecated and recommends use of the newest served version of equal or greater stability, if one exists.
@@ -2150,13 +2580,13 @@ type CustomResourceDefinitionVersionPatchArgs struct {
 	// name is the version name, e.g. “v1”, “v2beta1”, etc. The custom resources are served under this version at `/apis/<group>/<version>/...` if `served` is true.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// schema describes the schema used for validation, pruning, and defaulting of this version of the custom resource.
-	Schema CustomResourceValidationPtrInput `pulumi:"schema"`
+	Schema CustomResourceValidationPatchPtrInput `pulumi:"schema"`
 	// served is a flag enabling/disabling this version from being served via REST APIs
 	Served pulumi.BoolPtrInput `pulumi:"served"`
 	// storage indicates this version should be used when persisting custom resources to storage. There must be exactly one version with storage=true.
 	Storage pulumi.BoolPtrInput `pulumi:"storage"`
 	// subresources specify what subresources this version of the defined custom resource have.
-	Subresources CustomResourceSubresourcesPtrInput `pulumi:"subresources"`
+	Subresources CustomResourceSubresourcesPatchPtrInput `pulumi:"subresources"`
 }
 
 func (CustomResourceDefinitionVersionPatchArgs) ElementType() reflect.Type {
@@ -2169,6 +2599,31 @@ func (i CustomResourceDefinitionVersionPatchArgs) ToCustomResourceDefinitionVers
 
 func (i CustomResourceDefinitionVersionPatchArgs) ToCustomResourceDefinitionVersionPatchOutputWithContext(ctx context.Context) CustomResourceDefinitionVersionPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceDefinitionVersionPatchOutput)
+}
+
+// CustomResourceDefinitionVersionPatchArrayInput is an input type that accepts CustomResourceDefinitionVersionPatchArray and CustomResourceDefinitionVersionPatchArrayOutput values.
+// You can construct a concrete instance of `CustomResourceDefinitionVersionPatchArrayInput` via:
+//
+//          CustomResourceDefinitionVersionPatchArray{ CustomResourceDefinitionVersionPatchArgs{...} }
+type CustomResourceDefinitionVersionPatchArrayInput interface {
+	pulumi.Input
+
+	ToCustomResourceDefinitionVersionPatchArrayOutput() CustomResourceDefinitionVersionPatchArrayOutput
+	ToCustomResourceDefinitionVersionPatchArrayOutputWithContext(context.Context) CustomResourceDefinitionVersionPatchArrayOutput
+}
+
+type CustomResourceDefinitionVersionPatchArray []CustomResourceDefinitionVersionPatchInput
+
+func (CustomResourceDefinitionVersionPatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomResourceDefinitionVersionPatch)(nil)).Elem()
+}
+
+func (i CustomResourceDefinitionVersionPatchArray) ToCustomResourceDefinitionVersionPatchArrayOutput() CustomResourceDefinitionVersionPatchArrayOutput {
+	return i.ToCustomResourceDefinitionVersionPatchArrayOutputWithContext(context.Background())
+}
+
+func (i CustomResourceDefinitionVersionPatchArray) ToCustomResourceDefinitionVersionPatchArrayOutputWithContext(ctx context.Context) CustomResourceDefinitionVersionPatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceDefinitionVersionPatchArrayOutput)
 }
 
 // CustomResourceDefinitionVersion describes a version for CRD.
@@ -2187,10 +2642,10 @@ func (o CustomResourceDefinitionVersionPatchOutput) ToCustomResourceDefinitionVe
 }
 
 // additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. If no columns are specified, a single column displaying the age of the custom resource is used.
-func (o CustomResourceDefinitionVersionPatchOutput) AdditionalPrinterColumns() CustomResourceColumnDefinitionArrayOutput {
-	return o.ApplyT(func(v CustomResourceDefinitionVersionPatch) []CustomResourceColumnDefinition {
+func (o CustomResourceDefinitionVersionPatchOutput) AdditionalPrinterColumns() CustomResourceColumnDefinitionPatchArrayOutput {
+	return o.ApplyT(func(v CustomResourceDefinitionVersionPatch) []CustomResourceColumnDefinitionPatch {
 		return v.AdditionalPrinterColumns
-	}).(CustomResourceColumnDefinitionArrayOutput)
+	}).(CustomResourceColumnDefinitionPatchArrayOutput)
 }
 
 // deprecated indicates this version of the custom resource API is deprecated. When set to true, API requests to this version receive a warning header in the server response. Defaults to false.
@@ -2209,8 +2664,8 @@ func (o CustomResourceDefinitionVersionPatchOutput) Name() pulumi.StringPtrOutpu
 }
 
 // schema describes the schema used for validation, pruning, and defaulting of this version of the custom resource.
-func (o CustomResourceDefinitionVersionPatchOutput) Schema() CustomResourceValidationPtrOutput {
-	return o.ApplyT(func(v CustomResourceDefinitionVersionPatch) *CustomResourceValidation { return v.Schema }).(CustomResourceValidationPtrOutput)
+func (o CustomResourceDefinitionVersionPatchOutput) Schema() CustomResourceValidationPatchPtrOutput {
+	return o.ApplyT(func(v CustomResourceDefinitionVersionPatch) *CustomResourceValidationPatch { return v.Schema }).(CustomResourceValidationPatchPtrOutput)
 }
 
 // served is a flag enabling/disabling this version from being served via REST APIs
@@ -2224,8 +2679,28 @@ func (o CustomResourceDefinitionVersionPatchOutput) Storage() pulumi.BoolPtrOutp
 }
 
 // subresources specify what subresources this version of the defined custom resource have.
-func (o CustomResourceDefinitionVersionPatchOutput) Subresources() CustomResourceSubresourcesPtrOutput {
-	return o.ApplyT(func(v CustomResourceDefinitionVersionPatch) *CustomResourceSubresources { return v.Subresources }).(CustomResourceSubresourcesPtrOutput)
+func (o CustomResourceDefinitionVersionPatchOutput) Subresources() CustomResourceSubresourcesPatchPtrOutput {
+	return o.ApplyT(func(v CustomResourceDefinitionVersionPatch) *CustomResourceSubresourcesPatch { return v.Subresources }).(CustomResourceSubresourcesPatchPtrOutput)
+}
+
+type CustomResourceDefinitionVersionPatchArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomResourceDefinitionVersionPatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomResourceDefinitionVersionPatch)(nil)).Elem()
+}
+
+func (o CustomResourceDefinitionVersionPatchArrayOutput) ToCustomResourceDefinitionVersionPatchArrayOutput() CustomResourceDefinitionVersionPatchArrayOutput {
+	return o
+}
+
+func (o CustomResourceDefinitionVersionPatchArrayOutput) ToCustomResourceDefinitionVersionPatchArrayOutputWithContext(ctx context.Context) CustomResourceDefinitionVersionPatchArrayOutput {
+	return o
+}
+
+func (o CustomResourceDefinitionVersionPatchArrayOutput) Index(i pulumi.IntInput) CustomResourceDefinitionVersionPatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomResourceDefinitionVersionPatch {
+		return vs[0].([]CustomResourceDefinitionVersionPatch)[vs[1].(int)]
+	}).(CustomResourceDefinitionVersionPatchOutput)
 }
 
 // CustomResourceSubresourceScale defines how to serve the scale subresource for CustomResources.
@@ -2449,6 +2924,47 @@ func (i CustomResourceSubresourceScalePatchArgs) ToCustomResourceSubresourceScal
 	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceSubresourceScalePatchOutput)
 }
 
+func (i CustomResourceSubresourceScalePatchArgs) ToCustomResourceSubresourceScalePatchPtrOutput() CustomResourceSubresourceScalePatchPtrOutput {
+	return i.ToCustomResourceSubresourceScalePatchPtrOutputWithContext(context.Background())
+}
+
+func (i CustomResourceSubresourceScalePatchArgs) ToCustomResourceSubresourceScalePatchPtrOutputWithContext(ctx context.Context) CustomResourceSubresourceScalePatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceSubresourceScalePatchOutput).ToCustomResourceSubresourceScalePatchPtrOutputWithContext(ctx)
+}
+
+// CustomResourceSubresourceScalePatchPtrInput is an input type that accepts CustomResourceSubresourceScalePatchArgs, CustomResourceSubresourceScalePatchPtr and CustomResourceSubresourceScalePatchPtrOutput values.
+// You can construct a concrete instance of `CustomResourceSubresourceScalePatchPtrInput` via:
+//
+//          CustomResourceSubresourceScalePatchArgs{...}
+//
+//  or:
+//
+//          nil
+type CustomResourceSubresourceScalePatchPtrInput interface {
+	pulumi.Input
+
+	ToCustomResourceSubresourceScalePatchPtrOutput() CustomResourceSubresourceScalePatchPtrOutput
+	ToCustomResourceSubresourceScalePatchPtrOutputWithContext(context.Context) CustomResourceSubresourceScalePatchPtrOutput
+}
+
+type customResourceSubresourceScalePatchPtrType CustomResourceSubresourceScalePatchArgs
+
+func CustomResourceSubresourceScalePatchPtr(v *CustomResourceSubresourceScalePatchArgs) CustomResourceSubresourceScalePatchPtrInput {
+	return (*customResourceSubresourceScalePatchPtrType)(v)
+}
+
+func (*customResourceSubresourceScalePatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomResourceSubresourceScalePatch)(nil)).Elem()
+}
+
+func (i *customResourceSubresourceScalePatchPtrType) ToCustomResourceSubresourceScalePatchPtrOutput() CustomResourceSubresourceScalePatchPtrOutput {
+	return i.ToCustomResourceSubresourceScalePatchPtrOutputWithContext(context.Background())
+}
+
+func (i *customResourceSubresourceScalePatchPtrType) ToCustomResourceSubresourceScalePatchPtrOutputWithContext(ctx context.Context) CustomResourceSubresourceScalePatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceSubresourceScalePatchPtrOutput)
+}
+
 // CustomResourceSubresourceScale defines how to serve the scale subresource for CustomResources.
 type CustomResourceSubresourceScalePatchOutput struct{ *pulumi.OutputState }
 
@@ -2464,6 +2980,16 @@ func (o CustomResourceSubresourceScalePatchOutput) ToCustomResourceSubresourceSc
 	return o
 }
 
+func (o CustomResourceSubresourceScalePatchOutput) ToCustomResourceSubresourceScalePatchPtrOutput() CustomResourceSubresourceScalePatchPtrOutput {
+	return o.ToCustomResourceSubresourceScalePatchPtrOutputWithContext(context.Background())
+}
+
+func (o CustomResourceSubresourceScalePatchOutput) ToCustomResourceSubresourceScalePatchPtrOutputWithContext(ctx context.Context) CustomResourceSubresourceScalePatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomResourceSubresourceScalePatch) *CustomResourceSubresourceScalePatch {
+		return &v
+	}).(CustomResourceSubresourceScalePatchPtrOutput)
+}
+
 // labelSelectorPath defines the JSON path inside of a custom resource that corresponds to Scale `status.selector`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.status` or `.spec`. Must be set to work with HorizontalPodAutoscaler. The field pointed by this JSON path must be a string field (not a complex selector struct) which contains a serialized label selector in string form. More info: https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions#scale-subresource If there is no value under the given path in the custom resource, the `status.selector` value in the `/scale` subresource will default to the empty string.
 func (o CustomResourceSubresourceScalePatchOutput) LabelSelectorPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomResourceSubresourceScalePatch) *string { return v.LabelSelectorPath }).(pulumi.StringPtrOutput)
@@ -2477,6 +3003,60 @@ func (o CustomResourceSubresourceScalePatchOutput) SpecReplicasPath() pulumi.Str
 // statusReplicasPath defines the JSON path inside of a custom resource that corresponds to Scale `status.replicas`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.status`. If there is no value under the given path in the custom resource, the `status.replicas` value in the `/scale` subresource will default to 0.
 func (o CustomResourceSubresourceScalePatchOutput) StatusReplicasPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomResourceSubresourceScalePatch) *string { return v.StatusReplicasPath }).(pulumi.StringPtrOutput)
+}
+
+type CustomResourceSubresourceScalePatchPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomResourceSubresourceScalePatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomResourceSubresourceScalePatch)(nil)).Elem()
+}
+
+func (o CustomResourceSubresourceScalePatchPtrOutput) ToCustomResourceSubresourceScalePatchPtrOutput() CustomResourceSubresourceScalePatchPtrOutput {
+	return o
+}
+
+func (o CustomResourceSubresourceScalePatchPtrOutput) ToCustomResourceSubresourceScalePatchPtrOutputWithContext(ctx context.Context) CustomResourceSubresourceScalePatchPtrOutput {
+	return o
+}
+
+func (o CustomResourceSubresourceScalePatchPtrOutput) Elem() CustomResourceSubresourceScalePatchOutput {
+	return o.ApplyT(func(v *CustomResourceSubresourceScalePatch) CustomResourceSubresourceScalePatch {
+		if v != nil {
+			return *v
+		}
+		var ret CustomResourceSubresourceScalePatch
+		return ret
+	}).(CustomResourceSubresourceScalePatchOutput)
+}
+
+// labelSelectorPath defines the JSON path inside of a custom resource that corresponds to Scale `status.selector`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.status` or `.spec`. Must be set to work with HorizontalPodAutoscaler. The field pointed by this JSON path must be a string field (not a complex selector struct) which contains a serialized label selector in string form. More info: https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions#scale-subresource If there is no value under the given path in the custom resource, the `status.selector` value in the `/scale` subresource will default to the empty string.
+func (o CustomResourceSubresourceScalePatchPtrOutput) LabelSelectorPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomResourceSubresourceScalePatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LabelSelectorPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// specReplicasPath defines the JSON path inside of a custom resource that corresponds to Scale `spec.replicas`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.spec`. If there is no value under the given path in the custom resource, the `/scale` subresource will return an error on GET.
+func (o CustomResourceSubresourceScalePatchPtrOutput) SpecReplicasPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomResourceSubresourceScalePatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecReplicasPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// statusReplicasPath defines the JSON path inside of a custom resource that corresponds to Scale `status.replicas`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.status`. If there is no value under the given path in the custom resource, the `status.replicas` value in the `/scale` subresource will default to 0.
+func (o CustomResourceSubresourceScalePatchPtrOutput) StatusReplicasPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomResourceSubresourceScalePatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StatusReplicasPath
+	}).(pulumi.StringPtrOutput)
 }
 
 // CustomResourceSubresources defines the status and scale subresources for CustomResources.
@@ -2641,7 +3221,7 @@ func (o CustomResourceSubresourcesPtrOutput) Status() pulumi.AnyOutput {
 // CustomResourceSubresources defines the status and scale subresources for CustomResources.
 type CustomResourceSubresourcesPatch struct {
 	// scale indicates the custom resource should serve a `/scale` subresource that returns an `autoscaling/v1` Scale object.
-	Scale *CustomResourceSubresourceScale `pulumi:"scale"`
+	Scale *CustomResourceSubresourceScalePatch `pulumi:"scale"`
 	// status indicates the custom resource should serve a `/status` subresource. When enabled: 1. requests to the custom resource primary endpoint ignore changes to the `status` stanza of the object. 2. requests to the custom resource `/status` subresource ignore changes to anything other than the `status` stanza of the object.
 	Status interface{} `pulumi:"status"`
 }
@@ -2660,7 +3240,7 @@ type CustomResourceSubresourcesPatchInput interface {
 // CustomResourceSubresources defines the status and scale subresources for CustomResources.
 type CustomResourceSubresourcesPatchArgs struct {
 	// scale indicates the custom resource should serve a `/scale` subresource that returns an `autoscaling/v1` Scale object.
-	Scale CustomResourceSubresourceScalePtrInput `pulumi:"scale"`
+	Scale CustomResourceSubresourceScalePatchPtrInput `pulumi:"scale"`
 	// status indicates the custom resource should serve a `/status` subresource. When enabled: 1. requests to the custom resource primary endpoint ignore changes to the `status` stanza of the object. 2. requests to the custom resource `/status` subresource ignore changes to anything other than the `status` stanza of the object.
 	Status pulumi.Input `pulumi:"status"`
 }
@@ -2675,6 +3255,47 @@ func (i CustomResourceSubresourcesPatchArgs) ToCustomResourceSubresourcesPatchOu
 
 func (i CustomResourceSubresourcesPatchArgs) ToCustomResourceSubresourcesPatchOutputWithContext(ctx context.Context) CustomResourceSubresourcesPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceSubresourcesPatchOutput)
+}
+
+func (i CustomResourceSubresourcesPatchArgs) ToCustomResourceSubresourcesPatchPtrOutput() CustomResourceSubresourcesPatchPtrOutput {
+	return i.ToCustomResourceSubresourcesPatchPtrOutputWithContext(context.Background())
+}
+
+func (i CustomResourceSubresourcesPatchArgs) ToCustomResourceSubresourcesPatchPtrOutputWithContext(ctx context.Context) CustomResourceSubresourcesPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceSubresourcesPatchOutput).ToCustomResourceSubresourcesPatchPtrOutputWithContext(ctx)
+}
+
+// CustomResourceSubresourcesPatchPtrInput is an input type that accepts CustomResourceSubresourcesPatchArgs, CustomResourceSubresourcesPatchPtr and CustomResourceSubresourcesPatchPtrOutput values.
+// You can construct a concrete instance of `CustomResourceSubresourcesPatchPtrInput` via:
+//
+//          CustomResourceSubresourcesPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type CustomResourceSubresourcesPatchPtrInput interface {
+	pulumi.Input
+
+	ToCustomResourceSubresourcesPatchPtrOutput() CustomResourceSubresourcesPatchPtrOutput
+	ToCustomResourceSubresourcesPatchPtrOutputWithContext(context.Context) CustomResourceSubresourcesPatchPtrOutput
+}
+
+type customResourceSubresourcesPatchPtrType CustomResourceSubresourcesPatchArgs
+
+func CustomResourceSubresourcesPatchPtr(v *CustomResourceSubresourcesPatchArgs) CustomResourceSubresourcesPatchPtrInput {
+	return (*customResourceSubresourcesPatchPtrType)(v)
+}
+
+func (*customResourceSubresourcesPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomResourceSubresourcesPatch)(nil)).Elem()
+}
+
+func (i *customResourceSubresourcesPatchPtrType) ToCustomResourceSubresourcesPatchPtrOutput() CustomResourceSubresourcesPatchPtrOutput {
+	return i.ToCustomResourceSubresourcesPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *customResourceSubresourcesPatchPtrType) ToCustomResourceSubresourcesPatchPtrOutputWithContext(ctx context.Context) CustomResourceSubresourcesPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceSubresourcesPatchPtrOutput)
 }
 
 // CustomResourceSubresources defines the status and scale subresources for CustomResources.
@@ -2692,14 +3313,68 @@ func (o CustomResourceSubresourcesPatchOutput) ToCustomResourceSubresourcesPatch
 	return o
 }
 
+func (o CustomResourceSubresourcesPatchOutput) ToCustomResourceSubresourcesPatchPtrOutput() CustomResourceSubresourcesPatchPtrOutput {
+	return o.ToCustomResourceSubresourcesPatchPtrOutputWithContext(context.Background())
+}
+
+func (o CustomResourceSubresourcesPatchOutput) ToCustomResourceSubresourcesPatchPtrOutputWithContext(ctx context.Context) CustomResourceSubresourcesPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomResourceSubresourcesPatch) *CustomResourceSubresourcesPatch {
+		return &v
+	}).(CustomResourceSubresourcesPatchPtrOutput)
+}
+
 // scale indicates the custom resource should serve a `/scale` subresource that returns an `autoscaling/v1` Scale object.
-func (o CustomResourceSubresourcesPatchOutput) Scale() CustomResourceSubresourceScalePtrOutput {
-	return o.ApplyT(func(v CustomResourceSubresourcesPatch) *CustomResourceSubresourceScale { return v.Scale }).(CustomResourceSubresourceScalePtrOutput)
+func (o CustomResourceSubresourcesPatchOutput) Scale() CustomResourceSubresourceScalePatchPtrOutput {
+	return o.ApplyT(func(v CustomResourceSubresourcesPatch) *CustomResourceSubresourceScalePatch { return v.Scale }).(CustomResourceSubresourceScalePatchPtrOutput)
 }
 
 // status indicates the custom resource should serve a `/status` subresource. When enabled: 1. requests to the custom resource primary endpoint ignore changes to the `status` stanza of the object. 2. requests to the custom resource `/status` subresource ignore changes to anything other than the `status` stanza of the object.
 func (o CustomResourceSubresourcesPatchOutput) Status() pulumi.AnyOutput {
 	return o.ApplyT(func(v CustomResourceSubresourcesPatch) interface{} { return v.Status }).(pulumi.AnyOutput)
+}
+
+type CustomResourceSubresourcesPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomResourceSubresourcesPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomResourceSubresourcesPatch)(nil)).Elem()
+}
+
+func (o CustomResourceSubresourcesPatchPtrOutput) ToCustomResourceSubresourcesPatchPtrOutput() CustomResourceSubresourcesPatchPtrOutput {
+	return o
+}
+
+func (o CustomResourceSubresourcesPatchPtrOutput) ToCustomResourceSubresourcesPatchPtrOutputWithContext(ctx context.Context) CustomResourceSubresourcesPatchPtrOutput {
+	return o
+}
+
+func (o CustomResourceSubresourcesPatchPtrOutput) Elem() CustomResourceSubresourcesPatchOutput {
+	return o.ApplyT(func(v *CustomResourceSubresourcesPatch) CustomResourceSubresourcesPatch {
+		if v != nil {
+			return *v
+		}
+		var ret CustomResourceSubresourcesPatch
+		return ret
+	}).(CustomResourceSubresourcesPatchOutput)
+}
+
+// scale indicates the custom resource should serve a `/scale` subresource that returns an `autoscaling/v1` Scale object.
+func (o CustomResourceSubresourcesPatchPtrOutput) Scale() CustomResourceSubresourceScalePatchPtrOutput {
+	return o.ApplyT(func(v *CustomResourceSubresourcesPatch) *CustomResourceSubresourceScalePatch {
+		if v == nil {
+			return nil
+		}
+		return v.Scale
+	}).(CustomResourceSubresourceScalePatchPtrOutput)
+}
+
+// status indicates the custom resource should serve a `/status` subresource. When enabled: 1. requests to the custom resource primary endpoint ignore changes to the `status` stanza of the object. 2. requests to the custom resource `/status` subresource ignore changes to anything other than the `status` stanza of the object.
+func (o CustomResourceSubresourcesPatchPtrOutput) Status() pulumi.AnyOutput {
+	return o.ApplyT(func(v *CustomResourceSubresourcesPatch) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.AnyOutput)
 }
 
 // CustomResourceValidation is a list of validation methods for CustomResources.
@@ -2845,7 +3520,7 @@ func (o CustomResourceValidationPtrOutput) OpenAPIV3Schema() JSONSchemaPropsPtrO
 // CustomResourceValidation is a list of validation methods for CustomResources.
 type CustomResourceValidationPatch struct {
 	// openAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning.
-	OpenAPIV3Schema *JSONSchemaProps `pulumi:"openAPIV3Schema"`
+	OpenAPIV3Schema *JSONSchemaPropsPatch `pulumi:"openAPIV3Schema"`
 }
 
 // CustomResourceValidationPatchInput is an input type that accepts CustomResourceValidationPatchArgs and CustomResourceValidationPatchOutput values.
@@ -2862,7 +3537,7 @@ type CustomResourceValidationPatchInput interface {
 // CustomResourceValidation is a list of validation methods for CustomResources.
 type CustomResourceValidationPatchArgs struct {
 	// openAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning.
-	OpenAPIV3Schema JSONSchemaPropsPtrInput `pulumi:"openAPIV3Schema"`
+	OpenAPIV3Schema JSONSchemaPropsPatchPtrInput `pulumi:"openAPIV3Schema"`
 }
 
 func (CustomResourceValidationPatchArgs) ElementType() reflect.Type {
@@ -2875,6 +3550,47 @@ func (i CustomResourceValidationPatchArgs) ToCustomResourceValidationPatchOutput
 
 func (i CustomResourceValidationPatchArgs) ToCustomResourceValidationPatchOutputWithContext(ctx context.Context) CustomResourceValidationPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceValidationPatchOutput)
+}
+
+func (i CustomResourceValidationPatchArgs) ToCustomResourceValidationPatchPtrOutput() CustomResourceValidationPatchPtrOutput {
+	return i.ToCustomResourceValidationPatchPtrOutputWithContext(context.Background())
+}
+
+func (i CustomResourceValidationPatchArgs) ToCustomResourceValidationPatchPtrOutputWithContext(ctx context.Context) CustomResourceValidationPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceValidationPatchOutput).ToCustomResourceValidationPatchPtrOutputWithContext(ctx)
+}
+
+// CustomResourceValidationPatchPtrInput is an input type that accepts CustomResourceValidationPatchArgs, CustomResourceValidationPatchPtr and CustomResourceValidationPatchPtrOutput values.
+// You can construct a concrete instance of `CustomResourceValidationPatchPtrInput` via:
+//
+//          CustomResourceValidationPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type CustomResourceValidationPatchPtrInput interface {
+	pulumi.Input
+
+	ToCustomResourceValidationPatchPtrOutput() CustomResourceValidationPatchPtrOutput
+	ToCustomResourceValidationPatchPtrOutputWithContext(context.Context) CustomResourceValidationPatchPtrOutput
+}
+
+type customResourceValidationPatchPtrType CustomResourceValidationPatchArgs
+
+func CustomResourceValidationPatchPtr(v *CustomResourceValidationPatchArgs) CustomResourceValidationPatchPtrInput {
+	return (*customResourceValidationPatchPtrType)(v)
+}
+
+func (*customResourceValidationPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomResourceValidationPatch)(nil)).Elem()
+}
+
+func (i *customResourceValidationPatchPtrType) ToCustomResourceValidationPatchPtrOutput() CustomResourceValidationPatchPtrOutput {
+	return i.ToCustomResourceValidationPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *customResourceValidationPatchPtrType) ToCustomResourceValidationPatchPtrOutputWithContext(ctx context.Context) CustomResourceValidationPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResourceValidationPatchPtrOutput)
 }
 
 // CustomResourceValidation is a list of validation methods for CustomResources.
@@ -2892,9 +3608,53 @@ func (o CustomResourceValidationPatchOutput) ToCustomResourceValidationPatchOutp
 	return o
 }
 
+func (o CustomResourceValidationPatchOutput) ToCustomResourceValidationPatchPtrOutput() CustomResourceValidationPatchPtrOutput {
+	return o.ToCustomResourceValidationPatchPtrOutputWithContext(context.Background())
+}
+
+func (o CustomResourceValidationPatchOutput) ToCustomResourceValidationPatchPtrOutputWithContext(ctx context.Context) CustomResourceValidationPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomResourceValidationPatch) *CustomResourceValidationPatch {
+		return &v
+	}).(CustomResourceValidationPatchPtrOutput)
+}
+
 // openAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning.
-func (o CustomResourceValidationPatchOutput) OpenAPIV3Schema() JSONSchemaPropsPtrOutput {
-	return o.ApplyT(func(v CustomResourceValidationPatch) *JSONSchemaProps { return v.OpenAPIV3Schema }).(JSONSchemaPropsPtrOutput)
+func (o CustomResourceValidationPatchOutput) OpenAPIV3Schema() JSONSchemaPropsPatchPtrOutput {
+	return o.ApplyT(func(v CustomResourceValidationPatch) *JSONSchemaPropsPatch { return v.OpenAPIV3Schema }).(JSONSchemaPropsPatchPtrOutput)
+}
+
+type CustomResourceValidationPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomResourceValidationPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomResourceValidationPatch)(nil)).Elem()
+}
+
+func (o CustomResourceValidationPatchPtrOutput) ToCustomResourceValidationPatchPtrOutput() CustomResourceValidationPatchPtrOutput {
+	return o
+}
+
+func (o CustomResourceValidationPatchPtrOutput) ToCustomResourceValidationPatchPtrOutputWithContext(ctx context.Context) CustomResourceValidationPatchPtrOutput {
+	return o
+}
+
+func (o CustomResourceValidationPatchPtrOutput) Elem() CustomResourceValidationPatchOutput {
+	return o.ApplyT(func(v *CustomResourceValidationPatch) CustomResourceValidationPatch {
+		if v != nil {
+			return *v
+		}
+		var ret CustomResourceValidationPatch
+		return ret
+	}).(CustomResourceValidationPatchOutput)
+}
+
+// openAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning.
+func (o CustomResourceValidationPatchPtrOutput) OpenAPIV3Schema() JSONSchemaPropsPatchPtrOutput {
+	return o.ApplyT(func(v *CustomResourceValidationPatch) *JSONSchemaPropsPatch {
+		if v == nil {
+			return nil
+		}
+		return v.OpenAPIV3Schema
+	}).(JSONSchemaPropsPatchPtrOutput)
 }
 
 // ExternalDocumentation allows referencing an external resource for extended documentation.
@@ -3083,6 +3843,47 @@ func (i ExternalDocumentationPatchArgs) ToExternalDocumentationPatchOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalDocumentationPatchOutput)
 }
 
+func (i ExternalDocumentationPatchArgs) ToExternalDocumentationPatchPtrOutput() ExternalDocumentationPatchPtrOutput {
+	return i.ToExternalDocumentationPatchPtrOutputWithContext(context.Background())
+}
+
+func (i ExternalDocumentationPatchArgs) ToExternalDocumentationPatchPtrOutputWithContext(ctx context.Context) ExternalDocumentationPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalDocumentationPatchOutput).ToExternalDocumentationPatchPtrOutputWithContext(ctx)
+}
+
+// ExternalDocumentationPatchPtrInput is an input type that accepts ExternalDocumentationPatchArgs, ExternalDocumentationPatchPtr and ExternalDocumentationPatchPtrOutput values.
+// You can construct a concrete instance of `ExternalDocumentationPatchPtrInput` via:
+//
+//          ExternalDocumentationPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type ExternalDocumentationPatchPtrInput interface {
+	pulumi.Input
+
+	ToExternalDocumentationPatchPtrOutput() ExternalDocumentationPatchPtrOutput
+	ToExternalDocumentationPatchPtrOutputWithContext(context.Context) ExternalDocumentationPatchPtrOutput
+}
+
+type externalDocumentationPatchPtrType ExternalDocumentationPatchArgs
+
+func ExternalDocumentationPatchPtr(v *ExternalDocumentationPatchArgs) ExternalDocumentationPatchPtrInput {
+	return (*externalDocumentationPatchPtrType)(v)
+}
+
+func (*externalDocumentationPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalDocumentationPatch)(nil)).Elem()
+}
+
+func (i *externalDocumentationPatchPtrType) ToExternalDocumentationPatchPtrOutput() ExternalDocumentationPatchPtrOutput {
+	return i.ToExternalDocumentationPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *externalDocumentationPatchPtrType) ToExternalDocumentationPatchPtrOutputWithContext(ctx context.Context) ExternalDocumentationPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalDocumentationPatchPtrOutput)
+}
+
 // ExternalDocumentation allows referencing an external resource for extended documentation.
 type ExternalDocumentationPatchOutput struct{ *pulumi.OutputState }
 
@@ -3098,12 +3899,64 @@ func (o ExternalDocumentationPatchOutput) ToExternalDocumentationPatchOutputWith
 	return o
 }
 
+func (o ExternalDocumentationPatchOutput) ToExternalDocumentationPatchPtrOutput() ExternalDocumentationPatchPtrOutput {
+	return o.ToExternalDocumentationPatchPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalDocumentationPatchOutput) ToExternalDocumentationPatchPtrOutputWithContext(ctx context.Context) ExternalDocumentationPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalDocumentationPatch) *ExternalDocumentationPatch {
+		return &v
+	}).(ExternalDocumentationPatchPtrOutput)
+}
+
 func (o ExternalDocumentationPatchOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalDocumentationPatch) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o ExternalDocumentationPatchOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalDocumentationPatch) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ExternalDocumentationPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (ExternalDocumentationPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalDocumentationPatch)(nil)).Elem()
+}
+
+func (o ExternalDocumentationPatchPtrOutput) ToExternalDocumentationPatchPtrOutput() ExternalDocumentationPatchPtrOutput {
+	return o
+}
+
+func (o ExternalDocumentationPatchPtrOutput) ToExternalDocumentationPatchPtrOutputWithContext(ctx context.Context) ExternalDocumentationPatchPtrOutput {
+	return o
+}
+
+func (o ExternalDocumentationPatchPtrOutput) Elem() ExternalDocumentationPatchOutput {
+	return o.ApplyT(func(v *ExternalDocumentationPatch) ExternalDocumentationPatch {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalDocumentationPatch
+		return ret
+	}).(ExternalDocumentationPatchOutput)
+}
+
+func (o ExternalDocumentationPatchPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalDocumentationPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ExternalDocumentationPatchPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalDocumentationPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
 }
 
 // JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-schema.org/).
@@ -4155,22 +5008,22 @@ func (o JSONSchemaPropsMapOutput) MapIndex(k pulumi.StringInput) JSONSchemaProps
 
 // JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-schema.org/).
 type JSONSchemaPropsPatch struct {
-	Ref                  *string           `pulumi:"$ref"`
-	Schema               *string           `pulumi:"$schema"`
-	AdditionalItems      interface{}       `pulumi:"additionalItems"`
-	AdditionalProperties interface{}       `pulumi:"additionalProperties"`
-	AllOf                []JSONSchemaProps `pulumi:"allOf"`
-	AnyOf                []JSONSchemaProps `pulumi:"anyOf"`
+	Ref                  *string                `pulumi:"$ref"`
+	Schema               *string                `pulumi:"$schema"`
+	AdditionalItems      interface{}            `pulumi:"additionalItems"`
+	AdditionalProperties interface{}            `pulumi:"additionalProperties"`
+	AllOf                []JSONSchemaPropsPatch `pulumi:"allOf"`
+	AnyOf                []JSONSchemaPropsPatch `pulumi:"anyOf"`
 	// default is a default value for undefined object fields. Defaulting is a beta feature under the CustomResourceDefaulting feature gate. Defaulting requires spec.preserveUnknownFields to be false.
-	Default          interface{}                `pulumi:"default"`
-	Definitions      map[string]JSONSchemaProps `pulumi:"definitions"`
-	Dependencies     map[string]interface{}     `pulumi:"dependencies"`
-	Description      *string                    `pulumi:"description"`
-	Enum             []interface{}              `pulumi:"enum"`
-	Example          interface{}                `pulumi:"example"`
-	ExclusiveMaximum *bool                      `pulumi:"exclusiveMaximum"`
-	ExclusiveMinimum *bool                      `pulumi:"exclusiveMinimum"`
-	ExternalDocs     *ExternalDocumentation     `pulumi:"externalDocs"`
+	Default          interface{}                 `pulumi:"default"`
+	Definitions      map[string]JSONSchemaProps  `pulumi:"definitions"`
+	Dependencies     map[string]interface{}      `pulumi:"dependencies"`
+	Description      *string                     `pulumi:"description"`
+	Enum             []interface{}               `pulumi:"enum"`
+	Example          interface{}                 `pulumi:"example"`
+	ExclusiveMaximum *bool                       `pulumi:"exclusiveMaximum"`
+	ExclusiveMinimum *bool                       `pulumi:"exclusiveMinimum"`
+	ExternalDocs     *ExternalDocumentationPatch `pulumi:"externalDocs"`
 	// format is an OpenAPI v3 format string. Unknown formats are ignored. The following formats are validated:
 	//
 	// - bsonobjectid: a bson object ID, i.e. a 24 characters hex string - uri: an URI as parsed by Golang net/url.ParseRequestURI - email: an email address as parsed by Golang net/mail.ParseAddress - hostname: a valid representation for an Internet host name, as defined by RFC 1034, section 3.1 [RFC1034]. - ipv4: an IPv4 IP as parsed by Golang net.ParseIP - ipv6: an IPv6 IP as parsed by Golang net.ParseIP - cidr: a CIDR as parsed by Golang net.ParseCIDR - mac: a MAC address as parsed by Golang net.ParseMAC - uuid: an UUID that allows uppercase defined by the regex (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{12}$ - uuid3: an UUID3 that allows uppercase defined by the regex (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?3[0-9a-f]{3}-?[0-9a-f]{4}-?[0-9a-f]{12}$ - uuid4: an UUID4 that allows uppercase defined by the regex (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?4[0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$ - uuid5: an UUID5 that allows uppercase defined by the regex (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?5[0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$ - isbn: an ISBN10 or ISBN13 number string like "0321751043" or "978-0321751041" - isbn10: an ISBN10 number string like "0321751043" - isbn13: an ISBN13 number string like "978-0321751041" - creditcard: a credit card number defined by the regex ^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$ with any non digit characters mixed in - ssn: a U.S. social security number following the regex ^\d{3}[- ]?\d{2}[- ]?\d{4}$ - hexcolor: an hexadecimal color code like "#FFFFFF: following the regex ^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$ - rgbcolor: an RGB color code like rgb like "rgb(255,255,2559" - byte: base64 encoded binary data - password: any kind of string - date: a date string like "2006-01-02" as defined by full-date in RFC3339 - duration: a duration string like "22 ns" as parsed by Golang time.ParseDuration or compatible with Scala duration format - datetime: a date time string like "2014-12-15T19:30:20.000Z" as defined by date-time in RFC3339.
@@ -4186,9 +5039,9 @@ type JSONSchemaPropsPatch struct {
 	MinProperties     *int                       `pulumi:"minProperties"`
 	Minimum           *float64                   `pulumi:"minimum"`
 	MultipleOf        *float64                   `pulumi:"multipleOf"`
-	Not               *JSONSchemaProps           `pulumi:"not"`
+	Not               *JSONSchemaPropsPatch      `pulumi:"not"`
 	Nullable          *bool                      `pulumi:"nullable"`
-	OneOf             []JSONSchemaProps          `pulumi:"oneOf"`
+	OneOf             []JSONSchemaPropsPatch     `pulumi:"oneOf"`
 	Pattern           *string                    `pulumi:"pattern"`
 	PatternProperties map[string]JSONSchemaProps `pulumi:"patternProperties"`
 	Properties        map[string]JSONSchemaProps `pulumi:"properties"`
@@ -4242,7 +5095,7 @@ type JSONSchemaPropsPatch struct {
 	// x-kubernetes-preserve-unknown-fields stops the API server decoding step from pruning fields which are not specified in the validation schema. This affects fields recursively, but switches back to normal pruning behaviour if nested properties or additionalProperties are specified in the schema. This can either be true or undefined. False is forbidden.
 	X_kubernetes_preserve_unknown_fields *bool `pulumi:"x_kubernetes_preserve_unknown_fields"`
 	// x-kubernetes-validations describes a list of validation rules written in the CEL expression language. This field is an alpha-level. Using this field requires the feature gate `CustomResourceValidationExpressions` to be enabled.
-	X_kubernetes_validations []ValidationRule `pulumi:"x_kubernetes_validations"`
+	X_kubernetes_validations []ValidationRulePatch `pulumi:"x_kubernetes_validations"`
 }
 
 // JSONSchemaPropsPatchInput is an input type that accepts JSONSchemaPropsPatchArgs and JSONSchemaPropsPatchOutput values.
@@ -4258,47 +5111,47 @@ type JSONSchemaPropsPatchInput interface {
 
 // JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-schema.org/).
 type JSONSchemaPropsPatchArgs struct {
-	Ref                  pulumi.StringPtrInput     `pulumi:"$ref"`
-	Schema               pulumi.StringPtrInput     `pulumi:"$schema"`
-	AdditionalItems      pulumi.Input              `pulumi:"additionalItems"`
-	AdditionalProperties pulumi.Input              `pulumi:"additionalProperties"`
-	AllOf                JSONSchemaPropsArrayInput `pulumi:"allOf"`
-	AnyOf                JSONSchemaPropsArrayInput `pulumi:"anyOf"`
+	Ref                  pulumi.StringPtrInput          `pulumi:"$ref"`
+	Schema               pulumi.StringPtrInput          `pulumi:"$schema"`
+	AdditionalItems      pulumi.Input                   `pulumi:"additionalItems"`
+	AdditionalProperties pulumi.Input                   `pulumi:"additionalProperties"`
+	AllOf                JSONSchemaPropsPatchArrayInput `pulumi:"allOf"`
+	AnyOf                JSONSchemaPropsPatchArrayInput `pulumi:"anyOf"`
 	// default is a default value for undefined object fields. Defaulting is a beta feature under the CustomResourceDefaulting feature gate. Defaulting requires spec.preserveUnknownFields to be false.
-	Default          pulumi.Input                  `pulumi:"default"`
-	Definitions      JSONSchemaPropsMapInput       `pulumi:"definitions"`
-	Dependencies     pulumi.MapInput               `pulumi:"dependencies"`
-	Description      pulumi.StringPtrInput         `pulumi:"description"`
-	Enum             pulumi.ArrayInput             `pulumi:"enum"`
-	Example          pulumi.Input                  `pulumi:"example"`
-	ExclusiveMaximum pulumi.BoolPtrInput           `pulumi:"exclusiveMaximum"`
-	ExclusiveMinimum pulumi.BoolPtrInput           `pulumi:"exclusiveMinimum"`
-	ExternalDocs     ExternalDocumentationPtrInput `pulumi:"externalDocs"`
+	Default          pulumi.Input                       `pulumi:"default"`
+	Definitions      JSONSchemaPropsMapInput            `pulumi:"definitions"`
+	Dependencies     pulumi.MapInput                    `pulumi:"dependencies"`
+	Description      pulumi.StringPtrInput              `pulumi:"description"`
+	Enum             pulumi.ArrayInput                  `pulumi:"enum"`
+	Example          pulumi.Input                       `pulumi:"example"`
+	ExclusiveMaximum pulumi.BoolPtrInput                `pulumi:"exclusiveMaximum"`
+	ExclusiveMinimum pulumi.BoolPtrInput                `pulumi:"exclusiveMinimum"`
+	ExternalDocs     ExternalDocumentationPatchPtrInput `pulumi:"externalDocs"`
 	// format is an OpenAPI v3 format string. Unknown formats are ignored. The following formats are validated:
 	//
 	// - bsonobjectid: a bson object ID, i.e. a 24 characters hex string - uri: an URI as parsed by Golang net/url.ParseRequestURI - email: an email address as parsed by Golang net/mail.ParseAddress - hostname: a valid representation for an Internet host name, as defined by RFC 1034, section 3.1 [RFC1034]. - ipv4: an IPv4 IP as parsed by Golang net.ParseIP - ipv6: an IPv6 IP as parsed by Golang net.ParseIP - cidr: a CIDR as parsed by Golang net.ParseCIDR - mac: a MAC address as parsed by Golang net.ParseMAC - uuid: an UUID that allows uppercase defined by the regex (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{12}$ - uuid3: an UUID3 that allows uppercase defined by the regex (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?3[0-9a-f]{3}-?[0-9a-f]{4}-?[0-9a-f]{12}$ - uuid4: an UUID4 that allows uppercase defined by the regex (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?4[0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$ - uuid5: an UUID5 that allows uppercase defined by the regex (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?5[0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$ - isbn: an ISBN10 or ISBN13 number string like "0321751043" or "978-0321751041" - isbn10: an ISBN10 number string like "0321751043" - isbn13: an ISBN13 number string like "978-0321751041" - creditcard: a credit card number defined by the regex ^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$ with any non digit characters mixed in - ssn: a U.S. social security number following the regex ^\d{3}[- ]?\d{2}[- ]?\d{4}$ - hexcolor: an hexadecimal color code like "#FFFFFF: following the regex ^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$ - rgbcolor: an RGB color code like rgb like "rgb(255,255,2559" - byte: base64 encoded binary data - password: any kind of string - date: a date string like "2006-01-02" as defined by full-date in RFC3339 - duration: a duration string like "22 ns" as parsed by Golang time.ParseDuration or compatible with Scala duration format - datetime: a date time string like "2014-12-15T19:30:20.000Z" as defined by date-time in RFC3339.
-	Format            pulumi.StringPtrInput     `pulumi:"format"`
-	Id                pulumi.StringPtrInput     `pulumi:"id"`
-	Items             pulumi.Input              `pulumi:"items"`
-	MaxItems          pulumi.IntPtrInput        `pulumi:"maxItems"`
-	MaxLength         pulumi.IntPtrInput        `pulumi:"maxLength"`
-	MaxProperties     pulumi.IntPtrInput        `pulumi:"maxProperties"`
-	Maximum           pulumi.Float64PtrInput    `pulumi:"maximum"`
-	MinItems          pulumi.IntPtrInput        `pulumi:"minItems"`
-	MinLength         pulumi.IntPtrInput        `pulumi:"minLength"`
-	MinProperties     pulumi.IntPtrInput        `pulumi:"minProperties"`
-	Minimum           pulumi.Float64PtrInput    `pulumi:"minimum"`
-	MultipleOf        pulumi.Float64PtrInput    `pulumi:"multipleOf"`
-	Not               JSONSchemaPropsPtrInput   `pulumi:"not"`
-	Nullable          pulumi.BoolPtrInput       `pulumi:"nullable"`
-	OneOf             JSONSchemaPropsArrayInput `pulumi:"oneOf"`
-	Pattern           pulumi.StringPtrInput     `pulumi:"pattern"`
-	PatternProperties JSONSchemaPropsMapInput   `pulumi:"patternProperties"`
-	Properties        JSONSchemaPropsMapInput   `pulumi:"properties"`
-	Required          pulumi.StringArrayInput   `pulumi:"required"`
-	Title             pulumi.StringPtrInput     `pulumi:"title"`
-	Type              pulumi.StringPtrInput     `pulumi:"type"`
-	UniqueItems       pulumi.BoolPtrInput       `pulumi:"uniqueItems"`
+	Format            pulumi.StringPtrInput          `pulumi:"format"`
+	Id                pulumi.StringPtrInput          `pulumi:"id"`
+	Items             pulumi.Input                   `pulumi:"items"`
+	MaxItems          pulumi.IntPtrInput             `pulumi:"maxItems"`
+	MaxLength         pulumi.IntPtrInput             `pulumi:"maxLength"`
+	MaxProperties     pulumi.IntPtrInput             `pulumi:"maxProperties"`
+	Maximum           pulumi.Float64PtrInput         `pulumi:"maximum"`
+	MinItems          pulumi.IntPtrInput             `pulumi:"minItems"`
+	MinLength         pulumi.IntPtrInput             `pulumi:"minLength"`
+	MinProperties     pulumi.IntPtrInput             `pulumi:"minProperties"`
+	Minimum           pulumi.Float64PtrInput         `pulumi:"minimum"`
+	MultipleOf        pulumi.Float64PtrInput         `pulumi:"multipleOf"`
+	Not               JSONSchemaPropsPatchPtrInput   `pulumi:"not"`
+	Nullable          pulumi.BoolPtrInput            `pulumi:"nullable"`
+	OneOf             JSONSchemaPropsPatchArrayInput `pulumi:"oneOf"`
+	Pattern           pulumi.StringPtrInput          `pulumi:"pattern"`
+	PatternProperties JSONSchemaPropsMapInput        `pulumi:"patternProperties"`
+	Properties        JSONSchemaPropsMapInput        `pulumi:"properties"`
+	Required          pulumi.StringArrayInput        `pulumi:"required"`
+	Title             pulumi.StringPtrInput          `pulumi:"title"`
+	Type              pulumi.StringPtrInput          `pulumi:"type"`
+	UniqueItems       pulumi.BoolPtrInput            `pulumi:"uniqueItems"`
 	// x-kubernetes-embedded-resource defines that the value is an embedded Kubernetes runtime.Object, with TypeMeta and ObjectMeta. The type must be object. It is allowed to further restrict the embedded object. kind, apiVersion and metadata are validated automatically. x-kubernetes-preserve-unknown-fields is allowed to be true, but does not have to be if the object is fully specified (up to kind, apiVersion, metadata).
 	X_kubernetes_embedded_resource pulumi.BoolPtrInput `pulumi:"x_kubernetes_embedded_resource"`
 	// x-kubernetes-int-or-string specifies that this value is either an integer or a string. If this is true, an empty type is allowed and type as child of anyOf is permitted if following one of the following patterns:
@@ -4345,7 +5198,7 @@ type JSONSchemaPropsPatchArgs struct {
 	// x-kubernetes-preserve-unknown-fields stops the API server decoding step from pruning fields which are not specified in the validation schema. This affects fields recursively, but switches back to normal pruning behaviour if nested properties or additionalProperties are specified in the schema. This can either be true or undefined. False is forbidden.
 	X_kubernetes_preserve_unknown_fields pulumi.BoolPtrInput `pulumi:"x_kubernetes_preserve_unknown_fields"`
 	// x-kubernetes-validations describes a list of validation rules written in the CEL expression language. This field is an alpha-level. Using this field requires the feature gate `CustomResourceValidationExpressions` to be enabled.
-	X_kubernetes_validations ValidationRuleArrayInput `pulumi:"x_kubernetes_validations"`
+	X_kubernetes_validations ValidationRulePatchArrayInput `pulumi:"x_kubernetes_validations"`
 }
 
 func (JSONSchemaPropsPatchArgs) ElementType() reflect.Type {
@@ -4358,6 +5211,72 @@ func (i JSONSchemaPropsPatchArgs) ToJSONSchemaPropsPatchOutput() JSONSchemaProps
 
 func (i JSONSchemaPropsPatchArgs) ToJSONSchemaPropsPatchOutputWithContext(ctx context.Context) JSONSchemaPropsPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JSONSchemaPropsPatchOutput)
+}
+
+func (i JSONSchemaPropsPatchArgs) ToJSONSchemaPropsPatchPtrOutput() JSONSchemaPropsPatchPtrOutput {
+	return i.ToJSONSchemaPropsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i JSONSchemaPropsPatchArgs) ToJSONSchemaPropsPatchPtrOutputWithContext(ctx context.Context) JSONSchemaPropsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JSONSchemaPropsPatchOutput).ToJSONSchemaPropsPatchPtrOutputWithContext(ctx)
+}
+
+// JSONSchemaPropsPatchPtrInput is an input type that accepts JSONSchemaPropsPatchArgs, JSONSchemaPropsPatchPtr and JSONSchemaPropsPatchPtrOutput values.
+// You can construct a concrete instance of `JSONSchemaPropsPatchPtrInput` via:
+//
+//          JSONSchemaPropsPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type JSONSchemaPropsPatchPtrInput interface {
+	pulumi.Input
+
+	ToJSONSchemaPropsPatchPtrOutput() JSONSchemaPropsPatchPtrOutput
+	ToJSONSchemaPropsPatchPtrOutputWithContext(context.Context) JSONSchemaPropsPatchPtrOutput
+}
+
+type jsonschemaPropsPatchPtrType JSONSchemaPropsPatchArgs
+
+func JSONSchemaPropsPatchPtr(v *JSONSchemaPropsPatchArgs) JSONSchemaPropsPatchPtrInput {
+	return (*jsonschemaPropsPatchPtrType)(v)
+}
+
+func (*jsonschemaPropsPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JSONSchemaPropsPatch)(nil)).Elem()
+}
+
+func (i *jsonschemaPropsPatchPtrType) ToJSONSchemaPropsPatchPtrOutput() JSONSchemaPropsPatchPtrOutput {
+	return i.ToJSONSchemaPropsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *jsonschemaPropsPatchPtrType) ToJSONSchemaPropsPatchPtrOutputWithContext(ctx context.Context) JSONSchemaPropsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JSONSchemaPropsPatchPtrOutput)
+}
+
+// JSONSchemaPropsPatchArrayInput is an input type that accepts JSONSchemaPropsPatchArray and JSONSchemaPropsPatchArrayOutput values.
+// You can construct a concrete instance of `JSONSchemaPropsPatchArrayInput` via:
+//
+//          JSONSchemaPropsPatchArray{ JSONSchemaPropsPatchArgs{...} }
+type JSONSchemaPropsPatchArrayInput interface {
+	pulumi.Input
+
+	ToJSONSchemaPropsPatchArrayOutput() JSONSchemaPropsPatchArrayOutput
+	ToJSONSchemaPropsPatchArrayOutputWithContext(context.Context) JSONSchemaPropsPatchArrayOutput
+}
+
+type JSONSchemaPropsPatchArray []JSONSchemaPropsPatchInput
+
+func (JSONSchemaPropsPatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JSONSchemaPropsPatch)(nil)).Elem()
+}
+
+func (i JSONSchemaPropsPatchArray) ToJSONSchemaPropsPatchArrayOutput() JSONSchemaPropsPatchArrayOutput {
+	return i.ToJSONSchemaPropsPatchArrayOutputWithContext(context.Background())
+}
+
+func (i JSONSchemaPropsPatchArray) ToJSONSchemaPropsPatchArrayOutputWithContext(ctx context.Context) JSONSchemaPropsPatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JSONSchemaPropsPatchArrayOutput)
 }
 
 // JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-schema.org/).
@@ -4373,6 +5292,16 @@ func (o JSONSchemaPropsPatchOutput) ToJSONSchemaPropsPatchOutput() JSONSchemaPro
 
 func (o JSONSchemaPropsPatchOutput) ToJSONSchemaPropsPatchOutputWithContext(ctx context.Context) JSONSchemaPropsPatchOutput {
 	return o
+}
+
+func (o JSONSchemaPropsPatchOutput) ToJSONSchemaPropsPatchPtrOutput() JSONSchemaPropsPatchPtrOutput {
+	return o.ToJSONSchemaPropsPatchPtrOutputWithContext(context.Background())
+}
+
+func (o JSONSchemaPropsPatchOutput) ToJSONSchemaPropsPatchPtrOutputWithContext(ctx context.Context) JSONSchemaPropsPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JSONSchemaPropsPatch) *JSONSchemaPropsPatch {
+		return &v
+	}).(JSONSchemaPropsPatchPtrOutput)
 }
 
 func (o JSONSchemaPropsPatchOutput) Ref() pulumi.StringPtrOutput {
@@ -4391,12 +5320,12 @@ func (o JSONSchemaPropsPatchOutput) AdditionalProperties() pulumi.AnyOutput {
 	return o.ApplyT(func(v JSONSchemaPropsPatch) interface{} { return v.AdditionalProperties }).(pulumi.AnyOutput)
 }
 
-func (o JSONSchemaPropsPatchOutput) AllOf() JSONSchemaPropsArrayOutput {
-	return o.ApplyT(func(v JSONSchemaPropsPatch) []JSONSchemaProps { return v.AllOf }).(JSONSchemaPropsArrayOutput)
+func (o JSONSchemaPropsPatchOutput) AllOf() JSONSchemaPropsPatchArrayOutput {
+	return o.ApplyT(func(v JSONSchemaPropsPatch) []JSONSchemaPropsPatch { return v.AllOf }).(JSONSchemaPropsPatchArrayOutput)
 }
 
-func (o JSONSchemaPropsPatchOutput) AnyOf() JSONSchemaPropsArrayOutput {
-	return o.ApplyT(func(v JSONSchemaPropsPatch) []JSONSchemaProps { return v.AnyOf }).(JSONSchemaPropsArrayOutput)
+func (o JSONSchemaPropsPatchOutput) AnyOf() JSONSchemaPropsPatchArrayOutput {
+	return o.ApplyT(func(v JSONSchemaPropsPatch) []JSONSchemaPropsPatch { return v.AnyOf }).(JSONSchemaPropsPatchArrayOutput)
 }
 
 // default is a default value for undefined object fields. Defaulting is a beta feature under the CustomResourceDefaulting feature gate. Defaulting requires spec.preserveUnknownFields to be false.
@@ -4432,8 +5361,8 @@ func (o JSONSchemaPropsPatchOutput) ExclusiveMinimum() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JSONSchemaPropsPatch) *bool { return v.ExclusiveMinimum }).(pulumi.BoolPtrOutput)
 }
 
-func (o JSONSchemaPropsPatchOutput) ExternalDocs() ExternalDocumentationPtrOutput {
-	return o.ApplyT(func(v JSONSchemaPropsPatch) *ExternalDocumentation { return v.ExternalDocs }).(ExternalDocumentationPtrOutput)
+func (o JSONSchemaPropsPatchOutput) ExternalDocs() ExternalDocumentationPatchPtrOutput {
+	return o.ApplyT(func(v JSONSchemaPropsPatch) *ExternalDocumentationPatch { return v.ExternalDocs }).(ExternalDocumentationPatchPtrOutput)
 }
 
 // format is an OpenAPI v3 format string. Unknown formats are ignored. The following formats are validated:
@@ -4487,16 +5416,16 @@ func (o JSONSchemaPropsPatchOutput) MultipleOf() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v JSONSchemaPropsPatch) *float64 { return v.MultipleOf }).(pulumi.Float64PtrOutput)
 }
 
-func (o JSONSchemaPropsPatchOutput) Not() JSONSchemaPropsPtrOutput {
-	return o.ApplyT(func(v JSONSchemaPropsPatch) *JSONSchemaProps { return v.Not }).(JSONSchemaPropsPtrOutput)
+func (o JSONSchemaPropsPatchOutput) Not() JSONSchemaPropsPatchPtrOutput {
+	return o.ApplyT(func(v JSONSchemaPropsPatch) *JSONSchemaPropsPatch { return v.Not }).(JSONSchemaPropsPatchPtrOutput)
 }
 
 func (o JSONSchemaPropsPatchOutput) Nullable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JSONSchemaPropsPatch) *bool { return v.Nullable }).(pulumi.BoolPtrOutput)
 }
 
-func (o JSONSchemaPropsPatchOutput) OneOf() JSONSchemaPropsArrayOutput {
-	return o.ApplyT(func(v JSONSchemaPropsPatch) []JSONSchemaProps { return v.OneOf }).(JSONSchemaPropsArrayOutput)
+func (o JSONSchemaPropsPatchOutput) OneOf() JSONSchemaPropsPatchArrayOutput {
+	return o.ApplyT(func(v JSONSchemaPropsPatch) []JSONSchemaPropsPatch { return v.OneOf }).(JSONSchemaPropsPatchArrayOutput)
 }
 
 func (o JSONSchemaPropsPatchOutput) Pattern() pulumi.StringPtrOutput {
@@ -4591,8 +5520,492 @@ func (o JSONSchemaPropsPatchOutput) X_kubernetes_preserve_unknown_fields() pulum
 }
 
 // x-kubernetes-validations describes a list of validation rules written in the CEL expression language. This field is an alpha-level. Using this field requires the feature gate `CustomResourceValidationExpressions` to be enabled.
-func (o JSONSchemaPropsPatchOutput) X_kubernetes_validations() ValidationRuleArrayOutput {
-	return o.ApplyT(func(v JSONSchemaPropsPatch) []ValidationRule { return v.X_kubernetes_validations }).(ValidationRuleArrayOutput)
+func (o JSONSchemaPropsPatchOutput) X_kubernetes_validations() ValidationRulePatchArrayOutput {
+	return o.ApplyT(func(v JSONSchemaPropsPatch) []ValidationRulePatch { return v.X_kubernetes_validations }).(ValidationRulePatchArrayOutput)
+}
+
+type JSONSchemaPropsPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (JSONSchemaPropsPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JSONSchemaPropsPatch)(nil)).Elem()
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) ToJSONSchemaPropsPatchPtrOutput() JSONSchemaPropsPatchPtrOutput {
+	return o
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) ToJSONSchemaPropsPatchPtrOutputWithContext(ctx context.Context) JSONSchemaPropsPatchPtrOutput {
+	return o
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) Elem() JSONSchemaPropsPatchOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) JSONSchemaPropsPatch {
+		if v != nil {
+			return *v
+		}
+		var ret JSONSchemaPropsPatch
+		return ret
+	}).(JSONSchemaPropsPatchOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ref
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) AdditionalItems() pulumi.AnyOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalItems
+	}).(pulumi.AnyOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) AdditionalProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalProperties
+	}).(pulumi.AnyOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) AllOf() JSONSchemaPropsPatchArrayOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) []JSONSchemaPropsPatch {
+		if v == nil {
+			return nil
+		}
+		return v.AllOf
+	}).(JSONSchemaPropsPatchArrayOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) AnyOf() JSONSchemaPropsPatchArrayOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) []JSONSchemaPropsPatch {
+		if v == nil {
+			return nil
+		}
+		return v.AnyOf
+	}).(JSONSchemaPropsPatchArrayOutput)
+}
+
+// default is a default value for undefined object fields. Defaulting is a beta feature under the CustomResourceDefaulting feature gate. Defaulting requires spec.preserveUnknownFields to be false.
+func (o JSONSchemaPropsPatchPtrOutput) Default() pulumi.AnyOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Default
+	}).(pulumi.AnyOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) Definitions() JSONSchemaPropsMapOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) map[string]JSONSchemaProps {
+		if v == nil {
+			return nil
+		}
+		return v.Definitions
+	}).(JSONSchemaPropsMapOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) Dependencies() pulumi.MapOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Dependencies
+	}).(pulumi.MapOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) Enum() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Enum
+	}).(pulumi.ArrayOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) Example() pulumi.AnyOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Example
+	}).(pulumi.AnyOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) ExclusiveMaximum() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ExclusiveMaximum
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) ExclusiveMinimum() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ExclusiveMinimum
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) ExternalDocs() ExternalDocumentationPatchPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *ExternalDocumentationPatch {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalDocs
+	}).(ExternalDocumentationPatchPtrOutput)
+}
+
+// format is an OpenAPI v3 format string. Unknown formats are ignored. The following formats are validated:
+//
+// - bsonobjectid: a bson object ID, i.e. a 24 characters hex string - uri: an URI as parsed by Golang net/url.ParseRequestURI - email: an email address as parsed by Golang net/mail.ParseAddress - hostname: a valid representation for an Internet host name, as defined by RFC 1034, section 3.1 [RFC1034]. - ipv4: an IPv4 IP as parsed by Golang net.ParseIP - ipv6: an IPv6 IP as parsed by Golang net.ParseIP - cidr: a CIDR as parsed by Golang net.ParseCIDR - mac: a MAC address as parsed by Golang net.ParseMAC - uuid: an UUID that allows uppercase defined by the regex (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{12}$ - uuid3: an UUID3 that allows uppercase defined by the regex (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?3[0-9a-f]{3}-?[0-9a-f]{4}-?[0-9a-f]{12}$ - uuid4: an UUID4 that allows uppercase defined by the regex (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?4[0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$ - uuid5: an UUID5 that allows uppercase defined by the regex (?i)^[0-9a-f]{8}-?[0-9a-f]{4}-?5[0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$ - isbn: an ISBN10 or ISBN13 number string like "0321751043" or "978-0321751041" - isbn10: an ISBN10 number string like "0321751043" - isbn13: an ISBN13 number string like "978-0321751041" - creditcard: a credit card number defined by the regex ^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$ with any non digit characters mixed in - ssn: a U.S. social security number following the regex ^\d{3}[- ]?\d{2}[- ]?\d{4}$ - hexcolor: an hexadecimal color code like "#FFFFFF: following the regex ^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$ - rgbcolor: an RGB color code like rgb like "rgb(255,255,2559" - byte: base64 encoded binary data - password: any kind of string - date: a date string like "2006-01-02" as defined by full-date in RFC3339 - duration: a duration string like "22 ns" as parsed by Golang time.ParseDuration or compatible with Scala duration format - datetime: a date time string like "2014-12-15T19:30:20.000Z" as defined by date-time in RFC3339.
+func (o JSONSchemaPropsPatchPtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Format
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) Items() pulumi.AnyOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Items
+	}).(pulumi.AnyOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) MaxItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxItems
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) MaxLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxLength
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) MaxProperties() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxProperties
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) Maximum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Maximum
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) MinItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinItems
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) MinLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinLength
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) MinProperties() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinProperties
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) Minimum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Minimum
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) MultipleOf() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MultipleOf
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) Not() JSONSchemaPropsPatchPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *JSONSchemaPropsPatch {
+		if v == nil {
+			return nil
+		}
+		return v.Not
+	}).(JSONSchemaPropsPatchPtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Nullable
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) OneOf() JSONSchemaPropsPatchArrayOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) []JSONSchemaPropsPatch {
+		if v == nil {
+			return nil
+		}
+		return v.OneOf
+	}).(JSONSchemaPropsPatchArrayOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pattern
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) PatternProperties() JSONSchemaPropsMapOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) map[string]JSONSchemaProps {
+		if v == nil {
+			return nil
+		}
+		return v.PatternProperties
+	}).(JSONSchemaPropsMapOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) Properties() JSONSchemaPropsMapOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) map[string]JSONSchemaProps {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(JSONSchemaPropsMapOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) Required() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Required
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JSONSchemaPropsPatchPtrOutput) UniqueItems() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UniqueItems
+	}).(pulumi.BoolPtrOutput)
+}
+
+// x-kubernetes-embedded-resource defines that the value is an embedded Kubernetes runtime.Object, with TypeMeta and ObjectMeta. The type must be object. It is allowed to further restrict the embedded object. kind, apiVersion and metadata are validated automatically. x-kubernetes-preserve-unknown-fields is allowed to be true, but does not have to be if the object is fully specified (up to kind, apiVersion, metadata).
+func (o JSONSchemaPropsPatchPtrOutput) X_kubernetes_embedded_resource() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.X_kubernetes_embedded_resource
+	}).(pulumi.BoolPtrOutput)
+}
+
+// x-kubernetes-int-or-string specifies that this value is either an integer or a string. If this is true, an empty type is allowed and type as child of anyOf is permitted if following one of the following patterns:
+//
+// 1) anyOf:
+//    - type: integer
+//    - type: string
+// 2) allOf:
+//    - anyOf:
+//      - type: integer
+//      - type: string
+//    - ... zero or more
+func (o JSONSchemaPropsPatchPtrOutput) X_kubernetes_int_or_string() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.X_kubernetes_int_or_string
+	}).(pulumi.BoolPtrOutput)
+}
+
+// x-kubernetes-list-map-keys annotates an array with the x-kubernetes-list-type `map` by specifying the keys used as the index of the map.
+//
+// This tag MUST only be used on lists that have the "x-kubernetes-list-type" extension set to "map". Also, the values specified for this attribute must be a scalar typed field of the child structure (no nesting is supported).
+//
+// The properties specified must either be required or have a default value, to ensure those properties are present for all list items.
+func (o JSONSchemaPropsPatchPtrOutput) X_kubernetes_list_map_keys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.X_kubernetes_list_map_keys
+	}).(pulumi.StringArrayOutput)
+}
+
+// x-kubernetes-list-type annotates an array to further describe its topology. This extension must only be used on lists and may have 3 possible values:
+//
+// 1) `atomic`: the list is treated as a single entity, like a scalar.
+//      Atomic lists will be entirely replaced when updated. This extension
+//      may be used on any type of list (struct, scalar, ...).
+// 2) `set`:
+//      Sets are lists that must not have multiple items with the same value. Each
+//      value must be a scalar, an object with x-kubernetes-map-type `atomic` or an
+//      array with x-kubernetes-list-type `atomic`.
+// 3) `map`:
+//      These lists are like maps in that their elements have a non-index key
+//      used to identify them. Order is preserved upon merge. The map tag
+//      must only be used on a list with elements of type object.
+//    Defaults to atomic for arrays.
+func (o JSONSchemaPropsPatchPtrOutput) X_kubernetes_list_type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.X_kubernetes_list_type
+	}).(pulumi.StringPtrOutput)
+}
+
+// x-kubernetes-map-type annotates an object to further describe its topology. This extension must only be used when type is object and may have 2 possible values:
+//
+// 1) `granular`:
+//      These maps are actual maps (key-value pairs) and each fields are independent
+//      from each other (they can each be manipulated by separate actors). This is
+//      the default behaviour for all maps.
+// 2) `atomic`: the list is treated as a single entity, like a scalar.
+//      Atomic maps will be entirely replaced when updated.
+func (o JSONSchemaPropsPatchPtrOutput) X_kubernetes_map_type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.X_kubernetes_map_type
+	}).(pulumi.StringPtrOutput)
+}
+
+// x-kubernetes-preserve-unknown-fields stops the API server decoding step from pruning fields which are not specified in the validation schema. This affects fields recursively, but switches back to normal pruning behaviour if nested properties or additionalProperties are specified in the schema. This can either be true or undefined. False is forbidden.
+func (o JSONSchemaPropsPatchPtrOutput) X_kubernetes_preserve_unknown_fields() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.X_kubernetes_preserve_unknown_fields
+	}).(pulumi.BoolPtrOutput)
+}
+
+// x-kubernetes-validations describes a list of validation rules written in the CEL expression language. This field is an alpha-level. Using this field requires the feature gate `CustomResourceValidationExpressions` to be enabled.
+func (o JSONSchemaPropsPatchPtrOutput) X_kubernetes_validations() ValidationRulePatchArrayOutput {
+	return o.ApplyT(func(v *JSONSchemaPropsPatch) []ValidationRulePatch {
+		if v == nil {
+			return nil
+		}
+		return v.X_kubernetes_validations
+	}).(ValidationRulePatchArrayOutput)
+}
+
+type JSONSchemaPropsPatchArrayOutput struct{ *pulumi.OutputState }
+
+func (JSONSchemaPropsPatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JSONSchemaPropsPatch)(nil)).Elem()
+}
+
+func (o JSONSchemaPropsPatchArrayOutput) ToJSONSchemaPropsPatchArrayOutput() JSONSchemaPropsPatchArrayOutput {
+	return o
+}
+
+func (o JSONSchemaPropsPatchArrayOutput) ToJSONSchemaPropsPatchArrayOutputWithContext(ctx context.Context) JSONSchemaPropsPatchArrayOutput {
+	return o
+}
+
+func (o JSONSchemaPropsPatchArrayOutput) Index(i pulumi.IntInput) JSONSchemaPropsPatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JSONSchemaPropsPatch {
+		return vs[0].([]JSONSchemaPropsPatch)[vs[1].(int)]
+	}).(JSONSchemaPropsPatchOutput)
 }
 
 // ServiceReference holds a reference to Service.legacy.k8s.io
@@ -4839,6 +6252,47 @@ func (i ServiceReferencePatchArgs) ToServiceReferencePatchOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceReferencePatchOutput)
 }
 
+func (i ServiceReferencePatchArgs) ToServiceReferencePatchPtrOutput() ServiceReferencePatchPtrOutput {
+	return i.ToServiceReferencePatchPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceReferencePatchArgs) ToServiceReferencePatchPtrOutputWithContext(ctx context.Context) ServiceReferencePatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceReferencePatchOutput).ToServiceReferencePatchPtrOutputWithContext(ctx)
+}
+
+// ServiceReferencePatchPtrInput is an input type that accepts ServiceReferencePatchArgs, ServiceReferencePatchPtr and ServiceReferencePatchPtrOutput values.
+// You can construct a concrete instance of `ServiceReferencePatchPtrInput` via:
+//
+//          ServiceReferencePatchArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceReferencePatchPtrInput interface {
+	pulumi.Input
+
+	ToServiceReferencePatchPtrOutput() ServiceReferencePatchPtrOutput
+	ToServiceReferencePatchPtrOutputWithContext(context.Context) ServiceReferencePatchPtrOutput
+}
+
+type serviceReferencePatchPtrType ServiceReferencePatchArgs
+
+func ServiceReferencePatchPtr(v *ServiceReferencePatchArgs) ServiceReferencePatchPtrInput {
+	return (*serviceReferencePatchPtrType)(v)
+}
+
+func (*serviceReferencePatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceReferencePatch)(nil)).Elem()
+}
+
+func (i *serviceReferencePatchPtrType) ToServiceReferencePatchPtrOutput() ServiceReferencePatchPtrOutput {
+	return i.ToServiceReferencePatchPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceReferencePatchPtrType) ToServiceReferencePatchPtrOutputWithContext(ctx context.Context) ServiceReferencePatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceReferencePatchPtrOutput)
+}
+
 // ServiceReference holds a reference to Service.legacy.k8s.io
 type ServiceReferencePatchOutput struct{ *pulumi.OutputState }
 
@@ -4852,6 +6306,16 @@ func (o ServiceReferencePatchOutput) ToServiceReferencePatchOutput() ServiceRefe
 
 func (o ServiceReferencePatchOutput) ToServiceReferencePatchOutputWithContext(ctx context.Context) ServiceReferencePatchOutput {
 	return o
+}
+
+func (o ServiceReferencePatchOutput) ToServiceReferencePatchPtrOutput() ServiceReferencePatchPtrOutput {
+	return o.ToServiceReferencePatchPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceReferencePatchOutput) ToServiceReferencePatchPtrOutputWithContext(ctx context.Context) ServiceReferencePatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceReferencePatch) *ServiceReferencePatch {
+		return &v
+	}).(ServiceReferencePatchPtrOutput)
 }
 
 // name is the name of the service. Required
@@ -4872,6 +6336,70 @@ func (o ServiceReferencePatchOutput) Path() pulumi.StringPtrOutput {
 // port is an optional service port at which the webhook will be contacted. `port` should be a valid port number (1-65535, inclusive). Defaults to 443 for backward compatibility.
 func (o ServiceReferencePatchOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceReferencePatch) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type ServiceReferencePatchPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceReferencePatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceReferencePatch)(nil)).Elem()
+}
+
+func (o ServiceReferencePatchPtrOutput) ToServiceReferencePatchPtrOutput() ServiceReferencePatchPtrOutput {
+	return o
+}
+
+func (o ServiceReferencePatchPtrOutput) ToServiceReferencePatchPtrOutputWithContext(ctx context.Context) ServiceReferencePatchPtrOutput {
+	return o
+}
+
+func (o ServiceReferencePatchPtrOutput) Elem() ServiceReferencePatchOutput {
+	return o.ApplyT(func(v *ServiceReferencePatch) ServiceReferencePatch {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceReferencePatch
+		return ret
+	}).(ServiceReferencePatchOutput)
+}
+
+// name is the name of the service. Required
+func (o ServiceReferencePatchPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceReferencePatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// namespace is the namespace of the service. Required
+func (o ServiceReferencePatchPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceReferencePatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// path is an optional URL path at which the webhook will be contacted.
+func (o ServiceReferencePatchPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceReferencePatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// port is an optional service port at which the webhook will be contacted. `port` should be a valid port number (1-65535, inclusive). Defaults to 443 for backward compatibility.
+func (o ServiceReferencePatchPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceReferencePatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 // ValidationRule describes a validation rule written in the CEL expression language.
@@ -5142,6 +6670,31 @@ func (i ValidationRulePatchArgs) ToValidationRulePatchOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ValidationRulePatchOutput)
 }
 
+// ValidationRulePatchArrayInput is an input type that accepts ValidationRulePatchArray and ValidationRulePatchArrayOutput values.
+// You can construct a concrete instance of `ValidationRulePatchArrayInput` via:
+//
+//          ValidationRulePatchArray{ ValidationRulePatchArgs{...} }
+type ValidationRulePatchArrayInput interface {
+	pulumi.Input
+
+	ToValidationRulePatchArrayOutput() ValidationRulePatchArrayOutput
+	ToValidationRulePatchArrayOutputWithContext(context.Context) ValidationRulePatchArrayOutput
+}
+
+type ValidationRulePatchArray []ValidationRulePatchInput
+
+func (ValidationRulePatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ValidationRulePatch)(nil)).Elem()
+}
+
+func (i ValidationRulePatchArray) ToValidationRulePatchArrayOutput() ValidationRulePatchArrayOutput {
+	return i.ToValidationRulePatchArrayOutputWithContext(context.Background())
+}
+
+func (i ValidationRulePatchArray) ToValidationRulePatchArrayOutputWithContext(ctx context.Context) ValidationRulePatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValidationRulePatchArrayOutput)
+}
+
 // ValidationRule describes a validation rule written in the CEL expression language.
 type ValidationRulePatchOutput struct{ *pulumi.OutputState }
 
@@ -5189,6 +6742,26 @@ func (o ValidationRulePatchOutput) Message() pulumi.StringPtrOutput {
 //     non-intersecting keys are appended, retaining their partial order.
 func (o ValidationRulePatchOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ValidationRulePatch) *string { return v.Rule }).(pulumi.StringPtrOutput)
+}
+
+type ValidationRulePatchArrayOutput struct{ *pulumi.OutputState }
+
+func (ValidationRulePatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ValidationRulePatch)(nil)).Elem()
+}
+
+func (o ValidationRulePatchArrayOutput) ToValidationRulePatchArrayOutput() ValidationRulePatchArrayOutput {
+	return o
+}
+
+func (o ValidationRulePatchArrayOutput) ToValidationRulePatchArrayOutputWithContext(ctx context.Context) ValidationRulePatchArrayOutput {
+	return o
+}
+
+func (o ValidationRulePatchArrayOutput) Index(i pulumi.IntInput) ValidationRulePatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ValidationRulePatch {
+		return vs[0].([]ValidationRulePatch)[vs[1].(int)]
+	}).(ValidationRulePatchOutput)
 }
 
 // WebhookClientConfig contains the information to make a TLS connection with the webhook.
@@ -5424,7 +6997,7 @@ type WebhookClientConfigPatch struct {
 	// service is a reference to the service for this webhook. Either service or url must be specified.
 	//
 	// If the webhook is running within the cluster, then you should use `service`.
-	Service *ServiceReference `pulumi:"service"`
+	Service *ServiceReferencePatch `pulumi:"service"`
 	// url gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly one of `url` or `service` must be specified.
 	//
 	// The `host` should not refer to a service running in the cluster; use the `service` field instead. The host might be resolved via external DNS in some apiservers (e.g., `kube-apiserver` cannot resolve in-cluster DNS as that would be a layering violation). `host` may also be an IP address.
@@ -5457,7 +7030,7 @@ type WebhookClientConfigPatchArgs struct {
 	// service is a reference to the service for this webhook. Either service or url must be specified.
 	//
 	// If the webhook is running within the cluster, then you should use `service`.
-	Service ServiceReferencePtrInput `pulumi:"service"`
+	Service ServiceReferencePatchPtrInput `pulumi:"service"`
 	// url gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly one of `url` or `service` must be specified.
 	//
 	// The `host` should not refer to a service running in the cluster; use the `service` field instead. The host might be resolved via external DNS in some apiservers (e.g., `kube-apiserver` cannot resolve in-cluster DNS as that would be a layering violation). `host` may also be an IP address.
@@ -5484,6 +7057,47 @@ func (i WebhookClientConfigPatchArgs) ToWebhookClientConfigPatchOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookClientConfigPatchOutput)
 }
 
+func (i WebhookClientConfigPatchArgs) ToWebhookClientConfigPatchPtrOutput() WebhookClientConfigPatchPtrOutput {
+	return i.ToWebhookClientConfigPatchPtrOutputWithContext(context.Background())
+}
+
+func (i WebhookClientConfigPatchArgs) ToWebhookClientConfigPatchPtrOutputWithContext(ctx context.Context) WebhookClientConfigPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookClientConfigPatchOutput).ToWebhookClientConfigPatchPtrOutputWithContext(ctx)
+}
+
+// WebhookClientConfigPatchPtrInput is an input type that accepts WebhookClientConfigPatchArgs, WebhookClientConfigPatchPtr and WebhookClientConfigPatchPtrOutput values.
+// You can construct a concrete instance of `WebhookClientConfigPatchPtrInput` via:
+//
+//          WebhookClientConfigPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type WebhookClientConfigPatchPtrInput interface {
+	pulumi.Input
+
+	ToWebhookClientConfigPatchPtrOutput() WebhookClientConfigPatchPtrOutput
+	ToWebhookClientConfigPatchPtrOutputWithContext(context.Context) WebhookClientConfigPatchPtrOutput
+}
+
+type webhookClientConfigPatchPtrType WebhookClientConfigPatchArgs
+
+func WebhookClientConfigPatchPtr(v *WebhookClientConfigPatchArgs) WebhookClientConfigPatchPtrInput {
+	return (*webhookClientConfigPatchPtrType)(v)
+}
+
+func (*webhookClientConfigPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebhookClientConfigPatch)(nil)).Elem()
+}
+
+func (i *webhookClientConfigPatchPtrType) ToWebhookClientConfigPatchPtrOutput() WebhookClientConfigPatchPtrOutput {
+	return i.ToWebhookClientConfigPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *webhookClientConfigPatchPtrType) ToWebhookClientConfigPatchPtrOutputWithContext(ctx context.Context) WebhookClientConfigPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookClientConfigPatchPtrOutput)
+}
+
 // WebhookClientConfig contains the information to make a TLS connection with the webhook.
 type WebhookClientConfigPatchOutput struct{ *pulumi.OutputState }
 
@@ -5499,6 +7113,16 @@ func (o WebhookClientConfigPatchOutput) ToWebhookClientConfigPatchOutputWithCont
 	return o
 }
 
+func (o WebhookClientConfigPatchOutput) ToWebhookClientConfigPatchPtrOutput() WebhookClientConfigPatchPtrOutput {
+	return o.ToWebhookClientConfigPatchPtrOutputWithContext(context.Background())
+}
+
+func (o WebhookClientConfigPatchOutput) ToWebhookClientConfigPatchPtrOutputWithContext(ctx context.Context) WebhookClientConfigPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebhookClientConfigPatch) *WebhookClientConfigPatch {
+		return &v
+	}).(WebhookClientConfigPatchPtrOutput)
+}
+
 // caBundle is a PEM encoded CA bundle which will be used to validate the webhook's server certificate. If unspecified, system trust roots on the apiserver are used.
 func (o WebhookClientConfigPatchOutput) CaBundle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebhookClientConfigPatch) *string { return v.CaBundle }).(pulumi.StringPtrOutput)
@@ -5507,8 +7131,8 @@ func (o WebhookClientConfigPatchOutput) CaBundle() pulumi.StringPtrOutput {
 // service is a reference to the service for this webhook. Either service or url must be specified.
 //
 // If the webhook is running within the cluster, then you should use `service`.
-func (o WebhookClientConfigPatchOutput) Service() ServiceReferencePtrOutput {
-	return o.ApplyT(func(v WebhookClientConfigPatch) *ServiceReference { return v.Service }).(ServiceReferencePtrOutput)
+func (o WebhookClientConfigPatchOutput) Service() ServiceReferencePatchPtrOutput {
+	return o.ApplyT(func(v WebhookClientConfigPatch) *ServiceReferencePatch { return v.Service }).(ServiceReferencePatchPtrOutput)
 }
 
 // url gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly one of `url` or `service` must be specified.
@@ -5524,6 +7148,72 @@ func (o WebhookClientConfigPatchOutput) Service() ServiceReferencePtrOutput {
 // Attempting to use a user or basic auth e.g. "user:password@" is not allowed. Fragments ("#...") and query parameters ("?...") are not allowed, either.
 func (o WebhookClientConfigPatchOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebhookClientConfigPatch) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type WebhookClientConfigPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (WebhookClientConfigPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebhookClientConfigPatch)(nil)).Elem()
+}
+
+func (o WebhookClientConfigPatchPtrOutput) ToWebhookClientConfigPatchPtrOutput() WebhookClientConfigPatchPtrOutput {
+	return o
+}
+
+func (o WebhookClientConfigPatchPtrOutput) ToWebhookClientConfigPatchPtrOutputWithContext(ctx context.Context) WebhookClientConfigPatchPtrOutput {
+	return o
+}
+
+func (o WebhookClientConfigPatchPtrOutput) Elem() WebhookClientConfigPatchOutput {
+	return o.ApplyT(func(v *WebhookClientConfigPatch) WebhookClientConfigPatch {
+		if v != nil {
+			return *v
+		}
+		var ret WebhookClientConfigPatch
+		return ret
+	}).(WebhookClientConfigPatchOutput)
+}
+
+// caBundle is a PEM encoded CA bundle which will be used to validate the webhook's server certificate. If unspecified, system trust roots on the apiserver are used.
+func (o WebhookClientConfigPatchPtrOutput) CaBundle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebhookClientConfigPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaBundle
+	}).(pulumi.StringPtrOutput)
+}
+
+// service is a reference to the service for this webhook. Either service or url must be specified.
+//
+// If the webhook is running within the cluster, then you should use `service`.
+func (o WebhookClientConfigPatchPtrOutput) Service() ServiceReferencePatchPtrOutput {
+	return o.ApplyT(func(v *WebhookClientConfigPatch) *ServiceReferencePatch {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(ServiceReferencePatchPtrOutput)
+}
+
+// url gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly one of `url` or `service` must be specified.
+//
+// The `host` should not refer to a service running in the cluster; use the `service` field instead. The host might be resolved via external DNS in some apiservers (e.g., `kube-apiserver` cannot resolve in-cluster DNS as that would be a layering violation). `host` may also be an IP address.
+//
+// Please note that using `localhost` or `127.0.0.1` as a `host` is risky unless you take great care to run this webhook on all hosts which run an apiserver which might need to make calls to this webhook. Such installs are likely to be non-portable, i.e., not easy to turn up in a new cluster.
+//
+// The scheme must be "https"; the URL must begin with "https://".
+//
+// A path is optional, and if present may be any string permissible in a URL. You may use the path to pass an arbitrary string to the webhook, for example, a cluster identifier.
+//
+// Attempting to use a user or basic auth e.g. "user:password@" is not allowed. Fragments ("#...") and query parameters ("?...") are not allowed, either.
+func (o WebhookClientConfigPatchPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebhookClientConfigPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
 }
 
 // WebhookConversion describes how to call a conversion webhook
@@ -5688,7 +7378,7 @@ func (o WebhookConversionPtrOutput) ConversionReviewVersions() pulumi.StringArra
 // WebhookConversion describes how to call a conversion webhook
 type WebhookConversionPatch struct {
 	// clientConfig is the instructions for how to call the webhook if strategy is `Webhook`.
-	ClientConfig *WebhookClientConfig `pulumi:"clientConfig"`
+	ClientConfig *WebhookClientConfigPatch `pulumi:"clientConfig"`
 	// conversionReviewVersions is an ordered list of preferred `ConversionReview` versions the Webhook expects. The API server will use the first version in the list which it supports. If none of the versions specified in this list are supported by API server, conversion will fail for the custom resource. If a persisted Webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail.
 	ConversionReviewVersions []string `pulumi:"conversionReviewVersions"`
 }
@@ -5707,7 +7397,7 @@ type WebhookConversionPatchInput interface {
 // WebhookConversion describes how to call a conversion webhook
 type WebhookConversionPatchArgs struct {
 	// clientConfig is the instructions for how to call the webhook if strategy is `Webhook`.
-	ClientConfig WebhookClientConfigPtrInput `pulumi:"clientConfig"`
+	ClientConfig WebhookClientConfigPatchPtrInput `pulumi:"clientConfig"`
 	// conversionReviewVersions is an ordered list of preferred `ConversionReview` versions the Webhook expects. The API server will use the first version in the list which it supports. If none of the versions specified in this list are supported by API server, conversion will fail for the custom resource. If a persisted Webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail.
 	ConversionReviewVersions pulumi.StringArrayInput `pulumi:"conversionReviewVersions"`
 }
@@ -5722,6 +7412,47 @@ func (i WebhookConversionPatchArgs) ToWebhookConversionPatchOutput() WebhookConv
 
 func (i WebhookConversionPatchArgs) ToWebhookConversionPatchOutputWithContext(ctx context.Context) WebhookConversionPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookConversionPatchOutput)
+}
+
+func (i WebhookConversionPatchArgs) ToWebhookConversionPatchPtrOutput() WebhookConversionPatchPtrOutput {
+	return i.ToWebhookConversionPatchPtrOutputWithContext(context.Background())
+}
+
+func (i WebhookConversionPatchArgs) ToWebhookConversionPatchPtrOutputWithContext(ctx context.Context) WebhookConversionPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookConversionPatchOutput).ToWebhookConversionPatchPtrOutputWithContext(ctx)
+}
+
+// WebhookConversionPatchPtrInput is an input type that accepts WebhookConversionPatchArgs, WebhookConversionPatchPtr and WebhookConversionPatchPtrOutput values.
+// You can construct a concrete instance of `WebhookConversionPatchPtrInput` via:
+//
+//          WebhookConversionPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type WebhookConversionPatchPtrInput interface {
+	pulumi.Input
+
+	ToWebhookConversionPatchPtrOutput() WebhookConversionPatchPtrOutput
+	ToWebhookConversionPatchPtrOutputWithContext(context.Context) WebhookConversionPatchPtrOutput
+}
+
+type webhookConversionPatchPtrType WebhookConversionPatchArgs
+
+func WebhookConversionPatchPtr(v *WebhookConversionPatchArgs) WebhookConversionPatchPtrInput {
+	return (*webhookConversionPatchPtrType)(v)
+}
+
+func (*webhookConversionPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebhookConversionPatch)(nil)).Elem()
+}
+
+func (i *webhookConversionPatchPtrType) ToWebhookConversionPatchPtrOutput() WebhookConversionPatchPtrOutput {
+	return i.ToWebhookConversionPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *webhookConversionPatchPtrType) ToWebhookConversionPatchPtrOutputWithContext(ctx context.Context) WebhookConversionPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookConversionPatchPtrOutput)
 }
 
 // WebhookConversion describes how to call a conversion webhook
@@ -5739,9 +7470,19 @@ func (o WebhookConversionPatchOutput) ToWebhookConversionPatchOutputWithContext(
 	return o
 }
 
+func (o WebhookConversionPatchOutput) ToWebhookConversionPatchPtrOutput() WebhookConversionPatchPtrOutput {
+	return o.ToWebhookConversionPatchPtrOutputWithContext(context.Background())
+}
+
+func (o WebhookConversionPatchOutput) ToWebhookConversionPatchPtrOutputWithContext(ctx context.Context) WebhookConversionPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebhookConversionPatch) *WebhookConversionPatch {
+		return &v
+	}).(WebhookConversionPatchPtrOutput)
+}
+
 // clientConfig is the instructions for how to call the webhook if strategy is `Webhook`.
-func (o WebhookConversionPatchOutput) ClientConfig() WebhookClientConfigPtrOutput {
-	return o.ApplyT(func(v WebhookConversionPatch) *WebhookClientConfig { return v.ClientConfig }).(WebhookClientConfigPtrOutput)
+func (o WebhookConversionPatchOutput) ClientConfig() WebhookClientConfigPatchPtrOutput {
+	return o.ApplyT(func(v WebhookConversionPatch) *WebhookClientConfigPatch { return v.ClientConfig }).(WebhookClientConfigPatchPtrOutput)
 }
 
 // conversionReviewVersions is an ordered list of preferred `ConversionReview` versions the Webhook expects. The API server will use the first version in the list which it supports. If none of the versions specified in this list are supported by API server, conversion will fail for the custom resource. If a persisted Webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail.
@@ -5749,113 +7490,189 @@ func (o WebhookConversionPatchOutput) ConversionReviewVersions() pulumi.StringAr
 	return o.ApplyT(func(v WebhookConversionPatch) []string { return v.ConversionReviewVersions }).(pulumi.StringArrayOutput)
 }
 
+type WebhookConversionPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (WebhookConversionPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebhookConversionPatch)(nil)).Elem()
+}
+
+func (o WebhookConversionPatchPtrOutput) ToWebhookConversionPatchPtrOutput() WebhookConversionPatchPtrOutput {
+	return o
+}
+
+func (o WebhookConversionPatchPtrOutput) ToWebhookConversionPatchPtrOutputWithContext(ctx context.Context) WebhookConversionPatchPtrOutput {
+	return o
+}
+
+func (o WebhookConversionPatchPtrOutput) Elem() WebhookConversionPatchOutput {
+	return o.ApplyT(func(v *WebhookConversionPatch) WebhookConversionPatch {
+		if v != nil {
+			return *v
+		}
+		var ret WebhookConversionPatch
+		return ret
+	}).(WebhookConversionPatchOutput)
+}
+
+// clientConfig is the instructions for how to call the webhook if strategy is `Webhook`.
+func (o WebhookConversionPatchPtrOutput) ClientConfig() WebhookClientConfigPatchPtrOutput {
+	return o.ApplyT(func(v *WebhookConversionPatch) *WebhookClientConfigPatch {
+		if v == nil {
+			return nil
+		}
+		return v.ClientConfig
+	}).(WebhookClientConfigPatchPtrOutput)
+}
+
+// conversionReviewVersions is an ordered list of preferred `ConversionReview` versions the Webhook expects. The API server will use the first version in the list which it supports. If none of the versions specified in this list are supported by API server, conversion will fail for the custom resource. If a persisted Webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail.
+func (o WebhookConversionPatchPtrOutput) ConversionReviewVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WebhookConversionPatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ConversionReviewVersions
+	}).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceColumnDefinitionInput)(nil)).Elem(), CustomResourceColumnDefinitionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceColumnDefinitionArrayInput)(nil)).Elem(), CustomResourceColumnDefinitionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceColumnDefinitionPatchInput)(nil)).Elem(), CustomResourceColumnDefinitionPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceColumnDefinitionPatchArrayInput)(nil)).Elem(), CustomResourceColumnDefinitionPatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceConversionInput)(nil)).Elem(), CustomResourceConversionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceConversionPtrInput)(nil)).Elem(), CustomResourceConversionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceConversionPatchInput)(nil)).Elem(), CustomResourceConversionPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceConversionPatchPtrInput)(nil)).Elem(), CustomResourceConversionPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionTypeInput)(nil)).Elem(), CustomResourceDefinitionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionTypeArrayInput)(nil)).Elem(), CustomResourceDefinitionTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionConditionInput)(nil)).Elem(), CustomResourceDefinitionConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionConditionArrayInput)(nil)).Elem(), CustomResourceDefinitionConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionConditionPatchInput)(nil)).Elem(), CustomResourceDefinitionConditionPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionConditionPatchArrayInput)(nil)).Elem(), CustomResourceDefinitionConditionPatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionListTypeInput)(nil)).Elem(), CustomResourceDefinitionListTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionNamesInput)(nil)).Elem(), CustomResourceDefinitionNamesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionNamesPtrInput)(nil)).Elem(), CustomResourceDefinitionNamesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionNamesPatchInput)(nil)).Elem(), CustomResourceDefinitionNamesPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionNamesPatchPtrInput)(nil)).Elem(), CustomResourceDefinitionNamesPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionPatchTypeInput)(nil)).Elem(), CustomResourceDefinitionPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionSpecInput)(nil)).Elem(), CustomResourceDefinitionSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionSpecPtrInput)(nil)).Elem(), CustomResourceDefinitionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionSpecPatchInput)(nil)).Elem(), CustomResourceDefinitionSpecPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionSpecPatchPtrInput)(nil)).Elem(), CustomResourceDefinitionSpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionStatusInput)(nil)).Elem(), CustomResourceDefinitionStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionStatusPtrInput)(nil)).Elem(), CustomResourceDefinitionStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionStatusPatchInput)(nil)).Elem(), CustomResourceDefinitionStatusPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionStatusPatchPtrInput)(nil)).Elem(), CustomResourceDefinitionStatusPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionVersionInput)(nil)).Elem(), CustomResourceDefinitionVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionVersionArrayInput)(nil)).Elem(), CustomResourceDefinitionVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionVersionPatchInput)(nil)).Elem(), CustomResourceDefinitionVersionPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceDefinitionVersionPatchArrayInput)(nil)).Elem(), CustomResourceDefinitionVersionPatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceSubresourceScaleInput)(nil)).Elem(), CustomResourceSubresourceScaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceSubresourceScalePtrInput)(nil)).Elem(), CustomResourceSubresourceScaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceSubresourceScalePatchInput)(nil)).Elem(), CustomResourceSubresourceScalePatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceSubresourceScalePatchPtrInput)(nil)).Elem(), CustomResourceSubresourceScalePatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceSubresourcesInput)(nil)).Elem(), CustomResourceSubresourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceSubresourcesPtrInput)(nil)).Elem(), CustomResourceSubresourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceSubresourcesPatchInput)(nil)).Elem(), CustomResourceSubresourcesPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceSubresourcesPatchPtrInput)(nil)).Elem(), CustomResourceSubresourcesPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceValidationInput)(nil)).Elem(), CustomResourceValidationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceValidationPtrInput)(nil)).Elem(), CustomResourceValidationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceValidationPatchInput)(nil)).Elem(), CustomResourceValidationPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomResourceValidationPatchPtrInput)(nil)).Elem(), CustomResourceValidationPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDocumentationInput)(nil)).Elem(), ExternalDocumentationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDocumentationPtrInput)(nil)).Elem(), ExternalDocumentationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDocumentationPatchInput)(nil)).Elem(), ExternalDocumentationPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDocumentationPatchPtrInput)(nil)).Elem(), ExternalDocumentationPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JSONSchemaPropsInput)(nil)).Elem(), JSONSchemaPropsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JSONSchemaPropsPtrInput)(nil)).Elem(), JSONSchemaPropsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JSONSchemaPropsArrayInput)(nil)).Elem(), JSONSchemaPropsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JSONSchemaPropsMapInput)(nil)).Elem(), JSONSchemaPropsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JSONSchemaPropsPatchInput)(nil)).Elem(), JSONSchemaPropsPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JSONSchemaPropsPatchPtrInput)(nil)).Elem(), JSONSchemaPropsPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JSONSchemaPropsPatchArrayInput)(nil)).Elem(), JSONSchemaPropsPatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceReferenceInput)(nil)).Elem(), ServiceReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceReferencePtrInput)(nil)).Elem(), ServiceReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceReferencePatchInput)(nil)).Elem(), ServiceReferencePatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceReferencePatchPtrInput)(nil)).Elem(), ServiceReferencePatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValidationRuleInput)(nil)).Elem(), ValidationRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValidationRuleArrayInput)(nil)).Elem(), ValidationRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValidationRulePatchInput)(nil)).Elem(), ValidationRulePatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ValidationRulePatchArrayInput)(nil)).Elem(), ValidationRulePatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookClientConfigInput)(nil)).Elem(), WebhookClientConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookClientConfigPtrInput)(nil)).Elem(), WebhookClientConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookClientConfigPatchInput)(nil)).Elem(), WebhookClientConfigPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebhookClientConfigPatchPtrInput)(nil)).Elem(), WebhookClientConfigPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookConversionInput)(nil)).Elem(), WebhookConversionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookConversionPtrInput)(nil)).Elem(), WebhookConversionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookConversionPatchInput)(nil)).Elem(), WebhookConversionPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebhookConversionPatchPtrInput)(nil)).Elem(), WebhookConversionPatchArgs{})
 	pulumi.RegisterOutputType(CustomResourceColumnDefinitionOutput{})
 	pulumi.RegisterOutputType(CustomResourceColumnDefinitionArrayOutput{})
 	pulumi.RegisterOutputType(CustomResourceColumnDefinitionPatchOutput{})
+	pulumi.RegisterOutputType(CustomResourceColumnDefinitionPatchArrayOutput{})
 	pulumi.RegisterOutputType(CustomResourceConversionOutput{})
 	pulumi.RegisterOutputType(CustomResourceConversionPtrOutput{})
 	pulumi.RegisterOutputType(CustomResourceConversionPatchOutput{})
+	pulumi.RegisterOutputType(CustomResourceConversionPatchPtrOutput{})
 	pulumi.RegisterOutputType(CustomResourceDefinitionTypeOutput{})
 	pulumi.RegisterOutputType(CustomResourceDefinitionTypeArrayOutput{})
 	pulumi.RegisterOutputType(CustomResourceDefinitionConditionOutput{})
 	pulumi.RegisterOutputType(CustomResourceDefinitionConditionArrayOutput{})
 	pulumi.RegisterOutputType(CustomResourceDefinitionConditionPatchOutput{})
+	pulumi.RegisterOutputType(CustomResourceDefinitionConditionPatchArrayOutput{})
 	pulumi.RegisterOutputType(CustomResourceDefinitionListTypeOutput{})
 	pulumi.RegisterOutputType(CustomResourceDefinitionNamesOutput{})
 	pulumi.RegisterOutputType(CustomResourceDefinitionNamesPtrOutput{})
 	pulumi.RegisterOutputType(CustomResourceDefinitionNamesPatchOutput{})
+	pulumi.RegisterOutputType(CustomResourceDefinitionNamesPatchPtrOutput{})
 	pulumi.RegisterOutputType(CustomResourceDefinitionPatchTypeOutput{})
 	pulumi.RegisterOutputType(CustomResourceDefinitionSpecOutput{})
-	pulumi.RegisterOutputType(CustomResourceDefinitionSpecPtrOutput{})
 	pulumi.RegisterOutputType(CustomResourceDefinitionSpecPatchOutput{})
+	pulumi.RegisterOutputType(CustomResourceDefinitionSpecPatchPtrOutput{})
 	pulumi.RegisterOutputType(CustomResourceDefinitionStatusOutput{})
 	pulumi.RegisterOutputType(CustomResourceDefinitionStatusPtrOutput{})
 	pulumi.RegisterOutputType(CustomResourceDefinitionStatusPatchOutput{})
+	pulumi.RegisterOutputType(CustomResourceDefinitionStatusPatchPtrOutput{})
 	pulumi.RegisterOutputType(CustomResourceDefinitionVersionOutput{})
 	pulumi.RegisterOutputType(CustomResourceDefinitionVersionArrayOutput{})
 	pulumi.RegisterOutputType(CustomResourceDefinitionVersionPatchOutput{})
+	pulumi.RegisterOutputType(CustomResourceDefinitionVersionPatchArrayOutput{})
 	pulumi.RegisterOutputType(CustomResourceSubresourceScaleOutput{})
 	pulumi.RegisterOutputType(CustomResourceSubresourceScalePtrOutput{})
 	pulumi.RegisterOutputType(CustomResourceSubresourceScalePatchOutput{})
+	pulumi.RegisterOutputType(CustomResourceSubresourceScalePatchPtrOutput{})
 	pulumi.RegisterOutputType(CustomResourceSubresourcesOutput{})
 	pulumi.RegisterOutputType(CustomResourceSubresourcesPtrOutput{})
 	pulumi.RegisterOutputType(CustomResourceSubresourcesPatchOutput{})
+	pulumi.RegisterOutputType(CustomResourceSubresourcesPatchPtrOutput{})
 	pulumi.RegisterOutputType(CustomResourceValidationOutput{})
 	pulumi.RegisterOutputType(CustomResourceValidationPtrOutput{})
 	pulumi.RegisterOutputType(CustomResourceValidationPatchOutput{})
+	pulumi.RegisterOutputType(CustomResourceValidationPatchPtrOutput{})
 	pulumi.RegisterOutputType(ExternalDocumentationOutput{})
 	pulumi.RegisterOutputType(ExternalDocumentationPtrOutput{})
 	pulumi.RegisterOutputType(ExternalDocumentationPatchOutput{})
+	pulumi.RegisterOutputType(ExternalDocumentationPatchPtrOutput{})
 	pulumi.RegisterOutputType(JSONSchemaPropsOutput{})
 	pulumi.RegisterOutputType(JSONSchemaPropsPtrOutput{})
 	pulumi.RegisterOutputType(JSONSchemaPropsArrayOutput{})
 	pulumi.RegisterOutputType(JSONSchemaPropsMapOutput{})
 	pulumi.RegisterOutputType(JSONSchemaPropsPatchOutput{})
+	pulumi.RegisterOutputType(JSONSchemaPropsPatchPtrOutput{})
+	pulumi.RegisterOutputType(JSONSchemaPropsPatchArrayOutput{})
 	pulumi.RegisterOutputType(ServiceReferenceOutput{})
 	pulumi.RegisterOutputType(ServiceReferencePtrOutput{})
 	pulumi.RegisterOutputType(ServiceReferencePatchOutput{})
+	pulumi.RegisterOutputType(ServiceReferencePatchPtrOutput{})
 	pulumi.RegisterOutputType(ValidationRuleOutput{})
 	pulumi.RegisterOutputType(ValidationRuleArrayOutput{})
 	pulumi.RegisterOutputType(ValidationRulePatchOutput{})
+	pulumi.RegisterOutputType(ValidationRulePatchArrayOutput{})
 	pulumi.RegisterOutputType(WebhookClientConfigOutput{})
 	pulumi.RegisterOutputType(WebhookClientConfigPtrOutput{})
 	pulumi.RegisterOutputType(WebhookClientConfigPatchOutput{})
+	pulumi.RegisterOutputType(WebhookClientConfigPatchPtrOutput{})
 	pulumi.RegisterOutputType(WebhookConversionOutput{})
 	pulumi.RegisterOutputType(WebhookConversionPtrOutput{})
 	pulumi.RegisterOutputType(WebhookConversionPatchOutput{})
+	pulumi.RegisterOutputType(WebhookConversionPatchPtrOutput{})
 }

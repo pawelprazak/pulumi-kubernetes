@@ -20,11 +20,11 @@ type NodePatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Spec defines the behavior of a node. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec NodeSpecPtrOutput `pulumi:"spec"`
+	Spec NodeSpecPatchPtrOutput `pulumi:"spec"`
 	// Most recently observed status of the node. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Status NodeStatusPtrOutput `pulumi:"status"`
+	Status NodeStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewNodePatch registers a new resource with the given unique name, arguments, and options.
@@ -73,9 +73,9 @@ type nodePatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Spec defines the behavior of a node. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec *NodeSpec `pulumi:"spec"`
+	Spec *NodeSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a NodePatch resource.
@@ -85,9 +85,9 @@ type NodePatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Spec defines the behavior of a node. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec NodeSpecPtrInput
+	Spec NodeSpecPatchPtrInput
 }
 
 func (NodePatchArgs) ElementType() reflect.Type {
@@ -188,18 +188,18 @@ func (o NodePatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o NodePatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *NodePatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o NodePatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *NodePatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Spec defines the behavior of a node. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o NodePatchOutput) Spec() NodeSpecPtrOutput {
-	return o.ApplyT(func(v *NodePatch) NodeSpecPtrOutput { return v.Spec }).(NodeSpecPtrOutput)
+func (o NodePatchOutput) Spec() NodeSpecPatchPtrOutput {
+	return o.ApplyT(func(v *NodePatch) NodeSpecPatchPtrOutput { return v.Spec }).(NodeSpecPatchPtrOutput)
 }
 
 // Most recently observed status of the node. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o NodePatchOutput) Status() NodeStatusPtrOutput {
-	return o.ApplyT(func(v *NodePatch) NodeStatusPtrOutput { return v.Status }).(NodeStatusPtrOutput)
+func (o NodePatchOutput) Status() NodeStatusPatchPtrOutput {
+	return o.ApplyT(func(v *NodePatch) NodeStatusPatchPtrOutput { return v.Status }).(NodeStatusPatchPtrOutput)
 }
 
 type NodePatchArrayOutput struct{ *pulumi.OutputState }

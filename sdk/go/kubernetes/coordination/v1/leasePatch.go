@@ -20,9 +20,9 @@ type LeasePatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec LeaseSpecPtrOutput `pulumi:"spec"`
+	Spec LeaseSpecPatchPtrOutput `pulumi:"spec"`
 }
 
 // NewLeasePatch registers a new resource with the given unique name, arguments, and options.
@@ -36,7 +36,7 @@ func NewLeasePatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("Lease")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:coordination.k8s.io/v1beta1:Lease"),
+			Type: pulumi.String("kubernetes:coordination.k8s.io/v1beta1:LeasePatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -77,9 +77,9 @@ type leasePatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec *LeaseSpec `pulumi:"spec"`
+	Spec *LeaseSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a LeasePatch resource.
@@ -89,9 +89,9 @@ type LeasePatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec LeaseSpecPtrInput
+	Spec LeaseSpecPatchPtrInput
 }
 
 func (LeasePatchArgs) ElementType() reflect.Type {
@@ -192,13 +192,13 @@ func (o LeasePatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o LeasePatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *LeasePatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o LeasePatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *LeasePatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o LeasePatchOutput) Spec() LeaseSpecPtrOutput {
-	return o.ApplyT(func(v *LeasePatch) LeaseSpecPtrOutput { return v.Spec }).(LeaseSpecPtrOutput)
+func (o LeasePatchOutput) Spec() LeaseSpecPatchPtrOutput {
+	return o.ApplyT(func(v *LeasePatch) LeaseSpecPatchPtrOutput { return v.Spec }).(LeaseSpecPatchPtrOutput)
 }
 
 type LeasePatchArrayOutput struct{ *pulumi.OutputState }

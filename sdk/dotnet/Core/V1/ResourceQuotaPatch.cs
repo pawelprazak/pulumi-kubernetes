@@ -31,19 +31,19 @@ namespace Pulumi.Kubernetes.Core.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Spec defines the desired quota. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.ResourceQuotaSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.ResourceQuotaSpecPatch> Spec { get; private set; } = null!;
 
         /// <summary>
         /// Status defines the actual enforced quota and its current usage. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Output("status")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.ResourceQuotaStatus> Status { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.ResourceQuotaStatusPatch> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -121,13 +121,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Core.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// Spec defines the desired quota. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Core.V1.ResourceQuotaSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Core.V1.ResourceQuotaSpecPatchArgs>? Spec { get; set; }
 
         public ResourceQuotaPatchArgs()
         {

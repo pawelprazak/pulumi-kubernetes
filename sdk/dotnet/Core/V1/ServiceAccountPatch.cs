@@ -31,7 +31,7 @@ namespace Pulumi.Kubernetes.Core.V1
         /// ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
         /// </summary>
         [Output("imagePullSecrets")]
-        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Core.V1.LocalObjectReference>> ImagePullSecrets { get; private set; } = null!;
+        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Core.V1.LocalObjectReferencePatch>> ImagePullSecrets { get; private set; } = null!;
 
         /// <summary>
         /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -43,13 +43,13 @@ namespace Pulumi.Kubernetes.Core.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Secrets is a list of the secrets in the same namespace that pods running using this ServiceAccount are allowed to use. Pods are only limited to this list if this service account has a "kubernetes.io/enforce-mountable-secrets" annotation set to "true". This field should not be used to find auto-generated service account token secrets for use outside of pods. Instead, tokens can be requested directly using the TokenRequest API, or service account token secrets can be manually created. More info: https://kubernetes.io/docs/concepts/configuration/secret
         /// </summary>
         [Output("secrets")]
-        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Core.V1.ObjectReference>> Secrets { get; private set; } = null!;
+        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Core.V1.ObjectReferencePatch>> Secrets { get; private set; } = null!;
 
 
         /// <summary>
@@ -124,14 +124,14 @@ namespace Pulumi.Kubernetes.Types.Inputs.Core.V1
         public Input<bool>? AutomountServiceAccountToken { get; set; }
 
         [Input("imagePullSecrets")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.LocalObjectReferenceArgs>? _imagePullSecrets;
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.LocalObjectReferencePatchArgs>? _imagePullSecrets;
 
         /// <summary>
         /// ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
         /// </summary>
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.LocalObjectReferenceArgs> ImagePullSecrets
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.LocalObjectReferencePatchArgs> ImagePullSecrets
         {
-            get => _imagePullSecrets ?? (_imagePullSecrets = new InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.LocalObjectReferenceArgs>());
+            get => _imagePullSecrets ?? (_imagePullSecrets = new InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.LocalObjectReferencePatchArgs>());
             set => _imagePullSecrets = value;
         }
 
@@ -145,17 +145,17 @@ namespace Pulumi.Kubernetes.Types.Inputs.Core.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         [Input("secrets")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.ObjectReferenceArgs>? _secrets;
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.ObjectReferencePatchArgs>? _secrets;
 
         /// <summary>
         /// Secrets is a list of the secrets in the same namespace that pods running using this ServiceAccount are allowed to use. Pods are only limited to this list if this service account has a "kubernetes.io/enforce-mountable-secrets" annotation set to "true". This field should not be used to find auto-generated service account token secrets for use outside of pods. Instead, tokens can be requested directly using the TokenRequest API, or service account token secrets can be manually created. More info: https://kubernetes.io/docs/concepts/configuration/secret
         /// </summary>
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.ObjectReferenceArgs> Secrets
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.ObjectReferencePatchArgs> Secrets
         {
-            get => _secrets ?? (_secrets = new InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.ObjectReferenceArgs>());
+            get => _secrets ?? (_secrets = new InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.ObjectReferencePatchArgs>());
             set => _secrets = value;
         }
 

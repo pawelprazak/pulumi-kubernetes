@@ -20,11 +20,11 @@ type ReplicationControllerPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// If the Labels of a ReplicationController are empty, they are defaulted to be the same as the Pod(s) that the replication controller manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Spec defines the specification of the desired behavior of the replication controller. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec ReplicationControllerSpecPtrOutput `pulumi:"spec"`
+	Spec ReplicationControllerSpecPatchPtrOutput `pulumi:"spec"`
 	// Status is the most recently observed status of the replication controller. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Status ReplicationControllerStatusPtrOutput `pulumi:"status"`
+	Status ReplicationControllerStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewReplicationControllerPatch registers a new resource with the given unique name, arguments, and options.
@@ -73,9 +73,9 @@ type replicationControllerPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// If the Labels of a ReplicationController are empty, they are defaulted to be the same as the Pod(s) that the replication controller manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Spec defines the specification of the desired behavior of the replication controller. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec *ReplicationControllerSpec `pulumi:"spec"`
+	Spec *ReplicationControllerSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a ReplicationControllerPatch resource.
@@ -85,9 +85,9 @@ type ReplicationControllerPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// If the Labels of a ReplicationController are empty, they are defaulted to be the same as the Pod(s) that the replication controller manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Spec defines the specification of the desired behavior of the replication controller. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec ReplicationControllerSpecPtrInput
+	Spec ReplicationControllerSpecPatchPtrInput
 }
 
 func (ReplicationControllerPatchArgs) ElementType() reflect.Type {
@@ -188,18 +188,18 @@ func (o ReplicationControllerPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // If the Labels of a ReplicationController are empty, they are defaulted to be the same as the Pod(s) that the replication controller manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o ReplicationControllerPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *ReplicationControllerPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o ReplicationControllerPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *ReplicationControllerPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Spec defines the specification of the desired behavior of the replication controller. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o ReplicationControllerPatchOutput) Spec() ReplicationControllerSpecPtrOutput {
-	return o.ApplyT(func(v *ReplicationControllerPatch) ReplicationControllerSpecPtrOutput { return v.Spec }).(ReplicationControllerSpecPtrOutput)
+func (o ReplicationControllerPatchOutput) Spec() ReplicationControllerSpecPatchPtrOutput {
+	return o.ApplyT(func(v *ReplicationControllerPatch) ReplicationControllerSpecPatchPtrOutput { return v.Spec }).(ReplicationControllerSpecPatchPtrOutput)
 }
 
 // Status is the most recently observed status of the replication controller. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o ReplicationControllerPatchOutput) Status() ReplicationControllerStatusPtrOutput {
-	return o.ApplyT(func(v *ReplicationControllerPatch) ReplicationControllerStatusPtrOutput { return v.Status }).(ReplicationControllerStatusPtrOutput)
+func (o ReplicationControllerPatchOutput) Status() ReplicationControllerStatusPatchPtrOutput {
+	return o.ApplyT(func(v *ReplicationControllerPatch) ReplicationControllerStatusPatchPtrOutput { return v.Status }).(ReplicationControllerStatusPatchPtrOutput)
 }
 
 type ReplicationControllerPatchArrayOutput struct{ *pulumi.OutputState }

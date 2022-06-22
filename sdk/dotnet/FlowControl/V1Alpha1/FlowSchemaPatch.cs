@@ -31,19 +31,19 @@ namespace Pulumi.Kubernetes.FlowControl.V1Alpha1
         /// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.FlowControl.V1Alpha1.FlowSchemaSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.FlowControl.V1Alpha1.FlowSchemaSpecPatch> Spec { get; private set; } = null!;
 
         /// <summary>
         /// `status` is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Output("status")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.FlowControl.V1Alpha1.FlowSchemaStatus> Status { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.FlowControl.V1Alpha1.FlowSchemaStatusPatch> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -82,8 +82,8 @@ namespace Pulumi.Kubernetes.FlowControl.V1Alpha1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:flowcontrol.apiserver.k8s.io/v1beta1:FlowSchema"},
-                    new Pulumi.Alias { Type = "kubernetes:flowcontrol.apiserver.k8s.io/v1beta2:FlowSchema"},
+                    new Pulumi.Alias { Type = "kubernetes:flowcontrol.apiserver.k8s.io/v1beta1:FlowSchemaPatch"},
+                    new Pulumi.Alias { Type = "kubernetes:flowcontrol.apiserver.k8s.io/v1beta2:FlowSchemaPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -126,13 +126,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.FlowControl.V1Alpha1
         /// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.FlowControl.V1Alpha1.FlowSchemaSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.FlowControl.V1Alpha1.FlowSchemaSpecPatchArgs>? Spec { get; set; }
 
         public FlowSchemaPatchArgs()
         {

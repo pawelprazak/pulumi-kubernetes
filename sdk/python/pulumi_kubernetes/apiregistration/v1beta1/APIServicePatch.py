@@ -19,13 +19,13 @@ class APIServicePatchArgs:
     def __init__(__self__, *,
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']] = None,
-                 spec: Optional[pulumi.Input['APIServiceSpecArgs']] = None):
+                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']] = None,
+                 spec: Optional[pulumi.Input['APIServiceSpecPatchArgs']] = None):
         """
         The set of arguments for constructing a APIServicePatch resource.
         :param pulumi.Input[str] api_version: APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-        :param pulumi.Input['APIServiceSpecArgs'] spec: Spec contains information for locating and communicating with a server
+        :param pulumi.Input['APIServiceSpecPatchArgs'] spec: Spec contains information for locating and communicating with a server
         """
         if api_version is not None:
             pulumi.set(__self__, "api_version", 'apiregistration.k8s.io/v1beta1')
@@ -62,23 +62,23 @@ class APIServicePatchArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['APIServiceSpecArgs']]:
+    def spec(self) -> Optional[pulumi.Input['APIServiceSpecPatchArgs']]:
         """
         Spec contains information for locating and communicating with a server
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['APIServiceSpecArgs']]):
+    def spec(self, value: Optional[pulumi.Input['APIServiceSpecPatchArgs']]):
         pulumi.set(self, "spec", value)
 
 
@@ -89,8 +89,8 @@ class APIServicePatch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['APIServiceSpecArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
+                 spec: Optional[pulumi.Input[pulumi.InputType['APIServiceSpecPatchArgs']]] = None,
                  __props__=None):
         """
         APIService represents a server for a particular GroupVersion. Name must be "version.group".
@@ -99,7 +99,7 @@ class APIServicePatch(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_version: APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-        :param pulumi.Input[pulumi.InputType['APIServiceSpecArgs']] spec: Spec contains information for locating and communicating with a server
+        :param pulumi.Input[pulumi.InputType['APIServiceSpecPatchArgs']] spec: Spec contains information for locating and communicating with a server
         """
         ...
     @overload
@@ -127,17 +127,12 @@ class APIServicePatch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['APIServiceSpecArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
+                 spec: Optional[pulumi.Input[pulumi.InputType['APIServiceSpecPatchArgs']]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -148,7 +143,7 @@ class APIServicePatch(pulumi.CustomResource):
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["spec"] = spec
             __props__.__dict__["status"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:apiregistration.k8s.io/v1:APIService"), pulumi.Alias(type_="kubernetes:apiregistration/v1:APIService"), pulumi.Alias(type_="kubernetes:apiregistration/v1beta1:APIService")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:apiregistration.k8s.io/v1:APIServicePatch"), pulumi.Alias(type_="kubernetes:apiregistration/v1:APIServicePatch"), pulumi.Alias(type_="kubernetes:apiregistration/v1beta1:APIServicePatch")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(APIServicePatch, __self__).__init__(
             'kubernetes:apiregistration.k8s.io/v1beta1:APIServicePatch',
@@ -197,12 +192,12 @@ class APIServicePatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Optional['_meta.v1.outputs.ObjectMeta']]:
+    def metadata(self) -> pulumi.Output[Optional['_meta.v1.outputs.ObjectMetaPatch']]:
         return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter
-    def spec(self) -> pulumi.Output[Optional['outputs.APIServiceSpec']]:
+    def spec(self) -> pulumi.Output[Optional['outputs.APIServiceSpecPatch']]:
         """
         Spec contains information for locating and communicating with a server
         """
@@ -210,7 +205,7 @@ class APIServicePatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> pulumi.Output[Optional['outputs.APIServiceStatus']]:
+    def status(self) -> pulumi.Output[Optional['outputs.APIServiceStatusPatch']]:
         """
         Status contains derived information about an API server
         """

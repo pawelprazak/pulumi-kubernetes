@@ -36,11 +36,11 @@ type IngressPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec IngressSpecPtrOutput `pulumi:"spec"`
+	Spec IngressSpecPatchPtrOutput `pulumi:"spec"`
 	// Status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Status IngressStatusPtrOutput `pulumi:"status"`
+	Status IngressStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewIngressPatch registers a new resource with the given unique name, arguments, and options.
@@ -54,10 +54,10 @@ func NewIngressPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("Ingress")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:networking.k8s.io/v1:Ingress"),
+			Type: pulumi.String("kubernetes:networking.k8s.io/v1:IngressPatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:networking.k8s.io/v1beta1:Ingress"),
+			Type: pulumi.String("kubernetes:networking.k8s.io/v1beta1:IngressPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -98,9 +98,9 @@ type ingressPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec *IngressSpec `pulumi:"spec"`
+	Spec *IngressSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a IngressPatch resource.
@@ -110,9 +110,9 @@ type IngressPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec IngressSpecPtrInput
+	Spec IngressSpecPatchPtrInput
 }
 
 func (IngressPatchArgs) ElementType() reflect.Type {
@@ -213,18 +213,18 @@ func (o IngressPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o IngressPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *IngressPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o IngressPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *IngressPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o IngressPatchOutput) Spec() IngressSpecPtrOutput {
-	return o.ApplyT(func(v *IngressPatch) IngressSpecPtrOutput { return v.Spec }).(IngressSpecPtrOutput)
+func (o IngressPatchOutput) Spec() IngressSpecPatchPtrOutput {
+	return o.ApplyT(func(v *IngressPatch) IngressSpecPatchPtrOutput { return v.Spec }).(IngressSpecPatchPtrOutput)
 }
 
 // Status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o IngressPatchOutput) Status() IngressStatusPtrOutput {
-	return o.ApplyT(func(v *IngressPatch) IngressStatusPtrOutput { return v.Status }).(IngressStatusPtrOutput)
+func (o IngressPatchOutput) Status() IngressStatusPatchPtrOutput {
+	return o.ApplyT(func(v *IngressPatch) IngressStatusPatchPtrOutput { return v.Status }).(IngressStatusPatchPtrOutput)
 }
 
 type IngressPatchArrayOutput struct{ *pulumi.OutputState }

@@ -46,11 +46,11 @@ export class PodTemplatePatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Template defines the pods that will be created from this pod template. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public readonly template!: pulumi.Output<outputs.core.v1.PodTemplateSpec>;
+    public readonly template!: pulumi.Output<outputs.core.v1.PodTemplateSpecPatch>;
 
     /**
      * Create a PodTemplatePatch resource with the given unique name, arguments, and options.
@@ -93,9 +93,9 @@ export interface PodTemplatePatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Template defines the pods that will be created from this pod template. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    template?: pulumi.Input<inputs.core.v1.PodTemplateSpec>;
+    template?: pulumi.Input<inputs.core.v1.PodTemplateSpecPatch>;
 }

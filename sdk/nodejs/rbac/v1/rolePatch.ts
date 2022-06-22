@@ -46,11 +46,11 @@ export class RolePatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata.
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Rules holds all the PolicyRules for this Role
      */
-    public readonly rules!: pulumi.Output<outputs.rbac.v1.PolicyRule[]>;
+    public readonly rules!: pulumi.Output<outputs.rbac.v1.PolicyRulePatch[]>;
 
     /**
      * Create a RolePatch resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class RolePatch extends pulumi.CustomResource {
             resourceInputs["rules"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:rbac.authorization.k8s.io/v1alpha1:Role" }, { type: "kubernetes:rbac.authorization.k8s.io/v1beta1:Role" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:rbac.authorization.k8s.io/v1alpha1:RolePatch" }, { type: "kubernetes:rbac.authorization.k8s.io/v1beta1:RolePatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RolePatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -95,9 +95,9 @@ export interface RolePatchArgs {
     /**
      * Standard object's metadata.
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Rules holds all the PolicyRules for this Role
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.rbac.v1.PolicyRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.rbac.v1.PolicyRulePatch>[]>;
 }

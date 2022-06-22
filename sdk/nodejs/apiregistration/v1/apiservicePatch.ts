@@ -46,15 +46,15 @@ export class APIServicePatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec contains information for locating and communicating with a server
      */
-    public readonly spec!: pulumi.Output<outputs.apiregistration.v1.APIServiceSpec>;
+    public readonly spec!: pulumi.Output<outputs.apiregistration.v1.APIServiceSpecPatch>;
     /**
      * Status contains derived information about an API server
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.apiregistration.v1.APIServiceStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.apiregistration.v1.APIServiceStatusPatch>;
 
     /**
      * Create a APIServicePatch resource with the given unique name, arguments, and options.
@@ -80,7 +80,7 @@ export class APIServicePatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:apiregistration.k8s.io/v1beta1:APIService" }, { type: "kubernetes:apiregistration/v1beta1:APIService" }, { type: "kubernetes:apiregistration/v1:APIService" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:apiregistration.k8s.io/v1beta1:APIServicePatch" }, { type: "kubernetes:apiregistration/v1beta1:APIServicePatch" }, { type: "kubernetes:apiregistration/v1:APIServicePatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(APIServicePatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -101,9 +101,9 @@ export interface APIServicePatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec contains information for locating and communicating with a server
      */
-    spec?: pulumi.Input<inputs.apiregistration.v1.APIServiceSpec>;
+    spec?: pulumi.Input<inputs.apiregistration.v1.APIServiceSpecPatch>;
 }

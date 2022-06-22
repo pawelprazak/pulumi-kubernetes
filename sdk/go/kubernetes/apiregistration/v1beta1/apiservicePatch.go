@@ -18,12 +18,12 @@ type APIServicePatch struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion pulumi.StringPtrOutput `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-	Kind     pulumi.StringPtrOutput     `pulumi:"kind"`
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Kind     pulumi.StringPtrOutput          `pulumi:"kind"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Spec contains information for locating and communicating with a server
-	Spec APIServiceSpecPtrOutput `pulumi:"spec"`
+	Spec APIServiceSpecPatchPtrOutput `pulumi:"spec"`
 	// Status contains derived information about an API server
-	Status APIServiceStatusPtrOutput `pulumi:"status"`
+	Status APIServiceStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewAPIServicePatch registers a new resource with the given unique name, arguments, and options.
@@ -37,13 +37,13 @@ func NewAPIServicePatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("APIService")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:apiregistration.k8s.io/v1:APIService"),
+			Type: pulumi.String("kubernetes:apiregistration.k8s.io/v1:APIServicePatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:apiregistration/v1:APIService"),
+			Type: pulumi.String("kubernetes:apiregistration/v1:APIServicePatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:apiregistration/v1beta1:APIService"),
+			Type: pulumi.String("kubernetes:apiregistration/v1beta1:APIServicePatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -82,10 +82,10 @@ type apiservicePatchArgs struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion *string `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-	Kind     *string            `pulumi:"kind"`
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Kind     *string                 `pulumi:"kind"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Spec contains information for locating and communicating with a server
-	Spec *APIServiceSpec `pulumi:"spec"`
+	Spec *APIServiceSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a APIServicePatch resource.
@@ -94,9 +94,9 @@ type APIServicePatchArgs struct {
 	ApiVersion pulumi.StringPtrInput
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind     pulumi.StringPtrInput
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Spec contains information for locating and communicating with a server
-	Spec APIServiceSpecPtrInput
+	Spec APIServiceSpecPatchPtrInput
 }
 
 func (APIServicePatchArgs) ElementType() reflect.Type {
@@ -196,18 +196,18 @@ func (o APIServicePatchOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *APIServicePatch) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-func (o APIServicePatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *APIServicePatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o APIServicePatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *APIServicePatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Spec contains information for locating and communicating with a server
-func (o APIServicePatchOutput) Spec() APIServiceSpecPtrOutput {
-	return o.ApplyT(func(v *APIServicePatch) APIServiceSpecPtrOutput { return v.Spec }).(APIServiceSpecPtrOutput)
+func (o APIServicePatchOutput) Spec() APIServiceSpecPatchPtrOutput {
+	return o.ApplyT(func(v *APIServicePatch) APIServiceSpecPatchPtrOutput { return v.Spec }).(APIServiceSpecPatchPtrOutput)
 }
 
 // Status contains derived information about an API server
-func (o APIServicePatchOutput) Status() APIServiceStatusPtrOutput {
-	return o.ApplyT(func(v *APIServicePatch) APIServiceStatusPtrOutput { return v.Status }).(APIServiceStatusPtrOutput)
+func (o APIServicePatchOutput) Status() APIServiceStatusPatchPtrOutput {
+	return o.ApplyT(func(v *APIServicePatch) APIServiceStatusPatchPtrOutput { return v.Status }).(APIServiceStatusPatchPtrOutput)
 }
 
 type APIServicePatchArrayOutput struct{ *pulumi.OutputState }

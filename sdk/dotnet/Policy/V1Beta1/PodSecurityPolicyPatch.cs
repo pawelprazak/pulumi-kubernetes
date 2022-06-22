@@ -31,13 +31,13 @@ namespace Pulumi.Kubernetes.Policy.V1Beta1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// spec defines the policy enforced.
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Policy.V1Beta1.PodSecurityPolicySpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Policy.V1Beta1.PodSecurityPolicySpecPatch> Spec { get; private set; } = null!;
 
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Pulumi.Kubernetes.Policy.V1Beta1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:extensions/v1beta1:PodSecurityPolicy"},
+                    new Pulumi.Alias { Type = "kubernetes:extensions/v1beta1:PodSecurityPolicyPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -119,13 +119,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Policy.V1Beta1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// spec defines the policy enforced.
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Policy.V1Beta1.PodSecurityPolicySpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Policy.V1Beta1.PodSecurityPolicySpecPatchArgs>? Spec { get; set; }
 
         public PodSecurityPolicyPatchArgs()
         {

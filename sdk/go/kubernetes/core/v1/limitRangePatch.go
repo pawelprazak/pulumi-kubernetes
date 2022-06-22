@@ -20,9 +20,9 @@ type LimitRangePatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Spec defines the limits enforced. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec LimitRangeSpecPtrOutput `pulumi:"spec"`
+	Spec LimitRangeSpecPatchPtrOutput `pulumi:"spec"`
 }
 
 // NewLimitRangePatch registers a new resource with the given unique name, arguments, and options.
@@ -71,9 +71,9 @@ type limitRangePatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Spec defines the limits enforced. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec *LimitRangeSpec `pulumi:"spec"`
+	Spec *LimitRangeSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a LimitRangePatch resource.
@@ -83,9 +83,9 @@ type LimitRangePatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Spec defines the limits enforced. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec LimitRangeSpecPtrInput
+	Spec LimitRangeSpecPatchPtrInput
 }
 
 func (LimitRangePatchArgs) ElementType() reflect.Type {
@@ -186,13 +186,13 @@ func (o LimitRangePatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o LimitRangePatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *LimitRangePatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o LimitRangePatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *LimitRangePatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Spec defines the limits enforced. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o LimitRangePatchOutput) Spec() LimitRangeSpecPtrOutput {
-	return o.ApplyT(func(v *LimitRangePatch) LimitRangeSpecPtrOutput { return v.Spec }).(LimitRangeSpecPtrOutput)
+func (o LimitRangePatchOutput) Spec() LimitRangeSpecPatchPtrOutput {
+	return o.ApplyT(func(v *LimitRangePatch) LimitRangeSpecPatchPtrOutput { return v.Spec }).(LimitRangeSpecPatchPtrOutput)
 }
 
 type LimitRangePatchArrayOutput struct{ *pulumi.OutputState }

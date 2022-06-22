@@ -40,11 +40,11 @@ type JobPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec JobSpecPtrOutput `pulumi:"spec"`
+	Spec JobSpecPatchPtrOutput `pulumi:"spec"`
 	// Current status of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Status JobStatusPtrOutput `pulumi:"status"`
+	Status JobStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewJobPatch registers a new resource with the given unique name, arguments, and options.
@@ -93,9 +93,9 @@ type jobPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec *JobSpec `pulumi:"spec"`
+	Spec *JobSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a JobPatch resource.
@@ -105,9 +105,9 @@ type JobPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec JobSpecPtrInput
+	Spec JobSpecPatchPtrInput
 }
 
 func (JobPatchArgs) ElementType() reflect.Type {
@@ -208,18 +208,18 @@ func (o JobPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o JobPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *JobPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o JobPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *JobPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o JobPatchOutput) Spec() JobSpecPtrOutput {
-	return o.ApplyT(func(v *JobPatch) JobSpecPtrOutput { return v.Spec }).(JobSpecPtrOutput)
+func (o JobPatchOutput) Spec() JobSpecPatchPtrOutput {
+	return o.ApplyT(func(v *JobPatch) JobSpecPatchPtrOutput { return v.Spec }).(JobSpecPatchPtrOutput)
 }
 
 // Current status of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o JobPatchOutput) Status() JobStatusPtrOutput {
-	return o.ApplyT(func(v *JobPatch) JobStatusPtrOutput { return v.Status }).(JobStatusPtrOutput)
+func (o JobPatchOutput) Status() JobStatusPatchPtrOutput {
+	return o.ApplyT(func(v *JobPatch) JobStatusPatchPtrOutput { return v.Status }).(JobStatusPatchPtrOutput)
 }
 
 type JobPatchArrayOutput struct{ *pulumi.OutputState }

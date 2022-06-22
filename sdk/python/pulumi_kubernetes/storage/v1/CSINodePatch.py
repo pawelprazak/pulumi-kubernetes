@@ -19,14 +19,14 @@ class CSINodePatchArgs:
     def __init__(__self__, *,
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']] = None,
-                 spec: Optional[pulumi.Input['CSINodeSpecArgs']] = None):
+                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']] = None,
+                 spec: Optional[pulumi.Input['CSINodeSpecPatchArgs']] = None):
         """
         The set of arguments for constructing a CSINodePatch resource.
         :param pulumi.Input[str] api_version: APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-        :param pulumi.Input['_meta.v1.ObjectMetaArgs'] metadata: metadata.name must be the Kubernetes node name.
-        :param pulumi.Input['CSINodeSpecArgs'] spec: spec is the specification of CSINode
+        :param pulumi.Input['_meta.v1.ObjectMetaPatchArgs'] metadata: metadata.name must be the Kubernetes node name.
+        :param pulumi.Input['CSINodeSpecPatchArgs'] spec: spec is the specification of CSINode
         """
         if api_version is not None:
             pulumi.set(__self__, "api_version", 'storage.k8s.io/v1')
@@ -63,26 +63,26 @@ class CSINodePatchArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]:
         """
         metadata.name must be the Kubernetes node name.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['CSINodeSpecArgs']]:
+    def spec(self) -> Optional[pulumi.Input['CSINodeSpecPatchArgs']]:
         """
         spec is the specification of CSINode
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['CSINodeSpecArgs']]):
+    def spec(self, value: Optional[pulumi.Input['CSINodeSpecPatchArgs']]):
         pulumi.set(self, "spec", value)
 
 
@@ -93,8 +93,8 @@ class CSINodePatch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['CSINodeSpecArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
+                 spec: Optional[pulumi.Input[pulumi.InputType['CSINodeSpecPatchArgs']]] = None,
                  __props__=None):
         """
         CSINode holds information about all CSI drivers installed on a node. CSI drivers do not need to create the CSINode object directly. As long as they use the node-driver-registrar sidecar container, the kubelet will automatically populate the CSINode object for the CSI driver as part of kubelet plugin registration. CSINode has the same name as a node. If the object is missing, it means either there are no CSI Drivers available on the node, or the Kubelet version is low enough that it doesn't create this object. CSINode has an OwnerReference that points to the corresponding node object.
@@ -103,8 +103,8 @@ class CSINodePatch(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_version: APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-        :param pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']] metadata: metadata.name must be the Kubernetes node name.
-        :param pulumi.Input[pulumi.InputType['CSINodeSpecArgs']] spec: spec is the specification of CSINode
+        :param pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']] metadata: metadata.name must be the Kubernetes node name.
+        :param pulumi.Input[pulumi.InputType['CSINodeSpecPatchArgs']] spec: spec is the specification of CSINode
         """
         ...
     @overload
@@ -132,17 +132,12 @@ class CSINodePatch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['CSINodeSpecArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
+                 spec: Optional[pulumi.Input[pulumi.InputType['CSINodeSpecPatchArgs']]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -152,7 +147,7 @@ class CSINodePatch(pulumi.CustomResource):
             __props__.__dict__["kind"] = 'CSINode'
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["spec"] = spec
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:storage.k8s.io/v1beta1:CSINode")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:storage.k8s.io/v1beta1:CSINodePatch")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(CSINodePatch, __self__).__init__(
             'kubernetes:storage.k8s.io/v1:CSINodePatch',
@@ -200,7 +195,7 @@ class CSINodePatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Optional['_meta.v1.outputs.ObjectMeta']]:
+    def metadata(self) -> pulumi.Output[Optional['_meta.v1.outputs.ObjectMetaPatch']]:
         """
         metadata.name must be the Kubernetes node name.
         """
@@ -208,7 +203,7 @@ class CSINodePatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def spec(self) -> pulumi.Output['outputs.CSINodeSpec']:
+    def spec(self) -> pulumi.Output[Optional['outputs.CSINodeSpecPatch']]:
         """
         spec is the specification of CSINode
         """

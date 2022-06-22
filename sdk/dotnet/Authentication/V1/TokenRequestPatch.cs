@@ -31,19 +31,19 @@ namespace Pulumi.Kubernetes.Authentication.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Spec holds information about the request being evaluated
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Authentication.V1.TokenRequestSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Authentication.V1.TokenRequestSpecPatch> Spec { get; private set; } = null!;
 
         /// <summary>
         /// Status is filled in by the server and indicates whether the token can be authenticated.
         /// </summary>
         [Output("status")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Authentication.V1.TokenRequestStatus> Status { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Authentication.V1.TokenRequestStatusPatch> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -121,13 +121,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Authentication.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// Spec holds information about the request being evaluated
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Authentication.V1.TokenRequestSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Authentication.V1.TokenRequestSpecPatchArgs>? Spec { get; set; }
 
         public TokenRequestPatchArgs()
         {

@@ -60,15 +60,15 @@ export class IngressPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public readonly spec!: pulumi.Output<outputs.networking.v1.IngressSpec>;
+    public readonly spec!: pulumi.Output<outputs.networking.v1.IngressSpecPatch>;
     /**
      * Status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.networking.v1.IngressStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.networking.v1.IngressStatusPatch>;
 
     /**
      * Create a IngressPatch resource with the given unique name, arguments, and options.
@@ -94,7 +94,7 @@ export class IngressPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:extensions/v1beta1:Ingress" }, { type: "kubernetes:networking.k8s.io/v1beta1:Ingress" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:extensions/v1beta1:IngressPatch" }, { type: "kubernetes:networking.k8s.io/v1beta1:IngressPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(IngressPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -115,9 +115,9 @@ export interface IngressPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    spec?: pulumi.Input<inputs.networking.v1.IngressSpec>;
+    spec?: pulumi.Input<inputs.networking.v1.IngressSpecPatch>;
 }

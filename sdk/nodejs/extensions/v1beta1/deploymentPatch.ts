@@ -70,15 +70,15 @@ export class DeploymentPatch extends pulumi.CustomResource {
     /**
      * Standard object metadata.
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the desired behavior of the Deployment.
      */
-    public readonly spec!: pulumi.Output<outputs.extensions.v1beta1.DeploymentSpec>;
+    public readonly spec!: pulumi.Output<outputs.extensions.v1beta1.DeploymentSpecPatch>;
     /**
      * Most recently observed status of the Deployment.
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.extensions.v1beta1.DeploymentStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.extensions.v1beta1.DeploymentStatusPatch>;
 
     /**
      * Create a DeploymentPatch resource with the given unique name, arguments, and options.
@@ -105,7 +105,7 @@ export class DeploymentPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:apps/v1:Deployment" }, { type: "kubernetes:apps/v1beta1:Deployment" }, { type: "kubernetes:apps/v1beta2:Deployment" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:apps/v1:DeploymentPatch" }, { type: "kubernetes:apps/v1beta1:DeploymentPatch" }, { type: "kubernetes:apps/v1beta2:DeploymentPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DeploymentPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -126,9 +126,9 @@ export interface DeploymentPatchArgs {
     /**
      * Standard object metadata.
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the desired behavior of the Deployment.
      */
-    spec?: pulumi.Input<inputs.extensions.v1beta1.DeploymentSpec>;
+    spec?: pulumi.Input<inputs.extensions.v1beta1.DeploymentSpecPatch>;
 }

@@ -20,9 +20,9 @@ type RuntimeClassPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Specification of the RuntimeClass More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec RuntimeClassSpecOutput `pulumi:"spec"`
+	Spec RuntimeClassSpecPatchPtrOutput `pulumi:"spec"`
 }
 
 // NewRuntimeClassPatch registers a new resource with the given unique name, arguments, and options.
@@ -36,10 +36,10 @@ func NewRuntimeClassPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("RuntimeClass")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:node.k8s.io/v1:RuntimeClass"),
+			Type: pulumi.String("kubernetes:node.k8s.io/v1:RuntimeClassPatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:node.k8s.io/v1beta1:RuntimeClass"),
+			Type: pulumi.String("kubernetes:node.k8s.io/v1beta1:RuntimeClassPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -80,9 +80,9 @@ type runtimeClassPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Specification of the RuntimeClass More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec *RuntimeClassSpec `pulumi:"spec"`
+	Spec *RuntimeClassSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a RuntimeClassPatch resource.
@@ -92,9 +92,9 @@ type RuntimeClassPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Specification of the RuntimeClass More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec RuntimeClassSpecPtrInput
+	Spec RuntimeClassSpecPatchPtrInput
 }
 
 func (RuntimeClassPatchArgs) ElementType() reflect.Type {
@@ -195,13 +195,13 @@ func (o RuntimeClassPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o RuntimeClassPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *RuntimeClassPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o RuntimeClassPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *RuntimeClassPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Specification of the RuntimeClass More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o RuntimeClassPatchOutput) Spec() RuntimeClassSpecOutput {
-	return o.ApplyT(func(v *RuntimeClassPatch) RuntimeClassSpecOutput { return v.Spec }).(RuntimeClassSpecOutput)
+func (o RuntimeClassPatchOutput) Spec() RuntimeClassSpecPatchPtrOutput {
+	return o.ApplyT(func(v *RuntimeClassPatch) RuntimeClassSpecPatchPtrOutput { return v.Spec }).(RuntimeClassSpecPatchPtrOutput)
 }
 
 type RuntimeClassPatchArrayOutput struct{ *pulumi.OutputState }

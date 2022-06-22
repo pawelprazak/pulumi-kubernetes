@@ -31,19 +31,19 @@ namespace Pulumi.Kubernetes.FlowControl.V1Beta2
         /// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// `spec` is the specification of the desired behavior of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.FlowControl.V1Beta2.PriorityLevelConfigurationSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.FlowControl.V1Beta2.PriorityLevelConfigurationSpecPatch> Spec { get; private set; } = null!;
 
         /// <summary>
         /// `status` is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Output("status")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.FlowControl.V1Beta2.PriorityLevelConfigurationStatus> Status { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.FlowControl.V1Beta2.PriorityLevelConfigurationStatusPatch> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -82,8 +82,8 @@ namespace Pulumi.Kubernetes.FlowControl.V1Beta2
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:flowcontrol.apiserver.k8s.io/v1alpha1:PriorityLevelConfiguration"},
-                    new Pulumi.Alias { Type = "kubernetes:flowcontrol.apiserver.k8s.io/v1beta1:PriorityLevelConfiguration"},
+                    new Pulumi.Alias { Type = "kubernetes:flowcontrol.apiserver.k8s.io/v1alpha1:PriorityLevelConfigurationPatch"},
+                    new Pulumi.Alias { Type = "kubernetes:flowcontrol.apiserver.k8s.io/v1beta1:PriorityLevelConfigurationPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -126,13 +126,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.FlowControl.V1Beta2
         /// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// `spec` is the specification of the desired behavior of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.FlowControl.V1Beta2.PriorityLevelConfigurationSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.FlowControl.V1Beta2.PriorityLevelConfigurationSpecPatchArgs>? Spec { get; set; }
 
         public PriorityLevelConfigurationPatchArgs()
         {

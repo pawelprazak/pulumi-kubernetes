@@ -20,11 +20,11 @@ type PersistentVolumeClaimPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
-	Spec PersistentVolumeClaimSpecPtrOutput `pulumi:"spec"`
+	Spec PersistentVolumeClaimSpecPatchPtrOutput `pulumi:"spec"`
 	// status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
-	Status PersistentVolumeClaimStatusPtrOutput `pulumi:"status"`
+	Status PersistentVolumeClaimStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewPersistentVolumeClaimPatch registers a new resource with the given unique name, arguments, and options.
@@ -73,9 +73,9 @@ type persistentVolumeClaimPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
-	Spec *PersistentVolumeClaimSpec `pulumi:"spec"`
+	Spec *PersistentVolumeClaimSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a PersistentVolumeClaimPatch resource.
@@ -85,9 +85,9 @@ type PersistentVolumeClaimPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
-	Spec PersistentVolumeClaimSpecPtrInput
+	Spec PersistentVolumeClaimSpecPatchPtrInput
 }
 
 func (PersistentVolumeClaimPatchArgs) ElementType() reflect.Type {
@@ -188,18 +188,18 @@ func (o PersistentVolumeClaimPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o PersistentVolumeClaimPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *PersistentVolumeClaimPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o PersistentVolumeClaimPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *PersistentVolumeClaimPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
-func (o PersistentVolumeClaimPatchOutput) Spec() PersistentVolumeClaimSpecPtrOutput {
-	return o.ApplyT(func(v *PersistentVolumeClaimPatch) PersistentVolumeClaimSpecPtrOutput { return v.Spec }).(PersistentVolumeClaimSpecPtrOutput)
+func (o PersistentVolumeClaimPatchOutput) Spec() PersistentVolumeClaimSpecPatchPtrOutput {
+	return o.ApplyT(func(v *PersistentVolumeClaimPatch) PersistentVolumeClaimSpecPatchPtrOutput { return v.Spec }).(PersistentVolumeClaimSpecPatchPtrOutput)
 }
 
 // status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
-func (o PersistentVolumeClaimPatchOutput) Status() PersistentVolumeClaimStatusPtrOutput {
-	return o.ApplyT(func(v *PersistentVolumeClaimPatch) PersistentVolumeClaimStatusPtrOutput { return v.Status }).(PersistentVolumeClaimStatusPtrOutput)
+func (o PersistentVolumeClaimPatchOutput) Status() PersistentVolumeClaimStatusPatchPtrOutput {
+	return o.ApplyT(func(v *PersistentVolumeClaimPatch) PersistentVolumeClaimStatusPatchPtrOutput { return v.Status }).(PersistentVolumeClaimStatusPatchPtrOutput)
 }
 
 type PersistentVolumeClaimPatchArrayOutput struct{ *pulumi.OutputState }

@@ -31,19 +31,19 @@ namespace Pulumi.Kubernetes.Authentication.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Spec holds information about the request being evaluated
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Authentication.V1.TokenReviewSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Authentication.V1.TokenReviewSpecPatch> Spec { get; private set; } = null!;
 
         /// <summary>
         /// Status is filled in by the server and indicates whether the request can be authenticated.
         /// </summary>
         [Output("status")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Authentication.V1.TokenReviewStatus> Status { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Authentication.V1.TokenReviewStatusPatch> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.Kubernetes.Authentication.V1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:authentication.k8s.io/v1beta1:TokenReview"},
+                    new Pulumi.Alias { Type = "kubernetes:authentication.k8s.io/v1beta1:TokenReviewPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -125,13 +125,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Authentication.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// Spec holds information about the request being evaluated
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Authentication.V1.TokenReviewSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Authentication.V1.TokenReviewSpecPatchArgs>? Spec { get; set; }
 
         public TokenReviewPatchArgs()
         {

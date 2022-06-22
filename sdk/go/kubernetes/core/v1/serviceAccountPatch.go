@@ -20,13 +20,13 @@ type ServiceAccountPatch struct {
 	// AutomountServiceAccountToken indicates whether pods running as this service account should have an API token automatically mounted. Can be overridden at the pod level.
 	AutomountServiceAccountToken pulumi.BoolPtrOutput `pulumi:"automountServiceAccountToken"`
 	// ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
-	ImagePullSecrets LocalObjectReferenceArrayOutput `pulumi:"imagePullSecrets"`
+	ImagePullSecrets LocalObjectReferencePatchArrayOutput `pulumi:"imagePullSecrets"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Secrets is a list of the secrets in the same namespace that pods running using this ServiceAccount are allowed to use. Pods are only limited to this list if this service account has a "kubernetes.io/enforce-mountable-secrets" annotation set to "true". This field should not be used to find auto-generated service account token secrets for use outside of pods. Instead, tokens can be requested directly using the TokenRequest API, or service account token secrets can be manually created. More info: https://kubernetes.io/docs/concepts/configuration/secret
-	Secrets ObjectReferenceArrayOutput `pulumi:"secrets"`
+	Secrets ObjectReferencePatchArrayOutput `pulumi:"secrets"`
 }
 
 // NewServiceAccountPatch registers a new resource with the given unique name, arguments, and options.
@@ -75,13 +75,13 @@ type serviceAccountPatchArgs struct {
 	// AutomountServiceAccountToken indicates whether pods running as this service account should have an API token automatically mounted. Can be overridden at the pod level.
 	AutomountServiceAccountToken *bool `pulumi:"automountServiceAccountToken"`
 	// ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
-	ImagePullSecrets []LocalObjectReference `pulumi:"imagePullSecrets"`
+	ImagePullSecrets []LocalObjectReferencePatch `pulumi:"imagePullSecrets"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Secrets is a list of the secrets in the same namespace that pods running using this ServiceAccount are allowed to use. Pods are only limited to this list if this service account has a "kubernetes.io/enforce-mountable-secrets" annotation set to "true". This field should not be used to find auto-generated service account token secrets for use outside of pods. Instead, tokens can be requested directly using the TokenRequest API, or service account token secrets can be manually created. More info: https://kubernetes.io/docs/concepts/configuration/secret
-	Secrets []ObjectReference `pulumi:"secrets"`
+	Secrets []ObjectReferencePatch `pulumi:"secrets"`
 }
 
 // The set of arguments for constructing a ServiceAccountPatch resource.
@@ -91,13 +91,13 @@ type ServiceAccountPatchArgs struct {
 	// AutomountServiceAccountToken indicates whether pods running as this service account should have an API token automatically mounted. Can be overridden at the pod level.
 	AutomountServiceAccountToken pulumi.BoolPtrInput
 	// ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
-	ImagePullSecrets LocalObjectReferenceArrayInput
+	ImagePullSecrets LocalObjectReferencePatchArrayInput
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Secrets is a list of the secrets in the same namespace that pods running using this ServiceAccount are allowed to use. Pods are only limited to this list if this service account has a "kubernetes.io/enforce-mountable-secrets" annotation set to "true". This field should not be used to find auto-generated service account token secrets for use outside of pods. Instead, tokens can be requested directly using the TokenRequest API, or service account token secrets can be manually created. More info: https://kubernetes.io/docs/concepts/configuration/secret
-	Secrets ObjectReferenceArrayInput
+	Secrets ObjectReferencePatchArrayInput
 }
 
 func (ServiceAccountPatchArgs) ElementType() reflect.Type {
@@ -198,8 +198,8 @@ func (o ServiceAccountPatchOutput) AutomountServiceAccountToken() pulumi.BoolPtr
 }
 
 // ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
-func (o ServiceAccountPatchOutput) ImagePullSecrets() LocalObjectReferenceArrayOutput {
-	return o.ApplyT(func(v *ServiceAccountPatch) LocalObjectReferenceArrayOutput { return v.ImagePullSecrets }).(LocalObjectReferenceArrayOutput)
+func (o ServiceAccountPatchOutput) ImagePullSecrets() LocalObjectReferencePatchArrayOutput {
+	return o.ApplyT(func(v *ServiceAccountPatch) LocalObjectReferencePatchArrayOutput { return v.ImagePullSecrets }).(LocalObjectReferencePatchArrayOutput)
 }
 
 // Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -208,13 +208,13 @@ func (o ServiceAccountPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o ServiceAccountPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *ServiceAccountPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o ServiceAccountPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *ServiceAccountPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Secrets is a list of the secrets in the same namespace that pods running using this ServiceAccount are allowed to use. Pods are only limited to this list if this service account has a "kubernetes.io/enforce-mountable-secrets" annotation set to "true". This field should not be used to find auto-generated service account token secrets for use outside of pods. Instead, tokens can be requested directly using the TokenRequest API, or service account token secrets can be manually created. More info: https://kubernetes.io/docs/concepts/configuration/secret
-func (o ServiceAccountPatchOutput) Secrets() ObjectReferenceArrayOutput {
-	return o.ApplyT(func(v *ServiceAccountPatch) ObjectReferenceArrayOutput { return v.Secrets }).(ObjectReferenceArrayOutput)
+func (o ServiceAccountPatchOutput) Secrets() ObjectReferencePatchArrayOutput {
+	return o.ApplyT(func(v *ServiceAccountPatch) ObjectReferencePatchArrayOutput { return v.Secrets }).(ObjectReferencePatchArrayOutput)
 }
 
 type ServiceAccountPatchArrayOutput struct{ *pulumi.OutputState }

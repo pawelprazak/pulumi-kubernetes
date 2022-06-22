@@ -49,7 +49,7 @@ namespace Pulumi.Kubernetes.Core.V1
         /// The object that this event is about.
         /// </summary>
         [Output("involvedObject")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.ObjectReference> InvolvedObject { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.ObjectReferencePatch> InvolvedObject { get; private set; } = null!;
 
         /// <summary>
         /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -73,7 +73,7 @@ namespace Pulumi.Kubernetes.Core.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// This should be a short, machine understandable string that gives the reason for the transition into the object's current status.
@@ -85,7 +85,7 @@ namespace Pulumi.Kubernetes.Core.V1
         /// Optional secondary object for more complex actions.
         /// </summary>
         [Output("related")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.ObjectReference> Related { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.ObjectReferencePatch> Related { get; private set; } = null!;
 
         /// <summary>
         /// Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.
@@ -103,13 +103,13 @@ namespace Pulumi.Kubernetes.Core.V1
         /// Data about the Event series this event represents or nil if it's a singleton Event.
         /// </summary>
         [Output("series")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.EventSeries> Series { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.EventSeriesPatch> Series { get; private set; } = null!;
 
         /// <summary>
         /// The component reporting this event. Should be a short machine understandable string.
         /// </summary>
         [Output("source")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.EventSource> Source { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.EventSourcePatch> Source { get; private set; } = null!;
 
         /// <summary>
         /// Type of this event (Normal, Warning), new types could be added in the future
@@ -154,8 +154,8 @@ namespace Pulumi.Kubernetes.Core.V1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:events.k8s.io/v1:Event"},
-                    new Pulumi.Alias { Type = "kubernetes:events.k8s.io/v1beta1:Event"},
+                    new Pulumi.Alias { Type = "kubernetes:events.k8s.io/v1:EventPatch"},
+                    new Pulumi.Alias { Type = "kubernetes:events.k8s.io/v1beta1:EventPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -216,7 +216,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Core.V1
         /// The object that this event is about.
         /// </summary>
         [Input("involvedObject")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Core.V1.ObjectReferenceArgs>? InvolvedObject { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Core.V1.ObjectReferencePatchArgs>? InvolvedObject { get; set; }
 
         /// <summary>
         /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -240,7 +240,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Core.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// This should be a short, machine understandable string that gives the reason for the transition into the object's current status.
@@ -252,7 +252,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Core.V1
         /// Optional secondary object for more complex actions.
         /// </summary>
         [Input("related")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Core.V1.ObjectReferenceArgs>? Related { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Core.V1.ObjectReferencePatchArgs>? Related { get; set; }
 
         /// <summary>
         /// Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.
@@ -270,13 +270,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Core.V1
         /// Data about the Event series this event represents or nil if it's a singleton Event.
         /// </summary>
         [Input("series")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Core.V1.EventSeriesArgs>? Series { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Core.V1.EventSeriesPatchArgs>? Series { get; set; }
 
         /// <summary>
         /// The component reporting this event. Should be a short machine understandable string.
         /// </summary>
         [Input("source")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Core.V1.EventSourceArgs>? Source { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Core.V1.EventSourcePatchArgs>? Source { get; set; }
 
         /// <summary>
         /// Type of this event (Normal, Warning), new types could be added in the future

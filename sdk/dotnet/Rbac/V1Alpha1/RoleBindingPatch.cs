@@ -31,19 +31,19 @@ namespace Pulumi.Kubernetes.Rbac.V1Alpha1
         /// Standard object's metadata.
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
         /// </summary>
         [Output("roleRef")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Rbac.V1Alpha1.RoleRef> RoleRef { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Rbac.V1Alpha1.RoleRefPatch> RoleRef { get; private set; } = null!;
 
         /// <summary>
         /// Subjects holds references to the objects the role applies to.
         /// </summary>
         [Output("subjects")]
-        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Rbac.V1Alpha1.Subject>> Subjects { get; private set; } = null!;
+        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Rbac.V1Alpha1.SubjectPatch>> Subjects { get; private set; } = null!;
 
 
         /// <summary>
@@ -82,8 +82,8 @@ namespace Pulumi.Kubernetes.Rbac.V1Alpha1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:rbac.authorization.k8s.io/v1:RoleBinding"},
-                    new Pulumi.Alias { Type = "kubernetes:rbac.authorization.k8s.io/v1beta1:RoleBinding"},
+                    new Pulumi.Alias { Type = "kubernetes:rbac.authorization.k8s.io/v1:RoleBindingPatch"},
+                    new Pulumi.Alias { Type = "kubernetes:rbac.authorization.k8s.io/v1beta1:RoleBindingPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -126,23 +126,23 @@ namespace Pulumi.Kubernetes.Types.Inputs.Rbac.V1Alpha1
         /// Standard object's metadata.
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
         /// </summary>
         [Input("roleRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Rbac.V1Alpha1.RoleRefArgs>? RoleRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Rbac.V1Alpha1.RoleRefPatchArgs>? RoleRef { get; set; }
 
         [Input("subjects")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Rbac.V1Alpha1.SubjectArgs>? _subjects;
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Rbac.V1Alpha1.SubjectPatchArgs>? _subjects;
 
         /// <summary>
         /// Subjects holds references to the objects the role applies to.
         /// </summary>
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Rbac.V1Alpha1.SubjectArgs> Subjects
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Rbac.V1Alpha1.SubjectPatchArgs> Subjects
         {
-            get => _subjects ?? (_subjects = new InputList<Pulumi.Kubernetes.Types.Inputs.Rbac.V1Alpha1.SubjectArgs>());
+            get => _subjects ?? (_subjects = new InputList<Pulumi.Kubernetes.Types.Inputs.Rbac.V1Alpha1.SubjectPatchArgs>());
             set => _subjects = value;
         }
 

@@ -20,11 +20,11 @@ type SelfSubjectAccessReviewPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Spec holds information about the request being evaluated.  user and groups must be empty
-	Spec SelfSubjectAccessReviewSpecOutput `pulumi:"spec"`
+	Spec SelfSubjectAccessReviewSpecPatchPtrOutput `pulumi:"spec"`
 	// Status is filled in by the server and indicates whether the request is allowed or not
-	Status SubjectAccessReviewStatusPtrOutput `pulumi:"status"`
+	Status SubjectAccessReviewStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewSelfSubjectAccessReviewPatch registers a new resource with the given unique name, arguments, and options.
@@ -38,7 +38,7 @@ func NewSelfSubjectAccessReviewPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("SelfSubjectAccessReview")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:authorization.k8s.io/v1beta1:SelfSubjectAccessReview"),
+			Type: pulumi.String("kubernetes:authorization.k8s.io/v1beta1:SelfSubjectAccessReviewPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -79,9 +79,9 @@ type selfSubjectAccessReviewPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Spec holds information about the request being evaluated.  user and groups must be empty
-	Spec *SelfSubjectAccessReviewSpec `pulumi:"spec"`
+	Spec *SelfSubjectAccessReviewSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a SelfSubjectAccessReviewPatch resource.
@@ -91,9 +91,9 @@ type SelfSubjectAccessReviewPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Spec holds information about the request being evaluated.  user and groups must be empty
-	Spec SelfSubjectAccessReviewSpecPtrInput
+	Spec SelfSubjectAccessReviewSpecPatchPtrInput
 }
 
 func (SelfSubjectAccessReviewPatchArgs) ElementType() reflect.Type {
@@ -194,18 +194,18 @@ func (o SelfSubjectAccessReviewPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o SelfSubjectAccessReviewPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *SelfSubjectAccessReviewPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o SelfSubjectAccessReviewPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *SelfSubjectAccessReviewPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Spec holds information about the request being evaluated.  user and groups must be empty
-func (o SelfSubjectAccessReviewPatchOutput) Spec() SelfSubjectAccessReviewSpecOutput {
-	return o.ApplyT(func(v *SelfSubjectAccessReviewPatch) SelfSubjectAccessReviewSpecOutput { return v.Spec }).(SelfSubjectAccessReviewSpecOutput)
+func (o SelfSubjectAccessReviewPatchOutput) Spec() SelfSubjectAccessReviewSpecPatchPtrOutput {
+	return o.ApplyT(func(v *SelfSubjectAccessReviewPatch) SelfSubjectAccessReviewSpecPatchPtrOutput { return v.Spec }).(SelfSubjectAccessReviewSpecPatchPtrOutput)
 }
 
 // Status is filled in by the server and indicates whether the request is allowed or not
-func (o SelfSubjectAccessReviewPatchOutput) Status() SubjectAccessReviewStatusPtrOutput {
-	return o.ApplyT(func(v *SelfSubjectAccessReviewPatch) SubjectAccessReviewStatusPtrOutput { return v.Status }).(SubjectAccessReviewStatusPtrOutput)
+func (o SelfSubjectAccessReviewPatchOutput) Status() SubjectAccessReviewStatusPatchPtrOutput {
+	return o.ApplyT(func(v *SelfSubjectAccessReviewPatch) SubjectAccessReviewStatusPatchPtrOutput { return v.Status }).(SubjectAccessReviewStatusPatchPtrOutput)
 }
 
 type SelfSubjectAccessReviewPatchArrayOutput struct{ *pulumi.OutputState }

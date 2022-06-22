@@ -44,7 +44,7 @@ export class StorageClassPatch extends pulumi.CustomResource {
     /**
      * Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.
      */
-    public readonly allowedTopologies!: pulumi.Output<outputs.core.v1.TopologySelectorTerm[]>;
+    public readonly allowedTopologies!: pulumi.Output<outputs.core.v1.TopologySelectorTermPatch[]>;
     /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
@@ -56,7 +56,7 @@ export class StorageClassPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Dynamically provisioned PersistentVolumes of this storage class are created with these mountOptions, e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid.
      */
@@ -112,7 +112,7 @@ export class StorageClassPatch extends pulumi.CustomResource {
             resourceInputs["volumeBindingMode"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:storage.k8s.io/v1beta1:StorageClass" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:storage.k8s.io/v1beta1:StorageClassPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(StorageClassPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -129,7 +129,7 @@ export interface StorageClassPatchArgs {
     /**
      * Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.
      */
-    allowedTopologies?: pulumi.Input<pulumi.Input<inputs.core.v1.TopologySelectorTerm>[]>;
+    allowedTopologies?: pulumi.Input<pulumi.Input<inputs.core.v1.TopologySelectorTermPatch>[]>;
     /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
@@ -141,7 +141,7 @@ export interface StorageClassPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Dynamically provisioned PersistentVolumes of this storage class are created with these mountOptions, e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid.
      */

@@ -46,11 +46,11 @@ export class PodSecurityPolicyPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * spec defines the policy enforced.
      */
-    public readonly spec!: pulumi.Output<outputs.policy.v1beta1.PodSecurityPolicySpec>;
+    public readonly spec!: pulumi.Output<outputs.policy.v1beta1.PodSecurityPolicySpecPatch>;
 
     /**
      * Create a PodSecurityPolicyPatch resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class PodSecurityPolicyPatch extends pulumi.CustomResource {
             resourceInputs["spec"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:extensions/v1beta1:PodSecurityPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:extensions/v1beta1:PodSecurityPolicyPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PodSecurityPolicyPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -95,9 +95,9 @@ export interface PodSecurityPolicyPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * spec defines the policy enforced.
      */
-    spec?: pulumi.Input<inputs.policy.v1beta1.PodSecurityPolicySpec>;
+    spec?: pulumi.Input<inputs.policy.v1beta1.PodSecurityPolicySpecPatch>;
 }

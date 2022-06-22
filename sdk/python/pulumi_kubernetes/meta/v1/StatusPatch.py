@@ -18,19 +18,19 @@ class StatusPatchArgs:
     def __init__(__self__, *,
                  api_version: Optional[pulumi.Input[str]] = None,
                  code: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input['StatusDetailsArgs']] = None,
+                 details: Optional[pulumi.Input['StatusDetailsPatchArgs']] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input['ListMetaArgs']] = None,
+                 metadata: Optional[pulumi.Input['ListMetaPatchArgs']] = None,
                  reason: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a StatusPatch resource.
         :param pulumi.Input[str] api_version: APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         :param pulumi.Input[int] code: Suggested HTTP return code for this status, 0 if not set.
-        :param pulumi.Input['StatusDetailsArgs'] details: Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.
+        :param pulumi.Input['StatusDetailsPatchArgs'] details: Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         :param pulumi.Input[str] message: A human-readable description of the status of this operation.
-        :param pulumi.Input['ListMetaArgs'] metadata: Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        :param pulumi.Input['ListMetaPatchArgs'] metadata: Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         :param pulumi.Input[str] reason: A machine-readable description of why this operation is in the "Failure" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.
         """
         if api_version is not None:
@@ -74,14 +74,14 @@ class StatusPatchArgs:
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input['StatusDetailsArgs']]:
+    def details(self) -> Optional[pulumi.Input['StatusDetailsPatchArgs']]:
         """
         Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.
         """
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input['StatusDetailsArgs']]):
+    def details(self, value: Optional[pulumi.Input['StatusDetailsPatchArgs']]):
         pulumi.set(self, "details", value)
 
     @property
@@ -110,14 +110,14 @@ class StatusPatchArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['ListMetaArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['ListMetaPatchArgs']]:
         """
         Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['ListMetaArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['ListMetaPatchArgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -140,10 +140,10 @@ class StatusPatch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  code: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[pulumi.InputType['StatusDetailsArgs']]] = None,
+                 details: Optional[pulumi.Input[pulumi.InputType['StatusDetailsPatchArgs']]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['ListMetaArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['ListMetaPatchArgs']]] = None,
                  reason: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -153,10 +153,10 @@ class StatusPatch(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_version: APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         :param pulumi.Input[int] code: Suggested HTTP return code for this status, 0 if not set.
-        :param pulumi.Input[pulumi.InputType['StatusDetailsArgs']] details: Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.
+        :param pulumi.Input[pulumi.InputType['StatusDetailsPatchArgs']] details: Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         :param pulumi.Input[str] message: A human-readable description of the status of this operation.
-        :param pulumi.Input[pulumi.InputType['ListMetaArgs']] metadata: Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        :param pulumi.Input[pulumi.InputType['ListMetaPatchArgs']] metadata: Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         :param pulumi.Input[str] reason: A machine-readable description of why this operation is in the "Failure" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.
         """
         ...
@@ -185,20 +185,15 @@ class StatusPatch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  code: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[pulumi.InputType['StatusDetailsArgs']]] = None,
+                 details: Optional[pulumi.Input[pulumi.InputType['StatusDetailsPatchArgs']]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['ListMetaArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['ListMetaPatchArgs']]] = None,
                  reason: Optional[pulumi.Input[str]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -262,7 +257,7 @@ class StatusPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def details(self) -> pulumi.Output[Optional['outputs.StatusDetails']]:
+    def details(self) -> pulumi.Output[Optional['outputs.StatusDetailsPatch']]:
         """
         Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.
         """
@@ -286,7 +281,7 @@ class StatusPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Optional['outputs.ListMeta']]:
+    def metadata(self) -> pulumi.Output[Optional['outputs.ListMetaPatch']]:
         """
         Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         """

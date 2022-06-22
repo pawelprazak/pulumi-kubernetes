@@ -46,7 +46,7 @@ export class ServiceAccountPatch extends pulumi.CustomResource {
     /**
      * ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
      */
-    public readonly imagePullSecrets!: pulumi.Output<outputs.core.v1.LocalObjectReference[]>;
+    public readonly imagePullSecrets!: pulumi.Output<outputs.core.v1.LocalObjectReferencePatch[]>;
     /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
@@ -54,11 +54,11 @@ export class ServiceAccountPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Secrets is a list of the secrets in the same namespace that pods running using this ServiceAccount are allowed to use. Pods are only limited to this list if this service account has a "kubernetes.io/enforce-mountable-secrets" annotation set to "true". This field should not be used to find auto-generated service account token secrets for use outside of pods. Instead, tokens can be requested directly using the TokenRequest API, or service account token secrets can be manually created. More info: https://kubernetes.io/docs/concepts/configuration/secret
      */
-    public readonly secrets!: pulumi.Output<outputs.core.v1.ObjectReference[]>;
+    public readonly secrets!: pulumi.Output<outputs.core.v1.ObjectReferencePatch[]>;
 
     /**
      * Create a ServiceAccountPatch resource with the given unique name, arguments, and options.
@@ -105,7 +105,7 @@ export interface ServiceAccountPatchArgs {
     /**
      * ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
      */
-    imagePullSecrets?: pulumi.Input<pulumi.Input<inputs.core.v1.LocalObjectReference>[]>;
+    imagePullSecrets?: pulumi.Input<pulumi.Input<inputs.core.v1.LocalObjectReferencePatch>[]>;
     /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
@@ -113,9 +113,9 @@ export interface ServiceAccountPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Secrets is a list of the secrets in the same namespace that pods running using this ServiceAccount are allowed to use. Pods are only limited to this list if this service account has a "kubernetes.io/enforce-mountable-secrets" annotation set to "true". This field should not be used to find auto-generated service account token secrets for use outside of pods. Instead, tokens can be requested directly using the TokenRequest API, or service account token secrets can be manually created. More info: https://kubernetes.io/docs/concepts/configuration/secret
      */
-    secrets?: pulumi.Input<pulumi.Input<inputs.core.v1.ObjectReference>[]>;
+    secrets?: pulumi.Input<pulumi.Input<inputs.core.v1.ObjectReferencePatch>[]>;
 }

@@ -24,7 +24,6 @@ import (
 	"github.com/pulumi/pulumi-kubernetes/provider/v3/pkg/gen/examples"
 	pschema "github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/deepcopy"
 )
 
 // typeOverlays augment the types defined by the kubernetes schema.
@@ -294,10 +293,38 @@ func PulumiSchema(swagger map[string]interface{}) pschema.PackageSpec {
 				pkg.Types[tok] = pschema.ComplexTypeSpec{
 					ObjectTypeSpec: objectSpec,
 				}
+
+				var patchSpec pschema.ObjectTypeSpec
 				if len(patchTok) > 0 {
-					o := deepcopy.Copy(objectSpec)
-					patchSpec := o.(pschema.ObjectTypeSpec)
-					patchSpec.Required = nil
+					patchSpec = pschema.ObjectTypeSpec{
+						Description: kind.Comment() + kind.PulumiComment(),
+						Type:        "object",
+						Properties:  map[string]pschema.PropertySpec{},
+						Language:    map[string]pschema.RawMessage{},
+					}
+
+					var propNames []string
+					for _, p := range kind.Properties() {
+						patchSpec.Properties[p.name] = genPropertySpec(p, kind.apiVersion, kind.kind+"Patch")
+						propNames = append(propNames, p.name)
+					}
+
+					// Check if the current type exists in the overlays and overwrite types accordingly.
+					if overlaySpec, hasType := typeOverlays[tok]; hasType {
+						for propName, overlayProp := range overlaySpec.Properties {
+							// If overlay prop types are defined, overwrite the k8s schema prop type.
+							if len(overlayProp.OneOf) > 1 {
+								if k8sProp, propExists := patchSpec.Properties[propName]; propExists {
+									k8sProp.OneOf = overlayProp.OneOf
+									k8sProp.Ref = ""
+									k8sProp.Type = ""
+
+									patchSpec.Properties[propName] = k8sProp
+								}
+							}
+						}
+					}
+
 					pkg.Types[patchTok] = pschema.ComplexTypeSpec{
 						ObjectTypeSpec: patchSpec,
 					}
@@ -345,10 +372,42 @@ func PulumiSchema(swagger map[string]interface{}) pschema.PackageSpec {
 				pkg.Resources[tok] = resourceSpec
 
 				if len(patchTok) > 0 {
-					o := deepcopy.Copy(resourceSpec)
-					patchSpec := o.(pschema.ResourceSpec)
-					patchSpec.RequiredInputs = nil
-					pkg.Resources[patchTok] = patchSpec
+					patchResourceSpec := pschema.ResourceSpec{
+						ObjectTypeSpec:     patchSpec,
+						DeprecationMessage: kind.DeprecationComment(),
+						InputProperties:    map[string]pschema.PropertySpec{},
+					}
+
+					for _, p := range kind.RequiredInputProperties() {
+						patchResourceSpec.InputProperties[p.name] = genPropertySpec(p, kind.apiVersion, kind.kind+"Patch")
+					}
+					for _, p := range kind.OptionalInputProperties() {
+						patchResourceSpec.InputProperties[p.name] = genPropertySpec(p, kind.apiVersion, kind.kind+"Patch")
+					}
+
+					for _, t := range kind.Aliases() {
+						aliasedType := fmt.Sprintf("%sPatch", t)
+						patchResourceSpec.Aliases = append(patchResourceSpec.Aliases, pschema.AliasSpec{Type: &aliasedType})
+					}
+
+					// TODO: may want to fix
+					// Check if the current resource exists in the overlays and overwrite types accordingly.
+					//if overlaySpec, hasResource := resourceOverlays[tok]; hasResource {
+					//	for propName, overlayProp := range overlaySpec.InputProperties {
+					//		// If overlay prop types are defined, overwrite the k8s schema prop type.
+					//		if len(overlayProp.OneOf) > 1 {
+					//			if k8sProp, propExists := objectSpec.Properties[propName]; propExists {
+					//				k8sProp.OneOf = overlayProp.OneOf
+					//				k8sProp.Ref = ""
+					//				k8sProp.Type = ""
+					//
+					//				patchResourceSpec.InputProperties[propName] = k8sProp
+					//			}
+					//		}
+					//	}
+					//}
+
+					pkg.Resources[patchTok] = patchResourceSpec
 				}
 			}
 		}
@@ -461,6 +520,17 @@ func genPropertySpec(p Property, resourceGV string, resourceKind string) pschema
 	var typ pschema.TypeSpec
 	err := json.Unmarshal([]byte(p.SchemaType()), &typ)
 	contract.Assert(err == nil)
+
+	if strings.HasSuffix(resourceKind, "Patch") {
+		if len(typ.Ref) > 0 && !strings.Contains(typ.Ref, "pulumi.json#") {
+			typ.Ref += "Patch"
+		}
+		if typ.Type == "array" && typ.Items != nil {
+			if len(typ.Items.Ref) > 0 && !strings.Contains(typ.Items.Ref, "pulumi.json#") {
+				typ.Items.Ref += "Patch"
+			}
+		}
+	}
 
 	constValue := func() *string {
 		cv := p.ConstValue()

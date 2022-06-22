@@ -46,15 +46,15 @@ export class NetworkPolicyPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the desired behavior for this NetworkPolicy.
      */
-    public readonly spec!: pulumi.Output<outputs.networking.v1.NetworkPolicySpec>;
+    public readonly spec!: pulumi.Output<outputs.networking.v1.NetworkPolicySpecPatch>;
     /**
      * Status is the current state of the NetworkPolicy. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.networking.v1.NetworkPolicyStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.networking.v1.NetworkPolicyStatusPatch>;
 
     /**
      * Create a NetworkPolicyPatch resource with the given unique name, arguments, and options.
@@ -80,7 +80,7 @@ export class NetworkPolicyPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:extensions/v1beta1:NetworkPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:extensions/v1beta1:NetworkPolicyPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkPolicyPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -101,9 +101,9 @@ export interface NetworkPolicyPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the desired behavior for this NetworkPolicy.
      */
-    spec?: pulumi.Input<inputs.networking.v1.NetworkPolicySpec>;
+    spec?: pulumi.Input<inputs.networking.v1.NetworkPolicySpecPatch>;
 }

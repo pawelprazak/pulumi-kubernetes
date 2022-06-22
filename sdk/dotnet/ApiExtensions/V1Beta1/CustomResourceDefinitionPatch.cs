@@ -28,19 +28,19 @@ namespace Pulumi.Kubernetes.ApiExtensions.V1Beta1
         public Output<string> Kind { get; private set; } = null!;
 
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// spec describes how the user wants the resources to appear
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.ApiExtensions.V1Beta1.CustomResourceDefinitionSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.ApiExtensions.V1Beta1.CustomResourceDefinitionSpecPatch> Spec { get; private set; } = null!;
 
         /// <summary>
         /// status indicates the actual state of the CustomResourceDefinition
         /// </summary>
         [Output("status")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.ApiExtensions.V1Beta1.CustomResourceDefinitionStatus> Status { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.ApiExtensions.V1Beta1.CustomResourceDefinitionStatusPatch> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Pulumi.Kubernetes.ApiExtensions.V1Beta1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:apiextensions.k8s.io/v1:CustomResourceDefinition"},
+                    new Pulumi.Alias { Type = "kubernetes:apiextensions.k8s.io/v1:CustomResourceDefinitionPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -119,13 +119,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.ApiExtensions.V1Beta1
         public Input<string>? Kind { get; set; }
 
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// spec describes how the user wants the resources to appear
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.ApiExtensions.V1Beta1.CustomResourceDefinitionSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.ApiExtensions.V1Beta1.CustomResourceDefinitionSpecPatchArgs>? Spec { get; set; }
 
         public CustomResourceDefinitionPatchArgs()
         {

@@ -49,7 +49,7 @@ namespace Pulumi.Kubernetes.Events.V1
         /// deprecatedSource is the deprecated field assuring backward compatibility with core.v1 Event type.
         /// </summary>
         [Output("deprecatedSource")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.EventSource> DeprecatedSource { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.EventSourcePatch> DeprecatedSource { get; private set; } = null!;
 
         /// <summary>
         /// eventTime is the time when this Event was first observed. It is required.
@@ -67,7 +67,7 @@ namespace Pulumi.Kubernetes.Events.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// note is a human-readable description of the status of this operation. Maximal length of the note is 1kB, but libraries should be prepared to handle values up to 64kB.
@@ -85,13 +85,13 @@ namespace Pulumi.Kubernetes.Events.V1
         /// regarding contains the object this Event is about. In most cases it's an Object reporting controller implements, e.g. ReplicaSetController implements ReplicaSets and this event is emitted because it acts on some changes in a ReplicaSet object.
         /// </summary>
         [Output("regarding")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.ObjectReference> Regarding { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.ObjectReferencePatch> Regarding { get; private set; } = null!;
 
         /// <summary>
         /// related is the optional secondary object for more complex actions. E.g. when regarding object triggers a creation or deletion of related object.
         /// </summary>
         [Output("related")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.ObjectReference> Related { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.ObjectReferencePatch> Related { get; private set; } = null!;
 
         /// <summary>
         /// reportingController is the name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`. This field cannot be empty for new Events.
@@ -109,7 +109,7 @@ namespace Pulumi.Kubernetes.Events.V1
         /// series is data about the Event series this event represents or nil if it's a singleton Event.
         /// </summary>
         [Output("series")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Events.V1.EventSeries> Series { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Events.V1.EventSeriesPatch> Series { get; private set; } = null!;
 
         /// <summary>
         /// type is the type of this event (Normal, Warning), new types could be added in the future. It is machine-readable. This field cannot be empty for new Events.
@@ -154,8 +154,8 @@ namespace Pulumi.Kubernetes.Events.V1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:core/v1:Event"},
-                    new Pulumi.Alias { Type = "kubernetes:events.k8s.io/v1beta1:Event"},
+                    new Pulumi.Alias { Type = "kubernetes:core/v1:EventPatch"},
+                    new Pulumi.Alias { Type = "kubernetes:events.k8s.io/v1beta1:EventPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -216,7 +216,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Events.V1
         /// deprecatedSource is the deprecated field assuring backward compatibility with core.v1 Event type.
         /// </summary>
         [Input("deprecatedSource")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Core.V1.EventSourceArgs>? DeprecatedSource { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Core.V1.EventSourcePatchArgs>? DeprecatedSource { get; set; }
 
         /// <summary>
         /// eventTime is the time when this Event was first observed. It is required.
@@ -234,7 +234,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Events.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// note is a human-readable description of the status of this operation. Maximal length of the note is 1kB, but libraries should be prepared to handle values up to 64kB.
@@ -252,13 +252,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Events.V1
         /// regarding contains the object this Event is about. In most cases it's an Object reporting controller implements, e.g. ReplicaSetController implements ReplicaSets and this event is emitted because it acts on some changes in a ReplicaSet object.
         /// </summary>
         [Input("regarding")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Core.V1.ObjectReferenceArgs>? Regarding { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Core.V1.ObjectReferencePatchArgs>? Regarding { get; set; }
 
         /// <summary>
         /// related is the optional secondary object for more complex actions. E.g. when regarding object triggers a creation or deletion of related object.
         /// </summary>
         [Input("related")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Core.V1.ObjectReferenceArgs>? Related { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Core.V1.ObjectReferencePatchArgs>? Related { get; set; }
 
         /// <summary>
         /// reportingController is the name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`. This field cannot be empty for new Events.
@@ -276,7 +276,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Events.V1
         /// series is data about the Event series this event represents or nil if it's a singleton Event.
         /// </summary>
         [Input("series")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Events.V1.EventSeriesArgs>? Series { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Events.V1.EventSeriesPatchArgs>? Series { get; set; }
 
         /// <summary>
         /// type is the type of this event (Normal, Warning), new types could be added in the future. It is machine-readable. This field cannot be empty for new Events.

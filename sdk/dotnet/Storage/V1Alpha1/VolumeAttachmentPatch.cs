@@ -33,19 +33,19 @@ namespace Pulumi.Kubernetes.Storage.V1Alpha1
         /// Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Storage.V1Alpha1.VolumeAttachmentSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Storage.V1Alpha1.VolumeAttachmentSpecPatch> Spec { get; private set; } = null!;
 
         /// <summary>
         /// Status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher.
         /// </summary>
         [Output("status")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Storage.V1Alpha1.VolumeAttachmentStatus> Status { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Storage.V1Alpha1.VolumeAttachmentStatusPatch> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Pulumi.Kubernetes.Storage.V1Alpha1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:storage.k8s.io/v1:VolumeAttachment"},
-                    new Pulumi.Alias { Type = "kubernetes:storage.k8s.io/v1beta1:VolumeAttachment"},
+                    new Pulumi.Alias { Type = "kubernetes:storage.k8s.io/v1:VolumeAttachmentPatch"},
+                    new Pulumi.Alias { Type = "kubernetes:storage.k8s.io/v1beta1:VolumeAttachmentPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -128,13 +128,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Storage.V1Alpha1
         /// Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// Specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Storage.V1Alpha1.VolumeAttachmentSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Storage.V1Alpha1.VolumeAttachmentSpecPatchArgs>? Spec { get; set; }
 
         public VolumeAttachmentPatchArgs()
         {

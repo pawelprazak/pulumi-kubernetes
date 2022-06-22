@@ -31,19 +31,19 @@ namespace Pulumi.Kubernetes.Autoscaling.V1
         /// Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// behaviour of autoscaler. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Autoscaling.V1.HorizontalPodAutoscalerSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Autoscaling.V1.HorizontalPodAutoscalerSpecPatch> Spec { get; private set; } = null!;
 
         /// <summary>
         /// current information about the autoscaler.
         /// </summary>
         [Output("status")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Autoscaling.V1.HorizontalPodAutoscalerStatus> Status { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Autoscaling.V1.HorizontalPodAutoscalerStatusPatch> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -82,9 +82,9 @@ namespace Pulumi.Kubernetes.Autoscaling.V1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:autoscaling/v2:HorizontalPodAutoscaler"},
-                    new Pulumi.Alias { Type = "kubernetes:autoscaling/v2beta1:HorizontalPodAutoscaler"},
-                    new Pulumi.Alias { Type = "kubernetes:autoscaling/v2beta2:HorizontalPodAutoscaler"},
+                    new Pulumi.Alias { Type = "kubernetes:autoscaling/v2:HorizontalPodAutoscalerPatch"},
+                    new Pulumi.Alias { Type = "kubernetes:autoscaling/v2beta1:HorizontalPodAutoscalerPatch"},
+                    new Pulumi.Alias { Type = "kubernetes:autoscaling/v2beta2:HorizontalPodAutoscalerPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -127,13 +127,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Autoscaling.V1
         /// Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// behaviour of autoscaler. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Autoscaling.V1.HorizontalPodAutoscalerSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Autoscaling.V1.HorizontalPodAutoscalerSpecPatchArgs>? Spec { get; set; }
 
         public HorizontalPodAutoscalerPatchArgs()
         {

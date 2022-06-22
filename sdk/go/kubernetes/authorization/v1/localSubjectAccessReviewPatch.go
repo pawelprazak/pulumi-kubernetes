@@ -20,11 +20,11 @@ type LocalSubjectAccessReviewPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Spec holds information about the request being evaluated.  spec.namespace must be equal to the namespace you made the request against.  If empty, it is defaulted.
-	Spec SubjectAccessReviewSpecOutput `pulumi:"spec"`
+	Spec SubjectAccessReviewSpecPatchPtrOutput `pulumi:"spec"`
 	// Status is filled in by the server and indicates whether the request is allowed or not
-	Status SubjectAccessReviewStatusPtrOutput `pulumi:"status"`
+	Status SubjectAccessReviewStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewLocalSubjectAccessReviewPatch registers a new resource with the given unique name, arguments, and options.
@@ -38,7 +38,7 @@ func NewLocalSubjectAccessReviewPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("LocalSubjectAccessReview")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:authorization.k8s.io/v1beta1:LocalSubjectAccessReview"),
+			Type: pulumi.String("kubernetes:authorization.k8s.io/v1beta1:LocalSubjectAccessReviewPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -79,9 +79,9 @@ type localSubjectAccessReviewPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Spec holds information about the request being evaluated.  spec.namespace must be equal to the namespace you made the request against.  If empty, it is defaulted.
-	Spec *SubjectAccessReviewSpec `pulumi:"spec"`
+	Spec *SubjectAccessReviewSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a LocalSubjectAccessReviewPatch resource.
@@ -91,9 +91,9 @@ type LocalSubjectAccessReviewPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Spec holds information about the request being evaluated.  spec.namespace must be equal to the namespace you made the request against.  If empty, it is defaulted.
-	Spec SubjectAccessReviewSpecPtrInput
+	Spec SubjectAccessReviewSpecPatchPtrInput
 }
 
 func (LocalSubjectAccessReviewPatchArgs) ElementType() reflect.Type {
@@ -194,18 +194,18 @@ func (o LocalSubjectAccessReviewPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o LocalSubjectAccessReviewPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *LocalSubjectAccessReviewPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o LocalSubjectAccessReviewPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *LocalSubjectAccessReviewPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Spec holds information about the request being evaluated.  spec.namespace must be equal to the namespace you made the request against.  If empty, it is defaulted.
-func (o LocalSubjectAccessReviewPatchOutput) Spec() SubjectAccessReviewSpecOutput {
-	return o.ApplyT(func(v *LocalSubjectAccessReviewPatch) SubjectAccessReviewSpecOutput { return v.Spec }).(SubjectAccessReviewSpecOutput)
+func (o LocalSubjectAccessReviewPatchOutput) Spec() SubjectAccessReviewSpecPatchPtrOutput {
+	return o.ApplyT(func(v *LocalSubjectAccessReviewPatch) SubjectAccessReviewSpecPatchPtrOutput { return v.Spec }).(SubjectAccessReviewSpecPatchPtrOutput)
 }
 
 // Status is filled in by the server and indicates whether the request is allowed or not
-func (o LocalSubjectAccessReviewPatchOutput) Status() SubjectAccessReviewStatusPtrOutput {
-	return o.ApplyT(func(v *LocalSubjectAccessReviewPatch) SubjectAccessReviewStatusPtrOutput { return v.Status }).(SubjectAccessReviewStatusPtrOutput)
+func (o LocalSubjectAccessReviewPatchOutput) Status() SubjectAccessReviewStatusPatchPtrOutput {
+	return o.ApplyT(func(v *LocalSubjectAccessReviewPatch) SubjectAccessReviewStatusPatchPtrOutput { return v.Status }).(SubjectAccessReviewStatusPatchPtrOutput)
 }
 
 type LocalSubjectAccessReviewPatchArrayOutput struct{ *pulumi.OutputState }

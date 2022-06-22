@@ -43,11 +43,11 @@ export class AuditSinkPatch extends pulumi.CustomResource {
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
     public readonly kind!: pulumi.Output<"AuditSink">;
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec defines the audit configuration spec
      */
-    public readonly spec!: pulumi.Output<outputs.auditregistration.v1alpha1.AuditSinkSpec>;
+    public readonly spec!: pulumi.Output<outputs.auditregistration.v1alpha1.AuditSinkSpecPatch>;
 
     /**
      * Create a AuditSinkPatch resource with the given unique name, arguments, and options.
@@ -87,9 +87,9 @@ export interface AuditSinkPatchArgs {
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
     kind?: pulumi.Input<"AuditSink">;
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec defines the audit configuration spec
      */
-    spec?: pulumi.Input<inputs.auditregistration.v1alpha1.AuditSinkSpec>;
+    spec?: pulumi.Input<inputs.auditregistration.v1alpha1.AuditSinkSpecPatch>;
 }

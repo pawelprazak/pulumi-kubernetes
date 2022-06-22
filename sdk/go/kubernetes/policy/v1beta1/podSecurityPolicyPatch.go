@@ -20,9 +20,9 @@ type PodSecurityPolicyPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// spec defines the policy enforced.
-	Spec PodSecurityPolicySpecPtrOutput `pulumi:"spec"`
+	Spec PodSecurityPolicySpecPatchPtrOutput `pulumi:"spec"`
 }
 
 // NewPodSecurityPolicyPatch registers a new resource with the given unique name, arguments, and options.
@@ -36,7 +36,7 @@ func NewPodSecurityPolicyPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("PodSecurityPolicy")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:extensions/v1beta1:PodSecurityPolicy"),
+			Type: pulumi.String("kubernetes:extensions/v1beta1:PodSecurityPolicyPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -77,9 +77,9 @@ type podSecurityPolicyPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// spec defines the policy enforced.
-	Spec *PodSecurityPolicySpec `pulumi:"spec"`
+	Spec *PodSecurityPolicySpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a PodSecurityPolicyPatch resource.
@@ -89,9 +89,9 @@ type PodSecurityPolicyPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// spec defines the policy enforced.
-	Spec PodSecurityPolicySpecPtrInput
+	Spec PodSecurityPolicySpecPatchPtrInput
 }
 
 func (PodSecurityPolicyPatchArgs) ElementType() reflect.Type {
@@ -192,13 +192,13 @@ func (o PodSecurityPolicyPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o PodSecurityPolicyPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *PodSecurityPolicyPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o PodSecurityPolicyPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // spec defines the policy enforced.
-func (o PodSecurityPolicyPatchOutput) Spec() PodSecurityPolicySpecPtrOutput {
-	return o.ApplyT(func(v *PodSecurityPolicyPatch) PodSecurityPolicySpecPtrOutput { return v.Spec }).(PodSecurityPolicySpecPtrOutput)
+func (o PodSecurityPolicyPatchOutput) Spec() PodSecurityPolicySpecPatchPtrOutput {
+	return o.ApplyT(func(v *PodSecurityPolicyPatch) PodSecurityPolicySpecPatchPtrOutput { return v.Spec }).(PodSecurityPolicySpecPatchPtrOutput)
 }
 
 type PodSecurityPolicyPatchArrayOutput struct{ *pulumi.OutputState }

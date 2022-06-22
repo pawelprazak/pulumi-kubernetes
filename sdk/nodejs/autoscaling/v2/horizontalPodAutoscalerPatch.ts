@@ -46,15 +46,15 @@ export class HorizontalPodAutoscalerPatch extends pulumi.CustomResource {
     /**
      * metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * spec is the specification for the behaviour of the autoscaler. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
      */
-    public readonly spec!: pulumi.Output<outputs.autoscaling.v2.HorizontalPodAutoscalerSpec>;
+    public readonly spec!: pulumi.Output<outputs.autoscaling.v2.HorizontalPodAutoscalerSpecPatch>;
     /**
      * status is the current information about the autoscaler.
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.autoscaling.v2.HorizontalPodAutoscalerStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.autoscaling.v2.HorizontalPodAutoscalerStatusPatch>;
 
     /**
      * Create a HorizontalPodAutoscalerPatch resource with the given unique name, arguments, and options.
@@ -80,7 +80,7 @@ export class HorizontalPodAutoscalerPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:autoscaling/v1:HorizontalPodAutoscaler" }, { type: "kubernetes:autoscaling/v2beta1:HorizontalPodAutoscaler" }, { type: "kubernetes:autoscaling/v2beta2:HorizontalPodAutoscaler" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:autoscaling/v1:HorizontalPodAutoscalerPatch" }, { type: "kubernetes:autoscaling/v2beta1:HorizontalPodAutoscalerPatch" }, { type: "kubernetes:autoscaling/v2beta2:HorizontalPodAutoscalerPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(HorizontalPodAutoscalerPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -101,9 +101,9 @@ export interface HorizontalPodAutoscalerPatchArgs {
     /**
      * metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * spec is the specification for the behaviour of the autoscaler. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
      */
-    spec?: pulumi.Input<inputs.autoscaling.v2.HorizontalPodAutoscalerSpec>;
+    spec?: pulumi.Input<inputs.autoscaling.v2.HorizontalPodAutoscalerSpecPatch>;
 }

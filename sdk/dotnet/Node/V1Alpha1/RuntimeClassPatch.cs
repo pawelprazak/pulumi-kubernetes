@@ -31,13 +31,13 @@ namespace Pulumi.Kubernetes.Node.V1Alpha1
         /// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Specification of the RuntimeClass More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Node.V1Alpha1.RuntimeClassSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Node.V1Alpha1.RuntimeClassSpecPatch> Spec { get; private set; } = null!;
 
 
         /// <summary>
@@ -76,8 +76,8 @@ namespace Pulumi.Kubernetes.Node.V1Alpha1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:node.k8s.io/v1:RuntimeClass"},
-                    new Pulumi.Alias { Type = "kubernetes:node.k8s.io/v1beta1:RuntimeClass"},
+                    new Pulumi.Alias { Type = "kubernetes:node.k8s.io/v1:RuntimeClassPatch"},
+                    new Pulumi.Alias { Type = "kubernetes:node.k8s.io/v1beta1:RuntimeClassPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -120,13 +120,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Node.V1Alpha1
         /// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// Specification of the RuntimeClass More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Node.V1Alpha1.RuntimeClassSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Node.V1Alpha1.RuntimeClassSpecPatchArgs>? Spec { get; set; }
 
         public RuntimeClassPatchArgs()
         {

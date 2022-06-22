@@ -20,11 +20,11 @@ type TokenRequestPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Spec holds information about the request being evaluated
-	Spec TokenRequestSpecOutput `pulumi:"spec"`
+	Spec TokenRequestSpecPatchPtrOutput `pulumi:"spec"`
 	// Status is filled in by the server and indicates whether the token can be authenticated.
-	Status TokenRequestStatusPtrOutput `pulumi:"status"`
+	Status TokenRequestStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewTokenRequestPatch registers a new resource with the given unique name, arguments, and options.
@@ -73,9 +73,9 @@ type tokenRequestPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Spec holds information about the request being evaluated
-	Spec *TokenRequestSpec `pulumi:"spec"`
+	Spec *TokenRequestSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a TokenRequestPatch resource.
@@ -85,9 +85,9 @@ type TokenRequestPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Spec holds information about the request being evaluated
-	Spec TokenRequestSpecPtrInput
+	Spec TokenRequestSpecPatchPtrInput
 }
 
 func (TokenRequestPatchArgs) ElementType() reflect.Type {
@@ -188,18 +188,18 @@ func (o TokenRequestPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o TokenRequestPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *TokenRequestPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o TokenRequestPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *TokenRequestPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Spec holds information about the request being evaluated
-func (o TokenRequestPatchOutput) Spec() TokenRequestSpecOutput {
-	return o.ApplyT(func(v *TokenRequestPatch) TokenRequestSpecOutput { return v.Spec }).(TokenRequestSpecOutput)
+func (o TokenRequestPatchOutput) Spec() TokenRequestSpecPatchPtrOutput {
+	return o.ApplyT(func(v *TokenRequestPatch) TokenRequestSpecPatchPtrOutput { return v.Spec }).(TokenRequestSpecPatchPtrOutput)
 }
 
 // Status is filled in by the server and indicates whether the token can be authenticated.
-func (o TokenRequestPatchOutput) Status() TokenRequestStatusPtrOutput {
-	return o.ApplyT(func(v *TokenRequestPatch) TokenRequestStatusPtrOutput { return v.Status }).(TokenRequestStatusPtrOutput)
+func (o TokenRequestPatchOutput) Status() TokenRequestStatusPatchPtrOutput {
+	return o.ApplyT(func(v *TokenRequestPatch) TokenRequestStatusPatchPtrOutput { return v.Status }).(TokenRequestStatusPatchPtrOutput)
 }
 
 type TokenRequestPatchArrayOutput struct{ *pulumi.OutputState }

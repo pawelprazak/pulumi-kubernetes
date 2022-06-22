@@ -19,14 +19,14 @@ class SelfSubjectAccessReviewPatchArgs:
     def __init__(__self__, *,
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']] = None,
-                 spec: Optional[pulumi.Input['SelfSubjectAccessReviewSpecArgs']] = None):
+                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']] = None,
+                 spec: Optional[pulumi.Input['SelfSubjectAccessReviewSpecPatchArgs']] = None):
         """
         The set of arguments for constructing a SelfSubjectAccessReviewPatch resource.
         :param pulumi.Input[str] api_version: APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-        :param pulumi.Input['_meta.v1.ObjectMetaArgs'] metadata: Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-        :param pulumi.Input['SelfSubjectAccessReviewSpecArgs'] spec: Spec holds information about the request being evaluated.  user and groups must be empty
+        :param pulumi.Input['_meta.v1.ObjectMetaPatchArgs'] metadata: Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+        :param pulumi.Input['SelfSubjectAccessReviewSpecPatchArgs'] spec: Spec holds information about the request being evaluated.  user and groups must be empty
         """
         if api_version is not None:
             pulumi.set(__self__, "api_version", 'authorization.k8s.io/v1')
@@ -63,26 +63,26 @@ class SelfSubjectAccessReviewPatchArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]:
         """
         Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['SelfSubjectAccessReviewSpecArgs']]:
+    def spec(self) -> Optional[pulumi.Input['SelfSubjectAccessReviewSpecPatchArgs']]:
         """
         Spec holds information about the request being evaluated.  user and groups must be empty
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['SelfSubjectAccessReviewSpecArgs']]):
+    def spec(self, value: Optional[pulumi.Input['SelfSubjectAccessReviewSpecPatchArgs']]):
         pulumi.set(self, "spec", value)
 
 
@@ -93,8 +93,8 @@ class SelfSubjectAccessReviewPatch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['SelfSubjectAccessReviewSpecArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
+                 spec: Optional[pulumi.Input[pulumi.InputType['SelfSubjectAccessReviewSpecPatchArgs']]] = None,
                  __props__=None):
         """
         SelfSubjectAccessReview checks whether or the current user can perform an action.  Not filling in a spec.namespace means "in all namespaces".  Self is a special case, because users should always be able to check whether they can perform an action
@@ -103,8 +103,8 @@ class SelfSubjectAccessReviewPatch(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_version: APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-        :param pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']] metadata: Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-        :param pulumi.Input[pulumi.InputType['SelfSubjectAccessReviewSpecArgs']] spec: Spec holds information about the request being evaluated.  user and groups must be empty
+        :param pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']] metadata: Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+        :param pulumi.Input[pulumi.InputType['SelfSubjectAccessReviewSpecPatchArgs']] spec: Spec holds information about the request being evaluated.  user and groups must be empty
         """
         ...
     @overload
@@ -132,17 +132,12 @@ class SelfSubjectAccessReviewPatch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['SelfSubjectAccessReviewSpecArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
+                 spec: Optional[pulumi.Input[pulumi.InputType['SelfSubjectAccessReviewSpecPatchArgs']]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -153,7 +148,7 @@ class SelfSubjectAccessReviewPatch(pulumi.CustomResource):
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["spec"] = spec
             __props__.__dict__["status"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:authorization.k8s.io/v1beta1:SelfSubjectAccessReview")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:authorization.k8s.io/v1beta1:SelfSubjectAccessReviewPatch")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(SelfSubjectAccessReviewPatch, __self__).__init__(
             'kubernetes:authorization.k8s.io/v1:SelfSubjectAccessReviewPatch',
@@ -202,7 +197,7 @@ class SelfSubjectAccessReviewPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Optional['_meta.v1.outputs.ObjectMeta']]:
+    def metadata(self) -> pulumi.Output[Optional['_meta.v1.outputs.ObjectMetaPatch']]:
         """
         Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         """
@@ -210,7 +205,7 @@ class SelfSubjectAccessReviewPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def spec(self) -> pulumi.Output['outputs.SelfSubjectAccessReviewSpec']:
+    def spec(self) -> pulumi.Output[Optional['outputs.SelfSubjectAccessReviewSpecPatch']]:
         """
         Spec holds information about the request being evaluated.  user and groups must be empty
         """
@@ -218,7 +213,7 @@ class SelfSubjectAccessReviewPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> pulumi.Output[Optional['outputs.SubjectAccessReviewStatus']]:
+    def status(self) -> pulumi.Output[Optional['outputs.SubjectAccessReviewStatusPatch']]:
         """
         Status is filled in by the server and indicates whether the request is allowed or not
         """

@@ -49,15 +49,15 @@ export class CertificateSigningRequestPatch extends pulumi.CustomResource {
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
     public readonly kind!: pulumi.Output<"CertificateSigningRequest">;
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * spec contains the certificate request, and is immutable after creation. Only the request, signerName, expirationSeconds, and usages fields can be set on creation. Other fields are derived by Kubernetes and cannot be modified by users.
      */
-    public readonly spec!: pulumi.Output<outputs.certificates.v1.CertificateSigningRequestSpec>;
+    public readonly spec!: pulumi.Output<outputs.certificates.v1.CertificateSigningRequestSpecPatch>;
     /**
      * status contains information about whether the request is approved or denied, and the certificate issued by the signer, or the failure condition indicating signer failure.
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.certificates.v1.CertificateSigningRequestStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.certificates.v1.CertificateSigningRequestStatusPatch>;
 
     /**
      * Create a CertificateSigningRequestPatch resource with the given unique name, arguments, and options.
@@ -83,7 +83,7 @@ export class CertificateSigningRequestPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:certificates.k8s.io/v1beta1:CertificateSigningRequest" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:certificates.k8s.io/v1beta1:CertificateSigningRequestPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CertificateSigningRequestPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -101,9 +101,9 @@ export interface CertificateSigningRequestPatchArgs {
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
     kind?: pulumi.Input<"CertificateSigningRequest">;
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * spec contains the certificate request, and is immutable after creation. Only the request, signerName, expirationSeconds, and usages fields can be set on creation. Other fields are derived by Kubernetes and cannot be modified by users.
      */
-    spec?: pulumi.Input<inputs.certificates.v1.CertificateSigningRequestSpec>;
+    spec?: pulumi.Input<inputs.certificates.v1.CertificateSigningRequestSpecPatch>;
 }

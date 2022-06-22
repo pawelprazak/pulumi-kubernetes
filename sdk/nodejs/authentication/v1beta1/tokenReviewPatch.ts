@@ -43,15 +43,15 @@ export class TokenReviewPatch extends pulumi.CustomResource {
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
     public readonly kind!: pulumi.Output<"TokenReview">;
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec holds information about the request being evaluated
      */
-    public readonly spec!: pulumi.Output<outputs.authentication.v1beta1.TokenReviewSpec>;
+    public readonly spec!: pulumi.Output<outputs.authentication.v1beta1.TokenReviewSpecPatch>;
     /**
      * Status is filled in by the server and indicates whether the request can be authenticated.
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.authentication.v1beta1.TokenReviewStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.authentication.v1beta1.TokenReviewStatusPatch>;
 
     /**
      * Create a TokenReviewPatch resource with the given unique name, arguments, and options.
@@ -77,7 +77,7 @@ export class TokenReviewPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:authentication.k8s.io/v1:TokenReview" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:authentication.k8s.io/v1:TokenReviewPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TokenReviewPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -95,9 +95,9 @@ export interface TokenReviewPatchArgs {
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
     kind?: pulumi.Input<"TokenReview">;
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec holds information about the request being evaluated
      */
-    spec?: pulumi.Input<inputs.authentication.v1beta1.TokenReviewSpec>;
+    spec?: pulumi.Input<inputs.authentication.v1beta1.TokenReviewSpecPatch>;
 }

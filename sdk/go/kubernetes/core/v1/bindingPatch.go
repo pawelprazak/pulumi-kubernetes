@@ -20,9 +20,9 @@ type BindingPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// The target object that you want to bind to the standard object.
-	Target ObjectReferenceOutput `pulumi:"target"`
+	Target ObjectReferencePatchPtrOutput `pulumi:"target"`
 }
 
 // NewBindingPatch registers a new resource with the given unique name, arguments, and options.
@@ -71,9 +71,9 @@ type bindingPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// The target object that you want to bind to the standard object.
-	Target *ObjectReference `pulumi:"target"`
+	Target *ObjectReferencePatch `pulumi:"target"`
 }
 
 // The set of arguments for constructing a BindingPatch resource.
@@ -83,9 +83,9 @@ type BindingPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// The target object that you want to bind to the standard object.
-	Target ObjectReferencePtrInput
+	Target ObjectReferencePatchPtrInput
 }
 
 func (BindingPatchArgs) ElementType() reflect.Type {
@@ -186,13 +186,13 @@ func (o BindingPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o BindingPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *BindingPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o BindingPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *BindingPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // The target object that you want to bind to the standard object.
-func (o BindingPatchOutput) Target() ObjectReferenceOutput {
-	return o.ApplyT(func(v *BindingPatch) ObjectReferenceOutput { return v.Target }).(ObjectReferenceOutput)
+func (o BindingPatchOutput) Target() ObjectReferencePatchPtrOutput {
+	return o.ApplyT(func(v *BindingPatch) ObjectReferencePatchPtrOutput { return v.Target }).(ObjectReferencePatchPtrOutput)
 }
 
 type BindingPatchArrayOutput struct{ *pulumi.OutputState }

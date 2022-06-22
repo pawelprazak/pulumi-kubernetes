@@ -54,7 +54,7 @@ export class PriorityClassPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * PreemptionPolicy is the Policy for preempting pods with lower priority. One of Never, PreemptLowerPriority. Defaults to PreemptLowerPriority if unset. This field is alpha-level and is only honored by servers that enable the NonPreemptingPriority feature.
      */
@@ -92,7 +92,7 @@ export class PriorityClassPatch extends pulumi.CustomResource {
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:scheduling.k8s.io/v1:PriorityClass" }, { type: "kubernetes:scheduling.k8s.io/v1beta1:PriorityClass" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:scheduling.k8s.io/v1:PriorityClassPatch" }, { type: "kubernetes:scheduling.k8s.io/v1beta1:PriorityClassPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PriorityClassPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -121,7 +121,7 @@ export interface PriorityClassPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * PreemptionPolicy is the Policy for preempting pods with lower priority. One of Never, PreemptLowerPriority. Defaults to PreemptLowerPriority if unset. This field is alpha-level and is only honored by servers that enable the NonPreemptingPriority feature.
      */

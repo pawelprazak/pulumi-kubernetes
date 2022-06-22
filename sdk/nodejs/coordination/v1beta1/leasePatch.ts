@@ -46,11 +46,11 @@ export class LeasePatch extends pulumi.CustomResource {
     /**
      * More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public readonly spec!: pulumi.Output<outputs.coordination.v1beta1.LeaseSpec>;
+    public readonly spec!: pulumi.Output<outputs.coordination.v1beta1.LeaseSpecPatch>;
 
     /**
      * Create a LeasePatch resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class LeasePatch extends pulumi.CustomResource {
             resourceInputs["spec"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:coordination.k8s.io/v1:Lease" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:coordination.k8s.io/v1:LeasePatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(LeasePatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -95,9 +95,9 @@ export interface LeasePatchArgs {
     /**
      * More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    spec?: pulumi.Input<inputs.coordination.v1beta1.LeaseSpec>;
+    spec?: pulumi.Input<inputs.coordination.v1beta1.LeaseSpecPatch>;
 }

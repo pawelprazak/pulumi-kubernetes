@@ -16,17 +16,17 @@ type EndpointSlicePatch struct {
 	pulumi.CustomResourceState
 
 	// addressType specifies the type of address carried by this EndpointSlice. All addresses in this slice must be the same type. This field is immutable after creation. The following address types are currently supported: * IPv4: Represents an IPv4 Address. * IPv6: Represents an IPv6 Address. * FQDN: Represents a Fully Qualified Domain Name.
-	AddressType pulumi.StringOutput `pulumi:"addressType"`
+	AddressType pulumi.StringPtrOutput `pulumi:"addressType"`
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion pulumi.StringPtrOutput `pulumi:"apiVersion"`
 	// endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000 endpoints.
-	Endpoints EndpointArrayOutput `pulumi:"endpoints"`
+	Endpoints EndpointPatchArrayOutput `pulumi:"endpoints"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata.
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. When ports is empty, it indicates that there are no defined ports. When a port is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of 100 ports.
-	Ports EndpointPortArrayOutput `pulumi:"ports"`
+	Ports EndpointPortPatchArrayOutput `pulumi:"ports"`
 }
 
 // NewEndpointSlicePatch registers a new resource with the given unique name, arguments, and options.
@@ -40,7 +40,7 @@ func NewEndpointSlicePatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("EndpointSlice")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:discovery.k8s.io/v1beta1:EndpointSlice"),
+			Type: pulumi.String("kubernetes:discovery.k8s.io/v1beta1:EndpointSlicePatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -81,13 +81,13 @@ type endpointSlicePatchArgs struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion *string `pulumi:"apiVersion"`
 	// endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000 endpoints.
-	Endpoints []Endpoint `pulumi:"endpoints"`
+	Endpoints []EndpointPatch `pulumi:"endpoints"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata.
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. When ports is empty, it indicates that there are no defined ports. When a port is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of 100 ports.
-	Ports []EndpointPort `pulumi:"ports"`
+	Ports []EndpointPortPatch `pulumi:"ports"`
 }
 
 // The set of arguments for constructing a EndpointSlicePatch resource.
@@ -97,13 +97,13 @@ type EndpointSlicePatchArgs struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion pulumi.StringPtrInput
 	// endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000 endpoints.
-	Endpoints EndpointArrayInput
+	Endpoints EndpointPatchArrayInput
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata.
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. When ports is empty, it indicates that there are no defined ports. When a port is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of 100 ports.
-	Ports EndpointPortArrayInput
+	Ports EndpointPortPatchArrayInput
 }
 
 func (EndpointSlicePatchArgs) ElementType() reflect.Type {
@@ -194,8 +194,8 @@ func (o EndpointSlicePatchOutput) ToEndpointSlicePatchOutputWithContext(ctx cont
 }
 
 // addressType specifies the type of address carried by this EndpointSlice. All addresses in this slice must be the same type. This field is immutable after creation. The following address types are currently supported: * IPv4: Represents an IPv4 Address. * IPv6: Represents an IPv6 Address. * FQDN: Represents a Fully Qualified Domain Name.
-func (o EndpointSlicePatchOutput) AddressType() pulumi.StringOutput {
-	return o.ApplyT(func(v *EndpointSlicePatch) pulumi.StringOutput { return v.AddressType }).(pulumi.StringOutput)
+func (o EndpointSlicePatchOutput) AddressType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointSlicePatch) pulumi.StringPtrOutput { return v.AddressType }).(pulumi.StringPtrOutput)
 }
 
 // APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -204,8 +204,8 @@ func (o EndpointSlicePatchOutput) ApiVersion() pulumi.StringPtrOutput {
 }
 
 // endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000 endpoints.
-func (o EndpointSlicePatchOutput) Endpoints() EndpointArrayOutput {
-	return o.ApplyT(func(v *EndpointSlicePatch) EndpointArrayOutput { return v.Endpoints }).(EndpointArrayOutput)
+func (o EndpointSlicePatchOutput) Endpoints() EndpointPatchArrayOutput {
+	return o.ApplyT(func(v *EndpointSlicePatch) EndpointPatchArrayOutput { return v.Endpoints }).(EndpointPatchArrayOutput)
 }
 
 // Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -214,13 +214,13 @@ func (o EndpointSlicePatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata.
-func (o EndpointSlicePatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *EndpointSlicePatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o EndpointSlicePatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *EndpointSlicePatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. When ports is empty, it indicates that there are no defined ports. When a port is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of 100 ports.
-func (o EndpointSlicePatchOutput) Ports() EndpointPortArrayOutput {
-	return o.ApplyT(func(v *EndpointSlicePatch) EndpointPortArrayOutput { return v.Ports }).(EndpointPortArrayOutput)
+func (o EndpointSlicePatchOutput) Ports() EndpointPortPatchArrayOutput {
+	return o.ApplyT(func(v *EndpointSlicePatch) EndpointPortPatchArrayOutput { return v.Ports }).(EndpointPortPatchArrayOutput)
 }
 
 type EndpointSlicePatchArrayOutput struct{ *pulumi.OutputState }

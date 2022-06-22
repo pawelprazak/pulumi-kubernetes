@@ -46,11 +46,11 @@ export class CSIDriverPatch extends pulumi.CustomResource {
     /**
      * Standard object metadata. metadata.Name indicates the name of the CSI driver that this object refers to; it MUST be the same name returned by the CSI GetPluginName() call for that driver. The driver name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), dots (.), and alphanumerics between. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the CSI Driver.
      */
-    public readonly spec!: pulumi.Output<outputs.storage.v1.CSIDriverSpec>;
+    public readonly spec!: pulumi.Output<outputs.storage.v1.CSIDriverSpecPatch>;
 
     /**
      * Create a CSIDriverPatch resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class CSIDriverPatch extends pulumi.CustomResource {
             resourceInputs["spec"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:storage.k8s.io/v1beta1:CSIDriver" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:storage.k8s.io/v1beta1:CSIDriverPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CSIDriverPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -95,9 +95,9 @@ export interface CSIDriverPatchArgs {
     /**
      * Standard object metadata. metadata.Name indicates the name of the CSI driver that this object refers to; it MUST be the same name returned by the CSI GetPluginName() call for that driver. The driver name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), dots (.), and alphanumerics between. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the CSI Driver.
      */
-    spec?: pulumi.Input<inputs.storage.v1.CSIDriverSpec>;
+    spec?: pulumi.Input<inputs.storage.v1.CSIDriverSpecPatch>;
 }

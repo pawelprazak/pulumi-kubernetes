@@ -18,9 +18,9 @@ type PodPresetPatch struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion pulumi.StringPtrOutput `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-	Kind     pulumi.StringPtrOutput     `pulumi:"kind"`
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
-	Spec     PodPresetSpecPtrOutput     `pulumi:"spec"`
+	Kind     pulumi.StringPtrOutput          `pulumi:"kind"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
+	Spec     PodPresetSpecPatchPtrOutput     `pulumi:"spec"`
 }
 
 // NewPodPresetPatch registers a new resource with the given unique name, arguments, and options.
@@ -67,9 +67,9 @@ type podPresetPatchArgs struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion *string `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-	Kind     *string            `pulumi:"kind"`
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
-	Spec     *PodPresetSpec     `pulumi:"spec"`
+	Kind     *string                 `pulumi:"kind"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
+	Spec     *PodPresetSpecPatch     `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a PodPresetPatch resource.
@@ -78,8 +78,8 @@ type PodPresetPatchArgs struct {
 	ApiVersion pulumi.StringPtrInput
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind     pulumi.StringPtrInput
-	Metadata metav1.ObjectMetaPtrInput
-	Spec     PodPresetSpecPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
+	Spec     PodPresetSpecPatchPtrInput
 }
 
 func (PodPresetPatchArgs) ElementType() reflect.Type {
@@ -179,12 +179,12 @@ func (o PodPresetPatchOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PodPresetPatch) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-func (o PodPresetPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *PodPresetPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o PodPresetPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *PodPresetPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
-func (o PodPresetPatchOutput) Spec() PodPresetSpecPtrOutput {
-	return o.ApplyT(func(v *PodPresetPatch) PodPresetSpecPtrOutput { return v.Spec }).(PodPresetSpecPtrOutput)
+func (o PodPresetPatchOutput) Spec() PodPresetSpecPatchPtrOutput {
+	return o.ApplyT(func(v *PodPresetPatch) PodPresetSpecPatchPtrOutput { return v.Spec }).(PodPresetSpecPatchPtrOutput)
 }
 
 type PodPresetPatchArrayOutput struct{ *pulumi.OutputState }

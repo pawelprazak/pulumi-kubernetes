@@ -31,7 +31,7 @@ namespace Pulumi.Kubernetes.Meta.V1
         /// Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.
         /// </summary>
         [Output("details")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.StatusDetails> Details { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.StatusDetailsPatch> Details { get; private set; } = null!;
 
         /// <summary>
         /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -49,7 +49,7 @@ namespace Pulumi.Kubernetes.Meta.V1
         /// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ListMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ListMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// A machine-readable description of why this operation is in the "Failure" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.
@@ -61,7 +61,7 @@ namespace Pulumi.Kubernetes.Meta.V1
         /// Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Output("status")]
-        public Output<string> StatusValue { get; private set; } = null!;
+        public Output<string> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Meta.V1
         /// Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.
         /// </summary>
         [Input("details")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.StatusDetailsArgs>? Details { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.StatusDetailsPatchArgs>? Details { get; set; }
 
         /// <summary>
         /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -157,7 +157,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Meta.V1
         /// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ListMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ListMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// A machine-readable description of why this operation is in the "Failure" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.

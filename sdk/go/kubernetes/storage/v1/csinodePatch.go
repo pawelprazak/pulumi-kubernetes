@@ -20,9 +20,9 @@ type CSINodePatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// metadata.name must be the Kubernetes node name.
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// spec is the specification of CSINode
-	Spec CSINodeSpecOutput `pulumi:"spec"`
+	Spec CSINodeSpecPatchPtrOutput `pulumi:"spec"`
 }
 
 // NewCSINodePatch registers a new resource with the given unique name, arguments, and options.
@@ -36,7 +36,7 @@ func NewCSINodePatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("CSINode")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:storage.k8s.io/v1beta1:CSINode"),
+			Type: pulumi.String("kubernetes:storage.k8s.io/v1beta1:CSINodePatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -77,9 +77,9 @@ type csinodePatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// metadata.name must be the Kubernetes node name.
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// spec is the specification of CSINode
-	Spec *CSINodeSpec `pulumi:"spec"`
+	Spec *CSINodeSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a CSINodePatch resource.
@@ -89,9 +89,9 @@ type CSINodePatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// metadata.name must be the Kubernetes node name.
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// spec is the specification of CSINode
-	Spec CSINodeSpecPtrInput
+	Spec CSINodeSpecPatchPtrInput
 }
 
 func (CSINodePatchArgs) ElementType() reflect.Type {
@@ -192,13 +192,13 @@ func (o CSINodePatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // metadata.name must be the Kubernetes node name.
-func (o CSINodePatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *CSINodePatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o CSINodePatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *CSINodePatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // spec is the specification of CSINode
-func (o CSINodePatchOutput) Spec() CSINodeSpecOutput {
-	return o.ApplyT(func(v *CSINodePatch) CSINodeSpecOutput { return v.Spec }).(CSINodeSpecOutput)
+func (o CSINodePatchOutput) Spec() CSINodeSpecPatchPtrOutput {
+	return o.ApplyT(func(v *CSINodePatch) CSINodeSpecPatchPtrOutput { return v.Spec }).(CSINodeSpecPatchPtrOutput)
 }
 
 type CSINodePatchArrayOutput struct{ *pulumi.OutputState }

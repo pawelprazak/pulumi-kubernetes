@@ -46,11 +46,11 @@ export class LimitRangePatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec defines the limits enforced. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public readonly spec!: pulumi.Output<outputs.core.v1.LimitRangeSpec>;
+    public readonly spec!: pulumi.Output<outputs.core.v1.LimitRangeSpecPatch>;
 
     /**
      * Create a LimitRangePatch resource with the given unique name, arguments, and options.
@@ -93,9 +93,9 @@ export interface LimitRangePatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec defines the limits enforced. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    spec?: pulumi.Input<inputs.core.v1.LimitRangeSpec>;
+    spec?: pulumi.Input<inputs.core.v1.LimitRangeSpecPatch>;
 }

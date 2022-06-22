@@ -53,7 +53,7 @@ namespace Pulumi.Kubernetes.Core.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// stringData allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API.
@@ -102,11 +102,6 @@ namespace Pulumi.Kubernetes.Core.V1
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                AdditionalSecretOutputs =
-                {
-                    "data",
-                    "stringData",
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -147,11 +142,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Core.V1
         public InputMap<string> Data
         {
             get => _data ?? (_data = new InputMap<string>());
-            set
-            {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
-                _data = Output.All(value, emptySecret).Apply(v => v[0]);
-            }
+            set => _data = value;
         }
 
         /// <summary>
@@ -170,7 +161,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Core.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         [Input("stringData")]
         private InputMap<string>? _stringData;
@@ -181,11 +172,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Core.V1
         public InputMap<string> StringData
         {
             get => _stringData ?? (_stringData = new InputMap<string>());
-            set
-            {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
-                _stringData = Output.All(value, emptySecret).Apply(v => v[0]);
-            }
+            set => _stringData = value;
         }
 
         /// <summary>

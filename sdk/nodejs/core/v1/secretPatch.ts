@@ -64,7 +64,7 @@ export class SecretPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * stringData allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API.
      */
@@ -86,11 +86,11 @@ export class SecretPatch extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             resourceInputs["apiVersion"] = "v1";
-            resourceInputs["data"] = args?.data ? pulumi.secret(args.data) : undefined;
+            resourceInputs["data"] = args ? args.data : undefined;
             resourceInputs["immutable"] = args ? args.immutable : undefined;
             resourceInputs["kind"] = "Secret";
             resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["stringData"] = args?.stringData ? pulumi.secret(args.stringData) : undefined;
+            resourceInputs["stringData"] = args ? args.stringData : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
         } else {
             resourceInputs["apiVersion"] = undefined /*out*/;
@@ -102,8 +102,6 @@ export class SecretPatch extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["data", "stringData"] };
-        opts = pulumi.mergeOptions(opts, secretOpts);
         super(SecretPatch.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -131,7 +129,7 @@ export interface SecretPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * stringData allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API.
      */

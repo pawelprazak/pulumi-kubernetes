@@ -31,13 +31,13 @@ namespace Pulumi.Kubernetes.Core.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// The target object that you want to bind to the standard object.
         /// </summary>
         [Output("target")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.ObjectReference> Target { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Core.V1.ObjectReferencePatch> Target { get; private set; } = null!;
 
 
         /// <summary>
@@ -115,13 +115,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Core.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// The target object that you want to bind to the standard object.
         /// </summary>
         [Input("target")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Core.V1.ObjectReferenceArgs>? Target { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Core.V1.ObjectReferencePatchArgs>? Target { get; set; }
 
         public BindingPatchArgs()
         {

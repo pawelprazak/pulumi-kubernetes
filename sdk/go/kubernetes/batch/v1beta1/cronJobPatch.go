@@ -20,11 +20,11 @@ type CronJobPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec CronJobSpecPtrOutput `pulumi:"spec"`
+	Spec CronJobSpecPatchPtrOutput `pulumi:"spec"`
 	// Current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Status CronJobStatusPtrOutput `pulumi:"status"`
+	Status CronJobStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewCronJobPatch registers a new resource with the given unique name, arguments, and options.
@@ -38,10 +38,10 @@ func NewCronJobPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("CronJob")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:batch/v1:CronJob"),
+			Type: pulumi.String("kubernetes:batch/v1:CronJobPatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:batch/v2alpha1:CronJob"),
+			Type: pulumi.String("kubernetes:batch/v2alpha1:CronJobPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -82,9 +82,9 @@ type cronJobPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec *CronJobSpec `pulumi:"spec"`
+	Spec *CronJobSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a CronJobPatch resource.
@@ -94,9 +94,9 @@ type CronJobPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec CronJobSpecPtrInput
+	Spec CronJobSpecPatchPtrInput
 }
 
 func (CronJobPatchArgs) ElementType() reflect.Type {
@@ -197,18 +197,18 @@ func (o CronJobPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o CronJobPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *CronJobPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o CronJobPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *CronJobPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o CronJobPatchOutput) Spec() CronJobSpecPtrOutput {
-	return o.ApplyT(func(v *CronJobPatch) CronJobSpecPtrOutput { return v.Spec }).(CronJobSpecPtrOutput)
+func (o CronJobPatchOutput) Spec() CronJobSpecPatchPtrOutput {
+	return o.ApplyT(func(v *CronJobPatch) CronJobSpecPatchPtrOutput { return v.Spec }).(CronJobSpecPatchPtrOutput)
 }
 
 // Current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o CronJobPatchOutput) Status() CronJobStatusPtrOutput {
-	return o.ApplyT(func(v *CronJobPatch) CronJobStatusPtrOutput { return v.Status }).(CronJobStatusPtrOutput)
+func (o CronJobPatchOutput) Status() CronJobStatusPatchPtrOutput {
+	return o.ApplyT(func(v *CronJobPatch) CronJobStatusPatchPtrOutput { return v.Status }).(CronJobStatusPatchPtrOutput)
 }
 
 type CronJobPatchArrayOutput struct{ *pulumi.OutputState }

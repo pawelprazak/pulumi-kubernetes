@@ -58,7 +58,7 @@ export class EventPatch extends pulumi.CustomResource {
     /**
      * The object that this event is about.
      */
-    public readonly involvedObject!: pulumi.Output<outputs.core.v1.ObjectReference>;
+    public readonly involvedObject!: pulumi.Output<outputs.core.v1.ObjectReferencePatch>;
     /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
@@ -74,7 +74,7 @@ export class EventPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * This should be a short, machine understandable string that gives the reason for the transition into the object's current status.
      */
@@ -82,7 +82,7 @@ export class EventPatch extends pulumi.CustomResource {
     /**
      * Optional secondary object for more complex actions.
      */
-    public readonly related!: pulumi.Output<outputs.core.v1.ObjectReference>;
+    public readonly related!: pulumi.Output<outputs.core.v1.ObjectReferencePatch>;
     /**
      * Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.
      */
@@ -94,11 +94,11 @@ export class EventPatch extends pulumi.CustomResource {
     /**
      * Data about the Event series this event represents or nil if it's a singleton Event.
      */
-    public readonly series!: pulumi.Output<outputs.core.v1.EventSeries>;
+    public readonly series!: pulumi.Output<outputs.core.v1.EventSeriesPatch>;
     /**
      * The component reporting this event. Should be a short machine understandable string.
      */
-    public readonly source!: pulumi.Output<outputs.core.v1.EventSource>;
+    public readonly source!: pulumi.Output<outputs.core.v1.EventSourcePatch>;
     /**
      * Type of this event (Normal, Warning), new types could be added in the future
      */
@@ -152,7 +152,7 @@ export class EventPatch extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:events.k8s.io/v1:Event" }, { type: "kubernetes:events.k8s.io/v1beta1:Event" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:events.k8s.io/v1:EventPatch" }, { type: "kubernetes:events.k8s.io/v1beta1:EventPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(EventPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -185,7 +185,7 @@ export interface EventPatchArgs {
     /**
      * The object that this event is about.
      */
-    involvedObject?: pulumi.Input<inputs.core.v1.ObjectReference>;
+    involvedObject?: pulumi.Input<inputs.core.v1.ObjectReferencePatch>;
     /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
@@ -201,7 +201,7 @@ export interface EventPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * This should be a short, machine understandable string that gives the reason for the transition into the object's current status.
      */
@@ -209,7 +209,7 @@ export interface EventPatchArgs {
     /**
      * Optional secondary object for more complex actions.
      */
-    related?: pulumi.Input<inputs.core.v1.ObjectReference>;
+    related?: pulumi.Input<inputs.core.v1.ObjectReferencePatch>;
     /**
      * Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.
      */
@@ -221,11 +221,11 @@ export interface EventPatchArgs {
     /**
      * Data about the Event series this event represents or nil if it's a singleton Event.
      */
-    series?: pulumi.Input<inputs.core.v1.EventSeries>;
+    series?: pulumi.Input<inputs.core.v1.EventSeriesPatch>;
     /**
      * The component reporting this event. Should be a short machine understandable string.
      */
-    source?: pulumi.Input<inputs.core.v1.EventSource>;
+    source?: pulumi.Input<inputs.core.v1.EventSourcePatch>;
     /**
      * Type of this event (Normal, Warning), new types could be added in the future
      */

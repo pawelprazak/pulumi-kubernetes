@@ -37,20 +37,20 @@ namespace Pulumi.Kubernetes.Node.V1
         /// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see
         ///  https://kubernetes.io/docs/concepts/scheduling-eviction/pod-overhead/
         /// </summary>
         [Output("overhead")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Node.V1.Overhead> Overhead { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Node.V1.OverheadPatch> Overhead { get; private set; } = null!;
 
         /// <summary>
         /// Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.
         /// </summary>
         [Output("scheduling")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Node.V1.Scheduling> Scheduling { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Node.V1.SchedulingPatch> Scheduling { get; private set; } = null!;
 
 
         /// <summary>
@@ -89,8 +89,8 @@ namespace Pulumi.Kubernetes.Node.V1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:node.k8s.io/v1alpha1:RuntimeClass"},
-                    new Pulumi.Alias { Type = "kubernetes:node.k8s.io/v1beta1:RuntimeClass"},
+                    new Pulumi.Alias { Type = "kubernetes:node.k8s.io/v1alpha1:RuntimeClassPatch"},
+                    new Pulumi.Alias { Type = "kubernetes:node.k8s.io/v1beta1:RuntimeClassPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -139,20 +139,20 @@ namespace Pulumi.Kubernetes.Types.Inputs.Node.V1
         /// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see
         ///  https://kubernetes.io/docs/concepts/scheduling-eviction/pod-overhead/
         /// </summary>
         [Input("overhead")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Node.V1.OverheadArgs>? Overhead { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Node.V1.OverheadPatchArgs>? Overhead { get; set; }
 
         /// <summary>
         /// Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.
         /// </summary>
         [Input("scheduling")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Node.V1.SchedulingArgs>? Scheduling { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Node.V1.SchedulingPatchArgs>? Scheduling { get; set; }
 
         public RuntimeClassPatchArgs()
         {

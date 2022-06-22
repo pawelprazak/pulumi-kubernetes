@@ -19,7 +19,7 @@ namespace Pulumi.Kubernetes.Rbac.V1Beta1
         /// AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.
         /// </summary>
         [Output("aggregationRule")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Rbac.V1Beta1.AggregationRule> AggregationRule { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Rbac.V1Beta1.AggregationRulePatch> AggregationRule { get; private set; } = null!;
 
         /// <summary>
         /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -37,13 +37,13 @@ namespace Pulumi.Kubernetes.Rbac.V1Beta1
         /// Standard object's metadata.
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Rules holds all the PolicyRules for this ClusterRole
         /// </summary>
         [Output("rules")]
-        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Rbac.V1Beta1.PolicyRule>> Rules { get; private set; } = null!;
+        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Rbac.V1Beta1.PolicyRulePatch>> Rules { get; private set; } = null!;
 
 
         /// <summary>
@@ -82,8 +82,8 @@ namespace Pulumi.Kubernetes.Rbac.V1Beta1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:rbac.authorization.k8s.io/v1:ClusterRole"},
-                    new Pulumi.Alias { Type = "kubernetes:rbac.authorization.k8s.io/v1alpha1:ClusterRole"},
+                    new Pulumi.Alias { Type = "kubernetes:rbac.authorization.k8s.io/v1:ClusterRolePatch"},
+                    new Pulumi.Alias { Type = "kubernetes:rbac.authorization.k8s.io/v1alpha1:ClusterRolePatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -114,7 +114,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Rbac.V1Beta1
         /// AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.
         /// </summary>
         [Input("aggregationRule")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Rbac.V1Beta1.AggregationRuleArgs>? AggregationRule { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Rbac.V1Beta1.AggregationRulePatchArgs>? AggregationRule { get; set; }
 
         /// <summary>
         /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -132,17 +132,17 @@ namespace Pulumi.Kubernetes.Types.Inputs.Rbac.V1Beta1
         /// Standard object's metadata.
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         [Input("rules")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Rbac.V1Beta1.PolicyRuleArgs>? _rules;
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Rbac.V1Beta1.PolicyRulePatchArgs>? _rules;
 
         /// <summary>
         /// Rules holds all the PolicyRules for this ClusterRole
         /// </summary>
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Rbac.V1Beta1.PolicyRuleArgs> Rules
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Rbac.V1Beta1.PolicyRulePatchArgs> Rules
         {
-            get => _rules ?? (_rules = new InputList<Pulumi.Kubernetes.Types.Inputs.Rbac.V1Beta1.PolicyRuleArgs>());
+            get => _rules ?? (_rules = new InputList<Pulumi.Kubernetes.Types.Inputs.Rbac.V1Beta1.PolicyRulePatchArgs>());
             set => _rules = value;
         }
 

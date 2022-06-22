@@ -20,9 +20,9 @@ type PodTemplatePatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Template defines the pods that will be created from this pod template. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Template PodTemplateSpecPtrOutput `pulumi:"template"`
+	Template PodTemplateSpecPatchPtrOutput `pulumi:"template"`
 }
 
 // NewPodTemplatePatch registers a new resource with the given unique name, arguments, and options.
@@ -71,9 +71,9 @@ type podTemplatePatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Template defines the pods that will be created from this pod template. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Template *PodTemplateSpec `pulumi:"template"`
+	Template *PodTemplateSpecPatch `pulumi:"template"`
 }
 
 // The set of arguments for constructing a PodTemplatePatch resource.
@@ -83,9 +83,9 @@ type PodTemplatePatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Template defines the pods that will be created from this pod template. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Template PodTemplateSpecPtrInput
+	Template PodTemplateSpecPatchPtrInput
 }
 
 func (PodTemplatePatchArgs) ElementType() reflect.Type {
@@ -186,13 +186,13 @@ func (o PodTemplatePatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o PodTemplatePatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *PodTemplatePatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o PodTemplatePatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *PodTemplatePatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Template defines the pods that will be created from this pod template. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o PodTemplatePatchOutput) Template() PodTemplateSpecPtrOutput {
-	return o.ApplyT(func(v *PodTemplatePatch) PodTemplateSpecPtrOutput { return v.Template }).(PodTemplateSpecPtrOutput)
+func (o PodTemplatePatchOutput) Template() PodTemplateSpecPatchPtrOutput {
+	return o.ApplyT(func(v *PodTemplatePatch) PodTemplateSpecPatchPtrOutput { return v.Template }).(PodTemplateSpecPatchPtrOutput)
 }
 
 type PodTemplatePatchArrayOutput struct{ *pulumi.OutputState }

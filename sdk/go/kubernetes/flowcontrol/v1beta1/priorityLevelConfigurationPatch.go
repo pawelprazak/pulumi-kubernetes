@@ -20,11 +20,11 @@ type PriorityLevelConfigurationPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// `spec` is the specification of the desired behavior of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec PriorityLevelConfigurationSpecPtrOutput `pulumi:"spec"`
+	Spec PriorityLevelConfigurationSpecPatchPtrOutput `pulumi:"spec"`
 	// `status` is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Status PriorityLevelConfigurationStatusPtrOutput `pulumi:"status"`
+	Status PriorityLevelConfigurationStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewPriorityLevelConfigurationPatch registers a new resource with the given unique name, arguments, and options.
@@ -38,10 +38,10 @@ func NewPriorityLevelConfigurationPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("PriorityLevelConfiguration")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:flowcontrol.apiserver.k8s.io/v1alpha1:PriorityLevelConfiguration"),
+			Type: pulumi.String("kubernetes:flowcontrol.apiserver.k8s.io/v1alpha1:PriorityLevelConfigurationPatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:flowcontrol.apiserver.k8s.io/v1beta2:PriorityLevelConfiguration"),
+			Type: pulumi.String("kubernetes:flowcontrol.apiserver.k8s.io/v1beta2:PriorityLevelConfigurationPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -82,9 +82,9 @@ type priorityLevelConfigurationPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// `spec` is the specification of the desired behavior of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec *PriorityLevelConfigurationSpec `pulumi:"spec"`
+	Spec *PriorityLevelConfigurationSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a PriorityLevelConfigurationPatch resource.
@@ -94,9 +94,9 @@ type PriorityLevelConfigurationPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// `spec` is the specification of the desired behavior of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec PriorityLevelConfigurationSpecPtrInput
+	Spec PriorityLevelConfigurationSpecPatchPtrInput
 }
 
 func (PriorityLevelConfigurationPatchArgs) ElementType() reflect.Type {
@@ -197,18 +197,20 @@ func (o PriorityLevelConfigurationPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o PriorityLevelConfigurationPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *PriorityLevelConfigurationPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o PriorityLevelConfigurationPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *PriorityLevelConfigurationPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // `spec` is the specification of the desired behavior of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o PriorityLevelConfigurationPatchOutput) Spec() PriorityLevelConfigurationSpecPtrOutput {
-	return o.ApplyT(func(v *PriorityLevelConfigurationPatch) PriorityLevelConfigurationSpecPtrOutput { return v.Spec }).(PriorityLevelConfigurationSpecPtrOutput)
+func (o PriorityLevelConfigurationPatchOutput) Spec() PriorityLevelConfigurationSpecPatchPtrOutput {
+	return o.ApplyT(func(v *PriorityLevelConfigurationPatch) PriorityLevelConfigurationSpecPatchPtrOutput { return v.Spec }).(PriorityLevelConfigurationSpecPatchPtrOutput)
 }
 
 // `status` is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o PriorityLevelConfigurationPatchOutput) Status() PriorityLevelConfigurationStatusPtrOutput {
-	return o.ApplyT(func(v *PriorityLevelConfigurationPatch) PriorityLevelConfigurationStatusPtrOutput { return v.Status }).(PriorityLevelConfigurationStatusPtrOutput)
+func (o PriorityLevelConfigurationPatchOutput) Status() PriorityLevelConfigurationStatusPatchPtrOutput {
+	return o.ApplyT(func(v *PriorityLevelConfigurationPatch) PriorityLevelConfigurationStatusPatchPtrOutput {
+		return v.Status
+	}).(PriorityLevelConfigurationStatusPatchPtrOutput)
 }
 
 type PriorityLevelConfigurationPatchArrayOutput struct{ *pulumi.OutputState }

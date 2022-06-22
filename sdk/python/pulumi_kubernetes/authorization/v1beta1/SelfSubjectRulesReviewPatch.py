@@ -19,13 +19,13 @@ class SelfSubjectRulesReviewPatchArgs:
     def __init__(__self__, *,
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']] = None,
-                 spec: Optional[pulumi.Input['SelfSubjectRulesReviewSpecArgs']] = None):
+                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']] = None,
+                 spec: Optional[pulumi.Input['SelfSubjectRulesReviewSpecPatchArgs']] = None):
         """
         The set of arguments for constructing a SelfSubjectRulesReviewPatch resource.
         :param pulumi.Input[str] api_version: APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-        :param pulumi.Input['SelfSubjectRulesReviewSpecArgs'] spec: Spec holds information about the request being evaluated.
+        :param pulumi.Input['SelfSubjectRulesReviewSpecPatchArgs'] spec: Spec holds information about the request being evaluated.
         """
         if api_version is not None:
             pulumi.set(__self__, "api_version", 'authorization.k8s.io/v1beta1')
@@ -62,23 +62,23 @@ class SelfSubjectRulesReviewPatchArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['SelfSubjectRulesReviewSpecArgs']]:
+    def spec(self) -> Optional[pulumi.Input['SelfSubjectRulesReviewSpecPatchArgs']]:
         """
         Spec holds information about the request being evaluated.
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['SelfSubjectRulesReviewSpecArgs']]):
+    def spec(self, value: Optional[pulumi.Input['SelfSubjectRulesReviewSpecPatchArgs']]):
         pulumi.set(self, "spec", value)
 
 
@@ -89,8 +89,8 @@ class SelfSubjectRulesReviewPatch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['SelfSubjectRulesReviewSpecArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
+                 spec: Optional[pulumi.Input[pulumi.InputType['SelfSubjectRulesReviewSpecPatchArgs']]] = None,
                  __props__=None):
         """
         SelfSubjectRulesReview enumerates the set of actions the current user can perform within a namespace. The returned list of actions may be incomplete depending on the server's authorization mode, and any errors experienced during the evaluation. SelfSubjectRulesReview should be used by UIs to show/hide actions, or to quickly let an end user reason about their permissions. It should NOT Be used by external systems to drive authorization decisions as this raises confused deputy, cache lifetime/revocation, and correctness concerns. SubjectAccessReview, and LocalAccessReview are the correct way to defer authorization decisions to the API server.
@@ -99,7 +99,7 @@ class SelfSubjectRulesReviewPatch(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_version: APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-        :param pulumi.Input[pulumi.InputType['SelfSubjectRulesReviewSpecArgs']] spec: Spec holds information about the request being evaluated.
+        :param pulumi.Input[pulumi.InputType['SelfSubjectRulesReviewSpecPatchArgs']] spec: Spec holds information about the request being evaluated.
         """
         ...
     @overload
@@ -127,17 +127,12 @@ class SelfSubjectRulesReviewPatch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['SelfSubjectRulesReviewSpecArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
+                 spec: Optional[pulumi.Input[pulumi.InputType['SelfSubjectRulesReviewSpecPatchArgs']]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -148,7 +143,7 @@ class SelfSubjectRulesReviewPatch(pulumi.CustomResource):
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["spec"] = spec
             __props__.__dict__["status"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:authorization.k8s.io/v1:SelfSubjectRulesReview")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:authorization.k8s.io/v1:SelfSubjectRulesReviewPatch")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(SelfSubjectRulesReviewPatch, __self__).__init__(
             'kubernetes:authorization.k8s.io/v1beta1:SelfSubjectRulesReviewPatch',
@@ -197,12 +192,12 @@ class SelfSubjectRulesReviewPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Optional['_meta.v1.outputs.ObjectMeta']]:
+    def metadata(self) -> pulumi.Output[Optional['_meta.v1.outputs.ObjectMetaPatch']]:
         return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter
-    def spec(self) -> pulumi.Output['outputs.SelfSubjectRulesReviewSpec']:
+    def spec(self) -> pulumi.Output[Optional['outputs.SelfSubjectRulesReviewSpecPatch']]:
         """
         Spec holds information about the request being evaluated.
         """
@@ -210,7 +205,7 @@ class SelfSubjectRulesReviewPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> pulumi.Output[Optional['outputs.SubjectRulesReviewStatus']]:
+    def status(self) -> pulumi.Output[Optional['outputs.SubjectRulesReviewStatusPatch']]:
         """
         Status is filled in by the server and indicates the set of actions a user can perform.
         """

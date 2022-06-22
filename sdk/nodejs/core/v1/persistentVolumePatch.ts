@@ -46,15 +46,15 @@ export class PersistentVolumePatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * spec defines a specification of a persistent volume owned by the cluster. Provisioned by an administrator. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes
      */
-    public readonly spec!: pulumi.Output<outputs.core.v1.PersistentVolumeSpec>;
+    public readonly spec!: pulumi.Output<outputs.core.v1.PersistentVolumeSpecPatch>;
     /**
      * status represents the current information/status for the persistent volume. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.core.v1.PersistentVolumeStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.core.v1.PersistentVolumeStatusPatch>;
 
     /**
      * Create a PersistentVolumePatch resource with the given unique name, arguments, and options.
@@ -99,9 +99,9 @@ export interface PersistentVolumePatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * spec defines a specification of a persistent volume owned by the cluster. Provisioned by an administrator. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes
      */
-    spec?: pulumi.Input<inputs.core.v1.PersistentVolumeSpec>;
+    spec?: pulumi.Input<inputs.core.v1.PersistentVolumeSpecPatch>;
 }

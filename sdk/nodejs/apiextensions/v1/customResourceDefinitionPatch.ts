@@ -46,15 +46,15 @@ export class CustomResourceDefinitionPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * spec describes how the user wants the resources to appear
      */
-    public readonly spec!: pulumi.Output<outputs.apiextensions.v1.CustomResourceDefinitionSpec>;
+    public readonly spec!: pulumi.Output<outputs.apiextensions.v1.CustomResourceDefinitionSpecPatch>;
     /**
      * status indicates the actual state of the CustomResourceDefinition
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.apiextensions.v1.CustomResourceDefinitionStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.apiextensions.v1.CustomResourceDefinitionStatusPatch>;
 
     /**
      * Create a CustomResourceDefinitionPatch resource with the given unique name, arguments, and options.
@@ -80,7 +80,7 @@ export class CustomResourceDefinitionPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:apiextensions.k8s.io/v1beta1:CustomResourceDefinition" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:apiextensions.k8s.io/v1beta1:CustomResourceDefinitionPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CustomResourceDefinitionPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -101,9 +101,9 @@ export interface CustomResourceDefinitionPatchArgs {
     /**
      * Standard object's metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * spec describes how the user wants the resources to appear
      */
-    spec?: pulumi.Input<inputs.apiextensions.v1.CustomResourceDefinitionSpec>;
+    spec?: pulumi.Input<inputs.apiextensions.v1.CustomResourceDefinitionSpecPatch>;
 }

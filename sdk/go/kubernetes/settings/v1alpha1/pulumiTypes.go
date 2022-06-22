@@ -220,9 +220,9 @@ type PodPresetPatchType struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion *string `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-	Kind     *string            `pulumi:"kind"`
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
-	Spec     *PodPresetSpec     `pulumi:"spec"`
+	Kind     *string                 `pulumi:"kind"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
+	Spec     *PodPresetSpecPatch     `pulumi:"spec"`
 }
 
 // PodPresetPatchTypeInput is an input type that accepts PodPresetPatchTypeArgs and PodPresetPatchTypeOutput values.
@@ -241,9 +241,9 @@ type PodPresetPatchTypeArgs struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-	Kind     pulumi.StringPtrInput     `pulumi:"kind"`
-	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
-	Spec     PodPresetSpecPtrInput     `pulumi:"spec"`
+	Kind     pulumi.StringPtrInput          `pulumi:"kind"`
+	Metadata metav1.ObjectMetaPatchPtrInput `pulumi:"metadata"`
+	Spec     PodPresetSpecPatchPtrInput     `pulumi:"spec"`
 }
 
 func (PodPresetPatchTypeArgs) ElementType() reflect.Type {
@@ -283,12 +283,12 @@ func (o PodPresetPatchTypeOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PodPresetPatchType) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-func (o PodPresetPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v PodPresetPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o PodPresetPatchTypeOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v PodPresetPatchType) *metav1.ObjectMetaPatch { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
-func (o PodPresetPatchTypeOutput) Spec() PodPresetSpecPtrOutput {
-	return o.ApplyT(func(v PodPresetPatchType) *PodPresetSpec { return v.Spec }).(PodPresetSpecPtrOutput)
+func (o PodPresetPatchTypeOutput) Spec() PodPresetSpecPatchPtrOutput {
+	return o.ApplyT(func(v PodPresetPatchType) *PodPresetSpecPatch { return v.Spec }).(PodPresetSpecPatchPtrOutput)
 }
 
 // PodPresetSpec is a description of a pod preset.
@@ -510,15 +510,15 @@ func (o PodPresetSpecPtrOutput) Volumes() corev1.VolumeArrayOutput {
 // PodPresetSpec is a description of a pod preset.
 type PodPresetSpecPatch struct {
 	// Env defines the collection of EnvVar to inject into containers.
-	Env []corev1.EnvVar `pulumi:"env"`
+	Env []corev1.EnvVarPatch `pulumi:"env"`
 	// EnvFrom defines the collection of EnvFromSource to inject into containers.
-	EnvFrom []corev1.EnvFromSource `pulumi:"envFrom"`
+	EnvFrom []corev1.EnvFromSourcePatch `pulumi:"envFrom"`
 	// Selector is a label query over a set of resources, in this case pods. Required.
-	Selector *metav1.LabelSelector `pulumi:"selector"`
+	Selector *metav1.LabelSelectorPatch `pulumi:"selector"`
 	// VolumeMounts defines the collection of VolumeMount to inject into containers.
-	VolumeMounts []corev1.VolumeMount `pulumi:"volumeMounts"`
+	VolumeMounts []corev1.VolumeMountPatch `pulumi:"volumeMounts"`
 	// Volumes defines the collection of Volume to inject into the pod.
-	Volumes []corev1.Volume `pulumi:"volumes"`
+	Volumes []corev1.VolumePatch `pulumi:"volumes"`
 }
 
 // PodPresetSpecPatchInput is an input type that accepts PodPresetSpecPatchArgs and PodPresetSpecPatchOutput values.
@@ -535,15 +535,15 @@ type PodPresetSpecPatchInput interface {
 // PodPresetSpec is a description of a pod preset.
 type PodPresetSpecPatchArgs struct {
 	// Env defines the collection of EnvVar to inject into containers.
-	Env corev1.EnvVarArrayInput `pulumi:"env"`
+	Env corev1.EnvVarPatchArrayInput `pulumi:"env"`
 	// EnvFrom defines the collection of EnvFromSource to inject into containers.
-	EnvFrom corev1.EnvFromSourceArrayInput `pulumi:"envFrom"`
+	EnvFrom corev1.EnvFromSourcePatchArrayInput `pulumi:"envFrom"`
 	// Selector is a label query over a set of resources, in this case pods. Required.
-	Selector metav1.LabelSelectorPtrInput `pulumi:"selector"`
+	Selector metav1.LabelSelectorPatchPtrInput `pulumi:"selector"`
 	// VolumeMounts defines the collection of VolumeMount to inject into containers.
-	VolumeMounts corev1.VolumeMountArrayInput `pulumi:"volumeMounts"`
+	VolumeMounts corev1.VolumeMountPatchArrayInput `pulumi:"volumeMounts"`
 	// Volumes defines the collection of Volume to inject into the pod.
-	Volumes corev1.VolumeArrayInput `pulumi:"volumes"`
+	Volumes corev1.VolumePatchArrayInput `pulumi:"volumes"`
 }
 
 func (PodPresetSpecPatchArgs) ElementType() reflect.Type {
@@ -556,6 +556,47 @@ func (i PodPresetSpecPatchArgs) ToPodPresetSpecPatchOutput() PodPresetSpecPatchO
 
 func (i PodPresetSpecPatchArgs) ToPodPresetSpecPatchOutputWithContext(ctx context.Context) PodPresetSpecPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PodPresetSpecPatchOutput)
+}
+
+func (i PodPresetSpecPatchArgs) ToPodPresetSpecPatchPtrOutput() PodPresetSpecPatchPtrOutput {
+	return i.ToPodPresetSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (i PodPresetSpecPatchArgs) ToPodPresetSpecPatchPtrOutputWithContext(ctx context.Context) PodPresetSpecPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodPresetSpecPatchOutput).ToPodPresetSpecPatchPtrOutputWithContext(ctx)
+}
+
+// PodPresetSpecPatchPtrInput is an input type that accepts PodPresetSpecPatchArgs, PodPresetSpecPatchPtr and PodPresetSpecPatchPtrOutput values.
+// You can construct a concrete instance of `PodPresetSpecPatchPtrInput` via:
+//
+//          PodPresetSpecPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type PodPresetSpecPatchPtrInput interface {
+	pulumi.Input
+
+	ToPodPresetSpecPatchPtrOutput() PodPresetSpecPatchPtrOutput
+	ToPodPresetSpecPatchPtrOutputWithContext(context.Context) PodPresetSpecPatchPtrOutput
+}
+
+type podPresetSpecPatchPtrType PodPresetSpecPatchArgs
+
+func PodPresetSpecPatchPtr(v *PodPresetSpecPatchArgs) PodPresetSpecPatchPtrInput {
+	return (*podPresetSpecPatchPtrType)(v)
+}
+
+func (*podPresetSpecPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodPresetSpecPatch)(nil)).Elem()
+}
+
+func (i *podPresetSpecPatchPtrType) ToPodPresetSpecPatchPtrOutput() PodPresetSpecPatchPtrOutput {
+	return i.ToPodPresetSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *podPresetSpecPatchPtrType) ToPodPresetSpecPatchPtrOutputWithContext(ctx context.Context) PodPresetSpecPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodPresetSpecPatchPtrOutput)
 }
 
 // PodPresetSpec is a description of a pod preset.
@@ -573,29 +614,113 @@ func (o PodPresetSpecPatchOutput) ToPodPresetSpecPatchOutputWithContext(ctx cont
 	return o
 }
 
+func (o PodPresetSpecPatchOutput) ToPodPresetSpecPatchPtrOutput() PodPresetSpecPatchPtrOutput {
+	return o.ToPodPresetSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (o PodPresetSpecPatchOutput) ToPodPresetSpecPatchPtrOutputWithContext(ctx context.Context) PodPresetSpecPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PodPresetSpecPatch) *PodPresetSpecPatch {
+		return &v
+	}).(PodPresetSpecPatchPtrOutput)
+}
+
 // Env defines the collection of EnvVar to inject into containers.
-func (o PodPresetSpecPatchOutput) Env() corev1.EnvVarArrayOutput {
-	return o.ApplyT(func(v PodPresetSpecPatch) []corev1.EnvVar { return v.Env }).(corev1.EnvVarArrayOutput)
+func (o PodPresetSpecPatchOutput) Env() corev1.EnvVarPatchArrayOutput {
+	return o.ApplyT(func(v PodPresetSpecPatch) []corev1.EnvVarPatch { return v.Env }).(corev1.EnvVarPatchArrayOutput)
 }
 
 // EnvFrom defines the collection of EnvFromSource to inject into containers.
-func (o PodPresetSpecPatchOutput) EnvFrom() corev1.EnvFromSourceArrayOutput {
-	return o.ApplyT(func(v PodPresetSpecPatch) []corev1.EnvFromSource { return v.EnvFrom }).(corev1.EnvFromSourceArrayOutput)
+func (o PodPresetSpecPatchOutput) EnvFrom() corev1.EnvFromSourcePatchArrayOutput {
+	return o.ApplyT(func(v PodPresetSpecPatch) []corev1.EnvFromSourcePatch { return v.EnvFrom }).(corev1.EnvFromSourcePatchArrayOutput)
 }
 
 // Selector is a label query over a set of resources, in this case pods. Required.
-func (o PodPresetSpecPatchOutput) Selector() metav1.LabelSelectorPtrOutput {
-	return o.ApplyT(func(v PodPresetSpecPatch) *metav1.LabelSelector { return v.Selector }).(metav1.LabelSelectorPtrOutput)
+func (o PodPresetSpecPatchOutput) Selector() metav1.LabelSelectorPatchPtrOutput {
+	return o.ApplyT(func(v PodPresetSpecPatch) *metav1.LabelSelectorPatch { return v.Selector }).(metav1.LabelSelectorPatchPtrOutput)
 }
 
 // VolumeMounts defines the collection of VolumeMount to inject into containers.
-func (o PodPresetSpecPatchOutput) VolumeMounts() corev1.VolumeMountArrayOutput {
-	return o.ApplyT(func(v PodPresetSpecPatch) []corev1.VolumeMount { return v.VolumeMounts }).(corev1.VolumeMountArrayOutput)
+func (o PodPresetSpecPatchOutput) VolumeMounts() corev1.VolumeMountPatchArrayOutput {
+	return o.ApplyT(func(v PodPresetSpecPatch) []corev1.VolumeMountPatch { return v.VolumeMounts }).(corev1.VolumeMountPatchArrayOutput)
 }
 
 // Volumes defines the collection of Volume to inject into the pod.
-func (o PodPresetSpecPatchOutput) Volumes() corev1.VolumeArrayOutput {
-	return o.ApplyT(func(v PodPresetSpecPatch) []corev1.Volume { return v.Volumes }).(corev1.VolumeArrayOutput)
+func (o PodPresetSpecPatchOutput) Volumes() corev1.VolumePatchArrayOutput {
+	return o.ApplyT(func(v PodPresetSpecPatch) []corev1.VolumePatch { return v.Volumes }).(corev1.VolumePatchArrayOutput)
+}
+
+type PodPresetSpecPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (PodPresetSpecPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodPresetSpecPatch)(nil)).Elem()
+}
+
+func (o PodPresetSpecPatchPtrOutput) ToPodPresetSpecPatchPtrOutput() PodPresetSpecPatchPtrOutput {
+	return o
+}
+
+func (o PodPresetSpecPatchPtrOutput) ToPodPresetSpecPatchPtrOutputWithContext(ctx context.Context) PodPresetSpecPatchPtrOutput {
+	return o
+}
+
+func (o PodPresetSpecPatchPtrOutput) Elem() PodPresetSpecPatchOutput {
+	return o.ApplyT(func(v *PodPresetSpecPatch) PodPresetSpecPatch {
+		if v != nil {
+			return *v
+		}
+		var ret PodPresetSpecPatch
+		return ret
+	}).(PodPresetSpecPatchOutput)
+}
+
+// Env defines the collection of EnvVar to inject into containers.
+func (o PodPresetSpecPatchPtrOutput) Env() corev1.EnvVarPatchArrayOutput {
+	return o.ApplyT(func(v *PodPresetSpecPatch) []corev1.EnvVarPatch {
+		if v == nil {
+			return nil
+		}
+		return v.Env
+	}).(corev1.EnvVarPatchArrayOutput)
+}
+
+// EnvFrom defines the collection of EnvFromSource to inject into containers.
+func (o PodPresetSpecPatchPtrOutput) EnvFrom() corev1.EnvFromSourcePatchArrayOutput {
+	return o.ApplyT(func(v *PodPresetSpecPatch) []corev1.EnvFromSourcePatch {
+		if v == nil {
+			return nil
+		}
+		return v.EnvFrom
+	}).(corev1.EnvFromSourcePatchArrayOutput)
+}
+
+// Selector is a label query over a set of resources, in this case pods. Required.
+func (o PodPresetSpecPatchPtrOutput) Selector() metav1.LabelSelectorPatchPtrOutput {
+	return o.ApplyT(func(v *PodPresetSpecPatch) *metav1.LabelSelectorPatch {
+		if v == nil {
+			return nil
+		}
+		return v.Selector
+	}).(metav1.LabelSelectorPatchPtrOutput)
+}
+
+// VolumeMounts defines the collection of VolumeMount to inject into containers.
+func (o PodPresetSpecPatchPtrOutput) VolumeMounts() corev1.VolumeMountPatchArrayOutput {
+	return o.ApplyT(func(v *PodPresetSpecPatch) []corev1.VolumeMountPatch {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeMounts
+	}).(corev1.VolumeMountPatchArrayOutput)
+}
+
+// Volumes defines the collection of Volume to inject into the pod.
+func (o PodPresetSpecPatchPtrOutput) Volumes() corev1.VolumePatchArrayOutput {
+	return o.ApplyT(func(v *PodPresetSpecPatch) []corev1.VolumePatch {
+		if v == nil {
+			return nil
+		}
+		return v.Volumes
+	}).(corev1.VolumePatchArrayOutput)
 }
 
 func init() {
@@ -606,6 +731,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PodPresetSpecInput)(nil)).Elem(), PodPresetSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodPresetSpecPtrInput)(nil)).Elem(), PodPresetSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodPresetSpecPatchInput)(nil)).Elem(), PodPresetSpecPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PodPresetSpecPatchPtrInput)(nil)).Elem(), PodPresetSpecPatchArgs{})
 	pulumi.RegisterOutputType(PodPresetTypeOutput{})
 	pulumi.RegisterOutputType(PodPresetTypeArrayOutput{})
 	pulumi.RegisterOutputType(PodPresetListTypeOutput{})
@@ -613,4 +739,5 @@ func init() {
 	pulumi.RegisterOutputType(PodPresetSpecOutput{})
 	pulumi.RegisterOutputType(PodPresetSpecPtrOutput{})
 	pulumi.RegisterOutputType(PodPresetSpecPatchOutput{})
+	pulumi.RegisterOutputType(PodPresetSpecPatchPtrOutput{})
 }

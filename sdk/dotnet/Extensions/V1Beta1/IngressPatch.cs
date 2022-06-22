@@ -46,19 +46,19 @@ namespace Pulumi.Kubernetes.Extensions.V1Beta1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Extensions.V1Beta1.IngressSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Extensions.V1Beta1.IngressSpecPatch> Spec { get; private set; } = null!;
 
         /// <summary>
         /// Status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Output("status")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Extensions.V1Beta1.IngressStatus> Status { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Extensions.V1Beta1.IngressStatusPatch> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -97,8 +97,8 @@ namespace Pulumi.Kubernetes.Extensions.V1Beta1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:networking.k8s.io/v1:Ingress"},
-                    new Pulumi.Alias { Type = "kubernetes:networking.k8s.io/v1beta1:Ingress"},
+                    new Pulumi.Alias { Type = "kubernetes:networking.k8s.io/v1:IngressPatch"},
+                    new Pulumi.Alias { Type = "kubernetes:networking.k8s.io/v1beta1:IngressPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -141,13 +141,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Extensions.V1Beta1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// Spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Extensions.V1Beta1.IngressSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Extensions.V1Beta1.IngressSpecPatchArgs>? Spec { get; set; }
 
         public IngressPatchArgs()
         {

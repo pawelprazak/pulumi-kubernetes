@@ -50,15 +50,15 @@ export class RuntimeClassPatch extends pulumi.CustomResource {
     /**
      * More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/688-pod-overhead/README.md
      */
-    public readonly overhead!: pulumi.Output<outputs.node.v1beta1.Overhead>;
+    public readonly overhead!: pulumi.Output<outputs.node.v1beta1.OverheadPatch>;
     /**
      * Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.
      */
-    public readonly scheduling!: pulumi.Output<outputs.node.v1beta1.Scheduling>;
+    public readonly scheduling!: pulumi.Output<outputs.node.v1beta1.SchedulingPatch>;
 
     /**
      * Create a RuntimeClassPatch resource with the given unique name, arguments, and options.
@@ -86,7 +86,7 @@ export class RuntimeClassPatch extends pulumi.CustomResource {
             resourceInputs["scheduling"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:node.k8s.io/v1:RuntimeClass" }, { type: "kubernetes:node.k8s.io/v1alpha1:RuntimeClass" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:node.k8s.io/v1:RuntimeClassPatch" }, { type: "kubernetes:node.k8s.io/v1alpha1:RuntimeClassPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RuntimeClassPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -111,13 +111,13 @@ export interface RuntimeClassPatchArgs {
     /**
      * More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/688-pod-overhead/README.md
      */
-    overhead?: pulumi.Input<inputs.node.v1beta1.Overhead>;
+    overhead?: pulumi.Input<inputs.node.v1beta1.OverheadPatch>;
     /**
      * Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.
      */
-    scheduling?: pulumi.Input<inputs.node.v1beta1.Scheduling>;
+    scheduling?: pulumi.Input<inputs.node.v1beta1.SchedulingPatch>;
 }

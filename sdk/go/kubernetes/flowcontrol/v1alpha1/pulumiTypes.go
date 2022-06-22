@@ -186,6 +186,47 @@ func (i FlowDistinguisherMethodPatchArgs) ToFlowDistinguisherMethodPatchOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(FlowDistinguisherMethodPatchOutput)
 }
 
+func (i FlowDistinguisherMethodPatchArgs) ToFlowDistinguisherMethodPatchPtrOutput() FlowDistinguisherMethodPatchPtrOutput {
+	return i.ToFlowDistinguisherMethodPatchPtrOutputWithContext(context.Background())
+}
+
+func (i FlowDistinguisherMethodPatchArgs) ToFlowDistinguisherMethodPatchPtrOutputWithContext(ctx context.Context) FlowDistinguisherMethodPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlowDistinguisherMethodPatchOutput).ToFlowDistinguisherMethodPatchPtrOutputWithContext(ctx)
+}
+
+// FlowDistinguisherMethodPatchPtrInput is an input type that accepts FlowDistinguisherMethodPatchArgs, FlowDistinguisherMethodPatchPtr and FlowDistinguisherMethodPatchPtrOutput values.
+// You can construct a concrete instance of `FlowDistinguisherMethodPatchPtrInput` via:
+//
+//          FlowDistinguisherMethodPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type FlowDistinguisherMethodPatchPtrInput interface {
+	pulumi.Input
+
+	ToFlowDistinguisherMethodPatchPtrOutput() FlowDistinguisherMethodPatchPtrOutput
+	ToFlowDistinguisherMethodPatchPtrOutputWithContext(context.Context) FlowDistinguisherMethodPatchPtrOutput
+}
+
+type flowDistinguisherMethodPatchPtrType FlowDistinguisherMethodPatchArgs
+
+func FlowDistinguisherMethodPatchPtr(v *FlowDistinguisherMethodPatchArgs) FlowDistinguisherMethodPatchPtrInput {
+	return (*flowDistinguisherMethodPatchPtrType)(v)
+}
+
+func (*flowDistinguisherMethodPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlowDistinguisherMethodPatch)(nil)).Elem()
+}
+
+func (i *flowDistinguisherMethodPatchPtrType) ToFlowDistinguisherMethodPatchPtrOutput() FlowDistinguisherMethodPatchPtrOutput {
+	return i.ToFlowDistinguisherMethodPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *flowDistinguisherMethodPatchPtrType) ToFlowDistinguisherMethodPatchPtrOutputWithContext(ctx context.Context) FlowDistinguisherMethodPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlowDistinguisherMethodPatchPtrOutput)
+}
+
 // FlowDistinguisherMethod specifies the method of a flow distinguisher.
 type FlowDistinguisherMethodPatchOutput struct{ *pulumi.OutputState }
 
@@ -201,9 +242,53 @@ func (o FlowDistinguisherMethodPatchOutput) ToFlowDistinguisherMethodPatchOutput
 	return o
 }
 
+func (o FlowDistinguisherMethodPatchOutput) ToFlowDistinguisherMethodPatchPtrOutput() FlowDistinguisherMethodPatchPtrOutput {
+	return o.ToFlowDistinguisherMethodPatchPtrOutputWithContext(context.Background())
+}
+
+func (o FlowDistinguisherMethodPatchOutput) ToFlowDistinguisherMethodPatchPtrOutputWithContext(ctx context.Context) FlowDistinguisherMethodPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlowDistinguisherMethodPatch) *FlowDistinguisherMethodPatch {
+		return &v
+	}).(FlowDistinguisherMethodPatchPtrOutput)
+}
+
 // `type` is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace". Required.
 func (o FlowDistinguisherMethodPatchOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowDistinguisherMethodPatch) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type FlowDistinguisherMethodPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (FlowDistinguisherMethodPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlowDistinguisherMethodPatch)(nil)).Elem()
+}
+
+func (o FlowDistinguisherMethodPatchPtrOutput) ToFlowDistinguisherMethodPatchPtrOutput() FlowDistinguisherMethodPatchPtrOutput {
+	return o
+}
+
+func (o FlowDistinguisherMethodPatchPtrOutput) ToFlowDistinguisherMethodPatchPtrOutputWithContext(ctx context.Context) FlowDistinguisherMethodPatchPtrOutput {
+	return o
+}
+
+func (o FlowDistinguisherMethodPatchPtrOutput) Elem() FlowDistinguisherMethodPatchOutput {
+	return o.ApplyT(func(v *FlowDistinguisherMethodPatch) FlowDistinguisherMethodPatch {
+		if v != nil {
+			return *v
+		}
+		var ret FlowDistinguisherMethodPatch
+		return ret
+	}).(FlowDistinguisherMethodPatchOutput)
+}
+
+// `type` is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace". Required.
+func (o FlowDistinguisherMethodPatchPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlowDistinguisherMethodPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // FlowSchema defines the schema of a group of flows. Note that a flow is made up of a set of inbound API requests with similar attributes and is identified by a pair of strings: the name of the FlowSchema and a "flow distinguisher".
@@ -529,6 +614,31 @@ func (i FlowSchemaConditionPatchArgs) ToFlowSchemaConditionPatchOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(FlowSchemaConditionPatchOutput)
 }
 
+// FlowSchemaConditionPatchArrayInput is an input type that accepts FlowSchemaConditionPatchArray and FlowSchemaConditionPatchArrayOutput values.
+// You can construct a concrete instance of `FlowSchemaConditionPatchArrayInput` via:
+//
+//          FlowSchemaConditionPatchArray{ FlowSchemaConditionPatchArgs{...} }
+type FlowSchemaConditionPatchArrayInput interface {
+	pulumi.Input
+
+	ToFlowSchemaConditionPatchArrayOutput() FlowSchemaConditionPatchArrayOutput
+	ToFlowSchemaConditionPatchArrayOutputWithContext(context.Context) FlowSchemaConditionPatchArrayOutput
+}
+
+type FlowSchemaConditionPatchArray []FlowSchemaConditionPatchInput
+
+func (FlowSchemaConditionPatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FlowSchemaConditionPatch)(nil)).Elem()
+}
+
+func (i FlowSchemaConditionPatchArray) ToFlowSchemaConditionPatchArrayOutput() FlowSchemaConditionPatchArrayOutput {
+	return i.ToFlowSchemaConditionPatchArrayOutputWithContext(context.Background())
+}
+
+func (i FlowSchemaConditionPatchArray) ToFlowSchemaConditionPatchArrayOutputWithContext(ctx context.Context) FlowSchemaConditionPatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlowSchemaConditionPatchArrayOutput)
+}
+
 // FlowSchemaCondition describes conditions for a FlowSchema.
 type FlowSchemaConditionPatchOutput struct{ *pulumi.OutputState }
 
@@ -567,6 +677,26 @@ func (o FlowSchemaConditionPatchOutput) Status() pulumi.StringPtrOutput {
 // `type` is the type of the condition. Required.
 func (o FlowSchemaConditionPatchOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowSchemaConditionPatch) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type FlowSchemaConditionPatchArrayOutput struct{ *pulumi.OutputState }
+
+func (FlowSchemaConditionPatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FlowSchemaConditionPatch)(nil)).Elem()
+}
+
+func (o FlowSchemaConditionPatchArrayOutput) ToFlowSchemaConditionPatchArrayOutput() FlowSchemaConditionPatchArrayOutput {
+	return o
+}
+
+func (o FlowSchemaConditionPatchArrayOutput) ToFlowSchemaConditionPatchArrayOutputWithContext(ctx context.Context) FlowSchemaConditionPatchArrayOutput {
+	return o
+}
+
+func (o FlowSchemaConditionPatchArrayOutput) Index(i pulumi.IntInput) FlowSchemaConditionPatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FlowSchemaConditionPatch {
+		return vs[0].([]FlowSchemaConditionPatch)[vs[1].(int)]
+	}).(FlowSchemaConditionPatchOutput)
 }
 
 // FlowSchemaList is a list of FlowSchema objects.
@@ -658,11 +788,11 @@ type FlowSchemaPatchType struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec *FlowSchemaSpec `pulumi:"spec"`
+	Spec *FlowSchemaSpecPatch `pulumi:"spec"`
 	// `status` is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Status *FlowSchemaStatus `pulumi:"status"`
+	Status *FlowSchemaStatusPatch `pulumi:"status"`
 }
 
 // FlowSchemaPatchTypeInput is an input type that accepts FlowSchemaPatchTypeArgs and FlowSchemaPatchTypeOutput values.
@@ -683,11 +813,11 @@ type FlowSchemaPatchTypeArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrInput `pulumi:"metadata"`
 	// `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec FlowSchemaSpecPtrInput `pulumi:"spec"`
+	Spec FlowSchemaSpecPatchPtrInput `pulumi:"spec"`
 	// `status` is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Status FlowSchemaStatusPtrInput `pulumi:"status"`
+	Status FlowSchemaStatusPatchPtrInput `pulumi:"status"`
 }
 
 func (FlowSchemaPatchTypeArgs) ElementType() reflect.Type {
@@ -728,18 +858,18 @@ func (o FlowSchemaPatchTypeOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o FlowSchemaPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v FlowSchemaPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o FlowSchemaPatchTypeOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v FlowSchemaPatchType) *metav1.ObjectMetaPatch { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o FlowSchemaPatchTypeOutput) Spec() FlowSchemaSpecPtrOutput {
-	return o.ApplyT(func(v FlowSchemaPatchType) *FlowSchemaSpec { return v.Spec }).(FlowSchemaSpecPtrOutput)
+func (o FlowSchemaPatchTypeOutput) Spec() FlowSchemaSpecPatchPtrOutput {
+	return o.ApplyT(func(v FlowSchemaPatchType) *FlowSchemaSpecPatch { return v.Spec }).(FlowSchemaSpecPatchPtrOutput)
 }
 
 // `status` is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o FlowSchemaPatchTypeOutput) Status() FlowSchemaStatusPtrOutput {
-	return o.ApplyT(func(v FlowSchemaPatchType) *FlowSchemaStatus { return v.Status }).(FlowSchemaStatusPtrOutput)
+func (o FlowSchemaPatchTypeOutput) Status() FlowSchemaStatusPatchPtrOutput {
+	return o.ApplyT(func(v FlowSchemaPatchType) *FlowSchemaStatusPatch { return v.Status }).(FlowSchemaStatusPatchPtrOutput)
 }
 
 // FlowSchemaSpec describes how the FlowSchema's specification looks like.
@@ -942,13 +1072,13 @@ func (o FlowSchemaSpecPtrOutput) Rules() PolicyRulesWithSubjectsArrayOutput {
 // FlowSchemaSpec describes how the FlowSchema's specification looks like.
 type FlowSchemaSpecPatch struct {
 	// `distinguisherMethod` defines how to compute the flow distinguisher for requests that match this schema. `nil` specifies that the distinguisher is disabled and thus will always be the empty string.
-	DistinguisherMethod *FlowDistinguisherMethod `pulumi:"distinguisherMethod"`
+	DistinguisherMethod *FlowDistinguisherMethodPatch `pulumi:"distinguisherMethod"`
 	// `matchingPrecedence` is used to choose among the FlowSchemas that match a given request. The chosen FlowSchema is among those with the numerically lowest (which we take to be logically highest) MatchingPrecedence.  Each MatchingPrecedence value must be non-negative. Note that if the precedence is not specified or zero, it will be set to 1000 as default.
 	MatchingPrecedence *int `pulumi:"matchingPrecedence"`
 	// `priorityLevelConfiguration` should reference a PriorityLevelConfiguration in the cluster. If the reference cannot be resolved, the FlowSchema will be ignored and marked as invalid in its status. Required.
-	PriorityLevelConfiguration *PriorityLevelConfigurationReference `pulumi:"priorityLevelConfiguration"`
+	PriorityLevelConfiguration *PriorityLevelConfigurationReferencePatch `pulumi:"priorityLevelConfiguration"`
 	// `rules` describes which requests will match this flow schema. This FlowSchema matches a request if and only if at least one member of rules matches the request. if it is an empty slice, there will be no requests matching the FlowSchema.
-	Rules []PolicyRulesWithSubjects `pulumi:"rules"`
+	Rules []PolicyRulesWithSubjectsPatch `pulumi:"rules"`
 }
 
 // FlowSchemaSpecPatchInput is an input type that accepts FlowSchemaSpecPatchArgs and FlowSchemaSpecPatchOutput values.
@@ -965,13 +1095,13 @@ type FlowSchemaSpecPatchInput interface {
 // FlowSchemaSpec describes how the FlowSchema's specification looks like.
 type FlowSchemaSpecPatchArgs struct {
 	// `distinguisherMethod` defines how to compute the flow distinguisher for requests that match this schema. `nil` specifies that the distinguisher is disabled and thus will always be the empty string.
-	DistinguisherMethod FlowDistinguisherMethodPtrInput `pulumi:"distinguisherMethod"`
+	DistinguisherMethod FlowDistinguisherMethodPatchPtrInput `pulumi:"distinguisherMethod"`
 	// `matchingPrecedence` is used to choose among the FlowSchemas that match a given request. The chosen FlowSchema is among those with the numerically lowest (which we take to be logically highest) MatchingPrecedence.  Each MatchingPrecedence value must be non-negative. Note that if the precedence is not specified or zero, it will be set to 1000 as default.
 	MatchingPrecedence pulumi.IntPtrInput `pulumi:"matchingPrecedence"`
 	// `priorityLevelConfiguration` should reference a PriorityLevelConfiguration in the cluster. If the reference cannot be resolved, the FlowSchema will be ignored and marked as invalid in its status. Required.
-	PriorityLevelConfiguration PriorityLevelConfigurationReferencePtrInput `pulumi:"priorityLevelConfiguration"`
+	PriorityLevelConfiguration PriorityLevelConfigurationReferencePatchPtrInput `pulumi:"priorityLevelConfiguration"`
 	// `rules` describes which requests will match this flow schema. This FlowSchema matches a request if and only if at least one member of rules matches the request. if it is an empty slice, there will be no requests matching the FlowSchema.
-	Rules PolicyRulesWithSubjectsArrayInput `pulumi:"rules"`
+	Rules PolicyRulesWithSubjectsPatchArrayInput `pulumi:"rules"`
 }
 
 func (FlowSchemaSpecPatchArgs) ElementType() reflect.Type {
@@ -984,6 +1114,47 @@ func (i FlowSchemaSpecPatchArgs) ToFlowSchemaSpecPatchOutput() FlowSchemaSpecPat
 
 func (i FlowSchemaSpecPatchArgs) ToFlowSchemaSpecPatchOutputWithContext(ctx context.Context) FlowSchemaSpecPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlowSchemaSpecPatchOutput)
+}
+
+func (i FlowSchemaSpecPatchArgs) ToFlowSchemaSpecPatchPtrOutput() FlowSchemaSpecPatchPtrOutput {
+	return i.ToFlowSchemaSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (i FlowSchemaSpecPatchArgs) ToFlowSchemaSpecPatchPtrOutputWithContext(ctx context.Context) FlowSchemaSpecPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlowSchemaSpecPatchOutput).ToFlowSchemaSpecPatchPtrOutputWithContext(ctx)
+}
+
+// FlowSchemaSpecPatchPtrInput is an input type that accepts FlowSchemaSpecPatchArgs, FlowSchemaSpecPatchPtr and FlowSchemaSpecPatchPtrOutput values.
+// You can construct a concrete instance of `FlowSchemaSpecPatchPtrInput` via:
+//
+//          FlowSchemaSpecPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type FlowSchemaSpecPatchPtrInput interface {
+	pulumi.Input
+
+	ToFlowSchemaSpecPatchPtrOutput() FlowSchemaSpecPatchPtrOutput
+	ToFlowSchemaSpecPatchPtrOutputWithContext(context.Context) FlowSchemaSpecPatchPtrOutput
+}
+
+type flowSchemaSpecPatchPtrType FlowSchemaSpecPatchArgs
+
+func FlowSchemaSpecPatchPtr(v *FlowSchemaSpecPatchArgs) FlowSchemaSpecPatchPtrInput {
+	return (*flowSchemaSpecPatchPtrType)(v)
+}
+
+func (*flowSchemaSpecPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlowSchemaSpecPatch)(nil)).Elem()
+}
+
+func (i *flowSchemaSpecPatchPtrType) ToFlowSchemaSpecPatchPtrOutput() FlowSchemaSpecPatchPtrOutput {
+	return i.ToFlowSchemaSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *flowSchemaSpecPatchPtrType) ToFlowSchemaSpecPatchPtrOutputWithContext(ctx context.Context) FlowSchemaSpecPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlowSchemaSpecPatchPtrOutput)
 }
 
 // FlowSchemaSpec describes how the FlowSchema's specification looks like.
@@ -1001,9 +1172,19 @@ func (o FlowSchemaSpecPatchOutput) ToFlowSchemaSpecPatchOutputWithContext(ctx co
 	return o
 }
 
+func (o FlowSchemaSpecPatchOutput) ToFlowSchemaSpecPatchPtrOutput() FlowSchemaSpecPatchPtrOutput {
+	return o.ToFlowSchemaSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (o FlowSchemaSpecPatchOutput) ToFlowSchemaSpecPatchPtrOutputWithContext(ctx context.Context) FlowSchemaSpecPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlowSchemaSpecPatch) *FlowSchemaSpecPatch {
+		return &v
+	}).(FlowSchemaSpecPatchPtrOutput)
+}
+
 // `distinguisherMethod` defines how to compute the flow distinguisher for requests that match this schema. `nil` specifies that the distinguisher is disabled and thus will always be the empty string.
-func (o FlowSchemaSpecPatchOutput) DistinguisherMethod() FlowDistinguisherMethodPtrOutput {
-	return o.ApplyT(func(v FlowSchemaSpecPatch) *FlowDistinguisherMethod { return v.DistinguisherMethod }).(FlowDistinguisherMethodPtrOutput)
+func (o FlowSchemaSpecPatchOutput) DistinguisherMethod() FlowDistinguisherMethodPatchPtrOutput {
+	return o.ApplyT(func(v FlowSchemaSpecPatch) *FlowDistinguisherMethodPatch { return v.DistinguisherMethod }).(FlowDistinguisherMethodPatchPtrOutput)
 }
 
 // `matchingPrecedence` is used to choose among the FlowSchemas that match a given request. The chosen FlowSchema is among those with the numerically lowest (which we take to be logically highest) MatchingPrecedence.  Each MatchingPrecedence value must be non-negative. Note that if the precedence is not specified or zero, it will be set to 1000 as default.
@@ -1012,13 +1193,79 @@ func (o FlowSchemaSpecPatchOutput) MatchingPrecedence() pulumi.IntPtrOutput {
 }
 
 // `priorityLevelConfiguration` should reference a PriorityLevelConfiguration in the cluster. If the reference cannot be resolved, the FlowSchema will be ignored and marked as invalid in its status. Required.
-func (o FlowSchemaSpecPatchOutput) PriorityLevelConfiguration() PriorityLevelConfigurationReferencePtrOutput {
-	return o.ApplyT(func(v FlowSchemaSpecPatch) *PriorityLevelConfigurationReference { return v.PriorityLevelConfiguration }).(PriorityLevelConfigurationReferencePtrOutput)
+func (o FlowSchemaSpecPatchOutput) PriorityLevelConfiguration() PriorityLevelConfigurationReferencePatchPtrOutput {
+	return o.ApplyT(func(v FlowSchemaSpecPatch) *PriorityLevelConfigurationReferencePatch {
+		return v.PriorityLevelConfiguration
+	}).(PriorityLevelConfigurationReferencePatchPtrOutput)
 }
 
 // `rules` describes which requests will match this flow schema. This FlowSchema matches a request if and only if at least one member of rules matches the request. if it is an empty slice, there will be no requests matching the FlowSchema.
-func (o FlowSchemaSpecPatchOutput) Rules() PolicyRulesWithSubjectsArrayOutput {
-	return o.ApplyT(func(v FlowSchemaSpecPatch) []PolicyRulesWithSubjects { return v.Rules }).(PolicyRulesWithSubjectsArrayOutput)
+func (o FlowSchemaSpecPatchOutput) Rules() PolicyRulesWithSubjectsPatchArrayOutput {
+	return o.ApplyT(func(v FlowSchemaSpecPatch) []PolicyRulesWithSubjectsPatch { return v.Rules }).(PolicyRulesWithSubjectsPatchArrayOutput)
+}
+
+type FlowSchemaSpecPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (FlowSchemaSpecPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlowSchemaSpecPatch)(nil)).Elem()
+}
+
+func (o FlowSchemaSpecPatchPtrOutput) ToFlowSchemaSpecPatchPtrOutput() FlowSchemaSpecPatchPtrOutput {
+	return o
+}
+
+func (o FlowSchemaSpecPatchPtrOutput) ToFlowSchemaSpecPatchPtrOutputWithContext(ctx context.Context) FlowSchemaSpecPatchPtrOutput {
+	return o
+}
+
+func (o FlowSchemaSpecPatchPtrOutput) Elem() FlowSchemaSpecPatchOutput {
+	return o.ApplyT(func(v *FlowSchemaSpecPatch) FlowSchemaSpecPatch {
+		if v != nil {
+			return *v
+		}
+		var ret FlowSchemaSpecPatch
+		return ret
+	}).(FlowSchemaSpecPatchOutput)
+}
+
+// `distinguisherMethod` defines how to compute the flow distinguisher for requests that match this schema. `nil` specifies that the distinguisher is disabled and thus will always be the empty string.
+func (o FlowSchemaSpecPatchPtrOutput) DistinguisherMethod() FlowDistinguisherMethodPatchPtrOutput {
+	return o.ApplyT(func(v *FlowSchemaSpecPatch) *FlowDistinguisherMethodPatch {
+		if v == nil {
+			return nil
+		}
+		return v.DistinguisherMethod
+	}).(FlowDistinguisherMethodPatchPtrOutput)
+}
+
+// `matchingPrecedence` is used to choose among the FlowSchemas that match a given request. The chosen FlowSchema is among those with the numerically lowest (which we take to be logically highest) MatchingPrecedence.  Each MatchingPrecedence value must be non-negative. Note that if the precedence is not specified or zero, it will be set to 1000 as default.
+func (o FlowSchemaSpecPatchPtrOutput) MatchingPrecedence() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FlowSchemaSpecPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MatchingPrecedence
+	}).(pulumi.IntPtrOutput)
+}
+
+// `priorityLevelConfiguration` should reference a PriorityLevelConfiguration in the cluster. If the reference cannot be resolved, the FlowSchema will be ignored and marked as invalid in its status. Required.
+func (o FlowSchemaSpecPatchPtrOutput) PriorityLevelConfiguration() PriorityLevelConfigurationReferencePatchPtrOutput {
+	return o.ApplyT(func(v *FlowSchemaSpecPatch) *PriorityLevelConfigurationReferencePatch {
+		if v == nil {
+			return nil
+		}
+		return v.PriorityLevelConfiguration
+	}).(PriorityLevelConfigurationReferencePatchPtrOutput)
+}
+
+// `rules` describes which requests will match this flow schema. This FlowSchema matches a request if and only if at least one member of rules matches the request. if it is an empty slice, there will be no requests matching the FlowSchema.
+func (o FlowSchemaSpecPatchPtrOutput) Rules() PolicyRulesWithSubjectsPatchArrayOutput {
+	return o.ApplyT(func(v *FlowSchemaSpecPatch) []PolicyRulesWithSubjectsPatch {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(PolicyRulesWithSubjectsPatchArrayOutput)
 }
 
 // FlowSchemaStatus represents the current state of a FlowSchema.
@@ -1164,7 +1411,7 @@ func (o FlowSchemaStatusPtrOutput) Conditions() FlowSchemaConditionArrayOutput {
 // FlowSchemaStatus represents the current state of a FlowSchema.
 type FlowSchemaStatusPatch struct {
 	// `conditions` is a list of the current states of FlowSchema.
-	Conditions []FlowSchemaCondition `pulumi:"conditions"`
+	Conditions []FlowSchemaConditionPatch `pulumi:"conditions"`
 }
 
 // FlowSchemaStatusPatchInput is an input type that accepts FlowSchemaStatusPatchArgs and FlowSchemaStatusPatchOutput values.
@@ -1181,7 +1428,7 @@ type FlowSchemaStatusPatchInput interface {
 // FlowSchemaStatus represents the current state of a FlowSchema.
 type FlowSchemaStatusPatchArgs struct {
 	// `conditions` is a list of the current states of FlowSchema.
-	Conditions FlowSchemaConditionArrayInput `pulumi:"conditions"`
+	Conditions FlowSchemaConditionPatchArrayInput `pulumi:"conditions"`
 }
 
 func (FlowSchemaStatusPatchArgs) ElementType() reflect.Type {
@@ -1194,6 +1441,47 @@ func (i FlowSchemaStatusPatchArgs) ToFlowSchemaStatusPatchOutput() FlowSchemaSta
 
 func (i FlowSchemaStatusPatchArgs) ToFlowSchemaStatusPatchOutputWithContext(ctx context.Context) FlowSchemaStatusPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlowSchemaStatusPatchOutput)
+}
+
+func (i FlowSchemaStatusPatchArgs) ToFlowSchemaStatusPatchPtrOutput() FlowSchemaStatusPatchPtrOutput {
+	return i.ToFlowSchemaStatusPatchPtrOutputWithContext(context.Background())
+}
+
+func (i FlowSchemaStatusPatchArgs) ToFlowSchemaStatusPatchPtrOutputWithContext(ctx context.Context) FlowSchemaStatusPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlowSchemaStatusPatchOutput).ToFlowSchemaStatusPatchPtrOutputWithContext(ctx)
+}
+
+// FlowSchemaStatusPatchPtrInput is an input type that accepts FlowSchemaStatusPatchArgs, FlowSchemaStatusPatchPtr and FlowSchemaStatusPatchPtrOutput values.
+// You can construct a concrete instance of `FlowSchemaStatusPatchPtrInput` via:
+//
+//          FlowSchemaStatusPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type FlowSchemaStatusPatchPtrInput interface {
+	pulumi.Input
+
+	ToFlowSchemaStatusPatchPtrOutput() FlowSchemaStatusPatchPtrOutput
+	ToFlowSchemaStatusPatchPtrOutputWithContext(context.Context) FlowSchemaStatusPatchPtrOutput
+}
+
+type flowSchemaStatusPatchPtrType FlowSchemaStatusPatchArgs
+
+func FlowSchemaStatusPatchPtr(v *FlowSchemaStatusPatchArgs) FlowSchemaStatusPatchPtrInput {
+	return (*flowSchemaStatusPatchPtrType)(v)
+}
+
+func (*flowSchemaStatusPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlowSchemaStatusPatch)(nil)).Elem()
+}
+
+func (i *flowSchemaStatusPatchPtrType) ToFlowSchemaStatusPatchPtrOutput() FlowSchemaStatusPatchPtrOutput {
+	return i.ToFlowSchemaStatusPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *flowSchemaStatusPatchPtrType) ToFlowSchemaStatusPatchPtrOutputWithContext(ctx context.Context) FlowSchemaStatusPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlowSchemaStatusPatchPtrOutput)
 }
 
 // FlowSchemaStatus represents the current state of a FlowSchema.
@@ -1211,9 +1499,53 @@ func (o FlowSchemaStatusPatchOutput) ToFlowSchemaStatusPatchOutputWithContext(ct
 	return o
 }
 
+func (o FlowSchemaStatusPatchOutput) ToFlowSchemaStatusPatchPtrOutput() FlowSchemaStatusPatchPtrOutput {
+	return o.ToFlowSchemaStatusPatchPtrOutputWithContext(context.Background())
+}
+
+func (o FlowSchemaStatusPatchOutput) ToFlowSchemaStatusPatchPtrOutputWithContext(ctx context.Context) FlowSchemaStatusPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlowSchemaStatusPatch) *FlowSchemaStatusPatch {
+		return &v
+	}).(FlowSchemaStatusPatchPtrOutput)
+}
+
 // `conditions` is a list of the current states of FlowSchema.
-func (o FlowSchemaStatusPatchOutput) Conditions() FlowSchemaConditionArrayOutput {
-	return o.ApplyT(func(v FlowSchemaStatusPatch) []FlowSchemaCondition { return v.Conditions }).(FlowSchemaConditionArrayOutput)
+func (o FlowSchemaStatusPatchOutput) Conditions() FlowSchemaConditionPatchArrayOutput {
+	return o.ApplyT(func(v FlowSchemaStatusPatch) []FlowSchemaConditionPatch { return v.Conditions }).(FlowSchemaConditionPatchArrayOutput)
+}
+
+type FlowSchemaStatusPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (FlowSchemaStatusPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlowSchemaStatusPatch)(nil)).Elem()
+}
+
+func (o FlowSchemaStatusPatchPtrOutput) ToFlowSchemaStatusPatchPtrOutput() FlowSchemaStatusPatchPtrOutput {
+	return o
+}
+
+func (o FlowSchemaStatusPatchPtrOutput) ToFlowSchemaStatusPatchPtrOutputWithContext(ctx context.Context) FlowSchemaStatusPatchPtrOutput {
+	return o
+}
+
+func (o FlowSchemaStatusPatchPtrOutput) Elem() FlowSchemaStatusPatchOutput {
+	return o.ApplyT(func(v *FlowSchemaStatusPatch) FlowSchemaStatusPatch {
+		if v != nil {
+			return *v
+		}
+		var ret FlowSchemaStatusPatch
+		return ret
+	}).(FlowSchemaStatusPatchOutput)
+}
+
+// `conditions` is a list of the current states of FlowSchema.
+func (o FlowSchemaStatusPatchPtrOutput) Conditions() FlowSchemaConditionPatchArrayOutput {
+	return o.ApplyT(func(v *FlowSchemaStatusPatch) []FlowSchemaConditionPatch {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(FlowSchemaConditionPatchArrayOutput)
 }
 
 // GroupSubject holds detailed information for group-kind subject.
@@ -1391,6 +1723,47 @@ func (i GroupSubjectPatchArgs) ToGroupSubjectPatchOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GroupSubjectPatchOutput)
 }
 
+func (i GroupSubjectPatchArgs) ToGroupSubjectPatchPtrOutput() GroupSubjectPatchPtrOutput {
+	return i.ToGroupSubjectPatchPtrOutputWithContext(context.Background())
+}
+
+func (i GroupSubjectPatchArgs) ToGroupSubjectPatchPtrOutputWithContext(ctx context.Context) GroupSubjectPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupSubjectPatchOutput).ToGroupSubjectPatchPtrOutputWithContext(ctx)
+}
+
+// GroupSubjectPatchPtrInput is an input type that accepts GroupSubjectPatchArgs, GroupSubjectPatchPtr and GroupSubjectPatchPtrOutput values.
+// You can construct a concrete instance of `GroupSubjectPatchPtrInput` via:
+//
+//          GroupSubjectPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type GroupSubjectPatchPtrInput interface {
+	pulumi.Input
+
+	ToGroupSubjectPatchPtrOutput() GroupSubjectPatchPtrOutput
+	ToGroupSubjectPatchPtrOutputWithContext(context.Context) GroupSubjectPatchPtrOutput
+}
+
+type groupSubjectPatchPtrType GroupSubjectPatchArgs
+
+func GroupSubjectPatchPtr(v *GroupSubjectPatchArgs) GroupSubjectPatchPtrInput {
+	return (*groupSubjectPatchPtrType)(v)
+}
+
+func (*groupSubjectPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupSubjectPatch)(nil)).Elem()
+}
+
+func (i *groupSubjectPatchPtrType) ToGroupSubjectPatchPtrOutput() GroupSubjectPatchPtrOutput {
+	return i.ToGroupSubjectPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *groupSubjectPatchPtrType) ToGroupSubjectPatchPtrOutputWithContext(ctx context.Context) GroupSubjectPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupSubjectPatchPtrOutput)
+}
+
 // GroupSubject holds detailed information for group-kind subject.
 type GroupSubjectPatchOutput struct{ *pulumi.OutputState }
 
@@ -1406,9 +1779,53 @@ func (o GroupSubjectPatchOutput) ToGroupSubjectPatchOutputWithContext(ctx contex
 	return o
 }
 
+func (o GroupSubjectPatchOutput) ToGroupSubjectPatchPtrOutput() GroupSubjectPatchPtrOutput {
+	return o.ToGroupSubjectPatchPtrOutputWithContext(context.Background())
+}
+
+func (o GroupSubjectPatchOutput) ToGroupSubjectPatchPtrOutputWithContext(ctx context.Context) GroupSubjectPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupSubjectPatch) *GroupSubjectPatch {
+		return &v
+	}).(GroupSubjectPatchPtrOutput)
+}
+
 // name is the user group that matches, or "*" to match all user groups. See https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go for some well-known group names. Required.
 func (o GroupSubjectPatchOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupSubjectPatch) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type GroupSubjectPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (GroupSubjectPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupSubjectPatch)(nil)).Elem()
+}
+
+func (o GroupSubjectPatchPtrOutput) ToGroupSubjectPatchPtrOutput() GroupSubjectPatchPtrOutput {
+	return o
+}
+
+func (o GroupSubjectPatchPtrOutput) ToGroupSubjectPatchPtrOutputWithContext(ctx context.Context) GroupSubjectPatchPtrOutput {
+	return o
+}
+
+func (o GroupSubjectPatchPtrOutput) Elem() GroupSubjectPatchOutput {
+	return o.ApplyT(func(v *GroupSubjectPatch) GroupSubjectPatch {
+		if v != nil {
+			return *v
+		}
+		var ret GroupSubjectPatch
+		return ret
+	}).(GroupSubjectPatchOutput)
+}
+
+// name is the user group that matches, or "*" to match all user groups. See https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go for some well-known group names. Required.
+func (o GroupSubjectPatchPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupSubjectPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 // LimitResponse defines how to handle requests that can not be executed right now.
@@ -1573,7 +1990,7 @@ func (o LimitResponsePtrOutput) Type() pulumi.StringPtrOutput {
 // LimitResponse defines how to handle requests that can not be executed right now.
 type LimitResponsePatch struct {
 	// `queuing` holds the configuration parameters for queuing. This field may be non-empty only if `type` is `"Queue"`.
-	Queuing *QueuingConfiguration `pulumi:"queuing"`
+	Queuing *QueuingConfigurationPatch `pulumi:"queuing"`
 	// `type` is "Queue" or "Reject". "Queue" means that requests that can not be executed upon arrival are held in a queue until they can be executed or a queuing limit is reached. "Reject" means that requests that can not be executed upon arrival are rejected. Required.
 	Type *string `pulumi:"type"`
 }
@@ -1592,7 +2009,7 @@ type LimitResponsePatchInput interface {
 // LimitResponse defines how to handle requests that can not be executed right now.
 type LimitResponsePatchArgs struct {
 	// `queuing` holds the configuration parameters for queuing. This field may be non-empty only if `type` is `"Queue"`.
-	Queuing QueuingConfigurationPtrInput `pulumi:"queuing"`
+	Queuing QueuingConfigurationPatchPtrInput `pulumi:"queuing"`
 	// `type` is "Queue" or "Reject". "Queue" means that requests that can not be executed upon arrival are held in a queue until they can be executed or a queuing limit is reached. "Reject" means that requests that can not be executed upon arrival are rejected. Required.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -1607,6 +2024,47 @@ func (i LimitResponsePatchArgs) ToLimitResponsePatchOutput() LimitResponsePatchO
 
 func (i LimitResponsePatchArgs) ToLimitResponsePatchOutputWithContext(ctx context.Context) LimitResponsePatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LimitResponsePatchOutput)
+}
+
+func (i LimitResponsePatchArgs) ToLimitResponsePatchPtrOutput() LimitResponsePatchPtrOutput {
+	return i.ToLimitResponsePatchPtrOutputWithContext(context.Background())
+}
+
+func (i LimitResponsePatchArgs) ToLimitResponsePatchPtrOutputWithContext(ctx context.Context) LimitResponsePatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LimitResponsePatchOutput).ToLimitResponsePatchPtrOutputWithContext(ctx)
+}
+
+// LimitResponsePatchPtrInput is an input type that accepts LimitResponsePatchArgs, LimitResponsePatchPtr and LimitResponsePatchPtrOutput values.
+// You can construct a concrete instance of `LimitResponsePatchPtrInput` via:
+//
+//          LimitResponsePatchArgs{...}
+//
+//  or:
+//
+//          nil
+type LimitResponsePatchPtrInput interface {
+	pulumi.Input
+
+	ToLimitResponsePatchPtrOutput() LimitResponsePatchPtrOutput
+	ToLimitResponsePatchPtrOutputWithContext(context.Context) LimitResponsePatchPtrOutput
+}
+
+type limitResponsePatchPtrType LimitResponsePatchArgs
+
+func LimitResponsePatchPtr(v *LimitResponsePatchArgs) LimitResponsePatchPtrInput {
+	return (*limitResponsePatchPtrType)(v)
+}
+
+func (*limitResponsePatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LimitResponsePatch)(nil)).Elem()
+}
+
+func (i *limitResponsePatchPtrType) ToLimitResponsePatchPtrOutput() LimitResponsePatchPtrOutput {
+	return i.ToLimitResponsePatchPtrOutputWithContext(context.Background())
+}
+
+func (i *limitResponsePatchPtrType) ToLimitResponsePatchPtrOutputWithContext(ctx context.Context) LimitResponsePatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LimitResponsePatchPtrOutput)
 }
 
 // LimitResponse defines how to handle requests that can not be executed right now.
@@ -1624,14 +2082,68 @@ func (o LimitResponsePatchOutput) ToLimitResponsePatchOutputWithContext(ctx cont
 	return o
 }
 
+func (o LimitResponsePatchOutput) ToLimitResponsePatchPtrOutput() LimitResponsePatchPtrOutput {
+	return o.ToLimitResponsePatchPtrOutputWithContext(context.Background())
+}
+
+func (o LimitResponsePatchOutput) ToLimitResponsePatchPtrOutputWithContext(ctx context.Context) LimitResponsePatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LimitResponsePatch) *LimitResponsePatch {
+		return &v
+	}).(LimitResponsePatchPtrOutput)
+}
+
 // `queuing` holds the configuration parameters for queuing. This field may be non-empty only if `type` is `"Queue"`.
-func (o LimitResponsePatchOutput) Queuing() QueuingConfigurationPtrOutput {
-	return o.ApplyT(func(v LimitResponsePatch) *QueuingConfiguration { return v.Queuing }).(QueuingConfigurationPtrOutput)
+func (o LimitResponsePatchOutput) Queuing() QueuingConfigurationPatchPtrOutput {
+	return o.ApplyT(func(v LimitResponsePatch) *QueuingConfigurationPatch { return v.Queuing }).(QueuingConfigurationPatchPtrOutput)
 }
 
 // `type` is "Queue" or "Reject". "Queue" means that requests that can not be executed upon arrival are held in a queue until they can be executed or a queuing limit is reached. "Reject" means that requests that can not be executed upon arrival are rejected. Required.
 func (o LimitResponsePatchOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LimitResponsePatch) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type LimitResponsePatchPtrOutput struct{ *pulumi.OutputState }
+
+func (LimitResponsePatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LimitResponsePatch)(nil)).Elem()
+}
+
+func (o LimitResponsePatchPtrOutput) ToLimitResponsePatchPtrOutput() LimitResponsePatchPtrOutput {
+	return o
+}
+
+func (o LimitResponsePatchPtrOutput) ToLimitResponsePatchPtrOutputWithContext(ctx context.Context) LimitResponsePatchPtrOutput {
+	return o
+}
+
+func (o LimitResponsePatchPtrOutput) Elem() LimitResponsePatchOutput {
+	return o.ApplyT(func(v *LimitResponsePatch) LimitResponsePatch {
+		if v != nil {
+			return *v
+		}
+		var ret LimitResponsePatch
+		return ret
+	}).(LimitResponsePatchOutput)
+}
+
+// `queuing` holds the configuration parameters for queuing. This field may be non-empty only if `type` is `"Queue"`.
+func (o LimitResponsePatchPtrOutput) Queuing() QueuingConfigurationPatchPtrOutput {
+	return o.ApplyT(func(v *LimitResponsePatch) *QueuingConfigurationPatch {
+		if v == nil {
+			return nil
+		}
+		return v.Queuing
+	}).(QueuingConfigurationPatchPtrOutput)
+}
+
+// `type` is "Queue" or "Reject". "Queue" means that requests that can not be executed upon arrival are held in a queue until they can be executed or a queuing limit is reached. "Reject" means that requests that can not be executed upon arrival are rejected. Required.
+func (o LimitResponsePatchPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LimitResponsePatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // LimitedPriorityLevelConfiguration specifies how to handle requests that are subject to limits. It addresses two issues:
@@ -1826,7 +2338,7 @@ type LimitedPriorityLevelConfigurationPatch struct {
 	// bigger numbers of ACS mean more reserved concurrent requests (at the expense of every other PL). This field has a default value of 30.
 	AssuredConcurrencyShares *int `pulumi:"assuredConcurrencyShares"`
 	// `limitResponse` indicates what to do with requests that can not be executed right now
-	LimitResponse *LimitResponse `pulumi:"limitResponse"`
+	LimitResponse *LimitResponsePatch `pulumi:"limitResponse"`
 }
 
 // LimitedPriorityLevelConfigurationPatchInput is an input type that accepts LimitedPriorityLevelConfigurationPatchArgs and LimitedPriorityLevelConfigurationPatchOutput values.
@@ -1851,7 +2363,7 @@ type LimitedPriorityLevelConfigurationPatchArgs struct {
 	// bigger numbers of ACS mean more reserved concurrent requests (at the expense of every other PL). This field has a default value of 30.
 	AssuredConcurrencyShares pulumi.IntPtrInput `pulumi:"assuredConcurrencyShares"`
 	// `limitResponse` indicates what to do with requests that can not be executed right now
-	LimitResponse LimitResponsePtrInput `pulumi:"limitResponse"`
+	LimitResponse LimitResponsePatchPtrInput `pulumi:"limitResponse"`
 }
 
 func (LimitedPriorityLevelConfigurationPatchArgs) ElementType() reflect.Type {
@@ -1864,6 +2376,47 @@ func (i LimitedPriorityLevelConfigurationPatchArgs) ToLimitedPriorityLevelConfig
 
 func (i LimitedPriorityLevelConfigurationPatchArgs) ToLimitedPriorityLevelConfigurationPatchOutputWithContext(ctx context.Context) LimitedPriorityLevelConfigurationPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LimitedPriorityLevelConfigurationPatchOutput)
+}
+
+func (i LimitedPriorityLevelConfigurationPatchArgs) ToLimitedPriorityLevelConfigurationPatchPtrOutput() LimitedPriorityLevelConfigurationPatchPtrOutput {
+	return i.ToLimitedPriorityLevelConfigurationPatchPtrOutputWithContext(context.Background())
+}
+
+func (i LimitedPriorityLevelConfigurationPatchArgs) ToLimitedPriorityLevelConfigurationPatchPtrOutputWithContext(ctx context.Context) LimitedPriorityLevelConfigurationPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LimitedPriorityLevelConfigurationPatchOutput).ToLimitedPriorityLevelConfigurationPatchPtrOutputWithContext(ctx)
+}
+
+// LimitedPriorityLevelConfigurationPatchPtrInput is an input type that accepts LimitedPriorityLevelConfigurationPatchArgs, LimitedPriorityLevelConfigurationPatchPtr and LimitedPriorityLevelConfigurationPatchPtrOutput values.
+// You can construct a concrete instance of `LimitedPriorityLevelConfigurationPatchPtrInput` via:
+//
+//          LimitedPriorityLevelConfigurationPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type LimitedPriorityLevelConfigurationPatchPtrInput interface {
+	pulumi.Input
+
+	ToLimitedPriorityLevelConfigurationPatchPtrOutput() LimitedPriorityLevelConfigurationPatchPtrOutput
+	ToLimitedPriorityLevelConfigurationPatchPtrOutputWithContext(context.Context) LimitedPriorityLevelConfigurationPatchPtrOutput
+}
+
+type limitedPriorityLevelConfigurationPatchPtrType LimitedPriorityLevelConfigurationPatchArgs
+
+func LimitedPriorityLevelConfigurationPatchPtr(v *LimitedPriorityLevelConfigurationPatchArgs) LimitedPriorityLevelConfigurationPatchPtrInput {
+	return (*limitedPriorityLevelConfigurationPatchPtrType)(v)
+}
+
+func (*limitedPriorityLevelConfigurationPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LimitedPriorityLevelConfigurationPatch)(nil)).Elem()
+}
+
+func (i *limitedPriorityLevelConfigurationPatchPtrType) ToLimitedPriorityLevelConfigurationPatchPtrOutput() LimitedPriorityLevelConfigurationPatchPtrOutput {
+	return i.ToLimitedPriorityLevelConfigurationPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *limitedPriorityLevelConfigurationPatchPtrType) ToLimitedPriorityLevelConfigurationPatchPtrOutputWithContext(ctx context.Context) LimitedPriorityLevelConfigurationPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LimitedPriorityLevelConfigurationPatchPtrOutput)
 }
 
 // LimitedPriorityLevelConfiguration specifies how to handle requests that are subject to limits. It addresses two issues:
@@ -1883,6 +2436,16 @@ func (o LimitedPriorityLevelConfigurationPatchOutput) ToLimitedPriorityLevelConf
 	return o
 }
 
+func (o LimitedPriorityLevelConfigurationPatchOutput) ToLimitedPriorityLevelConfigurationPatchPtrOutput() LimitedPriorityLevelConfigurationPatchPtrOutput {
+	return o.ToLimitedPriorityLevelConfigurationPatchPtrOutputWithContext(context.Background())
+}
+
+func (o LimitedPriorityLevelConfigurationPatchOutput) ToLimitedPriorityLevelConfigurationPatchPtrOutputWithContext(ctx context.Context) LimitedPriorityLevelConfigurationPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LimitedPriorityLevelConfigurationPatch) *LimitedPriorityLevelConfigurationPatch {
+		return &v
+	}).(LimitedPriorityLevelConfigurationPatchPtrOutput)
+}
+
 // `assuredConcurrencyShares` (ACS) configures the execution limit, which is a limit on the number of requests of this priority level that may be exeucting at a given time.  ACS must be a positive number. The server's concurrency limit (SCL) is divided among the concurrency-controlled priority levels in proportion to their assured concurrency shares. This produces the assured concurrency value (ACV) --- the number of requests that may be executing at a time --- for each such priority level:
 //
 //             ACV(l) = ceil( SCL * ACS(l) / ( sum[priority levels k] ACS(k) ) )
@@ -1893,8 +2456,56 @@ func (o LimitedPriorityLevelConfigurationPatchOutput) AssuredConcurrencyShares()
 }
 
 // `limitResponse` indicates what to do with requests that can not be executed right now
-func (o LimitedPriorityLevelConfigurationPatchOutput) LimitResponse() LimitResponsePtrOutput {
-	return o.ApplyT(func(v LimitedPriorityLevelConfigurationPatch) *LimitResponse { return v.LimitResponse }).(LimitResponsePtrOutput)
+func (o LimitedPriorityLevelConfigurationPatchOutput) LimitResponse() LimitResponsePatchPtrOutput {
+	return o.ApplyT(func(v LimitedPriorityLevelConfigurationPatch) *LimitResponsePatch { return v.LimitResponse }).(LimitResponsePatchPtrOutput)
+}
+
+type LimitedPriorityLevelConfigurationPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (LimitedPriorityLevelConfigurationPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LimitedPriorityLevelConfigurationPatch)(nil)).Elem()
+}
+
+func (o LimitedPriorityLevelConfigurationPatchPtrOutput) ToLimitedPriorityLevelConfigurationPatchPtrOutput() LimitedPriorityLevelConfigurationPatchPtrOutput {
+	return o
+}
+
+func (o LimitedPriorityLevelConfigurationPatchPtrOutput) ToLimitedPriorityLevelConfigurationPatchPtrOutputWithContext(ctx context.Context) LimitedPriorityLevelConfigurationPatchPtrOutput {
+	return o
+}
+
+func (o LimitedPriorityLevelConfigurationPatchPtrOutput) Elem() LimitedPriorityLevelConfigurationPatchOutput {
+	return o.ApplyT(func(v *LimitedPriorityLevelConfigurationPatch) LimitedPriorityLevelConfigurationPatch {
+		if v != nil {
+			return *v
+		}
+		var ret LimitedPriorityLevelConfigurationPatch
+		return ret
+	}).(LimitedPriorityLevelConfigurationPatchOutput)
+}
+
+// `assuredConcurrencyShares` (ACS) configures the execution limit, which is a limit on the number of requests of this priority level that may be exeucting at a given time.  ACS must be a positive number. The server's concurrency limit (SCL) is divided among the concurrency-controlled priority levels in proportion to their assured concurrency shares. This produces the assured concurrency value (ACV) --- the number of requests that may be executing at a time --- for each such priority level:
+//
+//             ACV(l) = ceil( SCL * ACS(l) / ( sum[priority levels k] ACS(k) ) )
+//
+// bigger numbers of ACS mean more reserved concurrent requests (at the expense of every other PL). This field has a default value of 30.
+func (o LimitedPriorityLevelConfigurationPatchPtrOutput) AssuredConcurrencyShares() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LimitedPriorityLevelConfigurationPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AssuredConcurrencyShares
+	}).(pulumi.IntPtrOutput)
+}
+
+// `limitResponse` indicates what to do with requests that can not be executed right now
+func (o LimitedPriorityLevelConfigurationPatchPtrOutput) LimitResponse() LimitResponsePatchPtrOutput {
+	return o.ApplyT(func(v *LimitedPriorityLevelConfigurationPatch) *LimitResponsePatch {
+		if v == nil {
+			return nil
+		}
+		return v.LimitResponse
+	}).(LimitResponsePatchPtrOutput)
 }
 
 // NonResourcePolicyRule is a predicate that matches non-resource requests according to their verb and the target non-resource URL. A NonResourcePolicyRule matches a request if and only if both (a) at least one member of verbs matches the request and (b) at least one member of nonResourceURLs matches the request.
@@ -2075,6 +2686,31 @@ func (i NonResourcePolicyRulePatchArgs) ToNonResourcePolicyRulePatchOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(NonResourcePolicyRulePatchOutput)
 }
 
+// NonResourcePolicyRulePatchArrayInput is an input type that accepts NonResourcePolicyRulePatchArray and NonResourcePolicyRulePatchArrayOutput values.
+// You can construct a concrete instance of `NonResourcePolicyRulePatchArrayInput` via:
+//
+//          NonResourcePolicyRulePatchArray{ NonResourcePolicyRulePatchArgs{...} }
+type NonResourcePolicyRulePatchArrayInput interface {
+	pulumi.Input
+
+	ToNonResourcePolicyRulePatchArrayOutput() NonResourcePolicyRulePatchArrayOutput
+	ToNonResourcePolicyRulePatchArrayOutputWithContext(context.Context) NonResourcePolicyRulePatchArrayOutput
+}
+
+type NonResourcePolicyRulePatchArray []NonResourcePolicyRulePatchInput
+
+func (NonResourcePolicyRulePatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NonResourcePolicyRulePatch)(nil)).Elem()
+}
+
+func (i NonResourcePolicyRulePatchArray) ToNonResourcePolicyRulePatchArrayOutput() NonResourcePolicyRulePatchArrayOutput {
+	return i.ToNonResourcePolicyRulePatchArrayOutputWithContext(context.Background())
+}
+
+func (i NonResourcePolicyRulePatchArray) ToNonResourcePolicyRulePatchArrayOutputWithContext(ctx context.Context) NonResourcePolicyRulePatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NonResourcePolicyRulePatchArrayOutput)
+}
+
 // NonResourcePolicyRule is a predicate that matches non-resource requests according to their verb and the target non-resource URL. A NonResourcePolicyRule matches a request if and only if both (a) at least one member of verbs matches the request and (b) at least one member of nonResourceURLs matches the request.
 type NonResourcePolicyRulePatchOutput struct{ *pulumi.OutputState }
 
@@ -2104,6 +2740,26 @@ func (o NonResourcePolicyRulePatchOutput) NonResourceURLs() pulumi.StringArrayOu
 // `verbs` is a list of matching verbs and may not be empty. "*" matches all verbs. If it is present, it must be the only entry. Required.
 func (o NonResourcePolicyRulePatchOutput) Verbs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NonResourcePolicyRulePatch) []string { return v.Verbs }).(pulumi.StringArrayOutput)
+}
+
+type NonResourcePolicyRulePatchArrayOutput struct{ *pulumi.OutputState }
+
+func (NonResourcePolicyRulePatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NonResourcePolicyRulePatch)(nil)).Elem()
+}
+
+func (o NonResourcePolicyRulePatchArrayOutput) ToNonResourcePolicyRulePatchArrayOutput() NonResourcePolicyRulePatchArrayOutput {
+	return o
+}
+
+func (o NonResourcePolicyRulePatchArrayOutput) ToNonResourcePolicyRulePatchArrayOutputWithContext(ctx context.Context) NonResourcePolicyRulePatchArrayOutput {
+	return o
+}
+
+func (o NonResourcePolicyRulePatchArrayOutput) Index(i pulumi.IntInput) NonResourcePolicyRulePatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NonResourcePolicyRulePatch {
+		return vs[0].([]NonResourcePolicyRulePatch)[vs[1].(int)]
+	}).(NonResourcePolicyRulePatchOutput)
 }
 
 // PolicyRulesWithSubjects prescribes a test that applies to a request to an apiserver. The test considers the subject making the request, the verb being requested, and the resource to be acted upon. This PolicyRulesWithSubjects matches a request if and only if both (a) at least one member of subjects matches the request and (b) at least one member of resourceRules or nonResourceRules matches the request.
@@ -2227,11 +2883,11 @@ func (o PolicyRulesWithSubjectsArrayOutput) Index(i pulumi.IntInput) PolicyRules
 // PolicyRulesWithSubjects prescribes a test that applies to a request to an apiserver. The test considers the subject making the request, the verb being requested, and the resource to be acted upon. This PolicyRulesWithSubjects matches a request if and only if both (a) at least one member of subjects matches the request and (b) at least one member of resourceRules or nonResourceRules matches the request.
 type PolicyRulesWithSubjectsPatch struct {
 	// `nonResourceRules` is a list of NonResourcePolicyRules that identify matching requests according to their verb and the target non-resource URL.
-	NonResourceRules []NonResourcePolicyRule `pulumi:"nonResourceRules"`
+	NonResourceRules []NonResourcePolicyRulePatch `pulumi:"nonResourceRules"`
 	// `resourceRules` is a slice of ResourcePolicyRules that identify matching requests according to their verb and the target resource. At least one of `resourceRules` and `nonResourceRules` has to be non-empty.
-	ResourceRules []ResourcePolicyRule `pulumi:"resourceRules"`
+	ResourceRules []ResourcePolicyRulePatch `pulumi:"resourceRules"`
 	// subjects is the list of normal user, serviceaccount, or group that this rule cares about. There must be at least one member in this slice. A slice that includes both the system:authenticated and system:unauthenticated user groups matches every request. Required.
-	Subjects []Subject `pulumi:"subjects"`
+	Subjects []SubjectPatch `pulumi:"subjects"`
 }
 
 // PolicyRulesWithSubjectsPatchInput is an input type that accepts PolicyRulesWithSubjectsPatchArgs and PolicyRulesWithSubjectsPatchOutput values.
@@ -2248,11 +2904,11 @@ type PolicyRulesWithSubjectsPatchInput interface {
 // PolicyRulesWithSubjects prescribes a test that applies to a request to an apiserver. The test considers the subject making the request, the verb being requested, and the resource to be acted upon. This PolicyRulesWithSubjects matches a request if and only if both (a) at least one member of subjects matches the request and (b) at least one member of resourceRules or nonResourceRules matches the request.
 type PolicyRulesWithSubjectsPatchArgs struct {
 	// `nonResourceRules` is a list of NonResourcePolicyRules that identify matching requests according to their verb and the target non-resource URL.
-	NonResourceRules NonResourcePolicyRuleArrayInput `pulumi:"nonResourceRules"`
+	NonResourceRules NonResourcePolicyRulePatchArrayInput `pulumi:"nonResourceRules"`
 	// `resourceRules` is a slice of ResourcePolicyRules that identify matching requests according to their verb and the target resource. At least one of `resourceRules` and `nonResourceRules` has to be non-empty.
-	ResourceRules ResourcePolicyRuleArrayInput `pulumi:"resourceRules"`
+	ResourceRules ResourcePolicyRulePatchArrayInput `pulumi:"resourceRules"`
 	// subjects is the list of normal user, serviceaccount, or group that this rule cares about. There must be at least one member in this slice. A slice that includes both the system:authenticated and system:unauthenticated user groups matches every request. Required.
-	Subjects SubjectArrayInput `pulumi:"subjects"`
+	Subjects SubjectPatchArrayInput `pulumi:"subjects"`
 }
 
 func (PolicyRulesWithSubjectsPatchArgs) ElementType() reflect.Type {
@@ -2265,6 +2921,31 @@ func (i PolicyRulesWithSubjectsPatchArgs) ToPolicyRulesWithSubjectsPatchOutput()
 
 func (i PolicyRulesWithSubjectsPatchArgs) ToPolicyRulesWithSubjectsPatchOutputWithContext(ctx context.Context) PolicyRulesWithSubjectsPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyRulesWithSubjectsPatchOutput)
+}
+
+// PolicyRulesWithSubjectsPatchArrayInput is an input type that accepts PolicyRulesWithSubjectsPatchArray and PolicyRulesWithSubjectsPatchArrayOutput values.
+// You can construct a concrete instance of `PolicyRulesWithSubjectsPatchArrayInput` via:
+//
+//          PolicyRulesWithSubjectsPatchArray{ PolicyRulesWithSubjectsPatchArgs{...} }
+type PolicyRulesWithSubjectsPatchArrayInput interface {
+	pulumi.Input
+
+	ToPolicyRulesWithSubjectsPatchArrayOutput() PolicyRulesWithSubjectsPatchArrayOutput
+	ToPolicyRulesWithSubjectsPatchArrayOutputWithContext(context.Context) PolicyRulesWithSubjectsPatchArrayOutput
+}
+
+type PolicyRulesWithSubjectsPatchArray []PolicyRulesWithSubjectsPatchInput
+
+func (PolicyRulesWithSubjectsPatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyRulesWithSubjectsPatch)(nil)).Elem()
+}
+
+func (i PolicyRulesWithSubjectsPatchArray) ToPolicyRulesWithSubjectsPatchArrayOutput() PolicyRulesWithSubjectsPatchArrayOutput {
+	return i.ToPolicyRulesWithSubjectsPatchArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyRulesWithSubjectsPatchArray) ToPolicyRulesWithSubjectsPatchArrayOutputWithContext(ctx context.Context) PolicyRulesWithSubjectsPatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyRulesWithSubjectsPatchArrayOutput)
 }
 
 // PolicyRulesWithSubjects prescribes a test that applies to a request to an apiserver. The test considers the subject making the request, the verb being requested, and the resource to be acted upon. This PolicyRulesWithSubjects matches a request if and only if both (a) at least one member of subjects matches the request and (b) at least one member of resourceRules or nonResourceRules matches the request.
@@ -2283,18 +2964,38 @@ func (o PolicyRulesWithSubjectsPatchOutput) ToPolicyRulesWithSubjectsPatchOutput
 }
 
 // `nonResourceRules` is a list of NonResourcePolicyRules that identify matching requests according to their verb and the target non-resource URL.
-func (o PolicyRulesWithSubjectsPatchOutput) NonResourceRules() NonResourcePolicyRuleArrayOutput {
-	return o.ApplyT(func(v PolicyRulesWithSubjectsPatch) []NonResourcePolicyRule { return v.NonResourceRules }).(NonResourcePolicyRuleArrayOutput)
+func (o PolicyRulesWithSubjectsPatchOutput) NonResourceRules() NonResourcePolicyRulePatchArrayOutput {
+	return o.ApplyT(func(v PolicyRulesWithSubjectsPatch) []NonResourcePolicyRulePatch { return v.NonResourceRules }).(NonResourcePolicyRulePatchArrayOutput)
 }
 
 // `resourceRules` is a slice of ResourcePolicyRules that identify matching requests according to their verb and the target resource. At least one of `resourceRules` and `nonResourceRules` has to be non-empty.
-func (o PolicyRulesWithSubjectsPatchOutput) ResourceRules() ResourcePolicyRuleArrayOutput {
-	return o.ApplyT(func(v PolicyRulesWithSubjectsPatch) []ResourcePolicyRule { return v.ResourceRules }).(ResourcePolicyRuleArrayOutput)
+func (o PolicyRulesWithSubjectsPatchOutput) ResourceRules() ResourcePolicyRulePatchArrayOutput {
+	return o.ApplyT(func(v PolicyRulesWithSubjectsPatch) []ResourcePolicyRulePatch { return v.ResourceRules }).(ResourcePolicyRulePatchArrayOutput)
 }
 
 // subjects is the list of normal user, serviceaccount, or group that this rule cares about. There must be at least one member in this slice. A slice that includes both the system:authenticated and system:unauthenticated user groups matches every request. Required.
-func (o PolicyRulesWithSubjectsPatchOutput) Subjects() SubjectArrayOutput {
-	return o.ApplyT(func(v PolicyRulesWithSubjectsPatch) []Subject { return v.Subjects }).(SubjectArrayOutput)
+func (o PolicyRulesWithSubjectsPatchOutput) Subjects() SubjectPatchArrayOutput {
+	return o.ApplyT(func(v PolicyRulesWithSubjectsPatch) []SubjectPatch { return v.Subjects }).(SubjectPatchArrayOutput)
+}
+
+type PolicyRulesWithSubjectsPatchArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyRulesWithSubjectsPatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyRulesWithSubjectsPatch)(nil)).Elem()
+}
+
+func (o PolicyRulesWithSubjectsPatchArrayOutput) ToPolicyRulesWithSubjectsPatchArrayOutput() PolicyRulesWithSubjectsPatchArrayOutput {
+	return o
+}
+
+func (o PolicyRulesWithSubjectsPatchArrayOutput) ToPolicyRulesWithSubjectsPatchArrayOutputWithContext(ctx context.Context) PolicyRulesWithSubjectsPatchArrayOutput {
+	return o
+}
+
+func (o PolicyRulesWithSubjectsPatchArrayOutput) Index(i pulumi.IntInput) PolicyRulesWithSubjectsPatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyRulesWithSubjectsPatch {
+		return vs[0].([]PolicyRulesWithSubjectsPatch)[vs[1].(int)]
+	}).(PolicyRulesWithSubjectsPatchOutput)
 }
 
 // PriorityLevelConfiguration represents the configuration of a priority level.
@@ -2620,6 +3321,31 @@ func (i PriorityLevelConfigurationConditionPatchArgs) ToPriorityLevelConfigurati
 	return pulumi.ToOutputWithContext(ctx, i).(PriorityLevelConfigurationConditionPatchOutput)
 }
 
+// PriorityLevelConfigurationConditionPatchArrayInput is an input type that accepts PriorityLevelConfigurationConditionPatchArray and PriorityLevelConfigurationConditionPatchArrayOutput values.
+// You can construct a concrete instance of `PriorityLevelConfigurationConditionPatchArrayInput` via:
+//
+//          PriorityLevelConfigurationConditionPatchArray{ PriorityLevelConfigurationConditionPatchArgs{...} }
+type PriorityLevelConfigurationConditionPatchArrayInput interface {
+	pulumi.Input
+
+	ToPriorityLevelConfigurationConditionPatchArrayOutput() PriorityLevelConfigurationConditionPatchArrayOutput
+	ToPriorityLevelConfigurationConditionPatchArrayOutputWithContext(context.Context) PriorityLevelConfigurationConditionPatchArrayOutput
+}
+
+type PriorityLevelConfigurationConditionPatchArray []PriorityLevelConfigurationConditionPatchInput
+
+func (PriorityLevelConfigurationConditionPatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PriorityLevelConfigurationConditionPatch)(nil)).Elem()
+}
+
+func (i PriorityLevelConfigurationConditionPatchArray) ToPriorityLevelConfigurationConditionPatchArrayOutput() PriorityLevelConfigurationConditionPatchArrayOutput {
+	return i.ToPriorityLevelConfigurationConditionPatchArrayOutputWithContext(context.Background())
+}
+
+func (i PriorityLevelConfigurationConditionPatchArray) ToPriorityLevelConfigurationConditionPatchArrayOutputWithContext(ctx context.Context) PriorityLevelConfigurationConditionPatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PriorityLevelConfigurationConditionPatchArrayOutput)
+}
+
 // PriorityLevelConfigurationCondition defines the condition of priority level.
 type PriorityLevelConfigurationConditionPatchOutput struct{ *pulumi.OutputState }
 
@@ -2658,6 +3384,26 @@ func (o PriorityLevelConfigurationConditionPatchOutput) Status() pulumi.StringPt
 // `type` is the type of the condition. Required.
 func (o PriorityLevelConfigurationConditionPatchOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PriorityLevelConfigurationConditionPatch) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type PriorityLevelConfigurationConditionPatchArrayOutput struct{ *pulumi.OutputState }
+
+func (PriorityLevelConfigurationConditionPatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PriorityLevelConfigurationConditionPatch)(nil)).Elem()
+}
+
+func (o PriorityLevelConfigurationConditionPatchArrayOutput) ToPriorityLevelConfigurationConditionPatchArrayOutput() PriorityLevelConfigurationConditionPatchArrayOutput {
+	return o
+}
+
+func (o PriorityLevelConfigurationConditionPatchArrayOutput) ToPriorityLevelConfigurationConditionPatchArrayOutputWithContext(ctx context.Context) PriorityLevelConfigurationConditionPatchArrayOutput {
+	return o
+}
+
+func (o PriorityLevelConfigurationConditionPatchArrayOutput) Index(i pulumi.IntInput) PriorityLevelConfigurationConditionPatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PriorityLevelConfigurationConditionPatch {
+		return vs[0].([]PriorityLevelConfigurationConditionPatch)[vs[1].(int)]
+	}).(PriorityLevelConfigurationConditionPatchOutput)
 }
 
 // PriorityLevelConfigurationList is a list of PriorityLevelConfiguration objects.
@@ -2749,11 +3495,11 @@ type PriorityLevelConfigurationPatchType struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// `spec` is the specification of the desired behavior of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec *PriorityLevelConfigurationSpec `pulumi:"spec"`
+	Spec *PriorityLevelConfigurationSpecPatch `pulumi:"spec"`
 	// `status` is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Status *PriorityLevelConfigurationStatus `pulumi:"status"`
+	Status *PriorityLevelConfigurationStatusPatch `pulumi:"status"`
 }
 
 // PriorityLevelConfigurationPatchTypeInput is an input type that accepts PriorityLevelConfigurationPatchTypeArgs and PriorityLevelConfigurationPatchTypeOutput values.
@@ -2774,11 +3520,11 @@ type PriorityLevelConfigurationPatchTypeArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrInput `pulumi:"metadata"`
 	// `spec` is the specification of the desired behavior of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec PriorityLevelConfigurationSpecPtrInput `pulumi:"spec"`
+	Spec PriorityLevelConfigurationSpecPatchPtrInput `pulumi:"spec"`
 	// `status` is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Status PriorityLevelConfigurationStatusPtrInput `pulumi:"status"`
+	Status PriorityLevelConfigurationStatusPatchPtrInput `pulumi:"status"`
 }
 
 func (PriorityLevelConfigurationPatchTypeArgs) ElementType() reflect.Type {
@@ -2819,18 +3565,18 @@ func (o PriorityLevelConfigurationPatchTypeOutput) Kind() pulumi.StringPtrOutput
 }
 
 // `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o PriorityLevelConfigurationPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v PriorityLevelConfigurationPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o PriorityLevelConfigurationPatchTypeOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v PriorityLevelConfigurationPatchType) *metav1.ObjectMetaPatch { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // `spec` is the specification of the desired behavior of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o PriorityLevelConfigurationPatchTypeOutput) Spec() PriorityLevelConfigurationSpecPtrOutput {
-	return o.ApplyT(func(v PriorityLevelConfigurationPatchType) *PriorityLevelConfigurationSpec { return v.Spec }).(PriorityLevelConfigurationSpecPtrOutput)
+func (o PriorityLevelConfigurationPatchTypeOutput) Spec() PriorityLevelConfigurationSpecPatchPtrOutput {
+	return o.ApplyT(func(v PriorityLevelConfigurationPatchType) *PriorityLevelConfigurationSpecPatch { return v.Spec }).(PriorityLevelConfigurationSpecPatchPtrOutput)
 }
 
 // `status` is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o PriorityLevelConfigurationPatchTypeOutput) Status() PriorityLevelConfigurationStatusPtrOutput {
-	return o.ApplyT(func(v PriorityLevelConfigurationPatchType) *PriorityLevelConfigurationStatus { return v.Status }).(PriorityLevelConfigurationStatusPtrOutput)
+func (o PriorityLevelConfigurationPatchTypeOutput) Status() PriorityLevelConfigurationStatusPatchPtrOutput {
+	return o.ApplyT(func(v PriorityLevelConfigurationPatchType) *PriorityLevelConfigurationStatusPatch { return v.Status }).(PriorityLevelConfigurationStatusPatchPtrOutput)
 }
 
 // PriorityLevelConfigurationReference contains information that points to the "request-priority" being used.
@@ -3008,6 +3754,47 @@ func (i PriorityLevelConfigurationReferencePatchArgs) ToPriorityLevelConfigurati
 	return pulumi.ToOutputWithContext(ctx, i).(PriorityLevelConfigurationReferencePatchOutput)
 }
 
+func (i PriorityLevelConfigurationReferencePatchArgs) ToPriorityLevelConfigurationReferencePatchPtrOutput() PriorityLevelConfigurationReferencePatchPtrOutput {
+	return i.ToPriorityLevelConfigurationReferencePatchPtrOutputWithContext(context.Background())
+}
+
+func (i PriorityLevelConfigurationReferencePatchArgs) ToPriorityLevelConfigurationReferencePatchPtrOutputWithContext(ctx context.Context) PriorityLevelConfigurationReferencePatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PriorityLevelConfigurationReferencePatchOutput).ToPriorityLevelConfigurationReferencePatchPtrOutputWithContext(ctx)
+}
+
+// PriorityLevelConfigurationReferencePatchPtrInput is an input type that accepts PriorityLevelConfigurationReferencePatchArgs, PriorityLevelConfigurationReferencePatchPtr and PriorityLevelConfigurationReferencePatchPtrOutput values.
+// You can construct a concrete instance of `PriorityLevelConfigurationReferencePatchPtrInput` via:
+//
+//          PriorityLevelConfigurationReferencePatchArgs{...}
+//
+//  or:
+//
+//          nil
+type PriorityLevelConfigurationReferencePatchPtrInput interface {
+	pulumi.Input
+
+	ToPriorityLevelConfigurationReferencePatchPtrOutput() PriorityLevelConfigurationReferencePatchPtrOutput
+	ToPriorityLevelConfigurationReferencePatchPtrOutputWithContext(context.Context) PriorityLevelConfigurationReferencePatchPtrOutput
+}
+
+type priorityLevelConfigurationReferencePatchPtrType PriorityLevelConfigurationReferencePatchArgs
+
+func PriorityLevelConfigurationReferencePatchPtr(v *PriorityLevelConfigurationReferencePatchArgs) PriorityLevelConfigurationReferencePatchPtrInput {
+	return (*priorityLevelConfigurationReferencePatchPtrType)(v)
+}
+
+func (*priorityLevelConfigurationReferencePatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PriorityLevelConfigurationReferencePatch)(nil)).Elem()
+}
+
+func (i *priorityLevelConfigurationReferencePatchPtrType) ToPriorityLevelConfigurationReferencePatchPtrOutput() PriorityLevelConfigurationReferencePatchPtrOutput {
+	return i.ToPriorityLevelConfigurationReferencePatchPtrOutputWithContext(context.Background())
+}
+
+func (i *priorityLevelConfigurationReferencePatchPtrType) ToPriorityLevelConfigurationReferencePatchPtrOutputWithContext(ctx context.Context) PriorityLevelConfigurationReferencePatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PriorityLevelConfigurationReferencePatchPtrOutput)
+}
+
 // PriorityLevelConfigurationReference contains information that points to the "request-priority" being used.
 type PriorityLevelConfigurationReferencePatchOutput struct{ *pulumi.OutputState }
 
@@ -3023,9 +3810,53 @@ func (o PriorityLevelConfigurationReferencePatchOutput) ToPriorityLevelConfigura
 	return o
 }
 
+func (o PriorityLevelConfigurationReferencePatchOutput) ToPriorityLevelConfigurationReferencePatchPtrOutput() PriorityLevelConfigurationReferencePatchPtrOutput {
+	return o.ToPriorityLevelConfigurationReferencePatchPtrOutputWithContext(context.Background())
+}
+
+func (o PriorityLevelConfigurationReferencePatchOutput) ToPriorityLevelConfigurationReferencePatchPtrOutputWithContext(ctx context.Context) PriorityLevelConfigurationReferencePatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PriorityLevelConfigurationReferencePatch) *PriorityLevelConfigurationReferencePatch {
+		return &v
+	}).(PriorityLevelConfigurationReferencePatchPtrOutput)
+}
+
 // `name` is the name of the priority level configuration being referenced Required.
 func (o PriorityLevelConfigurationReferencePatchOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PriorityLevelConfigurationReferencePatch) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type PriorityLevelConfigurationReferencePatchPtrOutput struct{ *pulumi.OutputState }
+
+func (PriorityLevelConfigurationReferencePatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PriorityLevelConfigurationReferencePatch)(nil)).Elem()
+}
+
+func (o PriorityLevelConfigurationReferencePatchPtrOutput) ToPriorityLevelConfigurationReferencePatchPtrOutput() PriorityLevelConfigurationReferencePatchPtrOutput {
+	return o
+}
+
+func (o PriorityLevelConfigurationReferencePatchPtrOutput) ToPriorityLevelConfigurationReferencePatchPtrOutputWithContext(ctx context.Context) PriorityLevelConfigurationReferencePatchPtrOutput {
+	return o
+}
+
+func (o PriorityLevelConfigurationReferencePatchPtrOutput) Elem() PriorityLevelConfigurationReferencePatchOutput {
+	return o.ApplyT(func(v *PriorityLevelConfigurationReferencePatch) PriorityLevelConfigurationReferencePatch {
+		if v != nil {
+			return *v
+		}
+		var ret PriorityLevelConfigurationReferencePatch
+		return ret
+	}).(PriorityLevelConfigurationReferencePatchOutput)
+}
+
+// `name` is the name of the priority level configuration being referenced Required.
+func (o PriorityLevelConfigurationReferencePatchPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PriorityLevelConfigurationReferencePatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 // PriorityLevelConfigurationSpec specifies the configuration of a priority level.
@@ -3190,7 +4021,7 @@ func (o PriorityLevelConfigurationSpecPtrOutput) Type() pulumi.StringPtrOutput {
 // PriorityLevelConfigurationSpec specifies the configuration of a priority level.
 type PriorityLevelConfigurationSpecPatch struct {
 	// `limited` specifies how requests are handled for a Limited priority level. This field must be non-empty if and only if `type` is `"Limited"`.
-	Limited *LimitedPriorityLevelConfiguration `pulumi:"limited"`
+	Limited *LimitedPriorityLevelConfigurationPatch `pulumi:"limited"`
 	// `type` indicates whether this priority level is subject to limitation on request execution.  A value of `"Exempt"` means that requests of this priority level are not subject to a limit (and thus are never queued) and do not detract from the capacity made available to other priority levels.  A value of `"Limited"` means that (a) requests of this priority level _are_ subject to limits and (b) some of the server's limited capacity is made available exclusively to this priority level. Required.
 	Type *string `pulumi:"type"`
 }
@@ -3209,7 +4040,7 @@ type PriorityLevelConfigurationSpecPatchInput interface {
 // PriorityLevelConfigurationSpec specifies the configuration of a priority level.
 type PriorityLevelConfigurationSpecPatchArgs struct {
 	// `limited` specifies how requests are handled for a Limited priority level. This field must be non-empty if and only if `type` is `"Limited"`.
-	Limited LimitedPriorityLevelConfigurationPtrInput `pulumi:"limited"`
+	Limited LimitedPriorityLevelConfigurationPatchPtrInput `pulumi:"limited"`
 	// `type` indicates whether this priority level is subject to limitation on request execution.  A value of `"Exempt"` means that requests of this priority level are not subject to a limit (and thus are never queued) and do not detract from the capacity made available to other priority levels.  A value of `"Limited"` means that (a) requests of this priority level _are_ subject to limits and (b) some of the server's limited capacity is made available exclusively to this priority level. Required.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -3224,6 +4055,47 @@ func (i PriorityLevelConfigurationSpecPatchArgs) ToPriorityLevelConfigurationSpe
 
 func (i PriorityLevelConfigurationSpecPatchArgs) ToPriorityLevelConfigurationSpecPatchOutputWithContext(ctx context.Context) PriorityLevelConfigurationSpecPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PriorityLevelConfigurationSpecPatchOutput)
+}
+
+func (i PriorityLevelConfigurationSpecPatchArgs) ToPriorityLevelConfigurationSpecPatchPtrOutput() PriorityLevelConfigurationSpecPatchPtrOutput {
+	return i.ToPriorityLevelConfigurationSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (i PriorityLevelConfigurationSpecPatchArgs) ToPriorityLevelConfigurationSpecPatchPtrOutputWithContext(ctx context.Context) PriorityLevelConfigurationSpecPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PriorityLevelConfigurationSpecPatchOutput).ToPriorityLevelConfigurationSpecPatchPtrOutputWithContext(ctx)
+}
+
+// PriorityLevelConfigurationSpecPatchPtrInput is an input type that accepts PriorityLevelConfigurationSpecPatchArgs, PriorityLevelConfigurationSpecPatchPtr and PriorityLevelConfigurationSpecPatchPtrOutput values.
+// You can construct a concrete instance of `PriorityLevelConfigurationSpecPatchPtrInput` via:
+//
+//          PriorityLevelConfigurationSpecPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type PriorityLevelConfigurationSpecPatchPtrInput interface {
+	pulumi.Input
+
+	ToPriorityLevelConfigurationSpecPatchPtrOutput() PriorityLevelConfigurationSpecPatchPtrOutput
+	ToPriorityLevelConfigurationSpecPatchPtrOutputWithContext(context.Context) PriorityLevelConfigurationSpecPatchPtrOutput
+}
+
+type priorityLevelConfigurationSpecPatchPtrType PriorityLevelConfigurationSpecPatchArgs
+
+func PriorityLevelConfigurationSpecPatchPtr(v *PriorityLevelConfigurationSpecPatchArgs) PriorityLevelConfigurationSpecPatchPtrInput {
+	return (*priorityLevelConfigurationSpecPatchPtrType)(v)
+}
+
+func (*priorityLevelConfigurationSpecPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PriorityLevelConfigurationSpecPatch)(nil)).Elem()
+}
+
+func (i *priorityLevelConfigurationSpecPatchPtrType) ToPriorityLevelConfigurationSpecPatchPtrOutput() PriorityLevelConfigurationSpecPatchPtrOutput {
+	return i.ToPriorityLevelConfigurationSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *priorityLevelConfigurationSpecPatchPtrType) ToPriorityLevelConfigurationSpecPatchPtrOutputWithContext(ctx context.Context) PriorityLevelConfigurationSpecPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PriorityLevelConfigurationSpecPatchPtrOutput)
 }
 
 // PriorityLevelConfigurationSpec specifies the configuration of a priority level.
@@ -3241,14 +4113,68 @@ func (o PriorityLevelConfigurationSpecPatchOutput) ToPriorityLevelConfigurationS
 	return o
 }
 
+func (o PriorityLevelConfigurationSpecPatchOutput) ToPriorityLevelConfigurationSpecPatchPtrOutput() PriorityLevelConfigurationSpecPatchPtrOutput {
+	return o.ToPriorityLevelConfigurationSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (o PriorityLevelConfigurationSpecPatchOutput) ToPriorityLevelConfigurationSpecPatchPtrOutputWithContext(ctx context.Context) PriorityLevelConfigurationSpecPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PriorityLevelConfigurationSpecPatch) *PriorityLevelConfigurationSpecPatch {
+		return &v
+	}).(PriorityLevelConfigurationSpecPatchPtrOutput)
+}
+
 // `limited` specifies how requests are handled for a Limited priority level. This field must be non-empty if and only if `type` is `"Limited"`.
-func (o PriorityLevelConfigurationSpecPatchOutput) Limited() LimitedPriorityLevelConfigurationPtrOutput {
-	return o.ApplyT(func(v PriorityLevelConfigurationSpecPatch) *LimitedPriorityLevelConfiguration { return v.Limited }).(LimitedPriorityLevelConfigurationPtrOutput)
+func (o PriorityLevelConfigurationSpecPatchOutput) Limited() LimitedPriorityLevelConfigurationPatchPtrOutput {
+	return o.ApplyT(func(v PriorityLevelConfigurationSpecPatch) *LimitedPriorityLevelConfigurationPatch { return v.Limited }).(LimitedPriorityLevelConfigurationPatchPtrOutput)
 }
 
 // `type` indicates whether this priority level is subject to limitation on request execution.  A value of `"Exempt"` means that requests of this priority level are not subject to a limit (and thus are never queued) and do not detract from the capacity made available to other priority levels.  A value of `"Limited"` means that (a) requests of this priority level _are_ subject to limits and (b) some of the server's limited capacity is made available exclusively to this priority level. Required.
 func (o PriorityLevelConfigurationSpecPatchOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PriorityLevelConfigurationSpecPatch) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type PriorityLevelConfigurationSpecPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (PriorityLevelConfigurationSpecPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PriorityLevelConfigurationSpecPatch)(nil)).Elem()
+}
+
+func (o PriorityLevelConfigurationSpecPatchPtrOutput) ToPriorityLevelConfigurationSpecPatchPtrOutput() PriorityLevelConfigurationSpecPatchPtrOutput {
+	return o
+}
+
+func (o PriorityLevelConfigurationSpecPatchPtrOutput) ToPriorityLevelConfigurationSpecPatchPtrOutputWithContext(ctx context.Context) PriorityLevelConfigurationSpecPatchPtrOutput {
+	return o
+}
+
+func (o PriorityLevelConfigurationSpecPatchPtrOutput) Elem() PriorityLevelConfigurationSpecPatchOutput {
+	return o.ApplyT(func(v *PriorityLevelConfigurationSpecPatch) PriorityLevelConfigurationSpecPatch {
+		if v != nil {
+			return *v
+		}
+		var ret PriorityLevelConfigurationSpecPatch
+		return ret
+	}).(PriorityLevelConfigurationSpecPatchOutput)
+}
+
+// `limited` specifies how requests are handled for a Limited priority level. This field must be non-empty if and only if `type` is `"Limited"`.
+func (o PriorityLevelConfigurationSpecPatchPtrOutput) Limited() LimitedPriorityLevelConfigurationPatchPtrOutput {
+	return o.ApplyT(func(v *PriorityLevelConfigurationSpecPatch) *LimitedPriorityLevelConfigurationPatch {
+		if v == nil {
+			return nil
+		}
+		return v.Limited
+	}).(LimitedPriorityLevelConfigurationPatchPtrOutput)
+}
+
+// `type` indicates whether this priority level is subject to limitation on request execution.  A value of `"Exempt"` means that requests of this priority level are not subject to a limit (and thus are never queued) and do not detract from the capacity made available to other priority levels.  A value of `"Limited"` means that (a) requests of this priority level _are_ subject to limits and (b) some of the server's limited capacity is made available exclusively to this priority level. Required.
+func (o PriorityLevelConfigurationSpecPatchPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PriorityLevelConfigurationSpecPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // PriorityLevelConfigurationStatus represents the current state of a "request-priority".
@@ -3394,7 +4320,7 @@ func (o PriorityLevelConfigurationStatusPtrOutput) Conditions() PriorityLevelCon
 // PriorityLevelConfigurationStatus represents the current state of a "request-priority".
 type PriorityLevelConfigurationStatusPatch struct {
 	// `conditions` is the current state of "request-priority".
-	Conditions []PriorityLevelConfigurationCondition `pulumi:"conditions"`
+	Conditions []PriorityLevelConfigurationConditionPatch `pulumi:"conditions"`
 }
 
 // PriorityLevelConfigurationStatusPatchInput is an input type that accepts PriorityLevelConfigurationStatusPatchArgs and PriorityLevelConfigurationStatusPatchOutput values.
@@ -3411,7 +4337,7 @@ type PriorityLevelConfigurationStatusPatchInput interface {
 // PriorityLevelConfigurationStatus represents the current state of a "request-priority".
 type PriorityLevelConfigurationStatusPatchArgs struct {
 	// `conditions` is the current state of "request-priority".
-	Conditions PriorityLevelConfigurationConditionArrayInput `pulumi:"conditions"`
+	Conditions PriorityLevelConfigurationConditionPatchArrayInput `pulumi:"conditions"`
 }
 
 func (PriorityLevelConfigurationStatusPatchArgs) ElementType() reflect.Type {
@@ -3424,6 +4350,47 @@ func (i PriorityLevelConfigurationStatusPatchArgs) ToPriorityLevelConfigurationS
 
 func (i PriorityLevelConfigurationStatusPatchArgs) ToPriorityLevelConfigurationStatusPatchOutputWithContext(ctx context.Context) PriorityLevelConfigurationStatusPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PriorityLevelConfigurationStatusPatchOutput)
+}
+
+func (i PriorityLevelConfigurationStatusPatchArgs) ToPriorityLevelConfigurationStatusPatchPtrOutput() PriorityLevelConfigurationStatusPatchPtrOutput {
+	return i.ToPriorityLevelConfigurationStatusPatchPtrOutputWithContext(context.Background())
+}
+
+func (i PriorityLevelConfigurationStatusPatchArgs) ToPriorityLevelConfigurationStatusPatchPtrOutputWithContext(ctx context.Context) PriorityLevelConfigurationStatusPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PriorityLevelConfigurationStatusPatchOutput).ToPriorityLevelConfigurationStatusPatchPtrOutputWithContext(ctx)
+}
+
+// PriorityLevelConfigurationStatusPatchPtrInput is an input type that accepts PriorityLevelConfigurationStatusPatchArgs, PriorityLevelConfigurationStatusPatchPtr and PriorityLevelConfigurationStatusPatchPtrOutput values.
+// You can construct a concrete instance of `PriorityLevelConfigurationStatusPatchPtrInput` via:
+//
+//          PriorityLevelConfigurationStatusPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type PriorityLevelConfigurationStatusPatchPtrInput interface {
+	pulumi.Input
+
+	ToPriorityLevelConfigurationStatusPatchPtrOutput() PriorityLevelConfigurationStatusPatchPtrOutput
+	ToPriorityLevelConfigurationStatusPatchPtrOutputWithContext(context.Context) PriorityLevelConfigurationStatusPatchPtrOutput
+}
+
+type priorityLevelConfigurationStatusPatchPtrType PriorityLevelConfigurationStatusPatchArgs
+
+func PriorityLevelConfigurationStatusPatchPtr(v *PriorityLevelConfigurationStatusPatchArgs) PriorityLevelConfigurationStatusPatchPtrInput {
+	return (*priorityLevelConfigurationStatusPatchPtrType)(v)
+}
+
+func (*priorityLevelConfigurationStatusPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PriorityLevelConfigurationStatusPatch)(nil)).Elem()
+}
+
+func (i *priorityLevelConfigurationStatusPatchPtrType) ToPriorityLevelConfigurationStatusPatchPtrOutput() PriorityLevelConfigurationStatusPatchPtrOutput {
+	return i.ToPriorityLevelConfigurationStatusPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *priorityLevelConfigurationStatusPatchPtrType) ToPriorityLevelConfigurationStatusPatchPtrOutputWithContext(ctx context.Context) PriorityLevelConfigurationStatusPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PriorityLevelConfigurationStatusPatchPtrOutput)
 }
 
 // PriorityLevelConfigurationStatus represents the current state of a "request-priority".
@@ -3441,11 +4408,55 @@ func (o PriorityLevelConfigurationStatusPatchOutput) ToPriorityLevelConfiguratio
 	return o
 }
 
+func (o PriorityLevelConfigurationStatusPatchOutput) ToPriorityLevelConfigurationStatusPatchPtrOutput() PriorityLevelConfigurationStatusPatchPtrOutput {
+	return o.ToPriorityLevelConfigurationStatusPatchPtrOutputWithContext(context.Background())
+}
+
+func (o PriorityLevelConfigurationStatusPatchOutput) ToPriorityLevelConfigurationStatusPatchPtrOutputWithContext(ctx context.Context) PriorityLevelConfigurationStatusPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PriorityLevelConfigurationStatusPatch) *PriorityLevelConfigurationStatusPatch {
+		return &v
+	}).(PriorityLevelConfigurationStatusPatchPtrOutput)
+}
+
 // `conditions` is the current state of "request-priority".
-func (o PriorityLevelConfigurationStatusPatchOutput) Conditions() PriorityLevelConfigurationConditionArrayOutput {
-	return o.ApplyT(func(v PriorityLevelConfigurationStatusPatch) []PriorityLevelConfigurationCondition {
+func (o PriorityLevelConfigurationStatusPatchOutput) Conditions() PriorityLevelConfigurationConditionPatchArrayOutput {
+	return o.ApplyT(func(v PriorityLevelConfigurationStatusPatch) []PriorityLevelConfigurationConditionPatch {
 		return v.Conditions
-	}).(PriorityLevelConfigurationConditionArrayOutput)
+	}).(PriorityLevelConfigurationConditionPatchArrayOutput)
+}
+
+type PriorityLevelConfigurationStatusPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (PriorityLevelConfigurationStatusPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PriorityLevelConfigurationStatusPatch)(nil)).Elem()
+}
+
+func (o PriorityLevelConfigurationStatusPatchPtrOutput) ToPriorityLevelConfigurationStatusPatchPtrOutput() PriorityLevelConfigurationStatusPatchPtrOutput {
+	return o
+}
+
+func (o PriorityLevelConfigurationStatusPatchPtrOutput) ToPriorityLevelConfigurationStatusPatchPtrOutputWithContext(ctx context.Context) PriorityLevelConfigurationStatusPatchPtrOutput {
+	return o
+}
+
+func (o PriorityLevelConfigurationStatusPatchPtrOutput) Elem() PriorityLevelConfigurationStatusPatchOutput {
+	return o.ApplyT(func(v *PriorityLevelConfigurationStatusPatch) PriorityLevelConfigurationStatusPatch {
+		if v != nil {
+			return *v
+		}
+		var ret PriorityLevelConfigurationStatusPatch
+		return ret
+	}).(PriorityLevelConfigurationStatusPatchOutput)
+}
+
+// `conditions` is the current state of "request-priority".
+func (o PriorityLevelConfigurationStatusPatchPtrOutput) Conditions() PriorityLevelConfigurationConditionPatchArrayOutput {
+	return o.ApplyT(func(v *PriorityLevelConfigurationStatusPatch) []PriorityLevelConfigurationConditionPatch {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(PriorityLevelConfigurationConditionPatchArrayOutput)
 }
 
 // QueuingConfiguration holds the configuration parameters for queuing
@@ -3669,6 +4680,47 @@ func (i QueuingConfigurationPatchArgs) ToQueuingConfigurationPatchOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(QueuingConfigurationPatchOutput)
 }
 
+func (i QueuingConfigurationPatchArgs) ToQueuingConfigurationPatchPtrOutput() QueuingConfigurationPatchPtrOutput {
+	return i.ToQueuingConfigurationPatchPtrOutputWithContext(context.Background())
+}
+
+func (i QueuingConfigurationPatchArgs) ToQueuingConfigurationPatchPtrOutputWithContext(ctx context.Context) QueuingConfigurationPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueuingConfigurationPatchOutput).ToQueuingConfigurationPatchPtrOutputWithContext(ctx)
+}
+
+// QueuingConfigurationPatchPtrInput is an input type that accepts QueuingConfigurationPatchArgs, QueuingConfigurationPatchPtr and QueuingConfigurationPatchPtrOutput values.
+// You can construct a concrete instance of `QueuingConfigurationPatchPtrInput` via:
+//
+//          QueuingConfigurationPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type QueuingConfigurationPatchPtrInput interface {
+	pulumi.Input
+
+	ToQueuingConfigurationPatchPtrOutput() QueuingConfigurationPatchPtrOutput
+	ToQueuingConfigurationPatchPtrOutputWithContext(context.Context) QueuingConfigurationPatchPtrOutput
+}
+
+type queuingConfigurationPatchPtrType QueuingConfigurationPatchArgs
+
+func QueuingConfigurationPatchPtr(v *QueuingConfigurationPatchArgs) QueuingConfigurationPatchPtrInput {
+	return (*queuingConfigurationPatchPtrType)(v)
+}
+
+func (*queuingConfigurationPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueuingConfigurationPatch)(nil)).Elem()
+}
+
+func (i *queuingConfigurationPatchPtrType) ToQueuingConfigurationPatchPtrOutput() QueuingConfigurationPatchPtrOutput {
+	return i.ToQueuingConfigurationPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *queuingConfigurationPatchPtrType) ToQueuingConfigurationPatchPtrOutputWithContext(ctx context.Context) QueuingConfigurationPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueuingConfigurationPatchPtrOutput)
+}
+
 // QueuingConfiguration holds the configuration parameters for queuing
 type QueuingConfigurationPatchOutput struct{ *pulumi.OutputState }
 
@@ -3684,6 +4736,16 @@ func (o QueuingConfigurationPatchOutput) ToQueuingConfigurationPatchOutputWithCo
 	return o
 }
 
+func (o QueuingConfigurationPatchOutput) ToQueuingConfigurationPatchPtrOutput() QueuingConfigurationPatchPtrOutput {
+	return o.ToQueuingConfigurationPatchPtrOutputWithContext(context.Background())
+}
+
+func (o QueuingConfigurationPatchOutput) ToQueuingConfigurationPatchPtrOutputWithContext(ctx context.Context) QueuingConfigurationPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueuingConfigurationPatch) *QueuingConfigurationPatch {
+		return &v
+	}).(QueuingConfigurationPatchPtrOutput)
+}
+
 // `handSize` is a small positive number that configures the shuffle sharding of requests into queues.  When enqueuing a request at this priority level the request's flow identifier (a string pair) is hashed and the hash value is used to shuffle the list of queues and deal a hand of the size specified here.  The request is put into one of the shortest queues in that hand. `handSize` must be no larger than `queues`, and should be significantly smaller (so that a few heavy flows do not saturate most of the queues).  See the user-facing documentation for more extensive guidance on setting this field.  This field has a default value of 8.
 func (o QueuingConfigurationPatchOutput) HandSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v QueuingConfigurationPatch) *int { return v.HandSize }).(pulumi.IntPtrOutput)
@@ -3697,6 +4759,60 @@ func (o QueuingConfigurationPatchOutput) QueueLengthLimit() pulumi.IntPtrOutput 
 // `queues` is the number of queues for this priority level. The queues exist independently at each apiserver. The value must be positive.  Setting it to 1 effectively precludes shufflesharding and thus makes the distinguisher method of associated flow schemas irrelevant.  This field has a default value of 64.
 func (o QueuingConfigurationPatchOutput) Queues() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v QueuingConfigurationPatch) *int { return v.Queues }).(pulumi.IntPtrOutput)
+}
+
+type QueuingConfigurationPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (QueuingConfigurationPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueuingConfigurationPatch)(nil)).Elem()
+}
+
+func (o QueuingConfigurationPatchPtrOutput) ToQueuingConfigurationPatchPtrOutput() QueuingConfigurationPatchPtrOutput {
+	return o
+}
+
+func (o QueuingConfigurationPatchPtrOutput) ToQueuingConfigurationPatchPtrOutputWithContext(ctx context.Context) QueuingConfigurationPatchPtrOutput {
+	return o
+}
+
+func (o QueuingConfigurationPatchPtrOutput) Elem() QueuingConfigurationPatchOutput {
+	return o.ApplyT(func(v *QueuingConfigurationPatch) QueuingConfigurationPatch {
+		if v != nil {
+			return *v
+		}
+		var ret QueuingConfigurationPatch
+		return ret
+	}).(QueuingConfigurationPatchOutput)
+}
+
+// `handSize` is a small positive number that configures the shuffle sharding of requests into queues.  When enqueuing a request at this priority level the request's flow identifier (a string pair) is hashed and the hash value is used to shuffle the list of queues and deal a hand of the size specified here.  The request is put into one of the shortest queues in that hand. `handSize` must be no larger than `queues`, and should be significantly smaller (so that a few heavy flows do not saturate most of the queues).  See the user-facing documentation for more extensive guidance on setting this field.  This field has a default value of 8.
+func (o QueuingConfigurationPatchPtrOutput) HandSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QueuingConfigurationPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HandSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// `queueLengthLimit` is the maximum number of requests allowed to be waiting in a given queue of this priority level at a time; excess requests are rejected.  This value must be positive.  If not specified, it will be defaulted to 50.
+func (o QueuingConfigurationPatchPtrOutput) QueueLengthLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QueuingConfigurationPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.QueueLengthLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// `queues` is the number of queues for this priority level. The queues exist independently at each apiserver. The value must be positive.  Setting it to 1 effectively precludes shufflesharding and thus makes the distinguisher method of associated flow schemas irrelevant.  This field has a default value of 64.
+func (o QueuingConfigurationPatchPtrOutput) Queues() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QueuingConfigurationPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Queues
+	}).(pulumi.IntPtrOutput)
 }
 
 // ResourcePolicyRule is a predicate that matches some resource requests, testing the request's verb and the target resource. A ResourcePolicyRule matches a resource request if and only if: (a) at least one member of verbs matches the request, (b) at least one member of apiGroups matches the request, (c) at least one member of resources matches the request, and (d) least one member of namespaces matches the request.
@@ -3886,6 +5002,31 @@ func (i ResourcePolicyRulePatchArgs) ToResourcePolicyRulePatchOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyRulePatchOutput)
 }
 
+// ResourcePolicyRulePatchArrayInput is an input type that accepts ResourcePolicyRulePatchArray and ResourcePolicyRulePatchArrayOutput values.
+// You can construct a concrete instance of `ResourcePolicyRulePatchArrayInput` via:
+//
+//          ResourcePolicyRulePatchArray{ ResourcePolicyRulePatchArgs{...} }
+type ResourcePolicyRulePatchArrayInput interface {
+	pulumi.Input
+
+	ToResourcePolicyRulePatchArrayOutput() ResourcePolicyRulePatchArrayOutput
+	ToResourcePolicyRulePatchArrayOutputWithContext(context.Context) ResourcePolicyRulePatchArrayOutput
+}
+
+type ResourcePolicyRulePatchArray []ResourcePolicyRulePatchInput
+
+func (ResourcePolicyRulePatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourcePolicyRulePatch)(nil)).Elem()
+}
+
+func (i ResourcePolicyRulePatchArray) ToResourcePolicyRulePatchArrayOutput() ResourcePolicyRulePatchArrayOutput {
+	return i.ToResourcePolicyRulePatchArrayOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyRulePatchArray) ToResourcePolicyRulePatchArrayOutputWithContext(ctx context.Context) ResourcePolicyRulePatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyRulePatchArrayOutput)
+}
+
 // ResourcePolicyRule is a predicate that matches some resource requests, testing the request's verb and the target resource. A ResourcePolicyRule matches a resource request if and only if: (a) at least one member of verbs matches the request, (b) at least one member of apiGroups matches the request, (c) at least one member of resources matches the request, and (d) least one member of namespaces matches the request.
 type ResourcePolicyRulePatchOutput struct{ *pulumi.OutputState }
 
@@ -3924,6 +5065,26 @@ func (o ResourcePolicyRulePatchOutput) Resources() pulumi.StringArrayOutput {
 // `verbs` is a list of matching verbs and may not be empty. "*" matches all verbs and, if present, must be the only entry. Required.
 func (o ResourcePolicyRulePatchOutput) Verbs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ResourcePolicyRulePatch) []string { return v.Verbs }).(pulumi.StringArrayOutput)
+}
+
+type ResourcePolicyRulePatchArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyRulePatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourcePolicyRulePatch)(nil)).Elem()
+}
+
+func (o ResourcePolicyRulePatchArrayOutput) ToResourcePolicyRulePatchArrayOutput() ResourcePolicyRulePatchArrayOutput {
+	return o
+}
+
+func (o ResourcePolicyRulePatchArrayOutput) ToResourcePolicyRulePatchArrayOutputWithContext(ctx context.Context) ResourcePolicyRulePatchArrayOutput {
+	return o
+}
+
+func (o ResourcePolicyRulePatchArrayOutput) Index(i pulumi.IntInput) ResourcePolicyRulePatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourcePolicyRulePatch {
+		return vs[0].([]ResourcePolicyRulePatch)[vs[1].(int)]
+	}).(ResourcePolicyRulePatchOutput)
 }
 
 // ServiceAccountSubject holds detailed information for service-account-kind subject.
@@ -4124,6 +5285,47 @@ func (i ServiceAccountSubjectPatchArgs) ToServiceAccountSubjectPatchOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccountSubjectPatchOutput)
 }
 
+func (i ServiceAccountSubjectPatchArgs) ToServiceAccountSubjectPatchPtrOutput() ServiceAccountSubjectPatchPtrOutput {
+	return i.ToServiceAccountSubjectPatchPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceAccountSubjectPatchArgs) ToServiceAccountSubjectPatchPtrOutputWithContext(ctx context.Context) ServiceAccountSubjectPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccountSubjectPatchOutput).ToServiceAccountSubjectPatchPtrOutputWithContext(ctx)
+}
+
+// ServiceAccountSubjectPatchPtrInput is an input type that accepts ServiceAccountSubjectPatchArgs, ServiceAccountSubjectPatchPtr and ServiceAccountSubjectPatchPtrOutput values.
+// You can construct a concrete instance of `ServiceAccountSubjectPatchPtrInput` via:
+//
+//          ServiceAccountSubjectPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceAccountSubjectPatchPtrInput interface {
+	pulumi.Input
+
+	ToServiceAccountSubjectPatchPtrOutput() ServiceAccountSubjectPatchPtrOutput
+	ToServiceAccountSubjectPatchPtrOutputWithContext(context.Context) ServiceAccountSubjectPatchPtrOutput
+}
+
+type serviceAccountSubjectPatchPtrType ServiceAccountSubjectPatchArgs
+
+func ServiceAccountSubjectPatchPtr(v *ServiceAccountSubjectPatchArgs) ServiceAccountSubjectPatchPtrInput {
+	return (*serviceAccountSubjectPatchPtrType)(v)
+}
+
+func (*serviceAccountSubjectPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceAccountSubjectPatch)(nil)).Elem()
+}
+
+func (i *serviceAccountSubjectPatchPtrType) ToServiceAccountSubjectPatchPtrOutput() ServiceAccountSubjectPatchPtrOutput {
+	return i.ToServiceAccountSubjectPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceAccountSubjectPatchPtrType) ToServiceAccountSubjectPatchPtrOutputWithContext(ctx context.Context) ServiceAccountSubjectPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccountSubjectPatchPtrOutput)
+}
+
 // ServiceAccountSubject holds detailed information for service-account-kind subject.
 type ServiceAccountSubjectPatchOutput struct{ *pulumi.OutputState }
 
@@ -4139,6 +5341,16 @@ func (o ServiceAccountSubjectPatchOutput) ToServiceAccountSubjectPatchOutputWith
 	return o
 }
 
+func (o ServiceAccountSubjectPatchOutput) ToServiceAccountSubjectPatchPtrOutput() ServiceAccountSubjectPatchPtrOutput {
+	return o.ToServiceAccountSubjectPatchPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceAccountSubjectPatchOutput) ToServiceAccountSubjectPatchPtrOutputWithContext(ctx context.Context) ServiceAccountSubjectPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceAccountSubjectPatch) *ServiceAccountSubjectPatch {
+		return &v
+	}).(ServiceAccountSubjectPatchPtrOutput)
+}
+
 // `name` is the name of matching ServiceAccount objects, or "*" to match regardless of name. Required.
 func (o ServiceAccountSubjectPatchOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceAccountSubjectPatch) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -4147,6 +5359,50 @@ func (o ServiceAccountSubjectPatchOutput) Name() pulumi.StringPtrOutput {
 // `namespace` is the namespace of matching ServiceAccount objects. Required.
 func (o ServiceAccountSubjectPatchOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceAccountSubjectPatch) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+type ServiceAccountSubjectPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceAccountSubjectPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceAccountSubjectPatch)(nil)).Elem()
+}
+
+func (o ServiceAccountSubjectPatchPtrOutput) ToServiceAccountSubjectPatchPtrOutput() ServiceAccountSubjectPatchPtrOutput {
+	return o
+}
+
+func (o ServiceAccountSubjectPatchPtrOutput) ToServiceAccountSubjectPatchPtrOutputWithContext(ctx context.Context) ServiceAccountSubjectPatchPtrOutput {
+	return o
+}
+
+func (o ServiceAccountSubjectPatchPtrOutput) Elem() ServiceAccountSubjectPatchOutput {
+	return o.ApplyT(func(v *ServiceAccountSubjectPatch) ServiceAccountSubjectPatch {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceAccountSubjectPatch
+		return ret
+	}).(ServiceAccountSubjectPatchOutput)
+}
+
+// `name` is the name of matching ServiceAccount objects, or "*" to match regardless of name. Required.
+func (o ServiceAccountSubjectPatchPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceAccountSubjectPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// `namespace` is the namespace of matching ServiceAccount objects. Required.
+func (o ServiceAccountSubjectPatchPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceAccountSubjectPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
 }
 
 // Subject matches the originator of a request, as identified by the request authentication system. There are three ways of matching an originator; by user, group, or service account.
@@ -4269,11 +5525,11 @@ func (o SubjectArrayOutput) Index(i pulumi.IntInput) SubjectOutput {
 
 // Subject matches the originator of a request, as identified by the request authentication system. There are three ways of matching an originator; by user, group, or service account.
 type SubjectPatch struct {
-	Group *GroupSubject `pulumi:"group"`
+	Group *GroupSubjectPatch `pulumi:"group"`
 	// Required
-	Kind           *string                `pulumi:"kind"`
-	ServiceAccount *ServiceAccountSubject `pulumi:"serviceAccount"`
-	User           *UserSubject           `pulumi:"user"`
+	Kind           *string                     `pulumi:"kind"`
+	ServiceAccount *ServiceAccountSubjectPatch `pulumi:"serviceAccount"`
+	User           *UserSubjectPatch           `pulumi:"user"`
 }
 
 // SubjectPatchInput is an input type that accepts SubjectPatchArgs and SubjectPatchOutput values.
@@ -4289,11 +5545,11 @@ type SubjectPatchInput interface {
 
 // Subject matches the originator of a request, as identified by the request authentication system. There are three ways of matching an originator; by user, group, or service account.
 type SubjectPatchArgs struct {
-	Group GroupSubjectPtrInput `pulumi:"group"`
+	Group GroupSubjectPatchPtrInput `pulumi:"group"`
 	// Required
-	Kind           pulumi.StringPtrInput         `pulumi:"kind"`
-	ServiceAccount ServiceAccountSubjectPtrInput `pulumi:"serviceAccount"`
-	User           UserSubjectPtrInput           `pulumi:"user"`
+	Kind           pulumi.StringPtrInput              `pulumi:"kind"`
+	ServiceAccount ServiceAccountSubjectPatchPtrInput `pulumi:"serviceAccount"`
+	User           UserSubjectPatchPtrInput           `pulumi:"user"`
 }
 
 func (SubjectPatchArgs) ElementType() reflect.Type {
@@ -4306,6 +5562,31 @@ func (i SubjectPatchArgs) ToSubjectPatchOutput() SubjectPatchOutput {
 
 func (i SubjectPatchArgs) ToSubjectPatchOutputWithContext(ctx context.Context) SubjectPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubjectPatchOutput)
+}
+
+// SubjectPatchArrayInput is an input type that accepts SubjectPatchArray and SubjectPatchArrayOutput values.
+// You can construct a concrete instance of `SubjectPatchArrayInput` via:
+//
+//          SubjectPatchArray{ SubjectPatchArgs{...} }
+type SubjectPatchArrayInput interface {
+	pulumi.Input
+
+	ToSubjectPatchArrayOutput() SubjectPatchArrayOutput
+	ToSubjectPatchArrayOutputWithContext(context.Context) SubjectPatchArrayOutput
+}
+
+type SubjectPatchArray []SubjectPatchInput
+
+func (SubjectPatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubjectPatch)(nil)).Elem()
+}
+
+func (i SubjectPatchArray) ToSubjectPatchArrayOutput() SubjectPatchArrayOutput {
+	return i.ToSubjectPatchArrayOutputWithContext(context.Background())
+}
+
+func (i SubjectPatchArray) ToSubjectPatchArrayOutputWithContext(ctx context.Context) SubjectPatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubjectPatchArrayOutput)
 }
 
 // Subject matches the originator of a request, as identified by the request authentication system. There are three ways of matching an originator; by user, group, or service account.
@@ -4323,8 +5604,8 @@ func (o SubjectPatchOutput) ToSubjectPatchOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o SubjectPatchOutput) Group() GroupSubjectPtrOutput {
-	return o.ApplyT(func(v SubjectPatch) *GroupSubject { return v.Group }).(GroupSubjectPtrOutput)
+func (o SubjectPatchOutput) Group() GroupSubjectPatchPtrOutput {
+	return o.ApplyT(func(v SubjectPatch) *GroupSubjectPatch { return v.Group }).(GroupSubjectPatchPtrOutput)
 }
 
 // Required
@@ -4332,12 +5613,32 @@ func (o SubjectPatchOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubjectPatch) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-func (o SubjectPatchOutput) ServiceAccount() ServiceAccountSubjectPtrOutput {
-	return o.ApplyT(func(v SubjectPatch) *ServiceAccountSubject { return v.ServiceAccount }).(ServiceAccountSubjectPtrOutput)
+func (o SubjectPatchOutput) ServiceAccount() ServiceAccountSubjectPatchPtrOutput {
+	return o.ApplyT(func(v SubjectPatch) *ServiceAccountSubjectPatch { return v.ServiceAccount }).(ServiceAccountSubjectPatchPtrOutput)
 }
 
-func (o SubjectPatchOutput) User() UserSubjectPtrOutput {
-	return o.ApplyT(func(v SubjectPatch) *UserSubject { return v.User }).(UserSubjectPtrOutput)
+func (o SubjectPatchOutput) User() UserSubjectPatchPtrOutput {
+	return o.ApplyT(func(v SubjectPatch) *UserSubjectPatch { return v.User }).(UserSubjectPatchPtrOutput)
+}
+
+type SubjectPatchArrayOutput struct{ *pulumi.OutputState }
+
+func (SubjectPatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubjectPatch)(nil)).Elem()
+}
+
+func (o SubjectPatchArrayOutput) ToSubjectPatchArrayOutput() SubjectPatchArrayOutput {
+	return o
+}
+
+func (o SubjectPatchArrayOutput) ToSubjectPatchArrayOutputWithContext(ctx context.Context) SubjectPatchArrayOutput {
+	return o
+}
+
+func (o SubjectPatchArrayOutput) Index(i pulumi.IntInput) SubjectPatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubjectPatch {
+		return vs[0].([]SubjectPatch)[vs[1].(int)]
+	}).(SubjectPatchOutput)
 }
 
 // UserSubject holds detailed information for user-kind subject.
@@ -4515,6 +5816,47 @@ func (i UserSubjectPatchArgs) ToUserSubjectPatchOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(UserSubjectPatchOutput)
 }
 
+func (i UserSubjectPatchArgs) ToUserSubjectPatchPtrOutput() UserSubjectPatchPtrOutput {
+	return i.ToUserSubjectPatchPtrOutputWithContext(context.Background())
+}
+
+func (i UserSubjectPatchArgs) ToUserSubjectPatchPtrOutputWithContext(ctx context.Context) UserSubjectPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserSubjectPatchOutput).ToUserSubjectPatchPtrOutputWithContext(ctx)
+}
+
+// UserSubjectPatchPtrInput is an input type that accepts UserSubjectPatchArgs, UserSubjectPatchPtr and UserSubjectPatchPtrOutput values.
+// You can construct a concrete instance of `UserSubjectPatchPtrInput` via:
+//
+//          UserSubjectPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type UserSubjectPatchPtrInput interface {
+	pulumi.Input
+
+	ToUserSubjectPatchPtrOutput() UserSubjectPatchPtrOutput
+	ToUserSubjectPatchPtrOutputWithContext(context.Context) UserSubjectPatchPtrOutput
+}
+
+type userSubjectPatchPtrType UserSubjectPatchArgs
+
+func UserSubjectPatchPtr(v *UserSubjectPatchArgs) UserSubjectPatchPtrInput {
+	return (*userSubjectPatchPtrType)(v)
+}
+
+func (*userSubjectPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserSubjectPatch)(nil)).Elem()
+}
+
+func (i *userSubjectPatchPtrType) ToUserSubjectPatchPtrOutput() UserSubjectPatchPtrOutput {
+	return i.ToUserSubjectPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *userSubjectPatchPtrType) ToUserSubjectPatchPtrOutputWithContext(ctx context.Context) UserSubjectPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserSubjectPatchPtrOutput)
+}
+
 // UserSubject holds detailed information for user-kind subject.
 type UserSubjectPatchOutput struct{ *pulumi.OutputState }
 
@@ -4530,134 +5872,214 @@ func (o UserSubjectPatchOutput) ToUserSubjectPatchOutputWithContext(ctx context.
 	return o
 }
 
+func (o UserSubjectPatchOutput) ToUserSubjectPatchPtrOutput() UserSubjectPatchPtrOutput {
+	return o.ToUserSubjectPatchPtrOutputWithContext(context.Background())
+}
+
+func (o UserSubjectPatchOutput) ToUserSubjectPatchPtrOutputWithContext(ctx context.Context) UserSubjectPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserSubjectPatch) *UserSubjectPatch {
+		return &v
+	}).(UserSubjectPatchPtrOutput)
+}
+
 // `name` is the username that matches, or "*" to match all usernames. Required.
 func (o UserSubjectPatchOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserSubjectPatch) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type UserSubjectPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (UserSubjectPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserSubjectPatch)(nil)).Elem()
+}
+
+func (o UserSubjectPatchPtrOutput) ToUserSubjectPatchPtrOutput() UserSubjectPatchPtrOutput {
+	return o
+}
+
+func (o UserSubjectPatchPtrOutput) ToUserSubjectPatchPtrOutputWithContext(ctx context.Context) UserSubjectPatchPtrOutput {
+	return o
+}
+
+func (o UserSubjectPatchPtrOutput) Elem() UserSubjectPatchOutput {
+	return o.ApplyT(func(v *UserSubjectPatch) UserSubjectPatch {
+		if v != nil {
+			return *v
+		}
+		var ret UserSubjectPatch
+		return ret
+	}).(UserSubjectPatchOutput)
+}
+
+// `name` is the username that matches, or "*" to match all usernames. Required.
+func (o UserSubjectPatchPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserSubjectPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowDistinguisherMethodInput)(nil)).Elem(), FlowDistinguisherMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowDistinguisherMethodPtrInput)(nil)).Elem(), FlowDistinguisherMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowDistinguisherMethodPatchInput)(nil)).Elem(), FlowDistinguisherMethodPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlowDistinguisherMethodPatchPtrInput)(nil)).Elem(), FlowDistinguisherMethodPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowSchemaTypeInput)(nil)).Elem(), FlowSchemaTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowSchemaTypeArrayInput)(nil)).Elem(), FlowSchemaTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowSchemaConditionInput)(nil)).Elem(), FlowSchemaConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowSchemaConditionArrayInput)(nil)).Elem(), FlowSchemaConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowSchemaConditionPatchInput)(nil)).Elem(), FlowSchemaConditionPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlowSchemaConditionPatchArrayInput)(nil)).Elem(), FlowSchemaConditionPatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowSchemaListTypeInput)(nil)).Elem(), FlowSchemaListTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowSchemaPatchTypeInput)(nil)).Elem(), FlowSchemaPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowSchemaSpecInput)(nil)).Elem(), FlowSchemaSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowSchemaSpecPtrInput)(nil)).Elem(), FlowSchemaSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowSchemaSpecPatchInput)(nil)).Elem(), FlowSchemaSpecPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlowSchemaSpecPatchPtrInput)(nil)).Elem(), FlowSchemaSpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowSchemaStatusInput)(nil)).Elem(), FlowSchemaStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowSchemaStatusPtrInput)(nil)).Elem(), FlowSchemaStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowSchemaStatusPatchInput)(nil)).Elem(), FlowSchemaStatusPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlowSchemaStatusPatchPtrInput)(nil)).Elem(), FlowSchemaStatusPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupSubjectInput)(nil)).Elem(), GroupSubjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupSubjectPtrInput)(nil)).Elem(), GroupSubjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupSubjectPatchInput)(nil)).Elem(), GroupSubjectPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupSubjectPatchPtrInput)(nil)).Elem(), GroupSubjectPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LimitResponseInput)(nil)).Elem(), LimitResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LimitResponsePtrInput)(nil)).Elem(), LimitResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LimitResponsePatchInput)(nil)).Elem(), LimitResponsePatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LimitResponsePatchPtrInput)(nil)).Elem(), LimitResponsePatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LimitedPriorityLevelConfigurationInput)(nil)).Elem(), LimitedPriorityLevelConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LimitedPriorityLevelConfigurationPtrInput)(nil)).Elem(), LimitedPriorityLevelConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LimitedPriorityLevelConfigurationPatchInput)(nil)).Elem(), LimitedPriorityLevelConfigurationPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LimitedPriorityLevelConfigurationPatchPtrInput)(nil)).Elem(), LimitedPriorityLevelConfigurationPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NonResourcePolicyRuleInput)(nil)).Elem(), NonResourcePolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NonResourcePolicyRuleArrayInput)(nil)).Elem(), NonResourcePolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NonResourcePolicyRulePatchInput)(nil)).Elem(), NonResourcePolicyRulePatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NonResourcePolicyRulePatchArrayInput)(nil)).Elem(), NonResourcePolicyRulePatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRulesWithSubjectsInput)(nil)).Elem(), PolicyRulesWithSubjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRulesWithSubjectsArrayInput)(nil)).Elem(), PolicyRulesWithSubjectsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRulesWithSubjectsPatchInput)(nil)).Elem(), PolicyRulesWithSubjectsPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRulesWithSubjectsPatchArrayInput)(nil)).Elem(), PolicyRulesWithSubjectsPatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationTypeInput)(nil)).Elem(), PriorityLevelConfigurationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationTypeArrayInput)(nil)).Elem(), PriorityLevelConfigurationTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationConditionInput)(nil)).Elem(), PriorityLevelConfigurationConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationConditionArrayInput)(nil)).Elem(), PriorityLevelConfigurationConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationConditionPatchInput)(nil)).Elem(), PriorityLevelConfigurationConditionPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationConditionPatchArrayInput)(nil)).Elem(), PriorityLevelConfigurationConditionPatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationListTypeInput)(nil)).Elem(), PriorityLevelConfigurationListTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationPatchTypeInput)(nil)).Elem(), PriorityLevelConfigurationPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationReferenceInput)(nil)).Elem(), PriorityLevelConfigurationReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationReferencePtrInput)(nil)).Elem(), PriorityLevelConfigurationReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationReferencePatchInput)(nil)).Elem(), PriorityLevelConfigurationReferencePatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationReferencePatchPtrInput)(nil)).Elem(), PriorityLevelConfigurationReferencePatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationSpecInput)(nil)).Elem(), PriorityLevelConfigurationSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationSpecPtrInput)(nil)).Elem(), PriorityLevelConfigurationSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationSpecPatchInput)(nil)).Elem(), PriorityLevelConfigurationSpecPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationSpecPatchPtrInput)(nil)).Elem(), PriorityLevelConfigurationSpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationStatusInput)(nil)).Elem(), PriorityLevelConfigurationStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationStatusPtrInput)(nil)).Elem(), PriorityLevelConfigurationStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationStatusPatchInput)(nil)).Elem(), PriorityLevelConfigurationStatusPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PriorityLevelConfigurationStatusPatchPtrInput)(nil)).Elem(), PriorityLevelConfigurationStatusPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueuingConfigurationInput)(nil)).Elem(), QueuingConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueuingConfigurationPtrInput)(nil)).Elem(), QueuingConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueuingConfigurationPatchInput)(nil)).Elem(), QueuingConfigurationPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueuingConfigurationPatchPtrInput)(nil)).Elem(), QueuingConfigurationPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyRuleInput)(nil)).Elem(), ResourcePolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyRuleArrayInput)(nil)).Elem(), ResourcePolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyRulePatchInput)(nil)).Elem(), ResourcePolicyRulePatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyRulePatchArrayInput)(nil)).Elem(), ResourcePolicyRulePatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountSubjectInput)(nil)).Elem(), ServiceAccountSubjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountSubjectPtrInput)(nil)).Elem(), ServiceAccountSubjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountSubjectPatchInput)(nil)).Elem(), ServiceAccountSubjectPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountSubjectPatchPtrInput)(nil)).Elem(), ServiceAccountSubjectPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubjectInput)(nil)).Elem(), SubjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubjectArrayInput)(nil)).Elem(), SubjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubjectPatchInput)(nil)).Elem(), SubjectPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectPatchArrayInput)(nil)).Elem(), SubjectPatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserSubjectInput)(nil)).Elem(), UserSubjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserSubjectPtrInput)(nil)).Elem(), UserSubjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserSubjectPatchInput)(nil)).Elem(), UserSubjectPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserSubjectPatchPtrInput)(nil)).Elem(), UserSubjectPatchArgs{})
 	pulumi.RegisterOutputType(FlowDistinguisherMethodOutput{})
 	pulumi.RegisterOutputType(FlowDistinguisherMethodPtrOutput{})
 	pulumi.RegisterOutputType(FlowDistinguisherMethodPatchOutput{})
+	pulumi.RegisterOutputType(FlowDistinguisherMethodPatchPtrOutput{})
 	pulumi.RegisterOutputType(FlowSchemaTypeOutput{})
 	pulumi.RegisterOutputType(FlowSchemaTypeArrayOutput{})
 	pulumi.RegisterOutputType(FlowSchemaConditionOutput{})
 	pulumi.RegisterOutputType(FlowSchemaConditionArrayOutput{})
 	pulumi.RegisterOutputType(FlowSchemaConditionPatchOutput{})
+	pulumi.RegisterOutputType(FlowSchemaConditionPatchArrayOutput{})
 	pulumi.RegisterOutputType(FlowSchemaListTypeOutput{})
 	pulumi.RegisterOutputType(FlowSchemaPatchTypeOutput{})
 	pulumi.RegisterOutputType(FlowSchemaSpecOutput{})
 	pulumi.RegisterOutputType(FlowSchemaSpecPtrOutput{})
 	pulumi.RegisterOutputType(FlowSchemaSpecPatchOutput{})
+	pulumi.RegisterOutputType(FlowSchemaSpecPatchPtrOutput{})
 	pulumi.RegisterOutputType(FlowSchemaStatusOutput{})
 	pulumi.RegisterOutputType(FlowSchemaStatusPtrOutput{})
 	pulumi.RegisterOutputType(FlowSchemaStatusPatchOutput{})
+	pulumi.RegisterOutputType(FlowSchemaStatusPatchPtrOutput{})
 	pulumi.RegisterOutputType(GroupSubjectOutput{})
 	pulumi.RegisterOutputType(GroupSubjectPtrOutput{})
 	pulumi.RegisterOutputType(GroupSubjectPatchOutput{})
+	pulumi.RegisterOutputType(GroupSubjectPatchPtrOutput{})
 	pulumi.RegisterOutputType(LimitResponseOutput{})
 	pulumi.RegisterOutputType(LimitResponsePtrOutput{})
 	pulumi.RegisterOutputType(LimitResponsePatchOutput{})
+	pulumi.RegisterOutputType(LimitResponsePatchPtrOutput{})
 	pulumi.RegisterOutputType(LimitedPriorityLevelConfigurationOutput{})
 	pulumi.RegisterOutputType(LimitedPriorityLevelConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(LimitedPriorityLevelConfigurationPatchOutput{})
+	pulumi.RegisterOutputType(LimitedPriorityLevelConfigurationPatchPtrOutput{})
 	pulumi.RegisterOutputType(NonResourcePolicyRuleOutput{})
 	pulumi.RegisterOutputType(NonResourcePolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(NonResourcePolicyRulePatchOutput{})
+	pulumi.RegisterOutputType(NonResourcePolicyRulePatchArrayOutput{})
 	pulumi.RegisterOutputType(PolicyRulesWithSubjectsOutput{})
 	pulumi.RegisterOutputType(PolicyRulesWithSubjectsArrayOutput{})
 	pulumi.RegisterOutputType(PolicyRulesWithSubjectsPatchOutput{})
+	pulumi.RegisterOutputType(PolicyRulesWithSubjectsPatchArrayOutput{})
 	pulumi.RegisterOutputType(PriorityLevelConfigurationTypeOutput{})
 	pulumi.RegisterOutputType(PriorityLevelConfigurationTypeArrayOutput{})
 	pulumi.RegisterOutputType(PriorityLevelConfigurationConditionOutput{})
 	pulumi.RegisterOutputType(PriorityLevelConfigurationConditionArrayOutput{})
 	pulumi.RegisterOutputType(PriorityLevelConfigurationConditionPatchOutput{})
+	pulumi.RegisterOutputType(PriorityLevelConfigurationConditionPatchArrayOutput{})
 	pulumi.RegisterOutputType(PriorityLevelConfigurationListTypeOutput{})
 	pulumi.RegisterOutputType(PriorityLevelConfigurationPatchTypeOutput{})
 	pulumi.RegisterOutputType(PriorityLevelConfigurationReferenceOutput{})
 	pulumi.RegisterOutputType(PriorityLevelConfigurationReferencePtrOutput{})
 	pulumi.RegisterOutputType(PriorityLevelConfigurationReferencePatchOutput{})
+	pulumi.RegisterOutputType(PriorityLevelConfigurationReferencePatchPtrOutput{})
 	pulumi.RegisterOutputType(PriorityLevelConfigurationSpecOutput{})
 	pulumi.RegisterOutputType(PriorityLevelConfigurationSpecPtrOutput{})
 	pulumi.RegisterOutputType(PriorityLevelConfigurationSpecPatchOutput{})
+	pulumi.RegisterOutputType(PriorityLevelConfigurationSpecPatchPtrOutput{})
 	pulumi.RegisterOutputType(PriorityLevelConfigurationStatusOutput{})
 	pulumi.RegisterOutputType(PriorityLevelConfigurationStatusPtrOutput{})
 	pulumi.RegisterOutputType(PriorityLevelConfigurationStatusPatchOutput{})
+	pulumi.RegisterOutputType(PriorityLevelConfigurationStatusPatchPtrOutput{})
 	pulumi.RegisterOutputType(QueuingConfigurationOutput{})
 	pulumi.RegisterOutputType(QueuingConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(QueuingConfigurationPatchOutput{})
+	pulumi.RegisterOutputType(QueuingConfigurationPatchPtrOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyRuleOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyRulePatchOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyRulePatchArrayOutput{})
 	pulumi.RegisterOutputType(ServiceAccountSubjectOutput{})
 	pulumi.RegisterOutputType(ServiceAccountSubjectPtrOutput{})
 	pulumi.RegisterOutputType(ServiceAccountSubjectPatchOutput{})
+	pulumi.RegisterOutputType(ServiceAccountSubjectPatchPtrOutput{})
 	pulumi.RegisterOutputType(SubjectOutput{})
 	pulumi.RegisterOutputType(SubjectArrayOutput{})
 	pulumi.RegisterOutputType(SubjectPatchOutput{})
+	pulumi.RegisterOutputType(SubjectPatchArrayOutput{})
 	pulumi.RegisterOutputType(UserSubjectOutput{})
 	pulumi.RegisterOutputType(UserSubjectPtrOutput{})
 	pulumi.RegisterOutputType(UserSubjectPatchOutput{})
+	pulumi.RegisterOutputType(UserSubjectPatchPtrOutput{})
 }

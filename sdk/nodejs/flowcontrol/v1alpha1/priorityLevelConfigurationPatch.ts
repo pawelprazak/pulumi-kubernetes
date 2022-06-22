@@ -46,15 +46,15 @@ export class PriorityLevelConfigurationPatch extends pulumi.CustomResource {
     /**
      * `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * `spec` is the specification of the desired behavior of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public readonly spec!: pulumi.Output<outputs.flowcontrol.v1alpha1.PriorityLevelConfigurationSpec>;
+    public readonly spec!: pulumi.Output<outputs.flowcontrol.v1alpha1.PriorityLevelConfigurationSpecPatch>;
     /**
      * `status` is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.flowcontrol.v1alpha1.PriorityLevelConfigurationStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.flowcontrol.v1alpha1.PriorityLevelConfigurationStatusPatch>;
 
     /**
      * Create a PriorityLevelConfigurationPatch resource with the given unique name, arguments, and options.
@@ -80,7 +80,7 @@ export class PriorityLevelConfigurationPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:flowcontrol.apiserver.k8s.io/v1beta1:PriorityLevelConfiguration" }, { type: "kubernetes:flowcontrol.apiserver.k8s.io/v1beta2:PriorityLevelConfiguration" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:flowcontrol.apiserver.k8s.io/v1beta1:PriorityLevelConfigurationPatch" }, { type: "kubernetes:flowcontrol.apiserver.k8s.io/v1beta2:PriorityLevelConfigurationPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PriorityLevelConfigurationPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -101,9 +101,9 @@ export interface PriorityLevelConfigurationPatchArgs {
     /**
      * `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * `spec` is the specification of the desired behavior of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    spec?: pulumi.Input<inputs.flowcontrol.v1alpha1.PriorityLevelConfigurationSpec>;
+    spec?: pulumi.Input<inputs.flowcontrol.v1alpha1.PriorityLevelConfigurationSpecPatch>;
 }

@@ -35,11 +35,11 @@ type PodPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Specification of the desired behavior of the pod. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec PodSpecPtrOutput `pulumi:"spec"`
+	Spec PodSpecPatchPtrOutput `pulumi:"spec"`
 	// Most recently observed status of the pod. This data may not be up to date. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Status PodStatusPtrOutput `pulumi:"status"`
+	Status PodStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewPodPatch registers a new resource with the given unique name, arguments, and options.
@@ -88,9 +88,9 @@ type podPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Specification of the desired behavior of the pod. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec *PodSpec `pulumi:"spec"`
+	Spec *PodSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a PodPatch resource.
@@ -100,9 +100,9 @@ type PodPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Specification of the desired behavior of the pod. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec PodSpecPtrInput
+	Spec PodSpecPatchPtrInput
 }
 
 func (PodPatchArgs) ElementType() reflect.Type {
@@ -203,18 +203,18 @@ func (o PodPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o PodPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *PodPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o PodPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *PodPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Specification of the desired behavior of the pod. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o PodPatchOutput) Spec() PodSpecPtrOutput {
-	return o.ApplyT(func(v *PodPatch) PodSpecPtrOutput { return v.Spec }).(PodSpecPtrOutput)
+func (o PodPatchOutput) Spec() PodSpecPatchPtrOutput {
+	return o.ApplyT(func(v *PodPatch) PodSpecPatchPtrOutput { return v.Spec }).(PodSpecPatchPtrOutput)
 }
 
 // Most recently observed status of the pod. This data may not be up to date. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o PodPatchOutput) Status() PodStatusPtrOutput {
-	return o.ApplyT(func(v *PodPatch) PodStatusPtrOutput { return v.Status }).(PodStatusPtrOutput)
+func (o PodPatchOutput) Status() PodStatusPatchPtrOutput {
+	return o.ApplyT(func(v *PodPatch) PodStatusPatchPtrOutput { return v.Status }).(PodStatusPatchPtrOutput)
 }
 
 type PodPatchArrayOutput struct{ *pulumi.OutputState }

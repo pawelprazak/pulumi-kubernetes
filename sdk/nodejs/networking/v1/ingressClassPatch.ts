@@ -46,11 +46,11 @@ export class IngressClassPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec is the desired state of the IngressClass. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public readonly spec!: pulumi.Output<outputs.networking.v1.IngressClassSpec>;
+    public readonly spec!: pulumi.Output<outputs.networking.v1.IngressClassSpecPatch>;
 
     /**
      * Create a IngressClassPatch resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class IngressClassPatch extends pulumi.CustomResource {
             resourceInputs["spec"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:networking.k8s.io/v1beta1:IngressClass" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:networking.k8s.io/v1beta1:IngressClassPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(IngressClassPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -95,9 +95,9 @@ export interface IngressClassPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec is the desired state of the IngressClass. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    spec?: pulumi.Input<inputs.networking.v1.IngressClassSpec>;
+    spec?: pulumi.Input<inputs.networking.v1.IngressClassSpecPatch>;
 }

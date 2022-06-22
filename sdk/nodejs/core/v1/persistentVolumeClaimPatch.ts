@@ -46,15 +46,15 @@ export class PersistentVolumeClaimPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
      */
-    public readonly spec!: pulumi.Output<outputs.core.v1.PersistentVolumeClaimSpec>;
+    public readonly spec!: pulumi.Output<outputs.core.v1.PersistentVolumeClaimSpecPatch>;
     /**
      * status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.core.v1.PersistentVolumeClaimStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.core.v1.PersistentVolumeClaimStatusPatch>;
 
     /**
      * Create a PersistentVolumeClaimPatch resource with the given unique name, arguments, and options.
@@ -99,9 +99,9 @@ export interface PersistentVolumeClaimPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
      */
-    spec?: pulumi.Input<inputs.core.v1.PersistentVolumeClaimSpec>;
+    spec?: pulumi.Input<inputs.core.v1.PersistentVolumeClaimSpecPatch>;
 }

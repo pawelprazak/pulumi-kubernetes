@@ -147,6 +147,31 @@ func (i AllowedCSIDriverPatchArgs) ToAllowedCSIDriverPatchOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AllowedCSIDriverPatchOutput)
 }
 
+// AllowedCSIDriverPatchArrayInput is an input type that accepts AllowedCSIDriverPatchArray and AllowedCSIDriverPatchArrayOutput values.
+// You can construct a concrete instance of `AllowedCSIDriverPatchArrayInput` via:
+//
+//          AllowedCSIDriverPatchArray{ AllowedCSIDriverPatchArgs{...} }
+type AllowedCSIDriverPatchArrayInput interface {
+	pulumi.Input
+
+	ToAllowedCSIDriverPatchArrayOutput() AllowedCSIDriverPatchArrayOutput
+	ToAllowedCSIDriverPatchArrayOutputWithContext(context.Context) AllowedCSIDriverPatchArrayOutput
+}
+
+type AllowedCSIDriverPatchArray []AllowedCSIDriverPatchInput
+
+func (AllowedCSIDriverPatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AllowedCSIDriverPatch)(nil)).Elem()
+}
+
+func (i AllowedCSIDriverPatchArray) ToAllowedCSIDriverPatchArrayOutput() AllowedCSIDriverPatchArrayOutput {
+	return i.ToAllowedCSIDriverPatchArrayOutputWithContext(context.Background())
+}
+
+func (i AllowedCSIDriverPatchArray) ToAllowedCSIDriverPatchArrayOutputWithContext(ctx context.Context) AllowedCSIDriverPatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AllowedCSIDriverPatchArrayOutput)
+}
+
 // AllowedCSIDriver represents a single inline CSI Driver that is allowed to be used.
 type AllowedCSIDriverPatchOutput struct{ *pulumi.OutputState }
 
@@ -165,6 +190,26 @@ func (o AllowedCSIDriverPatchOutput) ToAllowedCSIDriverPatchOutputWithContext(ct
 // Name is the registered name of the CSI driver
 func (o AllowedCSIDriverPatchOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AllowedCSIDriverPatch) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AllowedCSIDriverPatchArrayOutput struct{ *pulumi.OutputState }
+
+func (AllowedCSIDriverPatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AllowedCSIDriverPatch)(nil)).Elem()
+}
+
+func (o AllowedCSIDriverPatchArrayOutput) ToAllowedCSIDriverPatchArrayOutput() AllowedCSIDriverPatchArrayOutput {
+	return o
+}
+
+func (o AllowedCSIDriverPatchArrayOutput) ToAllowedCSIDriverPatchArrayOutputWithContext(ctx context.Context) AllowedCSIDriverPatchArrayOutput {
+	return o
+}
+
+func (o AllowedCSIDriverPatchArrayOutput) Index(i pulumi.IntInput) AllowedCSIDriverPatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AllowedCSIDriverPatch {
+		return vs[0].([]AllowedCSIDriverPatch)[vs[1].(int)]
+	}).(AllowedCSIDriverPatchOutput)
 }
 
 // AllowedFlexVolume represents a single Flexvolume that is allowed to be used.
@@ -302,6 +347,31 @@ func (i AllowedFlexVolumePatchArgs) ToAllowedFlexVolumePatchOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AllowedFlexVolumePatchOutput)
 }
 
+// AllowedFlexVolumePatchArrayInput is an input type that accepts AllowedFlexVolumePatchArray and AllowedFlexVolumePatchArrayOutput values.
+// You can construct a concrete instance of `AllowedFlexVolumePatchArrayInput` via:
+//
+//          AllowedFlexVolumePatchArray{ AllowedFlexVolumePatchArgs{...} }
+type AllowedFlexVolumePatchArrayInput interface {
+	pulumi.Input
+
+	ToAllowedFlexVolumePatchArrayOutput() AllowedFlexVolumePatchArrayOutput
+	ToAllowedFlexVolumePatchArrayOutputWithContext(context.Context) AllowedFlexVolumePatchArrayOutput
+}
+
+type AllowedFlexVolumePatchArray []AllowedFlexVolumePatchInput
+
+func (AllowedFlexVolumePatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AllowedFlexVolumePatch)(nil)).Elem()
+}
+
+func (i AllowedFlexVolumePatchArray) ToAllowedFlexVolumePatchArrayOutput() AllowedFlexVolumePatchArrayOutput {
+	return i.ToAllowedFlexVolumePatchArrayOutputWithContext(context.Background())
+}
+
+func (i AllowedFlexVolumePatchArray) ToAllowedFlexVolumePatchArrayOutputWithContext(ctx context.Context) AllowedFlexVolumePatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AllowedFlexVolumePatchArrayOutput)
+}
+
 // AllowedFlexVolume represents a single Flexvolume that is allowed to be used.
 type AllowedFlexVolumePatchOutput struct{ *pulumi.OutputState }
 
@@ -320,6 +390,26 @@ func (o AllowedFlexVolumePatchOutput) ToAllowedFlexVolumePatchOutputWithContext(
 // driver is the name of the Flexvolume driver.
 func (o AllowedFlexVolumePatchOutput) Driver() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AllowedFlexVolumePatch) *string { return v.Driver }).(pulumi.StringPtrOutput)
+}
+
+type AllowedFlexVolumePatchArrayOutput struct{ *pulumi.OutputState }
+
+func (AllowedFlexVolumePatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AllowedFlexVolumePatch)(nil)).Elem()
+}
+
+func (o AllowedFlexVolumePatchArrayOutput) ToAllowedFlexVolumePatchArrayOutput() AllowedFlexVolumePatchArrayOutput {
+	return o
+}
+
+func (o AllowedFlexVolumePatchArrayOutput) ToAllowedFlexVolumePatchArrayOutputWithContext(ctx context.Context) AllowedFlexVolumePatchArrayOutput {
+	return o
+}
+
+func (o AllowedFlexVolumePatchArrayOutput) Index(i pulumi.IntInput) AllowedFlexVolumePatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AllowedFlexVolumePatch {
+		return vs[0].([]AllowedFlexVolumePatch)[vs[1].(int)]
+	}).(AllowedFlexVolumePatchOutput)
 }
 
 // AllowedHostPath defines the host volume conditions that will be enabled by a policy for pods to use. It requires the path prefix to be defined.
@@ -480,6 +570,31 @@ func (i AllowedHostPathPatchArgs) ToAllowedHostPathPatchOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AllowedHostPathPatchOutput)
 }
 
+// AllowedHostPathPatchArrayInput is an input type that accepts AllowedHostPathPatchArray and AllowedHostPathPatchArrayOutput values.
+// You can construct a concrete instance of `AllowedHostPathPatchArrayInput` via:
+//
+//          AllowedHostPathPatchArray{ AllowedHostPathPatchArgs{...} }
+type AllowedHostPathPatchArrayInput interface {
+	pulumi.Input
+
+	ToAllowedHostPathPatchArrayOutput() AllowedHostPathPatchArrayOutput
+	ToAllowedHostPathPatchArrayOutputWithContext(context.Context) AllowedHostPathPatchArrayOutput
+}
+
+type AllowedHostPathPatchArray []AllowedHostPathPatchInput
+
+func (AllowedHostPathPatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AllowedHostPathPatch)(nil)).Elem()
+}
+
+func (i AllowedHostPathPatchArray) ToAllowedHostPathPatchArrayOutput() AllowedHostPathPatchArrayOutput {
+	return i.ToAllowedHostPathPatchArrayOutputWithContext(context.Background())
+}
+
+func (i AllowedHostPathPatchArray) ToAllowedHostPathPatchArrayOutputWithContext(ctx context.Context) AllowedHostPathPatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AllowedHostPathPatchArrayOutput)
+}
+
 // AllowedHostPath defines the host volume conditions that will be enabled by a policy for pods to use. It requires the path prefix to be defined.
 type AllowedHostPathPatchOutput struct{ *pulumi.OutputState }
 
@@ -505,6 +620,26 @@ func (o AllowedHostPathPatchOutput) PathPrefix() pulumi.StringPtrOutput {
 // when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
 func (o AllowedHostPathPatchOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AllowedHostPathPatch) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+type AllowedHostPathPatchArrayOutput struct{ *pulumi.OutputState }
+
+func (AllowedHostPathPatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AllowedHostPathPatch)(nil)).Elem()
+}
+
+func (o AllowedHostPathPatchArrayOutput) ToAllowedHostPathPatchArrayOutput() AllowedHostPathPatchArrayOutput {
+	return o
+}
+
+func (o AllowedHostPathPatchArrayOutput) ToAllowedHostPathPatchArrayOutputWithContext(ctx context.Context) AllowedHostPathPatchArrayOutput {
+	return o
+}
+
+func (o AllowedHostPathPatchArrayOutput) Index(i pulumi.IntInput) AllowedHostPathPatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AllowedHostPathPatch {
+		return vs[0].([]AllowedHostPathPatch)[vs[1].(int)]
+	}).(AllowedHostPathPatchOutput)
 }
 
 // Eviction evicts a pod from its node subject to certain policies and safety constraints. This is a subresource of Pod.  A request to cause such an eviction is created by POSTing to .../pods/<pod name>/evictions.
@@ -594,11 +729,11 @@ type EvictionPatch struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion *string `pulumi:"apiVersion"`
 	// DeleteOptions may be provided
-	DeleteOptions *metav1.DeleteOptions `pulumi:"deleteOptions"`
+	DeleteOptions *metav1.DeleteOptionsPatch `pulumi:"deleteOptions"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// ObjectMeta describes the pod that is being evicted.
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 }
 
 // EvictionPatchInput is an input type that accepts EvictionPatchArgs and EvictionPatchOutput values.
@@ -617,11 +752,11 @@ type EvictionPatchArgs struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
 	// DeleteOptions may be provided
-	DeleteOptions metav1.DeleteOptionsPtrInput `pulumi:"deleteOptions"`
+	DeleteOptions metav1.DeleteOptionsPatchPtrInput `pulumi:"deleteOptions"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// ObjectMeta describes the pod that is being evicted.
-	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrInput `pulumi:"metadata"`
 }
 
 func (EvictionPatchArgs) ElementType() reflect.Type {
@@ -657,8 +792,8 @@ func (o EvictionPatchOutput) ApiVersion() pulumi.StringPtrOutput {
 }
 
 // DeleteOptions may be provided
-func (o EvictionPatchOutput) DeleteOptions() metav1.DeleteOptionsPtrOutput {
-	return o.ApplyT(func(v EvictionPatch) *metav1.DeleteOptions { return v.DeleteOptions }).(metav1.DeleteOptionsPtrOutput)
+func (o EvictionPatchOutput) DeleteOptions() metav1.DeleteOptionsPatchPtrOutput {
+	return o.ApplyT(func(v EvictionPatch) *metav1.DeleteOptionsPatch { return v.DeleteOptions }).(metav1.DeleteOptionsPatchPtrOutput)
 }
 
 // Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -667,8 +802,8 @@ func (o EvictionPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // ObjectMeta describes the pod that is being evicted.
-func (o EvictionPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v EvictionPatch) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o EvictionPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v EvictionPatch) *metav1.ObjectMetaPatch { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // FSGroupStrategyOptions defines the strategy type and options used to create the strategy.
@@ -833,7 +968,7 @@ func (o FSGroupStrategyOptionsPtrOutput) Rule() pulumi.StringPtrOutput {
 // FSGroupStrategyOptions defines the strategy type and options used to create the strategy.
 type FSGroupStrategyOptionsPatch struct {
 	// ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
-	Ranges []IDRange `pulumi:"ranges"`
+	Ranges []IDRangePatch `pulumi:"ranges"`
 	// rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
 	Rule *string `pulumi:"rule"`
 }
@@ -852,7 +987,7 @@ type FSGroupStrategyOptionsPatchInput interface {
 // FSGroupStrategyOptions defines the strategy type and options used to create the strategy.
 type FSGroupStrategyOptionsPatchArgs struct {
 	// ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
-	Ranges IDRangeArrayInput `pulumi:"ranges"`
+	Ranges IDRangePatchArrayInput `pulumi:"ranges"`
 	// rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
 	Rule pulumi.StringPtrInput `pulumi:"rule"`
 }
@@ -867,6 +1002,47 @@ func (i FSGroupStrategyOptionsPatchArgs) ToFSGroupStrategyOptionsPatchOutput() F
 
 func (i FSGroupStrategyOptionsPatchArgs) ToFSGroupStrategyOptionsPatchOutputWithContext(ctx context.Context) FSGroupStrategyOptionsPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FSGroupStrategyOptionsPatchOutput)
+}
+
+func (i FSGroupStrategyOptionsPatchArgs) ToFSGroupStrategyOptionsPatchPtrOutput() FSGroupStrategyOptionsPatchPtrOutput {
+	return i.ToFSGroupStrategyOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i FSGroupStrategyOptionsPatchArgs) ToFSGroupStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) FSGroupStrategyOptionsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FSGroupStrategyOptionsPatchOutput).ToFSGroupStrategyOptionsPatchPtrOutputWithContext(ctx)
+}
+
+// FSGroupStrategyOptionsPatchPtrInput is an input type that accepts FSGroupStrategyOptionsPatchArgs, FSGroupStrategyOptionsPatchPtr and FSGroupStrategyOptionsPatchPtrOutput values.
+// You can construct a concrete instance of `FSGroupStrategyOptionsPatchPtrInput` via:
+//
+//          FSGroupStrategyOptionsPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type FSGroupStrategyOptionsPatchPtrInput interface {
+	pulumi.Input
+
+	ToFSGroupStrategyOptionsPatchPtrOutput() FSGroupStrategyOptionsPatchPtrOutput
+	ToFSGroupStrategyOptionsPatchPtrOutputWithContext(context.Context) FSGroupStrategyOptionsPatchPtrOutput
+}
+
+type fsgroupStrategyOptionsPatchPtrType FSGroupStrategyOptionsPatchArgs
+
+func FSGroupStrategyOptionsPatchPtr(v *FSGroupStrategyOptionsPatchArgs) FSGroupStrategyOptionsPatchPtrInput {
+	return (*fsgroupStrategyOptionsPatchPtrType)(v)
+}
+
+func (*fsgroupStrategyOptionsPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FSGroupStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (i *fsgroupStrategyOptionsPatchPtrType) ToFSGroupStrategyOptionsPatchPtrOutput() FSGroupStrategyOptionsPatchPtrOutput {
+	return i.ToFSGroupStrategyOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *fsgroupStrategyOptionsPatchPtrType) ToFSGroupStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) FSGroupStrategyOptionsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FSGroupStrategyOptionsPatchPtrOutput)
 }
 
 // FSGroupStrategyOptions defines the strategy type and options used to create the strategy.
@@ -884,14 +1060,68 @@ func (o FSGroupStrategyOptionsPatchOutput) ToFSGroupStrategyOptionsPatchOutputWi
 	return o
 }
 
+func (o FSGroupStrategyOptionsPatchOutput) ToFSGroupStrategyOptionsPatchPtrOutput() FSGroupStrategyOptionsPatchPtrOutput {
+	return o.ToFSGroupStrategyOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (o FSGroupStrategyOptionsPatchOutput) ToFSGroupStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) FSGroupStrategyOptionsPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FSGroupStrategyOptionsPatch) *FSGroupStrategyOptionsPatch {
+		return &v
+	}).(FSGroupStrategyOptionsPatchPtrOutput)
+}
+
 // ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
-func (o FSGroupStrategyOptionsPatchOutput) Ranges() IDRangeArrayOutput {
-	return o.ApplyT(func(v FSGroupStrategyOptionsPatch) []IDRange { return v.Ranges }).(IDRangeArrayOutput)
+func (o FSGroupStrategyOptionsPatchOutput) Ranges() IDRangePatchArrayOutput {
+	return o.ApplyT(func(v FSGroupStrategyOptionsPatch) []IDRangePatch { return v.Ranges }).(IDRangePatchArrayOutput)
 }
 
 // rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
 func (o FSGroupStrategyOptionsPatchOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FSGroupStrategyOptionsPatch) *string { return v.Rule }).(pulumi.StringPtrOutput)
+}
+
+type FSGroupStrategyOptionsPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (FSGroupStrategyOptionsPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FSGroupStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (o FSGroupStrategyOptionsPatchPtrOutput) ToFSGroupStrategyOptionsPatchPtrOutput() FSGroupStrategyOptionsPatchPtrOutput {
+	return o
+}
+
+func (o FSGroupStrategyOptionsPatchPtrOutput) ToFSGroupStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) FSGroupStrategyOptionsPatchPtrOutput {
+	return o
+}
+
+func (o FSGroupStrategyOptionsPatchPtrOutput) Elem() FSGroupStrategyOptionsPatchOutput {
+	return o.ApplyT(func(v *FSGroupStrategyOptionsPatch) FSGroupStrategyOptionsPatch {
+		if v != nil {
+			return *v
+		}
+		var ret FSGroupStrategyOptionsPatch
+		return ret
+	}).(FSGroupStrategyOptionsPatchOutput)
+}
+
+// ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
+func (o FSGroupStrategyOptionsPatchPtrOutput) Ranges() IDRangePatchArrayOutput {
+	return o.ApplyT(func(v *FSGroupStrategyOptionsPatch) []IDRangePatch {
+		if v == nil {
+			return nil
+		}
+		return v.Ranges
+	}).(IDRangePatchArrayOutput)
+}
+
+// rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
+func (o FSGroupStrategyOptionsPatchPtrOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FSGroupStrategyOptionsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Rule
+	}).(pulumi.StringPtrOutput)
 }
 
 // HostPortRange defines a range of host ports that will be enabled by a policy for pods to use.  It requires both the start and end to be defined.
@@ -1042,6 +1272,31 @@ func (i HostPortRangePatchArgs) ToHostPortRangePatchOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(HostPortRangePatchOutput)
 }
 
+// HostPortRangePatchArrayInput is an input type that accepts HostPortRangePatchArray and HostPortRangePatchArrayOutput values.
+// You can construct a concrete instance of `HostPortRangePatchArrayInput` via:
+//
+//          HostPortRangePatchArray{ HostPortRangePatchArgs{...} }
+type HostPortRangePatchArrayInput interface {
+	pulumi.Input
+
+	ToHostPortRangePatchArrayOutput() HostPortRangePatchArrayOutput
+	ToHostPortRangePatchArrayOutputWithContext(context.Context) HostPortRangePatchArrayOutput
+}
+
+type HostPortRangePatchArray []HostPortRangePatchInput
+
+func (HostPortRangePatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostPortRangePatch)(nil)).Elem()
+}
+
+func (i HostPortRangePatchArray) ToHostPortRangePatchArrayOutput() HostPortRangePatchArrayOutput {
+	return i.ToHostPortRangePatchArrayOutputWithContext(context.Background())
+}
+
+func (i HostPortRangePatchArray) ToHostPortRangePatchArrayOutputWithContext(ctx context.Context) HostPortRangePatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostPortRangePatchArrayOutput)
+}
+
 // HostPortRange defines a range of host ports that will be enabled by a policy for pods to use.  It requires both the start and end to be defined.
 type HostPortRangePatchOutput struct{ *pulumi.OutputState }
 
@@ -1065,6 +1320,26 @@ func (o HostPortRangePatchOutput) Max() pulumi.IntPtrOutput {
 // min is the start of the range, inclusive.
 func (o HostPortRangePatchOutput) Min() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HostPortRangePatch) *int { return v.Min }).(pulumi.IntPtrOutput)
+}
+
+type HostPortRangePatchArrayOutput struct{ *pulumi.OutputState }
+
+func (HostPortRangePatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostPortRangePatch)(nil)).Elem()
+}
+
+func (o HostPortRangePatchArrayOutput) ToHostPortRangePatchArrayOutput() HostPortRangePatchArrayOutput {
+	return o
+}
+
+func (o HostPortRangePatchArrayOutput) ToHostPortRangePatchArrayOutputWithContext(ctx context.Context) HostPortRangePatchArrayOutput {
+	return o
+}
+
+func (o HostPortRangePatchArrayOutput) Index(i pulumi.IntInput) HostPortRangePatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostPortRangePatch {
+		return vs[0].([]HostPortRangePatch)[vs[1].(int)]
+	}).(HostPortRangePatchOutput)
 }
 
 // IDRange provides a min/max of an allowed range of IDs.
@@ -1215,6 +1490,31 @@ func (i IDRangePatchArgs) ToIDRangePatchOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(IDRangePatchOutput)
 }
 
+// IDRangePatchArrayInput is an input type that accepts IDRangePatchArray and IDRangePatchArrayOutput values.
+// You can construct a concrete instance of `IDRangePatchArrayInput` via:
+//
+//          IDRangePatchArray{ IDRangePatchArgs{...} }
+type IDRangePatchArrayInput interface {
+	pulumi.Input
+
+	ToIDRangePatchArrayOutput() IDRangePatchArrayOutput
+	ToIDRangePatchArrayOutputWithContext(context.Context) IDRangePatchArrayOutput
+}
+
+type IDRangePatchArray []IDRangePatchInput
+
+func (IDRangePatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IDRangePatch)(nil)).Elem()
+}
+
+func (i IDRangePatchArray) ToIDRangePatchArrayOutput() IDRangePatchArrayOutput {
+	return i.ToIDRangePatchArrayOutputWithContext(context.Background())
+}
+
+func (i IDRangePatchArray) ToIDRangePatchArrayOutputWithContext(ctx context.Context) IDRangePatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IDRangePatchArrayOutput)
+}
+
 // IDRange provides a min/max of an allowed range of IDs.
 type IDRangePatchOutput struct{ *pulumi.OutputState }
 
@@ -1238,6 +1538,26 @@ func (o IDRangePatchOutput) Max() pulumi.IntPtrOutput {
 // min is the start of the range, inclusive.
 func (o IDRangePatchOutput) Min() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v IDRangePatch) *int { return v.Min }).(pulumi.IntPtrOutput)
+}
+
+type IDRangePatchArrayOutput struct{ *pulumi.OutputState }
+
+func (IDRangePatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IDRangePatch)(nil)).Elem()
+}
+
+func (o IDRangePatchArrayOutput) ToIDRangePatchArrayOutput() IDRangePatchArrayOutput {
+	return o
+}
+
+func (o IDRangePatchArrayOutput) ToIDRangePatchArrayOutputWithContext(ctx context.Context) IDRangePatchArrayOutput {
+	return o
+}
+
+func (o IDRangePatchArrayOutput) Index(i pulumi.IntInput) IDRangePatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IDRangePatch {
+		return vs[0].([]IDRangePatch)[vs[1].(int)]
+	}).(IDRangePatchOutput)
 }
 
 // PodDisruptionBudget is an object to define the max disruption that can be caused to a collection of pods
@@ -1465,11 +1785,11 @@ type PodDisruptionBudgetPatchType struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Specification of the desired behavior of the PodDisruptionBudget.
-	Spec *PodDisruptionBudgetSpec `pulumi:"spec"`
+	Spec *PodDisruptionBudgetSpecPatch `pulumi:"spec"`
 	// Most recently observed status of the PodDisruptionBudget.
-	Status *PodDisruptionBudgetStatus `pulumi:"status"`
+	Status *PodDisruptionBudgetStatusPatch `pulumi:"status"`
 }
 
 // PodDisruptionBudgetPatchTypeInput is an input type that accepts PodDisruptionBudgetPatchTypeArgs and PodDisruptionBudgetPatchTypeOutput values.
@@ -1490,11 +1810,11 @@ type PodDisruptionBudgetPatchTypeArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrInput `pulumi:"metadata"`
 	// Specification of the desired behavior of the PodDisruptionBudget.
-	Spec PodDisruptionBudgetSpecPtrInput `pulumi:"spec"`
+	Spec PodDisruptionBudgetSpecPatchPtrInput `pulumi:"spec"`
 	// Most recently observed status of the PodDisruptionBudget.
-	Status PodDisruptionBudgetStatusPtrInput `pulumi:"status"`
+	Status PodDisruptionBudgetStatusPatchPtrInput `pulumi:"status"`
 }
 
 func (PodDisruptionBudgetPatchTypeArgs) ElementType() reflect.Type {
@@ -1535,18 +1855,18 @@ func (o PodDisruptionBudgetPatchTypeOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o PodDisruptionBudgetPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v PodDisruptionBudgetPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o PodDisruptionBudgetPatchTypeOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v PodDisruptionBudgetPatchType) *metav1.ObjectMetaPatch { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Specification of the desired behavior of the PodDisruptionBudget.
-func (o PodDisruptionBudgetPatchTypeOutput) Spec() PodDisruptionBudgetSpecPtrOutput {
-	return o.ApplyT(func(v PodDisruptionBudgetPatchType) *PodDisruptionBudgetSpec { return v.Spec }).(PodDisruptionBudgetSpecPtrOutput)
+func (o PodDisruptionBudgetPatchTypeOutput) Spec() PodDisruptionBudgetSpecPatchPtrOutput {
+	return o.ApplyT(func(v PodDisruptionBudgetPatchType) *PodDisruptionBudgetSpecPatch { return v.Spec }).(PodDisruptionBudgetSpecPatchPtrOutput)
 }
 
 // Most recently observed status of the PodDisruptionBudget.
-func (o PodDisruptionBudgetPatchTypeOutput) Status() PodDisruptionBudgetStatusPtrOutput {
-	return o.ApplyT(func(v PodDisruptionBudgetPatchType) *PodDisruptionBudgetStatus { return v.Status }).(PodDisruptionBudgetStatusPtrOutput)
+func (o PodDisruptionBudgetPatchTypeOutput) Status() PodDisruptionBudgetStatusPatchPtrOutput {
+	return o.ApplyT(func(v PodDisruptionBudgetPatchType) *PodDisruptionBudgetStatusPatch { return v.Status }).(PodDisruptionBudgetStatusPatchPtrOutput)
 }
 
 // PodDisruptionBudgetSpec is a description of a PodDisruptionBudget.
@@ -1734,7 +2054,7 @@ type PodDisruptionBudgetSpecPatch struct {
 	// An eviction is allowed if at least "minAvailable" pods selected by "selector" will still be available after the eviction, i.e. even in the absence of the evicted pod.  So for example you can prevent all voluntary evictions by specifying "100%".
 	MinAvailable interface{} `pulumi:"minAvailable"`
 	// Label query over pods whose evictions are managed by the disruption budget. A null selector selects no pods. An empty selector ({}) also selects no pods, which differs from standard behavior of selecting all pods. In policy/v1, an empty selector will select all pods in the namespace.
-	Selector *metav1.LabelSelector `pulumi:"selector"`
+	Selector *metav1.LabelSelectorPatch `pulumi:"selector"`
 }
 
 // PodDisruptionBudgetSpecPatchInput is an input type that accepts PodDisruptionBudgetSpecPatchArgs and PodDisruptionBudgetSpecPatchOutput values.
@@ -1755,7 +2075,7 @@ type PodDisruptionBudgetSpecPatchArgs struct {
 	// An eviction is allowed if at least "minAvailable" pods selected by "selector" will still be available after the eviction, i.e. even in the absence of the evicted pod.  So for example you can prevent all voluntary evictions by specifying "100%".
 	MinAvailable pulumi.Input `pulumi:"minAvailable"`
 	// Label query over pods whose evictions are managed by the disruption budget. A null selector selects no pods. An empty selector ({}) also selects no pods, which differs from standard behavior of selecting all pods. In policy/v1, an empty selector will select all pods in the namespace.
-	Selector metav1.LabelSelectorPtrInput `pulumi:"selector"`
+	Selector metav1.LabelSelectorPatchPtrInput `pulumi:"selector"`
 }
 
 func (PodDisruptionBudgetSpecPatchArgs) ElementType() reflect.Type {
@@ -1768,6 +2088,47 @@ func (i PodDisruptionBudgetSpecPatchArgs) ToPodDisruptionBudgetSpecPatchOutput()
 
 func (i PodDisruptionBudgetSpecPatchArgs) ToPodDisruptionBudgetSpecPatchOutputWithContext(ctx context.Context) PodDisruptionBudgetSpecPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PodDisruptionBudgetSpecPatchOutput)
+}
+
+func (i PodDisruptionBudgetSpecPatchArgs) ToPodDisruptionBudgetSpecPatchPtrOutput() PodDisruptionBudgetSpecPatchPtrOutput {
+	return i.ToPodDisruptionBudgetSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (i PodDisruptionBudgetSpecPatchArgs) ToPodDisruptionBudgetSpecPatchPtrOutputWithContext(ctx context.Context) PodDisruptionBudgetSpecPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodDisruptionBudgetSpecPatchOutput).ToPodDisruptionBudgetSpecPatchPtrOutputWithContext(ctx)
+}
+
+// PodDisruptionBudgetSpecPatchPtrInput is an input type that accepts PodDisruptionBudgetSpecPatchArgs, PodDisruptionBudgetSpecPatchPtr and PodDisruptionBudgetSpecPatchPtrOutput values.
+// You can construct a concrete instance of `PodDisruptionBudgetSpecPatchPtrInput` via:
+//
+//          PodDisruptionBudgetSpecPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type PodDisruptionBudgetSpecPatchPtrInput interface {
+	pulumi.Input
+
+	ToPodDisruptionBudgetSpecPatchPtrOutput() PodDisruptionBudgetSpecPatchPtrOutput
+	ToPodDisruptionBudgetSpecPatchPtrOutputWithContext(context.Context) PodDisruptionBudgetSpecPatchPtrOutput
+}
+
+type podDisruptionBudgetSpecPatchPtrType PodDisruptionBudgetSpecPatchArgs
+
+func PodDisruptionBudgetSpecPatchPtr(v *PodDisruptionBudgetSpecPatchArgs) PodDisruptionBudgetSpecPatchPtrInput {
+	return (*podDisruptionBudgetSpecPatchPtrType)(v)
+}
+
+func (*podDisruptionBudgetSpecPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodDisruptionBudgetSpecPatch)(nil)).Elem()
+}
+
+func (i *podDisruptionBudgetSpecPatchPtrType) ToPodDisruptionBudgetSpecPatchPtrOutput() PodDisruptionBudgetSpecPatchPtrOutput {
+	return i.ToPodDisruptionBudgetSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *podDisruptionBudgetSpecPatchPtrType) ToPodDisruptionBudgetSpecPatchPtrOutputWithContext(ctx context.Context) PodDisruptionBudgetSpecPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodDisruptionBudgetSpecPatchPtrOutput)
 }
 
 // PodDisruptionBudgetSpec is a description of a PodDisruptionBudget.
@@ -1785,6 +2146,16 @@ func (o PodDisruptionBudgetSpecPatchOutput) ToPodDisruptionBudgetSpecPatchOutput
 	return o
 }
 
+func (o PodDisruptionBudgetSpecPatchOutput) ToPodDisruptionBudgetSpecPatchPtrOutput() PodDisruptionBudgetSpecPatchPtrOutput {
+	return o.ToPodDisruptionBudgetSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (o PodDisruptionBudgetSpecPatchOutput) ToPodDisruptionBudgetSpecPatchPtrOutputWithContext(ctx context.Context) PodDisruptionBudgetSpecPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PodDisruptionBudgetSpecPatch) *PodDisruptionBudgetSpecPatch {
+		return &v
+	}).(PodDisruptionBudgetSpecPatchPtrOutput)
+}
+
 // An eviction is allowed if at most "maxUnavailable" pods selected by "selector" are unavailable after the eviction, i.e. even in absence of the evicted pod. For example, one can prevent all voluntary evictions by specifying 0. This is a mutually exclusive setting with "minAvailable".
 func (o PodDisruptionBudgetSpecPatchOutput) MaxUnavailable() pulumi.AnyOutput {
 	return o.ApplyT(func(v PodDisruptionBudgetSpecPatch) interface{} { return v.MaxUnavailable }).(pulumi.AnyOutput)
@@ -1796,8 +2167,62 @@ func (o PodDisruptionBudgetSpecPatchOutput) MinAvailable() pulumi.AnyOutput {
 }
 
 // Label query over pods whose evictions are managed by the disruption budget. A null selector selects no pods. An empty selector ({}) also selects no pods, which differs from standard behavior of selecting all pods. In policy/v1, an empty selector will select all pods in the namespace.
-func (o PodDisruptionBudgetSpecPatchOutput) Selector() metav1.LabelSelectorPtrOutput {
-	return o.ApplyT(func(v PodDisruptionBudgetSpecPatch) *metav1.LabelSelector { return v.Selector }).(metav1.LabelSelectorPtrOutput)
+func (o PodDisruptionBudgetSpecPatchOutput) Selector() metav1.LabelSelectorPatchPtrOutput {
+	return o.ApplyT(func(v PodDisruptionBudgetSpecPatch) *metav1.LabelSelectorPatch { return v.Selector }).(metav1.LabelSelectorPatchPtrOutput)
+}
+
+type PodDisruptionBudgetSpecPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (PodDisruptionBudgetSpecPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodDisruptionBudgetSpecPatch)(nil)).Elem()
+}
+
+func (o PodDisruptionBudgetSpecPatchPtrOutput) ToPodDisruptionBudgetSpecPatchPtrOutput() PodDisruptionBudgetSpecPatchPtrOutput {
+	return o
+}
+
+func (o PodDisruptionBudgetSpecPatchPtrOutput) ToPodDisruptionBudgetSpecPatchPtrOutputWithContext(ctx context.Context) PodDisruptionBudgetSpecPatchPtrOutput {
+	return o
+}
+
+func (o PodDisruptionBudgetSpecPatchPtrOutput) Elem() PodDisruptionBudgetSpecPatchOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetSpecPatch) PodDisruptionBudgetSpecPatch {
+		if v != nil {
+			return *v
+		}
+		var ret PodDisruptionBudgetSpecPatch
+		return ret
+	}).(PodDisruptionBudgetSpecPatchOutput)
+}
+
+// An eviction is allowed if at most "maxUnavailable" pods selected by "selector" are unavailable after the eviction, i.e. even in absence of the evicted pod. For example, one can prevent all voluntary evictions by specifying 0. This is a mutually exclusive setting with "minAvailable".
+func (o PodDisruptionBudgetSpecPatchPtrOutput) MaxUnavailable() pulumi.AnyOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetSpecPatch) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnavailable
+	}).(pulumi.AnyOutput)
+}
+
+// An eviction is allowed if at least "minAvailable" pods selected by "selector" will still be available after the eviction, i.e. even in the absence of the evicted pod.  So for example you can prevent all voluntary evictions by specifying "100%".
+func (o PodDisruptionBudgetSpecPatchPtrOutput) MinAvailable() pulumi.AnyOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetSpecPatch) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.MinAvailable
+	}).(pulumi.AnyOutput)
+}
+
+// Label query over pods whose evictions are managed by the disruption budget. A null selector selects no pods. An empty selector ({}) also selects no pods, which differs from standard behavior of selecting all pods. In policy/v1, an empty selector will select all pods in the namespace.
+func (o PodDisruptionBudgetSpecPatchPtrOutput) Selector() metav1.LabelSelectorPatchPtrOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetSpecPatch) *metav1.LabelSelectorPatch {
+		if v == nil {
+			return nil
+		}
+		return v.Selector
+	}).(metav1.LabelSelectorPatchPtrOutput)
 }
 
 // PodDisruptionBudgetStatus represents information about the status of a PodDisruptionBudget. Status may trail the actual state of a system.
@@ -2097,7 +2522,7 @@ type PodDisruptionBudgetStatusPatch struct {
 	// - SufficientPods: There are more pods than required by the PodDisruptionBudget.
 	//                   The condition will be True, and the number of allowed
 	//                   disruptions are provided by the disruptionsAllowed property.
-	Conditions []metav1.Condition `pulumi:"conditions"`
+	Conditions []metav1.ConditionPatch `pulumi:"conditions"`
 	// current number of healthy pods
 	CurrentHealthy *int `pulumi:"currentHealthy"`
 	// minimum desired number of healthy pods
@@ -2134,7 +2559,7 @@ type PodDisruptionBudgetStatusPatchArgs struct {
 	// - SufficientPods: There are more pods than required by the PodDisruptionBudget.
 	//                   The condition will be True, and the number of allowed
 	//                   disruptions are provided by the disruptionsAllowed property.
-	Conditions metav1.ConditionArrayInput `pulumi:"conditions"`
+	Conditions metav1.ConditionPatchArrayInput `pulumi:"conditions"`
 	// current number of healthy pods
 	CurrentHealthy pulumi.IntPtrInput `pulumi:"currentHealthy"`
 	// minimum desired number of healthy pods
@@ -2161,6 +2586,47 @@ func (i PodDisruptionBudgetStatusPatchArgs) ToPodDisruptionBudgetStatusPatchOutp
 	return pulumi.ToOutputWithContext(ctx, i).(PodDisruptionBudgetStatusPatchOutput)
 }
 
+func (i PodDisruptionBudgetStatusPatchArgs) ToPodDisruptionBudgetStatusPatchPtrOutput() PodDisruptionBudgetStatusPatchPtrOutput {
+	return i.ToPodDisruptionBudgetStatusPatchPtrOutputWithContext(context.Background())
+}
+
+func (i PodDisruptionBudgetStatusPatchArgs) ToPodDisruptionBudgetStatusPatchPtrOutputWithContext(ctx context.Context) PodDisruptionBudgetStatusPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodDisruptionBudgetStatusPatchOutput).ToPodDisruptionBudgetStatusPatchPtrOutputWithContext(ctx)
+}
+
+// PodDisruptionBudgetStatusPatchPtrInput is an input type that accepts PodDisruptionBudgetStatusPatchArgs, PodDisruptionBudgetStatusPatchPtr and PodDisruptionBudgetStatusPatchPtrOutput values.
+// You can construct a concrete instance of `PodDisruptionBudgetStatusPatchPtrInput` via:
+//
+//          PodDisruptionBudgetStatusPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type PodDisruptionBudgetStatusPatchPtrInput interface {
+	pulumi.Input
+
+	ToPodDisruptionBudgetStatusPatchPtrOutput() PodDisruptionBudgetStatusPatchPtrOutput
+	ToPodDisruptionBudgetStatusPatchPtrOutputWithContext(context.Context) PodDisruptionBudgetStatusPatchPtrOutput
+}
+
+type podDisruptionBudgetStatusPatchPtrType PodDisruptionBudgetStatusPatchArgs
+
+func PodDisruptionBudgetStatusPatchPtr(v *PodDisruptionBudgetStatusPatchArgs) PodDisruptionBudgetStatusPatchPtrInput {
+	return (*podDisruptionBudgetStatusPatchPtrType)(v)
+}
+
+func (*podDisruptionBudgetStatusPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodDisruptionBudgetStatusPatch)(nil)).Elem()
+}
+
+func (i *podDisruptionBudgetStatusPatchPtrType) ToPodDisruptionBudgetStatusPatchPtrOutput() PodDisruptionBudgetStatusPatchPtrOutput {
+	return i.ToPodDisruptionBudgetStatusPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *podDisruptionBudgetStatusPatchPtrType) ToPodDisruptionBudgetStatusPatchPtrOutputWithContext(ctx context.Context) PodDisruptionBudgetStatusPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodDisruptionBudgetStatusPatchPtrOutput)
+}
+
 // PodDisruptionBudgetStatus represents information about the status of a PodDisruptionBudget. Status may trail the actual state of a system.
 type PodDisruptionBudgetStatusPatchOutput struct{ *pulumi.OutputState }
 
@@ -2176,6 +2642,16 @@ func (o PodDisruptionBudgetStatusPatchOutput) ToPodDisruptionBudgetStatusPatchOu
 	return o
 }
 
+func (o PodDisruptionBudgetStatusPatchOutput) ToPodDisruptionBudgetStatusPatchPtrOutput() PodDisruptionBudgetStatusPatchPtrOutput {
+	return o.ToPodDisruptionBudgetStatusPatchPtrOutputWithContext(context.Background())
+}
+
+func (o PodDisruptionBudgetStatusPatchOutput) ToPodDisruptionBudgetStatusPatchPtrOutputWithContext(ctx context.Context) PodDisruptionBudgetStatusPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PodDisruptionBudgetStatusPatch) *PodDisruptionBudgetStatusPatch {
+		return &v
+	}).(PodDisruptionBudgetStatusPatchPtrOutput)
+}
+
 // Conditions contain conditions for PDB. The disruption controller sets the DisruptionAllowed condition. The following are known values for the reason field (additional reasons could be added in the future): - SyncFailed: The controller encountered an error and wasn't able to compute
 //               the number of allowed disruptions. Therefore no disruptions are
 //               allowed and the status of the condition will be False.
@@ -2185,8 +2661,8 @@ func (o PodDisruptionBudgetStatusPatchOutput) ToPodDisruptionBudgetStatusPatchOu
 // - SufficientPods: There are more pods than required by the PodDisruptionBudget.
 //                   The condition will be True, and the number of allowed
 //                   disruptions are provided by the disruptionsAllowed property.
-func (o PodDisruptionBudgetStatusPatchOutput) Conditions() metav1.ConditionArrayOutput {
-	return o.ApplyT(func(v PodDisruptionBudgetStatusPatch) []metav1.Condition { return v.Conditions }).(metav1.ConditionArrayOutput)
+func (o PodDisruptionBudgetStatusPatchOutput) Conditions() metav1.ConditionPatchArrayOutput {
+	return o.ApplyT(func(v PodDisruptionBudgetStatusPatch) []metav1.ConditionPatch { return v.Conditions }).(metav1.ConditionPatchArrayOutput)
 }
 
 // current number of healthy pods
@@ -2217,6 +2693,108 @@ func (o PodDisruptionBudgetStatusPatchOutput) ExpectedPods() pulumi.IntPtrOutput
 // Most recent generation observed when updating this PDB status. DisruptionsAllowed and other status information is valid only if observedGeneration equals to PDB's object generation.
 func (o PodDisruptionBudgetStatusPatchOutput) ObservedGeneration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PodDisruptionBudgetStatusPatch) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
+}
+
+type PodDisruptionBudgetStatusPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (PodDisruptionBudgetStatusPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodDisruptionBudgetStatusPatch)(nil)).Elem()
+}
+
+func (o PodDisruptionBudgetStatusPatchPtrOutput) ToPodDisruptionBudgetStatusPatchPtrOutput() PodDisruptionBudgetStatusPatchPtrOutput {
+	return o
+}
+
+func (o PodDisruptionBudgetStatusPatchPtrOutput) ToPodDisruptionBudgetStatusPatchPtrOutputWithContext(ctx context.Context) PodDisruptionBudgetStatusPatchPtrOutput {
+	return o
+}
+
+func (o PodDisruptionBudgetStatusPatchPtrOutput) Elem() PodDisruptionBudgetStatusPatchOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetStatusPatch) PodDisruptionBudgetStatusPatch {
+		if v != nil {
+			return *v
+		}
+		var ret PodDisruptionBudgetStatusPatch
+		return ret
+	}).(PodDisruptionBudgetStatusPatchOutput)
+}
+
+// Conditions contain conditions for PDB. The disruption controller sets the DisruptionAllowed condition. The following are known values for the reason field (additional reasons could be added in the future): - SyncFailed: The controller encountered an error and wasn't able to compute
+//               the number of allowed disruptions. Therefore no disruptions are
+//               allowed and the status of the condition will be False.
+// - InsufficientPods: The number of pods are either at or below the number
+//                     required by the PodDisruptionBudget. No disruptions are
+//                     allowed and the status of the condition will be False.
+// - SufficientPods: There are more pods than required by the PodDisruptionBudget.
+//                   The condition will be True, and the number of allowed
+//                   disruptions are provided by the disruptionsAllowed property.
+func (o PodDisruptionBudgetStatusPatchPtrOutput) Conditions() metav1.ConditionPatchArrayOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetStatusPatch) []metav1.ConditionPatch {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(metav1.ConditionPatchArrayOutput)
+}
+
+// current number of healthy pods
+func (o PodDisruptionBudgetStatusPatchPtrOutput) CurrentHealthy() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetStatusPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CurrentHealthy
+	}).(pulumi.IntPtrOutput)
+}
+
+// minimum desired number of healthy pods
+func (o PodDisruptionBudgetStatusPatchPtrOutput) DesiredHealthy() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetStatusPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DesiredHealthy
+	}).(pulumi.IntPtrOutput)
+}
+
+// DisruptedPods contains information about pods whose eviction was processed by the API server eviction subresource handler but has not yet been observed by the PodDisruptionBudget controller. A pod will be in this map from the time when the API server processed the eviction request to the time when the pod is seen by PDB controller as having been marked for deletion (or after a timeout). The key in the map is the name of the pod and the value is the time when the API server processed the eviction request. If the deletion didn't occur and a pod is still there it will be removed from the list automatically by PodDisruptionBudget controller after some time. If everything goes smooth this map should be empty for the most of the time. Large number of entries in the map may indicate problems with pod deletions.
+func (o PodDisruptionBudgetStatusPatchPtrOutput) DisruptedPods() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetStatusPatch) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.DisruptedPods
+	}).(pulumi.StringMapOutput)
+}
+
+// Number of pod disruptions that are currently allowed.
+func (o PodDisruptionBudgetStatusPatchPtrOutput) DisruptionsAllowed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetStatusPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DisruptionsAllowed
+	}).(pulumi.IntPtrOutput)
+}
+
+// total number of pods counted by this disruption budget
+func (o PodDisruptionBudgetStatusPatchPtrOutput) ExpectedPods() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetStatusPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ExpectedPods
+	}).(pulumi.IntPtrOutput)
+}
+
+// Most recent generation observed when updating this PDB status. DisruptionsAllowed and other status information is valid only if observedGeneration equals to PDB's object generation.
+func (o PodDisruptionBudgetStatusPatchPtrOutput) ObservedGeneration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetStatusPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ObservedGeneration
+	}).(pulumi.IntPtrOutput)
 }
 
 // PodSecurityPolicy governs the ability to make requests that affect the Security Context that will be applied to a pod and container. Deprecated in 1.21.
@@ -2435,9 +3013,9 @@ type PodSecurityPolicyPatchType struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// spec defines the policy enforced.
-	Spec *PodSecurityPolicySpec `pulumi:"spec"`
+	Spec *PodSecurityPolicySpecPatch `pulumi:"spec"`
 }
 
 // PodSecurityPolicyPatchTypeInput is an input type that accepts PodSecurityPolicyPatchTypeArgs and PodSecurityPolicyPatchTypeOutput values.
@@ -2458,9 +3036,9 @@ type PodSecurityPolicyPatchTypeArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrInput `pulumi:"metadata"`
 	// spec defines the policy enforced.
-	Spec PodSecurityPolicySpecPtrInput `pulumi:"spec"`
+	Spec PodSecurityPolicySpecPatchPtrInput `pulumi:"spec"`
 }
 
 func (PodSecurityPolicyPatchTypeArgs) ElementType() reflect.Type {
@@ -2501,13 +3079,13 @@ func (o PodSecurityPolicyPatchTypeOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o PodSecurityPolicyPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v PodSecurityPolicyPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o PodSecurityPolicyPatchTypeOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicyPatchType) *metav1.ObjectMetaPatch { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // spec defines the policy enforced.
-func (o PodSecurityPolicyPatchTypeOutput) Spec() PodSecurityPolicySpecPtrOutput {
-	return o.ApplyT(func(v PodSecurityPolicyPatchType) *PodSecurityPolicySpec { return v.Spec }).(PodSecurityPolicySpecPtrOutput)
+func (o PodSecurityPolicyPatchTypeOutput) Spec() PodSecurityPolicySpecPatchPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicyPatchType) *PodSecurityPolicySpecPatch { return v.Spec }).(PodSecurityPolicySpecPatchPtrOutput)
 }
 
 // PodSecurityPolicySpec defines the policy enforced.
@@ -3108,13 +3686,13 @@ type PodSecurityPolicySpecPatch struct {
 	// allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to true.
 	AllowPrivilegeEscalation *bool `pulumi:"allowPrivilegeEscalation"`
 	// AllowedCSIDrivers is an allowlist of inline CSI drivers that must be explicitly set to be embedded within a pod spec. An empty value indicates that any CSI driver can be used for inline ephemeral volumes. This is a beta field, and is only honored if the API server enables the CSIInlineVolume feature gate.
-	AllowedCSIDrivers []AllowedCSIDriver `pulumi:"allowedCSIDrivers"`
+	AllowedCSIDrivers []AllowedCSIDriverPatch `pulumi:"allowedCSIDrivers"`
 	// allowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field may be added at the pod author's discretion. You must not list a capability in both allowedCapabilities and requiredDropCapabilities.
 	AllowedCapabilities []string `pulumi:"allowedCapabilities"`
 	// allowedFlexVolumes is an allowlist of Flexvolumes.  Empty or nil indicates that all Flexvolumes may be used.  This parameter is effective only when the usage of the Flexvolumes is allowed in the "volumes" field.
-	AllowedFlexVolumes []AllowedFlexVolume `pulumi:"allowedFlexVolumes"`
+	AllowedFlexVolumes []AllowedFlexVolumePatch `pulumi:"allowedFlexVolumes"`
 	// allowedHostPaths is an allowlist of host paths. Empty indicates that all host paths may be used.
-	AllowedHostPaths []AllowedHostPath `pulumi:"allowedHostPaths"`
+	AllowedHostPaths []AllowedHostPathPatch `pulumi:"allowedHostPaths"`
 	// AllowedProcMountTypes is an allowlist of allowed ProcMountTypes. Empty or nil indicates that only the DefaultProcMountType may be used. This requires the ProcMountType feature flag to be enabled.
 	AllowedProcMountTypes []string `pulumi:"allowedProcMountTypes"`
 	// allowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to none. Each entry is either a plain sysctl name or ends in "*" in which case it is considered as a prefix of allowed sysctls. Single * means all unsafe sysctls are allowed. Kubelet has to allowlist all allowed unsafe sysctls explicitly to avoid rejection.
@@ -3130,7 +3708,7 @@ type PodSecurityPolicySpecPatch struct {
 	// Examples: e.g. "foo/*" forbids "foo/bar", "foo/baz", etc. e.g. "foo.*" forbids "foo.bar", "foo.baz", etc.
 	ForbiddenSysctls []string `pulumi:"forbiddenSysctls"`
 	// fsGroup is the strategy that will dictate what fs group is used by the SecurityContext.
-	FsGroup *FSGroupStrategyOptions `pulumi:"fsGroup"`
+	FsGroup *FSGroupStrategyOptionsPatch `pulumi:"fsGroup"`
 	// hostIPC determines if the policy allows the use of HostIPC in the pod spec.
 	HostIPC *bool `pulumi:"hostIPC"`
 	// hostNetwork determines if the policy allows the use of HostNetwork in the pod spec.
@@ -3138,7 +3716,7 @@ type PodSecurityPolicySpecPatch struct {
 	// hostPID determines if the policy allows the use of HostPID in the pod spec.
 	HostPID *bool `pulumi:"hostPID"`
 	// hostPorts determines which host port ranges are allowed to be exposed.
-	HostPorts []HostPortRange `pulumi:"hostPorts"`
+	HostPorts []HostPortRangePatch `pulumi:"hostPorts"`
 	// privileged determines if a pod can request to be run as privileged.
 	Privileged *bool `pulumi:"privileged"`
 	// readOnlyRootFilesystem when set to true will force containers to run with a read only root file system.  If the container specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the container may run with a read only root file system if it wishes but it will not be forced to.
@@ -3146,15 +3724,15 @@ type PodSecurityPolicySpecPatch struct {
 	// requiredDropCapabilities are the capabilities that will be dropped from the container.  These are required to be dropped and cannot be added.
 	RequiredDropCapabilities []string `pulumi:"requiredDropCapabilities"`
 	// RunAsGroup is the strategy that will dictate the allowable RunAsGroup values that may be set. If this field is omitted, the pod's RunAsGroup can take any value. This field requires the RunAsGroup feature gate to be enabled.
-	RunAsGroup *RunAsGroupStrategyOptions `pulumi:"runAsGroup"`
+	RunAsGroup *RunAsGroupStrategyOptionsPatch `pulumi:"runAsGroup"`
 	// runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set.
-	RunAsUser *RunAsUserStrategyOptions `pulumi:"runAsUser"`
+	RunAsUser *RunAsUserStrategyOptionsPatch `pulumi:"runAsUser"`
 	// runtimeClass is the strategy that will dictate the allowable RuntimeClasses for a pod. If this field is omitted, the pod's runtimeClassName field is unrestricted. Enforcement of this field depends on the RuntimeClass feature gate being enabled.
-	RuntimeClass *RuntimeClassStrategyOptions `pulumi:"runtimeClass"`
+	RuntimeClass *RuntimeClassStrategyOptionsPatch `pulumi:"runtimeClass"`
 	// seLinux is the strategy that will dictate the allowable labels that may be set.
-	SeLinux *SELinuxStrategyOptions `pulumi:"seLinux"`
+	SeLinux *SELinuxStrategyOptionsPatch `pulumi:"seLinux"`
 	// supplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.
-	SupplementalGroups *SupplementalGroupsStrategyOptions `pulumi:"supplementalGroups"`
+	SupplementalGroups *SupplementalGroupsStrategyOptionsPatch `pulumi:"supplementalGroups"`
 	// volumes is an allowlist of volume plugins. Empty indicates that no volumes may be used. To allow all volumes you may use '*'.
 	Volumes []string `pulumi:"volumes"`
 }
@@ -3175,13 +3753,13 @@ type PodSecurityPolicySpecPatchArgs struct {
 	// allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to true.
 	AllowPrivilegeEscalation pulumi.BoolPtrInput `pulumi:"allowPrivilegeEscalation"`
 	// AllowedCSIDrivers is an allowlist of inline CSI drivers that must be explicitly set to be embedded within a pod spec. An empty value indicates that any CSI driver can be used for inline ephemeral volumes. This is a beta field, and is only honored if the API server enables the CSIInlineVolume feature gate.
-	AllowedCSIDrivers AllowedCSIDriverArrayInput `pulumi:"allowedCSIDrivers"`
+	AllowedCSIDrivers AllowedCSIDriverPatchArrayInput `pulumi:"allowedCSIDrivers"`
 	// allowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field may be added at the pod author's discretion. You must not list a capability in both allowedCapabilities and requiredDropCapabilities.
 	AllowedCapabilities pulumi.StringArrayInput `pulumi:"allowedCapabilities"`
 	// allowedFlexVolumes is an allowlist of Flexvolumes.  Empty or nil indicates that all Flexvolumes may be used.  This parameter is effective only when the usage of the Flexvolumes is allowed in the "volumes" field.
-	AllowedFlexVolumes AllowedFlexVolumeArrayInput `pulumi:"allowedFlexVolumes"`
+	AllowedFlexVolumes AllowedFlexVolumePatchArrayInput `pulumi:"allowedFlexVolumes"`
 	// allowedHostPaths is an allowlist of host paths. Empty indicates that all host paths may be used.
-	AllowedHostPaths AllowedHostPathArrayInput `pulumi:"allowedHostPaths"`
+	AllowedHostPaths AllowedHostPathPatchArrayInput `pulumi:"allowedHostPaths"`
 	// AllowedProcMountTypes is an allowlist of allowed ProcMountTypes. Empty or nil indicates that only the DefaultProcMountType may be used. This requires the ProcMountType feature flag to be enabled.
 	AllowedProcMountTypes pulumi.StringArrayInput `pulumi:"allowedProcMountTypes"`
 	// allowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to none. Each entry is either a plain sysctl name or ends in "*" in which case it is considered as a prefix of allowed sysctls. Single * means all unsafe sysctls are allowed. Kubelet has to allowlist all allowed unsafe sysctls explicitly to avoid rejection.
@@ -3197,7 +3775,7 @@ type PodSecurityPolicySpecPatchArgs struct {
 	// Examples: e.g. "foo/*" forbids "foo/bar", "foo/baz", etc. e.g. "foo.*" forbids "foo.bar", "foo.baz", etc.
 	ForbiddenSysctls pulumi.StringArrayInput `pulumi:"forbiddenSysctls"`
 	// fsGroup is the strategy that will dictate what fs group is used by the SecurityContext.
-	FsGroup FSGroupStrategyOptionsPtrInput `pulumi:"fsGroup"`
+	FsGroup FSGroupStrategyOptionsPatchPtrInput `pulumi:"fsGroup"`
 	// hostIPC determines if the policy allows the use of HostIPC in the pod spec.
 	HostIPC pulumi.BoolPtrInput `pulumi:"hostIPC"`
 	// hostNetwork determines if the policy allows the use of HostNetwork in the pod spec.
@@ -3205,7 +3783,7 @@ type PodSecurityPolicySpecPatchArgs struct {
 	// hostPID determines if the policy allows the use of HostPID in the pod spec.
 	HostPID pulumi.BoolPtrInput `pulumi:"hostPID"`
 	// hostPorts determines which host port ranges are allowed to be exposed.
-	HostPorts HostPortRangeArrayInput `pulumi:"hostPorts"`
+	HostPorts HostPortRangePatchArrayInput `pulumi:"hostPorts"`
 	// privileged determines if a pod can request to be run as privileged.
 	Privileged pulumi.BoolPtrInput `pulumi:"privileged"`
 	// readOnlyRootFilesystem when set to true will force containers to run with a read only root file system.  If the container specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the container may run with a read only root file system if it wishes but it will not be forced to.
@@ -3213,15 +3791,15 @@ type PodSecurityPolicySpecPatchArgs struct {
 	// requiredDropCapabilities are the capabilities that will be dropped from the container.  These are required to be dropped and cannot be added.
 	RequiredDropCapabilities pulumi.StringArrayInput `pulumi:"requiredDropCapabilities"`
 	// RunAsGroup is the strategy that will dictate the allowable RunAsGroup values that may be set. If this field is omitted, the pod's RunAsGroup can take any value. This field requires the RunAsGroup feature gate to be enabled.
-	RunAsGroup RunAsGroupStrategyOptionsPtrInput `pulumi:"runAsGroup"`
+	RunAsGroup RunAsGroupStrategyOptionsPatchPtrInput `pulumi:"runAsGroup"`
 	// runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set.
-	RunAsUser RunAsUserStrategyOptionsPtrInput `pulumi:"runAsUser"`
+	RunAsUser RunAsUserStrategyOptionsPatchPtrInput `pulumi:"runAsUser"`
 	// runtimeClass is the strategy that will dictate the allowable RuntimeClasses for a pod. If this field is omitted, the pod's runtimeClassName field is unrestricted. Enforcement of this field depends on the RuntimeClass feature gate being enabled.
-	RuntimeClass RuntimeClassStrategyOptionsPtrInput `pulumi:"runtimeClass"`
+	RuntimeClass RuntimeClassStrategyOptionsPatchPtrInput `pulumi:"runtimeClass"`
 	// seLinux is the strategy that will dictate the allowable labels that may be set.
-	SeLinux SELinuxStrategyOptionsPtrInput `pulumi:"seLinux"`
+	SeLinux SELinuxStrategyOptionsPatchPtrInput `pulumi:"seLinux"`
 	// supplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.
-	SupplementalGroups SupplementalGroupsStrategyOptionsPtrInput `pulumi:"supplementalGroups"`
+	SupplementalGroups SupplementalGroupsStrategyOptionsPatchPtrInput `pulumi:"supplementalGroups"`
 	// volumes is an allowlist of volume plugins. Empty indicates that no volumes may be used. To allow all volumes you may use '*'.
 	Volumes pulumi.StringArrayInput `pulumi:"volumes"`
 }
@@ -3236,6 +3814,47 @@ func (i PodSecurityPolicySpecPatchArgs) ToPodSecurityPolicySpecPatchOutput() Pod
 
 func (i PodSecurityPolicySpecPatchArgs) ToPodSecurityPolicySpecPatchOutputWithContext(ctx context.Context) PodSecurityPolicySpecPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicySpecPatchOutput)
+}
+
+func (i PodSecurityPolicySpecPatchArgs) ToPodSecurityPolicySpecPatchPtrOutput() PodSecurityPolicySpecPatchPtrOutput {
+	return i.ToPodSecurityPolicySpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicySpecPatchArgs) ToPodSecurityPolicySpecPatchPtrOutputWithContext(ctx context.Context) PodSecurityPolicySpecPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicySpecPatchOutput).ToPodSecurityPolicySpecPatchPtrOutputWithContext(ctx)
+}
+
+// PodSecurityPolicySpecPatchPtrInput is an input type that accepts PodSecurityPolicySpecPatchArgs, PodSecurityPolicySpecPatchPtr and PodSecurityPolicySpecPatchPtrOutput values.
+// You can construct a concrete instance of `PodSecurityPolicySpecPatchPtrInput` via:
+//
+//          PodSecurityPolicySpecPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type PodSecurityPolicySpecPatchPtrInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicySpecPatchPtrOutput() PodSecurityPolicySpecPatchPtrOutput
+	ToPodSecurityPolicySpecPatchPtrOutputWithContext(context.Context) PodSecurityPolicySpecPatchPtrOutput
+}
+
+type podSecurityPolicySpecPatchPtrType PodSecurityPolicySpecPatchArgs
+
+func PodSecurityPolicySpecPatchPtr(v *PodSecurityPolicySpecPatchArgs) PodSecurityPolicySpecPatchPtrInput {
+	return (*podSecurityPolicySpecPatchPtrType)(v)
+}
+
+func (*podSecurityPolicySpecPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodSecurityPolicySpecPatch)(nil)).Elem()
+}
+
+func (i *podSecurityPolicySpecPatchPtrType) ToPodSecurityPolicySpecPatchPtrOutput() PodSecurityPolicySpecPatchPtrOutput {
+	return i.ToPodSecurityPolicySpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *podSecurityPolicySpecPatchPtrType) ToPodSecurityPolicySpecPatchPtrOutputWithContext(ctx context.Context) PodSecurityPolicySpecPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicySpecPatchPtrOutput)
 }
 
 // PodSecurityPolicySpec defines the policy enforced.
@@ -3253,14 +3872,24 @@ func (o PodSecurityPolicySpecPatchOutput) ToPodSecurityPolicySpecPatchOutputWith
 	return o
 }
 
+func (o PodSecurityPolicySpecPatchOutput) ToPodSecurityPolicySpecPatchPtrOutput() PodSecurityPolicySpecPatchPtrOutput {
+	return o.ToPodSecurityPolicySpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (o PodSecurityPolicySpecPatchOutput) ToPodSecurityPolicySpecPatchPtrOutputWithContext(ctx context.Context) PodSecurityPolicySpecPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PodSecurityPolicySpecPatch) *PodSecurityPolicySpecPatch {
+		return &v
+	}).(PodSecurityPolicySpecPatchPtrOutput)
+}
+
 // allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to true.
 func (o PodSecurityPolicySpecPatchOutput) AllowPrivilegeEscalation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *bool { return v.AllowPrivilegeEscalation }).(pulumi.BoolPtrOutput)
 }
 
 // AllowedCSIDrivers is an allowlist of inline CSI drivers that must be explicitly set to be embedded within a pod spec. An empty value indicates that any CSI driver can be used for inline ephemeral volumes. This is a beta field, and is only honored if the API server enables the CSIInlineVolume feature gate.
-func (o PodSecurityPolicySpecPatchOutput) AllowedCSIDrivers() AllowedCSIDriverArrayOutput {
-	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []AllowedCSIDriver { return v.AllowedCSIDrivers }).(AllowedCSIDriverArrayOutput)
+func (o PodSecurityPolicySpecPatchOutput) AllowedCSIDrivers() AllowedCSIDriverPatchArrayOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []AllowedCSIDriverPatch { return v.AllowedCSIDrivers }).(AllowedCSIDriverPatchArrayOutput)
 }
 
 // allowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field may be added at the pod author's discretion. You must not list a capability in both allowedCapabilities and requiredDropCapabilities.
@@ -3269,13 +3898,13 @@ func (o PodSecurityPolicySpecPatchOutput) AllowedCapabilities() pulumi.StringArr
 }
 
 // allowedFlexVolumes is an allowlist of Flexvolumes.  Empty or nil indicates that all Flexvolumes may be used.  This parameter is effective only when the usage of the Flexvolumes is allowed in the "volumes" field.
-func (o PodSecurityPolicySpecPatchOutput) AllowedFlexVolumes() AllowedFlexVolumeArrayOutput {
-	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []AllowedFlexVolume { return v.AllowedFlexVolumes }).(AllowedFlexVolumeArrayOutput)
+func (o PodSecurityPolicySpecPatchOutput) AllowedFlexVolumes() AllowedFlexVolumePatchArrayOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []AllowedFlexVolumePatch { return v.AllowedFlexVolumes }).(AllowedFlexVolumePatchArrayOutput)
 }
 
 // allowedHostPaths is an allowlist of host paths. Empty indicates that all host paths may be used.
-func (o PodSecurityPolicySpecPatchOutput) AllowedHostPaths() AllowedHostPathArrayOutput {
-	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []AllowedHostPath { return v.AllowedHostPaths }).(AllowedHostPathArrayOutput)
+func (o PodSecurityPolicySpecPatchOutput) AllowedHostPaths() AllowedHostPathPatchArrayOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []AllowedHostPathPatch { return v.AllowedHostPaths }).(AllowedHostPathPatchArrayOutput)
 }
 
 // AllowedProcMountTypes is an allowlist of allowed ProcMountTypes. Empty or nil indicates that only the DefaultProcMountType may be used. This requires the ProcMountType feature flag to be enabled.
@@ -3308,8 +3937,8 @@ func (o PodSecurityPolicySpecPatchOutput) ForbiddenSysctls() pulumi.StringArrayO
 }
 
 // fsGroup is the strategy that will dictate what fs group is used by the SecurityContext.
-func (o PodSecurityPolicySpecPatchOutput) FsGroup() FSGroupStrategyOptionsPtrOutput {
-	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *FSGroupStrategyOptions { return v.FsGroup }).(FSGroupStrategyOptionsPtrOutput)
+func (o PodSecurityPolicySpecPatchOutput) FsGroup() FSGroupStrategyOptionsPatchPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *FSGroupStrategyOptionsPatch { return v.FsGroup }).(FSGroupStrategyOptionsPatchPtrOutput)
 }
 
 // hostIPC determines if the policy allows the use of HostIPC in the pod spec.
@@ -3328,8 +3957,8 @@ func (o PodSecurityPolicySpecPatchOutput) HostPID() pulumi.BoolPtrOutput {
 }
 
 // hostPorts determines which host port ranges are allowed to be exposed.
-func (o PodSecurityPolicySpecPatchOutput) HostPorts() HostPortRangeArrayOutput {
-	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []HostPortRange { return v.HostPorts }).(HostPortRangeArrayOutput)
+func (o PodSecurityPolicySpecPatchOutput) HostPorts() HostPortRangePatchArrayOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []HostPortRangePatch { return v.HostPorts }).(HostPortRangePatchArrayOutput)
 }
 
 // privileged determines if a pod can request to be run as privileged.
@@ -3348,33 +3977,303 @@ func (o PodSecurityPolicySpecPatchOutput) RequiredDropCapabilities() pulumi.Stri
 }
 
 // RunAsGroup is the strategy that will dictate the allowable RunAsGroup values that may be set. If this field is omitted, the pod's RunAsGroup can take any value. This field requires the RunAsGroup feature gate to be enabled.
-func (o PodSecurityPolicySpecPatchOutput) RunAsGroup() RunAsGroupStrategyOptionsPtrOutput {
-	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *RunAsGroupStrategyOptions { return v.RunAsGroup }).(RunAsGroupStrategyOptionsPtrOutput)
+func (o PodSecurityPolicySpecPatchOutput) RunAsGroup() RunAsGroupStrategyOptionsPatchPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *RunAsGroupStrategyOptionsPatch { return v.RunAsGroup }).(RunAsGroupStrategyOptionsPatchPtrOutput)
 }
 
 // runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set.
-func (o PodSecurityPolicySpecPatchOutput) RunAsUser() RunAsUserStrategyOptionsPtrOutput {
-	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *RunAsUserStrategyOptions { return v.RunAsUser }).(RunAsUserStrategyOptionsPtrOutput)
+func (o PodSecurityPolicySpecPatchOutput) RunAsUser() RunAsUserStrategyOptionsPatchPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *RunAsUserStrategyOptionsPatch { return v.RunAsUser }).(RunAsUserStrategyOptionsPatchPtrOutput)
 }
 
 // runtimeClass is the strategy that will dictate the allowable RuntimeClasses for a pod. If this field is omitted, the pod's runtimeClassName field is unrestricted. Enforcement of this field depends on the RuntimeClass feature gate being enabled.
-func (o PodSecurityPolicySpecPatchOutput) RuntimeClass() RuntimeClassStrategyOptionsPtrOutput {
-	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *RuntimeClassStrategyOptions { return v.RuntimeClass }).(RuntimeClassStrategyOptionsPtrOutput)
+func (o PodSecurityPolicySpecPatchOutput) RuntimeClass() RuntimeClassStrategyOptionsPatchPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *RuntimeClassStrategyOptionsPatch { return v.RuntimeClass }).(RuntimeClassStrategyOptionsPatchPtrOutput)
 }
 
 // seLinux is the strategy that will dictate the allowable labels that may be set.
-func (o PodSecurityPolicySpecPatchOutput) SeLinux() SELinuxStrategyOptionsPtrOutput {
-	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *SELinuxStrategyOptions { return v.SeLinux }).(SELinuxStrategyOptionsPtrOutput)
+func (o PodSecurityPolicySpecPatchOutput) SeLinux() SELinuxStrategyOptionsPatchPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *SELinuxStrategyOptionsPatch { return v.SeLinux }).(SELinuxStrategyOptionsPatchPtrOutput)
 }
 
 // supplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.
-func (o PodSecurityPolicySpecPatchOutput) SupplementalGroups() SupplementalGroupsStrategyOptionsPtrOutput {
-	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *SupplementalGroupsStrategyOptions { return v.SupplementalGroups }).(SupplementalGroupsStrategyOptionsPtrOutput)
+func (o PodSecurityPolicySpecPatchOutput) SupplementalGroups() SupplementalGroupsStrategyOptionsPatchPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *SupplementalGroupsStrategyOptionsPatch {
+		return v.SupplementalGroups
+	}).(SupplementalGroupsStrategyOptionsPatchPtrOutput)
 }
 
 // volumes is an allowlist of volume plugins. Empty indicates that no volumes may be used. To allow all volumes you may use '*'.
 func (o PodSecurityPolicySpecPatchOutput) Volumes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []string { return v.Volumes }).(pulumi.StringArrayOutput)
+}
+
+type PodSecurityPolicySpecPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (PodSecurityPolicySpecPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodSecurityPolicySpecPatch)(nil)).Elem()
+}
+
+func (o PodSecurityPolicySpecPatchPtrOutput) ToPodSecurityPolicySpecPatchPtrOutput() PodSecurityPolicySpecPatchPtrOutput {
+	return o
+}
+
+func (o PodSecurityPolicySpecPatchPtrOutput) ToPodSecurityPolicySpecPatchPtrOutputWithContext(ctx context.Context) PodSecurityPolicySpecPatchPtrOutput {
+	return o
+}
+
+func (o PodSecurityPolicySpecPatchPtrOutput) Elem() PodSecurityPolicySpecPatchOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) PodSecurityPolicySpecPatch {
+		if v != nil {
+			return *v
+		}
+		var ret PodSecurityPolicySpecPatch
+		return ret
+	}).(PodSecurityPolicySpecPatchOutput)
+}
+
+// allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to true.
+func (o PodSecurityPolicySpecPatchPtrOutput) AllowPrivilegeEscalation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPrivilegeEscalation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// AllowedCSIDrivers is an allowlist of inline CSI drivers that must be explicitly set to be embedded within a pod spec. An empty value indicates that any CSI driver can be used for inline ephemeral volumes. This is a beta field, and is only honored if the API server enables the CSIInlineVolume feature gate.
+func (o PodSecurityPolicySpecPatchPtrOutput) AllowedCSIDrivers() AllowedCSIDriverPatchArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) []AllowedCSIDriverPatch {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedCSIDrivers
+	}).(AllowedCSIDriverPatchArrayOutput)
+}
+
+// allowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field may be added at the pod author's discretion. You must not list a capability in both allowedCapabilities and requiredDropCapabilities.
+func (o PodSecurityPolicySpecPatchPtrOutput) AllowedCapabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedCapabilities
+	}).(pulumi.StringArrayOutput)
+}
+
+// allowedFlexVolumes is an allowlist of Flexvolumes.  Empty or nil indicates that all Flexvolumes may be used.  This parameter is effective only when the usage of the Flexvolumes is allowed in the "volumes" field.
+func (o PodSecurityPolicySpecPatchPtrOutput) AllowedFlexVolumes() AllowedFlexVolumePatchArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) []AllowedFlexVolumePatch {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedFlexVolumes
+	}).(AllowedFlexVolumePatchArrayOutput)
+}
+
+// allowedHostPaths is an allowlist of host paths. Empty indicates that all host paths may be used.
+func (o PodSecurityPolicySpecPatchPtrOutput) AllowedHostPaths() AllowedHostPathPatchArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) []AllowedHostPathPatch {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHostPaths
+	}).(AllowedHostPathPatchArrayOutput)
+}
+
+// AllowedProcMountTypes is an allowlist of allowed ProcMountTypes. Empty or nil indicates that only the DefaultProcMountType may be used. This requires the ProcMountType feature flag to be enabled.
+func (o PodSecurityPolicySpecPatchPtrOutput) AllowedProcMountTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedProcMountTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// allowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to none. Each entry is either a plain sysctl name or ends in "*" in which case it is considered as a prefix of allowed sysctls. Single * means all unsafe sysctls are allowed. Kubelet has to allowlist all allowed unsafe sysctls explicitly to avoid rejection.
+//
+// Examples: e.g. "foo/*" allows "foo/bar", "foo/baz", etc. e.g. "foo.*" allows "foo.bar", "foo.baz", etc.
+func (o PodSecurityPolicySpecPatchPtrOutput) AllowedUnsafeSysctls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedUnsafeSysctls
+	}).(pulumi.StringArrayOutput)
+}
+
+// defaultAddCapabilities is the default set of capabilities that will be added to the container unless the pod spec specifically drops the capability.  You may not list a capability in both defaultAddCapabilities and requiredDropCapabilities. Capabilities added here are implicitly allowed, and need not be included in the allowedCapabilities list.
+func (o PodSecurityPolicySpecPatchPtrOutput) DefaultAddCapabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultAddCapabilities
+	}).(pulumi.StringArrayOutput)
+}
+
+// defaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than its parent process.
+func (o PodSecurityPolicySpecPatchPtrOutput) DefaultAllowPrivilegeEscalation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultAllowPrivilegeEscalation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// forbiddenSysctls is a list of explicitly forbidden sysctls, defaults to none. Each entry is either a plain sysctl name or ends in "*" in which case it is considered as a prefix of forbidden sysctls. Single * means all sysctls are forbidden.
+//
+// Examples: e.g. "foo/*" forbids "foo/bar", "foo/baz", etc. e.g. "foo.*" forbids "foo.bar", "foo.baz", etc.
+func (o PodSecurityPolicySpecPatchPtrOutput) ForbiddenSysctls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ForbiddenSysctls
+	}).(pulumi.StringArrayOutput)
+}
+
+// fsGroup is the strategy that will dictate what fs group is used by the SecurityContext.
+func (o PodSecurityPolicySpecPatchPtrOutput) FsGroup() FSGroupStrategyOptionsPatchPtrOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) *FSGroupStrategyOptionsPatch {
+		if v == nil {
+			return nil
+		}
+		return v.FsGroup
+	}).(FSGroupStrategyOptionsPatchPtrOutput)
+}
+
+// hostIPC determines if the policy allows the use of HostIPC in the pod spec.
+func (o PodSecurityPolicySpecPatchPtrOutput) HostIPC() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HostIPC
+	}).(pulumi.BoolPtrOutput)
+}
+
+// hostNetwork determines if the policy allows the use of HostNetwork in the pod spec.
+func (o PodSecurityPolicySpecPatchPtrOutput) HostNetwork() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HostNetwork
+	}).(pulumi.BoolPtrOutput)
+}
+
+// hostPID determines if the policy allows the use of HostPID in the pod spec.
+func (o PodSecurityPolicySpecPatchPtrOutput) HostPID() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HostPID
+	}).(pulumi.BoolPtrOutput)
+}
+
+// hostPorts determines which host port ranges are allowed to be exposed.
+func (o PodSecurityPolicySpecPatchPtrOutput) HostPorts() HostPortRangePatchArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) []HostPortRangePatch {
+		if v == nil {
+			return nil
+		}
+		return v.HostPorts
+	}).(HostPortRangePatchArrayOutput)
+}
+
+// privileged determines if a pod can request to be run as privileged.
+func (o PodSecurityPolicySpecPatchPtrOutput) Privileged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Privileged
+	}).(pulumi.BoolPtrOutput)
+}
+
+// readOnlyRootFilesystem when set to true will force containers to run with a read only root file system.  If the container specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the container may run with a read only root file system if it wishes but it will not be forced to.
+func (o PodSecurityPolicySpecPatchPtrOutput) ReadOnlyRootFilesystem() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnlyRootFilesystem
+	}).(pulumi.BoolPtrOutput)
+}
+
+// requiredDropCapabilities are the capabilities that will be dropped from the container.  These are required to be dropped and cannot be added.
+func (o PodSecurityPolicySpecPatchPtrOutput) RequiredDropCapabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RequiredDropCapabilities
+	}).(pulumi.StringArrayOutput)
+}
+
+// RunAsGroup is the strategy that will dictate the allowable RunAsGroup values that may be set. If this field is omitted, the pod's RunAsGroup can take any value. This field requires the RunAsGroup feature gate to be enabled.
+func (o PodSecurityPolicySpecPatchPtrOutput) RunAsGroup() RunAsGroupStrategyOptionsPatchPtrOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) *RunAsGroupStrategyOptionsPatch {
+		if v == nil {
+			return nil
+		}
+		return v.RunAsGroup
+	}).(RunAsGroupStrategyOptionsPatchPtrOutput)
+}
+
+// runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set.
+func (o PodSecurityPolicySpecPatchPtrOutput) RunAsUser() RunAsUserStrategyOptionsPatchPtrOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) *RunAsUserStrategyOptionsPatch {
+		if v == nil {
+			return nil
+		}
+		return v.RunAsUser
+	}).(RunAsUserStrategyOptionsPatchPtrOutput)
+}
+
+// runtimeClass is the strategy that will dictate the allowable RuntimeClasses for a pod. If this field is omitted, the pod's runtimeClassName field is unrestricted. Enforcement of this field depends on the RuntimeClass feature gate being enabled.
+func (o PodSecurityPolicySpecPatchPtrOutput) RuntimeClass() RuntimeClassStrategyOptionsPatchPtrOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) *RuntimeClassStrategyOptionsPatch {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeClass
+	}).(RuntimeClassStrategyOptionsPatchPtrOutput)
+}
+
+// seLinux is the strategy that will dictate the allowable labels that may be set.
+func (o PodSecurityPolicySpecPatchPtrOutput) SeLinux() SELinuxStrategyOptionsPatchPtrOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) *SELinuxStrategyOptionsPatch {
+		if v == nil {
+			return nil
+		}
+		return v.SeLinux
+	}).(SELinuxStrategyOptionsPatchPtrOutput)
+}
+
+// supplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.
+func (o PodSecurityPolicySpecPatchPtrOutput) SupplementalGroups() SupplementalGroupsStrategyOptionsPatchPtrOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) *SupplementalGroupsStrategyOptionsPatch {
+		if v == nil {
+			return nil
+		}
+		return v.SupplementalGroups
+	}).(SupplementalGroupsStrategyOptionsPatchPtrOutput)
+}
+
+// volumes is an allowlist of volume plugins. Empty indicates that no volumes may be used. To allow all volumes you may use '*'.
+func (o PodSecurityPolicySpecPatchPtrOutput) Volumes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PodSecurityPolicySpecPatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Volumes
+	}).(pulumi.StringArrayOutput)
 }
 
 // RunAsGroupStrategyOptions defines the strategy type and any options used to create the strategy.
@@ -3539,7 +4438,7 @@ func (o RunAsGroupStrategyOptionsPtrOutput) Rule() pulumi.StringPtrOutput {
 // RunAsGroupStrategyOptions defines the strategy type and any options used to create the strategy.
 type RunAsGroupStrategyOptionsPatch struct {
 	// ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
-	Ranges []IDRange `pulumi:"ranges"`
+	Ranges []IDRangePatch `pulumi:"ranges"`
 	// rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
 	Rule *string `pulumi:"rule"`
 }
@@ -3558,7 +4457,7 @@ type RunAsGroupStrategyOptionsPatchInput interface {
 // RunAsGroupStrategyOptions defines the strategy type and any options used to create the strategy.
 type RunAsGroupStrategyOptionsPatchArgs struct {
 	// ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
-	Ranges IDRangeArrayInput `pulumi:"ranges"`
+	Ranges IDRangePatchArrayInput `pulumi:"ranges"`
 	// rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
 	Rule pulumi.StringPtrInput `pulumi:"rule"`
 }
@@ -3573,6 +4472,47 @@ func (i RunAsGroupStrategyOptionsPatchArgs) ToRunAsGroupStrategyOptionsPatchOutp
 
 func (i RunAsGroupStrategyOptionsPatchArgs) ToRunAsGroupStrategyOptionsPatchOutputWithContext(ctx context.Context) RunAsGroupStrategyOptionsPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RunAsGroupStrategyOptionsPatchOutput)
+}
+
+func (i RunAsGroupStrategyOptionsPatchArgs) ToRunAsGroupStrategyOptionsPatchPtrOutput() RunAsGroupStrategyOptionsPatchPtrOutput {
+	return i.ToRunAsGroupStrategyOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i RunAsGroupStrategyOptionsPatchArgs) ToRunAsGroupStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) RunAsGroupStrategyOptionsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RunAsGroupStrategyOptionsPatchOutput).ToRunAsGroupStrategyOptionsPatchPtrOutputWithContext(ctx)
+}
+
+// RunAsGroupStrategyOptionsPatchPtrInput is an input type that accepts RunAsGroupStrategyOptionsPatchArgs, RunAsGroupStrategyOptionsPatchPtr and RunAsGroupStrategyOptionsPatchPtrOutput values.
+// You can construct a concrete instance of `RunAsGroupStrategyOptionsPatchPtrInput` via:
+//
+//          RunAsGroupStrategyOptionsPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type RunAsGroupStrategyOptionsPatchPtrInput interface {
+	pulumi.Input
+
+	ToRunAsGroupStrategyOptionsPatchPtrOutput() RunAsGroupStrategyOptionsPatchPtrOutput
+	ToRunAsGroupStrategyOptionsPatchPtrOutputWithContext(context.Context) RunAsGroupStrategyOptionsPatchPtrOutput
+}
+
+type runAsGroupStrategyOptionsPatchPtrType RunAsGroupStrategyOptionsPatchArgs
+
+func RunAsGroupStrategyOptionsPatchPtr(v *RunAsGroupStrategyOptionsPatchArgs) RunAsGroupStrategyOptionsPatchPtrInput {
+	return (*runAsGroupStrategyOptionsPatchPtrType)(v)
+}
+
+func (*runAsGroupStrategyOptionsPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RunAsGroupStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (i *runAsGroupStrategyOptionsPatchPtrType) ToRunAsGroupStrategyOptionsPatchPtrOutput() RunAsGroupStrategyOptionsPatchPtrOutput {
+	return i.ToRunAsGroupStrategyOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *runAsGroupStrategyOptionsPatchPtrType) ToRunAsGroupStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) RunAsGroupStrategyOptionsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RunAsGroupStrategyOptionsPatchPtrOutput)
 }
 
 // RunAsGroupStrategyOptions defines the strategy type and any options used to create the strategy.
@@ -3590,14 +4530,68 @@ func (o RunAsGroupStrategyOptionsPatchOutput) ToRunAsGroupStrategyOptionsPatchOu
 	return o
 }
 
+func (o RunAsGroupStrategyOptionsPatchOutput) ToRunAsGroupStrategyOptionsPatchPtrOutput() RunAsGroupStrategyOptionsPatchPtrOutput {
+	return o.ToRunAsGroupStrategyOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (o RunAsGroupStrategyOptionsPatchOutput) ToRunAsGroupStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) RunAsGroupStrategyOptionsPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RunAsGroupStrategyOptionsPatch) *RunAsGroupStrategyOptionsPatch {
+		return &v
+	}).(RunAsGroupStrategyOptionsPatchPtrOutput)
+}
+
 // ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
-func (o RunAsGroupStrategyOptionsPatchOutput) Ranges() IDRangeArrayOutput {
-	return o.ApplyT(func(v RunAsGroupStrategyOptionsPatch) []IDRange { return v.Ranges }).(IDRangeArrayOutput)
+func (o RunAsGroupStrategyOptionsPatchOutput) Ranges() IDRangePatchArrayOutput {
+	return o.ApplyT(func(v RunAsGroupStrategyOptionsPatch) []IDRangePatch { return v.Ranges }).(IDRangePatchArrayOutput)
 }
 
 // rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
 func (o RunAsGroupStrategyOptionsPatchOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RunAsGroupStrategyOptionsPatch) *string { return v.Rule }).(pulumi.StringPtrOutput)
+}
+
+type RunAsGroupStrategyOptionsPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (RunAsGroupStrategyOptionsPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RunAsGroupStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (o RunAsGroupStrategyOptionsPatchPtrOutput) ToRunAsGroupStrategyOptionsPatchPtrOutput() RunAsGroupStrategyOptionsPatchPtrOutput {
+	return o
+}
+
+func (o RunAsGroupStrategyOptionsPatchPtrOutput) ToRunAsGroupStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) RunAsGroupStrategyOptionsPatchPtrOutput {
+	return o
+}
+
+func (o RunAsGroupStrategyOptionsPatchPtrOutput) Elem() RunAsGroupStrategyOptionsPatchOutput {
+	return o.ApplyT(func(v *RunAsGroupStrategyOptionsPatch) RunAsGroupStrategyOptionsPatch {
+		if v != nil {
+			return *v
+		}
+		var ret RunAsGroupStrategyOptionsPatch
+		return ret
+	}).(RunAsGroupStrategyOptionsPatchOutput)
+}
+
+// ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
+func (o RunAsGroupStrategyOptionsPatchPtrOutput) Ranges() IDRangePatchArrayOutput {
+	return o.ApplyT(func(v *RunAsGroupStrategyOptionsPatch) []IDRangePatch {
+		if v == nil {
+			return nil
+		}
+		return v.Ranges
+	}).(IDRangePatchArrayOutput)
+}
+
+// rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
+func (o RunAsGroupStrategyOptionsPatchPtrOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RunAsGroupStrategyOptionsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Rule
+	}).(pulumi.StringPtrOutput)
 }
 
 // RunAsUserStrategyOptions defines the strategy type and any options used to create the strategy.
@@ -3762,7 +4756,7 @@ func (o RunAsUserStrategyOptionsPtrOutput) Rule() pulumi.StringPtrOutput {
 // RunAsUserStrategyOptions defines the strategy type and any options used to create the strategy.
 type RunAsUserStrategyOptionsPatch struct {
 	// ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
-	Ranges []IDRange `pulumi:"ranges"`
+	Ranges []IDRangePatch `pulumi:"ranges"`
 	// rule is the strategy that will dictate the allowable RunAsUser values that may be set.
 	Rule *string `pulumi:"rule"`
 }
@@ -3781,7 +4775,7 @@ type RunAsUserStrategyOptionsPatchInput interface {
 // RunAsUserStrategyOptions defines the strategy type and any options used to create the strategy.
 type RunAsUserStrategyOptionsPatchArgs struct {
 	// ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
-	Ranges IDRangeArrayInput `pulumi:"ranges"`
+	Ranges IDRangePatchArrayInput `pulumi:"ranges"`
 	// rule is the strategy that will dictate the allowable RunAsUser values that may be set.
 	Rule pulumi.StringPtrInput `pulumi:"rule"`
 }
@@ -3796,6 +4790,47 @@ func (i RunAsUserStrategyOptionsPatchArgs) ToRunAsUserStrategyOptionsPatchOutput
 
 func (i RunAsUserStrategyOptionsPatchArgs) ToRunAsUserStrategyOptionsPatchOutputWithContext(ctx context.Context) RunAsUserStrategyOptionsPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RunAsUserStrategyOptionsPatchOutput)
+}
+
+func (i RunAsUserStrategyOptionsPatchArgs) ToRunAsUserStrategyOptionsPatchPtrOutput() RunAsUserStrategyOptionsPatchPtrOutput {
+	return i.ToRunAsUserStrategyOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i RunAsUserStrategyOptionsPatchArgs) ToRunAsUserStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) RunAsUserStrategyOptionsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RunAsUserStrategyOptionsPatchOutput).ToRunAsUserStrategyOptionsPatchPtrOutputWithContext(ctx)
+}
+
+// RunAsUserStrategyOptionsPatchPtrInput is an input type that accepts RunAsUserStrategyOptionsPatchArgs, RunAsUserStrategyOptionsPatchPtr and RunAsUserStrategyOptionsPatchPtrOutput values.
+// You can construct a concrete instance of `RunAsUserStrategyOptionsPatchPtrInput` via:
+//
+//          RunAsUserStrategyOptionsPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type RunAsUserStrategyOptionsPatchPtrInput interface {
+	pulumi.Input
+
+	ToRunAsUserStrategyOptionsPatchPtrOutput() RunAsUserStrategyOptionsPatchPtrOutput
+	ToRunAsUserStrategyOptionsPatchPtrOutputWithContext(context.Context) RunAsUserStrategyOptionsPatchPtrOutput
+}
+
+type runAsUserStrategyOptionsPatchPtrType RunAsUserStrategyOptionsPatchArgs
+
+func RunAsUserStrategyOptionsPatchPtr(v *RunAsUserStrategyOptionsPatchArgs) RunAsUserStrategyOptionsPatchPtrInput {
+	return (*runAsUserStrategyOptionsPatchPtrType)(v)
+}
+
+func (*runAsUserStrategyOptionsPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RunAsUserStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (i *runAsUserStrategyOptionsPatchPtrType) ToRunAsUserStrategyOptionsPatchPtrOutput() RunAsUserStrategyOptionsPatchPtrOutput {
+	return i.ToRunAsUserStrategyOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *runAsUserStrategyOptionsPatchPtrType) ToRunAsUserStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) RunAsUserStrategyOptionsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RunAsUserStrategyOptionsPatchPtrOutput)
 }
 
 // RunAsUserStrategyOptions defines the strategy type and any options used to create the strategy.
@@ -3813,14 +4848,68 @@ func (o RunAsUserStrategyOptionsPatchOutput) ToRunAsUserStrategyOptionsPatchOutp
 	return o
 }
 
+func (o RunAsUserStrategyOptionsPatchOutput) ToRunAsUserStrategyOptionsPatchPtrOutput() RunAsUserStrategyOptionsPatchPtrOutput {
+	return o.ToRunAsUserStrategyOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (o RunAsUserStrategyOptionsPatchOutput) ToRunAsUserStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) RunAsUserStrategyOptionsPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RunAsUserStrategyOptionsPatch) *RunAsUserStrategyOptionsPatch {
+		return &v
+	}).(RunAsUserStrategyOptionsPatchPtrOutput)
+}
+
 // ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
-func (o RunAsUserStrategyOptionsPatchOutput) Ranges() IDRangeArrayOutput {
-	return o.ApplyT(func(v RunAsUserStrategyOptionsPatch) []IDRange { return v.Ranges }).(IDRangeArrayOutput)
+func (o RunAsUserStrategyOptionsPatchOutput) Ranges() IDRangePatchArrayOutput {
+	return o.ApplyT(func(v RunAsUserStrategyOptionsPatch) []IDRangePatch { return v.Ranges }).(IDRangePatchArrayOutput)
 }
 
 // rule is the strategy that will dictate the allowable RunAsUser values that may be set.
 func (o RunAsUserStrategyOptionsPatchOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RunAsUserStrategyOptionsPatch) *string { return v.Rule }).(pulumi.StringPtrOutput)
+}
+
+type RunAsUserStrategyOptionsPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (RunAsUserStrategyOptionsPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RunAsUserStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (o RunAsUserStrategyOptionsPatchPtrOutput) ToRunAsUserStrategyOptionsPatchPtrOutput() RunAsUserStrategyOptionsPatchPtrOutput {
+	return o
+}
+
+func (o RunAsUserStrategyOptionsPatchPtrOutput) ToRunAsUserStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) RunAsUserStrategyOptionsPatchPtrOutput {
+	return o
+}
+
+func (o RunAsUserStrategyOptionsPatchPtrOutput) Elem() RunAsUserStrategyOptionsPatchOutput {
+	return o.ApplyT(func(v *RunAsUserStrategyOptionsPatch) RunAsUserStrategyOptionsPatch {
+		if v != nil {
+			return *v
+		}
+		var ret RunAsUserStrategyOptionsPatch
+		return ret
+	}).(RunAsUserStrategyOptionsPatchOutput)
+}
+
+// ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
+func (o RunAsUserStrategyOptionsPatchPtrOutput) Ranges() IDRangePatchArrayOutput {
+	return o.ApplyT(func(v *RunAsUserStrategyOptionsPatch) []IDRangePatch {
+		if v == nil {
+			return nil
+		}
+		return v.Ranges
+	}).(IDRangePatchArrayOutput)
+}
+
+// rule is the strategy that will dictate the allowable RunAsUser values that may be set.
+func (o RunAsUserStrategyOptionsPatchPtrOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RunAsUserStrategyOptionsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Rule
+	}).(pulumi.StringPtrOutput)
 }
 
 // RuntimeClassStrategyOptions define the strategy that will dictate the allowable RuntimeClasses for a pod.
@@ -4021,6 +5110,47 @@ func (i RuntimeClassStrategyOptionsPatchArgs) ToRuntimeClassStrategyOptionsPatch
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeClassStrategyOptionsPatchOutput)
 }
 
+func (i RuntimeClassStrategyOptionsPatchArgs) ToRuntimeClassStrategyOptionsPatchPtrOutput() RuntimeClassStrategyOptionsPatchPtrOutput {
+	return i.ToRuntimeClassStrategyOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeClassStrategyOptionsPatchArgs) ToRuntimeClassStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) RuntimeClassStrategyOptionsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeClassStrategyOptionsPatchOutput).ToRuntimeClassStrategyOptionsPatchPtrOutputWithContext(ctx)
+}
+
+// RuntimeClassStrategyOptionsPatchPtrInput is an input type that accepts RuntimeClassStrategyOptionsPatchArgs, RuntimeClassStrategyOptionsPatchPtr and RuntimeClassStrategyOptionsPatchPtrOutput values.
+// You can construct a concrete instance of `RuntimeClassStrategyOptionsPatchPtrInput` via:
+//
+//          RuntimeClassStrategyOptionsPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type RuntimeClassStrategyOptionsPatchPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeClassStrategyOptionsPatchPtrOutput() RuntimeClassStrategyOptionsPatchPtrOutput
+	ToRuntimeClassStrategyOptionsPatchPtrOutputWithContext(context.Context) RuntimeClassStrategyOptionsPatchPtrOutput
+}
+
+type runtimeClassStrategyOptionsPatchPtrType RuntimeClassStrategyOptionsPatchArgs
+
+func RuntimeClassStrategyOptionsPatchPtr(v *RuntimeClassStrategyOptionsPatchArgs) RuntimeClassStrategyOptionsPatchPtrInput {
+	return (*runtimeClassStrategyOptionsPatchPtrType)(v)
+}
+
+func (*runtimeClassStrategyOptionsPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeClassStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (i *runtimeClassStrategyOptionsPatchPtrType) ToRuntimeClassStrategyOptionsPatchPtrOutput() RuntimeClassStrategyOptionsPatchPtrOutput {
+	return i.ToRuntimeClassStrategyOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeClassStrategyOptionsPatchPtrType) ToRuntimeClassStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) RuntimeClassStrategyOptionsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeClassStrategyOptionsPatchPtrOutput)
+}
+
 // RuntimeClassStrategyOptions define the strategy that will dictate the allowable RuntimeClasses for a pod.
 type RuntimeClassStrategyOptionsPatchOutput struct{ *pulumi.OutputState }
 
@@ -4036,6 +5166,16 @@ func (o RuntimeClassStrategyOptionsPatchOutput) ToRuntimeClassStrategyOptionsPat
 	return o
 }
 
+func (o RuntimeClassStrategyOptionsPatchOutput) ToRuntimeClassStrategyOptionsPatchPtrOutput() RuntimeClassStrategyOptionsPatchPtrOutput {
+	return o.ToRuntimeClassStrategyOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeClassStrategyOptionsPatchOutput) ToRuntimeClassStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) RuntimeClassStrategyOptionsPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeClassStrategyOptionsPatch) *RuntimeClassStrategyOptionsPatch {
+		return &v
+	}).(RuntimeClassStrategyOptionsPatchPtrOutput)
+}
+
 // allowedRuntimeClassNames is an allowlist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
 func (o RuntimeClassStrategyOptionsPatchOutput) AllowedRuntimeClassNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuntimeClassStrategyOptionsPatch) []string { return v.AllowedRuntimeClassNames }).(pulumi.StringArrayOutput)
@@ -4044,6 +5184,50 @@ func (o RuntimeClassStrategyOptionsPatchOutput) AllowedRuntimeClassNames() pulum
 // defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
 func (o RuntimeClassStrategyOptionsPatchOutput) DefaultRuntimeClassName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeClassStrategyOptionsPatch) *string { return v.DefaultRuntimeClassName }).(pulumi.StringPtrOutput)
+}
+
+type RuntimeClassStrategyOptionsPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeClassStrategyOptionsPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeClassStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (o RuntimeClassStrategyOptionsPatchPtrOutput) ToRuntimeClassStrategyOptionsPatchPtrOutput() RuntimeClassStrategyOptionsPatchPtrOutput {
+	return o
+}
+
+func (o RuntimeClassStrategyOptionsPatchPtrOutput) ToRuntimeClassStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) RuntimeClassStrategyOptionsPatchPtrOutput {
+	return o
+}
+
+func (o RuntimeClassStrategyOptionsPatchPtrOutput) Elem() RuntimeClassStrategyOptionsPatchOutput {
+	return o.ApplyT(func(v *RuntimeClassStrategyOptionsPatch) RuntimeClassStrategyOptionsPatch {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeClassStrategyOptionsPatch
+		return ret
+	}).(RuntimeClassStrategyOptionsPatchOutput)
+}
+
+// allowedRuntimeClassNames is an allowlist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
+func (o RuntimeClassStrategyOptionsPatchPtrOutput) AllowedRuntimeClassNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RuntimeClassStrategyOptionsPatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedRuntimeClassNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
+func (o RuntimeClassStrategyOptionsPatchPtrOutput) DefaultRuntimeClassName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeClassStrategyOptionsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultRuntimeClassName
+	}).(pulumi.StringPtrOutput)
 }
 
 // SELinuxStrategyOptions defines the strategy type and any options used to create the strategy.
@@ -4210,7 +5394,7 @@ type SELinuxStrategyOptionsPatch struct {
 	// rule is the strategy that will dictate the allowable labels that may be set.
 	Rule *string `pulumi:"rule"`
 	// seLinuxOptions required to run as; required for MustRunAs More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
-	SeLinuxOptions *corev1.SELinuxOptions `pulumi:"seLinuxOptions"`
+	SeLinuxOptions *corev1.SELinuxOptionsPatch `pulumi:"seLinuxOptions"`
 }
 
 // SELinuxStrategyOptionsPatchInput is an input type that accepts SELinuxStrategyOptionsPatchArgs and SELinuxStrategyOptionsPatchOutput values.
@@ -4229,7 +5413,7 @@ type SELinuxStrategyOptionsPatchArgs struct {
 	// rule is the strategy that will dictate the allowable labels that may be set.
 	Rule pulumi.StringPtrInput `pulumi:"rule"`
 	// seLinuxOptions required to run as; required for MustRunAs More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
-	SeLinuxOptions corev1.SELinuxOptionsPtrInput `pulumi:"seLinuxOptions"`
+	SeLinuxOptions corev1.SELinuxOptionsPatchPtrInput `pulumi:"seLinuxOptions"`
 }
 
 func (SELinuxStrategyOptionsPatchArgs) ElementType() reflect.Type {
@@ -4242,6 +5426,47 @@ func (i SELinuxStrategyOptionsPatchArgs) ToSELinuxStrategyOptionsPatchOutput() S
 
 func (i SELinuxStrategyOptionsPatchArgs) ToSELinuxStrategyOptionsPatchOutputWithContext(ctx context.Context) SELinuxStrategyOptionsPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SELinuxStrategyOptionsPatchOutput)
+}
+
+func (i SELinuxStrategyOptionsPatchArgs) ToSELinuxStrategyOptionsPatchPtrOutput() SELinuxStrategyOptionsPatchPtrOutput {
+	return i.ToSELinuxStrategyOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i SELinuxStrategyOptionsPatchArgs) ToSELinuxStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) SELinuxStrategyOptionsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SELinuxStrategyOptionsPatchOutput).ToSELinuxStrategyOptionsPatchPtrOutputWithContext(ctx)
+}
+
+// SELinuxStrategyOptionsPatchPtrInput is an input type that accepts SELinuxStrategyOptionsPatchArgs, SELinuxStrategyOptionsPatchPtr and SELinuxStrategyOptionsPatchPtrOutput values.
+// You can construct a concrete instance of `SELinuxStrategyOptionsPatchPtrInput` via:
+//
+//          SELinuxStrategyOptionsPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type SELinuxStrategyOptionsPatchPtrInput interface {
+	pulumi.Input
+
+	ToSELinuxStrategyOptionsPatchPtrOutput() SELinuxStrategyOptionsPatchPtrOutput
+	ToSELinuxStrategyOptionsPatchPtrOutputWithContext(context.Context) SELinuxStrategyOptionsPatchPtrOutput
+}
+
+type selinuxStrategyOptionsPatchPtrType SELinuxStrategyOptionsPatchArgs
+
+func SELinuxStrategyOptionsPatchPtr(v *SELinuxStrategyOptionsPatchArgs) SELinuxStrategyOptionsPatchPtrInput {
+	return (*selinuxStrategyOptionsPatchPtrType)(v)
+}
+
+func (*selinuxStrategyOptionsPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SELinuxStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (i *selinuxStrategyOptionsPatchPtrType) ToSELinuxStrategyOptionsPatchPtrOutput() SELinuxStrategyOptionsPatchPtrOutput {
+	return i.ToSELinuxStrategyOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *selinuxStrategyOptionsPatchPtrType) ToSELinuxStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) SELinuxStrategyOptionsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SELinuxStrategyOptionsPatchPtrOutput)
 }
 
 // SELinuxStrategyOptions defines the strategy type and any options used to create the strategy.
@@ -4259,14 +5484,68 @@ func (o SELinuxStrategyOptionsPatchOutput) ToSELinuxStrategyOptionsPatchOutputWi
 	return o
 }
 
+func (o SELinuxStrategyOptionsPatchOutput) ToSELinuxStrategyOptionsPatchPtrOutput() SELinuxStrategyOptionsPatchPtrOutput {
+	return o.ToSELinuxStrategyOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (o SELinuxStrategyOptionsPatchOutput) ToSELinuxStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) SELinuxStrategyOptionsPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SELinuxStrategyOptionsPatch) *SELinuxStrategyOptionsPatch {
+		return &v
+	}).(SELinuxStrategyOptionsPatchPtrOutput)
+}
+
 // rule is the strategy that will dictate the allowable labels that may be set.
 func (o SELinuxStrategyOptionsPatchOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SELinuxStrategyOptionsPatch) *string { return v.Rule }).(pulumi.StringPtrOutput)
 }
 
 // seLinuxOptions required to run as; required for MustRunAs More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
-func (o SELinuxStrategyOptionsPatchOutput) SeLinuxOptions() corev1.SELinuxOptionsPtrOutput {
-	return o.ApplyT(func(v SELinuxStrategyOptionsPatch) *corev1.SELinuxOptions { return v.SeLinuxOptions }).(corev1.SELinuxOptionsPtrOutput)
+func (o SELinuxStrategyOptionsPatchOutput) SeLinuxOptions() corev1.SELinuxOptionsPatchPtrOutput {
+	return o.ApplyT(func(v SELinuxStrategyOptionsPatch) *corev1.SELinuxOptionsPatch { return v.SeLinuxOptions }).(corev1.SELinuxOptionsPatchPtrOutput)
+}
+
+type SELinuxStrategyOptionsPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (SELinuxStrategyOptionsPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SELinuxStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (o SELinuxStrategyOptionsPatchPtrOutput) ToSELinuxStrategyOptionsPatchPtrOutput() SELinuxStrategyOptionsPatchPtrOutput {
+	return o
+}
+
+func (o SELinuxStrategyOptionsPatchPtrOutput) ToSELinuxStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) SELinuxStrategyOptionsPatchPtrOutput {
+	return o
+}
+
+func (o SELinuxStrategyOptionsPatchPtrOutput) Elem() SELinuxStrategyOptionsPatchOutput {
+	return o.ApplyT(func(v *SELinuxStrategyOptionsPatch) SELinuxStrategyOptionsPatch {
+		if v != nil {
+			return *v
+		}
+		var ret SELinuxStrategyOptionsPatch
+		return ret
+	}).(SELinuxStrategyOptionsPatchOutput)
+}
+
+// rule is the strategy that will dictate the allowable labels that may be set.
+func (o SELinuxStrategyOptionsPatchPtrOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SELinuxStrategyOptionsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Rule
+	}).(pulumi.StringPtrOutput)
+}
+
+// seLinuxOptions required to run as; required for MustRunAs More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+func (o SELinuxStrategyOptionsPatchPtrOutput) SeLinuxOptions() corev1.SELinuxOptionsPatchPtrOutput {
+	return o.ApplyT(func(v *SELinuxStrategyOptionsPatch) *corev1.SELinuxOptionsPatch {
+		if v == nil {
+			return nil
+		}
+		return v.SeLinuxOptions
+	}).(corev1.SELinuxOptionsPatchPtrOutput)
 }
 
 // SupplementalGroupsStrategyOptions defines the strategy type and options used to create the strategy.
@@ -4431,7 +5710,7 @@ func (o SupplementalGroupsStrategyOptionsPtrOutput) Rule() pulumi.StringPtrOutpu
 // SupplementalGroupsStrategyOptions defines the strategy type and options used to create the strategy.
 type SupplementalGroupsStrategyOptionsPatch struct {
 	// ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
-	Ranges []IDRange `pulumi:"ranges"`
+	Ranges []IDRangePatch `pulumi:"ranges"`
 	// rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
 	Rule *string `pulumi:"rule"`
 }
@@ -4450,7 +5729,7 @@ type SupplementalGroupsStrategyOptionsPatchInput interface {
 // SupplementalGroupsStrategyOptions defines the strategy type and options used to create the strategy.
 type SupplementalGroupsStrategyOptionsPatchArgs struct {
 	// ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
-	Ranges IDRangeArrayInput `pulumi:"ranges"`
+	Ranges IDRangePatchArrayInput `pulumi:"ranges"`
 	// rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
 	Rule pulumi.StringPtrInput `pulumi:"rule"`
 }
@@ -4465,6 +5744,47 @@ func (i SupplementalGroupsStrategyOptionsPatchArgs) ToSupplementalGroupsStrategy
 
 func (i SupplementalGroupsStrategyOptionsPatchArgs) ToSupplementalGroupsStrategyOptionsPatchOutputWithContext(ctx context.Context) SupplementalGroupsStrategyOptionsPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SupplementalGroupsStrategyOptionsPatchOutput)
+}
+
+func (i SupplementalGroupsStrategyOptionsPatchArgs) ToSupplementalGroupsStrategyOptionsPatchPtrOutput() SupplementalGroupsStrategyOptionsPatchPtrOutput {
+	return i.ToSupplementalGroupsStrategyOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i SupplementalGroupsStrategyOptionsPatchArgs) ToSupplementalGroupsStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) SupplementalGroupsStrategyOptionsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupplementalGroupsStrategyOptionsPatchOutput).ToSupplementalGroupsStrategyOptionsPatchPtrOutputWithContext(ctx)
+}
+
+// SupplementalGroupsStrategyOptionsPatchPtrInput is an input type that accepts SupplementalGroupsStrategyOptionsPatchArgs, SupplementalGroupsStrategyOptionsPatchPtr and SupplementalGroupsStrategyOptionsPatchPtrOutput values.
+// You can construct a concrete instance of `SupplementalGroupsStrategyOptionsPatchPtrInput` via:
+//
+//          SupplementalGroupsStrategyOptionsPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type SupplementalGroupsStrategyOptionsPatchPtrInput interface {
+	pulumi.Input
+
+	ToSupplementalGroupsStrategyOptionsPatchPtrOutput() SupplementalGroupsStrategyOptionsPatchPtrOutput
+	ToSupplementalGroupsStrategyOptionsPatchPtrOutputWithContext(context.Context) SupplementalGroupsStrategyOptionsPatchPtrOutput
+}
+
+type supplementalGroupsStrategyOptionsPatchPtrType SupplementalGroupsStrategyOptionsPatchArgs
+
+func SupplementalGroupsStrategyOptionsPatchPtr(v *SupplementalGroupsStrategyOptionsPatchArgs) SupplementalGroupsStrategyOptionsPatchPtrInput {
+	return (*supplementalGroupsStrategyOptionsPatchPtrType)(v)
+}
+
+func (*supplementalGroupsStrategyOptionsPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupplementalGroupsStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (i *supplementalGroupsStrategyOptionsPatchPtrType) ToSupplementalGroupsStrategyOptionsPatchPtrOutput() SupplementalGroupsStrategyOptionsPatchPtrOutput {
+	return i.ToSupplementalGroupsStrategyOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *supplementalGroupsStrategyOptionsPatchPtrType) ToSupplementalGroupsStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) SupplementalGroupsStrategyOptionsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupplementalGroupsStrategyOptionsPatchPtrOutput)
 }
 
 // SupplementalGroupsStrategyOptions defines the strategy type and options used to create the strategy.
@@ -4482,9 +5802,19 @@ func (o SupplementalGroupsStrategyOptionsPatchOutput) ToSupplementalGroupsStrate
 	return o
 }
 
+func (o SupplementalGroupsStrategyOptionsPatchOutput) ToSupplementalGroupsStrategyOptionsPatchPtrOutput() SupplementalGroupsStrategyOptionsPatchPtrOutput {
+	return o.ToSupplementalGroupsStrategyOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (o SupplementalGroupsStrategyOptionsPatchOutput) ToSupplementalGroupsStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) SupplementalGroupsStrategyOptionsPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupplementalGroupsStrategyOptionsPatch) *SupplementalGroupsStrategyOptionsPatch {
+		return &v
+	}).(SupplementalGroupsStrategyOptionsPatchPtrOutput)
+}
+
 // ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
-func (o SupplementalGroupsStrategyOptionsPatchOutput) Ranges() IDRangeArrayOutput {
-	return o.ApplyT(func(v SupplementalGroupsStrategyOptionsPatch) []IDRange { return v.Ranges }).(IDRangeArrayOutput)
+func (o SupplementalGroupsStrategyOptionsPatchOutput) Ranges() IDRangePatchArrayOutput {
+	return o.ApplyT(func(v SupplementalGroupsStrategyOptionsPatch) []IDRangePatch { return v.Ranges }).(IDRangePatchArrayOutput)
 }
 
 // rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
@@ -4492,27 +5822,77 @@ func (o SupplementalGroupsStrategyOptionsPatchOutput) Rule() pulumi.StringPtrOut
 	return o.ApplyT(func(v SupplementalGroupsStrategyOptionsPatch) *string { return v.Rule }).(pulumi.StringPtrOutput)
 }
 
+type SupplementalGroupsStrategyOptionsPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (SupplementalGroupsStrategyOptionsPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SupplementalGroupsStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (o SupplementalGroupsStrategyOptionsPatchPtrOutput) ToSupplementalGroupsStrategyOptionsPatchPtrOutput() SupplementalGroupsStrategyOptionsPatchPtrOutput {
+	return o
+}
+
+func (o SupplementalGroupsStrategyOptionsPatchPtrOutput) ToSupplementalGroupsStrategyOptionsPatchPtrOutputWithContext(ctx context.Context) SupplementalGroupsStrategyOptionsPatchPtrOutput {
+	return o
+}
+
+func (o SupplementalGroupsStrategyOptionsPatchPtrOutput) Elem() SupplementalGroupsStrategyOptionsPatchOutput {
+	return o.ApplyT(func(v *SupplementalGroupsStrategyOptionsPatch) SupplementalGroupsStrategyOptionsPatch {
+		if v != nil {
+			return *v
+		}
+		var ret SupplementalGroupsStrategyOptionsPatch
+		return ret
+	}).(SupplementalGroupsStrategyOptionsPatchOutput)
+}
+
+// ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
+func (o SupplementalGroupsStrategyOptionsPatchPtrOutput) Ranges() IDRangePatchArrayOutput {
+	return o.ApplyT(func(v *SupplementalGroupsStrategyOptionsPatch) []IDRangePatch {
+		if v == nil {
+			return nil
+		}
+		return v.Ranges
+	}).(IDRangePatchArrayOutput)
+}
+
+// rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
+func (o SupplementalGroupsStrategyOptionsPatchPtrOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SupplementalGroupsStrategyOptionsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Rule
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedCSIDriverInput)(nil)).Elem(), AllowedCSIDriverArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedCSIDriverArrayInput)(nil)).Elem(), AllowedCSIDriverArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedCSIDriverPatchInput)(nil)).Elem(), AllowedCSIDriverPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedCSIDriverPatchArrayInput)(nil)).Elem(), AllowedCSIDriverPatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedFlexVolumeInput)(nil)).Elem(), AllowedFlexVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedFlexVolumeArrayInput)(nil)).Elem(), AllowedFlexVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedFlexVolumePatchInput)(nil)).Elem(), AllowedFlexVolumePatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedFlexVolumePatchArrayInput)(nil)).Elem(), AllowedFlexVolumePatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedHostPathInput)(nil)).Elem(), AllowedHostPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedHostPathArrayInput)(nil)).Elem(), AllowedHostPathArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedHostPathPatchInput)(nil)).Elem(), AllowedHostPathPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedHostPathPatchArrayInput)(nil)).Elem(), AllowedHostPathPatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EvictionInput)(nil)).Elem(), EvictionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EvictionPatchInput)(nil)).Elem(), EvictionPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FSGroupStrategyOptionsInput)(nil)).Elem(), FSGroupStrategyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FSGroupStrategyOptionsPtrInput)(nil)).Elem(), FSGroupStrategyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FSGroupStrategyOptionsPatchInput)(nil)).Elem(), FSGroupStrategyOptionsPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FSGroupStrategyOptionsPatchPtrInput)(nil)).Elem(), FSGroupStrategyOptionsPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostPortRangeInput)(nil)).Elem(), HostPortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostPortRangeArrayInput)(nil)).Elem(), HostPortRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostPortRangePatchInput)(nil)).Elem(), HostPortRangePatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostPortRangePatchArrayInput)(nil)).Elem(), HostPortRangePatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IDRangeInput)(nil)).Elem(), IDRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IDRangeArrayInput)(nil)).Elem(), IDRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IDRangePatchInput)(nil)).Elem(), IDRangePatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IDRangePatchArrayInput)(nil)).Elem(), IDRangePatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodDisruptionBudgetTypeInput)(nil)).Elem(), PodDisruptionBudgetTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodDisruptionBudgetTypeArrayInput)(nil)).Elem(), PodDisruptionBudgetTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodDisruptionBudgetListTypeInput)(nil)).Elem(), PodDisruptionBudgetListTypeArgs{})
@@ -4520,9 +5900,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PodDisruptionBudgetSpecInput)(nil)).Elem(), PodDisruptionBudgetSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodDisruptionBudgetSpecPtrInput)(nil)).Elem(), PodDisruptionBudgetSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodDisruptionBudgetSpecPatchInput)(nil)).Elem(), PodDisruptionBudgetSpecPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PodDisruptionBudgetSpecPatchPtrInput)(nil)).Elem(), PodDisruptionBudgetSpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodDisruptionBudgetStatusInput)(nil)).Elem(), PodDisruptionBudgetStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodDisruptionBudgetStatusPtrInput)(nil)).Elem(), PodDisruptionBudgetStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodDisruptionBudgetStatusPatchInput)(nil)).Elem(), PodDisruptionBudgetStatusPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PodDisruptionBudgetStatusPatchPtrInput)(nil)).Elem(), PodDisruptionBudgetStatusPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicyTypeInput)(nil)).Elem(), PodSecurityPolicyTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicyTypeArrayInput)(nil)).Elem(), PodSecurityPolicyTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicyListTypeInput)(nil)).Elem(), PodSecurityPolicyListTypeArgs{})
@@ -4530,41 +5912,53 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicySpecInput)(nil)).Elem(), PodSecurityPolicySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicySpecPtrInput)(nil)).Elem(), PodSecurityPolicySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicySpecPatchInput)(nil)).Elem(), PodSecurityPolicySpecPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicySpecPatchPtrInput)(nil)).Elem(), PodSecurityPolicySpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RunAsGroupStrategyOptionsInput)(nil)).Elem(), RunAsGroupStrategyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RunAsGroupStrategyOptionsPtrInput)(nil)).Elem(), RunAsGroupStrategyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RunAsGroupStrategyOptionsPatchInput)(nil)).Elem(), RunAsGroupStrategyOptionsPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RunAsGroupStrategyOptionsPatchPtrInput)(nil)).Elem(), RunAsGroupStrategyOptionsPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RunAsUserStrategyOptionsInput)(nil)).Elem(), RunAsUserStrategyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RunAsUserStrategyOptionsPtrInput)(nil)).Elem(), RunAsUserStrategyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RunAsUserStrategyOptionsPatchInput)(nil)).Elem(), RunAsUserStrategyOptionsPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RunAsUserStrategyOptionsPatchPtrInput)(nil)).Elem(), RunAsUserStrategyOptionsPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeClassStrategyOptionsInput)(nil)).Elem(), RuntimeClassStrategyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeClassStrategyOptionsPtrInput)(nil)).Elem(), RuntimeClassStrategyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeClassStrategyOptionsPatchInput)(nil)).Elem(), RuntimeClassStrategyOptionsPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeClassStrategyOptionsPatchPtrInput)(nil)).Elem(), RuntimeClassStrategyOptionsPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SELinuxStrategyOptionsInput)(nil)).Elem(), SELinuxStrategyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SELinuxStrategyOptionsPtrInput)(nil)).Elem(), SELinuxStrategyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SELinuxStrategyOptionsPatchInput)(nil)).Elem(), SELinuxStrategyOptionsPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SELinuxStrategyOptionsPatchPtrInput)(nil)).Elem(), SELinuxStrategyOptionsPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SupplementalGroupsStrategyOptionsInput)(nil)).Elem(), SupplementalGroupsStrategyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SupplementalGroupsStrategyOptionsPtrInput)(nil)).Elem(), SupplementalGroupsStrategyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SupplementalGroupsStrategyOptionsPatchInput)(nil)).Elem(), SupplementalGroupsStrategyOptionsPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupplementalGroupsStrategyOptionsPatchPtrInput)(nil)).Elem(), SupplementalGroupsStrategyOptionsPatchArgs{})
 	pulumi.RegisterOutputType(AllowedCSIDriverOutput{})
 	pulumi.RegisterOutputType(AllowedCSIDriverArrayOutput{})
 	pulumi.RegisterOutputType(AllowedCSIDriverPatchOutput{})
+	pulumi.RegisterOutputType(AllowedCSIDriverPatchArrayOutput{})
 	pulumi.RegisterOutputType(AllowedFlexVolumeOutput{})
 	pulumi.RegisterOutputType(AllowedFlexVolumeArrayOutput{})
 	pulumi.RegisterOutputType(AllowedFlexVolumePatchOutput{})
+	pulumi.RegisterOutputType(AllowedFlexVolumePatchArrayOutput{})
 	pulumi.RegisterOutputType(AllowedHostPathOutput{})
 	pulumi.RegisterOutputType(AllowedHostPathArrayOutput{})
 	pulumi.RegisterOutputType(AllowedHostPathPatchOutput{})
+	pulumi.RegisterOutputType(AllowedHostPathPatchArrayOutput{})
 	pulumi.RegisterOutputType(EvictionOutput{})
 	pulumi.RegisterOutputType(EvictionPatchOutput{})
 	pulumi.RegisterOutputType(FSGroupStrategyOptionsOutput{})
 	pulumi.RegisterOutputType(FSGroupStrategyOptionsPtrOutput{})
 	pulumi.RegisterOutputType(FSGroupStrategyOptionsPatchOutput{})
+	pulumi.RegisterOutputType(FSGroupStrategyOptionsPatchPtrOutput{})
 	pulumi.RegisterOutputType(HostPortRangeOutput{})
 	pulumi.RegisterOutputType(HostPortRangeArrayOutput{})
 	pulumi.RegisterOutputType(HostPortRangePatchOutput{})
+	pulumi.RegisterOutputType(HostPortRangePatchArrayOutput{})
 	pulumi.RegisterOutputType(IDRangeOutput{})
 	pulumi.RegisterOutputType(IDRangeArrayOutput{})
 	pulumi.RegisterOutputType(IDRangePatchOutput{})
+	pulumi.RegisterOutputType(IDRangePatchArrayOutput{})
 	pulumi.RegisterOutputType(PodDisruptionBudgetTypeOutput{})
 	pulumi.RegisterOutputType(PodDisruptionBudgetTypeArrayOutput{})
 	pulumi.RegisterOutputType(PodDisruptionBudgetListTypeOutput{})
@@ -4572,9 +5966,11 @@ func init() {
 	pulumi.RegisterOutputType(PodDisruptionBudgetSpecOutput{})
 	pulumi.RegisterOutputType(PodDisruptionBudgetSpecPtrOutput{})
 	pulumi.RegisterOutputType(PodDisruptionBudgetSpecPatchOutput{})
+	pulumi.RegisterOutputType(PodDisruptionBudgetSpecPatchPtrOutput{})
 	pulumi.RegisterOutputType(PodDisruptionBudgetStatusOutput{})
 	pulumi.RegisterOutputType(PodDisruptionBudgetStatusPtrOutput{})
 	pulumi.RegisterOutputType(PodDisruptionBudgetStatusPatchOutput{})
+	pulumi.RegisterOutputType(PodDisruptionBudgetStatusPatchPtrOutput{})
 	pulumi.RegisterOutputType(PodSecurityPolicyTypeOutput{})
 	pulumi.RegisterOutputType(PodSecurityPolicyTypeArrayOutput{})
 	pulumi.RegisterOutputType(PodSecurityPolicyListTypeOutput{})
@@ -4582,19 +5978,25 @@ func init() {
 	pulumi.RegisterOutputType(PodSecurityPolicySpecOutput{})
 	pulumi.RegisterOutputType(PodSecurityPolicySpecPtrOutput{})
 	pulumi.RegisterOutputType(PodSecurityPolicySpecPatchOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicySpecPatchPtrOutput{})
 	pulumi.RegisterOutputType(RunAsGroupStrategyOptionsOutput{})
 	pulumi.RegisterOutputType(RunAsGroupStrategyOptionsPtrOutput{})
 	pulumi.RegisterOutputType(RunAsGroupStrategyOptionsPatchOutput{})
+	pulumi.RegisterOutputType(RunAsGroupStrategyOptionsPatchPtrOutput{})
 	pulumi.RegisterOutputType(RunAsUserStrategyOptionsOutput{})
 	pulumi.RegisterOutputType(RunAsUserStrategyOptionsPtrOutput{})
 	pulumi.RegisterOutputType(RunAsUserStrategyOptionsPatchOutput{})
+	pulumi.RegisterOutputType(RunAsUserStrategyOptionsPatchPtrOutput{})
 	pulumi.RegisterOutputType(RuntimeClassStrategyOptionsOutput{})
 	pulumi.RegisterOutputType(RuntimeClassStrategyOptionsPtrOutput{})
 	pulumi.RegisterOutputType(RuntimeClassStrategyOptionsPatchOutput{})
+	pulumi.RegisterOutputType(RuntimeClassStrategyOptionsPatchPtrOutput{})
 	pulumi.RegisterOutputType(SELinuxStrategyOptionsOutput{})
 	pulumi.RegisterOutputType(SELinuxStrategyOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SELinuxStrategyOptionsPatchOutput{})
+	pulumi.RegisterOutputType(SELinuxStrategyOptionsPatchPtrOutput{})
 	pulumi.RegisterOutputType(SupplementalGroupsStrategyOptionsOutput{})
 	pulumi.RegisterOutputType(SupplementalGroupsStrategyOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SupplementalGroupsStrategyOptionsPatchOutput{})
+	pulumi.RegisterOutputType(SupplementalGroupsStrategyOptionsPatchPtrOutput{})
 }

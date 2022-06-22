@@ -36,12 +36,12 @@ type StatefulSetPatch struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion pulumi.StringPtrOutput `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-	Kind     pulumi.StringPtrOutput     `pulumi:"kind"`
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Kind     pulumi.StringPtrOutput          `pulumi:"kind"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Spec defines the desired identities of pods in this set.
-	Spec StatefulSetSpecPtrOutput `pulumi:"spec"`
+	Spec StatefulSetSpecPatchPtrOutput `pulumi:"spec"`
 	// Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time.
-	Status StatefulSetStatusPtrOutput `pulumi:"status"`
+	Status StatefulSetStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewStatefulSetPatch registers a new resource with the given unique name, arguments, and options.
@@ -55,10 +55,10 @@ func NewStatefulSetPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("StatefulSet")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:apps/v1:StatefulSet"),
+			Type: pulumi.String("kubernetes:apps/v1:StatefulSetPatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:apps/v1beta2:StatefulSet"),
+			Type: pulumi.String("kubernetes:apps/v1beta2:StatefulSetPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -97,10 +97,10 @@ type statefulSetPatchArgs struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion *string `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-	Kind     *string            `pulumi:"kind"`
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Kind     *string                 `pulumi:"kind"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Spec defines the desired identities of pods in this set.
-	Spec *StatefulSetSpec `pulumi:"spec"`
+	Spec *StatefulSetSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a StatefulSetPatch resource.
@@ -109,9 +109,9 @@ type StatefulSetPatchArgs struct {
 	ApiVersion pulumi.StringPtrInput
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind     pulumi.StringPtrInput
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Spec defines the desired identities of pods in this set.
-	Spec StatefulSetSpecPtrInput
+	Spec StatefulSetSpecPatchPtrInput
 }
 
 func (StatefulSetPatchArgs) ElementType() reflect.Type {
@@ -211,18 +211,18 @@ func (o StatefulSetPatchOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StatefulSetPatch) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-func (o StatefulSetPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *StatefulSetPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o StatefulSetPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *StatefulSetPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Spec defines the desired identities of pods in this set.
-func (o StatefulSetPatchOutput) Spec() StatefulSetSpecPtrOutput {
-	return o.ApplyT(func(v *StatefulSetPatch) StatefulSetSpecPtrOutput { return v.Spec }).(StatefulSetSpecPtrOutput)
+func (o StatefulSetPatchOutput) Spec() StatefulSetSpecPatchPtrOutput {
+	return o.ApplyT(func(v *StatefulSetPatch) StatefulSetSpecPatchPtrOutput { return v.Spec }).(StatefulSetSpecPatchPtrOutput)
 }
 
 // Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time.
-func (o StatefulSetPatchOutput) Status() StatefulSetStatusPtrOutput {
-	return o.ApplyT(func(v *StatefulSetPatch) StatefulSetStatusPtrOutput { return v.Status }).(StatefulSetStatusPtrOutput)
+func (o StatefulSetPatchOutput) Status() StatefulSetStatusPatchPtrOutput {
+	return o.ApplyT(func(v *StatefulSetPatch) StatefulSetStatusPatchPtrOutput { return v.Status }).(StatefulSetStatusPatchPtrOutput)
 }
 
 type StatefulSetPatchArrayOutput struct{ *pulumi.OutputState }

@@ -31,7 +31,7 @@ namespace Pulumi.Kubernetes.Discovery.V1Beta1
         /// endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000 endpoints.
         /// </summary>
         [Output("endpoints")]
-        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Discovery.V1Beta1.Endpoint>> Endpoints { get; private set; } = null!;
+        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Discovery.V1Beta1.EndpointPatch>> Endpoints { get; private set; } = null!;
 
         /// <summary>
         /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -43,13 +43,13 @@ namespace Pulumi.Kubernetes.Discovery.V1Beta1
         /// Standard object's metadata.
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. When ports is empty, it indicates that there are no defined ports. When a port is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of 100 ports.
         /// </summary>
         [Output("ports")]
-        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Discovery.V1Beta1.EndpointPort>> Ports { get; private set; } = null!;
+        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Discovery.V1Beta1.EndpointPortPatch>> Ports { get; private set; } = null!;
 
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Pulumi.Kubernetes.Discovery.V1Beta1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:discovery.k8s.io/v1:EndpointSlice"},
+                    new Pulumi.Alias { Type = "kubernetes:discovery.k8s.io/v1:EndpointSlicePatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -128,14 +128,14 @@ namespace Pulumi.Kubernetes.Types.Inputs.Discovery.V1Beta1
         public Input<string>? ApiVersion { get; set; }
 
         [Input("endpoints")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Discovery.V1Beta1.EndpointArgs>? _endpoints;
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Discovery.V1Beta1.EndpointPatchArgs>? _endpoints;
 
         /// <summary>
         /// endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000 endpoints.
         /// </summary>
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Discovery.V1Beta1.EndpointArgs> Endpoints
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Discovery.V1Beta1.EndpointPatchArgs> Endpoints
         {
-            get => _endpoints ?? (_endpoints = new InputList<Pulumi.Kubernetes.Types.Inputs.Discovery.V1Beta1.EndpointArgs>());
+            get => _endpoints ?? (_endpoints = new InputList<Pulumi.Kubernetes.Types.Inputs.Discovery.V1Beta1.EndpointPatchArgs>());
             set => _endpoints = value;
         }
 
@@ -149,17 +149,17 @@ namespace Pulumi.Kubernetes.Types.Inputs.Discovery.V1Beta1
         /// Standard object's metadata.
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         [Input("ports")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Discovery.V1Beta1.EndpointPortArgs>? _ports;
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Discovery.V1Beta1.EndpointPortPatchArgs>? _ports;
 
         /// <summary>
         /// ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. When ports is empty, it indicates that there are no defined ports. When a port is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of 100 ports.
         /// </summary>
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Discovery.V1Beta1.EndpointPortArgs> Ports
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Discovery.V1Beta1.EndpointPortPatchArgs> Ports
         {
-            get => _ports ?? (_ports = new InputList<Pulumi.Kubernetes.Types.Inputs.Discovery.V1Beta1.EndpointPortArgs>());
+            get => _ports ?? (_ports = new InputList<Pulumi.Kubernetes.Types.Inputs.Discovery.V1Beta1.EndpointPortPatchArgs>());
             set => _ports = value;
         }
 

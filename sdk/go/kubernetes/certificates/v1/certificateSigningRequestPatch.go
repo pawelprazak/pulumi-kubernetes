@@ -24,12 +24,12 @@ type CertificateSigningRequestPatch struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion pulumi.StringPtrOutput `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-	Kind     pulumi.StringPtrOutput     `pulumi:"kind"`
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Kind     pulumi.StringPtrOutput          `pulumi:"kind"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// spec contains the certificate request, and is immutable after creation. Only the request, signerName, expirationSeconds, and usages fields can be set on creation. Other fields are derived by Kubernetes and cannot be modified by users.
-	Spec CertificateSigningRequestSpecOutput `pulumi:"spec"`
+	Spec CertificateSigningRequestSpecPatchPtrOutput `pulumi:"spec"`
 	// status contains information about whether the request is approved or denied, and the certificate issued by the signer, or the failure condition indicating signer failure.
-	Status CertificateSigningRequestStatusPtrOutput `pulumi:"status"`
+	Status CertificateSigningRequestStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewCertificateSigningRequestPatch registers a new resource with the given unique name, arguments, and options.
@@ -43,7 +43,7 @@ func NewCertificateSigningRequestPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("CertificateSigningRequest")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:certificates.k8s.io/v1beta1:CertificateSigningRequest"),
+			Type: pulumi.String("kubernetes:certificates.k8s.io/v1beta1:CertificateSigningRequestPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -82,10 +82,10 @@ type certificateSigningRequestPatchArgs struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion *string `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-	Kind     *string            `pulumi:"kind"`
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Kind     *string                 `pulumi:"kind"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// spec contains the certificate request, and is immutable after creation. Only the request, signerName, expirationSeconds, and usages fields can be set on creation. Other fields are derived by Kubernetes and cannot be modified by users.
-	Spec *CertificateSigningRequestSpec `pulumi:"spec"`
+	Spec *CertificateSigningRequestSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a CertificateSigningRequestPatch resource.
@@ -94,9 +94,9 @@ type CertificateSigningRequestPatchArgs struct {
 	ApiVersion pulumi.StringPtrInput
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind     pulumi.StringPtrInput
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// spec contains the certificate request, and is immutable after creation. Only the request, signerName, expirationSeconds, and usages fields can be set on creation. Other fields are derived by Kubernetes and cannot be modified by users.
-	Spec CertificateSigningRequestSpecPtrInput
+	Spec CertificateSigningRequestSpecPatchPtrInput
 }
 
 func (CertificateSigningRequestPatchArgs) ElementType() reflect.Type {
@@ -196,18 +196,18 @@ func (o CertificateSigningRequestPatchOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateSigningRequestPatch) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-func (o CertificateSigningRequestPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *CertificateSigningRequestPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o CertificateSigningRequestPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *CertificateSigningRequestPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // spec contains the certificate request, and is immutable after creation. Only the request, signerName, expirationSeconds, and usages fields can be set on creation. Other fields are derived by Kubernetes and cannot be modified by users.
-func (o CertificateSigningRequestPatchOutput) Spec() CertificateSigningRequestSpecOutput {
-	return o.ApplyT(func(v *CertificateSigningRequestPatch) CertificateSigningRequestSpecOutput { return v.Spec }).(CertificateSigningRequestSpecOutput)
+func (o CertificateSigningRequestPatchOutput) Spec() CertificateSigningRequestSpecPatchPtrOutput {
+	return o.ApplyT(func(v *CertificateSigningRequestPatch) CertificateSigningRequestSpecPatchPtrOutput { return v.Spec }).(CertificateSigningRequestSpecPatchPtrOutput)
 }
 
 // status contains information about whether the request is approved or denied, and the certificate issued by the signer, or the failure condition indicating signer failure.
-func (o CertificateSigningRequestPatchOutput) Status() CertificateSigningRequestStatusPtrOutput {
-	return o.ApplyT(func(v *CertificateSigningRequestPatch) CertificateSigningRequestStatusPtrOutput { return v.Status }).(CertificateSigningRequestStatusPtrOutput)
+func (o CertificateSigningRequestPatchOutput) Status() CertificateSigningRequestStatusPatchPtrOutput {
+	return o.ApplyT(func(v *CertificateSigningRequestPatch) CertificateSigningRequestStatusPatchPtrOutput { return v.Status }).(CertificateSigningRequestStatusPatchPtrOutput)
 }
 
 type CertificateSigningRequestPatchArrayOutput struct{ *pulumi.OutputState }

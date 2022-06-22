@@ -20,11 +20,11 @@ type TokenReviewPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Spec holds information about the request being evaluated
-	Spec TokenReviewSpecOutput `pulumi:"spec"`
+	Spec TokenReviewSpecPatchPtrOutput `pulumi:"spec"`
 	// Status is filled in by the server and indicates whether the request can be authenticated.
-	Status TokenReviewStatusPtrOutput `pulumi:"status"`
+	Status TokenReviewStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewTokenReviewPatch registers a new resource with the given unique name, arguments, and options.
@@ -38,7 +38,7 @@ func NewTokenReviewPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("TokenReview")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:authentication.k8s.io/v1beta1:TokenReview"),
+			Type: pulumi.String("kubernetes:authentication.k8s.io/v1beta1:TokenReviewPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -79,9 +79,9 @@ type tokenReviewPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Spec holds information about the request being evaluated
-	Spec *TokenReviewSpec `pulumi:"spec"`
+	Spec *TokenReviewSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a TokenReviewPatch resource.
@@ -91,9 +91,9 @@ type TokenReviewPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Spec holds information about the request being evaluated
-	Spec TokenReviewSpecPtrInput
+	Spec TokenReviewSpecPatchPtrInput
 }
 
 func (TokenReviewPatchArgs) ElementType() reflect.Type {
@@ -194,18 +194,18 @@ func (o TokenReviewPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o TokenReviewPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *TokenReviewPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o TokenReviewPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *TokenReviewPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Spec holds information about the request being evaluated
-func (o TokenReviewPatchOutput) Spec() TokenReviewSpecOutput {
-	return o.ApplyT(func(v *TokenReviewPatch) TokenReviewSpecOutput { return v.Spec }).(TokenReviewSpecOutput)
+func (o TokenReviewPatchOutput) Spec() TokenReviewSpecPatchPtrOutput {
+	return o.ApplyT(func(v *TokenReviewPatch) TokenReviewSpecPatchPtrOutput { return v.Spec }).(TokenReviewSpecPatchPtrOutput)
 }
 
 // Status is filled in by the server and indicates whether the request can be authenticated.
-func (o TokenReviewPatchOutput) Status() TokenReviewStatusPtrOutput {
-	return o.ApplyT(func(v *TokenReviewPatch) TokenReviewStatusPtrOutput { return v.Status }).(TokenReviewStatusPtrOutput)
+func (o TokenReviewPatchOutput) Status() TokenReviewStatusPatchPtrOutput {
+	return o.ApplyT(func(v *TokenReviewPatch) TokenReviewStatusPatchPtrOutput { return v.Status }).(TokenReviewStatusPatchPtrOutput)
 }
 
 type TokenReviewPatchArrayOutput struct{ *pulumi.OutputState }

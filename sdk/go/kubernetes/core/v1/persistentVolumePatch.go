@@ -20,11 +20,11 @@ type PersistentVolumePatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// spec defines a specification of a persistent volume owned by the cluster. Provisioned by an administrator. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes
-	Spec PersistentVolumeSpecPtrOutput `pulumi:"spec"`
+	Spec PersistentVolumeSpecPatchPtrOutput `pulumi:"spec"`
 	// status represents the current information/status for the persistent volume. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes
-	Status PersistentVolumeStatusPtrOutput `pulumi:"status"`
+	Status PersistentVolumeStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewPersistentVolumePatch registers a new resource with the given unique name, arguments, and options.
@@ -73,9 +73,9 @@ type persistentVolumePatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// spec defines a specification of a persistent volume owned by the cluster. Provisioned by an administrator. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes
-	Spec *PersistentVolumeSpec `pulumi:"spec"`
+	Spec *PersistentVolumeSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a PersistentVolumePatch resource.
@@ -85,9 +85,9 @@ type PersistentVolumePatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// spec defines a specification of a persistent volume owned by the cluster. Provisioned by an administrator. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes
-	Spec PersistentVolumeSpecPtrInput
+	Spec PersistentVolumeSpecPatchPtrInput
 }
 
 func (PersistentVolumePatchArgs) ElementType() reflect.Type {
@@ -188,18 +188,18 @@ func (o PersistentVolumePatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o PersistentVolumePatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *PersistentVolumePatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o PersistentVolumePatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *PersistentVolumePatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // spec defines a specification of a persistent volume owned by the cluster. Provisioned by an administrator. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes
-func (o PersistentVolumePatchOutput) Spec() PersistentVolumeSpecPtrOutput {
-	return o.ApplyT(func(v *PersistentVolumePatch) PersistentVolumeSpecPtrOutput { return v.Spec }).(PersistentVolumeSpecPtrOutput)
+func (o PersistentVolumePatchOutput) Spec() PersistentVolumeSpecPatchPtrOutput {
+	return o.ApplyT(func(v *PersistentVolumePatch) PersistentVolumeSpecPatchPtrOutput { return v.Spec }).(PersistentVolumeSpecPatchPtrOutput)
 }
 
 // status represents the current information/status for the persistent volume. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes
-func (o PersistentVolumePatchOutput) Status() PersistentVolumeStatusPtrOutput {
-	return o.ApplyT(func(v *PersistentVolumePatch) PersistentVolumeStatusPtrOutput { return v.Status }).(PersistentVolumeStatusPtrOutput)
+func (o PersistentVolumePatchOutput) Status() PersistentVolumeStatusPatchPtrOutput {
+	return o.ApplyT(func(v *PersistentVolumePatch) PersistentVolumeStatusPatchPtrOutput { return v.Status }).(PersistentVolumeStatusPatchPtrOutput)
 }
 
 type PersistentVolumePatchArrayOutput struct{ *pulumi.OutputState }

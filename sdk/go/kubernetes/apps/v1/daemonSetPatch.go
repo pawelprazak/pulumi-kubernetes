@@ -20,11 +20,11 @@ type DaemonSetPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// The desired behavior of this daemon set. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec DaemonSetSpecPtrOutput `pulumi:"spec"`
+	Spec DaemonSetSpecPatchPtrOutput `pulumi:"spec"`
 	// The current status of this daemon set. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Status DaemonSetStatusPtrOutput `pulumi:"status"`
+	Status DaemonSetStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewDaemonSetPatch registers a new resource with the given unique name, arguments, and options.
@@ -38,10 +38,10 @@ func NewDaemonSetPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("DaemonSet")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:apps/v1beta2:DaemonSet"),
+			Type: pulumi.String("kubernetes:apps/v1beta2:DaemonSetPatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:extensions/v1beta1:DaemonSet"),
+			Type: pulumi.String("kubernetes:extensions/v1beta1:DaemonSetPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -82,9 +82,9 @@ type daemonSetPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// The desired behavior of this daemon set. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec *DaemonSetSpec `pulumi:"spec"`
+	Spec *DaemonSetSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a DaemonSetPatch resource.
@@ -94,9 +94,9 @@ type DaemonSetPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// The desired behavior of this daemon set. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec DaemonSetSpecPtrInput
+	Spec DaemonSetSpecPatchPtrInput
 }
 
 func (DaemonSetPatchArgs) ElementType() reflect.Type {
@@ -197,18 +197,18 @@ func (o DaemonSetPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o DaemonSetPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *DaemonSetPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o DaemonSetPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *DaemonSetPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // The desired behavior of this daemon set. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o DaemonSetPatchOutput) Spec() DaemonSetSpecPtrOutput {
-	return o.ApplyT(func(v *DaemonSetPatch) DaemonSetSpecPtrOutput { return v.Spec }).(DaemonSetSpecPtrOutput)
+func (o DaemonSetPatchOutput) Spec() DaemonSetSpecPatchPtrOutput {
+	return o.ApplyT(func(v *DaemonSetPatch) DaemonSetSpecPatchPtrOutput { return v.Spec }).(DaemonSetSpecPatchPtrOutput)
 }
 
 // The current status of this daemon set. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o DaemonSetPatchOutput) Status() DaemonSetStatusPtrOutput {
-	return o.ApplyT(func(v *DaemonSetPatch) DaemonSetStatusPtrOutput { return v.Status }).(DaemonSetStatusPtrOutput)
+func (o DaemonSetPatchOutput) Status() DaemonSetStatusPatchPtrOutput {
+	return o.ApplyT(func(v *DaemonSetPatch) DaemonSetStatusPatchPtrOutput { return v.Status }).(DaemonSetStatusPatchPtrOutput)
 }
 
 type DaemonSetPatchArrayOutput struct{ *pulumi.OutputState }

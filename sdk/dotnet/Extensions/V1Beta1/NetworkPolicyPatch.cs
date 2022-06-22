@@ -31,13 +31,13 @@ namespace Pulumi.Kubernetes.Extensions.V1Beta1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Specification of the desired behavior for this NetworkPolicy.
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Extensions.V1Beta1.NetworkPolicySpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Extensions.V1Beta1.NetworkPolicySpecPatch> Spec { get; private set; } = null!;
 
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Pulumi.Kubernetes.Extensions.V1Beta1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:networking.k8s.io/v1:NetworkPolicy"},
+                    new Pulumi.Alias { Type = "kubernetes:networking.k8s.io/v1:NetworkPolicyPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -119,13 +119,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Extensions.V1Beta1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// Specification of the desired behavior for this NetworkPolicy.
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Extensions.V1Beta1.NetworkPolicySpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Extensions.V1Beta1.NetworkPolicySpecPatchArgs>? Spec { get; set; }
 
         public NetworkPolicyPatchArgs()
         {

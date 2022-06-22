@@ -20,11 +20,11 @@ type HorizontalPodAutoscalerPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// spec is the specification for the behaviour of the autoscaler. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
-	Spec HorizontalPodAutoscalerSpecPtrOutput `pulumi:"spec"`
+	Spec HorizontalPodAutoscalerSpecPatchPtrOutput `pulumi:"spec"`
 	// status is the current information about the autoscaler.
-	Status HorizontalPodAutoscalerStatusPtrOutput `pulumi:"status"`
+	Status HorizontalPodAutoscalerStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewHorizontalPodAutoscalerPatch registers a new resource with the given unique name, arguments, and options.
@@ -38,13 +38,13 @@ func NewHorizontalPodAutoscalerPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("HorizontalPodAutoscaler")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:autoscaling/v1:HorizontalPodAutoscaler"),
+			Type: pulumi.String("kubernetes:autoscaling/v1:HorizontalPodAutoscalerPatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:autoscaling/v2:HorizontalPodAutoscaler"),
+			Type: pulumi.String("kubernetes:autoscaling/v2:HorizontalPodAutoscalerPatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:autoscaling/v2beta1:HorizontalPodAutoscaler"),
+			Type: pulumi.String("kubernetes:autoscaling/v2beta1:HorizontalPodAutoscalerPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -85,9 +85,9 @@ type horizontalPodAutoscalerPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// spec is the specification for the behaviour of the autoscaler. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
-	Spec *HorizontalPodAutoscalerSpec `pulumi:"spec"`
+	Spec *HorizontalPodAutoscalerSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a HorizontalPodAutoscalerPatch resource.
@@ -97,9 +97,9 @@ type HorizontalPodAutoscalerPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// spec is the specification for the behaviour of the autoscaler. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
-	Spec HorizontalPodAutoscalerSpecPtrInput
+	Spec HorizontalPodAutoscalerSpecPatchPtrInput
 }
 
 func (HorizontalPodAutoscalerPatchArgs) ElementType() reflect.Type {
@@ -200,18 +200,18 @@ func (o HorizontalPodAutoscalerPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o HorizontalPodAutoscalerPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *HorizontalPodAutoscalerPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o HorizontalPodAutoscalerPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *HorizontalPodAutoscalerPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // spec is the specification for the behaviour of the autoscaler. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
-func (o HorizontalPodAutoscalerPatchOutput) Spec() HorizontalPodAutoscalerSpecPtrOutput {
-	return o.ApplyT(func(v *HorizontalPodAutoscalerPatch) HorizontalPodAutoscalerSpecPtrOutput { return v.Spec }).(HorizontalPodAutoscalerSpecPtrOutput)
+func (o HorizontalPodAutoscalerPatchOutput) Spec() HorizontalPodAutoscalerSpecPatchPtrOutput {
+	return o.ApplyT(func(v *HorizontalPodAutoscalerPatch) HorizontalPodAutoscalerSpecPatchPtrOutput { return v.Spec }).(HorizontalPodAutoscalerSpecPatchPtrOutput)
 }
 
 // status is the current information about the autoscaler.
-func (o HorizontalPodAutoscalerPatchOutput) Status() HorizontalPodAutoscalerStatusPtrOutput {
-	return o.ApplyT(func(v *HorizontalPodAutoscalerPatch) HorizontalPodAutoscalerStatusPtrOutput { return v.Status }).(HorizontalPodAutoscalerStatusPtrOutput)
+func (o HorizontalPodAutoscalerPatchOutput) Status() HorizontalPodAutoscalerStatusPatchPtrOutput {
+	return o.ApplyT(func(v *HorizontalPodAutoscalerPatch) HorizontalPodAutoscalerStatusPatchPtrOutput { return v.Status }).(HorizontalPodAutoscalerStatusPatchPtrOutput)
 }
 
 type HorizontalPodAutoscalerPatchArrayOutput struct{ *pulumi.OutputState }

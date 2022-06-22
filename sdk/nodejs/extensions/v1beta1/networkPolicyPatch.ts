@@ -46,11 +46,11 @@ export class NetworkPolicyPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the desired behavior for this NetworkPolicy.
      */
-    public readonly spec!: pulumi.Output<outputs.extensions.v1beta1.NetworkPolicySpec>;
+    public readonly spec!: pulumi.Output<outputs.extensions.v1beta1.NetworkPolicySpecPatch>;
 
     /**
      * Create a NetworkPolicyPatch resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class NetworkPolicyPatch extends pulumi.CustomResource {
             resourceInputs["spec"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:networking.k8s.io/v1:NetworkPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:networking.k8s.io/v1:NetworkPolicyPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkPolicyPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -95,9 +95,9 @@ export interface NetworkPolicyPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the desired behavior for this NetworkPolicy.
      */
-    spec?: pulumi.Input<inputs.extensions.v1beta1.NetworkPolicySpec>;
+    spec?: pulumi.Input<inputs.extensions.v1beta1.NetworkPolicySpecPatch>;
 }

@@ -52,7 +52,7 @@ export class ControllerRevisionPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Revision indicates the revision of the state represented by Data.
      */
@@ -83,7 +83,7 @@ export class ControllerRevisionPatch extends pulumi.CustomResource {
             resourceInputs["revision"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:apps/v1:ControllerRevision" }, { type: "kubernetes:apps/v1beta2:ControllerRevision" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:apps/v1:ControllerRevisionPatch" }, { type: "kubernetes:apps/v1beta2:ControllerRevisionPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ControllerRevisionPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -108,7 +108,7 @@ export interface ControllerRevisionPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Revision indicates the revision of the state represented by Data.
      */

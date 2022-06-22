@@ -20,9 +20,9 @@ type MutatingWebhookConfigurationPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Webhooks is a list of webhooks and the affected resources and operations.
-	Webhooks MutatingWebhookArrayOutput `pulumi:"webhooks"`
+	Webhooks MutatingWebhookPatchArrayOutput `pulumi:"webhooks"`
 }
 
 // NewMutatingWebhookConfigurationPatch registers a new resource with the given unique name, arguments, and options.
@@ -36,7 +36,7 @@ func NewMutatingWebhookConfigurationPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("MutatingWebhookConfiguration")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:admissionregistration.k8s.io/v1beta1:MutatingWebhookConfiguration"),
+			Type: pulumi.String("kubernetes:admissionregistration.k8s.io/v1beta1:MutatingWebhookConfigurationPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -77,9 +77,9 @@ type mutatingWebhookConfigurationPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Webhooks is a list of webhooks and the affected resources and operations.
-	Webhooks []MutatingWebhook `pulumi:"webhooks"`
+	Webhooks []MutatingWebhookPatch `pulumi:"webhooks"`
 }
 
 // The set of arguments for constructing a MutatingWebhookConfigurationPatch resource.
@@ -89,9 +89,9 @@ type MutatingWebhookConfigurationPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Webhooks is a list of webhooks and the affected resources and operations.
-	Webhooks MutatingWebhookArrayInput
+	Webhooks MutatingWebhookPatchArrayInput
 }
 
 func (MutatingWebhookConfigurationPatchArgs) ElementType() reflect.Type {
@@ -192,13 +192,13 @@ func (o MutatingWebhookConfigurationPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
-func (o MutatingWebhookConfigurationPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *MutatingWebhookConfigurationPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o MutatingWebhookConfigurationPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *MutatingWebhookConfigurationPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Webhooks is a list of webhooks and the affected resources and operations.
-func (o MutatingWebhookConfigurationPatchOutput) Webhooks() MutatingWebhookArrayOutput {
-	return o.ApplyT(func(v *MutatingWebhookConfigurationPatch) MutatingWebhookArrayOutput { return v.Webhooks }).(MutatingWebhookArrayOutput)
+func (o MutatingWebhookConfigurationPatchOutput) Webhooks() MutatingWebhookPatchArrayOutput {
+	return o.ApplyT(func(v *MutatingWebhookConfigurationPatch) MutatingWebhookPatchArrayOutput { return v.Webhooks }).(MutatingWebhookPatchArrayOutput)
 }
 
 type MutatingWebhookConfigurationPatchArrayOutput struct{ *pulumi.OutputState }

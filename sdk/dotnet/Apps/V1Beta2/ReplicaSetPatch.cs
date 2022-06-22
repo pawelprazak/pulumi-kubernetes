@@ -32,19 +32,19 @@ namespace Pulumi.Kubernetes.Apps.V1Beta2
         /// If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Spec defines the specification of the desired behavior of the ReplicaSet. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Apps.V1Beta2.ReplicaSetSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Apps.V1Beta2.ReplicaSetSpecPatch> Spec { get; private set; } = null!;
 
         /// <summary>
         /// Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Output("status")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Apps.V1Beta2.ReplicaSetStatus> Status { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Apps.V1Beta2.ReplicaSetStatusPatch> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -83,8 +83,8 @@ namespace Pulumi.Kubernetes.Apps.V1Beta2
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:apps/v1:ReplicaSet"},
-                    new Pulumi.Alias { Type = "kubernetes:extensions/v1beta1:ReplicaSet"},
+                    new Pulumi.Alias { Type = "kubernetes:apps/v1:ReplicaSetPatch"},
+                    new Pulumi.Alias { Type = "kubernetes:extensions/v1beta1:ReplicaSetPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -127,13 +127,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Apps.V1Beta2
         /// If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// Spec defines the specification of the desired behavior of the ReplicaSet. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Apps.V1Beta2.ReplicaSetSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Apps.V1Beta2.ReplicaSetSpecPatchArgs>? Spec { get; set; }
 
         public ReplicaSetPatchArgs()
         {

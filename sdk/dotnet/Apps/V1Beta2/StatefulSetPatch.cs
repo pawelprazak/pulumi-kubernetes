@@ -45,19 +45,19 @@ namespace Pulumi.Kubernetes.Apps.V1Beta2
         public Output<string> Kind { get; private set; } = null!;
 
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Spec defines the desired identities of pods in this set.
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Apps.V1Beta2.StatefulSetSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Apps.V1Beta2.StatefulSetSpecPatch> Spec { get; private set; } = null!;
 
         /// <summary>
         /// Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time.
         /// </summary>
         [Output("status")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Apps.V1Beta2.StatefulSetStatus> Status { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Apps.V1Beta2.StatefulSetStatusPatch> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -96,8 +96,8 @@ namespace Pulumi.Kubernetes.Apps.V1Beta2
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:apps/v1:StatefulSet"},
-                    new Pulumi.Alias { Type = "kubernetes:apps/v1beta1:StatefulSet"},
+                    new Pulumi.Alias { Type = "kubernetes:apps/v1:StatefulSetPatch"},
+                    new Pulumi.Alias { Type = "kubernetes:apps/v1beta1:StatefulSetPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -137,13 +137,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Apps.V1Beta2
         public Input<string>? Kind { get; set; }
 
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// Spec defines the desired identities of pods in this set.
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Apps.V1Beta2.StatefulSetSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Apps.V1Beta2.StatefulSetSpecPatchArgs>? Spec { get; set; }
 
         public StatefulSetPatchArgs()
         {

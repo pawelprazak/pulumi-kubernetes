@@ -32,19 +32,19 @@ namespace Pulumi.Kubernetes.Apps.V1Beta2
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// The desired behavior of this daemon set. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Apps.V1Beta2.DaemonSetSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Apps.V1Beta2.DaemonSetSpecPatch> Spec { get; private set; } = null!;
 
         /// <summary>
         /// The current status of this daemon set. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Output("status")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Apps.V1Beta2.DaemonSetStatus> Status { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Apps.V1Beta2.DaemonSetStatusPatch> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -83,8 +83,8 @@ namespace Pulumi.Kubernetes.Apps.V1Beta2
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:apps/v1:DaemonSet"},
-                    new Pulumi.Alias { Type = "kubernetes:extensions/v1beta1:DaemonSet"},
+                    new Pulumi.Alias { Type = "kubernetes:apps/v1:DaemonSetPatch"},
+                    new Pulumi.Alias { Type = "kubernetes:extensions/v1beta1:DaemonSetPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -127,13 +127,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Apps.V1Beta2
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// The desired behavior of this daemon set. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Apps.V1Beta2.DaemonSetSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Apps.V1Beta2.DaemonSetSpecPatchArgs>? Spec { get; set; }
 
         public DaemonSetPatchArgs()
         {

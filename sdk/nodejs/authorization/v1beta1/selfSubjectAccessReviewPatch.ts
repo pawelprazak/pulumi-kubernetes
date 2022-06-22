@@ -43,15 +43,15 @@ export class SelfSubjectAccessReviewPatch extends pulumi.CustomResource {
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
     public readonly kind!: pulumi.Output<"SelfSubjectAccessReview">;
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec holds information about the request being evaluated.  user and groups must be empty
      */
-    public readonly spec!: pulumi.Output<outputs.authorization.v1beta1.SelfSubjectAccessReviewSpec>;
+    public readonly spec!: pulumi.Output<outputs.authorization.v1beta1.SelfSubjectAccessReviewSpecPatch>;
     /**
      * Status is filled in by the server and indicates whether the request is allowed or not
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.authorization.v1beta1.SubjectAccessReviewStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.authorization.v1beta1.SubjectAccessReviewStatusPatch>;
 
     /**
      * Create a SelfSubjectAccessReviewPatch resource with the given unique name, arguments, and options.
@@ -77,7 +77,7 @@ export class SelfSubjectAccessReviewPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:authorization.k8s.io/v1:SelfSubjectAccessReview" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:authorization.k8s.io/v1:SelfSubjectAccessReviewPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SelfSubjectAccessReviewPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -95,9 +95,9 @@ export interface SelfSubjectAccessReviewPatchArgs {
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
     kind?: pulumi.Input<"SelfSubjectAccessReview">;
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec holds information about the request being evaluated.  user and groups must be empty
      */
-    spec?: pulumi.Input<inputs.authorization.v1beta1.SelfSubjectAccessReviewSpec>;
+    spec?: pulumi.Input<inputs.authorization.v1beta1.SelfSubjectAccessReviewSpecPatch>;
 }

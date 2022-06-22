@@ -154,7 +154,7 @@ func (o AggregationRulePtrOutput) ClusterRoleSelectors() metav1.LabelSelectorArr
 // AggregationRule describes how to locate ClusterRoles to aggregate into the ClusterRole
 type AggregationRulePatch struct {
 	// ClusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added
-	ClusterRoleSelectors []metav1.LabelSelector `pulumi:"clusterRoleSelectors"`
+	ClusterRoleSelectors []metav1.LabelSelectorPatch `pulumi:"clusterRoleSelectors"`
 }
 
 // AggregationRulePatchInput is an input type that accepts AggregationRulePatchArgs and AggregationRulePatchOutput values.
@@ -171,7 +171,7 @@ type AggregationRulePatchInput interface {
 // AggregationRule describes how to locate ClusterRoles to aggregate into the ClusterRole
 type AggregationRulePatchArgs struct {
 	// ClusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added
-	ClusterRoleSelectors metav1.LabelSelectorArrayInput `pulumi:"clusterRoleSelectors"`
+	ClusterRoleSelectors metav1.LabelSelectorPatchArrayInput `pulumi:"clusterRoleSelectors"`
 }
 
 func (AggregationRulePatchArgs) ElementType() reflect.Type {
@@ -184,6 +184,47 @@ func (i AggregationRulePatchArgs) ToAggregationRulePatchOutput() AggregationRule
 
 func (i AggregationRulePatchArgs) ToAggregationRulePatchOutputWithContext(ctx context.Context) AggregationRulePatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AggregationRulePatchOutput)
+}
+
+func (i AggregationRulePatchArgs) ToAggregationRulePatchPtrOutput() AggregationRulePatchPtrOutput {
+	return i.ToAggregationRulePatchPtrOutputWithContext(context.Background())
+}
+
+func (i AggregationRulePatchArgs) ToAggregationRulePatchPtrOutputWithContext(ctx context.Context) AggregationRulePatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationRulePatchOutput).ToAggregationRulePatchPtrOutputWithContext(ctx)
+}
+
+// AggregationRulePatchPtrInput is an input type that accepts AggregationRulePatchArgs, AggregationRulePatchPtr and AggregationRulePatchPtrOutput values.
+// You can construct a concrete instance of `AggregationRulePatchPtrInput` via:
+//
+//          AggregationRulePatchArgs{...}
+//
+//  or:
+//
+//          nil
+type AggregationRulePatchPtrInput interface {
+	pulumi.Input
+
+	ToAggregationRulePatchPtrOutput() AggregationRulePatchPtrOutput
+	ToAggregationRulePatchPtrOutputWithContext(context.Context) AggregationRulePatchPtrOutput
+}
+
+type aggregationRulePatchPtrType AggregationRulePatchArgs
+
+func AggregationRulePatchPtr(v *AggregationRulePatchArgs) AggregationRulePatchPtrInput {
+	return (*aggregationRulePatchPtrType)(v)
+}
+
+func (*aggregationRulePatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AggregationRulePatch)(nil)).Elem()
+}
+
+func (i *aggregationRulePatchPtrType) ToAggregationRulePatchPtrOutput() AggregationRulePatchPtrOutput {
+	return i.ToAggregationRulePatchPtrOutputWithContext(context.Background())
+}
+
+func (i *aggregationRulePatchPtrType) ToAggregationRulePatchPtrOutputWithContext(ctx context.Context) AggregationRulePatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationRulePatchPtrOutput)
 }
 
 // AggregationRule describes how to locate ClusterRoles to aggregate into the ClusterRole
@@ -201,9 +242,53 @@ func (o AggregationRulePatchOutput) ToAggregationRulePatchOutputWithContext(ctx 
 	return o
 }
 
+func (o AggregationRulePatchOutput) ToAggregationRulePatchPtrOutput() AggregationRulePatchPtrOutput {
+	return o.ToAggregationRulePatchPtrOutputWithContext(context.Background())
+}
+
+func (o AggregationRulePatchOutput) ToAggregationRulePatchPtrOutputWithContext(ctx context.Context) AggregationRulePatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AggregationRulePatch) *AggregationRulePatch {
+		return &v
+	}).(AggregationRulePatchPtrOutput)
+}
+
 // ClusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added
-func (o AggregationRulePatchOutput) ClusterRoleSelectors() metav1.LabelSelectorArrayOutput {
-	return o.ApplyT(func(v AggregationRulePatch) []metav1.LabelSelector { return v.ClusterRoleSelectors }).(metav1.LabelSelectorArrayOutput)
+func (o AggregationRulePatchOutput) ClusterRoleSelectors() metav1.LabelSelectorPatchArrayOutput {
+	return o.ApplyT(func(v AggregationRulePatch) []metav1.LabelSelectorPatch { return v.ClusterRoleSelectors }).(metav1.LabelSelectorPatchArrayOutput)
+}
+
+type AggregationRulePatchPtrOutput struct{ *pulumi.OutputState }
+
+func (AggregationRulePatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AggregationRulePatch)(nil)).Elem()
+}
+
+func (o AggregationRulePatchPtrOutput) ToAggregationRulePatchPtrOutput() AggregationRulePatchPtrOutput {
+	return o
+}
+
+func (o AggregationRulePatchPtrOutput) ToAggregationRulePatchPtrOutputWithContext(ctx context.Context) AggregationRulePatchPtrOutput {
+	return o
+}
+
+func (o AggregationRulePatchPtrOutput) Elem() AggregationRulePatchOutput {
+	return o.ApplyT(func(v *AggregationRulePatch) AggregationRulePatch {
+		if v != nil {
+			return *v
+		}
+		var ret AggregationRulePatch
+		return ret
+	}).(AggregationRulePatchOutput)
+}
+
+// ClusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added
+func (o AggregationRulePatchPtrOutput) ClusterRoleSelectors() metav1.LabelSelectorPatchArrayOutput {
+	return o.ApplyT(func(v *AggregationRulePatch) []metav1.LabelSelectorPatch {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterRoleSelectors
+	}).(metav1.LabelSelectorPatchArrayOutput)
 }
 
 // ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding or ClusterRoleBinding. Deprecated in v1.17 in favor of rbac.authorization.k8s.io/v1 ClusterRole, and will no longer be served in v1.20.
@@ -567,11 +652,11 @@ type ClusterRoleBindingPatchType struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata.
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
-	RoleRef *RoleRef `pulumi:"roleRef"`
+	RoleRef *RoleRefPatch `pulumi:"roleRef"`
 	// Subjects holds references to the objects the role applies to.
-	Subjects []Subject `pulumi:"subjects"`
+	Subjects []SubjectPatch `pulumi:"subjects"`
 }
 
 // ClusterRoleBindingPatchTypeInput is an input type that accepts ClusterRoleBindingPatchTypeArgs and ClusterRoleBindingPatchTypeOutput values.
@@ -592,11 +677,11 @@ type ClusterRoleBindingPatchTypeArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Standard object's metadata.
-	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrInput `pulumi:"metadata"`
 	// RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
-	RoleRef RoleRefPtrInput `pulumi:"roleRef"`
+	RoleRef RoleRefPatchPtrInput `pulumi:"roleRef"`
 	// Subjects holds references to the objects the role applies to.
-	Subjects SubjectArrayInput `pulumi:"subjects"`
+	Subjects SubjectPatchArrayInput `pulumi:"subjects"`
 }
 
 func (ClusterRoleBindingPatchTypeArgs) ElementType() reflect.Type {
@@ -637,18 +722,18 @@ func (o ClusterRoleBindingPatchTypeOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata.
-func (o ClusterRoleBindingPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v ClusterRoleBindingPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o ClusterRoleBindingPatchTypeOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v ClusterRoleBindingPatchType) *metav1.ObjectMetaPatch { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
-func (o ClusterRoleBindingPatchTypeOutput) RoleRef() RoleRefPtrOutput {
-	return o.ApplyT(func(v ClusterRoleBindingPatchType) *RoleRef { return v.RoleRef }).(RoleRefPtrOutput)
+func (o ClusterRoleBindingPatchTypeOutput) RoleRef() RoleRefPatchPtrOutput {
+	return o.ApplyT(func(v ClusterRoleBindingPatchType) *RoleRefPatch { return v.RoleRef }).(RoleRefPatchPtrOutput)
 }
 
 // Subjects holds references to the objects the role applies to.
-func (o ClusterRoleBindingPatchTypeOutput) Subjects() SubjectArrayOutput {
-	return o.ApplyT(func(v ClusterRoleBindingPatchType) []Subject { return v.Subjects }).(SubjectArrayOutput)
+func (o ClusterRoleBindingPatchTypeOutput) Subjects() SubjectPatchArrayOutput {
+	return o.ApplyT(func(v ClusterRoleBindingPatchType) []SubjectPatch { return v.Subjects }).(SubjectPatchArrayOutput)
 }
 
 // ClusterRoleList is a collection of ClusterRoles. Deprecated in v1.17 in favor of rbac.authorization.k8s.io/v1 ClusterRoles, and will no longer be served in v1.20.
@@ -736,15 +821,15 @@ func (o ClusterRoleListTypeOutput) Metadata() metav1.ListMetaPtrOutput {
 // ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding or ClusterRoleBinding. Deprecated in v1.17 in favor of rbac.authorization.k8s.io/v1 ClusterRole, and will no longer be served in v1.20.
 type ClusterRolePatchType struct {
 	// AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.
-	AggregationRule *AggregationRule `pulumi:"aggregationRule"`
+	AggregationRule *AggregationRulePatch `pulumi:"aggregationRule"`
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion *string `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata.
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Rules holds all the PolicyRules for this ClusterRole
-	Rules []PolicyRule `pulumi:"rules"`
+	Rules []PolicyRulePatch `pulumi:"rules"`
 }
 
 // ClusterRolePatchTypeInput is an input type that accepts ClusterRolePatchTypeArgs and ClusterRolePatchTypeOutput values.
@@ -761,15 +846,15 @@ type ClusterRolePatchTypeInput interface {
 // ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding or ClusterRoleBinding. Deprecated in v1.17 in favor of rbac.authorization.k8s.io/v1 ClusterRole, and will no longer be served in v1.20.
 type ClusterRolePatchTypeArgs struct {
 	// AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.
-	AggregationRule AggregationRulePtrInput `pulumi:"aggregationRule"`
+	AggregationRule AggregationRulePatchPtrInput `pulumi:"aggregationRule"`
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Standard object's metadata.
-	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrInput `pulumi:"metadata"`
 	// Rules holds all the PolicyRules for this ClusterRole
-	Rules PolicyRuleArrayInput `pulumi:"rules"`
+	Rules PolicyRulePatchArrayInput `pulumi:"rules"`
 }
 
 func (ClusterRolePatchTypeArgs) ElementType() reflect.Type {
@@ -800,8 +885,8 @@ func (o ClusterRolePatchTypeOutput) ToClusterRolePatchTypeOutputWithContext(ctx 
 }
 
 // AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.
-func (o ClusterRolePatchTypeOutput) AggregationRule() AggregationRulePtrOutput {
-	return o.ApplyT(func(v ClusterRolePatchType) *AggregationRule { return v.AggregationRule }).(AggregationRulePtrOutput)
+func (o ClusterRolePatchTypeOutput) AggregationRule() AggregationRulePatchPtrOutput {
+	return o.ApplyT(func(v ClusterRolePatchType) *AggregationRulePatch { return v.AggregationRule }).(AggregationRulePatchPtrOutput)
 }
 
 // APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -815,13 +900,13 @@ func (o ClusterRolePatchTypeOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata.
-func (o ClusterRolePatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v ClusterRolePatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o ClusterRolePatchTypeOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v ClusterRolePatchType) *metav1.ObjectMetaPatch { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Rules holds all the PolicyRules for this ClusterRole
-func (o ClusterRolePatchTypeOutput) Rules() PolicyRuleArrayOutput {
-	return o.ApplyT(func(v ClusterRolePatchType) []PolicyRule { return v.Rules }).(PolicyRuleArrayOutput)
+func (o ClusterRolePatchTypeOutput) Rules() PolicyRulePatchArrayOutput {
+	return o.ApplyT(func(v ClusterRolePatchType) []PolicyRulePatch { return v.Rules }).(PolicyRulePatchArrayOutput)
 }
 
 // PolicyRule holds information that describes a policy rule, but does not contain information about who the rule applies to or which namespace the rule applies to.
@@ -1011,6 +1096,31 @@ func (i PolicyRulePatchArgs) ToPolicyRulePatchOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyRulePatchOutput)
 }
 
+// PolicyRulePatchArrayInput is an input type that accepts PolicyRulePatchArray and PolicyRulePatchArrayOutput values.
+// You can construct a concrete instance of `PolicyRulePatchArrayInput` via:
+//
+//          PolicyRulePatchArray{ PolicyRulePatchArgs{...} }
+type PolicyRulePatchArrayInput interface {
+	pulumi.Input
+
+	ToPolicyRulePatchArrayOutput() PolicyRulePatchArrayOutput
+	ToPolicyRulePatchArrayOutputWithContext(context.Context) PolicyRulePatchArrayOutput
+}
+
+type PolicyRulePatchArray []PolicyRulePatchInput
+
+func (PolicyRulePatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyRulePatch)(nil)).Elem()
+}
+
+func (i PolicyRulePatchArray) ToPolicyRulePatchArrayOutput() PolicyRulePatchArrayOutput {
+	return i.ToPolicyRulePatchArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyRulePatchArray) ToPolicyRulePatchArrayOutputWithContext(ctx context.Context) PolicyRulePatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyRulePatchArrayOutput)
+}
+
 // PolicyRule holds information that describes a policy rule, but does not contain information about who the rule applies to or which namespace the rule applies to.
 type PolicyRulePatchOutput struct{ *pulumi.OutputState }
 
@@ -1049,6 +1159,26 @@ func (o PolicyRulePatchOutput) Resources() pulumi.StringArrayOutput {
 // Verbs is a list of Verbs that apply to ALL the ResourceKinds and AttributeRestrictions contained in this rule.  VerbAll represents all kinds.
 func (o PolicyRulePatchOutput) Verbs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyRulePatch) []string { return v.Verbs }).(pulumi.StringArrayOutput)
+}
+
+type PolicyRulePatchArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyRulePatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyRulePatch)(nil)).Elem()
+}
+
+func (o PolicyRulePatchArrayOutput) ToPolicyRulePatchArrayOutput() PolicyRulePatchArrayOutput {
+	return o
+}
+
+func (o PolicyRulePatchArrayOutput) ToPolicyRulePatchArrayOutputWithContext(ctx context.Context) PolicyRulePatchArrayOutput {
+	return o
+}
+
+func (o PolicyRulePatchArrayOutput) Index(i pulumi.IntInput) PolicyRulePatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyRulePatch {
+		return vs[0].([]PolicyRulePatch)[vs[1].(int)]
+	}).(PolicyRulePatchOutput)
 }
 
 // Role is a namespaced, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding. Deprecated in v1.17 in favor of rbac.authorization.k8s.io/v1 Role, and will no longer be served in v1.20.
@@ -1403,11 +1533,11 @@ type RoleBindingPatchType struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata.
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
-	RoleRef *RoleRef `pulumi:"roleRef"`
+	RoleRef *RoleRefPatch `pulumi:"roleRef"`
 	// Subjects holds references to the objects the role applies to.
-	Subjects []Subject `pulumi:"subjects"`
+	Subjects []SubjectPatch `pulumi:"subjects"`
 }
 
 // RoleBindingPatchTypeInput is an input type that accepts RoleBindingPatchTypeArgs and RoleBindingPatchTypeOutput values.
@@ -1428,11 +1558,11 @@ type RoleBindingPatchTypeArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Standard object's metadata.
-	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrInput `pulumi:"metadata"`
 	// RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
-	RoleRef RoleRefPtrInput `pulumi:"roleRef"`
+	RoleRef RoleRefPatchPtrInput `pulumi:"roleRef"`
 	// Subjects holds references to the objects the role applies to.
-	Subjects SubjectArrayInput `pulumi:"subjects"`
+	Subjects SubjectPatchArrayInput `pulumi:"subjects"`
 }
 
 func (RoleBindingPatchTypeArgs) ElementType() reflect.Type {
@@ -1473,18 +1603,18 @@ func (o RoleBindingPatchTypeOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata.
-func (o RoleBindingPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v RoleBindingPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o RoleBindingPatchTypeOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v RoleBindingPatchType) *metav1.ObjectMetaPatch { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
-func (o RoleBindingPatchTypeOutput) RoleRef() RoleRefPtrOutput {
-	return o.ApplyT(func(v RoleBindingPatchType) *RoleRef { return v.RoleRef }).(RoleRefPtrOutput)
+func (o RoleBindingPatchTypeOutput) RoleRef() RoleRefPatchPtrOutput {
+	return o.ApplyT(func(v RoleBindingPatchType) *RoleRefPatch { return v.RoleRef }).(RoleRefPatchPtrOutput)
 }
 
 // Subjects holds references to the objects the role applies to.
-func (o RoleBindingPatchTypeOutput) Subjects() SubjectArrayOutput {
-	return o.ApplyT(func(v RoleBindingPatchType) []Subject { return v.Subjects }).(SubjectArrayOutput)
+func (o RoleBindingPatchTypeOutput) Subjects() SubjectPatchArrayOutput {
+	return o.ApplyT(func(v RoleBindingPatchType) []SubjectPatch { return v.Subjects }).(SubjectPatchArrayOutput)
 }
 
 // RoleList is a collection of Roles. Deprecated in v1.17 in favor of rbac.authorization.k8s.io/v1 RoleList, and will no longer be served in v1.20.
@@ -1576,9 +1706,9 @@ type RolePatchType struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata.
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Rules holds all the PolicyRules for this Role
-	Rules []PolicyRule `pulumi:"rules"`
+	Rules []PolicyRulePatch `pulumi:"rules"`
 }
 
 // RolePatchTypeInput is an input type that accepts RolePatchTypeArgs and RolePatchTypeOutput values.
@@ -1599,9 +1729,9 @@ type RolePatchTypeArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Standard object's metadata.
-	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrInput `pulumi:"metadata"`
 	// Rules holds all the PolicyRules for this Role
-	Rules PolicyRuleArrayInput `pulumi:"rules"`
+	Rules PolicyRulePatchArrayInput `pulumi:"rules"`
 }
 
 func (RolePatchTypeArgs) ElementType() reflect.Type {
@@ -1642,13 +1772,13 @@ func (o RolePatchTypeOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata.
-func (o RolePatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v RolePatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o RolePatchTypeOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v RolePatchType) *metav1.ObjectMetaPatch { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Rules holds all the PolicyRules for this Role
-func (o RolePatchTypeOutput) Rules() PolicyRuleArrayOutput {
-	return o.ApplyT(func(v RolePatchType) []PolicyRule { return v.Rules }).(PolicyRuleArrayOutput)
+func (o RolePatchTypeOutput) Rules() PolicyRulePatchArrayOutput {
+	return o.ApplyT(func(v RolePatchType) []PolicyRulePatch { return v.Rules }).(PolicyRulePatchArrayOutput)
 }
 
 // RoleRef contains information that points to the role being used
@@ -1694,47 +1824,6 @@ func (i RoleRefArgs) ToRoleRefOutputWithContext(ctx context.Context) RoleRefOutp
 	return pulumi.ToOutputWithContext(ctx, i).(RoleRefOutput)
 }
 
-func (i RoleRefArgs) ToRoleRefPtrOutput() RoleRefPtrOutput {
-	return i.ToRoleRefPtrOutputWithContext(context.Background())
-}
-
-func (i RoleRefArgs) ToRoleRefPtrOutputWithContext(ctx context.Context) RoleRefPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoleRefOutput).ToRoleRefPtrOutputWithContext(ctx)
-}
-
-// RoleRefPtrInput is an input type that accepts RoleRefArgs, RoleRefPtr and RoleRefPtrOutput values.
-// You can construct a concrete instance of `RoleRefPtrInput` via:
-//
-//          RoleRefArgs{...}
-//
-//  or:
-//
-//          nil
-type RoleRefPtrInput interface {
-	pulumi.Input
-
-	ToRoleRefPtrOutput() RoleRefPtrOutput
-	ToRoleRefPtrOutputWithContext(context.Context) RoleRefPtrOutput
-}
-
-type roleRefPtrType RoleRefArgs
-
-func RoleRefPtr(v *RoleRefArgs) RoleRefPtrInput {
-	return (*roleRefPtrType)(v)
-}
-
-func (*roleRefPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoleRef)(nil)).Elem()
-}
-
-func (i *roleRefPtrType) ToRoleRefPtrOutput() RoleRefPtrOutput {
-	return i.ToRoleRefPtrOutputWithContext(context.Background())
-}
-
-func (i *roleRefPtrType) ToRoleRefPtrOutputWithContext(ctx context.Context) RoleRefPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoleRefPtrOutput)
-}
-
 // RoleRef contains information that points to the role being used
 type RoleRefOutput struct{ *pulumi.OutputState }
 
@@ -1750,16 +1839,6 @@ func (o RoleRefOutput) ToRoleRefOutputWithContext(ctx context.Context) RoleRefOu
 	return o
 }
 
-func (o RoleRefOutput) ToRoleRefPtrOutput() RoleRefPtrOutput {
-	return o.ToRoleRefPtrOutputWithContext(context.Background())
-}
-
-func (o RoleRefOutput) ToRoleRefPtrOutputWithContext(ctx context.Context) RoleRefPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoleRef) *RoleRef {
-		return &v
-	}).(RoleRefPtrOutput)
-}
-
 // APIGroup is the group for the resource being referenced
 func (o RoleRefOutput) ApiGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v RoleRef) string { return v.ApiGroup }).(pulumi.StringOutput)
@@ -1773,60 +1852,6 @@ func (o RoleRefOutput) Kind() pulumi.StringOutput {
 // Name is the name of resource being referenced
 func (o RoleRefOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v RoleRef) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type RoleRefPtrOutput struct{ *pulumi.OutputState }
-
-func (RoleRefPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoleRef)(nil)).Elem()
-}
-
-func (o RoleRefPtrOutput) ToRoleRefPtrOutput() RoleRefPtrOutput {
-	return o
-}
-
-func (o RoleRefPtrOutput) ToRoleRefPtrOutputWithContext(ctx context.Context) RoleRefPtrOutput {
-	return o
-}
-
-func (o RoleRefPtrOutput) Elem() RoleRefOutput {
-	return o.ApplyT(func(v *RoleRef) RoleRef {
-		if v != nil {
-			return *v
-		}
-		var ret RoleRef
-		return ret
-	}).(RoleRefOutput)
-}
-
-// APIGroup is the group for the resource being referenced
-func (o RoleRefPtrOutput) ApiGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoleRef) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ApiGroup
-	}).(pulumi.StringPtrOutput)
-}
-
-// Kind is the type of resource being referenced
-func (o RoleRefPtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoleRef) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Kind
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name is the name of resource being referenced
-func (o RoleRefPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoleRef) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
 }
 
 // RoleRef contains information that points to the role being used
@@ -1872,6 +1897,47 @@ func (i RoleRefPatchArgs) ToRoleRefPatchOutputWithContext(ctx context.Context) R
 	return pulumi.ToOutputWithContext(ctx, i).(RoleRefPatchOutput)
 }
 
+func (i RoleRefPatchArgs) ToRoleRefPatchPtrOutput() RoleRefPatchPtrOutput {
+	return i.ToRoleRefPatchPtrOutputWithContext(context.Background())
+}
+
+func (i RoleRefPatchArgs) ToRoleRefPatchPtrOutputWithContext(ctx context.Context) RoleRefPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleRefPatchOutput).ToRoleRefPatchPtrOutputWithContext(ctx)
+}
+
+// RoleRefPatchPtrInput is an input type that accepts RoleRefPatchArgs, RoleRefPatchPtr and RoleRefPatchPtrOutput values.
+// You can construct a concrete instance of `RoleRefPatchPtrInput` via:
+//
+//          RoleRefPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type RoleRefPatchPtrInput interface {
+	pulumi.Input
+
+	ToRoleRefPatchPtrOutput() RoleRefPatchPtrOutput
+	ToRoleRefPatchPtrOutputWithContext(context.Context) RoleRefPatchPtrOutput
+}
+
+type roleRefPatchPtrType RoleRefPatchArgs
+
+func RoleRefPatchPtr(v *RoleRefPatchArgs) RoleRefPatchPtrInput {
+	return (*roleRefPatchPtrType)(v)
+}
+
+func (*roleRefPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleRefPatch)(nil)).Elem()
+}
+
+func (i *roleRefPatchPtrType) ToRoleRefPatchPtrOutput() RoleRefPatchPtrOutput {
+	return i.ToRoleRefPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *roleRefPatchPtrType) ToRoleRefPatchPtrOutputWithContext(ctx context.Context) RoleRefPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleRefPatchPtrOutput)
+}
+
 // RoleRef contains information that points to the role being used
 type RoleRefPatchOutput struct{ *pulumi.OutputState }
 
@@ -1887,6 +1953,16 @@ func (o RoleRefPatchOutput) ToRoleRefPatchOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o RoleRefPatchOutput) ToRoleRefPatchPtrOutput() RoleRefPatchPtrOutput {
+	return o.ToRoleRefPatchPtrOutputWithContext(context.Background())
+}
+
+func (o RoleRefPatchOutput) ToRoleRefPatchPtrOutputWithContext(ctx context.Context) RoleRefPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoleRefPatch) *RoleRefPatch {
+		return &v
+	}).(RoleRefPatchPtrOutput)
+}
+
 // APIGroup is the group for the resource being referenced
 func (o RoleRefPatchOutput) ApiGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RoleRefPatch) *string { return v.ApiGroup }).(pulumi.StringPtrOutput)
@@ -1900,6 +1976,60 @@ func (o RoleRefPatchOutput) Kind() pulumi.StringPtrOutput {
 // Name is the name of resource being referenced
 func (o RoleRefPatchOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RoleRefPatch) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type RoleRefPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (RoleRefPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleRefPatch)(nil)).Elem()
+}
+
+func (o RoleRefPatchPtrOutput) ToRoleRefPatchPtrOutput() RoleRefPatchPtrOutput {
+	return o
+}
+
+func (o RoleRefPatchPtrOutput) ToRoleRefPatchPtrOutputWithContext(ctx context.Context) RoleRefPatchPtrOutput {
+	return o
+}
+
+func (o RoleRefPatchPtrOutput) Elem() RoleRefPatchOutput {
+	return o.ApplyT(func(v *RoleRefPatch) RoleRefPatch {
+		if v != nil {
+			return *v
+		}
+		var ret RoleRefPatch
+		return ret
+	}).(RoleRefPatchOutput)
+}
+
+// APIGroup is the group for the resource being referenced
+func (o RoleRefPatchPtrOutput) ApiGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoleRefPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kind is the type of resource being referenced
+func (o RoleRefPatchPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoleRefPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name is the name of resource being referenced
+func (o RoleRefPatchPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoleRefPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 // Subject contains a reference to the object or user identities a role binding applies to.  This can either hold a direct API object reference, or a value for non-objects such as user and group names.
@@ -2076,6 +2206,31 @@ func (i SubjectPatchArgs) ToSubjectPatchOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SubjectPatchOutput)
 }
 
+// SubjectPatchArrayInput is an input type that accepts SubjectPatchArray and SubjectPatchArrayOutput values.
+// You can construct a concrete instance of `SubjectPatchArrayInput` via:
+//
+//          SubjectPatchArray{ SubjectPatchArgs{...} }
+type SubjectPatchArrayInput interface {
+	pulumi.Input
+
+	ToSubjectPatchArrayOutput() SubjectPatchArrayOutput
+	ToSubjectPatchArrayOutputWithContext(context.Context) SubjectPatchArrayOutput
+}
+
+type SubjectPatchArray []SubjectPatchInput
+
+func (SubjectPatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubjectPatch)(nil)).Elem()
+}
+
+func (i SubjectPatchArray) ToSubjectPatchArrayOutput() SubjectPatchArrayOutput {
+	return i.ToSubjectPatchArrayOutputWithContext(context.Background())
+}
+
+func (i SubjectPatchArray) ToSubjectPatchArrayOutputWithContext(ctx context.Context) SubjectPatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubjectPatchArrayOutput)
+}
+
 // Subject contains a reference to the object or user identities a role binding applies to.  This can either hold a direct API object reference, or a value for non-objects such as user and group names.
 type SubjectPatchOutput struct{ *pulumi.OutputState }
 
@@ -2111,10 +2266,31 @@ func (o SubjectPatchOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubjectPatch) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
+type SubjectPatchArrayOutput struct{ *pulumi.OutputState }
+
+func (SubjectPatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubjectPatch)(nil)).Elem()
+}
+
+func (o SubjectPatchArrayOutput) ToSubjectPatchArrayOutput() SubjectPatchArrayOutput {
+	return o
+}
+
+func (o SubjectPatchArrayOutput) ToSubjectPatchArrayOutputWithContext(ctx context.Context) SubjectPatchArrayOutput {
+	return o
+}
+
+func (o SubjectPatchArrayOutput) Index(i pulumi.IntInput) SubjectPatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubjectPatch {
+		return vs[0].([]SubjectPatch)[vs[1].(int)]
+	}).(SubjectPatchOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregationRuleInput)(nil)).Elem(), AggregationRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregationRulePtrInput)(nil)).Elem(), AggregationRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregationRulePatchInput)(nil)).Elem(), AggregationRulePatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregationRulePatchPtrInput)(nil)).Elem(), AggregationRulePatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRoleTypeInput)(nil)).Elem(), ClusterRoleTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRoleTypeArrayInput)(nil)).Elem(), ClusterRoleTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRoleBindingTypeInput)(nil)).Elem(), ClusterRoleBindingTypeArgs{})
@@ -2126,6 +2302,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRuleInput)(nil)).Elem(), PolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRuleArrayInput)(nil)).Elem(), PolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRulePatchInput)(nil)).Elem(), PolicyRulePatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRulePatchArrayInput)(nil)).Elem(), PolicyRulePatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleTypeInput)(nil)).Elem(), RoleTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleTypeArrayInput)(nil)).Elem(), RoleTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleBindingTypeInput)(nil)).Elem(), RoleBindingTypeArgs{})
@@ -2135,14 +2312,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleListTypeInput)(nil)).Elem(), RoleListTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolePatchTypeInput)(nil)).Elem(), RolePatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleRefInput)(nil)).Elem(), RoleRefArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RoleRefPtrInput)(nil)).Elem(), RoleRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleRefPatchInput)(nil)).Elem(), RoleRefPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoleRefPatchPtrInput)(nil)).Elem(), RoleRefPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubjectInput)(nil)).Elem(), SubjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubjectArrayInput)(nil)).Elem(), SubjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubjectPatchInput)(nil)).Elem(), SubjectPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubjectPatchArrayInput)(nil)).Elem(), SubjectPatchArray{})
 	pulumi.RegisterOutputType(AggregationRuleOutput{})
 	pulumi.RegisterOutputType(AggregationRulePtrOutput{})
 	pulumi.RegisterOutputType(AggregationRulePatchOutput{})
+	pulumi.RegisterOutputType(AggregationRulePatchPtrOutput{})
 	pulumi.RegisterOutputType(ClusterRoleTypeOutput{})
 	pulumi.RegisterOutputType(ClusterRoleTypeArrayOutput{})
 	pulumi.RegisterOutputType(ClusterRoleBindingTypeOutput{})
@@ -2154,6 +2333,7 @@ func init() {
 	pulumi.RegisterOutputType(PolicyRuleOutput{})
 	pulumi.RegisterOutputType(PolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(PolicyRulePatchOutput{})
+	pulumi.RegisterOutputType(PolicyRulePatchArrayOutput{})
 	pulumi.RegisterOutputType(RoleTypeOutput{})
 	pulumi.RegisterOutputType(RoleTypeArrayOutput{})
 	pulumi.RegisterOutputType(RoleBindingTypeOutput{})
@@ -2163,9 +2343,10 @@ func init() {
 	pulumi.RegisterOutputType(RoleListTypeOutput{})
 	pulumi.RegisterOutputType(RolePatchTypeOutput{})
 	pulumi.RegisterOutputType(RoleRefOutput{})
-	pulumi.RegisterOutputType(RoleRefPtrOutput{})
 	pulumi.RegisterOutputType(RoleRefPatchOutput{})
+	pulumi.RegisterOutputType(RoleRefPatchPtrOutput{})
 	pulumi.RegisterOutputType(SubjectOutput{})
 	pulumi.RegisterOutputType(SubjectArrayOutput{})
 	pulumi.RegisterOutputType(SubjectPatchOutput{})
+	pulumi.RegisterOutputType(SubjectPatchArrayOutput{})
 }

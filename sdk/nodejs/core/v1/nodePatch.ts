@@ -46,15 +46,15 @@ export class NodePatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec defines the behavior of a node. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public readonly spec!: pulumi.Output<outputs.core.v1.NodeSpec>;
+    public readonly spec!: pulumi.Output<outputs.core.v1.NodeSpecPatch>;
     /**
      * Most recently observed status of the node. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.core.v1.NodeStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.core.v1.NodeStatusPatch>;
 
     /**
      * Create a NodePatch resource with the given unique name, arguments, and options.
@@ -99,9 +99,9 @@ export interface NodePatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec defines the behavior of a node. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    spec?: pulumi.Input<inputs.core.v1.NodeSpec>;
+    spec?: pulumi.Input<inputs.core.v1.NodeSpecPatch>;
 }

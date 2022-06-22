@@ -19,8 +19,8 @@ class CSIStorageCapacityPatchArgs:
                  capacity: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  maximum_volume_size: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']] = None,
-                 node_topology: Optional[pulumi.Input['_meta.v1.LabelSelectorArgs']] = None,
+                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']] = None,
+                 node_topology: Optional[pulumi.Input['_meta.v1.LabelSelectorPatchArgs']] = None,
                  storage_class_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CSIStorageCapacityPatch resource.
@@ -32,12 +32,12 @@ class CSIStorageCapacityPatchArgs:
         :param pulumi.Input[str] maximum_volume_size: MaximumVolumeSize is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
                
                This is defined since CSI spec 1.4.0 as the largest size that may be used in a CreateVolumeRequest.capacity_range.required_bytes field to create a volume with the same parameters as those in GetCapacityRequest. The corresponding value in the Kubernetes API is ResourceRequirements.Requests in a volume claim.
-        :param pulumi.Input['_meta.v1.ObjectMetaArgs'] metadata: Standard object's metadata. The name has no particular meaning. It must be be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-<uuid>, a generated name, or a reverse-domain name which ends with the unique CSI driver name.
+        :param pulumi.Input['_meta.v1.ObjectMetaPatchArgs'] metadata: Standard object's metadata. The name has no particular meaning. It must be be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-<uuid>, a generated name, or a reverse-domain name which ends with the unique CSI driver name.
                
                Objects are namespaced.
                
                More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-        :param pulumi.Input['_meta.v1.LabelSelectorArgs'] node_topology: NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
+        :param pulumi.Input['_meta.v1.LabelSelectorPatchArgs'] node_topology: NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
         :param pulumi.Input[str] storage_class_name: The name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.
         """
         if api_version is not None:
@@ -109,7 +109,7 @@ class CSIStorageCapacityPatchArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]:
         """
         Standard object's metadata. The name has no particular meaning. It must be be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-<uuid>, a generated name, or a reverse-domain name which ends with the unique CSI driver name.
 
@@ -120,19 +120,19 @@ class CSIStorageCapacityPatchArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
     @pulumi.getter(name="nodeTopology")
-    def node_topology(self) -> Optional[pulumi.Input['_meta.v1.LabelSelectorArgs']]:
+    def node_topology(self) -> Optional[pulumi.Input['_meta.v1.LabelSelectorPatchArgs']]:
         """
         NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
         """
         return pulumi.get(self, "node_topology")
 
     @node_topology.setter
-    def node_topology(self, value: Optional[pulumi.Input['_meta.v1.LabelSelectorArgs']]):
+    def node_topology(self, value: Optional[pulumi.Input['_meta.v1.LabelSelectorPatchArgs']]):
         pulumi.set(self, "node_topology", value)
 
     @property
@@ -157,8 +157,8 @@ class CSIStorageCapacityPatch(pulumi.CustomResource):
                  capacity: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  maximum_volume_size: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
-                 node_topology: Optional[pulumi.Input[pulumi.InputType['_meta.v1.LabelSelectorArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
+                 node_topology: Optional[pulumi.Input[pulumi.InputType['_meta.v1.LabelSelectorPatchArgs']]] = None,
                  storage_class_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -182,12 +182,12 @@ class CSIStorageCapacityPatch(pulumi.CustomResource):
         :param pulumi.Input[str] maximum_volume_size: MaximumVolumeSize is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
                
                This is defined since CSI spec 1.4.0 as the largest size that may be used in a CreateVolumeRequest.capacity_range.required_bytes field to create a volume with the same parameters as those in GetCapacityRequest. The corresponding value in the Kubernetes API is ResourceRequirements.Requests in a volume claim.
-        :param pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']] metadata: Standard object's metadata. The name has no particular meaning. It must be be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-<uuid>, a generated name, or a reverse-domain name which ends with the unique CSI driver name.
+        :param pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']] metadata: Standard object's metadata. The name has no particular meaning. It must be be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-<uuid>, a generated name, or a reverse-domain name which ends with the unique CSI driver name.
                
                Objects are namespaced.
                
                More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-        :param pulumi.Input[pulumi.InputType['_meta.v1.LabelSelectorArgs']] node_topology: NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
+        :param pulumi.Input[pulumi.InputType['_meta.v1.LabelSelectorPatchArgs']] node_topology: NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
         :param pulumi.Input[str] storage_class_name: The name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.
         """
         ...
@@ -226,18 +226,13 @@ class CSIStorageCapacityPatch(pulumi.CustomResource):
                  capacity: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  maximum_volume_size: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
-                 node_topology: Optional[pulumi.Input[pulumi.InputType['_meta.v1.LabelSelectorArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
+                 node_topology: Optional[pulumi.Input[pulumi.InputType['_meta.v1.LabelSelectorPatchArgs']]] = None,
                  storage_class_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -250,7 +245,7 @@ class CSIStorageCapacityPatch(pulumi.CustomResource):
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["node_topology"] = node_topology
             __props__.__dict__["storage_class_name"] = storage_class_name
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:storage.k8s.io/v1beta1:CSIStorageCapacity"), pulumi.Alias(type_="kubernetes:storage.k8s.io/v1alpha1:CSIStorageCapacity")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:storage.k8s.io/v1beta1:CSIStorageCapacityPatch"), pulumi.Alias(type_="kubernetes:storage.k8s.io/v1alpha1:CSIStorageCapacityPatch")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(CSIStorageCapacityPatch, __self__).__init__(
             'kubernetes:storage.k8s.io/v1:CSIStorageCapacityPatch',
@@ -321,7 +316,7 @@ class CSIStorageCapacityPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Optional['_meta.v1.outputs.ObjectMeta']]:
+    def metadata(self) -> pulumi.Output[Optional['_meta.v1.outputs.ObjectMetaPatch']]:
         """
         Standard object's metadata. The name has no particular meaning. It must be be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-<uuid>, a generated name, or a reverse-domain name which ends with the unique CSI driver name.
 
@@ -333,7 +328,7 @@ class CSIStorageCapacityPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeTopology")
-    def node_topology(self) -> pulumi.Output[Optional['_meta.v1.outputs.LabelSelector']]:
+    def node_topology(self) -> pulumi.Output[Optional['_meta.v1.outputs.LabelSelectorPatch']]:
         """
         NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
         """
@@ -341,7 +336,7 @@ class CSIStorageCapacityPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storageClassName")
-    def storage_class_name(self) -> pulumi.Output[str]:
+    def storage_class_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.
         """

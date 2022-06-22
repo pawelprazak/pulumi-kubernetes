@@ -20,18 +20,18 @@ class EndpointSlicePatchArgs:
     def __init__(__self__, *,
                  address_type: Optional[pulumi.Input[str]] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointArgs']]]] = None,
+                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointPatchArgs']]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointPortArgs']]]] = None):
+                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointPortPatchArgs']]]] = None):
         """
         The set of arguments for constructing a EndpointSlicePatch resource.
         :param pulumi.Input[str] address_type: addressType specifies the type of address carried by this EndpointSlice. All addresses in this slice must be the same type. This field is immutable after creation. The following address types are currently supported: * IPv4: Represents an IPv4 Address. * IPv6: Represents an IPv6 Address. * FQDN: Represents a Fully Qualified Domain Name.
         :param pulumi.Input[str] api_version: APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-        :param pulumi.Input[Sequence[pulumi.Input['EndpointArgs']]] endpoints: endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000 endpoints.
+        :param pulumi.Input[Sequence[pulumi.Input['EndpointPatchArgs']]] endpoints: endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000 endpoints.
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-        :param pulumi.Input['_meta.v1.ObjectMetaArgs'] metadata: Standard object's metadata.
-        :param pulumi.Input[Sequence[pulumi.Input['EndpointPortArgs']]] ports: ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. When ports is empty, it indicates that there are no defined ports. When a port is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of 100 ports.
+        :param pulumi.Input['_meta.v1.ObjectMetaPatchArgs'] metadata: Standard object's metadata.
+        :param pulumi.Input[Sequence[pulumi.Input['EndpointPortPatchArgs']]] ports: ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. When ports is empty, it indicates that there are no defined ports. When a port is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of 100 ports.
         """
         if address_type is not None:
             pulumi.set(__self__, "address_type", address_type)
@@ -72,14 +72,14 @@ class EndpointSlicePatchArgs:
 
     @property
     @pulumi.getter
-    def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EndpointArgs']]]]:
+    def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EndpointPatchArgs']]]]:
         """
         endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000 endpoints.
         """
         return pulumi.get(self, "endpoints")
 
     @endpoints.setter
-    def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointArgs']]]]):
+    def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointPatchArgs']]]]):
         pulumi.set(self, "endpoints", value)
 
     @property
@@ -96,26 +96,26 @@ class EndpointSlicePatchArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]:
         """
         Standard object's metadata.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EndpointPortArgs']]]]:
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EndpointPortPatchArgs']]]]:
         """
         ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. When ports is empty, it indicates that there are no defined ports. When a port is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of 100 ports.
         """
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointPortArgs']]]]):
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointPortPatchArgs']]]]):
         pulumi.set(self, "ports", value)
 
 
@@ -126,10 +126,10 @@ class EndpointSlicePatch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_type: Optional[pulumi.Input[str]] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointArgs']]]]] = None,
+                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointPatchArgs']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointPortArgs']]]]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointPortPatchArgs']]]]] = None,
                  __props__=None):
         """
         EndpointSlice represents a subset of the endpoints that implement a service. For a given service there may be multiple EndpointSlice objects, selected by labels, which must be joined to produce the full set of endpoints.
@@ -138,10 +138,10 @@ class EndpointSlicePatch(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_type: addressType specifies the type of address carried by this EndpointSlice. All addresses in this slice must be the same type. This field is immutable after creation. The following address types are currently supported: * IPv4: Represents an IPv4 Address. * IPv6: Represents an IPv6 Address. * FQDN: Represents a Fully Qualified Domain Name.
         :param pulumi.Input[str] api_version: APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointArgs']]]] endpoints: endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000 endpoints.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointPatchArgs']]]] endpoints: endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000 endpoints.
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-        :param pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']] metadata: Standard object's metadata.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointPortArgs']]]] ports: ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. When ports is empty, it indicates that there are no defined ports. When a port is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of 100 ports.
+        :param pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']] metadata: Standard object's metadata.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointPortPatchArgs']]]] ports: ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. When ports is empty, it indicates that there are no defined ports. When a port is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of 100 ports.
         """
         ...
     @overload
@@ -169,19 +169,14 @@ class EndpointSlicePatch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_type: Optional[pulumi.Input[str]] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointArgs']]]]] = None,
+                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointPatchArgs']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointPortArgs']]]]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointPortPatchArgs']]]]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -193,7 +188,7 @@ class EndpointSlicePatch(pulumi.CustomResource):
             __props__.__dict__["kind"] = 'EndpointSlice'
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["ports"] = ports
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:discovery.k8s.io/v1:EndpointSlice")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:discovery.k8s.io/v1:EndpointSlicePatch")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(EndpointSlicePatch, __self__).__init__(
             'kubernetes:discovery.k8s.io/v1beta1:EndpointSlicePatch',
@@ -227,7 +222,7 @@ class EndpointSlicePatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="addressType")
-    def address_type(self) -> pulumi.Output[str]:
+    def address_type(self) -> pulumi.Output[Optional[str]]:
         """
         addressType specifies the type of address carried by this EndpointSlice. All addresses in this slice must be the same type. This field is immutable after creation. The following address types are currently supported: * IPv4: Represents an IPv4 Address. * IPv6: Represents an IPv6 Address. * FQDN: Represents a Fully Qualified Domain Name.
         """
@@ -243,7 +238,7 @@ class EndpointSlicePatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def endpoints(self) -> pulumi.Output[Sequence['outputs.Endpoint']]:
+    def endpoints(self) -> pulumi.Output[Optional[Sequence['outputs.EndpointPatch']]]:
         """
         endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000 endpoints.
         """
@@ -259,7 +254,7 @@ class EndpointSlicePatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Optional['_meta.v1.outputs.ObjectMeta']]:
+    def metadata(self) -> pulumi.Output[Optional['_meta.v1.outputs.ObjectMetaPatch']]:
         """
         Standard object's metadata.
         """
@@ -267,7 +262,7 @@ class EndpointSlicePatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ports(self) -> pulumi.Output[Optional[Sequence['outputs.EndpointPort']]]:
+    def ports(self) -> pulumi.Output[Optional[Sequence['outputs.EndpointPortPatch']]]:
         """
         ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. When ports is empty, it indicates that there are no defined ports. When a port is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of 100 ports.
         """

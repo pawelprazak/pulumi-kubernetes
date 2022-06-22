@@ -46,15 +46,15 @@ export class DaemonSetPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * The desired behavior of this daemon set. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public readonly spec!: pulumi.Output<outputs.apps.v1.DaemonSetSpec>;
+    public readonly spec!: pulumi.Output<outputs.apps.v1.DaemonSetSpecPatch>;
     /**
      * The current status of this daemon set. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.apps.v1.DaemonSetStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.apps.v1.DaemonSetStatusPatch>;
 
     /**
      * Create a DaemonSetPatch resource with the given unique name, arguments, and options.
@@ -80,7 +80,7 @@ export class DaemonSetPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:apps/v1beta2:DaemonSet" }, { type: "kubernetes:extensions/v1beta1:DaemonSet" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:apps/v1beta2:DaemonSetPatch" }, { type: "kubernetes:extensions/v1beta1:DaemonSetPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DaemonSetPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -101,9 +101,9 @@ export interface DaemonSetPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * The desired behavior of this daemon set. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    spec?: pulumi.Input<inputs.apps.v1.DaemonSetSpec>;
+    spec?: pulumi.Input<inputs.apps.v1.DaemonSetSpecPatch>;
 }

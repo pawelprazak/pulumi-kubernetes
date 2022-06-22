@@ -19,14 +19,14 @@ class MutatingWebhookConfigurationPatchArgs:
     def __init__(__self__, *,
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']] = None,
-                 webhooks: Optional[pulumi.Input[Sequence[pulumi.Input['MutatingWebhookArgs']]]] = None):
+                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']] = None,
+                 webhooks: Optional[pulumi.Input[Sequence[pulumi.Input['MutatingWebhookPatchArgs']]]] = None):
         """
         The set of arguments for constructing a MutatingWebhookConfigurationPatch resource.
         :param pulumi.Input[str] api_version: APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-        :param pulumi.Input['_meta.v1.ObjectMetaArgs'] metadata: Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
-        :param pulumi.Input[Sequence[pulumi.Input['MutatingWebhookArgs']]] webhooks: Webhooks is a list of webhooks and the affected resources and operations.
+        :param pulumi.Input['_meta.v1.ObjectMetaPatchArgs'] metadata: Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
+        :param pulumi.Input[Sequence[pulumi.Input['MutatingWebhookPatchArgs']]] webhooks: Webhooks is a list of webhooks and the affected resources and operations.
         """
         if api_version is not None:
             pulumi.set(__self__, "api_version", 'admissionregistration.k8s.io/v1')
@@ -63,26 +63,26 @@ class MutatingWebhookConfigurationPatchArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]:
         """
         Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
     @pulumi.getter
-    def webhooks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MutatingWebhookArgs']]]]:
+    def webhooks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MutatingWebhookPatchArgs']]]]:
         """
         Webhooks is a list of webhooks and the affected resources and operations.
         """
         return pulumi.get(self, "webhooks")
 
     @webhooks.setter
-    def webhooks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MutatingWebhookArgs']]]]):
+    def webhooks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MutatingWebhookPatchArgs']]]]):
         pulumi.set(self, "webhooks", value)
 
 
@@ -93,8 +93,8 @@ class MutatingWebhookConfigurationPatch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
-                 webhooks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MutatingWebhookArgs']]]]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
+                 webhooks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MutatingWebhookPatchArgs']]]]] = None,
                  __props__=None):
         """
         MutatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and may change the object.
@@ -103,8 +103,8 @@ class MutatingWebhookConfigurationPatch(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_version: APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-        :param pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']] metadata: Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MutatingWebhookArgs']]]] webhooks: Webhooks is a list of webhooks and the affected resources and operations.
+        :param pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']] metadata: Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MutatingWebhookPatchArgs']]]] webhooks: Webhooks is a list of webhooks and the affected resources and operations.
         """
         ...
     @overload
@@ -132,17 +132,12 @@ class MutatingWebhookConfigurationPatch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
-                 webhooks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MutatingWebhookArgs']]]]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
+                 webhooks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MutatingWebhookPatchArgs']]]]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -152,7 +147,7 @@ class MutatingWebhookConfigurationPatch(pulumi.CustomResource):
             __props__.__dict__["kind"] = 'MutatingWebhookConfiguration'
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["webhooks"] = webhooks
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:admissionregistration.k8s.io/v1beta1:MutatingWebhookConfiguration")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:admissionregistration.k8s.io/v1beta1:MutatingWebhookConfigurationPatch")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(MutatingWebhookConfigurationPatch, __self__).__init__(
             'kubernetes:admissionregistration.k8s.io/v1:MutatingWebhookConfigurationPatch',
@@ -200,7 +195,7 @@ class MutatingWebhookConfigurationPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Optional['_meta.v1.outputs.ObjectMeta']]:
+    def metadata(self) -> pulumi.Output[Optional['_meta.v1.outputs.ObjectMetaPatch']]:
         """
         Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
         """
@@ -208,7 +203,7 @@ class MutatingWebhookConfigurationPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def webhooks(self) -> pulumi.Output[Optional[Sequence['outputs.MutatingWebhook']]]:
+    def webhooks(self) -> pulumi.Output[Optional[Sequence['outputs.MutatingWebhookPatch']]]:
         """
         Webhooks is a list of webhooks and the affected resources and operations.
         """

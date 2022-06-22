@@ -187,6 +187,47 @@ func (i OverheadPatchArgs) ToOverheadPatchOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(OverheadPatchOutput)
 }
 
+func (i OverheadPatchArgs) ToOverheadPatchPtrOutput() OverheadPatchPtrOutput {
+	return i.ToOverheadPatchPtrOutputWithContext(context.Background())
+}
+
+func (i OverheadPatchArgs) ToOverheadPatchPtrOutputWithContext(ctx context.Context) OverheadPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OverheadPatchOutput).ToOverheadPatchPtrOutputWithContext(ctx)
+}
+
+// OverheadPatchPtrInput is an input type that accepts OverheadPatchArgs, OverheadPatchPtr and OverheadPatchPtrOutput values.
+// You can construct a concrete instance of `OverheadPatchPtrInput` via:
+//
+//          OverheadPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type OverheadPatchPtrInput interface {
+	pulumi.Input
+
+	ToOverheadPatchPtrOutput() OverheadPatchPtrOutput
+	ToOverheadPatchPtrOutputWithContext(context.Context) OverheadPatchPtrOutput
+}
+
+type overheadPatchPtrType OverheadPatchArgs
+
+func OverheadPatchPtr(v *OverheadPatchArgs) OverheadPatchPtrInput {
+	return (*overheadPatchPtrType)(v)
+}
+
+func (*overheadPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OverheadPatch)(nil)).Elem()
+}
+
+func (i *overheadPatchPtrType) ToOverheadPatchPtrOutput() OverheadPatchPtrOutput {
+	return i.ToOverheadPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *overheadPatchPtrType) ToOverheadPatchPtrOutputWithContext(ctx context.Context) OverheadPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OverheadPatchPtrOutput)
+}
+
 // Overhead structure represents the resource overhead associated with running a pod.
 type OverheadPatchOutput struct{ *pulumi.OutputState }
 
@@ -202,9 +243,53 @@ func (o OverheadPatchOutput) ToOverheadPatchOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o OverheadPatchOutput) ToOverheadPatchPtrOutput() OverheadPatchPtrOutput {
+	return o.ToOverheadPatchPtrOutputWithContext(context.Background())
+}
+
+func (o OverheadPatchOutput) ToOverheadPatchPtrOutputWithContext(ctx context.Context) OverheadPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OverheadPatch) *OverheadPatch {
+		return &v
+	}).(OverheadPatchPtrOutput)
+}
+
 // PodFixed represents the fixed resource overhead associated with running a pod.
 func (o OverheadPatchOutput) PodFixed() pulumi.StringMapOutput {
 	return o.ApplyT(func(v OverheadPatch) map[string]string { return v.PodFixed }).(pulumi.StringMapOutput)
+}
+
+type OverheadPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (OverheadPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OverheadPatch)(nil)).Elem()
+}
+
+func (o OverheadPatchPtrOutput) ToOverheadPatchPtrOutput() OverheadPatchPtrOutput {
+	return o
+}
+
+func (o OverheadPatchPtrOutput) ToOverheadPatchPtrOutputWithContext(ctx context.Context) OverheadPatchPtrOutput {
+	return o
+}
+
+func (o OverheadPatchPtrOutput) Elem() OverheadPatchOutput {
+	return o.ApplyT(func(v *OverheadPatch) OverheadPatch {
+		if v != nil {
+			return *v
+		}
+		var ret OverheadPatch
+		return ret
+	}).(OverheadPatchOutput)
+}
+
+// PodFixed represents the fixed resource overhead associated with running a pod.
+func (o OverheadPatchPtrOutput) PodFixed() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *OverheadPatch) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.PodFixed
+	}).(pulumi.StringMapOutput)
 }
 
 // RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is used to determine which container runtime is used to run all containers in a pod. RuntimeClasses are (currently) manually defined by a user or cluster provisioner, and referenced in the PodSpec. The Kubelet is responsible for resolving the RuntimeClassName reference before running the pod.  For more details, see https://git.k8s.io/enhancements/keps/sig-node/585-runtime-class
@@ -443,11 +528,11 @@ type RuntimeClassPatchType struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/688-pod-overhead/README.md
-	Overhead *Overhead `pulumi:"overhead"`
+	Overhead *OverheadPatch `pulumi:"overhead"`
 	// Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.
-	Scheduling *Scheduling `pulumi:"scheduling"`
+	Scheduling *SchedulingPatch `pulumi:"scheduling"`
 }
 
 // RuntimeClassPatchTypeInput is an input type that accepts RuntimeClassPatchTypeArgs and RuntimeClassPatchTypeOutput values.
@@ -470,11 +555,11 @@ type RuntimeClassPatchTypeArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrInput `pulumi:"metadata"`
 	// Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/688-pod-overhead/README.md
-	Overhead OverheadPtrInput `pulumi:"overhead"`
+	Overhead OverheadPatchPtrInput `pulumi:"overhead"`
 	// Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.
-	Scheduling SchedulingPtrInput `pulumi:"scheduling"`
+	Scheduling SchedulingPatchPtrInput `pulumi:"scheduling"`
 }
 
 func (RuntimeClassPatchTypeArgs) ElementType() reflect.Type {
@@ -520,18 +605,18 @@ func (o RuntimeClassPatchTypeOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o RuntimeClassPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v RuntimeClassPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o RuntimeClassPatchTypeOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v RuntimeClassPatchType) *metav1.ObjectMetaPatch { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/688-pod-overhead/README.md
-func (o RuntimeClassPatchTypeOutput) Overhead() OverheadPtrOutput {
-	return o.ApplyT(func(v RuntimeClassPatchType) *Overhead { return v.Overhead }).(OverheadPtrOutput)
+func (o RuntimeClassPatchTypeOutput) Overhead() OverheadPatchPtrOutput {
+	return o.ApplyT(func(v RuntimeClassPatchType) *OverheadPatch { return v.Overhead }).(OverheadPatchPtrOutput)
 }
 
 // Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.
-func (o RuntimeClassPatchTypeOutput) Scheduling() SchedulingPtrOutput {
-	return o.ApplyT(func(v RuntimeClassPatchType) *Scheduling { return v.Scheduling }).(SchedulingPtrOutput)
+func (o RuntimeClassPatchTypeOutput) Scheduling() SchedulingPatchPtrOutput {
+	return o.ApplyT(func(v RuntimeClassPatchType) *SchedulingPatch { return v.Scheduling }).(SchedulingPatchPtrOutput)
 }
 
 // Scheduling specifies the scheduling constraints for nodes supporting a RuntimeClass.
@@ -698,7 +783,7 @@ type SchedulingPatch struct {
 	// nodeSelector lists labels that must be present on nodes that support this RuntimeClass. Pods using this RuntimeClass can only be scheduled to a node matched by this selector. The RuntimeClass nodeSelector is merged with a pod's existing nodeSelector. Any conflicts will cause the pod to be rejected in admission.
 	NodeSelector map[string]string `pulumi:"nodeSelector"`
 	// tolerations are appended (excluding duplicates) to pods running with this RuntimeClass during admission, effectively unioning the set of nodes tolerated by the pod and the RuntimeClass.
-	Tolerations []corev1.Toleration `pulumi:"tolerations"`
+	Tolerations []corev1.TolerationPatch `pulumi:"tolerations"`
 }
 
 // SchedulingPatchInput is an input type that accepts SchedulingPatchArgs and SchedulingPatchOutput values.
@@ -717,7 +802,7 @@ type SchedulingPatchArgs struct {
 	// nodeSelector lists labels that must be present on nodes that support this RuntimeClass. Pods using this RuntimeClass can only be scheduled to a node matched by this selector. The RuntimeClass nodeSelector is merged with a pod's existing nodeSelector. Any conflicts will cause the pod to be rejected in admission.
 	NodeSelector pulumi.StringMapInput `pulumi:"nodeSelector"`
 	// tolerations are appended (excluding duplicates) to pods running with this RuntimeClass during admission, effectively unioning the set of nodes tolerated by the pod and the RuntimeClass.
-	Tolerations corev1.TolerationArrayInput `pulumi:"tolerations"`
+	Tolerations corev1.TolerationPatchArrayInput `pulumi:"tolerations"`
 }
 
 func (SchedulingPatchArgs) ElementType() reflect.Type {
@@ -730,6 +815,47 @@ func (i SchedulingPatchArgs) ToSchedulingPatchOutput() SchedulingPatchOutput {
 
 func (i SchedulingPatchArgs) ToSchedulingPatchOutputWithContext(ctx context.Context) SchedulingPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulingPatchOutput)
+}
+
+func (i SchedulingPatchArgs) ToSchedulingPatchPtrOutput() SchedulingPatchPtrOutput {
+	return i.ToSchedulingPatchPtrOutputWithContext(context.Background())
+}
+
+func (i SchedulingPatchArgs) ToSchedulingPatchPtrOutputWithContext(ctx context.Context) SchedulingPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulingPatchOutput).ToSchedulingPatchPtrOutputWithContext(ctx)
+}
+
+// SchedulingPatchPtrInput is an input type that accepts SchedulingPatchArgs, SchedulingPatchPtr and SchedulingPatchPtrOutput values.
+// You can construct a concrete instance of `SchedulingPatchPtrInput` via:
+//
+//          SchedulingPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type SchedulingPatchPtrInput interface {
+	pulumi.Input
+
+	ToSchedulingPatchPtrOutput() SchedulingPatchPtrOutput
+	ToSchedulingPatchPtrOutputWithContext(context.Context) SchedulingPatchPtrOutput
+}
+
+type schedulingPatchPtrType SchedulingPatchArgs
+
+func SchedulingPatchPtr(v *SchedulingPatchArgs) SchedulingPatchPtrInput {
+	return (*schedulingPatchPtrType)(v)
+}
+
+func (*schedulingPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchedulingPatch)(nil)).Elem()
+}
+
+func (i *schedulingPatchPtrType) ToSchedulingPatchPtrOutput() SchedulingPatchPtrOutput {
+	return i.ToSchedulingPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *schedulingPatchPtrType) ToSchedulingPatchPtrOutputWithContext(ctx context.Context) SchedulingPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulingPatchPtrOutput)
 }
 
 // Scheduling specifies the scheduling constraints for nodes supporting a RuntimeClass.
@@ -747,20 +873,75 @@ func (o SchedulingPatchOutput) ToSchedulingPatchOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o SchedulingPatchOutput) ToSchedulingPatchPtrOutput() SchedulingPatchPtrOutput {
+	return o.ToSchedulingPatchPtrOutputWithContext(context.Background())
+}
+
+func (o SchedulingPatchOutput) ToSchedulingPatchPtrOutputWithContext(ctx context.Context) SchedulingPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchedulingPatch) *SchedulingPatch {
+		return &v
+	}).(SchedulingPatchPtrOutput)
+}
+
 // nodeSelector lists labels that must be present on nodes that support this RuntimeClass. Pods using this RuntimeClass can only be scheduled to a node matched by this selector. The RuntimeClass nodeSelector is merged with a pod's existing nodeSelector. Any conflicts will cause the pod to be rejected in admission.
 func (o SchedulingPatchOutput) NodeSelector() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SchedulingPatch) map[string]string { return v.NodeSelector }).(pulumi.StringMapOutput)
 }
 
 // tolerations are appended (excluding duplicates) to pods running with this RuntimeClass during admission, effectively unioning the set of nodes tolerated by the pod and the RuntimeClass.
-func (o SchedulingPatchOutput) Tolerations() corev1.TolerationArrayOutput {
-	return o.ApplyT(func(v SchedulingPatch) []corev1.Toleration { return v.Tolerations }).(corev1.TolerationArrayOutput)
+func (o SchedulingPatchOutput) Tolerations() corev1.TolerationPatchArrayOutput {
+	return o.ApplyT(func(v SchedulingPatch) []corev1.TolerationPatch { return v.Tolerations }).(corev1.TolerationPatchArrayOutput)
+}
+
+type SchedulingPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (SchedulingPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchedulingPatch)(nil)).Elem()
+}
+
+func (o SchedulingPatchPtrOutput) ToSchedulingPatchPtrOutput() SchedulingPatchPtrOutput {
+	return o
+}
+
+func (o SchedulingPatchPtrOutput) ToSchedulingPatchPtrOutputWithContext(ctx context.Context) SchedulingPatchPtrOutput {
+	return o
+}
+
+func (o SchedulingPatchPtrOutput) Elem() SchedulingPatchOutput {
+	return o.ApplyT(func(v *SchedulingPatch) SchedulingPatch {
+		if v != nil {
+			return *v
+		}
+		var ret SchedulingPatch
+		return ret
+	}).(SchedulingPatchOutput)
+}
+
+// nodeSelector lists labels that must be present on nodes that support this RuntimeClass. Pods using this RuntimeClass can only be scheduled to a node matched by this selector. The RuntimeClass nodeSelector is merged with a pod's existing nodeSelector. Any conflicts will cause the pod to be rejected in admission.
+func (o SchedulingPatchPtrOutput) NodeSelector() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SchedulingPatch) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSelector
+	}).(pulumi.StringMapOutput)
+}
+
+// tolerations are appended (excluding duplicates) to pods running with this RuntimeClass during admission, effectively unioning the set of nodes tolerated by the pod and the RuntimeClass.
+func (o SchedulingPatchPtrOutput) Tolerations() corev1.TolerationPatchArrayOutput {
+	return o.ApplyT(func(v *SchedulingPatch) []corev1.TolerationPatch {
+		if v == nil {
+			return nil
+		}
+		return v.Tolerations
+	}).(corev1.TolerationPatchArrayOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OverheadInput)(nil)).Elem(), OverheadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OverheadPtrInput)(nil)).Elem(), OverheadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OverheadPatchInput)(nil)).Elem(), OverheadPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OverheadPatchPtrInput)(nil)).Elem(), OverheadPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeClassTypeInput)(nil)).Elem(), RuntimeClassTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeClassTypeArrayInput)(nil)).Elem(), RuntimeClassTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeClassListTypeInput)(nil)).Elem(), RuntimeClassListTypeArgs{})
@@ -768,9 +949,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingInput)(nil)).Elem(), SchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingPtrInput)(nil)).Elem(), SchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingPatchInput)(nil)).Elem(), SchedulingPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingPatchPtrInput)(nil)).Elem(), SchedulingPatchArgs{})
 	pulumi.RegisterOutputType(OverheadOutput{})
 	pulumi.RegisterOutputType(OverheadPtrOutput{})
 	pulumi.RegisterOutputType(OverheadPatchOutput{})
+	pulumi.RegisterOutputType(OverheadPatchPtrOutput{})
 	pulumi.RegisterOutputType(RuntimeClassTypeOutput{})
 	pulumi.RegisterOutputType(RuntimeClassTypeArrayOutput{})
 	pulumi.RegisterOutputType(RuntimeClassListTypeOutput{})
@@ -778,4 +961,5 @@ func init() {
 	pulumi.RegisterOutputType(SchedulingOutput{})
 	pulumi.RegisterOutputType(SchedulingPtrOutput{})
 	pulumi.RegisterOutputType(SchedulingPatchOutput{})
+	pulumi.RegisterOutputType(SchedulingPatchPtrOutput{})
 }

@@ -48,15 +48,15 @@ export class ReplicaSetPatch extends pulumi.CustomResource {
     /**
      * If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec defines the specification of the desired behavior of the ReplicaSet. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public readonly spec!: pulumi.Output<outputs.apps.v1beta2.ReplicaSetSpec>;
+    public readonly spec!: pulumi.Output<outputs.apps.v1beta2.ReplicaSetSpecPatch>;
     /**
      * Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.apps.v1beta2.ReplicaSetStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.apps.v1beta2.ReplicaSetStatusPatch>;
 
     /**
      * Create a ReplicaSetPatch resource with the given unique name, arguments, and options.
@@ -83,7 +83,7 @@ export class ReplicaSetPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:apps/v1:ReplicaSet" }, { type: "kubernetes:extensions/v1beta1:ReplicaSet" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:apps/v1:ReplicaSetPatch" }, { type: "kubernetes:extensions/v1beta1:ReplicaSetPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ReplicaSetPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -104,9 +104,9 @@ export interface ReplicaSetPatchArgs {
     /**
      * If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec defines the specification of the desired behavior of the ReplicaSet. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    spec?: pulumi.Input<inputs.apps.v1beta2.ReplicaSetSpec>;
+    spec?: pulumi.Input<inputs.apps.v1beta2.ReplicaSetSpecPatch>;
 }

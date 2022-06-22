@@ -71,15 +71,15 @@ export class ServicePatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec defines the behavior of a service. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public readonly spec!: pulumi.Output<outputs.core.v1.ServiceSpec>;
+    public readonly spec!: pulumi.Output<outputs.core.v1.ServiceSpecPatch>;
     /**
      * Most recently observed status of the service. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.core.v1.ServiceStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.core.v1.ServiceStatusPatch>;
 
     /**
      * Create a ServicePatch resource with the given unique name, arguments, and options.
@@ -124,9 +124,9 @@ export interface ServicePatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec defines the behavior of a service. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    spec?: pulumi.Input<inputs.core.v1.ServiceSpec>;
+    spec?: pulumi.Input<inputs.core.v1.ServiceSpecPatch>;
 }

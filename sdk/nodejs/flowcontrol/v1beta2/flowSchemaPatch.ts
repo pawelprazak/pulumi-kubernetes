@@ -46,15 +46,15 @@ export class FlowSchemaPatch extends pulumi.CustomResource {
     /**
      * `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public readonly spec!: pulumi.Output<outputs.flowcontrol.v1beta2.FlowSchemaSpec>;
+    public readonly spec!: pulumi.Output<outputs.flowcontrol.v1beta2.FlowSchemaSpecPatch>;
     /**
      * `status` is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.flowcontrol.v1beta2.FlowSchemaStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.flowcontrol.v1beta2.FlowSchemaStatusPatch>;
 
     /**
      * Create a FlowSchemaPatch resource with the given unique name, arguments, and options.
@@ -80,7 +80,7 @@ export class FlowSchemaPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:flowcontrol.apiserver.k8s.io/v1alpha1:FlowSchema" }, { type: "kubernetes:flowcontrol.apiserver.k8s.io/v1beta1:FlowSchema" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:flowcontrol.apiserver.k8s.io/v1alpha1:FlowSchemaPatch" }, { type: "kubernetes:flowcontrol.apiserver.k8s.io/v1beta1:FlowSchemaPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FlowSchemaPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -101,9 +101,9 @@ export interface FlowSchemaPatchArgs {
     /**
      * `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    spec?: pulumi.Input<inputs.flowcontrol.v1beta2.FlowSchemaSpec>;
+    spec?: pulumi.Input<inputs.flowcontrol.v1beta2.FlowSchemaSpecPatch>;
 }

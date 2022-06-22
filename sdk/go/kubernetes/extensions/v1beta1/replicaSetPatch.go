@@ -22,11 +22,11 @@ type ReplicaSetPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Spec defines the specification of the desired behavior of the ReplicaSet. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec ReplicaSetSpecPtrOutput `pulumi:"spec"`
+	Spec ReplicaSetSpecPatchPtrOutput `pulumi:"spec"`
 	// Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Status ReplicaSetStatusPtrOutput `pulumi:"status"`
+	Status ReplicaSetStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewReplicaSetPatch registers a new resource with the given unique name, arguments, and options.
@@ -40,10 +40,10 @@ func NewReplicaSetPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("ReplicaSet")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:apps/v1:ReplicaSet"),
+			Type: pulumi.String("kubernetes:apps/v1:ReplicaSetPatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:apps/v1beta2:ReplicaSet"),
+			Type: pulumi.String("kubernetes:apps/v1beta2:ReplicaSetPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -84,9 +84,9 @@ type replicaSetPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Spec defines the specification of the desired behavior of the ReplicaSet. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec *ReplicaSetSpec `pulumi:"spec"`
+	Spec *ReplicaSetSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a ReplicaSetPatch resource.
@@ -96,9 +96,9 @@ type ReplicaSetPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Spec defines the specification of the desired behavior of the ReplicaSet. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec ReplicaSetSpecPtrInput
+	Spec ReplicaSetSpecPatchPtrInput
 }
 
 func (ReplicaSetPatchArgs) ElementType() reflect.Type {
@@ -199,18 +199,18 @@ func (o ReplicaSetPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o ReplicaSetPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *ReplicaSetPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o ReplicaSetPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *ReplicaSetPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Spec defines the specification of the desired behavior of the ReplicaSet. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o ReplicaSetPatchOutput) Spec() ReplicaSetSpecPtrOutput {
-	return o.ApplyT(func(v *ReplicaSetPatch) ReplicaSetSpecPtrOutput { return v.Spec }).(ReplicaSetSpecPtrOutput)
+func (o ReplicaSetPatchOutput) Spec() ReplicaSetSpecPatchPtrOutput {
+	return o.ApplyT(func(v *ReplicaSetPatch) ReplicaSetSpecPatchPtrOutput { return v.Spec }).(ReplicaSetSpecPatchPtrOutput)
 }
 
 // Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o ReplicaSetPatchOutput) Status() ReplicaSetStatusPtrOutput {
-	return o.ApplyT(func(v *ReplicaSetPatch) ReplicaSetStatusPtrOutput { return v.Status }).(ReplicaSetStatusPtrOutput)
+func (o ReplicaSetPatchOutput) Status() ReplicaSetStatusPatchPtrOutput {
+	return o.ApplyT(func(v *ReplicaSetPatch) ReplicaSetStatusPatchPtrOutput { return v.Status }).(ReplicaSetStatusPatchPtrOutput)
 }
 
 type ReplicaSetPatchArrayOutput struct{ *pulumi.OutputState }

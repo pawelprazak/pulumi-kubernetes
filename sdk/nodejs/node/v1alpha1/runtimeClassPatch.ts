@@ -46,11 +46,11 @@ export class RuntimeClassPatch extends pulumi.CustomResource {
     /**
      * More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the RuntimeClass More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public readonly spec!: pulumi.Output<outputs.node.v1alpha1.RuntimeClassSpec>;
+    public readonly spec!: pulumi.Output<outputs.node.v1alpha1.RuntimeClassSpecPatch>;
 
     /**
      * Create a RuntimeClassPatch resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class RuntimeClassPatch extends pulumi.CustomResource {
             resourceInputs["spec"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:node.k8s.io/v1:RuntimeClass" }, { type: "kubernetes:node.k8s.io/v1beta1:RuntimeClass" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:node.k8s.io/v1:RuntimeClassPatch" }, { type: "kubernetes:node.k8s.io/v1beta1:RuntimeClassPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RuntimeClassPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -95,9 +95,9 @@ export interface RuntimeClassPatchArgs {
     /**
      * More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the RuntimeClass More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    spec?: pulumi.Input<inputs.node.v1alpha1.RuntimeClassSpec>;
+    spec?: pulumi.Input<inputs.node.v1alpha1.RuntimeClassSpecPatch>;
 }

@@ -46,15 +46,15 @@ export class ReplicationControllerPatch extends pulumi.CustomResource {
     /**
      * If the Labels of a ReplicationController are empty, they are defaulted to be the same as the Pod(s) that the replication controller manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec defines the specification of the desired behavior of the replication controller. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public readonly spec!: pulumi.Output<outputs.core.v1.ReplicationControllerSpec>;
+    public readonly spec!: pulumi.Output<outputs.core.v1.ReplicationControllerSpecPatch>;
     /**
      * Status is the most recently observed status of the replication controller. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.core.v1.ReplicationControllerStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.core.v1.ReplicationControllerStatusPatch>;
 
     /**
      * Create a ReplicationControllerPatch resource with the given unique name, arguments, and options.
@@ -99,9 +99,9 @@ export interface ReplicationControllerPatchArgs {
     /**
      * If the Labels of a ReplicationController are empty, they are defaulted to be the same as the Pod(s) that the replication controller manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec defines the specification of the desired behavior of the replication controller. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    spec?: pulumi.Input<inputs.core.v1.ReplicationControllerSpec>;
+    spec?: pulumi.Input<inputs.core.v1.ReplicationControllerSpecPatch>;
 }

@@ -20,9 +20,9 @@ type IngressClassPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Spec is the desired state of the IngressClass. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec IngressClassSpecPtrOutput `pulumi:"spec"`
+	Spec IngressClassSpecPatchPtrOutput `pulumi:"spec"`
 }
 
 // NewIngressClassPatch registers a new resource with the given unique name, arguments, and options.
@@ -36,7 +36,7 @@ func NewIngressClassPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("IngressClass")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:networking.k8s.io/v1beta1:IngressClass"),
+			Type: pulumi.String("kubernetes:networking.k8s.io/v1beta1:IngressClassPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -77,9 +77,9 @@ type ingressClassPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Spec is the desired state of the IngressClass. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec *IngressClassSpec `pulumi:"spec"`
+	Spec *IngressClassSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a IngressClassPatch resource.
@@ -89,9 +89,9 @@ type IngressClassPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Spec is the desired state of the IngressClass. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec IngressClassSpecPtrInput
+	Spec IngressClassSpecPatchPtrInput
 }
 
 func (IngressClassPatchArgs) ElementType() reflect.Type {
@@ -192,13 +192,13 @@ func (o IngressClassPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o IngressClassPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *IngressClassPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o IngressClassPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *IngressClassPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Spec is the desired state of the IngressClass. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o IngressClassPatchOutput) Spec() IngressClassSpecPtrOutput {
-	return o.ApplyT(func(v *IngressClassPatch) IngressClassSpecPtrOutput { return v.Spec }).(IngressClassSpecPtrOutput)
+func (o IngressClassPatchOutput) Spec() IngressClassSpecPatchPtrOutput {
+	return o.ApplyT(func(v *IngressClassPatch) IngressClassSpecPatchPtrOutput { return v.Spec }).(IngressClassSpecPatchPtrOutput)
 }
 
 type IngressClassPatchArrayOutput struct{ *pulumi.OutputState }

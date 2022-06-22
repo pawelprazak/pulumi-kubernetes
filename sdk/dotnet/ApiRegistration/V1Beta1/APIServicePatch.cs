@@ -28,19 +28,19 @@ namespace Pulumi.Kubernetes.ApiRegistration.V1Beta1
         public Output<string> Kind { get; private set; } = null!;
 
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Spec contains information for locating and communicating with a server
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.ApiRegistration.V1Beta1.APIServiceSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.ApiRegistration.V1Beta1.APIServiceSpecPatch> Spec { get; private set; } = null!;
 
         /// <summary>
         /// Status contains derived information about an API server
         /// </summary>
         [Output("status")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.ApiRegistration.V1Beta1.APIServiceStatus> Status { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.ApiRegistration.V1Beta1.APIServiceStatusPatch> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -79,9 +79,9 @@ namespace Pulumi.Kubernetes.ApiRegistration.V1Beta1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:apiregistration.k8s.io/v1:APIService"},
-                    new Pulumi.Alias { Type = "kubernetes:apiregistration/v1:APIService"},
-                    new Pulumi.Alias { Type = "kubernetes:apiregistration/v1beta1:APIService"},
+                    new Pulumi.Alias { Type = "kubernetes:apiregistration.k8s.io/v1:APIServicePatch"},
+                    new Pulumi.Alias { Type = "kubernetes:apiregistration/v1:APIServicePatch"},
+                    new Pulumi.Alias { Type = "kubernetes:apiregistration/v1beta1:APIServicePatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -121,13 +121,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.ApiRegistration.V1Beta1
         public Input<string>? Kind { get; set; }
 
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// Spec contains information for locating and communicating with a server
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.ApiRegistration.V1Beta1.APIServiceSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.ApiRegistration.V1Beta1.APIServiceSpecPatchArgs>? Spec { get; set; }
 
         public APIServicePatchArgs()
         {

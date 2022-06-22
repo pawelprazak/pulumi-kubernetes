@@ -43,8 +43,8 @@ export class PodPresetPatch extends pulumi.CustomResource {
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
     public readonly kind!: pulumi.Output<"PodPreset">;
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
-    public readonly spec!: pulumi.Output<outputs.settings.v1alpha1.PodPresetSpec>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
+    public readonly spec!: pulumi.Output<outputs.settings.v1alpha1.PodPresetSpecPatch>;
 
     /**
      * Create a PodPresetPatch resource with the given unique name, arguments, and options.
@@ -84,6 +84,6 @@ export interface PodPresetPatchArgs {
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
     kind?: pulumi.Input<"PodPreset">;
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
-    spec?: pulumi.Input<inputs.settings.v1alpha1.PodPresetSpec>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
+    spec?: pulumi.Input<inputs.settings.v1alpha1.PodPresetSpecPatch>;
 }

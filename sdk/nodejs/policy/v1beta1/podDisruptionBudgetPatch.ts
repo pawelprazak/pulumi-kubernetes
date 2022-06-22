@@ -46,15 +46,15 @@ export class PodDisruptionBudgetPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the desired behavior of the PodDisruptionBudget.
      */
-    public readonly spec!: pulumi.Output<outputs.policy.v1beta1.PodDisruptionBudgetSpec>;
+    public readonly spec!: pulumi.Output<outputs.policy.v1beta1.PodDisruptionBudgetSpecPatch>;
     /**
      * Most recently observed status of the PodDisruptionBudget.
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.policy.v1beta1.PodDisruptionBudgetStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.policy.v1beta1.PodDisruptionBudgetStatusPatch>;
 
     /**
      * Create a PodDisruptionBudgetPatch resource with the given unique name, arguments, and options.
@@ -80,7 +80,7 @@ export class PodDisruptionBudgetPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:policy/v1:PodDisruptionBudget" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:policy/v1:PodDisruptionBudgetPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PodDisruptionBudgetPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -101,9 +101,9 @@ export interface PodDisruptionBudgetPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the desired behavior of the PodDisruptionBudget.
      */
-    spec?: pulumi.Input<inputs.policy.v1beta1.PodDisruptionBudgetSpec>;
+    spec?: pulumi.Input<inputs.policy.v1beta1.PodDisruptionBudgetSpecPatch>;
 }

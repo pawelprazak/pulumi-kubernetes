@@ -66,15 +66,15 @@ export class JobPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public readonly spec!: pulumi.Output<outputs.batch.v1.JobSpec>;
+    public readonly spec!: pulumi.Output<outputs.batch.v1.JobSpecPatch>;
     /**
      * Current status of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.batch.v1.JobStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.batch.v1.JobStatusPatch>;
 
     /**
      * Create a JobPatch resource with the given unique name, arguments, and options.
@@ -119,9 +119,9 @@ export interface JobPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    spec?: pulumi.Input<inputs.batch.v1.JobSpec>;
+    spec?: pulumi.Input<inputs.batch.v1.JobSpecPatch>;
 }

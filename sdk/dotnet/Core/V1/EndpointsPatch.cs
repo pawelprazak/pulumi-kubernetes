@@ -42,13 +42,13 @@ namespace Pulumi.Kubernetes.Core.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// The set of all endpoints is the union of all subsets. Addresses are placed into subsets according to the IPs they share. A single address with multiple ports, some of which are ready and some of which are not (because they come from different containers) will result in the address being displayed in different subsets for the different ports. No address will appear in both Addresses and NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service.
         /// </summary>
         [Output("subsets")]
-        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Core.V1.EndpointSubset>> Subsets { get; private set; } = null!;
+        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Core.V1.EndpointSubsetPatch>> Subsets { get; private set; } = null!;
 
 
         /// <summary>
@@ -126,17 +126,17 @@ namespace Pulumi.Kubernetes.Types.Inputs.Core.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         [Input("subsets")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.EndpointSubsetArgs>? _subsets;
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.EndpointSubsetPatchArgs>? _subsets;
 
         /// <summary>
         /// The set of all endpoints is the union of all subsets. Addresses are placed into subsets according to the IPs they share. A single address with multiple ports, some of which are ready and some of which are not (because they come from different containers) will result in the address being displayed in different subsets for the different ports. No address will appear in both Addresses and NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service.
         /// </summary>
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.EndpointSubsetArgs> Subsets
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.EndpointSubsetPatchArgs> Subsets
         {
-            get => _subsets ?? (_subsets = new InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.EndpointSubsetArgs>());
+            get => _subsets ?? (_subsets = new InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.EndpointSubsetPatchArgs>());
             set => _subsets = value;
         }
 

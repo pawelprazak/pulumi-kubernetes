@@ -98,11 +98,11 @@ type EvictionPatch struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion *string `pulumi:"apiVersion"`
 	// DeleteOptions may be provided
-	DeleteOptions *metav1.DeleteOptions `pulumi:"deleteOptions"`
+	DeleteOptions *metav1.DeleteOptionsPatch `pulumi:"deleteOptions"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// ObjectMeta describes the pod that is being evicted.
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 }
 
 // EvictionPatchInput is an input type that accepts EvictionPatchArgs and EvictionPatchOutput values.
@@ -121,11 +121,11 @@ type EvictionPatchArgs struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
 	// DeleteOptions may be provided
-	DeleteOptions metav1.DeleteOptionsPtrInput `pulumi:"deleteOptions"`
+	DeleteOptions metav1.DeleteOptionsPatchPtrInput `pulumi:"deleteOptions"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// ObjectMeta describes the pod that is being evicted.
-	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrInput `pulumi:"metadata"`
 }
 
 func (EvictionPatchArgs) ElementType() reflect.Type {
@@ -161,8 +161,8 @@ func (o EvictionPatchOutput) ApiVersion() pulumi.StringPtrOutput {
 }
 
 // DeleteOptions may be provided
-func (o EvictionPatchOutput) DeleteOptions() metav1.DeleteOptionsPtrOutput {
-	return o.ApplyT(func(v EvictionPatch) *metav1.DeleteOptions { return v.DeleteOptions }).(metav1.DeleteOptionsPtrOutput)
+func (o EvictionPatchOutput) DeleteOptions() metav1.DeleteOptionsPatchPtrOutput {
+	return o.ApplyT(func(v EvictionPatch) *metav1.DeleteOptionsPatch { return v.DeleteOptions }).(metav1.DeleteOptionsPatchPtrOutput)
 }
 
 // Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -171,8 +171,8 @@ func (o EvictionPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // ObjectMeta describes the pod that is being evicted.
-func (o EvictionPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v EvictionPatch) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o EvictionPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v EvictionPatch) *metav1.ObjectMetaPatch { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // PodDisruptionBudget is an object to define the max disruption that can be caused to a collection of pods
@@ -400,11 +400,11 @@ type PodDisruptionBudgetPatchType struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Specification of the desired behavior of the PodDisruptionBudget.
-	Spec *PodDisruptionBudgetSpec `pulumi:"spec"`
+	Spec *PodDisruptionBudgetSpecPatch `pulumi:"spec"`
 	// Most recently observed status of the PodDisruptionBudget.
-	Status *PodDisruptionBudgetStatus `pulumi:"status"`
+	Status *PodDisruptionBudgetStatusPatch `pulumi:"status"`
 }
 
 // PodDisruptionBudgetPatchTypeInput is an input type that accepts PodDisruptionBudgetPatchTypeArgs and PodDisruptionBudgetPatchTypeOutput values.
@@ -425,11 +425,11 @@ type PodDisruptionBudgetPatchTypeArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrInput `pulumi:"metadata"`
 	// Specification of the desired behavior of the PodDisruptionBudget.
-	Spec PodDisruptionBudgetSpecPtrInput `pulumi:"spec"`
+	Spec PodDisruptionBudgetSpecPatchPtrInput `pulumi:"spec"`
 	// Most recently observed status of the PodDisruptionBudget.
-	Status PodDisruptionBudgetStatusPtrInput `pulumi:"status"`
+	Status PodDisruptionBudgetStatusPatchPtrInput `pulumi:"status"`
 }
 
 func (PodDisruptionBudgetPatchTypeArgs) ElementType() reflect.Type {
@@ -470,18 +470,18 @@ func (o PodDisruptionBudgetPatchTypeOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o PodDisruptionBudgetPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v PodDisruptionBudgetPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o PodDisruptionBudgetPatchTypeOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v PodDisruptionBudgetPatchType) *metav1.ObjectMetaPatch { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Specification of the desired behavior of the PodDisruptionBudget.
-func (o PodDisruptionBudgetPatchTypeOutput) Spec() PodDisruptionBudgetSpecPtrOutput {
-	return o.ApplyT(func(v PodDisruptionBudgetPatchType) *PodDisruptionBudgetSpec { return v.Spec }).(PodDisruptionBudgetSpecPtrOutput)
+func (o PodDisruptionBudgetPatchTypeOutput) Spec() PodDisruptionBudgetSpecPatchPtrOutput {
+	return o.ApplyT(func(v PodDisruptionBudgetPatchType) *PodDisruptionBudgetSpecPatch { return v.Spec }).(PodDisruptionBudgetSpecPatchPtrOutput)
 }
 
 // Most recently observed status of the PodDisruptionBudget.
-func (o PodDisruptionBudgetPatchTypeOutput) Status() PodDisruptionBudgetStatusPtrOutput {
-	return o.ApplyT(func(v PodDisruptionBudgetPatchType) *PodDisruptionBudgetStatus { return v.Status }).(PodDisruptionBudgetStatusPtrOutput)
+func (o PodDisruptionBudgetPatchTypeOutput) Status() PodDisruptionBudgetStatusPatchPtrOutput {
+	return o.ApplyT(func(v PodDisruptionBudgetPatchType) *PodDisruptionBudgetStatusPatch { return v.Status }).(PodDisruptionBudgetStatusPatchPtrOutput)
 }
 
 // PodDisruptionBudgetSpec is a description of a PodDisruptionBudget.
@@ -669,7 +669,7 @@ type PodDisruptionBudgetSpecPatch struct {
 	// An eviction is allowed if at least "minAvailable" pods selected by "selector" will still be available after the eviction, i.e. even in the absence of the evicted pod.  So for example you can prevent all voluntary evictions by specifying "100%".
 	MinAvailable interface{} `pulumi:"minAvailable"`
 	// Label query over pods whose evictions are managed by the disruption budget. A null selector will match no pods, while an empty ({}) selector will select all pods within the namespace.
-	Selector *metav1.LabelSelector `pulumi:"selector"`
+	Selector *metav1.LabelSelectorPatch `pulumi:"selector"`
 }
 
 // PodDisruptionBudgetSpecPatchInput is an input type that accepts PodDisruptionBudgetSpecPatchArgs and PodDisruptionBudgetSpecPatchOutput values.
@@ -690,7 +690,7 @@ type PodDisruptionBudgetSpecPatchArgs struct {
 	// An eviction is allowed if at least "minAvailable" pods selected by "selector" will still be available after the eviction, i.e. even in the absence of the evicted pod.  So for example you can prevent all voluntary evictions by specifying "100%".
 	MinAvailable pulumi.Input `pulumi:"minAvailable"`
 	// Label query over pods whose evictions are managed by the disruption budget. A null selector will match no pods, while an empty ({}) selector will select all pods within the namespace.
-	Selector metav1.LabelSelectorPtrInput `pulumi:"selector"`
+	Selector metav1.LabelSelectorPatchPtrInput `pulumi:"selector"`
 }
 
 func (PodDisruptionBudgetSpecPatchArgs) ElementType() reflect.Type {
@@ -703,6 +703,47 @@ func (i PodDisruptionBudgetSpecPatchArgs) ToPodDisruptionBudgetSpecPatchOutput()
 
 func (i PodDisruptionBudgetSpecPatchArgs) ToPodDisruptionBudgetSpecPatchOutputWithContext(ctx context.Context) PodDisruptionBudgetSpecPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PodDisruptionBudgetSpecPatchOutput)
+}
+
+func (i PodDisruptionBudgetSpecPatchArgs) ToPodDisruptionBudgetSpecPatchPtrOutput() PodDisruptionBudgetSpecPatchPtrOutput {
+	return i.ToPodDisruptionBudgetSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (i PodDisruptionBudgetSpecPatchArgs) ToPodDisruptionBudgetSpecPatchPtrOutputWithContext(ctx context.Context) PodDisruptionBudgetSpecPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodDisruptionBudgetSpecPatchOutput).ToPodDisruptionBudgetSpecPatchPtrOutputWithContext(ctx)
+}
+
+// PodDisruptionBudgetSpecPatchPtrInput is an input type that accepts PodDisruptionBudgetSpecPatchArgs, PodDisruptionBudgetSpecPatchPtr and PodDisruptionBudgetSpecPatchPtrOutput values.
+// You can construct a concrete instance of `PodDisruptionBudgetSpecPatchPtrInput` via:
+//
+//          PodDisruptionBudgetSpecPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type PodDisruptionBudgetSpecPatchPtrInput interface {
+	pulumi.Input
+
+	ToPodDisruptionBudgetSpecPatchPtrOutput() PodDisruptionBudgetSpecPatchPtrOutput
+	ToPodDisruptionBudgetSpecPatchPtrOutputWithContext(context.Context) PodDisruptionBudgetSpecPatchPtrOutput
+}
+
+type podDisruptionBudgetSpecPatchPtrType PodDisruptionBudgetSpecPatchArgs
+
+func PodDisruptionBudgetSpecPatchPtr(v *PodDisruptionBudgetSpecPatchArgs) PodDisruptionBudgetSpecPatchPtrInput {
+	return (*podDisruptionBudgetSpecPatchPtrType)(v)
+}
+
+func (*podDisruptionBudgetSpecPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodDisruptionBudgetSpecPatch)(nil)).Elem()
+}
+
+func (i *podDisruptionBudgetSpecPatchPtrType) ToPodDisruptionBudgetSpecPatchPtrOutput() PodDisruptionBudgetSpecPatchPtrOutput {
+	return i.ToPodDisruptionBudgetSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *podDisruptionBudgetSpecPatchPtrType) ToPodDisruptionBudgetSpecPatchPtrOutputWithContext(ctx context.Context) PodDisruptionBudgetSpecPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodDisruptionBudgetSpecPatchPtrOutput)
 }
 
 // PodDisruptionBudgetSpec is a description of a PodDisruptionBudget.
@@ -720,6 +761,16 @@ func (o PodDisruptionBudgetSpecPatchOutput) ToPodDisruptionBudgetSpecPatchOutput
 	return o
 }
 
+func (o PodDisruptionBudgetSpecPatchOutput) ToPodDisruptionBudgetSpecPatchPtrOutput() PodDisruptionBudgetSpecPatchPtrOutput {
+	return o.ToPodDisruptionBudgetSpecPatchPtrOutputWithContext(context.Background())
+}
+
+func (o PodDisruptionBudgetSpecPatchOutput) ToPodDisruptionBudgetSpecPatchPtrOutputWithContext(ctx context.Context) PodDisruptionBudgetSpecPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PodDisruptionBudgetSpecPatch) *PodDisruptionBudgetSpecPatch {
+		return &v
+	}).(PodDisruptionBudgetSpecPatchPtrOutput)
+}
+
 // An eviction is allowed if at most "maxUnavailable" pods selected by "selector" are unavailable after the eviction, i.e. even in absence of the evicted pod. For example, one can prevent all voluntary evictions by specifying 0. This is a mutually exclusive setting with "minAvailable".
 func (o PodDisruptionBudgetSpecPatchOutput) MaxUnavailable() pulumi.AnyOutput {
 	return o.ApplyT(func(v PodDisruptionBudgetSpecPatch) interface{} { return v.MaxUnavailable }).(pulumi.AnyOutput)
@@ -731,8 +782,62 @@ func (o PodDisruptionBudgetSpecPatchOutput) MinAvailable() pulumi.AnyOutput {
 }
 
 // Label query over pods whose evictions are managed by the disruption budget. A null selector will match no pods, while an empty ({}) selector will select all pods within the namespace.
-func (o PodDisruptionBudgetSpecPatchOutput) Selector() metav1.LabelSelectorPtrOutput {
-	return o.ApplyT(func(v PodDisruptionBudgetSpecPatch) *metav1.LabelSelector { return v.Selector }).(metav1.LabelSelectorPtrOutput)
+func (o PodDisruptionBudgetSpecPatchOutput) Selector() metav1.LabelSelectorPatchPtrOutput {
+	return o.ApplyT(func(v PodDisruptionBudgetSpecPatch) *metav1.LabelSelectorPatch { return v.Selector }).(metav1.LabelSelectorPatchPtrOutput)
+}
+
+type PodDisruptionBudgetSpecPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (PodDisruptionBudgetSpecPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodDisruptionBudgetSpecPatch)(nil)).Elem()
+}
+
+func (o PodDisruptionBudgetSpecPatchPtrOutput) ToPodDisruptionBudgetSpecPatchPtrOutput() PodDisruptionBudgetSpecPatchPtrOutput {
+	return o
+}
+
+func (o PodDisruptionBudgetSpecPatchPtrOutput) ToPodDisruptionBudgetSpecPatchPtrOutputWithContext(ctx context.Context) PodDisruptionBudgetSpecPatchPtrOutput {
+	return o
+}
+
+func (o PodDisruptionBudgetSpecPatchPtrOutput) Elem() PodDisruptionBudgetSpecPatchOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetSpecPatch) PodDisruptionBudgetSpecPatch {
+		if v != nil {
+			return *v
+		}
+		var ret PodDisruptionBudgetSpecPatch
+		return ret
+	}).(PodDisruptionBudgetSpecPatchOutput)
+}
+
+// An eviction is allowed if at most "maxUnavailable" pods selected by "selector" are unavailable after the eviction, i.e. even in absence of the evicted pod. For example, one can prevent all voluntary evictions by specifying 0. This is a mutually exclusive setting with "minAvailable".
+func (o PodDisruptionBudgetSpecPatchPtrOutput) MaxUnavailable() pulumi.AnyOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetSpecPatch) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnavailable
+	}).(pulumi.AnyOutput)
+}
+
+// An eviction is allowed if at least "minAvailable" pods selected by "selector" will still be available after the eviction, i.e. even in the absence of the evicted pod.  So for example you can prevent all voluntary evictions by specifying "100%".
+func (o PodDisruptionBudgetSpecPatchPtrOutput) MinAvailable() pulumi.AnyOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetSpecPatch) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.MinAvailable
+	}).(pulumi.AnyOutput)
+}
+
+// Label query over pods whose evictions are managed by the disruption budget. A null selector will match no pods, while an empty ({}) selector will select all pods within the namespace.
+func (o PodDisruptionBudgetSpecPatchPtrOutput) Selector() metav1.LabelSelectorPatchPtrOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetSpecPatch) *metav1.LabelSelectorPatch {
+		if v == nil {
+			return nil
+		}
+		return v.Selector
+	}).(metav1.LabelSelectorPatchPtrOutput)
 }
 
 // PodDisruptionBudgetStatus represents information about the status of a PodDisruptionBudget. Status may trail the actual state of a system.
@@ -1032,7 +1137,7 @@ type PodDisruptionBudgetStatusPatch struct {
 	// - SufficientPods: There are more pods than required by the PodDisruptionBudget.
 	//                   The condition will be True, and the number of allowed
 	//                   disruptions are provided by the disruptionsAllowed property.
-	Conditions []metav1.Condition `pulumi:"conditions"`
+	Conditions []metav1.ConditionPatch `pulumi:"conditions"`
 	// current number of healthy pods
 	CurrentHealthy *int `pulumi:"currentHealthy"`
 	// minimum desired number of healthy pods
@@ -1069,7 +1174,7 @@ type PodDisruptionBudgetStatusPatchArgs struct {
 	// - SufficientPods: There are more pods than required by the PodDisruptionBudget.
 	//                   The condition will be True, and the number of allowed
 	//                   disruptions are provided by the disruptionsAllowed property.
-	Conditions metav1.ConditionArrayInput `pulumi:"conditions"`
+	Conditions metav1.ConditionPatchArrayInput `pulumi:"conditions"`
 	// current number of healthy pods
 	CurrentHealthy pulumi.IntPtrInput `pulumi:"currentHealthy"`
 	// minimum desired number of healthy pods
@@ -1096,6 +1201,47 @@ func (i PodDisruptionBudgetStatusPatchArgs) ToPodDisruptionBudgetStatusPatchOutp
 	return pulumi.ToOutputWithContext(ctx, i).(PodDisruptionBudgetStatusPatchOutput)
 }
 
+func (i PodDisruptionBudgetStatusPatchArgs) ToPodDisruptionBudgetStatusPatchPtrOutput() PodDisruptionBudgetStatusPatchPtrOutput {
+	return i.ToPodDisruptionBudgetStatusPatchPtrOutputWithContext(context.Background())
+}
+
+func (i PodDisruptionBudgetStatusPatchArgs) ToPodDisruptionBudgetStatusPatchPtrOutputWithContext(ctx context.Context) PodDisruptionBudgetStatusPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodDisruptionBudgetStatusPatchOutput).ToPodDisruptionBudgetStatusPatchPtrOutputWithContext(ctx)
+}
+
+// PodDisruptionBudgetStatusPatchPtrInput is an input type that accepts PodDisruptionBudgetStatusPatchArgs, PodDisruptionBudgetStatusPatchPtr and PodDisruptionBudgetStatusPatchPtrOutput values.
+// You can construct a concrete instance of `PodDisruptionBudgetStatusPatchPtrInput` via:
+//
+//          PodDisruptionBudgetStatusPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type PodDisruptionBudgetStatusPatchPtrInput interface {
+	pulumi.Input
+
+	ToPodDisruptionBudgetStatusPatchPtrOutput() PodDisruptionBudgetStatusPatchPtrOutput
+	ToPodDisruptionBudgetStatusPatchPtrOutputWithContext(context.Context) PodDisruptionBudgetStatusPatchPtrOutput
+}
+
+type podDisruptionBudgetStatusPatchPtrType PodDisruptionBudgetStatusPatchArgs
+
+func PodDisruptionBudgetStatusPatchPtr(v *PodDisruptionBudgetStatusPatchArgs) PodDisruptionBudgetStatusPatchPtrInput {
+	return (*podDisruptionBudgetStatusPatchPtrType)(v)
+}
+
+func (*podDisruptionBudgetStatusPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodDisruptionBudgetStatusPatch)(nil)).Elem()
+}
+
+func (i *podDisruptionBudgetStatusPatchPtrType) ToPodDisruptionBudgetStatusPatchPtrOutput() PodDisruptionBudgetStatusPatchPtrOutput {
+	return i.ToPodDisruptionBudgetStatusPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *podDisruptionBudgetStatusPatchPtrType) ToPodDisruptionBudgetStatusPatchPtrOutputWithContext(ctx context.Context) PodDisruptionBudgetStatusPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodDisruptionBudgetStatusPatchPtrOutput)
+}
+
 // PodDisruptionBudgetStatus represents information about the status of a PodDisruptionBudget. Status may trail the actual state of a system.
 type PodDisruptionBudgetStatusPatchOutput struct{ *pulumi.OutputState }
 
@@ -1111,6 +1257,16 @@ func (o PodDisruptionBudgetStatusPatchOutput) ToPodDisruptionBudgetStatusPatchOu
 	return o
 }
 
+func (o PodDisruptionBudgetStatusPatchOutput) ToPodDisruptionBudgetStatusPatchPtrOutput() PodDisruptionBudgetStatusPatchPtrOutput {
+	return o.ToPodDisruptionBudgetStatusPatchPtrOutputWithContext(context.Background())
+}
+
+func (o PodDisruptionBudgetStatusPatchOutput) ToPodDisruptionBudgetStatusPatchPtrOutputWithContext(ctx context.Context) PodDisruptionBudgetStatusPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PodDisruptionBudgetStatusPatch) *PodDisruptionBudgetStatusPatch {
+		return &v
+	}).(PodDisruptionBudgetStatusPatchPtrOutput)
+}
+
 // Conditions contain conditions for PDB. The disruption controller sets the DisruptionAllowed condition. The following are known values for the reason field (additional reasons could be added in the future): - SyncFailed: The controller encountered an error and wasn't able to compute
 //               the number of allowed disruptions. Therefore no disruptions are
 //               allowed and the status of the condition will be False.
@@ -1120,8 +1276,8 @@ func (o PodDisruptionBudgetStatusPatchOutput) ToPodDisruptionBudgetStatusPatchOu
 // - SufficientPods: There are more pods than required by the PodDisruptionBudget.
 //                   The condition will be True, and the number of allowed
 //                   disruptions are provided by the disruptionsAllowed property.
-func (o PodDisruptionBudgetStatusPatchOutput) Conditions() metav1.ConditionArrayOutput {
-	return o.ApplyT(func(v PodDisruptionBudgetStatusPatch) []metav1.Condition { return v.Conditions }).(metav1.ConditionArrayOutput)
+func (o PodDisruptionBudgetStatusPatchOutput) Conditions() metav1.ConditionPatchArrayOutput {
+	return o.ApplyT(func(v PodDisruptionBudgetStatusPatch) []metav1.ConditionPatch { return v.Conditions }).(metav1.ConditionPatchArrayOutput)
 }
 
 // current number of healthy pods
@@ -1154,6 +1310,108 @@ func (o PodDisruptionBudgetStatusPatchOutput) ObservedGeneration() pulumi.IntPtr
 	return o.ApplyT(func(v PodDisruptionBudgetStatusPatch) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
 }
 
+type PodDisruptionBudgetStatusPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (PodDisruptionBudgetStatusPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodDisruptionBudgetStatusPatch)(nil)).Elem()
+}
+
+func (o PodDisruptionBudgetStatusPatchPtrOutput) ToPodDisruptionBudgetStatusPatchPtrOutput() PodDisruptionBudgetStatusPatchPtrOutput {
+	return o
+}
+
+func (o PodDisruptionBudgetStatusPatchPtrOutput) ToPodDisruptionBudgetStatusPatchPtrOutputWithContext(ctx context.Context) PodDisruptionBudgetStatusPatchPtrOutput {
+	return o
+}
+
+func (o PodDisruptionBudgetStatusPatchPtrOutput) Elem() PodDisruptionBudgetStatusPatchOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetStatusPatch) PodDisruptionBudgetStatusPatch {
+		if v != nil {
+			return *v
+		}
+		var ret PodDisruptionBudgetStatusPatch
+		return ret
+	}).(PodDisruptionBudgetStatusPatchOutput)
+}
+
+// Conditions contain conditions for PDB. The disruption controller sets the DisruptionAllowed condition. The following are known values for the reason field (additional reasons could be added in the future): - SyncFailed: The controller encountered an error and wasn't able to compute
+//               the number of allowed disruptions. Therefore no disruptions are
+//               allowed and the status of the condition will be False.
+// - InsufficientPods: The number of pods are either at or below the number
+//                     required by the PodDisruptionBudget. No disruptions are
+//                     allowed and the status of the condition will be False.
+// - SufficientPods: There are more pods than required by the PodDisruptionBudget.
+//                   The condition will be True, and the number of allowed
+//                   disruptions are provided by the disruptionsAllowed property.
+func (o PodDisruptionBudgetStatusPatchPtrOutput) Conditions() metav1.ConditionPatchArrayOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetStatusPatch) []metav1.ConditionPatch {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(metav1.ConditionPatchArrayOutput)
+}
+
+// current number of healthy pods
+func (o PodDisruptionBudgetStatusPatchPtrOutput) CurrentHealthy() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetStatusPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CurrentHealthy
+	}).(pulumi.IntPtrOutput)
+}
+
+// minimum desired number of healthy pods
+func (o PodDisruptionBudgetStatusPatchPtrOutput) DesiredHealthy() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetStatusPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DesiredHealthy
+	}).(pulumi.IntPtrOutput)
+}
+
+// DisruptedPods contains information about pods whose eviction was processed by the API server eviction subresource handler but has not yet been observed by the PodDisruptionBudget controller. A pod will be in this map from the time when the API server processed the eviction request to the time when the pod is seen by PDB controller as having been marked for deletion (or after a timeout). The key in the map is the name of the pod and the value is the time when the API server processed the eviction request. If the deletion didn't occur and a pod is still there it will be removed from the list automatically by PodDisruptionBudget controller after some time. If everything goes smooth this map should be empty for the most of the time. Large number of entries in the map may indicate problems with pod deletions.
+func (o PodDisruptionBudgetStatusPatchPtrOutput) DisruptedPods() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetStatusPatch) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.DisruptedPods
+	}).(pulumi.StringMapOutput)
+}
+
+// Number of pod disruptions that are currently allowed.
+func (o PodDisruptionBudgetStatusPatchPtrOutput) DisruptionsAllowed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetStatusPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DisruptionsAllowed
+	}).(pulumi.IntPtrOutput)
+}
+
+// total number of pods counted by this disruption budget
+func (o PodDisruptionBudgetStatusPatchPtrOutput) ExpectedPods() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetStatusPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ExpectedPods
+	}).(pulumi.IntPtrOutput)
+}
+
+// Most recent generation observed when updating this PDB status. DisruptionsAllowed and other status information is valid only if observedGeneration equals to PDB's object generation.
+func (o PodDisruptionBudgetStatusPatchPtrOutput) ObservedGeneration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PodDisruptionBudgetStatusPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ObservedGeneration
+	}).(pulumi.IntPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EvictionInput)(nil)).Elem(), EvictionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EvictionPatchInput)(nil)).Elem(), EvictionPatchArgs{})
@@ -1164,9 +1422,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PodDisruptionBudgetSpecInput)(nil)).Elem(), PodDisruptionBudgetSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodDisruptionBudgetSpecPtrInput)(nil)).Elem(), PodDisruptionBudgetSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodDisruptionBudgetSpecPatchInput)(nil)).Elem(), PodDisruptionBudgetSpecPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PodDisruptionBudgetSpecPatchPtrInput)(nil)).Elem(), PodDisruptionBudgetSpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodDisruptionBudgetStatusInput)(nil)).Elem(), PodDisruptionBudgetStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodDisruptionBudgetStatusPtrInput)(nil)).Elem(), PodDisruptionBudgetStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodDisruptionBudgetStatusPatchInput)(nil)).Elem(), PodDisruptionBudgetStatusPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PodDisruptionBudgetStatusPatchPtrInput)(nil)).Elem(), PodDisruptionBudgetStatusPatchArgs{})
 	pulumi.RegisterOutputType(EvictionOutput{})
 	pulumi.RegisterOutputType(EvictionPatchOutput{})
 	pulumi.RegisterOutputType(PodDisruptionBudgetTypeOutput{})
@@ -1176,7 +1436,9 @@ func init() {
 	pulumi.RegisterOutputType(PodDisruptionBudgetSpecOutput{})
 	pulumi.RegisterOutputType(PodDisruptionBudgetSpecPtrOutput{})
 	pulumi.RegisterOutputType(PodDisruptionBudgetSpecPatchOutput{})
+	pulumi.RegisterOutputType(PodDisruptionBudgetSpecPatchPtrOutput{})
 	pulumi.RegisterOutputType(PodDisruptionBudgetStatusOutput{})
 	pulumi.RegisterOutputType(PodDisruptionBudgetStatusPtrOutput{})
 	pulumi.RegisterOutputType(PodDisruptionBudgetStatusPatchOutput{})
+	pulumi.RegisterOutputType(PodDisruptionBudgetStatusPatchPtrOutput{})
 }

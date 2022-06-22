@@ -46,11 +46,11 @@ export class BindingPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * The target object that you want to bind to the standard object.
      */
-    public readonly target!: pulumi.Output<outputs.core.v1.ObjectReference>;
+    public readonly target!: pulumi.Output<outputs.core.v1.ObjectReferencePatch>;
 
     /**
      * Create a BindingPatch resource with the given unique name, arguments, and options.
@@ -93,9 +93,9 @@ export interface BindingPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * The target object that you want to bind to the standard object.
      */
-    target?: pulumi.Input<inputs.core.v1.ObjectReference>;
+    target?: pulumi.Input<inputs.core.v1.ObjectReferencePatch>;
 }

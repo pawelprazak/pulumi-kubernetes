@@ -20,9 +20,9 @@ type NetworkPolicyPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Specification of the desired behavior for this NetworkPolicy.
-	Spec NetworkPolicySpecPtrOutput `pulumi:"spec"`
+	Spec NetworkPolicySpecPatchPtrOutput `pulumi:"spec"`
 }
 
 // NewNetworkPolicyPatch registers a new resource with the given unique name, arguments, and options.
@@ -36,7 +36,7 @@ func NewNetworkPolicyPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("NetworkPolicy")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:networking.k8s.io/v1:NetworkPolicy"),
+			Type: pulumi.String("kubernetes:networking.k8s.io/v1:NetworkPolicyPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -77,9 +77,9 @@ type networkPolicyPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Specification of the desired behavior for this NetworkPolicy.
-	Spec *NetworkPolicySpec `pulumi:"spec"`
+	Spec *NetworkPolicySpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a NetworkPolicyPatch resource.
@@ -89,9 +89,9 @@ type NetworkPolicyPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Specification of the desired behavior for this NetworkPolicy.
-	Spec NetworkPolicySpecPtrInput
+	Spec NetworkPolicySpecPatchPtrInput
 }
 
 func (NetworkPolicyPatchArgs) ElementType() reflect.Type {
@@ -192,13 +192,13 @@ func (o NetworkPolicyPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o NetworkPolicyPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *NetworkPolicyPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o NetworkPolicyPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *NetworkPolicyPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Specification of the desired behavior for this NetworkPolicy.
-func (o NetworkPolicyPatchOutput) Spec() NetworkPolicySpecPtrOutput {
-	return o.ApplyT(func(v *NetworkPolicyPatch) NetworkPolicySpecPtrOutput { return v.Spec }).(NetworkPolicySpecPtrOutput)
+func (o NetworkPolicyPatchOutput) Spec() NetworkPolicySpecPatchPtrOutput {
+	return o.ApplyT(func(v *NetworkPolicyPatch) NetworkPolicySpecPatchPtrOutput { return v.Spec }).(NetworkPolicySpecPatchPtrOutput)
 }
 
 type NetworkPolicyPatchArrayOutput struct{ *pulumi.OutputState }

@@ -28,19 +28,19 @@ namespace Pulumi.Kubernetes.Certificates.V1Beta1
         public Output<string> Kind { get; private set; } = null!;
 
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// The certificate request itself and any additional information.
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Certificates.V1Beta1.CertificateSigningRequestSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Certificates.V1Beta1.CertificateSigningRequestSpecPatch> Spec { get; private set; } = null!;
 
         /// <summary>
         /// Derived information about the request.
         /// </summary>
         [Output("status")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Certificates.V1Beta1.CertificateSigningRequestStatus> Status { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Certificates.V1Beta1.CertificateSigningRequestStatusPatch> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Pulumi.Kubernetes.Certificates.V1Beta1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:certificates.k8s.io/v1:CertificateSigningRequest"},
+                    new Pulumi.Alias { Type = "kubernetes:certificates.k8s.io/v1:CertificateSigningRequestPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -119,13 +119,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Certificates.V1Beta1
         public Input<string>? Kind { get; set; }
 
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// The certificate request itself and any additional information.
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Certificates.V1Beta1.CertificateSigningRequestSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Certificates.V1Beta1.CertificateSigningRequestSpecPatchArgs>? Spec { get; set; }
 
         public CertificateSigningRequestPatchArgs()
         {

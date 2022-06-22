@@ -29,6 +29,7 @@
         "admissionregistration/v1beta1/validatingWebhookConfigurationList.ts",
         "admissionregistration/v1beta1/validatingWebhookConfigurationPatch.ts",
         "apiextensions/customResource.ts",
+        "apiextensions/customResourcePatch.ts",
         "apiextensions/index.ts",
         "apiextensions/v1/customResourceDefinition.ts",
         "apiextensions/v1/customResourceDefinitionList.ts",

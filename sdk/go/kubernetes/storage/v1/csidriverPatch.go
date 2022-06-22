@@ -20,9 +20,9 @@ type CSIDriverPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object metadata. metadata.Name indicates the name of the CSI driver that this object refers to; it MUST be the same name returned by the CSI GetPluginName() call for that driver. The driver name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), dots (.), and alphanumerics between. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Specification of the CSI Driver.
-	Spec CSIDriverSpecOutput `pulumi:"spec"`
+	Spec CSIDriverSpecPatchPtrOutput `pulumi:"spec"`
 }
 
 // NewCSIDriverPatch registers a new resource with the given unique name, arguments, and options.
@@ -36,7 +36,7 @@ func NewCSIDriverPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("CSIDriver")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:storage.k8s.io/v1beta1:CSIDriver"),
+			Type: pulumi.String("kubernetes:storage.k8s.io/v1beta1:CSIDriverPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -77,9 +77,9 @@ type csidriverPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object metadata. metadata.Name indicates the name of the CSI driver that this object refers to; it MUST be the same name returned by the CSI GetPluginName() call for that driver. The driver name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), dots (.), and alphanumerics between. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Specification of the CSI Driver.
-	Spec *CSIDriverSpec `pulumi:"spec"`
+	Spec *CSIDriverSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a CSIDriverPatch resource.
@@ -89,9 +89,9 @@ type CSIDriverPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object metadata. metadata.Name indicates the name of the CSI driver that this object refers to; it MUST be the same name returned by the CSI GetPluginName() call for that driver. The driver name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), dots (.), and alphanumerics between. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Specification of the CSI Driver.
-	Spec CSIDriverSpecPtrInput
+	Spec CSIDriverSpecPatchPtrInput
 }
 
 func (CSIDriverPatchArgs) ElementType() reflect.Type {
@@ -192,13 +192,13 @@ func (o CSIDriverPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object metadata. metadata.Name indicates the name of the CSI driver that this object refers to; it MUST be the same name returned by the CSI GetPluginName() call for that driver. The driver name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), dots (.), and alphanumerics between. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o CSIDriverPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *CSIDriverPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o CSIDriverPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *CSIDriverPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Specification of the CSI Driver.
-func (o CSIDriverPatchOutput) Spec() CSIDriverSpecOutput {
-	return o.ApplyT(func(v *CSIDriverPatch) CSIDriverSpecOutput { return v.Spec }).(CSIDriverSpecOutput)
+func (o CSIDriverPatchOutput) Spec() CSIDriverSpecPatchPtrOutput {
+	return o.ApplyT(func(v *CSIDriverPatch) CSIDriverSpecPatchPtrOutput { return v.Spec }).(CSIDriverSpecPatchPtrOutput)
 }
 
 type CSIDriverPatchArrayOutput struct{ *pulumi.OutputState }

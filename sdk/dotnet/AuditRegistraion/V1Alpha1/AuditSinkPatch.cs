@@ -28,13 +28,13 @@ namespace Pulumi.Kubernetes.AuditRegistraion.V1Alpha1
         public Output<string> Kind { get; private set; } = null!;
 
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Spec defines the audit configuration spec
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.AuditRegistraion.V1Alpha1.AuditSinkSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.AuditRegistraion.V1Alpha1.AuditSinkSpecPatch> Spec { get; private set; } = null!;
 
 
         /// <summary>
@@ -109,13 +109,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.AuditRegistraion.V1Alpha1
         public Input<string>? Kind { get; set; }
 
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// Spec defines the audit configuration spec
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.AuditRegistraion.V1Alpha1.AuditSinkSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.AuditRegistraion.V1Alpha1.AuditSinkSpecPatchArgs>? Spec { get; set; }
 
         public AuditSinkPatchArgs()
         {

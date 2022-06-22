@@ -20,11 +20,11 @@ type CustomResourceDefinitionPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// spec describes how the user wants the resources to appear
-	Spec CustomResourceDefinitionSpecOutput `pulumi:"spec"`
+	Spec CustomResourceDefinitionSpecPatchPtrOutput `pulumi:"spec"`
 	// status indicates the actual state of the CustomResourceDefinition
-	Status CustomResourceDefinitionStatusPtrOutput `pulumi:"status"`
+	Status CustomResourceDefinitionStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewCustomResourceDefinitionPatch registers a new resource with the given unique name, arguments, and options.
@@ -38,7 +38,7 @@ func NewCustomResourceDefinitionPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("CustomResourceDefinition")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:apiextensions.k8s.io/v1beta1:CustomResourceDefinition"),
+			Type: pulumi.String("kubernetes:apiextensions.k8s.io/v1beta1:CustomResourceDefinitionPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -79,9 +79,9 @@ type customResourceDefinitionPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// spec describes how the user wants the resources to appear
-	Spec *CustomResourceDefinitionSpec `pulumi:"spec"`
+	Spec *CustomResourceDefinitionSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a CustomResourceDefinitionPatch resource.
@@ -91,9 +91,9 @@ type CustomResourceDefinitionPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// spec describes how the user wants the resources to appear
-	Spec CustomResourceDefinitionSpecPtrInput
+	Spec CustomResourceDefinitionSpecPatchPtrInput
 }
 
 func (CustomResourceDefinitionPatchArgs) ElementType() reflect.Type {
@@ -194,18 +194,18 @@ func (o CustomResourceDefinitionPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o CustomResourceDefinitionPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *CustomResourceDefinitionPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o CustomResourceDefinitionPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // spec describes how the user wants the resources to appear
-func (o CustomResourceDefinitionPatchOutput) Spec() CustomResourceDefinitionSpecOutput {
-	return o.ApplyT(func(v *CustomResourceDefinitionPatch) CustomResourceDefinitionSpecOutput { return v.Spec }).(CustomResourceDefinitionSpecOutput)
+func (o CustomResourceDefinitionPatchOutput) Spec() CustomResourceDefinitionSpecPatchPtrOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionPatch) CustomResourceDefinitionSpecPatchPtrOutput { return v.Spec }).(CustomResourceDefinitionSpecPatchPtrOutput)
 }
 
 // status indicates the actual state of the CustomResourceDefinition
-func (o CustomResourceDefinitionPatchOutput) Status() CustomResourceDefinitionStatusPtrOutput {
-	return o.ApplyT(func(v *CustomResourceDefinitionPatch) CustomResourceDefinitionStatusPtrOutput { return v.Status }).(CustomResourceDefinitionStatusPtrOutput)
+func (o CustomResourceDefinitionPatchOutput) Status() CustomResourceDefinitionStatusPatchPtrOutput {
+	return o.ApplyT(func(v *CustomResourceDefinitionPatch) CustomResourceDefinitionStatusPatchPtrOutput { return v.Status }).(CustomResourceDefinitionStatusPatchPtrOutput)
 }
 
 type CustomResourceDefinitionPatchArrayOutput struct{ *pulumi.OutputState }

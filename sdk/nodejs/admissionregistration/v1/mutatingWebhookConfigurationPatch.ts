@@ -46,11 +46,11 @@ export class MutatingWebhookConfigurationPatch extends pulumi.CustomResource {
     /**
      * Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Webhooks is a list of webhooks and the affected resources and operations.
      */
-    public readonly webhooks!: pulumi.Output<outputs.admissionregistration.v1.MutatingWebhook[]>;
+    public readonly webhooks!: pulumi.Output<outputs.admissionregistration.v1.MutatingWebhookPatch[]>;
 
     /**
      * Create a MutatingWebhookConfigurationPatch resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class MutatingWebhookConfigurationPatch extends pulumi.CustomResource {
             resourceInputs["webhooks"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:admissionregistration.k8s.io/v1beta1:MutatingWebhookConfiguration" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:admissionregistration.k8s.io/v1beta1:MutatingWebhookConfigurationPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(MutatingWebhookConfigurationPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -95,9 +95,9 @@ export interface MutatingWebhookConfigurationPatchArgs {
     /**
      * Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Webhooks is a list of webhooks and the affected resources and operations.
      */
-    webhooks?: pulumi.Input<pulumi.Input<inputs.admissionregistration.v1.MutatingWebhook>[]>;
+    webhooks?: pulumi.Input<pulumi.Input<inputs.admissionregistration.v1.MutatingWebhookPatch>[]>;
 }

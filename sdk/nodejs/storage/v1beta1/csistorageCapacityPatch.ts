@@ -70,11 +70,11 @@ export class CSIStorageCapacityPatch extends pulumi.CustomResource {
      *
      * More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
      */
-    public readonly nodeTopology!: pulumi.Output<outputs.meta.v1.LabelSelector>;
+    public readonly nodeTopology!: pulumi.Output<outputs.meta.v1.LabelSelectorPatch>;
     /**
      * The name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.
      */
@@ -108,7 +108,7 @@ export class CSIStorageCapacityPatch extends pulumi.CustomResource {
             resourceInputs["storageClassName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:storage.k8s.io/v1:CSIStorageCapacity" }, { type: "kubernetes:storage.k8s.io/v1alpha1:CSIStorageCapacity" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:storage.k8s.io/v1:CSIStorageCapacityPatch" }, { type: "kubernetes:storage.k8s.io/v1alpha1:CSIStorageCapacityPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CSIStorageCapacityPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -145,11 +145,11 @@ export interface CSIStorageCapacityPatchArgs {
      *
      * More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
      */
-    nodeTopology?: pulumi.Input<inputs.meta.v1.LabelSelector>;
+    nodeTopology?: pulumi.Input<inputs.meta.v1.LabelSelectorPatch>;
     /**
      * The name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.
      */

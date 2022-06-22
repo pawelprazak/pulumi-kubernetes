@@ -59,13 +59,13 @@ namespace Pulumi.Kubernetes.Storage.V1
         /// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
         /// </summary>
         [Output("nodeTopology")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.LabelSelector> NodeTopology { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.LabelSelectorPatch> NodeTopology { get; private set; } = null!;
 
         /// <summary>
         /// The name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.
@@ -110,8 +110,8 @@ namespace Pulumi.Kubernetes.Storage.V1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:storage.k8s.io/v1beta1:CSIStorageCapacity"},
-                    new Pulumi.Alias { Type = "kubernetes:storage.k8s.io/v1alpha1:CSIStorageCapacity"},
+                    new Pulumi.Alias { Type = "kubernetes:storage.k8s.io/v1beta1:CSIStorageCapacityPatch"},
+                    new Pulumi.Alias { Type = "kubernetes:storage.k8s.io/v1alpha1:CSIStorageCapacityPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -174,13 +174,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Storage.V1
         /// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
         /// </summary>
         [Input("nodeTopology")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.LabelSelectorArgs>? NodeTopology { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.LabelSelectorPatchArgs>? NodeTopology { get; set; }
 
         /// <summary>
         /// The name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.

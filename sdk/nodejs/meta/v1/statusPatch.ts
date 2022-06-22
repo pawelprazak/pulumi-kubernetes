@@ -46,7 +46,7 @@ export class StatusPatch extends pulumi.CustomResource {
     /**
      * Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.
      */
-    public readonly details!: pulumi.Output<outputs.meta.v1.StatusDetails>;
+    public readonly details!: pulumi.Output<outputs.meta.v1.StatusDetailsPatch>;
     /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
@@ -58,7 +58,7 @@ export class StatusPatch extends pulumi.CustomResource {
     /**
      * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ListMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ListMetaPatch>;
     /**
      * A machine-readable description of why this operation is in the "Failure" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.
      */
@@ -117,7 +117,7 @@ export interface StatusPatchArgs {
     /**
      * Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.
      */
-    details?: pulumi.Input<inputs.meta.v1.StatusDetails>;
+    details?: pulumi.Input<inputs.meta.v1.StatusDetailsPatch>;
     /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
@@ -129,7 +129,7 @@ export interface StatusPatchArgs {
     /**
      * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ListMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ListMetaPatch>;
     /**
      * A machine-readable description of why this operation is in the "Failure" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.
      */

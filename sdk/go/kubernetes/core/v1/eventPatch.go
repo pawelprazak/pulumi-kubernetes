@@ -26,7 +26,7 @@ type EventPatch struct {
 	// The time at which the event was first recorded. (Time of server receipt is in TypeMeta.)
 	FirstTimestamp pulumi.StringPtrOutput `pulumi:"firstTimestamp"`
 	// The object that this event is about.
-	InvolvedObject ObjectReferenceOutput `pulumi:"involvedObject"`
+	InvolvedObject ObjectReferencePatchPtrOutput `pulumi:"involvedObject"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The time at which the most recent occurrence of this event was recorded.
@@ -34,19 +34,19 @@ type EventPatch struct {
 	// A human-readable description of the status of this operation.
 	Message pulumi.StringPtrOutput `pulumi:"message"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// This should be a short, machine understandable string that gives the reason for the transition into the object's current status.
 	Reason pulumi.StringPtrOutput `pulumi:"reason"`
 	// Optional secondary object for more complex actions.
-	Related ObjectReferencePtrOutput `pulumi:"related"`
+	Related ObjectReferencePatchPtrOutput `pulumi:"related"`
 	// Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.
 	ReportingComponent pulumi.StringPtrOutput `pulumi:"reportingComponent"`
 	// ID of the controller instance, e.g. `kubelet-xyzf`.
 	ReportingInstance pulumi.StringPtrOutput `pulumi:"reportingInstance"`
 	// Data about the Event series this event represents or nil if it's a singleton Event.
-	Series EventSeriesPtrOutput `pulumi:"series"`
+	Series EventSeriesPatchPtrOutput `pulumi:"series"`
 	// The component reporting this event. Should be a short machine understandable string.
-	Source EventSourcePtrOutput `pulumi:"source"`
+	Source EventSourcePatchPtrOutput `pulumi:"source"`
 	// Type of this event (Normal, Warning), new types could be added in the future
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
@@ -62,10 +62,10 @@ func NewEventPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("Event")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:events.k8s.io/v1:Event"),
+			Type: pulumi.String("kubernetes:events.k8s.io/v1:EventPatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:events.k8s.io/v1beta1:Event"),
+			Type: pulumi.String("kubernetes:events.k8s.io/v1beta1:EventPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -112,7 +112,7 @@ type eventPatchArgs struct {
 	// The time at which the event was first recorded. (Time of server receipt is in TypeMeta.)
 	FirstTimestamp *string `pulumi:"firstTimestamp"`
 	// The object that this event is about.
-	InvolvedObject *ObjectReference `pulumi:"involvedObject"`
+	InvolvedObject *ObjectReferencePatch `pulumi:"involvedObject"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// The time at which the most recent occurrence of this event was recorded.
@@ -120,19 +120,19 @@ type eventPatchArgs struct {
 	// A human-readable description of the status of this operation.
 	Message *string `pulumi:"message"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// This should be a short, machine understandable string that gives the reason for the transition into the object's current status.
 	Reason *string `pulumi:"reason"`
 	// Optional secondary object for more complex actions.
-	Related *ObjectReference `pulumi:"related"`
+	Related *ObjectReferencePatch `pulumi:"related"`
 	// Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.
 	ReportingComponent *string `pulumi:"reportingComponent"`
 	// ID of the controller instance, e.g. `kubelet-xyzf`.
 	ReportingInstance *string `pulumi:"reportingInstance"`
 	// Data about the Event series this event represents or nil if it's a singleton Event.
-	Series *EventSeries `pulumi:"series"`
+	Series *EventSeriesPatch `pulumi:"series"`
 	// The component reporting this event. Should be a short machine understandable string.
-	Source *EventSource `pulumi:"source"`
+	Source *EventSourcePatch `pulumi:"source"`
 	// Type of this event (Normal, Warning), new types could be added in the future
 	Type *string `pulumi:"type"`
 }
@@ -150,7 +150,7 @@ type EventPatchArgs struct {
 	// The time at which the event was first recorded. (Time of server receipt is in TypeMeta.)
 	FirstTimestamp pulumi.StringPtrInput
 	// The object that this event is about.
-	InvolvedObject ObjectReferencePtrInput
+	InvolvedObject ObjectReferencePatchPtrInput
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// The time at which the most recent occurrence of this event was recorded.
@@ -158,19 +158,19 @@ type EventPatchArgs struct {
 	// A human-readable description of the status of this operation.
 	Message pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// This should be a short, machine understandable string that gives the reason for the transition into the object's current status.
 	Reason pulumi.StringPtrInput
 	// Optional secondary object for more complex actions.
-	Related ObjectReferencePtrInput
+	Related ObjectReferencePatchPtrInput
 	// Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.
 	ReportingComponent pulumi.StringPtrInput
 	// ID of the controller instance, e.g. `kubelet-xyzf`.
 	ReportingInstance pulumi.StringPtrInput
 	// Data about the Event series this event represents or nil if it's a singleton Event.
-	Series EventSeriesPtrInput
+	Series EventSeriesPatchPtrInput
 	// The component reporting this event. Should be a short machine understandable string.
-	Source EventSourcePtrInput
+	Source EventSourcePatchPtrInput
 	// Type of this event (Normal, Warning), new types could be added in the future
 	Type pulumi.StringPtrInput
 }
@@ -288,8 +288,8 @@ func (o EventPatchOutput) FirstTimestamp() pulumi.StringPtrOutput {
 }
 
 // The object that this event is about.
-func (o EventPatchOutput) InvolvedObject() ObjectReferenceOutput {
-	return o.ApplyT(func(v *EventPatch) ObjectReferenceOutput { return v.InvolvedObject }).(ObjectReferenceOutput)
+func (o EventPatchOutput) InvolvedObject() ObjectReferencePatchPtrOutput {
+	return o.ApplyT(func(v *EventPatch) ObjectReferencePatchPtrOutput { return v.InvolvedObject }).(ObjectReferencePatchPtrOutput)
 }
 
 // Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -308,8 +308,8 @@ func (o EventPatchOutput) Message() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o EventPatchOutput) Metadata() metav1.ObjectMetaOutput {
-	return o.ApplyT(func(v *EventPatch) metav1.ObjectMetaOutput { return v.Metadata }).(metav1.ObjectMetaOutput)
+func (o EventPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *EventPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // This should be a short, machine understandable string that gives the reason for the transition into the object's current status.
@@ -318,8 +318,8 @@ func (o EventPatchOutput) Reason() pulumi.StringPtrOutput {
 }
 
 // Optional secondary object for more complex actions.
-func (o EventPatchOutput) Related() ObjectReferencePtrOutput {
-	return o.ApplyT(func(v *EventPatch) ObjectReferencePtrOutput { return v.Related }).(ObjectReferencePtrOutput)
+func (o EventPatchOutput) Related() ObjectReferencePatchPtrOutput {
+	return o.ApplyT(func(v *EventPatch) ObjectReferencePatchPtrOutput { return v.Related }).(ObjectReferencePatchPtrOutput)
 }
 
 // Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.
@@ -333,13 +333,13 @@ func (o EventPatchOutput) ReportingInstance() pulumi.StringPtrOutput {
 }
 
 // Data about the Event series this event represents or nil if it's a singleton Event.
-func (o EventPatchOutput) Series() EventSeriesPtrOutput {
-	return o.ApplyT(func(v *EventPatch) EventSeriesPtrOutput { return v.Series }).(EventSeriesPtrOutput)
+func (o EventPatchOutput) Series() EventSeriesPatchPtrOutput {
+	return o.ApplyT(func(v *EventPatch) EventSeriesPatchPtrOutput { return v.Series }).(EventSeriesPatchPtrOutput)
 }
 
 // The component reporting this event. Should be a short machine understandable string.
-func (o EventPatchOutput) Source() EventSourcePtrOutput {
-	return o.ApplyT(func(v *EventPatch) EventSourcePtrOutput { return v.Source }).(EventSourcePtrOutput)
+func (o EventPatchOutput) Source() EventSourcePatchPtrOutput {
+	return o.ApplyT(func(v *EventPatch) EventSourcePatchPtrOutput { return v.Source }).(EventSourcePatchPtrOutput)
 }
 
 // Type of this event (Normal, Warning), new types could be added in the future

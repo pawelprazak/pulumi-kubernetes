@@ -46,15 +46,15 @@ export class CronJobPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public readonly spec!: pulumi.Output<outputs.batch.v1.CronJobSpec>;
+    public readonly spec!: pulumi.Output<outputs.batch.v1.CronJobSpecPatch>;
     /**
      * Current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.batch.v1.CronJobStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.batch.v1.CronJobStatusPatch>;
 
     /**
      * Create a CronJobPatch resource with the given unique name, arguments, and options.
@@ -80,7 +80,7 @@ export class CronJobPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:batch/v1beta1:CronJob" }, { type: "kubernetes:batch/v2alpha1:CronJob" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:batch/v1beta1:CronJobPatch" }, { type: "kubernetes:batch/v2alpha1:CronJobPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CronJobPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -101,9 +101,9 @@ export interface CronJobPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    spec?: pulumi.Input<inputs.batch.v1.CronJobSpec>;
+    spec?: pulumi.Input<inputs.batch.v1.CronJobSpecPatch>;
 }

@@ -31,13 +31,13 @@ namespace Pulumi.Kubernetes.AdmissionRegistration.V1
         /// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Webhooks is a list of webhooks and the affected resources and operations.
         /// </summary>
         [Output("webhooks")]
-        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.AdmissionRegistration.V1.MutatingWebhook>> Webhooks { get; private set; } = null!;
+        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.AdmissionRegistration.V1.MutatingWebhookPatch>> Webhooks { get; private set; } = null!;
 
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Pulumi.Kubernetes.AdmissionRegistration.V1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:admissionregistration.k8s.io/v1beta1:MutatingWebhookConfiguration"},
+                    new Pulumi.Alias { Type = "kubernetes:admissionregistration.k8s.io/v1beta1:MutatingWebhookConfigurationPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -119,17 +119,17 @@ namespace Pulumi.Kubernetes.Types.Inputs.AdmissionRegistration.V1
         /// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         [Input("webhooks")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.AdmissionRegistration.V1.MutatingWebhookArgs>? _webhooks;
+        private InputList<Pulumi.Kubernetes.Types.Inputs.AdmissionRegistration.V1.MutatingWebhookPatchArgs>? _webhooks;
 
         /// <summary>
         /// Webhooks is a list of webhooks and the affected resources and operations.
         /// </summary>
-        public InputList<Pulumi.Kubernetes.Types.Inputs.AdmissionRegistration.V1.MutatingWebhookArgs> Webhooks
+        public InputList<Pulumi.Kubernetes.Types.Inputs.AdmissionRegistration.V1.MutatingWebhookPatchArgs> Webhooks
         {
-            get => _webhooks ?? (_webhooks = new InputList<Pulumi.Kubernetes.Types.Inputs.AdmissionRegistration.V1.MutatingWebhookArgs>());
+            get => _webhooks ?? (_webhooks = new InputList<Pulumi.Kubernetes.Types.Inputs.AdmissionRegistration.V1.MutatingWebhookPatchArgs>());
             set => _webhooks = value;
         }
 

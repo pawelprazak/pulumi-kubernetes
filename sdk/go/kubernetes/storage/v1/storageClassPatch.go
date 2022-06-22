@@ -21,19 +21,19 @@ type StorageClassPatch struct {
 	// AllowVolumeExpansion shows whether the storage class allow volume expand
 	AllowVolumeExpansion pulumi.BoolPtrOutput `pulumi:"allowVolumeExpansion"`
 	// Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.
-	AllowedTopologies corev1.TopologySelectorTermArrayOutput `pulumi:"allowedTopologies"`
+	AllowedTopologies corev1.TopologySelectorTermPatchArrayOutput `pulumi:"allowedTopologies"`
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion pulumi.StringPtrOutput `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Dynamically provisioned PersistentVolumes of this storage class are created with these mountOptions, e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid.
 	MountOptions pulumi.StringArrayOutput `pulumi:"mountOptions"`
 	// Parameters holds the parameters for the provisioner that should create volumes of this storage class.
 	Parameters pulumi.StringMapOutput `pulumi:"parameters"`
 	// Provisioner indicates the type of the provisioner.
-	Provisioner pulumi.StringOutput `pulumi:"provisioner"`
+	Provisioner pulumi.StringPtrOutput `pulumi:"provisioner"`
 	// Dynamically provisioned PersistentVolumes of this storage class are created with this reclaimPolicy. Defaults to Delete.
 	ReclaimPolicy pulumi.StringPtrOutput `pulumi:"reclaimPolicy"`
 	// VolumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.
@@ -51,7 +51,7 @@ func NewStorageClassPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("StorageClass")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:storage.k8s.io/v1beta1:StorageClass"),
+			Type: pulumi.String("kubernetes:storage.k8s.io/v1beta1:StorageClassPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -90,13 +90,13 @@ type storageClassPatchArgs struct {
 	// AllowVolumeExpansion shows whether the storage class allow volume expand
 	AllowVolumeExpansion *bool `pulumi:"allowVolumeExpansion"`
 	// Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.
-	AllowedTopologies []corev1.TopologySelectorTerm `pulumi:"allowedTopologies"`
+	AllowedTopologies []corev1.TopologySelectorTermPatch `pulumi:"allowedTopologies"`
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion *string `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Dynamically provisioned PersistentVolumes of this storage class are created with these mountOptions, e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid.
 	MountOptions []string `pulumi:"mountOptions"`
 	// Parameters holds the parameters for the provisioner that should create volumes of this storage class.
@@ -114,13 +114,13 @@ type StorageClassPatchArgs struct {
 	// AllowVolumeExpansion shows whether the storage class allow volume expand
 	AllowVolumeExpansion pulumi.BoolPtrInput
 	// Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.
-	AllowedTopologies corev1.TopologySelectorTermArrayInput
+	AllowedTopologies corev1.TopologySelectorTermPatchArrayInput
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion pulumi.StringPtrInput
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Dynamically provisioned PersistentVolumes of this storage class are created with these mountOptions, e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid.
 	MountOptions pulumi.StringArrayInput
 	// Parameters holds the parameters for the provisioner that should create volumes of this storage class.
@@ -226,8 +226,8 @@ func (o StorageClassPatchOutput) AllowVolumeExpansion() pulumi.BoolPtrOutput {
 }
 
 // Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.
-func (o StorageClassPatchOutput) AllowedTopologies() corev1.TopologySelectorTermArrayOutput {
-	return o.ApplyT(func(v *StorageClassPatch) corev1.TopologySelectorTermArrayOutput { return v.AllowedTopologies }).(corev1.TopologySelectorTermArrayOutput)
+func (o StorageClassPatchOutput) AllowedTopologies() corev1.TopologySelectorTermPatchArrayOutput {
+	return o.ApplyT(func(v *StorageClassPatch) corev1.TopologySelectorTermPatchArrayOutput { return v.AllowedTopologies }).(corev1.TopologySelectorTermPatchArrayOutput)
 }
 
 // APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -241,8 +241,8 @@ func (o StorageClassPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o StorageClassPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *StorageClassPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o StorageClassPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *StorageClassPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Dynamically provisioned PersistentVolumes of this storage class are created with these mountOptions, e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid.
@@ -256,8 +256,8 @@ func (o StorageClassPatchOutput) Parameters() pulumi.StringMapOutput {
 }
 
 // Provisioner indicates the type of the provisioner.
-func (o StorageClassPatchOutput) Provisioner() pulumi.StringOutput {
-	return o.ApplyT(func(v *StorageClassPatch) pulumi.StringOutput { return v.Provisioner }).(pulumi.StringOutput)
+func (o StorageClassPatchOutput) Provisioner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageClassPatch) pulumi.StringPtrOutput { return v.Provisioner }).(pulumi.StringPtrOutput)
 }
 
 // Dynamically provisioned PersistentVolumes of this storage class are created with this reclaimPolicy. Defaults to Delete.

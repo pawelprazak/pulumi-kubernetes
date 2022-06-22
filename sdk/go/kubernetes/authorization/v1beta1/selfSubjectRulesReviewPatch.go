@@ -18,12 +18,12 @@ type SelfSubjectRulesReviewPatch struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion pulumi.StringPtrOutput `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-	Kind     pulumi.StringPtrOutput     `pulumi:"kind"`
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Kind     pulumi.StringPtrOutput          `pulumi:"kind"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Spec holds information about the request being evaluated.
-	Spec SelfSubjectRulesReviewSpecOutput `pulumi:"spec"`
+	Spec SelfSubjectRulesReviewSpecPatchPtrOutput `pulumi:"spec"`
 	// Status is filled in by the server and indicates the set of actions a user can perform.
-	Status SubjectRulesReviewStatusPtrOutput `pulumi:"status"`
+	Status SubjectRulesReviewStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewSelfSubjectRulesReviewPatch registers a new resource with the given unique name, arguments, and options.
@@ -37,7 +37,7 @@ func NewSelfSubjectRulesReviewPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("SelfSubjectRulesReview")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:authorization.k8s.io/v1:SelfSubjectRulesReview"),
+			Type: pulumi.String("kubernetes:authorization.k8s.io/v1:SelfSubjectRulesReviewPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -76,10 +76,10 @@ type selfSubjectRulesReviewPatchArgs struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion *string `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-	Kind     *string            `pulumi:"kind"`
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Kind     *string                 `pulumi:"kind"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Spec holds information about the request being evaluated.
-	Spec *SelfSubjectRulesReviewSpec `pulumi:"spec"`
+	Spec *SelfSubjectRulesReviewSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a SelfSubjectRulesReviewPatch resource.
@@ -88,9 +88,9 @@ type SelfSubjectRulesReviewPatchArgs struct {
 	ApiVersion pulumi.StringPtrInput
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind     pulumi.StringPtrInput
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Spec holds information about the request being evaluated.
-	Spec SelfSubjectRulesReviewSpecPtrInput
+	Spec SelfSubjectRulesReviewSpecPatchPtrInput
 }
 
 func (SelfSubjectRulesReviewPatchArgs) ElementType() reflect.Type {
@@ -190,18 +190,18 @@ func (o SelfSubjectRulesReviewPatchOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SelfSubjectRulesReviewPatch) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-func (o SelfSubjectRulesReviewPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *SelfSubjectRulesReviewPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o SelfSubjectRulesReviewPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *SelfSubjectRulesReviewPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Spec holds information about the request being evaluated.
-func (o SelfSubjectRulesReviewPatchOutput) Spec() SelfSubjectRulesReviewSpecOutput {
-	return o.ApplyT(func(v *SelfSubjectRulesReviewPatch) SelfSubjectRulesReviewSpecOutput { return v.Spec }).(SelfSubjectRulesReviewSpecOutput)
+func (o SelfSubjectRulesReviewPatchOutput) Spec() SelfSubjectRulesReviewSpecPatchPtrOutput {
+	return o.ApplyT(func(v *SelfSubjectRulesReviewPatch) SelfSubjectRulesReviewSpecPatchPtrOutput { return v.Spec }).(SelfSubjectRulesReviewSpecPatchPtrOutput)
 }
 
 // Status is filled in by the server and indicates the set of actions a user can perform.
-func (o SelfSubjectRulesReviewPatchOutput) Status() SubjectRulesReviewStatusPtrOutput {
-	return o.ApplyT(func(v *SelfSubjectRulesReviewPatch) SubjectRulesReviewStatusPtrOutput { return v.Status }).(SubjectRulesReviewStatusPtrOutput)
+func (o SelfSubjectRulesReviewPatchOutput) Status() SubjectRulesReviewStatusPatchPtrOutput {
+	return o.ApplyT(func(v *SelfSubjectRulesReviewPatch) SubjectRulesReviewStatusPatchPtrOutput { return v.Status }).(SubjectRulesReviewStatusPatchPtrOutput)
 }
 
 type SelfSubjectRulesReviewPatchArrayOutput struct{ *pulumi.OutputState }

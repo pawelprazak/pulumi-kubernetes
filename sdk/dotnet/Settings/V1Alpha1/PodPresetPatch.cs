@@ -28,10 +28,10 @@ namespace Pulumi.Kubernetes.Settings.V1Alpha1
         public Output<string> Kind { get; private set; } = null!;
 
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Settings.V1Alpha1.PodPresetSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Settings.V1Alpha1.PodPresetSpecPatch> Spec { get; private set; } = null!;
 
 
         /// <summary>
@@ -106,10 +106,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Settings.V1Alpha1
         public Input<string>? Kind { get; set; }
 
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Settings.V1Alpha1.PodPresetSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Settings.V1Alpha1.PodPresetSpecPatchArgs>? Spec { get; set; }
 
         public PodPresetPatchArgs()
         {

@@ -16,15 +16,15 @@ type ClusterRolePatch struct {
 	pulumi.CustomResourceState
 
 	// AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.
-	AggregationRule AggregationRulePtrOutput `pulumi:"aggregationRule"`
+	AggregationRule AggregationRulePatchPtrOutput `pulumi:"aggregationRule"`
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion pulumi.StringPtrOutput `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata.
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Rules holds all the PolicyRules for this ClusterRole
-	Rules PolicyRuleArrayOutput `pulumi:"rules"`
+	Rules PolicyRulePatchArrayOutput `pulumi:"rules"`
 }
 
 // NewClusterRolePatch registers a new resource with the given unique name, arguments, and options.
@@ -38,10 +38,10 @@ func NewClusterRolePatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("ClusterRole")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:rbac.authorization.k8s.io/v1:ClusterRole"),
+			Type: pulumi.String("kubernetes:rbac.authorization.k8s.io/v1:ClusterRolePatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:rbac.authorization.k8s.io/v1alpha1:ClusterRole"),
+			Type: pulumi.String("kubernetes:rbac.authorization.k8s.io/v1alpha1:ClusterRolePatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -78,29 +78,29 @@ func (ClusterRolePatchState) ElementType() reflect.Type {
 
 type clusterRolePatchArgs struct {
 	// AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.
-	AggregationRule *AggregationRule `pulumi:"aggregationRule"`
+	AggregationRule *AggregationRulePatch `pulumi:"aggregationRule"`
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion *string `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata.
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Rules holds all the PolicyRules for this ClusterRole
-	Rules []PolicyRule `pulumi:"rules"`
+	Rules []PolicyRulePatch `pulumi:"rules"`
 }
 
 // The set of arguments for constructing a ClusterRolePatch resource.
 type ClusterRolePatchArgs struct {
 	// AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.
-	AggregationRule AggregationRulePtrInput
+	AggregationRule AggregationRulePatchPtrInput
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion pulumi.StringPtrInput
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata.
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Rules holds all the PolicyRules for this ClusterRole
-	Rules PolicyRuleArrayInput
+	Rules PolicyRulePatchArrayInput
 }
 
 func (ClusterRolePatchArgs) ElementType() reflect.Type {
@@ -191,8 +191,8 @@ func (o ClusterRolePatchOutput) ToClusterRolePatchOutputWithContext(ctx context.
 }
 
 // AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.
-func (o ClusterRolePatchOutput) AggregationRule() AggregationRulePtrOutput {
-	return o.ApplyT(func(v *ClusterRolePatch) AggregationRulePtrOutput { return v.AggregationRule }).(AggregationRulePtrOutput)
+func (o ClusterRolePatchOutput) AggregationRule() AggregationRulePatchPtrOutput {
+	return o.ApplyT(func(v *ClusterRolePatch) AggregationRulePatchPtrOutput { return v.AggregationRule }).(AggregationRulePatchPtrOutput)
 }
 
 // APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -206,13 +206,13 @@ func (o ClusterRolePatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata.
-func (o ClusterRolePatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *ClusterRolePatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o ClusterRolePatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *ClusterRolePatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Rules holds all the PolicyRules for this ClusterRole
-func (o ClusterRolePatchOutput) Rules() PolicyRuleArrayOutput {
-	return o.ApplyT(func(v *ClusterRolePatch) PolicyRuleArrayOutput { return v.Rules }).(PolicyRuleArrayOutput)
+func (o ClusterRolePatchOutput) Rules() PolicyRulePatchArrayOutput {
+	return o.ApplyT(func(v *ClusterRolePatch) PolicyRulePatchArrayOutput { return v.Rules }).(PolicyRulePatchArrayOutput)
 }
 
 type ClusterRolePatchArrayOutput struct{ *pulumi.OutputState }

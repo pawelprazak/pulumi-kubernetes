@@ -46,11 +46,11 @@ export class CSINodePatch extends pulumi.CustomResource {
     /**
      * metadata.name must be the Kubernetes node name.
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * spec is the specification of CSINode
      */
-    public readonly spec!: pulumi.Output<outputs.storage.v1.CSINodeSpec>;
+    public readonly spec!: pulumi.Output<outputs.storage.v1.CSINodeSpecPatch>;
 
     /**
      * Create a CSINodePatch resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class CSINodePatch extends pulumi.CustomResource {
             resourceInputs["spec"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:storage.k8s.io/v1beta1:CSINode" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:storage.k8s.io/v1beta1:CSINodePatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CSINodePatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -95,9 +95,9 @@ export interface CSINodePatchArgs {
     /**
      * metadata.name must be the Kubernetes node name.
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * spec is the specification of CSINode
      */
-    spec?: pulumi.Input<inputs.storage.v1.CSINodeSpec>;
+    spec?: pulumi.Input<inputs.storage.v1.CSINodeSpecPatch>;
 }

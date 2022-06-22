@@ -44,11 +44,11 @@ type DeploymentPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object metadata.
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Specification of the desired behavior of the Deployment.
-	Spec DeploymentSpecPtrOutput `pulumi:"spec"`
+	Spec DeploymentSpecPatchPtrOutput `pulumi:"spec"`
 	// Most recently observed status of the Deployment.
-	Status DeploymentStatusPtrOutput `pulumi:"status"`
+	Status DeploymentStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewDeploymentPatch registers a new resource with the given unique name, arguments, and options.
@@ -62,13 +62,13 @@ func NewDeploymentPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("Deployment")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:apps/v1:Deployment"),
+			Type: pulumi.String("kubernetes:apps/v1:DeploymentPatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:apps/v1beta2:Deployment"),
+			Type: pulumi.String("kubernetes:apps/v1beta2:DeploymentPatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:extensions/v1beta1:Deployment"),
+			Type: pulumi.String("kubernetes:extensions/v1beta1:DeploymentPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -109,9 +109,9 @@ type deploymentPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object metadata.
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Specification of the desired behavior of the Deployment.
-	Spec *DeploymentSpec `pulumi:"spec"`
+	Spec *DeploymentSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a DeploymentPatch resource.
@@ -121,9 +121,9 @@ type DeploymentPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object metadata.
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Specification of the desired behavior of the Deployment.
-	Spec DeploymentSpecPtrInput
+	Spec DeploymentSpecPatchPtrInput
 }
 
 func (DeploymentPatchArgs) ElementType() reflect.Type {
@@ -224,18 +224,18 @@ func (o DeploymentPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object metadata.
-func (o DeploymentPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *DeploymentPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o DeploymentPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *DeploymentPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Specification of the desired behavior of the Deployment.
-func (o DeploymentPatchOutput) Spec() DeploymentSpecPtrOutput {
-	return o.ApplyT(func(v *DeploymentPatch) DeploymentSpecPtrOutput { return v.Spec }).(DeploymentSpecPtrOutput)
+func (o DeploymentPatchOutput) Spec() DeploymentSpecPatchPtrOutput {
+	return o.ApplyT(func(v *DeploymentPatch) DeploymentSpecPatchPtrOutput { return v.Spec }).(DeploymentSpecPatchPtrOutput)
 }
 
 // Most recently observed status of the Deployment.
-func (o DeploymentPatchOutput) Status() DeploymentStatusPtrOutput {
-	return o.ApplyT(func(v *DeploymentPatch) DeploymentStatusPtrOutput { return v.Status }).(DeploymentStatusPtrOutput)
+func (o DeploymentPatchOutput) Status() DeploymentStatusPatchPtrOutput {
+	return o.ApplyT(func(v *DeploymentPatch) DeploymentStatusPatchPtrOutput { return v.Status }).(DeploymentStatusPatchPtrOutput)
 }
 
 type DeploymentPatchArrayOutput struct{ *pulumi.OutputState }

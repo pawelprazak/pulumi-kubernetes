@@ -46,15 +46,15 @@ export class TokenRequestPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec holds information about the request being evaluated
      */
-    public readonly spec!: pulumi.Output<outputs.authentication.v1.TokenRequestSpec>;
+    public readonly spec!: pulumi.Output<outputs.authentication.v1.TokenRequestSpecPatch>;
     /**
      * Status is filled in by the server and indicates whether the token can be authenticated.
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.authentication.v1.TokenRequestStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.authentication.v1.TokenRequestStatusPatch>;
 
     /**
      * Create a TokenRequestPatch resource with the given unique name, arguments, and options.
@@ -99,9 +99,9 @@ export interface TokenRequestPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec holds information about the request being evaluated
      */
-    spec?: pulumi.Input<inputs.authentication.v1.TokenRequestSpec>;
+    spec?: pulumi.Input<inputs.authentication.v1.TokenRequestSpecPatch>;
 }

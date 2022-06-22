@@ -34,19 +34,19 @@ namespace Pulumi.Kubernetes.Certificates.V1
         public Output<string> Kind { get; private set; } = null!;
 
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// spec contains the certificate request, and is immutable after creation. Only the request, signerName, expirationSeconds, and usages fields can be set on creation. Other fields are derived by Kubernetes and cannot be modified by users.
         /// </summary>
         [Output("spec")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Certificates.V1.CertificateSigningRequestSpec> Spec { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Certificates.V1.CertificateSigningRequestSpecPatch> Spec { get; private set; } = null!;
 
         /// <summary>
         /// status contains information about whether the request is approved or denied, and the certificate issued by the signer, or the failure condition indicating signer failure.
         /// </summary>
         [Output("status")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Certificates.V1.CertificateSigningRequestStatus> Status { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Certificates.V1.CertificateSigningRequestStatusPatch> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Pulumi.Kubernetes.Certificates.V1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:certificates.k8s.io/v1beta1:CertificateSigningRequest"},
+                    new Pulumi.Alias { Type = "kubernetes:certificates.k8s.io/v1beta1:CertificateSigningRequestPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -125,13 +125,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Certificates.V1
         public Input<string>? Kind { get; set; }
 
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// spec contains the certificate request, and is immutable after creation. Only the request, signerName, expirationSeconds, and usages fields can be set on creation. Other fields are derived by Kubernetes and cannot be modified by users.
         /// </summary>
         [Input("spec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Certificates.V1.CertificateSigningRequestSpecArgs>? Spec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Certificates.V1.CertificateSigningRequestSpecPatchArgs>? Spec { get; set; }
 
         public CertificateSigningRequestPatchArgs()
         {

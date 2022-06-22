@@ -46,11 +46,11 @@ export class ValidatingWebhookConfigurationPatch extends pulumi.CustomResource {
     /**
      * Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Webhooks is a list of webhooks and the affected resources and operations.
      */
-    public readonly webhooks!: pulumi.Output<outputs.admissionregistration.v1beta1.ValidatingWebhook[]>;
+    public readonly webhooks!: pulumi.Output<outputs.admissionregistration.v1beta1.ValidatingWebhookPatch[]>;
 
     /**
      * Create a ValidatingWebhookConfigurationPatch resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class ValidatingWebhookConfigurationPatch extends pulumi.CustomResource {
             resourceInputs["webhooks"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:admissionregistration.k8s.io/v1:ValidatingWebhookConfiguration" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:admissionregistration.k8s.io/v1:ValidatingWebhookConfigurationPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ValidatingWebhookConfigurationPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -95,9 +95,9 @@ export interface ValidatingWebhookConfigurationPatchArgs {
     /**
      * Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Webhooks is a list of webhooks and the affected resources and operations.
      */
-    webhooks?: pulumi.Input<pulumi.Input<inputs.admissionregistration.v1beta1.ValidatingWebhook>[]>;
+    webhooks?: pulumi.Input<pulumi.Input<inputs.admissionregistration.v1beta1.ValidatingWebhookPatch>[]>;
 }

@@ -20,11 +20,11 @@ type FlowSchemaPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec FlowSchemaSpecPtrOutput `pulumi:"spec"`
+	Spec FlowSchemaSpecPatchPtrOutput `pulumi:"spec"`
 	// `status` is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Status FlowSchemaStatusPtrOutput `pulumi:"status"`
+	Status FlowSchemaStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewFlowSchemaPatch registers a new resource with the given unique name, arguments, and options.
@@ -38,10 +38,10 @@ func NewFlowSchemaPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("FlowSchema")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:flowcontrol.apiserver.k8s.io/v1alpha1:FlowSchema"),
+			Type: pulumi.String("kubernetes:flowcontrol.apiserver.k8s.io/v1alpha1:FlowSchemaPatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:flowcontrol.apiserver.k8s.io/v1beta1:FlowSchema"),
+			Type: pulumi.String("kubernetes:flowcontrol.apiserver.k8s.io/v1beta1:FlowSchemaPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -82,9 +82,9 @@ type flowSchemaPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec *FlowSchemaSpec `pulumi:"spec"`
+	Spec *FlowSchemaSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a FlowSchemaPatch resource.
@@ -94,9 +94,9 @@ type FlowSchemaPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec FlowSchemaSpecPtrInput
+	Spec FlowSchemaSpecPatchPtrInput
 }
 
 func (FlowSchemaPatchArgs) ElementType() reflect.Type {
@@ -197,18 +197,18 @@ func (o FlowSchemaPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o FlowSchemaPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *FlowSchemaPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o FlowSchemaPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *FlowSchemaPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o FlowSchemaPatchOutput) Spec() FlowSchemaSpecPtrOutput {
-	return o.ApplyT(func(v *FlowSchemaPatch) FlowSchemaSpecPtrOutput { return v.Spec }).(FlowSchemaSpecPtrOutput)
+func (o FlowSchemaPatchOutput) Spec() FlowSchemaSpecPatchPtrOutput {
+	return o.ApplyT(func(v *FlowSchemaPatch) FlowSchemaSpecPatchPtrOutput { return v.Spec }).(FlowSchemaSpecPatchPtrOutput)
 }
 
 // `status` is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o FlowSchemaPatchOutput) Status() FlowSchemaStatusPtrOutput {
-	return o.ApplyT(func(v *FlowSchemaPatch) FlowSchemaStatusPtrOutput { return v.Status }).(FlowSchemaStatusPtrOutput)
+func (o FlowSchemaPatchOutput) Status() FlowSchemaStatusPatchPtrOutput {
+	return o.ApplyT(func(v *FlowSchemaPatch) FlowSchemaStatusPatchPtrOutput { return v.Status }).(FlowSchemaStatusPatchPtrOutput)
 }
 
 type FlowSchemaPatchArrayOutput struct{ *pulumi.OutputState }

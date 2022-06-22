@@ -20,9 +20,9 @@ type RolePatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata.
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Rules holds all the PolicyRules for this Role
-	Rules PolicyRuleArrayOutput `pulumi:"rules"`
+	Rules PolicyRulePatchArrayOutput `pulumi:"rules"`
 }
 
 // NewRolePatch registers a new resource with the given unique name, arguments, and options.
@@ -36,10 +36,10 @@ func NewRolePatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("Role")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:rbac.authorization.k8s.io/v1:Role"),
+			Type: pulumi.String("kubernetes:rbac.authorization.k8s.io/v1:RolePatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:rbac.authorization.k8s.io/v1alpha1:Role"),
+			Type: pulumi.String("kubernetes:rbac.authorization.k8s.io/v1alpha1:RolePatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -80,9 +80,9 @@ type rolePatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata.
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Rules holds all the PolicyRules for this Role
-	Rules []PolicyRule `pulumi:"rules"`
+	Rules []PolicyRulePatch `pulumi:"rules"`
 }
 
 // The set of arguments for constructing a RolePatch resource.
@@ -92,9 +92,9 @@ type RolePatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata.
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Rules holds all the PolicyRules for this Role
-	Rules PolicyRuleArrayInput
+	Rules PolicyRulePatchArrayInput
 }
 
 func (RolePatchArgs) ElementType() reflect.Type {
@@ -195,13 +195,13 @@ func (o RolePatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata.
-func (o RolePatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *RolePatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o RolePatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *RolePatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Rules holds all the PolicyRules for this Role
-func (o RolePatchOutput) Rules() PolicyRuleArrayOutput {
-	return o.ApplyT(func(v *RolePatch) PolicyRuleArrayOutput { return v.Rules }).(PolicyRuleArrayOutput)
+func (o RolePatchOutput) Rules() PolicyRulePatchArrayOutput {
+	return o.ApplyT(func(v *RolePatch) PolicyRulePatchArrayOutput { return v.Rules }).(PolicyRulePatchArrayOutput)
 }
 
 type RolePatchArrayOutput struct{ *pulumi.OutputState }

@@ -22,11 +22,11 @@ type VolumeAttachmentPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.
-	Spec VolumeAttachmentSpecOutput `pulumi:"spec"`
+	Spec VolumeAttachmentSpecPatchPtrOutput `pulumi:"spec"`
 	// Status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher.
-	Status VolumeAttachmentStatusPtrOutput `pulumi:"status"`
+	Status VolumeAttachmentStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewVolumeAttachmentPatch registers a new resource with the given unique name, arguments, and options.
@@ -40,10 +40,10 @@ func NewVolumeAttachmentPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("VolumeAttachment")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:storage.k8s.io/v1alpha1:VolumeAttachment"),
+			Type: pulumi.String("kubernetes:storage.k8s.io/v1alpha1:VolumeAttachmentPatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:storage.k8s.io/v1beta1:VolumeAttachment"),
+			Type: pulumi.String("kubernetes:storage.k8s.io/v1beta1:VolumeAttachmentPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -84,9 +84,9 @@ type volumeAttachmentPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.
-	Spec *VolumeAttachmentSpec `pulumi:"spec"`
+	Spec *VolumeAttachmentSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a VolumeAttachmentPatch resource.
@@ -96,9 +96,9 @@ type VolumeAttachmentPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.
-	Spec VolumeAttachmentSpecPtrInput
+	Spec VolumeAttachmentSpecPatchPtrInput
 }
 
 func (VolumeAttachmentPatchArgs) ElementType() reflect.Type {
@@ -199,18 +199,18 @@ func (o VolumeAttachmentPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o VolumeAttachmentPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *VolumeAttachmentPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o VolumeAttachmentPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *VolumeAttachmentPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.
-func (o VolumeAttachmentPatchOutput) Spec() VolumeAttachmentSpecOutput {
-	return o.ApplyT(func(v *VolumeAttachmentPatch) VolumeAttachmentSpecOutput { return v.Spec }).(VolumeAttachmentSpecOutput)
+func (o VolumeAttachmentPatchOutput) Spec() VolumeAttachmentSpecPatchPtrOutput {
+	return o.ApplyT(func(v *VolumeAttachmentPatch) VolumeAttachmentSpecPatchPtrOutput { return v.Spec }).(VolumeAttachmentSpecPatchPtrOutput)
 }
 
 // Status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher.
-func (o VolumeAttachmentPatchOutput) Status() VolumeAttachmentStatusPtrOutput {
-	return o.ApplyT(func(v *VolumeAttachmentPatch) VolumeAttachmentStatusPtrOutput { return v.Status }).(VolumeAttachmentStatusPtrOutput)
+func (o VolumeAttachmentPatchOutput) Status() VolumeAttachmentStatusPatchPtrOutput {
+	return o.ApplyT(func(v *VolumeAttachmentPatch) VolumeAttachmentStatusPatchPtrOutput { return v.Status }).(VolumeAttachmentStatusPatchPtrOutput)
 }
 
 type VolumeAttachmentPatchArrayOutput struct{ *pulumi.OutputState }

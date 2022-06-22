@@ -23,17 +23,17 @@ class EventPatchArgs:
                  deprecated_count: Optional[pulumi.Input[int]] = None,
                  deprecated_first_timestamp: Optional[pulumi.Input[str]] = None,
                  deprecated_last_timestamp: Optional[pulumi.Input[str]] = None,
-                 deprecated_source: Optional[pulumi.Input['_core.v1.EventSourceArgs']] = None,
+                 deprecated_source: Optional[pulumi.Input['_core.v1.EventSourcePatchArgs']] = None,
                  event_time: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']] = None,
+                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']] = None,
                  note: Optional[pulumi.Input[str]] = None,
                  reason: Optional[pulumi.Input[str]] = None,
-                 regarding: Optional[pulumi.Input['_core.v1.ObjectReferenceArgs']] = None,
-                 related: Optional[pulumi.Input['_core.v1.ObjectReferenceArgs']] = None,
+                 regarding: Optional[pulumi.Input['_core.v1.ObjectReferencePatchArgs']] = None,
+                 related: Optional[pulumi.Input['_core.v1.ObjectReferencePatchArgs']] = None,
                  reporting_controller: Optional[pulumi.Input[str]] = None,
                  reporting_instance: Optional[pulumi.Input[str]] = None,
-                 series: Optional[pulumi.Input['EventSeriesArgs']] = None,
+                 series: Optional[pulumi.Input['EventSeriesPatchArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EventPatch resource.
@@ -42,17 +42,17 @@ class EventPatchArgs:
         :param pulumi.Input[int] deprecated_count: deprecatedCount is the deprecated field assuring backward compatibility with core.v1 Event type.
         :param pulumi.Input[str] deprecated_first_timestamp: deprecatedFirstTimestamp is the deprecated field assuring backward compatibility with core.v1 Event type.
         :param pulumi.Input[str] deprecated_last_timestamp: deprecatedLastTimestamp is the deprecated field assuring backward compatibility with core.v1 Event type.
-        :param pulumi.Input['_core.v1.EventSourceArgs'] deprecated_source: deprecatedSource is the deprecated field assuring backward compatibility with core.v1 Event type.
+        :param pulumi.Input['_core.v1.EventSourcePatchArgs'] deprecated_source: deprecatedSource is the deprecated field assuring backward compatibility with core.v1 Event type.
         :param pulumi.Input[str] event_time: eventTime is the time when this Event was first observed. It is required.
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-        :param pulumi.Input['_meta.v1.ObjectMetaArgs'] metadata: Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+        :param pulumi.Input['_meta.v1.ObjectMetaPatchArgs'] metadata: Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         :param pulumi.Input[str] note: note is a human-readable description of the status of this operation. Maximal length of the note is 1kB, but libraries should be prepared to handle values up to 64kB.
         :param pulumi.Input[str] reason: reason is why the action was taken. It is human-readable. This field cannot be empty for new Events and it can have at most 128 characters.
-        :param pulumi.Input['_core.v1.ObjectReferenceArgs'] regarding: regarding contains the object this Event is about. In most cases it's an Object reporting controller implements, e.g. ReplicaSetController implements ReplicaSets and this event is emitted because it acts on some changes in a ReplicaSet object.
-        :param pulumi.Input['_core.v1.ObjectReferenceArgs'] related: related is the optional secondary object for more complex actions. E.g. when regarding object triggers a creation or deletion of related object.
+        :param pulumi.Input['_core.v1.ObjectReferencePatchArgs'] regarding: regarding contains the object this Event is about. In most cases it's an Object reporting controller implements, e.g. ReplicaSetController implements ReplicaSets and this event is emitted because it acts on some changes in a ReplicaSet object.
+        :param pulumi.Input['_core.v1.ObjectReferencePatchArgs'] related: related is the optional secondary object for more complex actions. E.g. when regarding object triggers a creation or deletion of related object.
         :param pulumi.Input[str] reporting_controller: reportingController is the name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`. This field cannot be empty for new Events.
         :param pulumi.Input[str] reporting_instance: reportingInstance is the ID of the controller instance, e.g. `kubelet-xyzf`. This field cannot be empty for new Events and it can have at most 128 characters.
-        :param pulumi.Input['EventSeriesArgs'] series: series is data about the Event series this event represents or nil if it's a singleton Event.
+        :param pulumi.Input['EventSeriesPatchArgs'] series: series is data about the Event series this event represents or nil if it's a singleton Event.
         :param pulumi.Input[str] type: type is the type of this event (Normal, Warning), new types could be added in the future. It is machine-readable. This field cannot be empty for new Events.
         """
         if action is not None:
@@ -152,14 +152,14 @@ class EventPatchArgs:
 
     @property
     @pulumi.getter(name="deprecatedSource")
-    def deprecated_source(self) -> Optional[pulumi.Input['_core.v1.EventSourceArgs']]:
+    def deprecated_source(self) -> Optional[pulumi.Input['_core.v1.EventSourcePatchArgs']]:
         """
         deprecatedSource is the deprecated field assuring backward compatibility with core.v1 Event type.
         """
         return pulumi.get(self, "deprecated_source")
 
     @deprecated_source.setter
-    def deprecated_source(self, value: Optional[pulumi.Input['_core.v1.EventSourceArgs']]):
+    def deprecated_source(self, value: Optional[pulumi.Input['_core.v1.EventSourcePatchArgs']]):
         pulumi.set(self, "deprecated_source", value)
 
     @property
@@ -188,14 +188,14 @@ class EventPatchArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]:
         """
         Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -224,26 +224,26 @@ class EventPatchArgs:
 
     @property
     @pulumi.getter
-    def regarding(self) -> Optional[pulumi.Input['_core.v1.ObjectReferenceArgs']]:
+    def regarding(self) -> Optional[pulumi.Input['_core.v1.ObjectReferencePatchArgs']]:
         """
         regarding contains the object this Event is about. In most cases it's an Object reporting controller implements, e.g. ReplicaSetController implements ReplicaSets and this event is emitted because it acts on some changes in a ReplicaSet object.
         """
         return pulumi.get(self, "regarding")
 
     @regarding.setter
-    def regarding(self, value: Optional[pulumi.Input['_core.v1.ObjectReferenceArgs']]):
+    def regarding(self, value: Optional[pulumi.Input['_core.v1.ObjectReferencePatchArgs']]):
         pulumi.set(self, "regarding", value)
 
     @property
     @pulumi.getter
-    def related(self) -> Optional[pulumi.Input['_core.v1.ObjectReferenceArgs']]:
+    def related(self) -> Optional[pulumi.Input['_core.v1.ObjectReferencePatchArgs']]:
         """
         related is the optional secondary object for more complex actions. E.g. when regarding object triggers a creation or deletion of related object.
         """
         return pulumi.get(self, "related")
 
     @related.setter
-    def related(self, value: Optional[pulumi.Input['_core.v1.ObjectReferenceArgs']]):
+    def related(self, value: Optional[pulumi.Input['_core.v1.ObjectReferencePatchArgs']]):
         pulumi.set(self, "related", value)
 
     @property
@@ -272,14 +272,14 @@ class EventPatchArgs:
 
     @property
     @pulumi.getter
-    def series(self) -> Optional[pulumi.Input['EventSeriesArgs']]:
+    def series(self) -> Optional[pulumi.Input['EventSeriesPatchArgs']]:
         """
         series is data about the Event series this event represents or nil if it's a singleton Event.
         """
         return pulumi.get(self, "series")
 
     @series.setter
-    def series(self, value: Optional[pulumi.Input['EventSeriesArgs']]):
+    def series(self, value: Optional[pulumi.Input['EventSeriesPatchArgs']]):
         pulumi.set(self, "series", value)
 
     @property
@@ -305,17 +305,17 @@ class EventPatch(pulumi.CustomResource):
                  deprecated_count: Optional[pulumi.Input[int]] = None,
                  deprecated_first_timestamp: Optional[pulumi.Input[str]] = None,
                  deprecated_last_timestamp: Optional[pulumi.Input[str]] = None,
-                 deprecated_source: Optional[pulumi.Input[pulumi.InputType['_core.v1.EventSourceArgs']]] = None,
+                 deprecated_source: Optional[pulumi.Input[pulumi.InputType['_core.v1.EventSourcePatchArgs']]] = None,
                  event_time: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
                  note: Optional[pulumi.Input[str]] = None,
                  reason: Optional[pulumi.Input[str]] = None,
-                 regarding: Optional[pulumi.Input[pulumi.InputType['_core.v1.ObjectReferenceArgs']]] = None,
-                 related: Optional[pulumi.Input[pulumi.InputType['_core.v1.ObjectReferenceArgs']]] = None,
+                 regarding: Optional[pulumi.Input[pulumi.InputType['_core.v1.ObjectReferencePatchArgs']]] = None,
+                 related: Optional[pulumi.Input[pulumi.InputType['_core.v1.ObjectReferencePatchArgs']]] = None,
                  reporting_controller: Optional[pulumi.Input[str]] = None,
                  reporting_instance: Optional[pulumi.Input[str]] = None,
-                 series: Optional[pulumi.Input[pulumi.InputType['EventSeriesArgs']]] = None,
+                 series: Optional[pulumi.Input[pulumi.InputType['EventSeriesPatchArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -328,17 +328,17 @@ class EventPatch(pulumi.CustomResource):
         :param pulumi.Input[int] deprecated_count: deprecatedCount is the deprecated field assuring backward compatibility with core.v1 Event type.
         :param pulumi.Input[str] deprecated_first_timestamp: deprecatedFirstTimestamp is the deprecated field assuring backward compatibility with core.v1 Event type.
         :param pulumi.Input[str] deprecated_last_timestamp: deprecatedLastTimestamp is the deprecated field assuring backward compatibility with core.v1 Event type.
-        :param pulumi.Input[pulumi.InputType['_core.v1.EventSourceArgs']] deprecated_source: deprecatedSource is the deprecated field assuring backward compatibility with core.v1 Event type.
+        :param pulumi.Input[pulumi.InputType['_core.v1.EventSourcePatchArgs']] deprecated_source: deprecatedSource is the deprecated field assuring backward compatibility with core.v1 Event type.
         :param pulumi.Input[str] event_time: eventTime is the time when this Event was first observed. It is required.
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-        :param pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']] metadata: Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+        :param pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']] metadata: Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         :param pulumi.Input[str] note: note is a human-readable description of the status of this operation. Maximal length of the note is 1kB, but libraries should be prepared to handle values up to 64kB.
         :param pulumi.Input[str] reason: reason is why the action was taken. It is human-readable. This field cannot be empty for new Events and it can have at most 128 characters.
-        :param pulumi.Input[pulumi.InputType['_core.v1.ObjectReferenceArgs']] regarding: regarding contains the object this Event is about. In most cases it's an Object reporting controller implements, e.g. ReplicaSetController implements ReplicaSets and this event is emitted because it acts on some changes in a ReplicaSet object.
-        :param pulumi.Input[pulumi.InputType['_core.v1.ObjectReferenceArgs']] related: related is the optional secondary object for more complex actions. E.g. when regarding object triggers a creation or deletion of related object.
+        :param pulumi.Input[pulumi.InputType['_core.v1.ObjectReferencePatchArgs']] regarding: regarding contains the object this Event is about. In most cases it's an Object reporting controller implements, e.g. ReplicaSetController implements ReplicaSets and this event is emitted because it acts on some changes in a ReplicaSet object.
+        :param pulumi.Input[pulumi.InputType['_core.v1.ObjectReferencePatchArgs']] related: related is the optional secondary object for more complex actions. E.g. when regarding object triggers a creation or deletion of related object.
         :param pulumi.Input[str] reporting_controller: reportingController is the name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`. This field cannot be empty for new Events.
         :param pulumi.Input[str] reporting_instance: reportingInstance is the ID of the controller instance, e.g. `kubelet-xyzf`. This field cannot be empty for new Events and it can have at most 128 characters.
-        :param pulumi.Input[pulumi.InputType['EventSeriesArgs']] series: series is data about the Event series this event represents or nil if it's a singleton Event.
+        :param pulumi.Input[pulumi.InputType['EventSeriesPatchArgs']] series: series is data about the Event series this event represents or nil if it's a singleton Event.
         :param pulumi.Input[str] type: type is the type of this event (Normal, Warning), new types could be added in the future. It is machine-readable. This field cannot be empty for new Events.
         """
         ...
@@ -370,27 +370,22 @@ class EventPatch(pulumi.CustomResource):
                  deprecated_count: Optional[pulumi.Input[int]] = None,
                  deprecated_first_timestamp: Optional[pulumi.Input[str]] = None,
                  deprecated_last_timestamp: Optional[pulumi.Input[str]] = None,
-                 deprecated_source: Optional[pulumi.Input[pulumi.InputType['_core.v1.EventSourceArgs']]] = None,
+                 deprecated_source: Optional[pulumi.Input[pulumi.InputType['_core.v1.EventSourcePatchArgs']]] = None,
                  event_time: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
                  note: Optional[pulumi.Input[str]] = None,
                  reason: Optional[pulumi.Input[str]] = None,
-                 regarding: Optional[pulumi.Input[pulumi.InputType['_core.v1.ObjectReferenceArgs']]] = None,
-                 related: Optional[pulumi.Input[pulumi.InputType['_core.v1.ObjectReferenceArgs']]] = None,
+                 regarding: Optional[pulumi.Input[pulumi.InputType['_core.v1.ObjectReferencePatchArgs']]] = None,
+                 related: Optional[pulumi.Input[pulumi.InputType['_core.v1.ObjectReferencePatchArgs']]] = None,
                  reporting_controller: Optional[pulumi.Input[str]] = None,
                  reporting_instance: Optional[pulumi.Input[str]] = None,
-                 series: Optional[pulumi.Input[pulumi.InputType['EventSeriesArgs']]] = None,
+                 series: Optional[pulumi.Input[pulumi.InputType['EventSeriesPatchArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -413,7 +408,7 @@ class EventPatch(pulumi.CustomResource):
             __props__.__dict__["reporting_instance"] = reporting_instance
             __props__.__dict__["series"] = series
             __props__.__dict__["type"] = type
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:core/v1:Event"), pulumi.Alias(type_="kubernetes:events.k8s.io/v1beta1:Event")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:core/v1:EventPatch"), pulumi.Alias(type_="kubernetes:events.k8s.io/v1beta1:EventPatch")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(EventPatch, __self__).__init__(
             'kubernetes:events.k8s.io/v1:EventPatch',
@@ -498,7 +493,7 @@ class EventPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deprecatedSource")
-    def deprecated_source(self) -> pulumi.Output[Optional['_core.v1.outputs.EventSource']]:
+    def deprecated_source(self) -> pulumi.Output[Optional['_core.v1.outputs.EventSourcePatch']]:
         """
         deprecatedSource is the deprecated field assuring backward compatibility with core.v1 Event type.
         """
@@ -506,7 +501,7 @@ class EventPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eventTime")
-    def event_time(self) -> pulumi.Output[str]:
+    def event_time(self) -> pulumi.Output[Optional[str]]:
         """
         eventTime is the time when this Event was first observed. It is required.
         """
@@ -522,7 +517,7 @@ class EventPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Optional['_meta.v1.outputs.ObjectMeta']]:
+    def metadata(self) -> pulumi.Output[Optional['_meta.v1.outputs.ObjectMetaPatch']]:
         """
         Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         """
@@ -546,7 +541,7 @@ class EventPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def regarding(self) -> pulumi.Output[Optional['_core.v1.outputs.ObjectReference']]:
+    def regarding(self) -> pulumi.Output[Optional['_core.v1.outputs.ObjectReferencePatch']]:
         """
         regarding contains the object this Event is about. In most cases it's an Object reporting controller implements, e.g. ReplicaSetController implements ReplicaSets and this event is emitted because it acts on some changes in a ReplicaSet object.
         """
@@ -554,7 +549,7 @@ class EventPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def related(self) -> pulumi.Output[Optional['_core.v1.outputs.ObjectReference']]:
+    def related(self) -> pulumi.Output[Optional['_core.v1.outputs.ObjectReferencePatch']]:
         """
         related is the optional secondary object for more complex actions. E.g. when regarding object triggers a creation or deletion of related object.
         """
@@ -578,7 +573,7 @@ class EventPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def series(self) -> pulumi.Output[Optional['outputs.EventSeries']]:
+    def series(self) -> pulumi.Output[Optional['outputs.EventSeriesPatch']]:
         """
         series is data about the Event series this event represents or nil if it's a singleton Event.
         """

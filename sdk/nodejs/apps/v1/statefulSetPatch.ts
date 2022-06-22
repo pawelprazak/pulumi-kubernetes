@@ -62,15 +62,15 @@ export class StatefulSetPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec defines the desired identities of pods in this set.
      */
-    public readonly spec!: pulumi.Output<outputs.apps.v1.StatefulSetSpec>;
+    public readonly spec!: pulumi.Output<outputs.apps.v1.StatefulSetSpecPatch>;
     /**
      * Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time.
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.apps.v1.StatefulSetStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.apps.v1.StatefulSetStatusPatch>;
 
     /**
      * Create a StatefulSetPatch resource with the given unique name, arguments, and options.
@@ -96,7 +96,7 @@ export class StatefulSetPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:apps/v1beta1:StatefulSet" }, { type: "kubernetes:apps/v1beta2:StatefulSet" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:apps/v1beta1:StatefulSetPatch" }, { type: "kubernetes:apps/v1beta2:StatefulSetPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(StatefulSetPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -117,9 +117,9 @@ export interface StatefulSetPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec defines the desired identities of pods in this set.
      */
-    spec?: pulumi.Input<inputs.apps.v1.StatefulSetSpec>;
+    spec?: pulumi.Input<inputs.apps.v1.StatefulSetSpecPatch>;
 }

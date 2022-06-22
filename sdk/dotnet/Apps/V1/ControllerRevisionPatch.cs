@@ -37,7 +37,7 @@ namespace Pulumi.Kubernetes.Apps.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Revision indicates the revision of the state represented by Data.
@@ -82,8 +82,8 @@ namespace Pulumi.Kubernetes.Apps.V1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:apps/v1beta1:ControllerRevision"},
-                    new Pulumi.Alias { Type = "kubernetes:apps/v1beta2:ControllerRevision"},
+                    new Pulumi.Alias { Type = "kubernetes:apps/v1beta1:ControllerRevisionPatch"},
+                    new Pulumi.Alias { Type = "kubernetes:apps/v1beta2:ControllerRevisionPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -132,7 +132,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Apps.V1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         /// <summary>
         /// Revision indicates the revision of the state represented by Data.

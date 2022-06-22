@@ -58,7 +58,7 @@ export class EventPatch extends pulumi.CustomResource {
     /**
      * deprecatedSource is the deprecated field assuring backward compatibility with core.v1 Event type.
      */
-    public readonly deprecatedSource!: pulumi.Output<outputs.core.v1.EventSource>;
+    public readonly deprecatedSource!: pulumi.Output<outputs.core.v1.EventSourcePatch>;
     /**
      * eventTime is the time when this Event was first observed. It is required.
      */
@@ -70,7 +70,7 @@ export class EventPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * note is a human-readable description of the status of this operation. Maximal length of the note is 1kB, but libraries should be prepared to handle values up to 64kB.
      */
@@ -82,11 +82,11 @@ export class EventPatch extends pulumi.CustomResource {
     /**
      * regarding contains the object this Event is about. In most cases it's an Object reporting controller implements, e.g. ReplicaSetController implements ReplicaSets and this event is emitted because it acts on some changes in a ReplicaSet object.
      */
-    public readonly regarding!: pulumi.Output<outputs.core.v1.ObjectReference>;
+    public readonly regarding!: pulumi.Output<outputs.core.v1.ObjectReferencePatch>;
     /**
      * related is the optional secondary object for more complex actions. E.g. when regarding object triggers a creation or deletion of related object.
      */
-    public readonly related!: pulumi.Output<outputs.core.v1.ObjectReference>;
+    public readonly related!: pulumi.Output<outputs.core.v1.ObjectReferencePatch>;
     /**
      * reportingController is the name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`. This field cannot be empty for new Events.
      */
@@ -98,7 +98,7 @@ export class EventPatch extends pulumi.CustomResource {
     /**
      * series is data about the Event series this event represents or nil if it's a singleton Event.
      */
-    public readonly series!: pulumi.Output<outputs.events.v1.EventSeries>;
+    public readonly series!: pulumi.Output<outputs.events.v1.EventSeriesPatch>;
     /**
      * type is the type of this event (Normal, Warning), new types could be added in the future. It is machine-readable. This field cannot be empty for new Events.
      */
@@ -152,7 +152,7 @@ export class EventPatch extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:core/v1:Event" }, { type: "kubernetes:events.k8s.io/v1beta1:Event" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:core/v1:EventPatch" }, { type: "kubernetes:events.k8s.io/v1beta1:EventPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(EventPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -185,7 +185,7 @@ export interface EventPatchArgs {
     /**
      * deprecatedSource is the deprecated field assuring backward compatibility with core.v1 Event type.
      */
-    deprecatedSource?: pulumi.Input<inputs.core.v1.EventSource>;
+    deprecatedSource?: pulumi.Input<inputs.core.v1.EventSourcePatch>;
     /**
      * eventTime is the time when this Event was first observed. It is required.
      */
@@ -197,7 +197,7 @@ export interface EventPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * note is a human-readable description of the status of this operation. Maximal length of the note is 1kB, but libraries should be prepared to handle values up to 64kB.
      */
@@ -209,11 +209,11 @@ export interface EventPatchArgs {
     /**
      * regarding contains the object this Event is about. In most cases it's an Object reporting controller implements, e.g. ReplicaSetController implements ReplicaSets and this event is emitted because it acts on some changes in a ReplicaSet object.
      */
-    regarding?: pulumi.Input<inputs.core.v1.ObjectReference>;
+    regarding?: pulumi.Input<inputs.core.v1.ObjectReferencePatch>;
     /**
      * related is the optional secondary object for more complex actions. E.g. when regarding object triggers a creation or deletion of related object.
      */
-    related?: pulumi.Input<inputs.core.v1.ObjectReference>;
+    related?: pulumi.Input<inputs.core.v1.ObjectReferencePatch>;
     /**
      * reportingController is the name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`. This field cannot be empty for new Events.
      */
@@ -225,7 +225,7 @@ export interface EventPatchArgs {
     /**
      * series is data about the Event series this event represents or nil if it's a singleton Event.
      */
-    series?: pulumi.Input<inputs.events.v1.EventSeries>;
+    series?: pulumi.Input<inputs.events.v1.EventSeriesPatch>;
     /**
      * type is the type of this event (Normal, Warning), new types could be added in the future. It is machine-readable. This field cannot be empty for new Events.
      */

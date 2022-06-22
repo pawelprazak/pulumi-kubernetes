@@ -20,11 +20,11 @@ type NamespacePatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Spec defines the behavior of the Namespace. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec NamespaceSpecPtrOutput `pulumi:"spec"`
+	Spec NamespaceSpecPatchPtrOutput `pulumi:"spec"`
 	// Status describes the current status of a Namespace. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Status NamespaceStatusPtrOutput `pulumi:"status"`
+	Status NamespaceStatusPatchPtrOutput `pulumi:"status"`
 }
 
 // NewNamespacePatch registers a new resource with the given unique name, arguments, and options.
@@ -73,9 +73,9 @@ type namespacePatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Spec defines the behavior of the Namespace. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec *NamespaceSpec `pulumi:"spec"`
+	Spec *NamespaceSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a NamespacePatch resource.
@@ -85,9 +85,9 @@ type NamespacePatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Spec defines the behavior of the Namespace. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-	Spec NamespaceSpecPtrInput
+	Spec NamespaceSpecPatchPtrInput
 }
 
 func (NamespacePatchArgs) ElementType() reflect.Type {
@@ -188,18 +188,18 @@ func (o NamespacePatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o NamespacePatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *NamespacePatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o NamespacePatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *NamespacePatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Spec defines the behavior of the Namespace. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o NamespacePatchOutput) Spec() NamespaceSpecPtrOutput {
-	return o.ApplyT(func(v *NamespacePatch) NamespaceSpecPtrOutput { return v.Spec }).(NamespaceSpecPtrOutput)
+func (o NamespacePatchOutput) Spec() NamespaceSpecPatchPtrOutput {
+	return o.ApplyT(func(v *NamespacePatch) NamespaceSpecPatchPtrOutput { return v.Spec }).(NamespaceSpecPatchPtrOutput)
 }
 
 // Status describes the current status of a Namespace. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-func (o NamespacePatchOutput) Status() NamespaceStatusPtrOutput {
-	return o.ApplyT(func(v *NamespacePatch) NamespaceStatusPtrOutput { return v.Status }).(NamespaceStatusPtrOutput)
+func (o NamespacePatchOutput) Status() NamespaceStatusPatchPtrOutput {
+	return o.ApplyT(func(v *NamespacePatch) NamespaceStatusPatchPtrOutput { return v.Status }).(NamespaceStatusPatchPtrOutput)
 }
 
 type NamespacePatchArrayOutput struct{ *pulumi.OutputState }

@@ -18,10 +18,10 @@ type AuditSinkPatch struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion pulumi.StringPtrOutput `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-	Kind     pulumi.StringPtrOutput     `pulumi:"kind"`
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Kind     pulumi.StringPtrOutput          `pulumi:"kind"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Spec defines the audit configuration spec
-	Spec AuditSinkSpecPtrOutput `pulumi:"spec"`
+	Spec AuditSinkSpecPatchPtrOutput `pulumi:"spec"`
 }
 
 // NewAuditSinkPatch registers a new resource with the given unique name, arguments, and options.
@@ -68,10 +68,10 @@ type auditSinkPatchArgs struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
 	ApiVersion *string `pulumi:"apiVersion"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-	Kind     *string            `pulumi:"kind"`
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Kind     *string                 `pulumi:"kind"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Spec defines the audit configuration spec
-	Spec *AuditSinkSpec `pulumi:"spec"`
+	Spec *AuditSinkSpecPatch `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a AuditSinkPatch resource.
@@ -80,9 +80,9 @@ type AuditSinkPatchArgs struct {
 	ApiVersion pulumi.StringPtrInput
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind     pulumi.StringPtrInput
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Spec defines the audit configuration spec
-	Spec AuditSinkSpecPtrInput
+	Spec AuditSinkSpecPatchPtrInput
 }
 
 func (AuditSinkPatchArgs) ElementType() reflect.Type {
@@ -182,13 +182,13 @@ func (o AuditSinkPatchOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuditSinkPatch) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-func (o AuditSinkPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *AuditSinkPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o AuditSinkPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *AuditSinkPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Spec defines the audit configuration spec
-func (o AuditSinkPatchOutput) Spec() AuditSinkSpecPtrOutput {
-	return o.ApplyT(func(v *AuditSinkPatch) AuditSinkSpecPtrOutput { return v.Spec }).(AuditSinkSpecPtrOutput)
+func (o AuditSinkPatchOutput) Spec() AuditSinkSpecPatchPtrOutput {
+	return o.ApplyT(func(v *AuditSinkPatch) AuditSinkSpecPatchPtrOutput { return v.Spec }).(AuditSinkSpecPatchPtrOutput)
 }
 
 type AuditSinkPatchArrayOutput struct{ *pulumi.OutputState }

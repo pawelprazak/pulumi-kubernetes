@@ -22,17 +22,17 @@ class EventPatchArgs:
                  count: Optional[pulumi.Input[int]] = None,
                  event_time: Optional[pulumi.Input[str]] = None,
                  first_timestamp: Optional[pulumi.Input[str]] = None,
-                 involved_object: Optional[pulumi.Input['ObjectReferenceArgs']] = None,
+                 involved_object: Optional[pulumi.Input['ObjectReferencePatchArgs']] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  last_timestamp: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']] = None,
+                 metadata: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']] = None,
                  reason: Optional[pulumi.Input[str]] = None,
-                 related: Optional[pulumi.Input['ObjectReferenceArgs']] = None,
+                 related: Optional[pulumi.Input['ObjectReferencePatchArgs']] = None,
                  reporting_component: Optional[pulumi.Input[str]] = None,
                  reporting_instance: Optional[pulumi.Input[str]] = None,
-                 series: Optional[pulumi.Input['EventSeriesArgs']] = None,
-                 source: Optional[pulumi.Input['EventSourceArgs']] = None,
+                 series: Optional[pulumi.Input['EventSeriesPatchArgs']] = None,
+                 source: Optional[pulumi.Input['EventSourcePatchArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EventPatch resource.
@@ -41,17 +41,17 @@ class EventPatchArgs:
         :param pulumi.Input[int] count: The number of times this event has occurred.
         :param pulumi.Input[str] event_time: Time when this Event was first observed.
         :param pulumi.Input[str] first_timestamp: The time at which the event was first recorded. (Time of server receipt is in TypeMeta.)
-        :param pulumi.Input['ObjectReferenceArgs'] involved_object: The object that this event is about.
+        :param pulumi.Input['ObjectReferencePatchArgs'] involved_object: The object that this event is about.
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         :param pulumi.Input[str] last_timestamp: The time at which the most recent occurrence of this event was recorded.
         :param pulumi.Input[str] message: A human-readable description of the status of this operation.
-        :param pulumi.Input['_meta.v1.ObjectMetaArgs'] metadata: Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+        :param pulumi.Input['_meta.v1.ObjectMetaPatchArgs'] metadata: Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         :param pulumi.Input[str] reason: This should be a short, machine understandable string that gives the reason for the transition into the object's current status.
-        :param pulumi.Input['ObjectReferenceArgs'] related: Optional secondary object for more complex actions.
+        :param pulumi.Input['ObjectReferencePatchArgs'] related: Optional secondary object for more complex actions.
         :param pulumi.Input[str] reporting_component: Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.
         :param pulumi.Input[str] reporting_instance: ID of the controller instance, e.g. `kubelet-xyzf`.
-        :param pulumi.Input['EventSeriesArgs'] series: Data about the Event series this event represents or nil if it's a singleton Event.
-        :param pulumi.Input['EventSourceArgs'] source: The component reporting this event. Should be a short machine understandable string.
+        :param pulumi.Input['EventSeriesPatchArgs'] series: Data about the Event series this event represents or nil if it's a singleton Event.
+        :param pulumi.Input['EventSourcePatchArgs'] source: The component reporting this event. Should be a short machine understandable string.
         :param pulumi.Input[str] type: Type of this event (Normal, Warning), new types could be added in the future
         """
         if action is not None:
@@ -151,14 +151,14 @@ class EventPatchArgs:
 
     @property
     @pulumi.getter(name="involvedObject")
-    def involved_object(self) -> Optional[pulumi.Input['ObjectReferenceArgs']]:
+    def involved_object(self) -> Optional[pulumi.Input['ObjectReferencePatchArgs']]:
         """
         The object that this event is about.
         """
         return pulumi.get(self, "involved_object")
 
     @involved_object.setter
-    def involved_object(self, value: Optional[pulumi.Input['ObjectReferenceArgs']]):
+    def involved_object(self, value: Optional[pulumi.Input['ObjectReferencePatchArgs']]):
         pulumi.set(self, "involved_object", value)
 
     @property
@@ -199,14 +199,14 @@ class EventPatchArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]:
+    def metadata(self) -> Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]:
         """
         Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaArgs']]):
+    def metadata(self, value: Optional[pulumi.Input['_meta.v1.ObjectMetaPatchArgs']]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -223,14 +223,14 @@ class EventPatchArgs:
 
     @property
     @pulumi.getter
-    def related(self) -> Optional[pulumi.Input['ObjectReferenceArgs']]:
+    def related(self) -> Optional[pulumi.Input['ObjectReferencePatchArgs']]:
         """
         Optional secondary object for more complex actions.
         """
         return pulumi.get(self, "related")
 
     @related.setter
-    def related(self, value: Optional[pulumi.Input['ObjectReferenceArgs']]):
+    def related(self, value: Optional[pulumi.Input['ObjectReferencePatchArgs']]):
         pulumi.set(self, "related", value)
 
     @property
@@ -259,26 +259,26 @@ class EventPatchArgs:
 
     @property
     @pulumi.getter
-    def series(self) -> Optional[pulumi.Input['EventSeriesArgs']]:
+    def series(self) -> Optional[pulumi.Input['EventSeriesPatchArgs']]:
         """
         Data about the Event series this event represents or nil if it's a singleton Event.
         """
         return pulumi.get(self, "series")
 
     @series.setter
-    def series(self, value: Optional[pulumi.Input['EventSeriesArgs']]):
+    def series(self, value: Optional[pulumi.Input['EventSeriesPatchArgs']]):
         pulumi.set(self, "series", value)
 
     @property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input['EventSourceArgs']]:
+    def source(self) -> Optional[pulumi.Input['EventSourcePatchArgs']]:
         """
         The component reporting this event. Should be a short machine understandable string.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input['EventSourceArgs']]):
+    def source(self, value: Optional[pulumi.Input['EventSourcePatchArgs']]):
         pulumi.set(self, "source", value)
 
     @property
@@ -304,17 +304,17 @@ class EventPatch(pulumi.CustomResource):
                  count: Optional[pulumi.Input[int]] = None,
                  event_time: Optional[pulumi.Input[str]] = None,
                  first_timestamp: Optional[pulumi.Input[str]] = None,
-                 involved_object: Optional[pulumi.Input[pulumi.InputType['ObjectReferenceArgs']]] = None,
+                 involved_object: Optional[pulumi.Input[pulumi.InputType['ObjectReferencePatchArgs']]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  last_timestamp: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
                  reason: Optional[pulumi.Input[str]] = None,
-                 related: Optional[pulumi.Input[pulumi.InputType['ObjectReferenceArgs']]] = None,
+                 related: Optional[pulumi.Input[pulumi.InputType['ObjectReferencePatchArgs']]] = None,
                  reporting_component: Optional[pulumi.Input[str]] = None,
                  reporting_instance: Optional[pulumi.Input[str]] = None,
-                 series: Optional[pulumi.Input[pulumi.InputType['EventSeriesArgs']]] = None,
-                 source: Optional[pulumi.Input[pulumi.InputType['EventSourceArgs']]] = None,
+                 series: Optional[pulumi.Input[pulumi.InputType['EventSeriesPatchArgs']]] = None,
+                 source: Optional[pulumi.Input[pulumi.InputType['EventSourcePatchArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -327,17 +327,17 @@ class EventPatch(pulumi.CustomResource):
         :param pulumi.Input[int] count: The number of times this event has occurred.
         :param pulumi.Input[str] event_time: Time when this Event was first observed.
         :param pulumi.Input[str] first_timestamp: The time at which the event was first recorded. (Time of server receipt is in TypeMeta.)
-        :param pulumi.Input[pulumi.InputType['ObjectReferenceArgs']] involved_object: The object that this event is about.
+        :param pulumi.Input[pulumi.InputType['ObjectReferencePatchArgs']] involved_object: The object that this event is about.
         :param pulumi.Input[str] kind: Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         :param pulumi.Input[str] last_timestamp: The time at which the most recent occurrence of this event was recorded.
         :param pulumi.Input[str] message: A human-readable description of the status of this operation.
-        :param pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']] metadata: Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+        :param pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']] metadata: Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         :param pulumi.Input[str] reason: This should be a short, machine understandable string that gives the reason for the transition into the object's current status.
-        :param pulumi.Input[pulumi.InputType['ObjectReferenceArgs']] related: Optional secondary object for more complex actions.
+        :param pulumi.Input[pulumi.InputType['ObjectReferencePatchArgs']] related: Optional secondary object for more complex actions.
         :param pulumi.Input[str] reporting_component: Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.
         :param pulumi.Input[str] reporting_instance: ID of the controller instance, e.g. `kubelet-xyzf`.
-        :param pulumi.Input[pulumi.InputType['EventSeriesArgs']] series: Data about the Event series this event represents or nil if it's a singleton Event.
-        :param pulumi.Input[pulumi.InputType['EventSourceArgs']] source: The component reporting this event. Should be a short machine understandable string.
+        :param pulumi.Input[pulumi.InputType['EventSeriesPatchArgs']] series: Data about the Event series this event represents or nil if it's a singleton Event.
+        :param pulumi.Input[pulumi.InputType['EventSourcePatchArgs']] source: The component reporting this event. Should be a short machine understandable string.
         :param pulumi.Input[str] type: Type of this event (Normal, Warning), new types could be added in the future
         """
         ...
@@ -369,27 +369,22 @@ class EventPatch(pulumi.CustomResource):
                  count: Optional[pulumi.Input[int]] = None,
                  event_time: Optional[pulumi.Input[str]] = None,
                  first_timestamp: Optional[pulumi.Input[str]] = None,
-                 involved_object: Optional[pulumi.Input[pulumi.InputType['ObjectReferenceArgs']]] = None,
+                 involved_object: Optional[pulumi.Input[pulumi.InputType['ObjectReferencePatchArgs']]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  last_timestamp: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaArgs']]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['_meta.v1.ObjectMetaPatchArgs']]] = None,
                  reason: Optional[pulumi.Input[str]] = None,
-                 related: Optional[pulumi.Input[pulumi.InputType['ObjectReferenceArgs']]] = None,
+                 related: Optional[pulumi.Input[pulumi.InputType['ObjectReferencePatchArgs']]] = None,
                  reporting_component: Optional[pulumi.Input[str]] = None,
                  reporting_instance: Optional[pulumi.Input[str]] = None,
-                 series: Optional[pulumi.Input[pulumi.InputType['EventSeriesArgs']]] = None,
-                 source: Optional[pulumi.Input[pulumi.InputType['EventSourceArgs']]] = None,
+                 series: Optional[pulumi.Input[pulumi.InputType['EventSeriesPatchArgs']]] = None,
+                 source: Optional[pulumi.Input[pulumi.InputType['EventSourcePatchArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        else:
-            opts = copy.copy(opts)
+        opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
-        if opts.version is None:
-            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -412,7 +407,7 @@ class EventPatch(pulumi.CustomResource):
             __props__.__dict__["series"] = series
             __props__.__dict__["source"] = source
             __props__.__dict__["type"] = type
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:events.k8s.io/v1:Event"), pulumi.Alias(type_="kubernetes:events.k8s.io/v1beta1:Event")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="kubernetes:events.k8s.io/v1:EventPatch"), pulumi.Alias(type_="kubernetes:events.k8s.io/v1beta1:EventPatch")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(EventPatch, __self__).__init__(
             'kubernetes:core/v1:EventPatch',
@@ -497,7 +492,7 @@ class EventPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="involvedObject")
-    def involved_object(self) -> pulumi.Output['outputs.ObjectReference']:
+    def involved_object(self) -> pulumi.Output[Optional['outputs.ObjectReferencePatch']]:
         """
         The object that this event is about.
         """
@@ -529,7 +524,7 @@ class EventPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output['_meta.v1.outputs.ObjectMeta']:
+    def metadata(self) -> pulumi.Output[Optional['_meta.v1.outputs.ObjectMetaPatch']]:
         """
         Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         """
@@ -545,7 +540,7 @@ class EventPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def related(self) -> pulumi.Output[Optional['outputs.ObjectReference']]:
+    def related(self) -> pulumi.Output[Optional['outputs.ObjectReferencePatch']]:
         """
         Optional secondary object for more complex actions.
         """
@@ -569,7 +564,7 @@ class EventPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def series(self) -> pulumi.Output[Optional['outputs.EventSeries']]:
+    def series(self) -> pulumi.Output[Optional['outputs.EventSeriesPatch']]:
         """
         Data about the Event series this event represents or nil if it's a singleton Event.
         """
@@ -577,7 +572,7 @@ class EventPatch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def source(self) -> pulumi.Output[Optional['outputs.EventSource']]:
+    def source(self) -> pulumi.Output[Optional['outputs.EventSourcePatch']]:
         """
         The component reporting this event. Should be a short machine understandable string.
         """

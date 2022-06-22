@@ -237,11 +237,11 @@ type APIGroupPatch struct {
 	// name is the name of the group.
 	Name *string `pulumi:"name"`
 	// preferredVersion is the version preferred by the API server, which probably is the storage version.
-	PreferredVersion *GroupVersionForDiscovery `pulumi:"preferredVersion"`
+	PreferredVersion *GroupVersionForDiscoveryPatch `pulumi:"preferredVersion"`
 	// a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP.
-	ServerAddressByClientCIDRs []ServerAddressByClientCIDR `pulumi:"serverAddressByClientCIDRs"`
+	ServerAddressByClientCIDRs []ServerAddressByClientCIDRPatch `pulumi:"serverAddressByClientCIDRs"`
 	// versions are the versions supported in this group.
-	Versions []GroupVersionForDiscovery `pulumi:"versions"`
+	Versions []GroupVersionForDiscoveryPatch `pulumi:"versions"`
 }
 
 // APIGroupPatchInput is an input type that accepts APIGroupPatchArgs and APIGroupPatchOutput values.
@@ -264,11 +264,11 @@ type APIGroupPatchArgs struct {
 	// name is the name of the group.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// preferredVersion is the version preferred by the API server, which probably is the storage version.
-	PreferredVersion GroupVersionForDiscoveryPtrInput `pulumi:"preferredVersion"`
+	PreferredVersion GroupVersionForDiscoveryPatchPtrInput `pulumi:"preferredVersion"`
 	// a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP.
-	ServerAddressByClientCIDRs ServerAddressByClientCIDRArrayInput `pulumi:"serverAddressByClientCIDRs"`
+	ServerAddressByClientCIDRs ServerAddressByClientCIDRPatchArrayInput `pulumi:"serverAddressByClientCIDRs"`
 	// versions are the versions supported in this group.
-	Versions GroupVersionForDiscoveryArrayInput `pulumi:"versions"`
+	Versions GroupVersionForDiscoveryPatchArrayInput `pulumi:"versions"`
 }
 
 func (APIGroupPatchArgs) ElementType() reflect.Type {
@@ -314,18 +314,18 @@ func (o APIGroupPatchOutput) Name() pulumi.StringPtrOutput {
 }
 
 // preferredVersion is the version preferred by the API server, which probably is the storage version.
-func (o APIGroupPatchOutput) PreferredVersion() GroupVersionForDiscoveryPtrOutput {
-	return o.ApplyT(func(v APIGroupPatch) *GroupVersionForDiscovery { return v.PreferredVersion }).(GroupVersionForDiscoveryPtrOutput)
+func (o APIGroupPatchOutput) PreferredVersion() GroupVersionForDiscoveryPatchPtrOutput {
+	return o.ApplyT(func(v APIGroupPatch) *GroupVersionForDiscoveryPatch { return v.PreferredVersion }).(GroupVersionForDiscoveryPatchPtrOutput)
 }
 
 // a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP.
-func (o APIGroupPatchOutput) ServerAddressByClientCIDRs() ServerAddressByClientCIDRArrayOutput {
-	return o.ApplyT(func(v APIGroupPatch) []ServerAddressByClientCIDR { return v.ServerAddressByClientCIDRs }).(ServerAddressByClientCIDRArrayOutput)
+func (o APIGroupPatchOutput) ServerAddressByClientCIDRs() ServerAddressByClientCIDRPatchArrayOutput {
+	return o.ApplyT(func(v APIGroupPatch) []ServerAddressByClientCIDRPatch { return v.ServerAddressByClientCIDRs }).(ServerAddressByClientCIDRPatchArrayOutput)
 }
 
 // versions are the versions supported in this group.
-func (o APIGroupPatchOutput) Versions() GroupVersionForDiscoveryArrayOutput {
-	return o.ApplyT(func(v APIGroupPatch) []GroupVersionForDiscovery { return v.Versions }).(GroupVersionForDiscoveryArrayOutput)
+func (o APIGroupPatchOutput) Versions() GroupVersionForDiscoveryPatchArrayOutput {
+	return o.ApplyT(func(v APIGroupPatch) []GroupVersionForDiscoveryPatch { return v.Versions }).(GroupVersionForDiscoveryPatchArrayOutput)
 }
 
 // APIResource specifies the name of a resource and whether it is namespaced.
@@ -816,7 +816,7 @@ type APIVersionsPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP.
-	ServerAddressByClientCIDRs []ServerAddressByClientCIDR `pulumi:"serverAddressByClientCIDRs"`
+	ServerAddressByClientCIDRs []ServerAddressByClientCIDRPatch `pulumi:"serverAddressByClientCIDRs"`
 	// versions are the api versions that are available.
 	Versions []string `pulumi:"versions"`
 }
@@ -839,7 +839,7 @@ type APIVersionsPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP.
-	ServerAddressByClientCIDRs ServerAddressByClientCIDRArrayInput `pulumi:"serverAddressByClientCIDRs"`
+	ServerAddressByClientCIDRs ServerAddressByClientCIDRPatchArrayInput `pulumi:"serverAddressByClientCIDRs"`
 	// versions are the api versions that are available.
 	Versions pulumi.StringArrayInput `pulumi:"versions"`
 }
@@ -882,8 +882,8 @@ func (o APIVersionsPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP.
-func (o APIVersionsPatchOutput) ServerAddressByClientCIDRs() ServerAddressByClientCIDRArrayOutput {
-	return o.ApplyT(func(v APIVersionsPatch) []ServerAddressByClientCIDR { return v.ServerAddressByClientCIDRs }).(ServerAddressByClientCIDRArrayOutput)
+func (o APIVersionsPatchOutput) ServerAddressByClientCIDRs() ServerAddressByClientCIDRPatchArrayOutput {
+	return o.ApplyT(func(v APIVersionsPatch) []ServerAddressByClientCIDRPatch { return v.ServerAddressByClientCIDRs }).(ServerAddressByClientCIDRPatchArrayOutput)
 }
 
 // versions are the api versions that are available.
@@ -1091,6 +1091,31 @@ func (i ConditionPatchArgs) ToConditionPatchOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionPatchOutput)
 }
 
+// ConditionPatchArrayInput is an input type that accepts ConditionPatchArray and ConditionPatchArrayOutput values.
+// You can construct a concrete instance of `ConditionPatchArrayInput` via:
+//
+//          ConditionPatchArray{ ConditionPatchArgs{...} }
+type ConditionPatchArrayInput interface {
+	pulumi.Input
+
+	ToConditionPatchArrayOutput() ConditionPatchArrayOutput
+	ToConditionPatchArrayOutputWithContext(context.Context) ConditionPatchArrayOutput
+}
+
+type ConditionPatchArray []ConditionPatchInput
+
+func (ConditionPatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConditionPatch)(nil)).Elem()
+}
+
+func (i ConditionPatchArray) ToConditionPatchArrayOutput() ConditionPatchArrayOutput {
+	return i.ToConditionPatchArrayOutputWithContext(context.Background())
+}
+
+func (i ConditionPatchArray) ToConditionPatchArrayOutputWithContext(ctx context.Context) ConditionPatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionPatchArrayOutput)
+}
+
 // Condition contains details for one aspect of the current state of this API Resource.
 type ConditionPatchOutput struct{ *pulumi.OutputState }
 
@@ -1134,6 +1159,26 @@ func (o ConditionPatchOutput) Status() pulumi.StringPtrOutput {
 // type of condition in CamelCase or in foo.example.com/CamelCase.
 func (o ConditionPatchOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConditionPatch) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ConditionPatchArrayOutput struct{ *pulumi.OutputState }
+
+func (ConditionPatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConditionPatch)(nil)).Elem()
+}
+
+func (o ConditionPatchArrayOutput) ToConditionPatchArrayOutput() ConditionPatchArrayOutput {
+	return o
+}
+
+func (o ConditionPatchArrayOutput) ToConditionPatchArrayOutputWithContext(ctx context.Context) ConditionPatchArrayOutput {
+	return o
+}
+
+func (o ConditionPatchArrayOutput) Index(i pulumi.IntInput) ConditionPatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConditionPatch {
+		return vs[0].([]ConditionPatch)[vs[1].(int)]
+	}).(ConditionPatchOutput)
 }
 
 // DeleteOptions may be provided when deleting an API object.
@@ -1403,7 +1448,7 @@ type DeleteOptionsPatch struct {
 	// Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
 	OrphanDependents *bool `pulumi:"orphanDependents"`
 	// Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned.
-	Preconditions *Preconditions `pulumi:"preconditions"`
+	Preconditions *PreconditionsPatch `pulumi:"preconditions"`
 	// Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
 	PropagationPolicy *string `pulumi:"propagationPolicy"`
 }
@@ -1432,7 +1477,7 @@ type DeleteOptionsPatchArgs struct {
 	// Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
 	OrphanDependents pulumi.BoolPtrInput `pulumi:"orphanDependents"`
 	// Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned.
-	Preconditions PreconditionsPtrInput `pulumi:"preconditions"`
+	Preconditions PreconditionsPatchPtrInput `pulumi:"preconditions"`
 	// Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
 	PropagationPolicy pulumi.StringPtrInput `pulumi:"propagationPolicy"`
 }
@@ -1449,6 +1494,47 @@ func (i DeleteOptionsPatchArgs) ToDeleteOptionsPatchOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DeleteOptionsPatchOutput)
 }
 
+func (i DeleteOptionsPatchArgs) ToDeleteOptionsPatchPtrOutput() DeleteOptionsPatchPtrOutput {
+	return i.ToDeleteOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i DeleteOptionsPatchArgs) ToDeleteOptionsPatchPtrOutputWithContext(ctx context.Context) DeleteOptionsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeleteOptionsPatchOutput).ToDeleteOptionsPatchPtrOutputWithContext(ctx)
+}
+
+// DeleteOptionsPatchPtrInput is an input type that accepts DeleteOptionsPatchArgs, DeleteOptionsPatchPtr and DeleteOptionsPatchPtrOutput values.
+// You can construct a concrete instance of `DeleteOptionsPatchPtrInput` via:
+//
+//          DeleteOptionsPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type DeleteOptionsPatchPtrInput interface {
+	pulumi.Input
+
+	ToDeleteOptionsPatchPtrOutput() DeleteOptionsPatchPtrOutput
+	ToDeleteOptionsPatchPtrOutputWithContext(context.Context) DeleteOptionsPatchPtrOutput
+}
+
+type deleteOptionsPatchPtrType DeleteOptionsPatchArgs
+
+func DeleteOptionsPatchPtr(v *DeleteOptionsPatchArgs) DeleteOptionsPatchPtrInput {
+	return (*deleteOptionsPatchPtrType)(v)
+}
+
+func (*deleteOptionsPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeleteOptionsPatch)(nil)).Elem()
+}
+
+func (i *deleteOptionsPatchPtrType) ToDeleteOptionsPatchPtrOutput() DeleteOptionsPatchPtrOutput {
+	return i.ToDeleteOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *deleteOptionsPatchPtrType) ToDeleteOptionsPatchPtrOutputWithContext(ctx context.Context) DeleteOptionsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeleteOptionsPatchPtrOutput)
+}
+
 // DeleteOptions may be provided when deleting an API object.
 type DeleteOptionsPatchOutput struct{ *pulumi.OutputState }
 
@@ -1462,6 +1548,16 @@ func (o DeleteOptionsPatchOutput) ToDeleteOptionsPatchOutput() DeleteOptionsPatc
 
 func (o DeleteOptionsPatchOutput) ToDeleteOptionsPatchOutputWithContext(ctx context.Context) DeleteOptionsPatchOutput {
 	return o
+}
+
+func (o DeleteOptionsPatchOutput) ToDeleteOptionsPatchPtrOutput() DeleteOptionsPatchPtrOutput {
+	return o.ToDeleteOptionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (o DeleteOptionsPatchOutput) ToDeleteOptionsPatchPtrOutputWithContext(ctx context.Context) DeleteOptionsPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeleteOptionsPatch) *DeleteOptionsPatch {
+		return &v
+	}).(DeleteOptionsPatchPtrOutput)
 }
 
 // APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -1490,13 +1586,107 @@ func (o DeleteOptionsPatchOutput) OrphanDependents() pulumi.BoolPtrOutput {
 }
 
 // Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned.
-func (o DeleteOptionsPatchOutput) Preconditions() PreconditionsPtrOutput {
-	return o.ApplyT(func(v DeleteOptionsPatch) *Preconditions { return v.Preconditions }).(PreconditionsPtrOutput)
+func (o DeleteOptionsPatchOutput) Preconditions() PreconditionsPatchPtrOutput {
+	return o.ApplyT(func(v DeleteOptionsPatch) *PreconditionsPatch { return v.Preconditions }).(PreconditionsPatchPtrOutput)
 }
 
 // Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
 func (o DeleteOptionsPatchOutput) PropagationPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeleteOptionsPatch) *string { return v.PropagationPolicy }).(pulumi.StringPtrOutput)
+}
+
+type DeleteOptionsPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (DeleteOptionsPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeleteOptionsPatch)(nil)).Elem()
+}
+
+func (o DeleteOptionsPatchPtrOutput) ToDeleteOptionsPatchPtrOutput() DeleteOptionsPatchPtrOutput {
+	return o
+}
+
+func (o DeleteOptionsPatchPtrOutput) ToDeleteOptionsPatchPtrOutputWithContext(ctx context.Context) DeleteOptionsPatchPtrOutput {
+	return o
+}
+
+func (o DeleteOptionsPatchPtrOutput) Elem() DeleteOptionsPatchOutput {
+	return o.ApplyT(func(v *DeleteOptionsPatch) DeleteOptionsPatch {
+		if v != nil {
+			return *v
+		}
+		var ret DeleteOptionsPatch
+		return ret
+	}).(DeleteOptionsPatchOutput)
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o DeleteOptionsPatchPtrOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeleteOptionsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+func (o DeleteOptionsPatchPtrOutput) DryRun() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeleteOptionsPatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DryRun
+	}).(pulumi.StringArrayOutput)
+}
+
+// The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.
+func (o DeleteOptionsPatchPtrOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeleteOptionsPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GracePeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o DeleteOptionsPatchPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeleteOptionsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
+func (o DeleteOptionsPatchPtrOutput) OrphanDependents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeleteOptionsPatch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OrphanDependents
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned.
+func (o DeleteOptionsPatchPtrOutput) Preconditions() PreconditionsPatchPtrOutput {
+	return o.ApplyT(func(v *DeleteOptionsPatch) *PreconditionsPatch {
+		if v == nil {
+			return nil
+		}
+		return v.Preconditions
+	}).(PreconditionsPatchPtrOutput)
+}
+
+// Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
+func (o DeleteOptionsPatchPtrOutput) PropagationPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeleteOptionsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PropagationPolicy
+	}).(pulumi.StringPtrOutput)
 }
 
 // GroupVersion contains the "group/version" and "version" string of a version. It is made a struct to keep extensibility.
@@ -1742,6 +1932,72 @@ func (i GroupVersionForDiscoveryPatchArgs) ToGroupVersionForDiscoveryPatchOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GroupVersionForDiscoveryPatchOutput)
 }
 
+func (i GroupVersionForDiscoveryPatchArgs) ToGroupVersionForDiscoveryPatchPtrOutput() GroupVersionForDiscoveryPatchPtrOutput {
+	return i.ToGroupVersionForDiscoveryPatchPtrOutputWithContext(context.Background())
+}
+
+func (i GroupVersionForDiscoveryPatchArgs) ToGroupVersionForDiscoveryPatchPtrOutputWithContext(ctx context.Context) GroupVersionForDiscoveryPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupVersionForDiscoveryPatchOutput).ToGroupVersionForDiscoveryPatchPtrOutputWithContext(ctx)
+}
+
+// GroupVersionForDiscoveryPatchPtrInput is an input type that accepts GroupVersionForDiscoveryPatchArgs, GroupVersionForDiscoveryPatchPtr and GroupVersionForDiscoveryPatchPtrOutput values.
+// You can construct a concrete instance of `GroupVersionForDiscoveryPatchPtrInput` via:
+//
+//          GroupVersionForDiscoveryPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type GroupVersionForDiscoveryPatchPtrInput interface {
+	pulumi.Input
+
+	ToGroupVersionForDiscoveryPatchPtrOutput() GroupVersionForDiscoveryPatchPtrOutput
+	ToGroupVersionForDiscoveryPatchPtrOutputWithContext(context.Context) GroupVersionForDiscoveryPatchPtrOutput
+}
+
+type groupVersionForDiscoveryPatchPtrType GroupVersionForDiscoveryPatchArgs
+
+func GroupVersionForDiscoveryPatchPtr(v *GroupVersionForDiscoveryPatchArgs) GroupVersionForDiscoveryPatchPtrInput {
+	return (*groupVersionForDiscoveryPatchPtrType)(v)
+}
+
+func (*groupVersionForDiscoveryPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupVersionForDiscoveryPatch)(nil)).Elem()
+}
+
+func (i *groupVersionForDiscoveryPatchPtrType) ToGroupVersionForDiscoveryPatchPtrOutput() GroupVersionForDiscoveryPatchPtrOutput {
+	return i.ToGroupVersionForDiscoveryPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *groupVersionForDiscoveryPatchPtrType) ToGroupVersionForDiscoveryPatchPtrOutputWithContext(ctx context.Context) GroupVersionForDiscoveryPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupVersionForDiscoveryPatchPtrOutput)
+}
+
+// GroupVersionForDiscoveryPatchArrayInput is an input type that accepts GroupVersionForDiscoveryPatchArray and GroupVersionForDiscoveryPatchArrayOutput values.
+// You can construct a concrete instance of `GroupVersionForDiscoveryPatchArrayInput` via:
+//
+//          GroupVersionForDiscoveryPatchArray{ GroupVersionForDiscoveryPatchArgs{...} }
+type GroupVersionForDiscoveryPatchArrayInput interface {
+	pulumi.Input
+
+	ToGroupVersionForDiscoveryPatchArrayOutput() GroupVersionForDiscoveryPatchArrayOutput
+	ToGroupVersionForDiscoveryPatchArrayOutputWithContext(context.Context) GroupVersionForDiscoveryPatchArrayOutput
+}
+
+type GroupVersionForDiscoveryPatchArray []GroupVersionForDiscoveryPatchInput
+
+func (GroupVersionForDiscoveryPatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupVersionForDiscoveryPatch)(nil)).Elem()
+}
+
+func (i GroupVersionForDiscoveryPatchArray) ToGroupVersionForDiscoveryPatchArrayOutput() GroupVersionForDiscoveryPatchArrayOutput {
+	return i.ToGroupVersionForDiscoveryPatchArrayOutputWithContext(context.Background())
+}
+
+func (i GroupVersionForDiscoveryPatchArray) ToGroupVersionForDiscoveryPatchArrayOutputWithContext(ctx context.Context) GroupVersionForDiscoveryPatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupVersionForDiscoveryPatchArrayOutput)
+}
+
 // GroupVersion contains the "group/version" and "version" string of a version. It is made a struct to keep extensibility.
 type GroupVersionForDiscoveryPatchOutput struct{ *pulumi.OutputState }
 
@@ -1757,6 +2013,16 @@ func (o GroupVersionForDiscoveryPatchOutput) ToGroupVersionForDiscoveryPatchOutp
 	return o
 }
 
+func (o GroupVersionForDiscoveryPatchOutput) ToGroupVersionForDiscoveryPatchPtrOutput() GroupVersionForDiscoveryPatchPtrOutput {
+	return o.ToGroupVersionForDiscoveryPatchPtrOutputWithContext(context.Background())
+}
+
+func (o GroupVersionForDiscoveryPatchOutput) ToGroupVersionForDiscoveryPatchPtrOutputWithContext(ctx context.Context) GroupVersionForDiscoveryPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupVersionForDiscoveryPatch) *GroupVersionForDiscoveryPatch {
+		return &v
+	}).(GroupVersionForDiscoveryPatchPtrOutput)
+}
+
 // groupVersion specifies the API group and version in the form "group/version"
 func (o GroupVersionForDiscoveryPatchOutput) GroupVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupVersionForDiscoveryPatch) *string { return v.GroupVersion }).(pulumi.StringPtrOutput)
@@ -1765,6 +2031,70 @@ func (o GroupVersionForDiscoveryPatchOutput) GroupVersion() pulumi.StringPtrOutp
 // version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion.
 func (o GroupVersionForDiscoveryPatchOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupVersionForDiscoveryPatch) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type GroupVersionForDiscoveryPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (GroupVersionForDiscoveryPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupVersionForDiscoveryPatch)(nil)).Elem()
+}
+
+func (o GroupVersionForDiscoveryPatchPtrOutput) ToGroupVersionForDiscoveryPatchPtrOutput() GroupVersionForDiscoveryPatchPtrOutput {
+	return o
+}
+
+func (o GroupVersionForDiscoveryPatchPtrOutput) ToGroupVersionForDiscoveryPatchPtrOutputWithContext(ctx context.Context) GroupVersionForDiscoveryPatchPtrOutput {
+	return o
+}
+
+func (o GroupVersionForDiscoveryPatchPtrOutput) Elem() GroupVersionForDiscoveryPatchOutput {
+	return o.ApplyT(func(v *GroupVersionForDiscoveryPatch) GroupVersionForDiscoveryPatch {
+		if v != nil {
+			return *v
+		}
+		var ret GroupVersionForDiscoveryPatch
+		return ret
+	}).(GroupVersionForDiscoveryPatchOutput)
+}
+
+// groupVersion specifies the API group and version in the form "group/version"
+func (o GroupVersionForDiscoveryPatchPtrOutput) GroupVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupVersionForDiscoveryPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion.
+func (o GroupVersionForDiscoveryPatchPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupVersionForDiscoveryPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type GroupVersionForDiscoveryPatchArrayOutput struct{ *pulumi.OutputState }
+
+func (GroupVersionForDiscoveryPatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupVersionForDiscoveryPatch)(nil)).Elem()
+}
+
+func (o GroupVersionForDiscoveryPatchArrayOutput) ToGroupVersionForDiscoveryPatchArrayOutput() GroupVersionForDiscoveryPatchArrayOutput {
+	return o
+}
+
+func (o GroupVersionForDiscoveryPatchArrayOutput) ToGroupVersionForDiscoveryPatchArrayOutputWithContext(ctx context.Context) GroupVersionForDiscoveryPatchArrayOutput {
+	return o
+}
+
+func (o GroupVersionForDiscoveryPatchArrayOutput) Index(i pulumi.IntInput) GroupVersionForDiscoveryPatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupVersionForDiscoveryPatch {
+		return vs[0].([]GroupVersionForDiscoveryPatch)[vs[1].(int)]
+	}).(GroupVersionForDiscoveryPatchOutput)
 }
 
 // A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
@@ -1974,7 +2304,7 @@ func (o LabelSelectorArrayOutput) Index(i pulumi.IntInput) LabelSelectorOutput {
 // A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
 type LabelSelectorPatch struct {
 	// matchExpressions is a list of label selector requirements. The requirements are ANDed.
-	MatchExpressions []LabelSelectorRequirement `pulumi:"matchExpressions"`
+	MatchExpressions []LabelSelectorRequirementPatch `pulumi:"matchExpressions"`
 	// matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
 	MatchLabels map[string]string `pulumi:"matchLabels"`
 }
@@ -1993,7 +2323,7 @@ type LabelSelectorPatchInput interface {
 // A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
 type LabelSelectorPatchArgs struct {
 	// matchExpressions is a list of label selector requirements. The requirements are ANDed.
-	MatchExpressions LabelSelectorRequirementArrayInput `pulumi:"matchExpressions"`
+	MatchExpressions LabelSelectorRequirementPatchArrayInput `pulumi:"matchExpressions"`
 	// matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
 	MatchLabels pulumi.StringMapInput `pulumi:"matchLabels"`
 }
@@ -2008,6 +2338,72 @@ func (i LabelSelectorPatchArgs) ToLabelSelectorPatchOutput() LabelSelectorPatchO
 
 func (i LabelSelectorPatchArgs) ToLabelSelectorPatchOutputWithContext(ctx context.Context) LabelSelectorPatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LabelSelectorPatchOutput)
+}
+
+func (i LabelSelectorPatchArgs) ToLabelSelectorPatchPtrOutput() LabelSelectorPatchPtrOutput {
+	return i.ToLabelSelectorPatchPtrOutputWithContext(context.Background())
+}
+
+func (i LabelSelectorPatchArgs) ToLabelSelectorPatchPtrOutputWithContext(ctx context.Context) LabelSelectorPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelSelectorPatchOutput).ToLabelSelectorPatchPtrOutputWithContext(ctx)
+}
+
+// LabelSelectorPatchPtrInput is an input type that accepts LabelSelectorPatchArgs, LabelSelectorPatchPtr and LabelSelectorPatchPtrOutput values.
+// You can construct a concrete instance of `LabelSelectorPatchPtrInput` via:
+//
+//          LabelSelectorPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type LabelSelectorPatchPtrInput interface {
+	pulumi.Input
+
+	ToLabelSelectorPatchPtrOutput() LabelSelectorPatchPtrOutput
+	ToLabelSelectorPatchPtrOutputWithContext(context.Context) LabelSelectorPatchPtrOutput
+}
+
+type labelSelectorPatchPtrType LabelSelectorPatchArgs
+
+func LabelSelectorPatchPtr(v *LabelSelectorPatchArgs) LabelSelectorPatchPtrInput {
+	return (*labelSelectorPatchPtrType)(v)
+}
+
+func (*labelSelectorPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LabelSelectorPatch)(nil)).Elem()
+}
+
+func (i *labelSelectorPatchPtrType) ToLabelSelectorPatchPtrOutput() LabelSelectorPatchPtrOutput {
+	return i.ToLabelSelectorPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *labelSelectorPatchPtrType) ToLabelSelectorPatchPtrOutputWithContext(ctx context.Context) LabelSelectorPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelSelectorPatchPtrOutput)
+}
+
+// LabelSelectorPatchArrayInput is an input type that accepts LabelSelectorPatchArray and LabelSelectorPatchArrayOutput values.
+// You can construct a concrete instance of `LabelSelectorPatchArrayInput` via:
+//
+//          LabelSelectorPatchArray{ LabelSelectorPatchArgs{...} }
+type LabelSelectorPatchArrayInput interface {
+	pulumi.Input
+
+	ToLabelSelectorPatchArrayOutput() LabelSelectorPatchArrayOutput
+	ToLabelSelectorPatchArrayOutputWithContext(context.Context) LabelSelectorPatchArrayOutput
+}
+
+type LabelSelectorPatchArray []LabelSelectorPatchInput
+
+func (LabelSelectorPatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LabelSelectorPatch)(nil)).Elem()
+}
+
+func (i LabelSelectorPatchArray) ToLabelSelectorPatchArrayOutput() LabelSelectorPatchArrayOutput {
+	return i.ToLabelSelectorPatchArrayOutputWithContext(context.Background())
+}
+
+func (i LabelSelectorPatchArray) ToLabelSelectorPatchArrayOutputWithContext(ctx context.Context) LabelSelectorPatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelSelectorPatchArrayOutput)
 }
 
 // A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
@@ -2025,14 +2421,88 @@ func (o LabelSelectorPatchOutput) ToLabelSelectorPatchOutputWithContext(ctx cont
 	return o
 }
 
+func (o LabelSelectorPatchOutput) ToLabelSelectorPatchPtrOutput() LabelSelectorPatchPtrOutput {
+	return o.ToLabelSelectorPatchPtrOutputWithContext(context.Background())
+}
+
+func (o LabelSelectorPatchOutput) ToLabelSelectorPatchPtrOutputWithContext(ctx context.Context) LabelSelectorPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LabelSelectorPatch) *LabelSelectorPatch {
+		return &v
+	}).(LabelSelectorPatchPtrOutput)
+}
+
 // matchExpressions is a list of label selector requirements. The requirements are ANDed.
-func (o LabelSelectorPatchOutput) MatchExpressions() LabelSelectorRequirementArrayOutput {
-	return o.ApplyT(func(v LabelSelectorPatch) []LabelSelectorRequirement { return v.MatchExpressions }).(LabelSelectorRequirementArrayOutput)
+func (o LabelSelectorPatchOutput) MatchExpressions() LabelSelectorRequirementPatchArrayOutput {
+	return o.ApplyT(func(v LabelSelectorPatch) []LabelSelectorRequirementPatch { return v.MatchExpressions }).(LabelSelectorRequirementPatchArrayOutput)
 }
 
 // matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
 func (o LabelSelectorPatchOutput) MatchLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LabelSelectorPatch) map[string]string { return v.MatchLabels }).(pulumi.StringMapOutput)
+}
+
+type LabelSelectorPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (LabelSelectorPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LabelSelectorPatch)(nil)).Elem()
+}
+
+func (o LabelSelectorPatchPtrOutput) ToLabelSelectorPatchPtrOutput() LabelSelectorPatchPtrOutput {
+	return o
+}
+
+func (o LabelSelectorPatchPtrOutput) ToLabelSelectorPatchPtrOutputWithContext(ctx context.Context) LabelSelectorPatchPtrOutput {
+	return o
+}
+
+func (o LabelSelectorPatchPtrOutput) Elem() LabelSelectorPatchOutput {
+	return o.ApplyT(func(v *LabelSelectorPatch) LabelSelectorPatch {
+		if v != nil {
+			return *v
+		}
+		var ret LabelSelectorPatch
+		return ret
+	}).(LabelSelectorPatchOutput)
+}
+
+// matchExpressions is a list of label selector requirements. The requirements are ANDed.
+func (o LabelSelectorPatchPtrOutput) MatchExpressions() LabelSelectorRequirementPatchArrayOutput {
+	return o.ApplyT(func(v *LabelSelectorPatch) []LabelSelectorRequirementPatch {
+		if v == nil {
+			return nil
+		}
+		return v.MatchExpressions
+	}).(LabelSelectorRequirementPatchArrayOutput)
+}
+
+// matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+func (o LabelSelectorPatchPtrOutput) MatchLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *LabelSelectorPatch) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.MatchLabels
+	}).(pulumi.StringMapOutput)
+}
+
+type LabelSelectorPatchArrayOutput struct{ *pulumi.OutputState }
+
+func (LabelSelectorPatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LabelSelectorPatch)(nil)).Elem()
+}
+
+func (o LabelSelectorPatchArrayOutput) ToLabelSelectorPatchArrayOutput() LabelSelectorPatchArrayOutput {
+	return o
+}
+
+func (o LabelSelectorPatchArrayOutput) ToLabelSelectorPatchArrayOutputWithContext(ctx context.Context) LabelSelectorPatchArrayOutput {
+	return o
+}
+
+func (o LabelSelectorPatchArrayOutput) Index(i pulumi.IntInput) LabelSelectorPatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LabelSelectorPatch {
+		return vs[0].([]LabelSelectorPatch)[vs[1].(int)]
+	}).(LabelSelectorPatchOutput)
 }
 
 // A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
@@ -2196,6 +2666,31 @@ func (i LabelSelectorRequirementPatchArgs) ToLabelSelectorRequirementPatchOutput
 	return pulumi.ToOutputWithContext(ctx, i).(LabelSelectorRequirementPatchOutput)
 }
 
+// LabelSelectorRequirementPatchArrayInput is an input type that accepts LabelSelectorRequirementPatchArray and LabelSelectorRequirementPatchArrayOutput values.
+// You can construct a concrete instance of `LabelSelectorRequirementPatchArrayInput` via:
+//
+//          LabelSelectorRequirementPatchArray{ LabelSelectorRequirementPatchArgs{...} }
+type LabelSelectorRequirementPatchArrayInput interface {
+	pulumi.Input
+
+	ToLabelSelectorRequirementPatchArrayOutput() LabelSelectorRequirementPatchArrayOutput
+	ToLabelSelectorRequirementPatchArrayOutputWithContext(context.Context) LabelSelectorRequirementPatchArrayOutput
+}
+
+type LabelSelectorRequirementPatchArray []LabelSelectorRequirementPatchInput
+
+func (LabelSelectorRequirementPatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LabelSelectorRequirementPatch)(nil)).Elem()
+}
+
+func (i LabelSelectorRequirementPatchArray) ToLabelSelectorRequirementPatchArrayOutput() LabelSelectorRequirementPatchArrayOutput {
+	return i.ToLabelSelectorRequirementPatchArrayOutputWithContext(context.Background())
+}
+
+func (i LabelSelectorRequirementPatchArray) ToLabelSelectorRequirementPatchArrayOutputWithContext(ctx context.Context) LabelSelectorRequirementPatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelSelectorRequirementPatchArrayOutput)
+}
+
 // A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 type LabelSelectorRequirementPatchOutput struct{ *pulumi.OutputState }
 
@@ -2224,6 +2719,26 @@ func (o LabelSelectorRequirementPatchOutput) Operator() pulumi.StringPtrOutput {
 // values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
 func (o LabelSelectorRequirementPatchOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LabelSelectorRequirementPatch) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type LabelSelectorRequirementPatchArrayOutput struct{ *pulumi.OutputState }
+
+func (LabelSelectorRequirementPatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LabelSelectorRequirementPatch)(nil)).Elem()
+}
+
+func (o LabelSelectorRequirementPatchArrayOutput) ToLabelSelectorRequirementPatchArrayOutput() LabelSelectorRequirementPatchArrayOutput {
+	return o
+}
+
+func (o LabelSelectorRequirementPatchArrayOutput) ToLabelSelectorRequirementPatchArrayOutputWithContext(ctx context.Context) LabelSelectorRequirementPatchArrayOutput {
+	return o
+}
+
+func (o LabelSelectorRequirementPatchArrayOutput) Index(i pulumi.IntInput) LabelSelectorRequirementPatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LabelSelectorRequirementPatch {
+		return vs[0].([]LabelSelectorRequirementPatch)[vs[1].(int)]
+	}).(LabelSelectorRequirementPatchOutput)
 }
 
 // ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.
@@ -2470,6 +2985,47 @@ func (i ListMetaPatchArgs) ToListMetaPatchOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ListMetaPatchOutput)
 }
 
+func (i ListMetaPatchArgs) ToListMetaPatchPtrOutput() ListMetaPatchPtrOutput {
+	return i.ToListMetaPatchPtrOutputWithContext(context.Background())
+}
+
+func (i ListMetaPatchArgs) ToListMetaPatchPtrOutputWithContext(ctx context.Context) ListMetaPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListMetaPatchOutput).ToListMetaPatchPtrOutputWithContext(ctx)
+}
+
+// ListMetaPatchPtrInput is an input type that accepts ListMetaPatchArgs, ListMetaPatchPtr and ListMetaPatchPtrOutput values.
+// You can construct a concrete instance of `ListMetaPatchPtrInput` via:
+//
+//          ListMetaPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type ListMetaPatchPtrInput interface {
+	pulumi.Input
+
+	ToListMetaPatchPtrOutput() ListMetaPatchPtrOutput
+	ToListMetaPatchPtrOutputWithContext(context.Context) ListMetaPatchPtrOutput
+}
+
+type listMetaPatchPtrType ListMetaPatchArgs
+
+func ListMetaPatchPtr(v *ListMetaPatchArgs) ListMetaPatchPtrInput {
+	return (*listMetaPatchPtrType)(v)
+}
+
+func (*listMetaPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListMetaPatch)(nil)).Elem()
+}
+
+func (i *listMetaPatchPtrType) ToListMetaPatchPtrOutput() ListMetaPatchPtrOutput {
+	return i.ToListMetaPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *listMetaPatchPtrType) ToListMetaPatchPtrOutputWithContext(ctx context.Context) ListMetaPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListMetaPatchPtrOutput)
+}
+
 // ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.
 type ListMetaPatchOutput struct{ *pulumi.OutputState }
 
@@ -2483,6 +3039,16 @@ func (o ListMetaPatchOutput) ToListMetaPatchOutput() ListMetaPatchOutput {
 
 func (o ListMetaPatchOutput) ToListMetaPatchOutputWithContext(ctx context.Context) ListMetaPatchOutput {
 	return o
+}
+
+func (o ListMetaPatchOutput) ToListMetaPatchPtrOutput() ListMetaPatchPtrOutput {
+	return o.ToListMetaPatchPtrOutputWithContext(context.Background())
+}
+
+func (o ListMetaPatchOutput) ToListMetaPatchPtrOutputWithContext(ctx context.Context) ListMetaPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListMetaPatch) *ListMetaPatch {
+		return &v
+	}).(ListMetaPatchPtrOutput)
 }
 
 // continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.
@@ -2503,6 +3069,70 @@ func (o ListMetaPatchOutput) ResourceVersion() pulumi.StringPtrOutput {
 // Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.
 func (o ListMetaPatchOutput) SelfLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListMetaPatch) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
+}
+
+type ListMetaPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (ListMetaPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListMetaPatch)(nil)).Elem()
+}
+
+func (o ListMetaPatchPtrOutput) ToListMetaPatchPtrOutput() ListMetaPatchPtrOutput {
+	return o
+}
+
+func (o ListMetaPatchPtrOutput) ToListMetaPatchPtrOutputWithContext(ctx context.Context) ListMetaPatchPtrOutput {
+	return o
+}
+
+func (o ListMetaPatchPtrOutput) Elem() ListMetaPatchOutput {
+	return o.ApplyT(func(v *ListMetaPatch) ListMetaPatch {
+		if v != nil {
+			return *v
+		}
+		var ret ListMetaPatch
+		return ret
+	}).(ListMetaPatchOutput)
+}
+
+// continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.
+func (o ListMetaPatchPtrOutput) Continue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListMetaPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Continue
+	}).(pulumi.StringPtrOutput)
+}
+
+// remainingItemCount is the number of subsequent items in the list which are not included in this list response. If the list request contained label or field selectors, then the number of remaining items is unknown and the field will be left unset and omitted during serialization. If the list is complete (either because it is not chunking or because this is the last chunk), then there are no more remaining items and this field will be left unset and omitted during serialization. Servers older than v1.15 do not set this field. The intended use of the remainingItemCount is *estimating* the size of a collection. Clients should not rely on the remainingItemCount to be set or to be exact.
+func (o ListMetaPatchPtrOutput) RemainingItemCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ListMetaPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RemainingItemCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// String that identifies the server's internal version of this object that can be used by clients to determine when objects have changed. Value must be treated as opaque by clients and passed unmodified back to the server. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+func (o ListMetaPatchPtrOutput) ResourceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListMetaPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.
+func (o ListMetaPatchPtrOutput) SelfLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListMetaPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SelfLink
+	}).(pulumi.StringPtrOutput)
 }
 
 // ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to.
@@ -2718,6 +3348,31 @@ func (i ManagedFieldsEntryPatchArgs) ToManagedFieldsEntryPatchOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedFieldsEntryPatchOutput)
 }
 
+// ManagedFieldsEntryPatchArrayInput is an input type that accepts ManagedFieldsEntryPatchArray and ManagedFieldsEntryPatchArrayOutput values.
+// You can construct a concrete instance of `ManagedFieldsEntryPatchArrayInput` via:
+//
+//          ManagedFieldsEntryPatchArray{ ManagedFieldsEntryPatchArgs{...} }
+type ManagedFieldsEntryPatchArrayInput interface {
+	pulumi.Input
+
+	ToManagedFieldsEntryPatchArrayOutput() ManagedFieldsEntryPatchArrayOutput
+	ToManagedFieldsEntryPatchArrayOutputWithContext(context.Context) ManagedFieldsEntryPatchArrayOutput
+}
+
+type ManagedFieldsEntryPatchArray []ManagedFieldsEntryPatchInput
+
+func (ManagedFieldsEntryPatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedFieldsEntryPatch)(nil)).Elem()
+}
+
+func (i ManagedFieldsEntryPatchArray) ToManagedFieldsEntryPatchArrayOutput() ManagedFieldsEntryPatchArrayOutput {
+	return i.ToManagedFieldsEntryPatchArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedFieldsEntryPatchArray) ToManagedFieldsEntryPatchArrayOutputWithContext(ctx context.Context) ManagedFieldsEntryPatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedFieldsEntryPatchArrayOutput)
+}
+
 // ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to.
 type ManagedFieldsEntryPatchOutput struct{ *pulumi.OutputState }
 
@@ -2766,6 +3421,26 @@ func (o ManagedFieldsEntryPatchOutput) Subresource() pulumi.StringPtrOutput {
 // Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.
 func (o ManagedFieldsEntryPatchOutput) Time() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedFieldsEntryPatch) *string { return v.Time }).(pulumi.StringPtrOutput)
+}
+
+type ManagedFieldsEntryPatchArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedFieldsEntryPatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedFieldsEntryPatch)(nil)).Elem()
+}
+
+func (o ManagedFieldsEntryPatchArrayOutput) ToManagedFieldsEntryPatchArrayOutput() ManagedFieldsEntryPatchArrayOutput {
+	return o
+}
+
+func (o ManagedFieldsEntryPatchArrayOutput) ToManagedFieldsEntryPatchArrayOutputWithContext(ctx context.Context) ManagedFieldsEntryPatchArrayOutput {
+	return o
+}
+
+func (o ManagedFieldsEntryPatchArrayOutput) Index(i pulumi.IntInput) ManagedFieldsEntryPatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedFieldsEntryPatch {
+		return vs[0].([]ManagedFieldsEntryPatch)[vs[1].(int)]
+	}).(ManagedFieldsEntryPatchOutput)
 }
 
 // ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
@@ -3288,7 +3963,7 @@ type ObjectMetaPatch struct {
 	// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels
 	Labels map[string]string `pulumi:"labels"`
 	// ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object.
-	ManagedFields []ManagedFieldsEntry `pulumi:"managedFields"`
+	ManagedFields []ManagedFieldsEntryPatch `pulumi:"managedFields"`
 	// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names
 	Name *string `pulumi:"name"`
 	// Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the "default" namespace, but "default" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.
@@ -3296,7 +3971,7 @@ type ObjectMetaPatch struct {
 	// Must be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces
 	Namespace *string `pulumi:"namespace"`
 	// List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.
-	OwnerReferences []OwnerReference `pulumi:"ownerReferences"`
+	OwnerReferences []OwnerReferencePatch `pulumi:"ownerReferences"`
 	// An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.
 	//
 	// Populated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
@@ -3351,7 +4026,7 @@ type ObjectMetaPatchArgs struct {
 	// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object.
-	ManagedFields ManagedFieldsEntryArrayInput `pulumi:"managedFields"`
+	ManagedFields ManagedFieldsEntryPatchArrayInput `pulumi:"managedFields"`
 	// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the "default" namespace, but "default" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.
@@ -3359,7 +4034,7 @@ type ObjectMetaPatchArgs struct {
 	// Must be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.
-	OwnerReferences OwnerReferenceArrayInput `pulumi:"ownerReferences"`
+	OwnerReferences OwnerReferencePatchArrayInput `pulumi:"ownerReferences"`
 	// An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.
 	//
 	// Populated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
@@ -3384,6 +4059,47 @@ func (i ObjectMetaPatchArgs) ToObjectMetaPatchOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectMetaPatchOutput)
 }
 
+func (i ObjectMetaPatchArgs) ToObjectMetaPatchPtrOutput() ObjectMetaPatchPtrOutput {
+	return i.ToObjectMetaPatchPtrOutputWithContext(context.Background())
+}
+
+func (i ObjectMetaPatchArgs) ToObjectMetaPatchPtrOutputWithContext(ctx context.Context) ObjectMetaPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectMetaPatchOutput).ToObjectMetaPatchPtrOutputWithContext(ctx)
+}
+
+// ObjectMetaPatchPtrInput is an input type that accepts ObjectMetaPatchArgs, ObjectMetaPatchPtr and ObjectMetaPatchPtrOutput values.
+// You can construct a concrete instance of `ObjectMetaPatchPtrInput` via:
+//
+//          ObjectMetaPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type ObjectMetaPatchPtrInput interface {
+	pulumi.Input
+
+	ToObjectMetaPatchPtrOutput() ObjectMetaPatchPtrOutput
+	ToObjectMetaPatchPtrOutputWithContext(context.Context) ObjectMetaPatchPtrOutput
+}
+
+type objectMetaPatchPtrType ObjectMetaPatchArgs
+
+func ObjectMetaPatchPtr(v *ObjectMetaPatchArgs) ObjectMetaPatchPtrInput {
+	return (*objectMetaPatchPtrType)(v)
+}
+
+func (*objectMetaPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectMetaPatch)(nil)).Elem()
+}
+
+func (i *objectMetaPatchPtrType) ToObjectMetaPatchPtrOutput() ObjectMetaPatchPtrOutput {
+	return i.ToObjectMetaPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *objectMetaPatchPtrType) ToObjectMetaPatchPtrOutputWithContext(ctx context.Context) ObjectMetaPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectMetaPatchPtrOutput)
+}
+
 // ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
 type ObjectMetaPatchOutput struct{ *pulumi.OutputState }
 
@@ -3397,6 +4113,16 @@ func (o ObjectMetaPatchOutput) ToObjectMetaPatchOutput() ObjectMetaPatchOutput {
 
 func (o ObjectMetaPatchOutput) ToObjectMetaPatchOutputWithContext(ctx context.Context) ObjectMetaPatchOutput {
 	return o
+}
+
+func (o ObjectMetaPatchOutput) ToObjectMetaPatchPtrOutput() ObjectMetaPatchPtrOutput {
+	return o.ToObjectMetaPatchPtrOutputWithContext(context.Background())
+}
+
+func (o ObjectMetaPatchOutput) ToObjectMetaPatchPtrOutputWithContext(ctx context.Context) ObjectMetaPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ObjectMetaPatch) *ObjectMetaPatch {
+		return &v
+	}).(ObjectMetaPatchPtrOutput)
 }
 
 // Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
@@ -3455,8 +4181,8 @@ func (o ObjectMetaPatchOutput) Labels() pulumi.StringMapOutput {
 }
 
 // ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object.
-func (o ObjectMetaPatchOutput) ManagedFields() ManagedFieldsEntryArrayOutput {
-	return o.ApplyT(func(v ObjectMetaPatch) []ManagedFieldsEntry { return v.ManagedFields }).(ManagedFieldsEntryArrayOutput)
+func (o ObjectMetaPatchOutput) ManagedFields() ManagedFieldsEntryPatchArrayOutput {
+	return o.ApplyT(func(v ObjectMetaPatch) []ManagedFieldsEntryPatch { return v.ManagedFields }).(ManagedFieldsEntryPatchArrayOutput)
 }
 
 // Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names
@@ -3472,8 +4198,8 @@ func (o ObjectMetaPatchOutput) Namespace() pulumi.StringPtrOutput {
 }
 
 // List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.
-func (o ObjectMetaPatchOutput) OwnerReferences() OwnerReferenceArrayOutput {
-	return o.ApplyT(func(v ObjectMetaPatch) []OwnerReference { return v.OwnerReferences }).(OwnerReferenceArrayOutput)
+func (o ObjectMetaPatchOutput) OwnerReferences() OwnerReferencePatchArrayOutput {
+	return o.ApplyT(func(v ObjectMetaPatch) []OwnerReferencePatch { return v.OwnerReferences }).(OwnerReferencePatchArrayOutput)
 }
 
 // An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.
@@ -3493,6 +4219,206 @@ func (o ObjectMetaPatchOutput) SelfLink() pulumi.StringPtrOutput {
 // Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
 func (o ObjectMetaPatchOutput) Uid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMetaPatch) *string { return v.Uid }).(pulumi.StringPtrOutput)
+}
+
+type ObjectMetaPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (ObjectMetaPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectMetaPatch)(nil)).Elem()
+}
+
+func (o ObjectMetaPatchPtrOutput) ToObjectMetaPatchPtrOutput() ObjectMetaPatchPtrOutput {
+	return o
+}
+
+func (o ObjectMetaPatchPtrOutput) ToObjectMetaPatchPtrOutputWithContext(ctx context.Context) ObjectMetaPatchPtrOutput {
+	return o
+}
+
+func (o ObjectMetaPatchPtrOutput) Elem() ObjectMetaPatchOutput {
+	return o.ApplyT(func(v *ObjectMetaPatch) ObjectMetaPatch {
+		if v != nil {
+			return *v
+		}
+		var ret ObjectMetaPatch
+		return ret
+	}).(ObjectMetaPatchOutput)
+}
+
+// Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
+func (o ObjectMetaPatchPtrOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ObjectMetaPatch) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Annotations
+	}).(pulumi.StringMapOutput)
+}
+
+// Deprecated: ClusterName is a legacy field that was always cleared by the system and never used; it will be removed completely in 1.25.
+//
+// The name in the go struct is changed to help clients detect accidental use.
+func (o ObjectMetaPatchPtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC.
+//
+// Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+func (o ObjectMetaPatchPtrOutput) CreationTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreationTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
+func (o ObjectMetaPatchPtrOutput) DeletionGracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DeletionGracePeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested.
+//
+// Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+func (o ObjectMetaPatchPtrOutput) DeletionTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletionTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.
+func (o ObjectMetaPatchPtrOutput) Finalizers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ObjectMetaPatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Finalizers
+	}).(pulumi.StringArrayOutput)
+}
+
+// GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.
+//
+// If this field is specified and the generated name exists, the server will return a 409.
+//
+// Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency
+func (o ObjectMetaPatchPtrOutput) GenerateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GenerateName
+	}).(pulumi.StringPtrOutput)
+}
+
+// A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
+func (o ObjectMetaPatchPtrOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.IntPtrOutput)
+}
+
+// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels
+func (o ObjectMetaPatchPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ObjectMetaPatch) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object.
+func (o ObjectMetaPatchPtrOutput) ManagedFields() ManagedFieldsEntryPatchArrayOutput {
+	return o.ApplyT(func(v *ObjectMetaPatch) []ManagedFieldsEntryPatch {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedFields
+	}).(ManagedFieldsEntryPatchArrayOutput)
+}
+
+// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names
+func (o ObjectMetaPatchPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the "default" namespace, but "default" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.
+//
+// Must be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces
+func (o ObjectMetaPatchPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.
+func (o ObjectMetaPatchPtrOutput) OwnerReferences() OwnerReferencePatchArrayOutput {
+	return o.ApplyT(func(v *ObjectMetaPatch) []OwnerReferencePatch {
+		if v == nil {
+			return nil
+		}
+		return v.OwnerReferences
+	}).(OwnerReferencePatchArrayOutput)
+}
+
+// An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.
+//
+// Populated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+func (o ObjectMetaPatchPtrOutput) ResourceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.
+func (o ObjectMetaPatchPtrOutput) SelfLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SelfLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
+//
+// Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+func (o ObjectMetaPatchPtrOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uid
+	}).(pulumi.StringPtrOutput)
 }
 
 // OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field.
@@ -3695,6 +4621,31 @@ func (i OwnerReferencePatchArgs) ToOwnerReferencePatchOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(OwnerReferencePatchOutput)
 }
 
+// OwnerReferencePatchArrayInput is an input type that accepts OwnerReferencePatchArray and OwnerReferencePatchArrayOutput values.
+// You can construct a concrete instance of `OwnerReferencePatchArrayInput` via:
+//
+//          OwnerReferencePatchArray{ OwnerReferencePatchArgs{...} }
+type OwnerReferencePatchArrayInput interface {
+	pulumi.Input
+
+	ToOwnerReferencePatchArrayOutput() OwnerReferencePatchArrayOutput
+	ToOwnerReferencePatchArrayOutputWithContext(context.Context) OwnerReferencePatchArrayOutput
+}
+
+type OwnerReferencePatchArray []OwnerReferencePatchInput
+
+func (OwnerReferencePatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OwnerReferencePatch)(nil)).Elem()
+}
+
+func (i OwnerReferencePatchArray) ToOwnerReferencePatchArrayOutput() OwnerReferencePatchArrayOutput {
+	return i.ToOwnerReferencePatchArrayOutputWithContext(context.Background())
+}
+
+func (i OwnerReferencePatchArray) ToOwnerReferencePatchArrayOutputWithContext(ctx context.Context) OwnerReferencePatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OwnerReferencePatchArrayOutput)
+}
+
 // OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field.
 type OwnerReferencePatchOutput struct{ *pulumi.OutputState }
 
@@ -3738,6 +4689,26 @@ func (o OwnerReferencePatchOutput) Name() pulumi.StringPtrOutput {
 // UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
 func (o OwnerReferencePatchOutput) Uid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OwnerReferencePatch) *string { return v.Uid }).(pulumi.StringPtrOutput)
+}
+
+type OwnerReferencePatchArrayOutput struct{ *pulumi.OutputState }
+
+func (OwnerReferencePatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OwnerReferencePatch)(nil)).Elem()
+}
+
+func (o OwnerReferencePatchArrayOutput) ToOwnerReferencePatchArrayOutput() OwnerReferencePatchArrayOutput {
+	return o
+}
+
+func (o OwnerReferencePatchArrayOutput) ToOwnerReferencePatchArrayOutputWithContext(ctx context.Context) OwnerReferencePatchArrayOutput {
+	return o
+}
+
+func (o OwnerReferencePatchArrayOutput) Index(i pulumi.IntInput) OwnerReferencePatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OwnerReferencePatch {
+		return vs[0].([]OwnerReferencePatch)[vs[1].(int)]
+	}).(OwnerReferencePatchOutput)
 }
 
 // Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out.
@@ -3938,6 +4909,47 @@ func (i PreconditionsPatchArgs) ToPreconditionsPatchOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(PreconditionsPatchOutput)
 }
 
+func (i PreconditionsPatchArgs) ToPreconditionsPatchPtrOutput() PreconditionsPatchPtrOutput {
+	return i.ToPreconditionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i PreconditionsPatchArgs) ToPreconditionsPatchPtrOutputWithContext(ctx context.Context) PreconditionsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreconditionsPatchOutput).ToPreconditionsPatchPtrOutputWithContext(ctx)
+}
+
+// PreconditionsPatchPtrInput is an input type that accepts PreconditionsPatchArgs, PreconditionsPatchPtr and PreconditionsPatchPtrOutput values.
+// You can construct a concrete instance of `PreconditionsPatchPtrInput` via:
+//
+//          PreconditionsPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type PreconditionsPatchPtrInput interface {
+	pulumi.Input
+
+	ToPreconditionsPatchPtrOutput() PreconditionsPatchPtrOutput
+	ToPreconditionsPatchPtrOutputWithContext(context.Context) PreconditionsPatchPtrOutput
+}
+
+type preconditionsPatchPtrType PreconditionsPatchArgs
+
+func PreconditionsPatchPtr(v *PreconditionsPatchArgs) PreconditionsPatchPtrInput {
+	return (*preconditionsPatchPtrType)(v)
+}
+
+func (*preconditionsPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreconditionsPatch)(nil)).Elem()
+}
+
+func (i *preconditionsPatchPtrType) ToPreconditionsPatchPtrOutput() PreconditionsPatchPtrOutput {
+	return i.ToPreconditionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *preconditionsPatchPtrType) ToPreconditionsPatchPtrOutputWithContext(ctx context.Context) PreconditionsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreconditionsPatchPtrOutput)
+}
+
 // Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out.
 type PreconditionsPatchOutput struct{ *pulumi.OutputState }
 
@@ -3953,6 +4965,16 @@ func (o PreconditionsPatchOutput) ToPreconditionsPatchOutputWithContext(ctx cont
 	return o
 }
 
+func (o PreconditionsPatchOutput) ToPreconditionsPatchPtrOutput() PreconditionsPatchPtrOutput {
+	return o.ToPreconditionsPatchPtrOutputWithContext(context.Background())
+}
+
+func (o PreconditionsPatchOutput) ToPreconditionsPatchPtrOutputWithContext(ctx context.Context) PreconditionsPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreconditionsPatch) *PreconditionsPatch {
+		return &v
+	}).(PreconditionsPatchPtrOutput)
+}
+
 // Specifies the target ResourceVersion
 func (o PreconditionsPatchOutput) ResourceVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreconditionsPatch) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
@@ -3961,6 +4983,50 @@ func (o PreconditionsPatchOutput) ResourceVersion() pulumi.StringPtrOutput {
 // Specifies the target UID.
 func (o PreconditionsPatchOutput) Uid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreconditionsPatch) *string { return v.Uid }).(pulumi.StringPtrOutput)
+}
+
+type PreconditionsPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (PreconditionsPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreconditionsPatch)(nil)).Elem()
+}
+
+func (o PreconditionsPatchPtrOutput) ToPreconditionsPatchPtrOutput() PreconditionsPatchPtrOutput {
+	return o
+}
+
+func (o PreconditionsPatchPtrOutput) ToPreconditionsPatchPtrOutputWithContext(ctx context.Context) PreconditionsPatchPtrOutput {
+	return o
+}
+
+func (o PreconditionsPatchPtrOutput) Elem() PreconditionsPatchOutput {
+	return o.ApplyT(func(v *PreconditionsPatch) PreconditionsPatch {
+		if v != nil {
+			return *v
+		}
+		var ret PreconditionsPatch
+		return ret
+	}).(PreconditionsPatchOutput)
+}
+
+// Specifies the target ResourceVersion
+func (o PreconditionsPatchPtrOutput) ResourceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreconditionsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the target UID.
+func (o PreconditionsPatchPtrOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreconditionsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uid
+	}).(pulumi.StringPtrOutput)
 }
 
 // ServerAddressByClientCIDR helps the client to determine the server address that they should use, depending on the clientCIDR that they match.
@@ -4111,6 +5177,31 @@ func (i ServerAddressByClientCIDRPatchArgs) ToServerAddressByClientCIDRPatchOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ServerAddressByClientCIDRPatchOutput)
 }
 
+// ServerAddressByClientCIDRPatchArrayInput is an input type that accepts ServerAddressByClientCIDRPatchArray and ServerAddressByClientCIDRPatchArrayOutput values.
+// You can construct a concrete instance of `ServerAddressByClientCIDRPatchArrayInput` via:
+//
+//          ServerAddressByClientCIDRPatchArray{ ServerAddressByClientCIDRPatchArgs{...} }
+type ServerAddressByClientCIDRPatchArrayInput interface {
+	pulumi.Input
+
+	ToServerAddressByClientCIDRPatchArrayOutput() ServerAddressByClientCIDRPatchArrayOutput
+	ToServerAddressByClientCIDRPatchArrayOutputWithContext(context.Context) ServerAddressByClientCIDRPatchArrayOutput
+}
+
+type ServerAddressByClientCIDRPatchArray []ServerAddressByClientCIDRPatchInput
+
+func (ServerAddressByClientCIDRPatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerAddressByClientCIDRPatch)(nil)).Elem()
+}
+
+func (i ServerAddressByClientCIDRPatchArray) ToServerAddressByClientCIDRPatchArrayOutput() ServerAddressByClientCIDRPatchArrayOutput {
+	return i.ToServerAddressByClientCIDRPatchArrayOutputWithContext(context.Background())
+}
+
+func (i ServerAddressByClientCIDRPatchArray) ToServerAddressByClientCIDRPatchArrayOutputWithContext(ctx context.Context) ServerAddressByClientCIDRPatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerAddressByClientCIDRPatchArrayOutput)
+}
+
 // ServerAddressByClientCIDR helps the client to determine the server address that they should use, depending on the clientCIDR that they match.
 type ServerAddressByClientCIDRPatchOutput struct{ *pulumi.OutputState }
 
@@ -4134,6 +5225,26 @@ func (o ServerAddressByClientCIDRPatchOutput) ClientCIDR() pulumi.StringPtrOutpu
 // Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port.
 func (o ServerAddressByClientCIDRPatchOutput) ServerAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerAddressByClientCIDRPatch) *string { return v.ServerAddress }).(pulumi.StringPtrOutput)
+}
+
+type ServerAddressByClientCIDRPatchArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerAddressByClientCIDRPatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerAddressByClientCIDRPatch)(nil)).Elem()
+}
+
+func (o ServerAddressByClientCIDRPatchArrayOutput) ToServerAddressByClientCIDRPatchArrayOutput() ServerAddressByClientCIDRPatchArrayOutput {
+	return o
+}
+
+func (o ServerAddressByClientCIDRPatchArrayOutput) ToServerAddressByClientCIDRPatchArrayOutputWithContext(ctx context.Context) ServerAddressByClientCIDRPatchArrayOutput {
+	return o
+}
+
+func (o ServerAddressByClientCIDRPatchArrayOutput) Index(i pulumi.IntInput) ServerAddressByClientCIDRPatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerAddressByClientCIDRPatch {
+		return vs[0].([]ServerAddressByClientCIDRPatch)[vs[1].(int)]
+	}).(ServerAddressByClientCIDRPatchOutput)
 }
 
 // Status is a return value for calls that don't return other objects.
@@ -4435,6 +5546,31 @@ func (i StatusCausePatchArgs) ToStatusCausePatchOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(StatusCausePatchOutput)
 }
 
+// StatusCausePatchArrayInput is an input type that accepts StatusCausePatchArray and StatusCausePatchArrayOutput values.
+// You can construct a concrete instance of `StatusCausePatchArrayInput` via:
+//
+//          StatusCausePatchArray{ StatusCausePatchArgs{...} }
+type StatusCausePatchArrayInput interface {
+	pulumi.Input
+
+	ToStatusCausePatchArrayOutput() StatusCausePatchArrayOutput
+	ToStatusCausePatchArrayOutputWithContext(context.Context) StatusCausePatchArrayOutput
+}
+
+type StatusCausePatchArray []StatusCausePatchInput
+
+func (StatusCausePatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatusCausePatch)(nil)).Elem()
+}
+
+func (i StatusCausePatchArray) ToStatusCausePatchArrayOutput() StatusCausePatchArrayOutput {
+	return i.ToStatusCausePatchArrayOutputWithContext(context.Background())
+}
+
+func (i StatusCausePatchArray) ToStatusCausePatchArrayOutputWithContext(ctx context.Context) StatusCausePatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusCausePatchArrayOutput)
+}
+
 // StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered.
 type StatusCausePatchOutput struct{ *pulumi.OutputState }
 
@@ -4467,6 +5603,26 @@ func (o StatusCausePatchOutput) Message() pulumi.StringPtrOutput {
 // A machine-readable description of the cause of the error. If this value is empty there is no information available.
 func (o StatusCausePatchOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StatusCausePatch) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+type StatusCausePatchArrayOutput struct{ *pulumi.OutputState }
+
+func (StatusCausePatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatusCausePatch)(nil)).Elem()
+}
+
+func (o StatusCausePatchArrayOutput) ToStatusCausePatchArrayOutput() StatusCausePatchArrayOutput {
+	return o
+}
+
+func (o StatusCausePatchArrayOutput) ToStatusCausePatchArrayOutputWithContext(ctx context.Context) StatusCausePatchArrayOutput {
+	return o
+}
+
+func (o StatusCausePatchArrayOutput) Index(i pulumi.IntInput) StatusCausePatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatusCausePatch {
+		return vs[0].([]StatusCausePatch)[vs[1].(int)]
+	}).(StatusCausePatchOutput)
 }
 
 // StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined.
@@ -4707,7 +5863,7 @@ func (o StatusDetailsPtrOutput) Uid() pulumi.StringPtrOutput {
 // StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined.
 type StatusDetailsPatch struct {
 	// The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes.
-	Causes []StatusCause `pulumi:"causes"`
+	Causes []StatusCausePatch `pulumi:"causes"`
 	// The group attribute of the resource associated with the status StatusReason.
 	Group *string `pulumi:"group"`
 	// The kind attribute of the resource associated with the status StatusReason. On some operations may differ from the requested resource Kind. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -4734,7 +5890,7 @@ type StatusDetailsPatchInput interface {
 // StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined.
 type StatusDetailsPatchArgs struct {
 	// The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes.
-	Causes StatusCauseArrayInput `pulumi:"causes"`
+	Causes StatusCausePatchArrayInput `pulumi:"causes"`
 	// The group attribute of the resource associated with the status StatusReason.
 	Group pulumi.StringPtrInput `pulumi:"group"`
 	// The kind attribute of the resource associated with the status StatusReason. On some operations may differ from the requested resource Kind. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -4759,6 +5915,47 @@ func (i StatusDetailsPatchArgs) ToStatusDetailsPatchOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(StatusDetailsPatchOutput)
 }
 
+func (i StatusDetailsPatchArgs) ToStatusDetailsPatchPtrOutput() StatusDetailsPatchPtrOutput {
+	return i.ToStatusDetailsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i StatusDetailsPatchArgs) ToStatusDetailsPatchPtrOutputWithContext(ctx context.Context) StatusDetailsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusDetailsPatchOutput).ToStatusDetailsPatchPtrOutputWithContext(ctx)
+}
+
+// StatusDetailsPatchPtrInput is an input type that accepts StatusDetailsPatchArgs, StatusDetailsPatchPtr and StatusDetailsPatchPtrOutput values.
+// You can construct a concrete instance of `StatusDetailsPatchPtrInput` via:
+//
+//          StatusDetailsPatchArgs{...}
+//
+//  or:
+//
+//          nil
+type StatusDetailsPatchPtrInput interface {
+	pulumi.Input
+
+	ToStatusDetailsPatchPtrOutput() StatusDetailsPatchPtrOutput
+	ToStatusDetailsPatchPtrOutputWithContext(context.Context) StatusDetailsPatchPtrOutput
+}
+
+type statusDetailsPatchPtrType StatusDetailsPatchArgs
+
+func StatusDetailsPatchPtr(v *StatusDetailsPatchArgs) StatusDetailsPatchPtrInput {
+	return (*statusDetailsPatchPtrType)(v)
+}
+
+func (*statusDetailsPatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusDetailsPatch)(nil)).Elem()
+}
+
+func (i *statusDetailsPatchPtrType) ToStatusDetailsPatchPtrOutput() StatusDetailsPatchPtrOutput {
+	return i.ToStatusDetailsPatchPtrOutputWithContext(context.Background())
+}
+
+func (i *statusDetailsPatchPtrType) ToStatusDetailsPatchPtrOutputWithContext(ctx context.Context) StatusDetailsPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusDetailsPatchPtrOutput)
+}
+
 // StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined.
 type StatusDetailsPatchOutput struct{ *pulumi.OutputState }
 
@@ -4774,9 +5971,19 @@ func (o StatusDetailsPatchOutput) ToStatusDetailsPatchOutputWithContext(ctx cont
 	return o
 }
 
+func (o StatusDetailsPatchOutput) ToStatusDetailsPatchPtrOutput() StatusDetailsPatchPtrOutput {
+	return o.ToStatusDetailsPatchPtrOutputWithContext(context.Background())
+}
+
+func (o StatusDetailsPatchOutput) ToStatusDetailsPatchPtrOutputWithContext(ctx context.Context) StatusDetailsPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusDetailsPatch) *StatusDetailsPatch {
+		return &v
+	}).(StatusDetailsPatchPtrOutput)
+}
+
 // The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes.
-func (o StatusDetailsPatchOutput) Causes() StatusCauseArrayOutput {
-	return o.ApplyT(func(v StatusDetailsPatch) []StatusCause { return v.Causes }).(StatusCauseArrayOutput)
+func (o StatusDetailsPatchOutput) Causes() StatusCausePatchArrayOutput {
+	return o.ApplyT(func(v StatusDetailsPatch) []StatusCausePatch { return v.Causes }).(StatusCausePatchArrayOutput)
 }
 
 // The group attribute of the resource associated with the status StatusReason.
@@ -4804,6 +6011,90 @@ func (o StatusDetailsPatchOutput) Uid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StatusDetailsPatch) *string { return v.Uid }).(pulumi.StringPtrOutput)
 }
 
+type StatusDetailsPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (StatusDetailsPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusDetailsPatch)(nil)).Elem()
+}
+
+func (o StatusDetailsPatchPtrOutput) ToStatusDetailsPatchPtrOutput() StatusDetailsPatchPtrOutput {
+	return o
+}
+
+func (o StatusDetailsPatchPtrOutput) ToStatusDetailsPatchPtrOutputWithContext(ctx context.Context) StatusDetailsPatchPtrOutput {
+	return o
+}
+
+func (o StatusDetailsPatchPtrOutput) Elem() StatusDetailsPatchOutput {
+	return o.ApplyT(func(v *StatusDetailsPatch) StatusDetailsPatch {
+		if v != nil {
+			return *v
+		}
+		var ret StatusDetailsPatch
+		return ret
+	}).(StatusDetailsPatchOutput)
+}
+
+// The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes.
+func (o StatusDetailsPatchPtrOutput) Causes() StatusCausePatchArrayOutput {
+	return o.ApplyT(func(v *StatusDetailsPatch) []StatusCausePatch {
+		if v == nil {
+			return nil
+		}
+		return v.Causes
+	}).(StatusCausePatchArrayOutput)
+}
+
+// The group attribute of the resource associated with the status StatusReason.
+func (o StatusDetailsPatchPtrOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusDetailsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Group
+	}).(pulumi.StringPtrOutput)
+}
+
+// The kind attribute of the resource associated with the status StatusReason. On some operations may differ from the requested resource Kind. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o StatusDetailsPatchPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusDetailsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described).
+func (o StatusDetailsPatchPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusDetailsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action.
+func (o StatusDetailsPatchPtrOutput) RetryAfterSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatusDetailsPatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryAfterSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+func (o StatusDetailsPatchPtrOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusDetailsPatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uid
+	}).(pulumi.StringPtrOutput)
+}
+
 // Status is a return value for calls that don't return other objects.
 type StatusPatchType struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -4811,13 +6102,13 @@ type StatusPatchType struct {
 	// Suggested HTTP return code for this status, 0 if not set.
 	Code *int `pulumi:"code"`
 	// Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.
-	Details *StatusDetails `pulumi:"details"`
+	Details *StatusDetailsPatch `pulumi:"details"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// A human-readable description of the status of this operation.
 	Message *string `pulumi:"message"`
 	// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-	Metadata *ListMeta `pulumi:"metadata"`
+	Metadata *ListMetaPatch `pulumi:"metadata"`
 	// A machine-readable description of why this operation is in the "Failure" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.
 	Reason *string `pulumi:"reason"`
 	// Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
@@ -4842,13 +6133,13 @@ type StatusPatchTypeArgs struct {
 	// Suggested HTTP return code for this status, 0 if not set.
 	Code pulumi.IntPtrInput `pulumi:"code"`
 	// Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.
-	Details StatusDetailsPtrInput `pulumi:"details"`
+	Details StatusDetailsPatchPtrInput `pulumi:"details"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// A human-readable description of the status of this operation.
 	Message pulumi.StringPtrInput `pulumi:"message"`
 	// Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-	Metadata ListMetaPtrInput `pulumi:"metadata"`
+	Metadata ListMetaPatchPtrInput `pulumi:"metadata"`
 	// A machine-readable description of why this operation is in the "Failure" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.
 	Reason pulumi.StringPtrInput `pulumi:"reason"`
 	// Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
@@ -4893,8 +6184,8 @@ func (o StatusPatchTypeOutput) Code() pulumi.IntPtrOutput {
 }
 
 // Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.
-func (o StatusPatchTypeOutput) Details() StatusDetailsPtrOutput {
-	return o.ApplyT(func(v StatusPatchType) *StatusDetails { return v.Details }).(StatusDetailsPtrOutput)
+func (o StatusPatchTypeOutput) Details() StatusDetailsPatchPtrOutput {
+	return o.ApplyT(func(v StatusPatchType) *StatusDetailsPatch { return v.Details }).(StatusDetailsPatchPtrOutput)
 }
 
 // Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -4908,8 +6199,8 @@ func (o StatusPatchTypeOutput) Message() pulumi.StringPtrOutput {
 }
 
 // Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-func (o StatusPatchTypeOutput) Metadata() ListMetaPtrOutput {
-	return o.ApplyT(func(v StatusPatchType) *ListMeta { return v.Metadata }).(ListMetaPtrOutput)
+func (o StatusPatchTypeOutput) Metadata() ListMetaPatchPtrOutput {
+	return o.ApplyT(func(v StatusPatchType) *ListMetaPatch { return v.Metadata }).(ListMetaPatchPtrOutput)
 }
 
 // A machine-readable description of why this operation is in the "Failure" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.
@@ -5082,45 +6373,60 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionInput)(nil)).Elem(), ConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionArrayInput)(nil)).Elem(), ConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionPatchInput)(nil)).Elem(), ConditionPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionPatchArrayInput)(nil)).Elem(), ConditionPatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeleteOptionsInput)(nil)).Elem(), DeleteOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeleteOptionsPtrInput)(nil)).Elem(), DeleteOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeleteOptionsPatchInput)(nil)).Elem(), DeleteOptionsPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeleteOptionsPatchPtrInput)(nil)).Elem(), DeleteOptionsPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupVersionForDiscoveryInput)(nil)).Elem(), GroupVersionForDiscoveryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupVersionForDiscoveryPtrInput)(nil)).Elem(), GroupVersionForDiscoveryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupVersionForDiscoveryArrayInput)(nil)).Elem(), GroupVersionForDiscoveryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupVersionForDiscoveryPatchInput)(nil)).Elem(), GroupVersionForDiscoveryPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupVersionForDiscoveryPatchPtrInput)(nil)).Elem(), GroupVersionForDiscoveryPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupVersionForDiscoveryPatchArrayInput)(nil)).Elem(), GroupVersionForDiscoveryPatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LabelSelectorInput)(nil)).Elem(), LabelSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LabelSelectorPtrInput)(nil)).Elem(), LabelSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LabelSelectorArrayInput)(nil)).Elem(), LabelSelectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LabelSelectorPatchInput)(nil)).Elem(), LabelSelectorPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LabelSelectorPatchPtrInput)(nil)).Elem(), LabelSelectorPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LabelSelectorPatchArrayInput)(nil)).Elem(), LabelSelectorPatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LabelSelectorRequirementInput)(nil)).Elem(), LabelSelectorRequirementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LabelSelectorRequirementArrayInput)(nil)).Elem(), LabelSelectorRequirementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LabelSelectorRequirementPatchInput)(nil)).Elem(), LabelSelectorRequirementPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LabelSelectorRequirementPatchArrayInput)(nil)).Elem(), LabelSelectorRequirementPatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListMetaInput)(nil)).Elem(), ListMetaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListMetaPtrInput)(nil)).Elem(), ListMetaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListMetaPatchInput)(nil)).Elem(), ListMetaPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListMetaPatchPtrInput)(nil)).Elem(), ListMetaPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFieldsEntryInput)(nil)).Elem(), ManagedFieldsEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFieldsEntryArrayInput)(nil)).Elem(), ManagedFieldsEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFieldsEntryPatchInput)(nil)).Elem(), ManagedFieldsEntryPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFieldsEntryPatchArrayInput)(nil)).Elem(), ManagedFieldsEntryPatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaInput)(nil)).Elem(), ObjectMetaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaPtrInput)(nil)).Elem(), ObjectMetaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaPatchInput)(nil)).Elem(), ObjectMetaPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaPatchPtrInput)(nil)).Elem(), ObjectMetaPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OwnerReferenceInput)(nil)).Elem(), OwnerReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OwnerReferenceArrayInput)(nil)).Elem(), OwnerReferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OwnerReferencePatchInput)(nil)).Elem(), OwnerReferencePatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OwnerReferencePatchArrayInput)(nil)).Elem(), OwnerReferencePatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreconditionsInput)(nil)).Elem(), PreconditionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreconditionsPtrInput)(nil)).Elem(), PreconditionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreconditionsPatchInput)(nil)).Elem(), PreconditionsPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreconditionsPatchPtrInput)(nil)).Elem(), PreconditionsPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerAddressByClientCIDRInput)(nil)).Elem(), ServerAddressByClientCIDRArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerAddressByClientCIDRArrayInput)(nil)).Elem(), ServerAddressByClientCIDRArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerAddressByClientCIDRPatchInput)(nil)).Elem(), ServerAddressByClientCIDRPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerAddressByClientCIDRPatchArrayInput)(nil)).Elem(), ServerAddressByClientCIDRPatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusTypeInput)(nil)).Elem(), StatusTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusCauseInput)(nil)).Elem(), StatusCauseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusCauseArrayInput)(nil)).Elem(), StatusCauseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusCausePatchInput)(nil)).Elem(), StatusCausePatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusCausePatchArrayInput)(nil)).Elem(), StatusCausePatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusDetailsInput)(nil)).Elem(), StatusDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusDetailsPtrInput)(nil)).Elem(), StatusDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusDetailsPatchInput)(nil)).Elem(), StatusDetailsPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusDetailsPatchPtrInput)(nil)).Elem(), StatusDetailsPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusPatchTypeInput)(nil)).Elem(), StatusPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WatchEventInput)(nil)).Elem(), WatchEventArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WatchEventPatchInput)(nil)).Elem(), WatchEventPatchArgs{})
@@ -5137,45 +6443,60 @@ func init() {
 	pulumi.RegisterOutputType(ConditionOutput{})
 	pulumi.RegisterOutputType(ConditionArrayOutput{})
 	pulumi.RegisterOutputType(ConditionPatchOutput{})
+	pulumi.RegisterOutputType(ConditionPatchArrayOutput{})
 	pulumi.RegisterOutputType(DeleteOptionsOutput{})
 	pulumi.RegisterOutputType(DeleteOptionsPtrOutput{})
 	pulumi.RegisterOutputType(DeleteOptionsPatchOutput{})
+	pulumi.RegisterOutputType(DeleteOptionsPatchPtrOutput{})
 	pulumi.RegisterOutputType(GroupVersionForDiscoveryOutput{})
 	pulumi.RegisterOutputType(GroupVersionForDiscoveryPtrOutput{})
 	pulumi.RegisterOutputType(GroupVersionForDiscoveryArrayOutput{})
 	pulumi.RegisterOutputType(GroupVersionForDiscoveryPatchOutput{})
+	pulumi.RegisterOutputType(GroupVersionForDiscoveryPatchPtrOutput{})
+	pulumi.RegisterOutputType(GroupVersionForDiscoveryPatchArrayOutput{})
 	pulumi.RegisterOutputType(LabelSelectorOutput{})
 	pulumi.RegisterOutputType(LabelSelectorPtrOutput{})
 	pulumi.RegisterOutputType(LabelSelectorArrayOutput{})
 	pulumi.RegisterOutputType(LabelSelectorPatchOutput{})
+	pulumi.RegisterOutputType(LabelSelectorPatchPtrOutput{})
+	pulumi.RegisterOutputType(LabelSelectorPatchArrayOutput{})
 	pulumi.RegisterOutputType(LabelSelectorRequirementOutput{})
 	pulumi.RegisterOutputType(LabelSelectorRequirementArrayOutput{})
 	pulumi.RegisterOutputType(LabelSelectorRequirementPatchOutput{})
+	pulumi.RegisterOutputType(LabelSelectorRequirementPatchArrayOutput{})
 	pulumi.RegisterOutputType(ListMetaOutput{})
 	pulumi.RegisterOutputType(ListMetaPtrOutput{})
 	pulumi.RegisterOutputType(ListMetaPatchOutput{})
+	pulumi.RegisterOutputType(ListMetaPatchPtrOutput{})
 	pulumi.RegisterOutputType(ManagedFieldsEntryOutput{})
 	pulumi.RegisterOutputType(ManagedFieldsEntryArrayOutput{})
 	pulumi.RegisterOutputType(ManagedFieldsEntryPatchOutput{})
+	pulumi.RegisterOutputType(ManagedFieldsEntryPatchArrayOutput{})
 	pulumi.RegisterOutputType(ObjectMetaOutput{})
 	pulumi.RegisterOutputType(ObjectMetaPtrOutput{})
 	pulumi.RegisterOutputType(ObjectMetaPatchOutput{})
+	pulumi.RegisterOutputType(ObjectMetaPatchPtrOutput{})
 	pulumi.RegisterOutputType(OwnerReferenceOutput{})
 	pulumi.RegisterOutputType(OwnerReferenceArrayOutput{})
 	pulumi.RegisterOutputType(OwnerReferencePatchOutput{})
+	pulumi.RegisterOutputType(OwnerReferencePatchArrayOutput{})
 	pulumi.RegisterOutputType(PreconditionsOutput{})
 	pulumi.RegisterOutputType(PreconditionsPtrOutput{})
 	pulumi.RegisterOutputType(PreconditionsPatchOutput{})
+	pulumi.RegisterOutputType(PreconditionsPatchPtrOutput{})
 	pulumi.RegisterOutputType(ServerAddressByClientCIDROutput{})
 	pulumi.RegisterOutputType(ServerAddressByClientCIDRArrayOutput{})
 	pulumi.RegisterOutputType(ServerAddressByClientCIDRPatchOutput{})
+	pulumi.RegisterOutputType(ServerAddressByClientCIDRPatchArrayOutput{})
 	pulumi.RegisterOutputType(StatusTypeOutput{})
 	pulumi.RegisterOutputType(StatusCauseOutput{})
 	pulumi.RegisterOutputType(StatusCauseArrayOutput{})
 	pulumi.RegisterOutputType(StatusCausePatchOutput{})
+	pulumi.RegisterOutputType(StatusCausePatchArrayOutput{})
 	pulumi.RegisterOutputType(StatusDetailsOutput{})
 	pulumi.RegisterOutputType(StatusDetailsPtrOutput{})
 	pulumi.RegisterOutputType(StatusDetailsPatchOutput{})
+	pulumi.RegisterOutputType(StatusDetailsPatchPtrOutput{})
 	pulumi.RegisterOutputType(StatusPatchTypeOutput{})
 	pulumi.RegisterOutputType(WatchEventOutput{})
 	pulumi.RegisterOutputType(WatchEventPatchOutput{})

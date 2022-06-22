@@ -46,15 +46,15 @@ export class ClusterRoleBindingPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata.
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
      */
-    public readonly roleRef!: pulumi.Output<outputs.rbac.v1beta1.RoleRef>;
+    public readonly roleRef!: pulumi.Output<outputs.rbac.v1beta1.RoleRefPatch>;
     /**
      * Subjects holds references to the objects the role applies to.
      */
-    public readonly subjects!: pulumi.Output<outputs.rbac.v1beta1.Subject[]>;
+    public readonly subjects!: pulumi.Output<outputs.rbac.v1beta1.SubjectPatch[]>;
 
     /**
      * Create a ClusterRoleBindingPatch resource with the given unique name, arguments, and options.
@@ -80,7 +80,7 @@ export class ClusterRoleBindingPatch extends pulumi.CustomResource {
             resourceInputs["subjects"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:rbac.authorization.k8s.io/v1:ClusterRoleBinding" }, { type: "kubernetes:rbac.authorization.k8s.io/v1alpha1:ClusterRoleBinding" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:rbac.authorization.k8s.io/v1:ClusterRoleBindingPatch" }, { type: "kubernetes:rbac.authorization.k8s.io/v1alpha1:ClusterRoleBindingPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ClusterRoleBindingPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -101,13 +101,13 @@ export interface ClusterRoleBindingPatchArgs {
     /**
      * Standard object's metadata.
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
      */
-    roleRef?: pulumi.Input<inputs.rbac.v1beta1.RoleRef>;
+    roleRef?: pulumi.Input<inputs.rbac.v1beta1.RoleRefPatch>;
     /**
      * Subjects holds references to the objects the role applies to.
      */
-    subjects?: pulumi.Input<pulumi.Input<inputs.rbac.v1beta1.Subject>[]>;
+    subjects?: pulumi.Input<pulumi.Input<inputs.rbac.v1beta1.SubjectPatch>[]>;
 }

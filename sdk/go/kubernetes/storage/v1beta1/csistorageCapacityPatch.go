@@ -40,11 +40,11 @@ type CSIStorageCapacityPatch struct {
 	// Objects are namespaced.
 	//
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
-	NodeTopology metav1.LabelSelectorPtrOutput `pulumi:"nodeTopology"`
+	NodeTopology metav1.LabelSelectorPatchPtrOutput `pulumi:"nodeTopology"`
 	// The name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.
-	StorageClassName pulumi.StringOutput `pulumi:"storageClassName"`
+	StorageClassName pulumi.StringPtrOutput `pulumi:"storageClassName"`
 }
 
 // NewCSIStorageCapacityPatch registers a new resource with the given unique name, arguments, and options.
@@ -58,10 +58,10 @@ func NewCSIStorageCapacityPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("CSIStorageCapacity")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:storage.k8s.io/v1:CSIStorageCapacity"),
+			Type: pulumi.String("kubernetes:storage.k8s.io/v1:CSIStorageCapacityPatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:storage.k8s.io/v1alpha1:CSIStorageCapacity"),
+			Type: pulumi.String("kubernetes:storage.k8s.io/v1alpha1:CSIStorageCapacityPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -114,9 +114,9 @@ type csistorageCapacityPatchArgs struct {
 	// Objects are namespaced.
 	//
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
-	NodeTopology *metav1.LabelSelector `pulumi:"nodeTopology"`
+	NodeTopology *metav1.LabelSelectorPatch `pulumi:"nodeTopology"`
 	// The name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.
 	StorageClassName *string `pulumi:"storageClassName"`
 }
@@ -140,9 +140,9 @@ type CSIStorageCapacityPatchArgs struct {
 	// Objects are namespaced.
 	//
 	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
-	NodeTopology metav1.LabelSelectorPtrInput
+	NodeTopology metav1.LabelSelectorPatchPtrInput
 	// The name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.
 	StorageClassName pulumi.StringPtrInput
 }
@@ -263,18 +263,18 @@ func (o CSIStorageCapacityPatchOutput) MaximumVolumeSize() pulumi.StringPtrOutpu
 // Objects are namespaced.
 //
 // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-func (o CSIStorageCapacityPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *CSIStorageCapacityPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o CSIStorageCapacityPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *CSIStorageCapacityPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
-func (o CSIStorageCapacityPatchOutput) NodeTopology() metav1.LabelSelectorPtrOutput {
-	return o.ApplyT(func(v *CSIStorageCapacityPatch) metav1.LabelSelectorPtrOutput { return v.NodeTopology }).(metav1.LabelSelectorPtrOutput)
+func (o CSIStorageCapacityPatchOutput) NodeTopology() metav1.LabelSelectorPatchPtrOutput {
+	return o.ApplyT(func(v *CSIStorageCapacityPatch) metav1.LabelSelectorPatchPtrOutput { return v.NodeTopology }).(metav1.LabelSelectorPatchPtrOutput)
 }
 
 // The name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.
-func (o CSIStorageCapacityPatchOutput) StorageClassName() pulumi.StringOutput {
-	return o.ApplyT(func(v *CSIStorageCapacityPatch) pulumi.StringOutput { return v.StorageClassName }).(pulumi.StringOutput)
+func (o CSIStorageCapacityPatchOutput) StorageClassName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CSIStorageCapacityPatch) pulumi.StringPtrOutput { return v.StorageClassName }).(pulumi.StringPtrOutput)
 }
 
 type CSIStorageCapacityPatchArrayOutput struct{ *pulumi.OutputState }

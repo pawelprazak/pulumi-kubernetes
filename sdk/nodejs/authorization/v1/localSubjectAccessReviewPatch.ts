@@ -46,15 +46,15 @@ export class LocalSubjectAccessReviewPatch extends pulumi.CustomResource {
     /**
      * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec holds information about the request being evaluated.  spec.namespace must be equal to the namespace you made the request against.  If empty, it is defaulted.
      */
-    public readonly spec!: pulumi.Output<outputs.authorization.v1.SubjectAccessReviewSpec>;
+    public readonly spec!: pulumi.Output<outputs.authorization.v1.SubjectAccessReviewSpecPatch>;
     /**
      * Status is filled in by the server and indicates whether the request is allowed or not
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.authorization.v1.SubjectAccessReviewStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.authorization.v1.SubjectAccessReviewStatusPatch>;
 
     /**
      * Create a LocalSubjectAccessReviewPatch resource with the given unique name, arguments, and options.
@@ -80,7 +80,7 @@ export class LocalSubjectAccessReviewPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:authorization.k8s.io/v1beta1:LocalSubjectAccessReview" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:authorization.k8s.io/v1beta1:LocalSubjectAccessReviewPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(LocalSubjectAccessReviewPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -101,9 +101,9 @@ export interface LocalSubjectAccessReviewPatchArgs {
     /**
      * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec holds information about the request being evaluated.  spec.namespace must be equal to the namespace you made the request against.  If empty, it is defaulted.
      */
-    spec?: pulumi.Input<inputs.authorization.v1.SubjectAccessReviewSpec>;
+    spec?: pulumi.Input<inputs.authorization.v1.SubjectAccessReviewSpecPatch>;
 }

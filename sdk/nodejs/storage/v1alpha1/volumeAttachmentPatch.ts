@@ -48,15 +48,15 @@ export class VolumeAttachmentPatch extends pulumi.CustomResource {
     /**
      * Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.
      */
-    public readonly spec!: pulumi.Output<outputs.storage.v1alpha1.VolumeAttachmentSpec>;
+    public readonly spec!: pulumi.Output<outputs.storage.v1alpha1.VolumeAttachmentSpecPatch>;
     /**
      * Status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher.
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.storage.v1alpha1.VolumeAttachmentStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.storage.v1alpha1.VolumeAttachmentStatusPatch>;
 
     /**
      * Create a VolumeAttachmentPatch resource with the given unique name, arguments, and options.
@@ -82,7 +82,7 @@ export class VolumeAttachmentPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:storage.k8s.io/v1:VolumeAttachment" }, { type: "kubernetes:storage.k8s.io/v1beta1:VolumeAttachment" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:storage.k8s.io/v1:VolumeAttachmentPatch" }, { type: "kubernetes:storage.k8s.io/v1beta1:VolumeAttachmentPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VolumeAttachmentPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -103,9 +103,9 @@ export interface VolumeAttachmentPatchArgs {
     /**
      * Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.
      */
-    spec?: pulumi.Input<inputs.storage.v1alpha1.VolumeAttachmentSpec>;
+    spec?: pulumi.Input<inputs.storage.v1alpha1.VolumeAttachmentSpecPatch>;
 }

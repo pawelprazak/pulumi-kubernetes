@@ -20,11 +20,11 @@ type ClusterRoleBindingPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object's metadata.
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
-	RoleRef RoleRefOutput `pulumi:"roleRef"`
+	RoleRef RoleRefPatchPtrOutput `pulumi:"roleRef"`
 	// Subjects holds references to the objects the role applies to.
-	Subjects SubjectArrayOutput `pulumi:"subjects"`
+	Subjects SubjectPatchArrayOutput `pulumi:"subjects"`
 }
 
 // NewClusterRoleBindingPatch registers a new resource with the given unique name, arguments, and options.
@@ -38,10 +38,10 @@ func NewClusterRoleBindingPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("ClusterRoleBinding")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:rbac.authorization.k8s.io/v1:ClusterRoleBinding"),
+			Type: pulumi.String("kubernetes:rbac.authorization.k8s.io/v1:ClusterRoleBindingPatch"),
 		},
 		{
-			Type: pulumi.String("kubernetes:rbac.authorization.k8s.io/v1alpha1:ClusterRoleBinding"),
+			Type: pulumi.String("kubernetes:rbac.authorization.k8s.io/v1alpha1:ClusterRoleBindingPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -82,11 +82,11 @@ type clusterRoleBindingPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object's metadata.
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
-	RoleRef *RoleRef `pulumi:"roleRef"`
+	RoleRef *RoleRefPatch `pulumi:"roleRef"`
 	// Subjects holds references to the objects the role applies to.
-	Subjects []Subject `pulumi:"subjects"`
+	Subjects []SubjectPatch `pulumi:"subjects"`
 }
 
 // The set of arguments for constructing a ClusterRoleBindingPatch resource.
@@ -96,11 +96,11 @@ type ClusterRoleBindingPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object's metadata.
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
-	RoleRef RoleRefPtrInput
+	RoleRef RoleRefPatchPtrInput
 	// Subjects holds references to the objects the role applies to.
-	Subjects SubjectArrayInput
+	Subjects SubjectPatchArrayInput
 }
 
 func (ClusterRoleBindingPatchArgs) ElementType() reflect.Type {
@@ -201,18 +201,18 @@ func (o ClusterRoleBindingPatchOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Standard object's metadata.
-func (o ClusterRoleBindingPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *ClusterRoleBindingPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o ClusterRoleBindingPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *ClusterRoleBindingPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
-func (o ClusterRoleBindingPatchOutput) RoleRef() RoleRefOutput {
-	return o.ApplyT(func(v *ClusterRoleBindingPatch) RoleRefOutput { return v.RoleRef }).(RoleRefOutput)
+func (o ClusterRoleBindingPatchOutput) RoleRef() RoleRefPatchPtrOutput {
+	return o.ApplyT(func(v *ClusterRoleBindingPatch) RoleRefPatchPtrOutput { return v.RoleRef }).(RoleRefPatchPtrOutput)
 }
 
 // Subjects holds references to the objects the role applies to.
-func (o ClusterRoleBindingPatchOutput) Subjects() SubjectArrayOutput {
-	return o.ApplyT(func(v *ClusterRoleBindingPatch) SubjectArrayOutput { return v.Subjects }).(SubjectArrayOutput)
+func (o ClusterRoleBindingPatchOutput) Subjects() SubjectPatchArrayOutput {
+	return o.ApplyT(func(v *ClusterRoleBindingPatch) SubjectPatchArrayOutput { return v.Subjects }).(SubjectPatchArrayOutput)
 }
 
 type ClusterRoleBindingPatchArrayOutput struct{ *pulumi.OutputState }

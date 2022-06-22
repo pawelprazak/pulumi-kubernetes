@@ -27,7 +27,7 @@ namespace Pulumi.Kubernetes.Storage.V1Beta1
         /// Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.
         /// </summary>
         [Output("allowedTopologies")]
-        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Core.V1.TopologySelectorTerm>> AllowedTopologies { get; private set; } = null!;
+        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Core.V1.TopologySelectorTermPatch>> AllowedTopologies { get; private set; } = null!;
 
         /// <summary>
         /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -45,7 +45,7 @@ namespace Pulumi.Kubernetes.Storage.V1Beta1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Dynamically provisioned PersistentVolumes of this storage class are created with these mountOptions, e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid.
@@ -114,7 +114,7 @@ namespace Pulumi.Kubernetes.Storage.V1Beta1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:storage.k8s.io/v1:StorageClass"},
+                    new Pulumi.Alias { Type = "kubernetes:storage.k8s.io/v1:StorageClassPatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -148,14 +148,14 @@ namespace Pulumi.Kubernetes.Types.Inputs.Storage.V1Beta1
         public Input<bool>? AllowVolumeExpansion { get; set; }
 
         [Input("allowedTopologies")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.TopologySelectorTermArgs>? _allowedTopologies;
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.TopologySelectorTermPatchArgs>? _allowedTopologies;
 
         /// <summary>
         /// Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.
         /// </summary>
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.TopologySelectorTermArgs> AllowedTopologies
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.TopologySelectorTermPatchArgs> AllowedTopologies
         {
-            get => _allowedTopologies ?? (_allowedTopologies = new InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.TopologySelectorTermArgs>());
+            get => _allowedTopologies ?? (_allowedTopologies = new InputList<Pulumi.Kubernetes.Types.Inputs.Core.V1.TopologySelectorTermPatchArgs>());
             set => _allowedTopologies = value;
         }
 
@@ -175,7 +175,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Storage.V1Beta1
         /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         [Input("mountOptions")]
         private InputList<string>? _mountOptions;

@@ -43,15 +43,15 @@ export class CertificateSigningRequestPatch extends pulumi.CustomResource {
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
     public readonly kind!: pulumi.Output<"CertificateSigningRequest">;
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * The certificate request itself and any additional information.
      */
-    public readonly spec!: pulumi.Output<outputs.certificates.v1beta1.CertificateSigningRequestSpec>;
+    public readonly spec!: pulumi.Output<outputs.certificates.v1beta1.CertificateSigningRequestSpecPatch>;
     /**
      * Derived information about the request.
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.certificates.v1beta1.CertificateSigningRequestStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.certificates.v1beta1.CertificateSigningRequestStatusPatch>;
 
     /**
      * Create a CertificateSigningRequestPatch resource with the given unique name, arguments, and options.
@@ -77,7 +77,7 @@ export class CertificateSigningRequestPatch extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "kubernetes:certificates.k8s.io/v1:CertificateSigningRequest" }] };
+        const aliasOpts = { aliases: [{ type: "kubernetes:certificates.k8s.io/v1:CertificateSigningRequestPatch" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CertificateSigningRequestPatch.__pulumiType, name, resourceInputs, opts);
     }
@@ -95,9 +95,9 @@ export interface CertificateSigningRequestPatchArgs {
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
     kind?: pulumi.Input<"CertificateSigningRequest">;
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * The certificate request itself and any additional information.
      */
-    spec?: pulumi.Input<inputs.certificates.v1beta1.CertificateSigningRequestSpec>;
+    spec?: pulumi.Input<inputs.certificates.v1beta1.CertificateSigningRequestSpecPatch>;
 }

@@ -20,9 +20,9 @@ type ValidatingWebhookConfigurationPatch struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
-	Metadata metav1.ObjectMetaPtrOutput `pulumi:"metadata"`
+	Metadata metav1.ObjectMetaPatchPtrOutput `pulumi:"metadata"`
 	// Webhooks is a list of webhooks and the affected resources and operations.
-	Webhooks ValidatingWebhookArrayOutput `pulumi:"webhooks"`
+	Webhooks ValidatingWebhookPatchArrayOutput `pulumi:"webhooks"`
 }
 
 // NewValidatingWebhookConfigurationPatch registers a new resource with the given unique name, arguments, and options.
@@ -36,7 +36,7 @@ func NewValidatingWebhookConfigurationPatch(ctx *pulumi.Context,
 	args.Kind = pulumi.StringPtr("ValidatingWebhookConfiguration")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("kubernetes:admissionregistration.k8s.io/v1beta1:ValidatingWebhookConfiguration"),
+			Type: pulumi.String("kubernetes:admissionregistration.k8s.io/v1beta1:ValidatingWebhookConfigurationPatch"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -77,9 +77,9 @@ type validatingWebhookConfigurationPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind *string `pulumi:"kind"`
 	// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
-	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Metadata *metav1.ObjectMetaPatch `pulumi:"metadata"`
 	// Webhooks is a list of webhooks and the affected resources and operations.
-	Webhooks []ValidatingWebhook `pulumi:"webhooks"`
+	Webhooks []ValidatingWebhookPatch `pulumi:"webhooks"`
 }
 
 // The set of arguments for constructing a ValidatingWebhookConfigurationPatch resource.
@@ -89,9 +89,9 @@ type ValidatingWebhookConfigurationPatchArgs struct {
 	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 	Kind pulumi.StringPtrInput
 	// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
-	Metadata metav1.ObjectMetaPtrInput
+	Metadata metav1.ObjectMetaPatchPtrInput
 	// Webhooks is a list of webhooks and the affected resources and operations.
-	Webhooks ValidatingWebhookArrayInput
+	Webhooks ValidatingWebhookPatchArrayInput
 }
 
 func (ValidatingWebhookConfigurationPatchArgs) ElementType() reflect.Type {
@@ -192,13 +192,13 @@ func (o ValidatingWebhookConfigurationPatchOutput) Kind() pulumi.StringPtrOutput
 }
 
 // Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
-func (o ValidatingWebhookConfigurationPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
-	return o.ApplyT(func(v *ValidatingWebhookConfigurationPatch) metav1.ObjectMetaPtrOutput { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+func (o ValidatingWebhookConfigurationPatchOutput) Metadata() metav1.ObjectMetaPatchPtrOutput {
+	return o.ApplyT(func(v *ValidatingWebhookConfigurationPatch) metav1.ObjectMetaPatchPtrOutput { return v.Metadata }).(metav1.ObjectMetaPatchPtrOutput)
 }
 
 // Webhooks is a list of webhooks and the affected resources and operations.
-func (o ValidatingWebhookConfigurationPatchOutput) Webhooks() ValidatingWebhookArrayOutput {
-	return o.ApplyT(func(v *ValidatingWebhookConfigurationPatch) ValidatingWebhookArrayOutput { return v.Webhooks }).(ValidatingWebhookArrayOutput)
+func (o ValidatingWebhookConfigurationPatchOutput) Webhooks() ValidatingWebhookPatchArrayOutput {
+	return o.ApplyT(func(v *ValidatingWebhookConfigurationPatch) ValidatingWebhookPatchArrayOutput { return v.Webhooks }).(ValidatingWebhookPatchArrayOutput)
 }
 
 type ValidatingWebhookConfigurationPatchArrayOutput struct{ *pulumi.OutputState }

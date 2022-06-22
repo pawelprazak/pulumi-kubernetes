@@ -31,13 +31,13 @@ namespace Pulumi.Kubernetes.Rbac.V1
         /// Standard object's metadata.
         /// </summary>
         [Output("metadata")]
-        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMeta> Metadata { get; private set; } = null!;
+        public Output<Pulumi.Kubernetes.Types.Outputs.Meta.V1.ObjectMetaPatch> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Rules holds all the PolicyRules for this Role
         /// </summary>
         [Output("rules")]
-        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Rbac.V1.PolicyRule>> Rules { get; private set; } = null!;
+        public Output<ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Rbac.V1.PolicyRulePatch>> Rules { get; private set; } = null!;
 
 
         /// <summary>
@@ -76,8 +76,8 @@ namespace Pulumi.Kubernetes.Rbac.V1
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "kubernetes:rbac.authorization.k8s.io/v1alpha1:Role"},
-                    new Pulumi.Alias { Type = "kubernetes:rbac.authorization.k8s.io/v1beta1:Role"},
+                    new Pulumi.Alias { Type = "kubernetes:rbac.authorization.k8s.io/v1alpha1:RolePatch"},
+                    new Pulumi.Alias { Type = "kubernetes:rbac.authorization.k8s.io/v1beta1:RolePatch"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -120,17 +120,17 @@ namespace Pulumi.Kubernetes.Types.Inputs.Rbac.V1
         /// Standard object's metadata.
         /// </summary>
         [Input("metadata")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs>? Metadata { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Meta.V1.ObjectMetaPatchArgs>? Metadata { get; set; }
 
         [Input("rules")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Rbac.V1.PolicyRuleArgs>? _rules;
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Rbac.V1.PolicyRulePatchArgs>? _rules;
 
         /// <summary>
         /// Rules holds all the PolicyRules for this Role
         /// </summary>
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Rbac.V1.PolicyRuleArgs> Rules
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Rbac.V1.PolicyRulePatchArgs> Rules
         {
-            get => _rules ?? (_rules = new InputList<Pulumi.Kubernetes.Types.Inputs.Rbac.V1.PolicyRuleArgs>());
+            get => _rules ?? (_rules = new InputList<Pulumi.Kubernetes.Types.Inputs.Rbac.V1.PolicyRulePatchArgs>());
             set => _rules = value;
         }
 

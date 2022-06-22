@@ -46,15 +46,15 @@ export class ResourceQuotaPatch extends pulumi.CustomResource {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMeta>;
+    public readonly metadata!: pulumi.Output<outputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec defines the desired quota. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public readonly spec!: pulumi.Output<outputs.core.v1.ResourceQuotaSpec>;
+    public readonly spec!: pulumi.Output<outputs.core.v1.ResourceQuotaSpecPatch>;
     /**
      * Status defines the actual enforced quota and its current usage. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.core.v1.ResourceQuotaStatus>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.core.v1.ResourceQuotaStatusPatch>;
 
     /**
      * Create a ResourceQuotaPatch resource with the given unique name, arguments, and options.
@@ -99,9 +99,9 @@ export interface ResourceQuotaPatchArgs {
     /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-    metadata?: pulumi.Input<inputs.meta.v1.ObjectMeta>;
+    metadata?: pulumi.Input<inputs.meta.v1.ObjectMetaPatch>;
     /**
      * Spec defines the desired quota. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-    spec?: pulumi.Input<inputs.core.v1.ResourceQuotaSpec>;
+    spec?: pulumi.Input<inputs.core.v1.ResourceQuotaSpecPatch>;
 }
