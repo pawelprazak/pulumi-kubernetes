@@ -231,6 +231,97 @@ func (o CronJobListTypeOutput) Metadata() metav1.ListMetaPtrOutput {
 	return o.ApplyT(func(v CronJobListType) *metav1.ListMeta { return v.Metadata }).(metav1.ListMetaPtrOutput)
 }
 
+// CronJob represents the configuration of a single cron job.
+type CronJobPatchType struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind *string `pulumi:"kind"`
+	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	// Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Spec *CronJobSpec `pulumi:"spec"`
+	// Current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Status *CronJobStatus `pulumi:"status"`
+}
+
+// CronJobPatchTypeInput is an input type that accepts CronJobPatchTypeArgs and CronJobPatchTypeOutput values.
+// You can construct a concrete instance of `CronJobPatchTypeInput` via:
+//
+//          CronJobPatchTypeArgs{...}
+type CronJobPatchTypeInput interface {
+	pulumi.Input
+
+	ToCronJobPatchTypeOutput() CronJobPatchTypeOutput
+	ToCronJobPatchTypeOutputWithContext(context.Context) CronJobPatchTypeOutput
+}
+
+// CronJob represents the configuration of a single cron job.
+type CronJobPatchTypeArgs struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	// Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Spec CronJobSpecPtrInput `pulumi:"spec"`
+	// Current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Status CronJobStatusPtrInput `pulumi:"status"`
+}
+
+func (CronJobPatchTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CronJobPatchType)(nil)).Elem()
+}
+
+func (i CronJobPatchTypeArgs) ToCronJobPatchTypeOutput() CronJobPatchTypeOutput {
+	return i.ToCronJobPatchTypeOutputWithContext(context.Background())
+}
+
+func (i CronJobPatchTypeArgs) ToCronJobPatchTypeOutputWithContext(ctx context.Context) CronJobPatchTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CronJobPatchTypeOutput)
+}
+
+// CronJob represents the configuration of a single cron job.
+type CronJobPatchTypeOutput struct{ *pulumi.OutputState }
+
+func (CronJobPatchTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CronJobPatchType)(nil)).Elem()
+}
+
+func (o CronJobPatchTypeOutput) ToCronJobPatchTypeOutput() CronJobPatchTypeOutput {
+	return o
+}
+
+func (o CronJobPatchTypeOutput) ToCronJobPatchTypeOutputWithContext(ctx context.Context) CronJobPatchTypeOutput {
+	return o
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o CronJobPatchTypeOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CronJobPatchType) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o CronJobPatchTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CronJobPatchType) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+func (o CronJobPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v CronJobPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+// Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+func (o CronJobPatchTypeOutput) Spec() CronJobSpecPtrOutput {
+	return o.ApplyT(func(v CronJobPatchType) *CronJobSpec { return v.Spec }).(CronJobSpecPtrOutput)
+}
+
+// Current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+func (o CronJobPatchTypeOutput) Status() CronJobStatusPtrOutput {
+	return o.ApplyT(func(v CronJobPatchType) *CronJobStatus { return v.Status }).(CronJobStatusPtrOutput)
+}
+
 // CronJobSpec describes how the job execution will look like and when it will actually run.
 type CronJobSpec struct {
 	// Specifies how to treat concurrent executions of a Job. Valid values are: - "Allow" (default): allows CronJobs to run concurrently; - "Forbid": forbids concurrent runs, skipping next run if previous run hasn't finished yet; - "Replace": cancels currently running job and replaces it with a new one
@@ -485,6 +576,115 @@ func (o CronJobSpecPtrOutput) Suspend() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// CronJobSpec describes how the job execution will look like and when it will actually run.
+type CronJobSpecPatch struct {
+	// Specifies how to treat concurrent executions of a Job. Valid values are: - "Allow" (default): allows CronJobs to run concurrently; - "Forbid": forbids concurrent runs, skipping next run if previous run hasn't finished yet; - "Replace": cancels currently running job and replaces it with a new one
+	ConcurrencyPolicy *string `pulumi:"concurrencyPolicy"`
+	// The number of failed finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified.
+	FailedJobsHistoryLimit *int `pulumi:"failedJobsHistoryLimit"`
+	// Specifies the job that will be created when executing a CronJob.
+	JobTemplate *JobTemplateSpec `pulumi:"jobTemplate"`
+	// The schedule in Cron format, see https://en.wikipedia.org/wiki/Cron.
+	Schedule *string `pulumi:"schedule"`
+	// Optional deadline in seconds for starting the job if it misses scheduled time for any reason.  Missed jobs executions will be counted as failed ones.
+	StartingDeadlineSeconds *int `pulumi:"startingDeadlineSeconds"`
+	// The number of successful finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified.
+	SuccessfulJobsHistoryLimit *int `pulumi:"successfulJobsHistoryLimit"`
+	// This flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false.
+	Suspend *bool `pulumi:"suspend"`
+}
+
+// CronJobSpecPatchInput is an input type that accepts CronJobSpecPatchArgs and CronJobSpecPatchOutput values.
+// You can construct a concrete instance of `CronJobSpecPatchInput` via:
+//
+//          CronJobSpecPatchArgs{...}
+type CronJobSpecPatchInput interface {
+	pulumi.Input
+
+	ToCronJobSpecPatchOutput() CronJobSpecPatchOutput
+	ToCronJobSpecPatchOutputWithContext(context.Context) CronJobSpecPatchOutput
+}
+
+// CronJobSpec describes how the job execution will look like and when it will actually run.
+type CronJobSpecPatchArgs struct {
+	// Specifies how to treat concurrent executions of a Job. Valid values are: - "Allow" (default): allows CronJobs to run concurrently; - "Forbid": forbids concurrent runs, skipping next run if previous run hasn't finished yet; - "Replace": cancels currently running job and replaces it with a new one
+	ConcurrencyPolicy pulumi.StringPtrInput `pulumi:"concurrencyPolicy"`
+	// The number of failed finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified.
+	FailedJobsHistoryLimit pulumi.IntPtrInput `pulumi:"failedJobsHistoryLimit"`
+	// Specifies the job that will be created when executing a CronJob.
+	JobTemplate JobTemplateSpecPtrInput `pulumi:"jobTemplate"`
+	// The schedule in Cron format, see https://en.wikipedia.org/wiki/Cron.
+	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
+	// Optional deadline in seconds for starting the job if it misses scheduled time for any reason.  Missed jobs executions will be counted as failed ones.
+	StartingDeadlineSeconds pulumi.IntPtrInput `pulumi:"startingDeadlineSeconds"`
+	// The number of successful finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified.
+	SuccessfulJobsHistoryLimit pulumi.IntPtrInput `pulumi:"successfulJobsHistoryLimit"`
+	// This flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false.
+	Suspend pulumi.BoolPtrInput `pulumi:"suspend"`
+}
+
+func (CronJobSpecPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CronJobSpecPatch)(nil)).Elem()
+}
+
+func (i CronJobSpecPatchArgs) ToCronJobSpecPatchOutput() CronJobSpecPatchOutput {
+	return i.ToCronJobSpecPatchOutputWithContext(context.Background())
+}
+
+func (i CronJobSpecPatchArgs) ToCronJobSpecPatchOutputWithContext(ctx context.Context) CronJobSpecPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CronJobSpecPatchOutput)
+}
+
+// CronJobSpec describes how the job execution will look like and when it will actually run.
+type CronJobSpecPatchOutput struct{ *pulumi.OutputState }
+
+func (CronJobSpecPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CronJobSpecPatch)(nil)).Elem()
+}
+
+func (o CronJobSpecPatchOutput) ToCronJobSpecPatchOutput() CronJobSpecPatchOutput {
+	return o
+}
+
+func (o CronJobSpecPatchOutput) ToCronJobSpecPatchOutputWithContext(ctx context.Context) CronJobSpecPatchOutput {
+	return o
+}
+
+// Specifies how to treat concurrent executions of a Job. Valid values are: - "Allow" (default): allows CronJobs to run concurrently; - "Forbid": forbids concurrent runs, skipping next run if previous run hasn't finished yet; - "Replace": cancels currently running job and replaces it with a new one
+func (o CronJobSpecPatchOutput) ConcurrencyPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CronJobSpecPatch) *string { return v.ConcurrencyPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The number of failed finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified.
+func (o CronJobSpecPatchOutput) FailedJobsHistoryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CronJobSpecPatch) *int { return v.FailedJobsHistoryLimit }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the job that will be created when executing a CronJob.
+func (o CronJobSpecPatchOutput) JobTemplate() JobTemplateSpecPtrOutput {
+	return o.ApplyT(func(v CronJobSpecPatch) *JobTemplateSpec { return v.JobTemplate }).(JobTemplateSpecPtrOutput)
+}
+
+// The schedule in Cron format, see https://en.wikipedia.org/wiki/Cron.
+func (o CronJobSpecPatchOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CronJobSpecPatch) *string { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+// Optional deadline in seconds for starting the job if it misses scheduled time for any reason.  Missed jobs executions will be counted as failed ones.
+func (o CronJobSpecPatchOutput) StartingDeadlineSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CronJobSpecPatch) *int { return v.StartingDeadlineSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The number of successful finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified.
+func (o CronJobSpecPatchOutput) SuccessfulJobsHistoryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CronJobSpecPatch) *int { return v.SuccessfulJobsHistoryLimit }).(pulumi.IntPtrOutput)
+}
+
+// This flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false.
+func (o CronJobSpecPatchOutput) Suspend() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CronJobSpecPatch) *bool { return v.Suspend }).(pulumi.BoolPtrOutput)
+}
+
 // CronJobStatus represents the current state of a cron job.
 type CronJobStatus struct {
 	// A list of pointers to currently running jobs.
@@ -642,6 +842,70 @@ func (o CronJobStatusPtrOutput) LastScheduleTime() pulumi.StringPtrOutput {
 		}
 		return v.LastScheduleTime
 	}).(pulumi.StringPtrOutput)
+}
+
+// CronJobStatus represents the current state of a cron job.
+type CronJobStatusPatch struct {
+	// A list of pointers to currently running jobs.
+	Active []corev1.ObjectReference `pulumi:"active"`
+	// Information when was the last time the job was successfully scheduled.
+	LastScheduleTime *string `pulumi:"lastScheduleTime"`
+}
+
+// CronJobStatusPatchInput is an input type that accepts CronJobStatusPatchArgs and CronJobStatusPatchOutput values.
+// You can construct a concrete instance of `CronJobStatusPatchInput` via:
+//
+//          CronJobStatusPatchArgs{...}
+type CronJobStatusPatchInput interface {
+	pulumi.Input
+
+	ToCronJobStatusPatchOutput() CronJobStatusPatchOutput
+	ToCronJobStatusPatchOutputWithContext(context.Context) CronJobStatusPatchOutput
+}
+
+// CronJobStatus represents the current state of a cron job.
+type CronJobStatusPatchArgs struct {
+	// A list of pointers to currently running jobs.
+	Active corev1.ObjectReferenceArrayInput `pulumi:"active"`
+	// Information when was the last time the job was successfully scheduled.
+	LastScheduleTime pulumi.StringPtrInput `pulumi:"lastScheduleTime"`
+}
+
+func (CronJobStatusPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CronJobStatusPatch)(nil)).Elem()
+}
+
+func (i CronJobStatusPatchArgs) ToCronJobStatusPatchOutput() CronJobStatusPatchOutput {
+	return i.ToCronJobStatusPatchOutputWithContext(context.Background())
+}
+
+func (i CronJobStatusPatchArgs) ToCronJobStatusPatchOutputWithContext(ctx context.Context) CronJobStatusPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CronJobStatusPatchOutput)
+}
+
+// CronJobStatus represents the current state of a cron job.
+type CronJobStatusPatchOutput struct{ *pulumi.OutputState }
+
+func (CronJobStatusPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CronJobStatusPatch)(nil)).Elem()
+}
+
+func (o CronJobStatusPatchOutput) ToCronJobStatusPatchOutput() CronJobStatusPatchOutput {
+	return o
+}
+
+func (o CronJobStatusPatchOutput) ToCronJobStatusPatchOutputWithContext(ctx context.Context) CronJobStatusPatchOutput {
+	return o
+}
+
+// A list of pointers to currently running jobs.
+func (o CronJobStatusPatchOutput) Active() corev1.ObjectReferenceArrayOutput {
+	return o.ApplyT(func(v CronJobStatusPatch) []corev1.ObjectReference { return v.Active }).(corev1.ObjectReferenceArrayOutput)
+}
+
+// Information when was the last time the job was successfully scheduled.
+func (o CronJobStatusPatchOutput) LastScheduleTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CronJobStatusPatch) *string { return v.LastScheduleTime }).(pulumi.StringPtrOutput)
 }
 
 // JobTemplateSpec describes the data a Job should have when created from a template
@@ -803,23 +1067,95 @@ func (o JobTemplateSpecPtrOutput) Spec() batchv1.JobSpecPtrOutput {
 	}).(batchv1.JobSpecPtrOutput)
 }
 
+// JobTemplateSpec describes the data a Job should have when created from a template
+type JobTemplateSpecPatch struct {
+	// Standard object's metadata of the jobs created from this template. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	// Specification of the desired behavior of the job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Spec *batchv1.JobSpec `pulumi:"spec"`
+}
+
+// JobTemplateSpecPatchInput is an input type that accepts JobTemplateSpecPatchArgs and JobTemplateSpecPatchOutput values.
+// You can construct a concrete instance of `JobTemplateSpecPatchInput` via:
+//
+//          JobTemplateSpecPatchArgs{...}
+type JobTemplateSpecPatchInput interface {
+	pulumi.Input
+
+	ToJobTemplateSpecPatchOutput() JobTemplateSpecPatchOutput
+	ToJobTemplateSpecPatchOutputWithContext(context.Context) JobTemplateSpecPatchOutput
+}
+
+// JobTemplateSpec describes the data a Job should have when created from a template
+type JobTemplateSpecPatchArgs struct {
+	// Standard object's metadata of the jobs created from this template. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	// Specification of the desired behavior of the job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Spec batchv1.JobSpecPtrInput `pulumi:"spec"`
+}
+
+func (JobTemplateSpecPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateSpecPatch)(nil)).Elem()
+}
+
+func (i JobTemplateSpecPatchArgs) ToJobTemplateSpecPatchOutput() JobTemplateSpecPatchOutput {
+	return i.ToJobTemplateSpecPatchOutputWithContext(context.Background())
+}
+
+func (i JobTemplateSpecPatchArgs) ToJobTemplateSpecPatchOutputWithContext(ctx context.Context) JobTemplateSpecPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateSpecPatchOutput)
+}
+
+// JobTemplateSpec describes the data a Job should have when created from a template
+type JobTemplateSpecPatchOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateSpecPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateSpecPatch)(nil)).Elem()
+}
+
+func (o JobTemplateSpecPatchOutput) ToJobTemplateSpecPatchOutput() JobTemplateSpecPatchOutput {
+	return o
+}
+
+func (o JobTemplateSpecPatchOutput) ToJobTemplateSpecPatchOutputWithContext(ctx context.Context) JobTemplateSpecPatchOutput {
+	return o
+}
+
+// Standard object's metadata of the jobs created from this template. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+func (o JobTemplateSpecPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v JobTemplateSpecPatch) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+// Specification of the desired behavior of the job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+func (o JobTemplateSpecPatchOutput) Spec() batchv1.JobSpecPtrOutput {
+	return o.ApplyT(func(v JobTemplateSpecPatch) *batchv1.JobSpec { return v.Spec }).(batchv1.JobSpecPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CronJobTypeInput)(nil)).Elem(), CronJobTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CronJobTypeArrayInput)(nil)).Elem(), CronJobTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CronJobListTypeInput)(nil)).Elem(), CronJobListTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CronJobPatchTypeInput)(nil)).Elem(), CronJobPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CronJobSpecInput)(nil)).Elem(), CronJobSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CronJobSpecPtrInput)(nil)).Elem(), CronJobSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CronJobSpecPatchInput)(nil)).Elem(), CronJobSpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CronJobStatusInput)(nil)).Elem(), CronJobStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CronJobStatusPtrInput)(nil)).Elem(), CronJobStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CronJobStatusPatchInput)(nil)).Elem(), CronJobStatusPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateSpecInput)(nil)).Elem(), JobTemplateSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateSpecPtrInput)(nil)).Elem(), JobTemplateSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateSpecPatchInput)(nil)).Elem(), JobTemplateSpecPatchArgs{})
 	pulumi.RegisterOutputType(CronJobTypeOutput{})
 	pulumi.RegisterOutputType(CronJobTypeArrayOutput{})
 	pulumi.RegisterOutputType(CronJobListTypeOutput{})
+	pulumi.RegisterOutputType(CronJobPatchTypeOutput{})
 	pulumi.RegisterOutputType(CronJobSpecOutput{})
 	pulumi.RegisterOutputType(CronJobSpecPtrOutput{})
+	pulumi.RegisterOutputType(CronJobSpecPatchOutput{})
 	pulumi.RegisterOutputType(CronJobStatusOutput{})
 	pulumi.RegisterOutputType(CronJobStatusPtrOutput{})
+	pulumi.RegisterOutputType(CronJobStatusPatchOutput{})
 	pulumi.RegisterOutputType(JobTemplateSpecOutput{})
 	pulumi.RegisterOutputType(JobTemplateSpecPtrOutput{})
+	pulumi.RegisterOutputType(JobTemplateSpecPatchOutput{})
 }

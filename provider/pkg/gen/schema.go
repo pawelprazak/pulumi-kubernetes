@@ -1,4 +1,4 @@
-// Copyright 2016-2021, Pulumi Corporation.
+// Copyright 2016-2022, Pulumi Corporation.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import (
 	"github.com/pulumi/pulumi-kubernetes/provider/v3/pkg/gen/examples"
 	pschema "github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/deepcopy"
 )
 
 // typeOverlays augment the types defined by the kubernetes schema.
@@ -247,6 +248,10 @@ func PulumiSchema(swagger map[string]interface{}) pschema.PackageSpec {
 		for _, version := range group.Versions() {
 			for _, kind := range version.Kinds() {
 				tok := fmt.Sprintf(`kubernetes:%s:%s`, kind.apiVersion, kind.kind)
+				var patchTok string
+				if !strings.HasSuffix(kind.kind, "List") {
+					patchTok = fmt.Sprintf("%sPatch", tok)
+				}
 
 				csharpNamespaces[kind.apiVersion] = fmt.Sprintf("%s.%s", pascalCase(group.Group()), pascalCase(version.Version()))
 				modToPkg[kind.apiVersion] = kind.schemaPkgName
@@ -289,6 +294,15 @@ func PulumiSchema(swagger map[string]interface{}) pschema.PackageSpec {
 				pkg.Types[tok] = pschema.ComplexTypeSpec{
 					ObjectTypeSpec: objectSpec,
 				}
+				if len(patchTok) > 0 {
+					o := deepcopy.Copy(objectSpec)
+					patchSpec := o.(pschema.ObjectTypeSpec)
+					patchSpec.Required = nil
+					pkg.Types[patchTok] = pschema.ComplexTypeSpec{
+						ObjectTypeSpec: patchSpec,
+					}
+				}
+
 				if kind.IsNested() {
 					continue
 				}
@@ -329,6 +343,13 @@ func PulumiSchema(swagger map[string]interface{}) pschema.PackageSpec {
 				}
 
 				pkg.Resources[tok] = resourceSpec
+
+				if len(patchTok) > 0 {
+					o := deepcopy.Copy(resourceSpec)
+					patchSpec := o.(pschema.ResourceSpec)
+					patchSpec.RequiredInputs = nil
+					pkg.Resources[patchTok] = patchSpec
+				}
 			}
 		}
 

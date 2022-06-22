@@ -215,6 +215,82 @@ func (o PodPresetListTypeOutput) Metadata() metav1.ListMetaPtrOutput {
 	return o.ApplyT(func(v PodPresetListType) *metav1.ListMeta { return v.Metadata }).(metav1.ListMetaPtrOutput)
 }
 
+// PodPreset is a policy resource that defines additional runtime requirements for a Pod.
+type PodPresetPatchType struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind     *string            `pulumi:"kind"`
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	Spec     *PodPresetSpec     `pulumi:"spec"`
+}
+
+// PodPresetPatchTypeInput is an input type that accepts PodPresetPatchTypeArgs and PodPresetPatchTypeOutput values.
+// You can construct a concrete instance of `PodPresetPatchTypeInput` via:
+//
+//          PodPresetPatchTypeArgs{...}
+type PodPresetPatchTypeInput interface {
+	pulumi.Input
+
+	ToPodPresetPatchTypeOutput() PodPresetPatchTypeOutput
+	ToPodPresetPatchTypeOutputWithContext(context.Context) PodPresetPatchTypeOutput
+}
+
+// PodPreset is a policy resource that defines additional runtime requirements for a Pod.
+type PodPresetPatchTypeArgs struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind     pulumi.StringPtrInput     `pulumi:"kind"`
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	Spec     PodPresetSpecPtrInput     `pulumi:"spec"`
+}
+
+func (PodPresetPatchTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodPresetPatchType)(nil)).Elem()
+}
+
+func (i PodPresetPatchTypeArgs) ToPodPresetPatchTypeOutput() PodPresetPatchTypeOutput {
+	return i.ToPodPresetPatchTypeOutputWithContext(context.Background())
+}
+
+func (i PodPresetPatchTypeArgs) ToPodPresetPatchTypeOutputWithContext(ctx context.Context) PodPresetPatchTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodPresetPatchTypeOutput)
+}
+
+// PodPreset is a policy resource that defines additional runtime requirements for a Pod.
+type PodPresetPatchTypeOutput struct{ *pulumi.OutputState }
+
+func (PodPresetPatchTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodPresetPatchType)(nil)).Elem()
+}
+
+func (o PodPresetPatchTypeOutput) ToPodPresetPatchTypeOutput() PodPresetPatchTypeOutput {
+	return o
+}
+
+func (o PodPresetPatchTypeOutput) ToPodPresetPatchTypeOutputWithContext(ctx context.Context) PodPresetPatchTypeOutput {
+	return o
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o PodPresetPatchTypeOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PodPresetPatchType) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o PodPresetPatchTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PodPresetPatchType) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+func (o PodPresetPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v PodPresetPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+func (o PodPresetPatchTypeOutput) Spec() PodPresetSpecPtrOutput {
+	return o.ApplyT(func(v PodPresetPatchType) *PodPresetSpec { return v.Spec }).(PodPresetSpecPtrOutput)
+}
+
 // PodPresetSpec is a description of a pod preset.
 type PodPresetSpec struct {
 	// Env defines the collection of EnvVar to inject into containers.
@@ -431,15 +507,110 @@ func (o PodPresetSpecPtrOutput) Volumes() corev1.VolumeArrayOutput {
 	}).(corev1.VolumeArrayOutput)
 }
 
+// PodPresetSpec is a description of a pod preset.
+type PodPresetSpecPatch struct {
+	// Env defines the collection of EnvVar to inject into containers.
+	Env []corev1.EnvVar `pulumi:"env"`
+	// EnvFrom defines the collection of EnvFromSource to inject into containers.
+	EnvFrom []corev1.EnvFromSource `pulumi:"envFrom"`
+	// Selector is a label query over a set of resources, in this case pods. Required.
+	Selector *metav1.LabelSelector `pulumi:"selector"`
+	// VolumeMounts defines the collection of VolumeMount to inject into containers.
+	VolumeMounts []corev1.VolumeMount `pulumi:"volumeMounts"`
+	// Volumes defines the collection of Volume to inject into the pod.
+	Volumes []corev1.Volume `pulumi:"volumes"`
+}
+
+// PodPresetSpecPatchInput is an input type that accepts PodPresetSpecPatchArgs and PodPresetSpecPatchOutput values.
+// You can construct a concrete instance of `PodPresetSpecPatchInput` via:
+//
+//          PodPresetSpecPatchArgs{...}
+type PodPresetSpecPatchInput interface {
+	pulumi.Input
+
+	ToPodPresetSpecPatchOutput() PodPresetSpecPatchOutput
+	ToPodPresetSpecPatchOutputWithContext(context.Context) PodPresetSpecPatchOutput
+}
+
+// PodPresetSpec is a description of a pod preset.
+type PodPresetSpecPatchArgs struct {
+	// Env defines the collection of EnvVar to inject into containers.
+	Env corev1.EnvVarArrayInput `pulumi:"env"`
+	// EnvFrom defines the collection of EnvFromSource to inject into containers.
+	EnvFrom corev1.EnvFromSourceArrayInput `pulumi:"envFrom"`
+	// Selector is a label query over a set of resources, in this case pods. Required.
+	Selector metav1.LabelSelectorPtrInput `pulumi:"selector"`
+	// VolumeMounts defines the collection of VolumeMount to inject into containers.
+	VolumeMounts corev1.VolumeMountArrayInput `pulumi:"volumeMounts"`
+	// Volumes defines the collection of Volume to inject into the pod.
+	Volumes corev1.VolumeArrayInput `pulumi:"volumes"`
+}
+
+func (PodPresetSpecPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodPresetSpecPatch)(nil)).Elem()
+}
+
+func (i PodPresetSpecPatchArgs) ToPodPresetSpecPatchOutput() PodPresetSpecPatchOutput {
+	return i.ToPodPresetSpecPatchOutputWithContext(context.Background())
+}
+
+func (i PodPresetSpecPatchArgs) ToPodPresetSpecPatchOutputWithContext(ctx context.Context) PodPresetSpecPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodPresetSpecPatchOutput)
+}
+
+// PodPresetSpec is a description of a pod preset.
+type PodPresetSpecPatchOutput struct{ *pulumi.OutputState }
+
+func (PodPresetSpecPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodPresetSpecPatch)(nil)).Elem()
+}
+
+func (o PodPresetSpecPatchOutput) ToPodPresetSpecPatchOutput() PodPresetSpecPatchOutput {
+	return o
+}
+
+func (o PodPresetSpecPatchOutput) ToPodPresetSpecPatchOutputWithContext(ctx context.Context) PodPresetSpecPatchOutput {
+	return o
+}
+
+// Env defines the collection of EnvVar to inject into containers.
+func (o PodPresetSpecPatchOutput) Env() corev1.EnvVarArrayOutput {
+	return o.ApplyT(func(v PodPresetSpecPatch) []corev1.EnvVar { return v.Env }).(corev1.EnvVarArrayOutput)
+}
+
+// EnvFrom defines the collection of EnvFromSource to inject into containers.
+func (o PodPresetSpecPatchOutput) EnvFrom() corev1.EnvFromSourceArrayOutput {
+	return o.ApplyT(func(v PodPresetSpecPatch) []corev1.EnvFromSource { return v.EnvFrom }).(corev1.EnvFromSourceArrayOutput)
+}
+
+// Selector is a label query over a set of resources, in this case pods. Required.
+func (o PodPresetSpecPatchOutput) Selector() metav1.LabelSelectorPtrOutput {
+	return o.ApplyT(func(v PodPresetSpecPatch) *metav1.LabelSelector { return v.Selector }).(metav1.LabelSelectorPtrOutput)
+}
+
+// VolumeMounts defines the collection of VolumeMount to inject into containers.
+func (o PodPresetSpecPatchOutput) VolumeMounts() corev1.VolumeMountArrayOutput {
+	return o.ApplyT(func(v PodPresetSpecPatch) []corev1.VolumeMount { return v.VolumeMounts }).(corev1.VolumeMountArrayOutput)
+}
+
+// Volumes defines the collection of Volume to inject into the pod.
+func (o PodPresetSpecPatchOutput) Volumes() corev1.VolumeArrayOutput {
+	return o.ApplyT(func(v PodPresetSpecPatch) []corev1.Volume { return v.Volumes }).(corev1.VolumeArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PodPresetTypeInput)(nil)).Elem(), PodPresetTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodPresetTypeArrayInput)(nil)).Elem(), PodPresetTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodPresetListTypeInput)(nil)).Elem(), PodPresetListTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PodPresetPatchTypeInput)(nil)).Elem(), PodPresetPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodPresetSpecInput)(nil)).Elem(), PodPresetSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodPresetSpecPtrInput)(nil)).Elem(), PodPresetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PodPresetSpecPatchInput)(nil)).Elem(), PodPresetSpecPatchArgs{})
 	pulumi.RegisterOutputType(PodPresetTypeOutput{})
 	pulumi.RegisterOutputType(PodPresetTypeArrayOutput{})
 	pulumi.RegisterOutputType(PodPresetListTypeOutput{})
+	pulumi.RegisterOutputType(PodPresetPatchTypeOutput{})
 	pulumi.RegisterOutputType(PodPresetSpecOutput{})
 	pulumi.RegisterOutputType(PodPresetSpecPtrOutput{})
+	pulumi.RegisterOutputType(PodPresetSpecPatchOutput{})
 }

@@ -2443,6 +2443,7 @@ export namespace apps {
              */
             type: string;
         }
+
     }
 
     export namespace v1beta1 {
@@ -2836,6 +2837,7 @@ export namespace apps {
              */
             type: string;
         }
+
     }
 
     export namespace v1beta2 {
@@ -14123,6 +14125,7 @@ export namespace networking {
              */
             number: number;
         }
+
     }
 
     export namespace v1beta1 {

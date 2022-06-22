@@ -185,6 +185,9 @@ func writeNodeJSClient(pkg *schema.Package, outdir, templateDir string) {
 		if resource.Package == "" {
 			continue
 		}
+		if strings.HasSuffix(resource.Name, "Patch") {
+			continue
+		}
 		tr := gen.TemplateResource{
 			Name:    resource.Name,
 			Package: resource.Package,
@@ -241,6 +244,9 @@ func writePythonClient(pkg *schema.Package, outdir string, templateDir string) {
 		if resourcesToFilterFromTemplate.Has(tok) {
 			continue
 		}
+		if strings.HasSuffix(resource.Name, "Patch") {
+			continue
+		}
 		r := gen.TemplateResource{
 			Name:    resource.Name,
 			Package: resource.Package,
@@ -277,6 +283,9 @@ func writeDotnetClient(pkg *schema.Package, outdir, templateDir string) {
 	templateResources := gen.TemplateResources{}
 	for tok, resource := range resources {
 		if resourcesToFilterFromTemplate.Has(tok) {
+			continue
+		}
+		if strings.HasSuffix(resource.Name, "Patch") {
 			continue
 		}
 		r := gen.TemplateResource{
@@ -360,6 +369,9 @@ func writeGoClient(pkg *schema.Package, outdir string, templateDir string) {
 		if resourcesToFilterFromTemplate.Has(tok) {
 			continue
 		}
+		if strings.HasSuffix(resource.Name, "Patch") {
+			continue
+		}
 		r := gen.TemplateResource{
 			Alias:   resource.Alias,
 			Name:    resource.Name,
@@ -439,6 +451,9 @@ func genK8sResourceTypes(pkg *schema.Package) {
 		groupVersion, kind := parts[1], parts[2]
 
 		if resource.IsOverlay {
+			continue
+		}
+		if strings.HasSuffix(kind, "Patch") {
 			continue
 		}
 

@@ -371,6 +371,7 @@ export namespace admissionregistration {
              */
             url?: pulumi.Input<string>;
         }
+
     }
 
     export namespace v1beta1 {
@@ -675,6 +676,7 @@ export namespace admissionregistration {
              */
             url?: pulumi.Input<string>;
         }
+
     }
 }
 
@@ -1158,6 +1160,7 @@ export namespace apiextensions {
              */
             conversionReviewVersions: pulumi.Input<pulumi.Input<string>[]>;
         }
+
     }
 
     export namespace v1beta1 {
@@ -1598,6 +1601,7 @@ export namespace apiextensions {
              */
             url?: pulumi.Input<string>;
         }
+
     }
 }
 
@@ -1716,6 +1720,7 @@ export namespace apiregistration {
              */
             port?: pulumi.Input<number>;
         }
+
     }
 
     export namespace v1beta1 {
@@ -1829,6 +1834,7 @@ export namespace apiregistration {
              */
             port?: pulumi.Input<number>;
         }
+
     }
 }
 
@@ -2499,6 +2505,7 @@ export namespace apps {
              */
             type?: pulumi.Input<string>;
         }
+
     }
 
     export namespace v1beta1 {
@@ -2892,6 +2899,7 @@ export namespace apps {
              */
             type?: pulumi.Input<string>;
         }
+
     }
 
     export namespace v1beta2 {
@@ -3523,6 +3531,7 @@ export namespace apps {
              */
             type?: pulumi.Input<string>;
         }
+
     }
 }
 
@@ -3654,6 +3663,7 @@ export namespace auditregistration {
              */
             qps?: pulumi.Input<number>;
         }
+
     }
 }
 
@@ -4487,6 +4497,7 @@ export namespace autoscaling {
              */
             name: pulumi.Input<string>;
         }
+
     }
 
     export namespace v2beta1 {
@@ -4883,6 +4894,7 @@ export namespace autoscaling {
              */
             name: pulumi.Input<string>;
         }
+
     }
 
     export namespace v2beta2 {
@@ -5328,6 +5340,7 @@ export namespace autoscaling {
              */
             name: pulumi.Input<string>;
         }
+
     }
 }
 
@@ -5619,6 +5632,7 @@ export namespace batch {
              */
             succeeded?: pulumi.Input<pulumi.Input<string>[]>;
         }
+
     }
 
     export namespace v1beta1 {
@@ -5717,6 +5731,7 @@ export namespace batch {
              */
             spec?: pulumi.Input<inputs.batch.v1.JobSpec>;
         }
+
     }
 
     export namespace v2alpha1 {
@@ -5807,6 +5822,7 @@ export namespace batch {
              */
             spec?: pulumi.Input<inputs.batch.v1.JobSpec>;
         }
+
     }
 }
 
@@ -5997,6 +6013,7 @@ export namespace certificates {
              */
             conditions?: pulumi.Input<pulumi.Input<inputs.certificates.v1.CertificateSigningRequestCondition>[]>;
         }
+
     }
 
     export namespace v1beta1 {
@@ -6101,6 +6118,7 @@ export namespace certificates {
              */
             conditions?: pulumi.Input<pulumi.Input<inputs.certificates.v1beta1.CertificateSigningRequestCondition>[]>;
         }
+
     }
 }
 
@@ -6153,6 +6171,7 @@ export namespace coordination {
              */
             renewTime?: pulumi.Input<string>;
         }
+
     }
 
     export namespace v1beta1 {
@@ -6203,6 +6222,7 @@ export namespace coordination {
              */
             renewTime?: pulumi.Input<string>;
         }
+
     }
 }
 
@@ -10765,6 +10785,7 @@ export namespace discovery {
              */
             name: pulumi.Input<string>;
         }
+
     }
 
     export namespace v1beta1 {
@@ -10898,6 +10919,7 @@ export namespace discovery {
              */
             name: pulumi.Input<string>;
         }
+
     }
 }
 
@@ -10990,6 +11012,7 @@ export namespace events {
              */
             lastObservedTime: pulumi.Input<string>;
         }
+
     }
 
     export namespace v1beta1 {
@@ -11084,6 +11107,7 @@ export namespace events {
              */
             state?: pulumi.Input<string>;
         }
+
     }
 }
 
@@ -12093,6 +12117,7 @@ export namespace extensions {
              */
             rule?: pulumi.Input<string>;
         }
+
     }
 }
 
@@ -14063,6 +14088,7 @@ export namespace networking {
              */
             secretName?: pulumi.Input<string>;
         }
+
     }
 }
 
@@ -14122,6 +14148,7 @@ export namespace node {
              */
             tolerations?: pulumi.Input<pulumi.Input<inputs.core.v1.Toleration>[]>;
         }
+
     }
 
     export namespace v1alpha1 {
@@ -14188,6 +14215,7 @@ export namespace node {
              */
             tolerations?: pulumi.Input<pulumi.Input<inputs.core.v1.Toleration>[]>;
         }
+
     }
 
     export namespace v1beta1 {
@@ -14244,6 +14272,7 @@ export namespace node {
              */
             tolerations?: pulumi.Input<pulumi.Input<inputs.core.v1.Toleration>[]>;
         }
+
     }
 }
 
@@ -14339,6 +14368,7 @@ export namespace policy {
              */
             observedGeneration?: pulumi.Input<number>;
         }
+
     }
 
     export namespace v1beta1 {
@@ -14703,6 +14733,7 @@ export namespace policy {
              */
             rule?: pulumi.Input<string>;
         }
+
     }
 }
 
@@ -14883,6 +14914,7 @@ export namespace rbac {
              */
             namespace?: pulumi.Input<string>;
         }
+
     }
 
     export namespace v1alpha1 {
@@ -15061,6 +15093,7 @@ export namespace rbac {
              */
             namespace?: pulumi.Input<string>;
         }
+
     }
 
     export namespace v1beta1 {
@@ -15239,6 +15272,7 @@ export namespace rbac {
              */
             namespace?: pulumi.Input<string>;
         }
+
     }
 }
 
@@ -15398,6 +15432,7 @@ export namespace settings {
              */
             volumes?: pulumi.Input<pulumi.Input<inputs.core.v1.Volume>[]>;
         }
+
     }
 }
 
@@ -15759,6 +15794,7 @@ export namespace storage {
              */
             count?: pulumi.Input<number>;
         }
+
     }
 
     export namespace v1alpha1 {
@@ -15857,6 +15893,7 @@ export namespace storage {
              */
             time?: pulumi.Input<string>;
         }
+
     }
 
     export namespace v1beta1 {
@@ -16210,5 +16247,6 @@ export namespace storage {
              */
             count?: pulumi.Input<number>;
         }
+
     }
 }

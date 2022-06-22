@@ -221,6 +221,88 @@ func (o CSIDriverListTypeOutput) Metadata() metav1.ListMetaPtrOutput {
 	return o.ApplyT(func(v CSIDriverListType) *metav1.ListMeta { return v.Metadata }).(metav1.ListMetaPtrOutput)
 }
 
+// CSIDriver captures information about a Container Storage Interface (CSI) volume driver deployed on the cluster. Kubernetes attach detach controller uses this object to determine whether attach is required. Kubelet uses this object to determine whether pod information needs to be passed on mount. CSIDriver objects are non-namespaced.
+type CSIDriverPatchType struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind *string `pulumi:"kind"`
+	// Standard object metadata. metadata.Name indicates the name of the CSI driver that this object refers to; it MUST be the same name returned by the CSI GetPluginName() call for that driver. The driver name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), dots (.), and alphanumerics between. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	// Specification of the CSI Driver.
+	Spec *CSIDriverSpec `pulumi:"spec"`
+}
+
+// CSIDriverPatchTypeInput is an input type that accepts CSIDriverPatchTypeArgs and CSIDriverPatchTypeOutput values.
+// You can construct a concrete instance of `CSIDriverPatchTypeInput` via:
+//
+//          CSIDriverPatchTypeArgs{...}
+type CSIDriverPatchTypeInput interface {
+	pulumi.Input
+
+	ToCSIDriverPatchTypeOutput() CSIDriverPatchTypeOutput
+	ToCSIDriverPatchTypeOutputWithContext(context.Context) CSIDriverPatchTypeOutput
+}
+
+// CSIDriver captures information about a Container Storage Interface (CSI) volume driver deployed on the cluster. Kubernetes attach detach controller uses this object to determine whether attach is required. Kubelet uses this object to determine whether pod information needs to be passed on mount. CSIDriver objects are non-namespaced.
+type CSIDriverPatchTypeArgs struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Standard object metadata. metadata.Name indicates the name of the CSI driver that this object refers to; it MUST be the same name returned by the CSI GetPluginName() call for that driver. The driver name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), dots (.), and alphanumerics between. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	// Specification of the CSI Driver.
+	Spec CSIDriverSpecPtrInput `pulumi:"spec"`
+}
+
+func (CSIDriverPatchTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CSIDriverPatchType)(nil)).Elem()
+}
+
+func (i CSIDriverPatchTypeArgs) ToCSIDriverPatchTypeOutput() CSIDriverPatchTypeOutput {
+	return i.ToCSIDriverPatchTypeOutputWithContext(context.Background())
+}
+
+func (i CSIDriverPatchTypeArgs) ToCSIDriverPatchTypeOutputWithContext(ctx context.Context) CSIDriverPatchTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CSIDriverPatchTypeOutput)
+}
+
+// CSIDriver captures information about a Container Storage Interface (CSI) volume driver deployed on the cluster. Kubernetes attach detach controller uses this object to determine whether attach is required. Kubelet uses this object to determine whether pod information needs to be passed on mount. CSIDriver objects are non-namespaced.
+type CSIDriverPatchTypeOutput struct{ *pulumi.OutputState }
+
+func (CSIDriverPatchTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CSIDriverPatchType)(nil)).Elem()
+}
+
+func (o CSIDriverPatchTypeOutput) ToCSIDriverPatchTypeOutput() CSIDriverPatchTypeOutput {
+	return o
+}
+
+func (o CSIDriverPatchTypeOutput) ToCSIDriverPatchTypeOutputWithContext(ctx context.Context) CSIDriverPatchTypeOutput {
+	return o
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o CSIDriverPatchTypeOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CSIDriverPatchType) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o CSIDriverPatchTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CSIDriverPatchType) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Standard object metadata. metadata.Name indicates the name of the CSI driver that this object refers to; it MUST be the same name returned by the CSI GetPluginName() call for that driver. The driver name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), dots (.), and alphanumerics between. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+func (o CSIDriverPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v CSIDriverPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+// Specification of the CSI Driver.
+func (o CSIDriverPatchTypeOutput) Spec() CSIDriverSpecPtrOutput {
+	return o.ApplyT(func(v CSIDriverPatchType) *CSIDriverSpec { return v.Spec }).(CSIDriverSpecPtrOutput)
+}
+
 // CSIDriverSpec is the specification of a CSIDriver.
 type CSIDriverSpec struct {
 	// attachRequired indicates this CSI volume driver requires an attach operation (because it implements the CSI ControllerPublishVolume() method), and that the Kubernetes attach detach controller should call the attach volume interface which checks the volumeattachment status and waits until the volume is attached before proceeding to mounting. The CSI external-attacher coordinates with CSI volume driver and updates the volumeattachment status when the attach operation is complete. If the CSIDriverRegistry feature gate is enabled and the value is specified to false, the attach operation will be skipped. Otherwise the attach operation will be called.
@@ -338,6 +420,47 @@ func (i CSIDriverSpecArgs) ToCSIDriverSpecOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(CSIDriverSpecOutput)
 }
 
+func (i CSIDriverSpecArgs) ToCSIDriverSpecPtrOutput() CSIDriverSpecPtrOutput {
+	return i.ToCSIDriverSpecPtrOutputWithContext(context.Background())
+}
+
+func (i CSIDriverSpecArgs) ToCSIDriverSpecPtrOutputWithContext(ctx context.Context) CSIDriverSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CSIDriverSpecOutput).ToCSIDriverSpecPtrOutputWithContext(ctx)
+}
+
+// CSIDriverSpecPtrInput is an input type that accepts CSIDriverSpecArgs, CSIDriverSpecPtr and CSIDriverSpecPtrOutput values.
+// You can construct a concrete instance of `CSIDriverSpecPtrInput` via:
+//
+//          CSIDriverSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type CSIDriverSpecPtrInput interface {
+	pulumi.Input
+
+	ToCSIDriverSpecPtrOutput() CSIDriverSpecPtrOutput
+	ToCSIDriverSpecPtrOutputWithContext(context.Context) CSIDriverSpecPtrOutput
+}
+
+type csidriverSpecPtrType CSIDriverSpecArgs
+
+func CSIDriverSpecPtr(v *CSIDriverSpecArgs) CSIDriverSpecPtrInput {
+	return (*csidriverSpecPtrType)(v)
+}
+
+func (*csidriverSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CSIDriverSpec)(nil)).Elem()
+}
+
+func (i *csidriverSpecPtrType) ToCSIDriverSpecPtrOutput() CSIDriverSpecPtrOutput {
+	return i.ToCSIDriverSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *csidriverSpecPtrType) ToCSIDriverSpecPtrOutputWithContext(ctx context.Context) CSIDriverSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CSIDriverSpecPtrOutput)
+}
+
 // CSIDriverSpec is the specification of a CSIDriver.
 type CSIDriverSpecOutput struct{ *pulumi.OutputState }
 
@@ -351,6 +474,16 @@ func (o CSIDriverSpecOutput) ToCSIDriverSpecOutput() CSIDriverSpecOutput {
 
 func (o CSIDriverSpecOutput) ToCSIDriverSpecOutputWithContext(ctx context.Context) CSIDriverSpecOutput {
 	return o
+}
+
+func (o CSIDriverSpecOutput) ToCSIDriverSpecPtrOutput() CSIDriverSpecPtrOutput {
+	return o.ToCSIDriverSpecPtrOutputWithContext(context.Background())
+}
+
+func (o CSIDriverSpecOutput) ToCSIDriverSpecPtrOutputWithContext(ctx context.Context) CSIDriverSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CSIDriverSpec) *CSIDriverSpec {
+		return &v
+	}).(CSIDriverSpecPtrOutput)
 }
 
 // attachRequired indicates this CSI volume driver requires an attach operation (because it implements the CSI ControllerPublishVolume() method), and that the Kubernetes attach detach controller should call the attach volume interface which checks the volumeattachment status and waits until the volume is attached before proceeding to mounting. The CSI external-attacher coordinates with CSI volume driver and updates the volumeattachment status when the attach operation is complete. If the CSIDriverRegistry feature gate is enabled and the value is specified to false, the attach operation will be skipped. Otherwise the attach operation will be called.
@@ -415,6 +548,325 @@ func (o CSIDriverSpecOutput) TokenRequests() TokenRequestArrayOutput {
 // This field is immutable.
 func (o CSIDriverSpecOutput) VolumeLifecycleModes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CSIDriverSpec) []string { return v.VolumeLifecycleModes }).(pulumi.StringArrayOutput)
+}
+
+type CSIDriverSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (CSIDriverSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CSIDriverSpec)(nil)).Elem()
+}
+
+func (o CSIDriverSpecPtrOutput) ToCSIDriverSpecPtrOutput() CSIDriverSpecPtrOutput {
+	return o
+}
+
+func (o CSIDriverSpecPtrOutput) ToCSIDriverSpecPtrOutputWithContext(ctx context.Context) CSIDriverSpecPtrOutput {
+	return o
+}
+
+func (o CSIDriverSpecPtrOutput) Elem() CSIDriverSpecOutput {
+	return o.ApplyT(func(v *CSIDriverSpec) CSIDriverSpec {
+		if v != nil {
+			return *v
+		}
+		var ret CSIDriverSpec
+		return ret
+	}).(CSIDriverSpecOutput)
+}
+
+// attachRequired indicates this CSI volume driver requires an attach operation (because it implements the CSI ControllerPublishVolume() method), and that the Kubernetes attach detach controller should call the attach volume interface which checks the volumeattachment status and waits until the volume is attached before proceeding to mounting. The CSI external-attacher coordinates with CSI volume driver and updates the volumeattachment status when the attach operation is complete. If the CSIDriverRegistry feature gate is enabled and the value is specified to false, the attach operation will be skipped. Otherwise the attach operation will be called.
+//
+// This field is immutable.
+func (o CSIDriverSpecPtrOutput) AttachRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CSIDriverSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AttachRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines if the underlying volume supports changing ownership and permission of the volume before being mounted. Refer to the specific FSGroupPolicy values for additional details.
+//
+// This field is immutable.
+//
+// Defaults to ReadWriteOnceWithFSType, which will examine each volume to determine if Kubernetes should modify ownership and permissions of the volume. With the default policy the defined fsGroup will only be applied if a fstype is defined and the volume's access mode contains ReadWriteOnce.
+func (o CSIDriverSpecPtrOutput) FsGroupPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CSIDriverSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FsGroupPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, podInfoOnMount indicates this CSI volume driver requires additional pod information (like podName, podUID, etc.) during mount operations. If set to false, pod information will not be passed on mount. Default is false. The CSI driver specifies podInfoOnMount as part of driver deployment. If true, Kubelet will pass pod information as VolumeContext in the CSI NodePublishVolume() calls. The CSI driver is responsible for parsing and validating the information passed in as VolumeContext. The following VolumeConext will be passed if podInfoOnMount is set to true. This list might grow, but the prefix will be used. "csi.storage.k8s.io/pod.name": pod.Name "csi.storage.k8s.io/pod.namespace": pod.Namespace "csi.storage.k8s.io/pod.uid": string(pod.UID) "csi.storage.k8s.io/ephemeral": "true" if the volume is an ephemeral inline volume
+//                                 defined by a CSIVolumeSource, otherwise "false"
+//
+// "csi.storage.k8s.io/ephemeral" is a new feature in Kubernetes 1.16. It is only required for drivers which support both the "Persistent" and "Ephemeral" VolumeLifecycleMode. Other drivers can leave pod info disabled and/or ignore this field. As Kubernetes 1.15 doesn't support this field, drivers can only support one mode when deployed on such a cluster and the deployment determines which mode that is, for example via a command line parameter of the driver.
+//
+// This field is immutable.
+func (o CSIDriverSpecPtrOutput) PodInfoOnMount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CSIDriverSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PodInfoOnMount
+	}).(pulumi.BoolPtrOutput)
+}
+
+// RequiresRepublish indicates the CSI driver wants `NodePublishVolume` being periodically called to reflect any possible change in the mounted volume. This field defaults to false.
+//
+// Note: After a successful initial NodePublishVolume call, subsequent calls to NodePublishVolume should only update the contents of the volume. New mount points will not be seen by a running container.
+func (o CSIDriverSpecPtrOutput) RequiresRepublish() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CSIDriverSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequiresRepublish
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, storageCapacity indicates that the CSI volume driver wants pod scheduling to consider the storage capacity that the driver deployment will report by creating CSIStorageCapacity objects with capacity information.
+//
+// The check can be enabled immediately when deploying a driver. In that case, provisioning new volumes with late binding will pause until the driver deployment has published some suitable CSIStorageCapacity object.
+//
+// Alternatively, the driver can be deployed with the field unset or false and it can be flipped later when storage capacity information has been published.
+//
+// This field was immutable in Kubernetes <= 1.22 and now is mutable.
+func (o CSIDriverSpecPtrOutput) StorageCapacity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CSIDriverSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StorageCapacity
+	}).(pulumi.BoolPtrOutput)
+}
+
+// TokenRequests indicates the CSI driver needs pods' service account tokens it is mounting volume for to do necessary authentication. Kubelet will pass the tokens in VolumeContext in the CSI NodePublishVolume calls. The CSI driver should parse and validate the following VolumeContext: "csi.storage.k8s.io/serviceAccount.tokens": {
+//   "<audience>": {
+//     "token": <token>,
+//     "expirationTimestamp": <expiration timestamp in RFC3339>,
+//   },
+//   ...
+// }
+//
+// Note: Audience in each TokenRequest should be different and at most one token is empty string. To receive a new token after expiry, RequiresRepublish can be used to trigger NodePublishVolume periodically.
+func (o CSIDriverSpecPtrOutput) TokenRequests() TokenRequestArrayOutput {
+	return o.ApplyT(func(v *CSIDriverSpec) []TokenRequest {
+		if v == nil {
+			return nil
+		}
+		return v.TokenRequests
+	}).(TokenRequestArrayOutput)
+}
+
+// volumeLifecycleModes defines what kind of volumes this CSI volume driver supports. The default if the list is empty is "Persistent", which is the usage defined by the CSI specification and implemented in Kubernetes via the usual PV/PVC mechanism. The other mode is "Ephemeral". In this mode, volumes are defined inline inside the pod spec with CSIVolumeSource and their lifecycle is tied to the lifecycle of that pod. A driver has to be aware of this because it is only going to get a NodePublishVolume call for such a volume. For more information about implementing this mode, see https://kubernetes-csi.github.io/docs/ephemeral-local-volumes.html A driver can support one or more of these modes and more modes may be added in the future. This field is beta.
+//
+// This field is immutable.
+func (o CSIDriverSpecPtrOutput) VolumeLifecycleModes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CSIDriverSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeLifecycleModes
+	}).(pulumi.StringArrayOutput)
+}
+
+// CSIDriverSpec is the specification of a CSIDriver.
+type CSIDriverSpecPatch struct {
+	// attachRequired indicates this CSI volume driver requires an attach operation (because it implements the CSI ControllerPublishVolume() method), and that the Kubernetes attach detach controller should call the attach volume interface which checks the volumeattachment status and waits until the volume is attached before proceeding to mounting. The CSI external-attacher coordinates with CSI volume driver and updates the volumeattachment status when the attach operation is complete. If the CSIDriverRegistry feature gate is enabled and the value is specified to false, the attach operation will be skipped. Otherwise the attach operation will be called.
+	//
+	// This field is immutable.
+	AttachRequired *bool `pulumi:"attachRequired"`
+	// Defines if the underlying volume supports changing ownership and permission of the volume before being mounted. Refer to the specific FSGroupPolicy values for additional details.
+	//
+	// This field is immutable.
+	//
+	// Defaults to ReadWriteOnceWithFSType, which will examine each volume to determine if Kubernetes should modify ownership and permissions of the volume. With the default policy the defined fsGroup will only be applied if a fstype is defined and the volume's access mode contains ReadWriteOnce.
+	FsGroupPolicy *string `pulumi:"fsGroupPolicy"`
+	// If set to true, podInfoOnMount indicates this CSI volume driver requires additional pod information (like podName, podUID, etc.) during mount operations. If set to false, pod information will not be passed on mount. Default is false. The CSI driver specifies podInfoOnMount as part of driver deployment. If true, Kubelet will pass pod information as VolumeContext in the CSI NodePublishVolume() calls. The CSI driver is responsible for parsing and validating the information passed in as VolumeContext. The following VolumeConext will be passed if podInfoOnMount is set to true. This list might grow, but the prefix will be used. "csi.storage.k8s.io/pod.name": pod.Name "csi.storage.k8s.io/pod.namespace": pod.Namespace "csi.storage.k8s.io/pod.uid": string(pod.UID) "csi.storage.k8s.io/ephemeral": "true" if the volume is an ephemeral inline volume
+	//                                 defined by a CSIVolumeSource, otherwise "false"
+	//
+	// "csi.storage.k8s.io/ephemeral" is a new feature in Kubernetes 1.16. It is only required for drivers which support both the "Persistent" and "Ephemeral" VolumeLifecycleMode. Other drivers can leave pod info disabled and/or ignore this field. As Kubernetes 1.15 doesn't support this field, drivers can only support one mode when deployed on such a cluster and the deployment determines which mode that is, for example via a command line parameter of the driver.
+	//
+	// This field is immutable.
+	PodInfoOnMount *bool `pulumi:"podInfoOnMount"`
+	// RequiresRepublish indicates the CSI driver wants `NodePublishVolume` being periodically called to reflect any possible change in the mounted volume. This field defaults to false.
+	//
+	// Note: After a successful initial NodePublishVolume call, subsequent calls to NodePublishVolume should only update the contents of the volume. New mount points will not be seen by a running container.
+	RequiresRepublish *bool `pulumi:"requiresRepublish"`
+	// If set to true, storageCapacity indicates that the CSI volume driver wants pod scheduling to consider the storage capacity that the driver deployment will report by creating CSIStorageCapacity objects with capacity information.
+	//
+	// The check can be enabled immediately when deploying a driver. In that case, provisioning new volumes with late binding will pause until the driver deployment has published some suitable CSIStorageCapacity object.
+	//
+	// Alternatively, the driver can be deployed with the field unset or false and it can be flipped later when storage capacity information has been published.
+	//
+	// This field was immutable in Kubernetes <= 1.22 and now is mutable.
+	StorageCapacity *bool `pulumi:"storageCapacity"`
+	// TokenRequests indicates the CSI driver needs pods' service account tokens it is mounting volume for to do necessary authentication. Kubelet will pass the tokens in VolumeContext in the CSI NodePublishVolume calls. The CSI driver should parse and validate the following VolumeContext: "csi.storage.k8s.io/serviceAccount.tokens": {
+	//   "<audience>": {
+	//     "token": <token>,
+	//     "expirationTimestamp": <expiration timestamp in RFC3339>,
+	//   },
+	//   ...
+	// }
+	//
+	// Note: Audience in each TokenRequest should be different and at most one token is empty string. To receive a new token after expiry, RequiresRepublish can be used to trigger NodePublishVolume periodically.
+	TokenRequests []TokenRequest `pulumi:"tokenRequests"`
+	// volumeLifecycleModes defines what kind of volumes this CSI volume driver supports. The default if the list is empty is "Persistent", which is the usage defined by the CSI specification and implemented in Kubernetes via the usual PV/PVC mechanism. The other mode is "Ephemeral". In this mode, volumes are defined inline inside the pod spec with CSIVolumeSource and their lifecycle is tied to the lifecycle of that pod. A driver has to be aware of this because it is only going to get a NodePublishVolume call for such a volume. For more information about implementing this mode, see https://kubernetes-csi.github.io/docs/ephemeral-local-volumes.html A driver can support one or more of these modes and more modes may be added in the future. This field is beta.
+	//
+	// This field is immutable.
+	VolumeLifecycleModes []string `pulumi:"volumeLifecycleModes"`
+}
+
+// CSIDriverSpecPatchInput is an input type that accepts CSIDriverSpecPatchArgs and CSIDriverSpecPatchOutput values.
+// You can construct a concrete instance of `CSIDriverSpecPatchInput` via:
+//
+//          CSIDriverSpecPatchArgs{...}
+type CSIDriverSpecPatchInput interface {
+	pulumi.Input
+
+	ToCSIDriverSpecPatchOutput() CSIDriverSpecPatchOutput
+	ToCSIDriverSpecPatchOutputWithContext(context.Context) CSIDriverSpecPatchOutput
+}
+
+// CSIDriverSpec is the specification of a CSIDriver.
+type CSIDriverSpecPatchArgs struct {
+	// attachRequired indicates this CSI volume driver requires an attach operation (because it implements the CSI ControllerPublishVolume() method), and that the Kubernetes attach detach controller should call the attach volume interface which checks the volumeattachment status and waits until the volume is attached before proceeding to mounting. The CSI external-attacher coordinates with CSI volume driver and updates the volumeattachment status when the attach operation is complete. If the CSIDriverRegistry feature gate is enabled and the value is specified to false, the attach operation will be skipped. Otherwise the attach operation will be called.
+	//
+	// This field is immutable.
+	AttachRequired pulumi.BoolPtrInput `pulumi:"attachRequired"`
+	// Defines if the underlying volume supports changing ownership and permission of the volume before being mounted. Refer to the specific FSGroupPolicy values for additional details.
+	//
+	// This field is immutable.
+	//
+	// Defaults to ReadWriteOnceWithFSType, which will examine each volume to determine if Kubernetes should modify ownership and permissions of the volume. With the default policy the defined fsGroup will only be applied if a fstype is defined and the volume's access mode contains ReadWriteOnce.
+	FsGroupPolicy pulumi.StringPtrInput `pulumi:"fsGroupPolicy"`
+	// If set to true, podInfoOnMount indicates this CSI volume driver requires additional pod information (like podName, podUID, etc.) during mount operations. If set to false, pod information will not be passed on mount. Default is false. The CSI driver specifies podInfoOnMount as part of driver deployment. If true, Kubelet will pass pod information as VolumeContext in the CSI NodePublishVolume() calls. The CSI driver is responsible for parsing and validating the information passed in as VolumeContext. The following VolumeConext will be passed if podInfoOnMount is set to true. This list might grow, but the prefix will be used. "csi.storage.k8s.io/pod.name": pod.Name "csi.storage.k8s.io/pod.namespace": pod.Namespace "csi.storage.k8s.io/pod.uid": string(pod.UID) "csi.storage.k8s.io/ephemeral": "true" if the volume is an ephemeral inline volume
+	//                                 defined by a CSIVolumeSource, otherwise "false"
+	//
+	// "csi.storage.k8s.io/ephemeral" is a new feature in Kubernetes 1.16. It is only required for drivers which support both the "Persistent" and "Ephemeral" VolumeLifecycleMode. Other drivers can leave pod info disabled and/or ignore this field. As Kubernetes 1.15 doesn't support this field, drivers can only support one mode when deployed on such a cluster and the deployment determines which mode that is, for example via a command line parameter of the driver.
+	//
+	// This field is immutable.
+	PodInfoOnMount pulumi.BoolPtrInput `pulumi:"podInfoOnMount"`
+	// RequiresRepublish indicates the CSI driver wants `NodePublishVolume` being periodically called to reflect any possible change in the mounted volume. This field defaults to false.
+	//
+	// Note: After a successful initial NodePublishVolume call, subsequent calls to NodePublishVolume should only update the contents of the volume. New mount points will not be seen by a running container.
+	RequiresRepublish pulumi.BoolPtrInput `pulumi:"requiresRepublish"`
+	// If set to true, storageCapacity indicates that the CSI volume driver wants pod scheduling to consider the storage capacity that the driver deployment will report by creating CSIStorageCapacity objects with capacity information.
+	//
+	// The check can be enabled immediately when deploying a driver. In that case, provisioning new volumes with late binding will pause until the driver deployment has published some suitable CSIStorageCapacity object.
+	//
+	// Alternatively, the driver can be deployed with the field unset or false and it can be flipped later when storage capacity information has been published.
+	//
+	// This field was immutable in Kubernetes <= 1.22 and now is mutable.
+	StorageCapacity pulumi.BoolPtrInput `pulumi:"storageCapacity"`
+	// TokenRequests indicates the CSI driver needs pods' service account tokens it is mounting volume for to do necessary authentication. Kubelet will pass the tokens in VolumeContext in the CSI NodePublishVolume calls. The CSI driver should parse and validate the following VolumeContext: "csi.storage.k8s.io/serviceAccount.tokens": {
+	//   "<audience>": {
+	//     "token": <token>,
+	//     "expirationTimestamp": <expiration timestamp in RFC3339>,
+	//   },
+	//   ...
+	// }
+	//
+	// Note: Audience in each TokenRequest should be different and at most one token is empty string. To receive a new token after expiry, RequiresRepublish can be used to trigger NodePublishVolume periodically.
+	TokenRequests TokenRequestArrayInput `pulumi:"tokenRequests"`
+	// volumeLifecycleModes defines what kind of volumes this CSI volume driver supports. The default if the list is empty is "Persistent", which is the usage defined by the CSI specification and implemented in Kubernetes via the usual PV/PVC mechanism. The other mode is "Ephemeral". In this mode, volumes are defined inline inside the pod spec with CSIVolumeSource and their lifecycle is tied to the lifecycle of that pod. A driver has to be aware of this because it is only going to get a NodePublishVolume call for such a volume. For more information about implementing this mode, see https://kubernetes-csi.github.io/docs/ephemeral-local-volumes.html A driver can support one or more of these modes and more modes may be added in the future. This field is beta.
+	//
+	// This field is immutable.
+	VolumeLifecycleModes pulumi.StringArrayInput `pulumi:"volumeLifecycleModes"`
+}
+
+func (CSIDriverSpecPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CSIDriverSpecPatch)(nil)).Elem()
+}
+
+func (i CSIDriverSpecPatchArgs) ToCSIDriverSpecPatchOutput() CSIDriverSpecPatchOutput {
+	return i.ToCSIDriverSpecPatchOutputWithContext(context.Background())
+}
+
+func (i CSIDriverSpecPatchArgs) ToCSIDriverSpecPatchOutputWithContext(ctx context.Context) CSIDriverSpecPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CSIDriverSpecPatchOutput)
+}
+
+// CSIDriverSpec is the specification of a CSIDriver.
+type CSIDriverSpecPatchOutput struct{ *pulumi.OutputState }
+
+func (CSIDriverSpecPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CSIDriverSpecPatch)(nil)).Elem()
+}
+
+func (o CSIDriverSpecPatchOutput) ToCSIDriverSpecPatchOutput() CSIDriverSpecPatchOutput {
+	return o
+}
+
+func (o CSIDriverSpecPatchOutput) ToCSIDriverSpecPatchOutputWithContext(ctx context.Context) CSIDriverSpecPatchOutput {
+	return o
+}
+
+// attachRequired indicates this CSI volume driver requires an attach operation (because it implements the CSI ControllerPublishVolume() method), and that the Kubernetes attach detach controller should call the attach volume interface which checks the volumeattachment status and waits until the volume is attached before proceeding to mounting. The CSI external-attacher coordinates with CSI volume driver and updates the volumeattachment status when the attach operation is complete. If the CSIDriverRegistry feature gate is enabled and the value is specified to false, the attach operation will be skipped. Otherwise the attach operation will be called.
+//
+// This field is immutable.
+func (o CSIDriverSpecPatchOutput) AttachRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CSIDriverSpecPatch) *bool { return v.AttachRequired }).(pulumi.BoolPtrOutput)
+}
+
+// Defines if the underlying volume supports changing ownership and permission of the volume before being mounted. Refer to the specific FSGroupPolicy values for additional details.
+//
+// This field is immutable.
+//
+// Defaults to ReadWriteOnceWithFSType, which will examine each volume to determine if Kubernetes should modify ownership and permissions of the volume. With the default policy the defined fsGroup will only be applied if a fstype is defined and the volume's access mode contains ReadWriteOnce.
+func (o CSIDriverSpecPatchOutput) FsGroupPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CSIDriverSpecPatch) *string { return v.FsGroupPolicy }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, podInfoOnMount indicates this CSI volume driver requires additional pod information (like podName, podUID, etc.) during mount operations. If set to false, pod information will not be passed on mount. Default is false. The CSI driver specifies podInfoOnMount as part of driver deployment. If true, Kubelet will pass pod information as VolumeContext in the CSI NodePublishVolume() calls. The CSI driver is responsible for parsing and validating the information passed in as VolumeContext. The following VolumeConext will be passed if podInfoOnMount is set to true. This list might grow, but the prefix will be used. "csi.storage.k8s.io/pod.name": pod.Name "csi.storage.k8s.io/pod.namespace": pod.Namespace "csi.storage.k8s.io/pod.uid": string(pod.UID) "csi.storage.k8s.io/ephemeral": "true" if the volume is an ephemeral inline volume
+//                                 defined by a CSIVolumeSource, otherwise "false"
+//
+// "csi.storage.k8s.io/ephemeral" is a new feature in Kubernetes 1.16. It is only required for drivers which support both the "Persistent" and "Ephemeral" VolumeLifecycleMode. Other drivers can leave pod info disabled and/or ignore this field. As Kubernetes 1.15 doesn't support this field, drivers can only support one mode when deployed on such a cluster and the deployment determines which mode that is, for example via a command line parameter of the driver.
+//
+// This field is immutable.
+func (o CSIDriverSpecPatchOutput) PodInfoOnMount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CSIDriverSpecPatch) *bool { return v.PodInfoOnMount }).(pulumi.BoolPtrOutput)
+}
+
+// RequiresRepublish indicates the CSI driver wants `NodePublishVolume` being periodically called to reflect any possible change in the mounted volume. This field defaults to false.
+//
+// Note: After a successful initial NodePublishVolume call, subsequent calls to NodePublishVolume should only update the contents of the volume. New mount points will not be seen by a running container.
+func (o CSIDriverSpecPatchOutput) RequiresRepublish() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CSIDriverSpecPatch) *bool { return v.RequiresRepublish }).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, storageCapacity indicates that the CSI volume driver wants pod scheduling to consider the storage capacity that the driver deployment will report by creating CSIStorageCapacity objects with capacity information.
+//
+// The check can be enabled immediately when deploying a driver. In that case, provisioning new volumes with late binding will pause until the driver deployment has published some suitable CSIStorageCapacity object.
+//
+// Alternatively, the driver can be deployed with the field unset or false and it can be flipped later when storage capacity information has been published.
+//
+// This field was immutable in Kubernetes <= 1.22 and now is mutable.
+func (o CSIDriverSpecPatchOutput) StorageCapacity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CSIDriverSpecPatch) *bool { return v.StorageCapacity }).(pulumi.BoolPtrOutput)
+}
+
+// TokenRequests indicates the CSI driver needs pods' service account tokens it is mounting volume for to do necessary authentication. Kubelet will pass the tokens in VolumeContext in the CSI NodePublishVolume calls. The CSI driver should parse and validate the following VolumeContext: "csi.storage.k8s.io/serviceAccount.tokens": {
+//   "<audience>": {
+//     "token": <token>,
+//     "expirationTimestamp": <expiration timestamp in RFC3339>,
+//   },
+//   ...
+// }
+//
+// Note: Audience in each TokenRequest should be different and at most one token is empty string. To receive a new token after expiry, RequiresRepublish can be used to trigger NodePublishVolume periodically.
+func (o CSIDriverSpecPatchOutput) TokenRequests() TokenRequestArrayOutput {
+	return o.ApplyT(func(v CSIDriverSpecPatch) []TokenRequest { return v.TokenRequests }).(TokenRequestArrayOutput)
+}
+
+// volumeLifecycleModes defines what kind of volumes this CSI volume driver supports. The default if the list is empty is "Persistent", which is the usage defined by the CSI specification and implemented in Kubernetes via the usual PV/PVC mechanism. The other mode is "Ephemeral". In this mode, volumes are defined inline inside the pod spec with CSIVolumeSource and their lifecycle is tied to the lifecycle of that pod. A driver has to be aware of this because it is only going to get a NodePublishVolume call for such a volume. For more information about implementing this mode, see https://kubernetes-csi.github.io/docs/ephemeral-local-volumes.html A driver can support one or more of these modes and more modes may be added in the future. This field is beta.
+//
+// This field is immutable.
+func (o CSIDriverSpecPatchOutput) VolumeLifecycleModes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CSIDriverSpecPatch) []string { return v.VolumeLifecycleModes }).(pulumi.StringArrayOutput)
 }
 
 // CSINode holds information about all CSI drivers installed on a node. CSI drivers do not need to create the CSINode object directly. As long as they use the node-driver-registrar sidecar container, the kubelet will automatically populate the CSINode object for the CSI driver as part of kubelet plugin registration. CSINode has the same name as a node. If the object is missing, it means either there are no CSI Drivers available on the node, or the Kubelet version is low enough that it doesn't create this object. CSINode has an OwnerReference that points to the corresponding node object.
@@ -671,6 +1123,88 @@ func (o CSINodeDriverArrayOutput) Index(i pulumi.IntInput) CSINodeDriverOutput {
 	}).(CSINodeDriverOutput)
 }
 
+// CSINodeDriver holds information about the specification of one CSI driver installed on a node
+type CSINodeDriverPatch struct {
+	// allocatable represents the volume resources of a node that are available for scheduling. This field is beta.
+	Allocatable *VolumeNodeResources `pulumi:"allocatable"`
+	// This is the name of the CSI driver that this object refers to. This MUST be the same name returned by the CSI GetPluginName() call for that driver.
+	Name *string `pulumi:"name"`
+	// nodeID of the node from the driver point of view. This field enables Kubernetes to communicate with storage systems that do not share the same nomenclature for nodes. For example, Kubernetes may refer to a given node as "node1", but the storage system may refer to the same node as "nodeA". When Kubernetes issues a command to the storage system to attach a volume to a specific node, it can use this field to refer to the node name using the ID that the storage system will understand, e.g. "nodeA" instead of "node1". This field is required.
+	NodeID *string `pulumi:"nodeID"`
+	// topologyKeys is the list of keys supported by the driver. When a driver is initialized on a cluster, it provides a set of topology keys that it understands (e.g. "company.com/zone", "company.com/region"). When a driver is initialized on a node, it provides the same topology keys along with values. Kubelet will expose these topology keys as labels on its own node object. When Kubernetes does topology aware provisioning, it can use this list to determine which labels it should retrieve from the node object and pass back to the driver. It is possible for different nodes to use different topology keys. This can be empty if driver does not support topology.
+	TopologyKeys []string `pulumi:"topologyKeys"`
+}
+
+// CSINodeDriverPatchInput is an input type that accepts CSINodeDriverPatchArgs and CSINodeDriverPatchOutput values.
+// You can construct a concrete instance of `CSINodeDriverPatchInput` via:
+//
+//          CSINodeDriverPatchArgs{...}
+type CSINodeDriverPatchInput interface {
+	pulumi.Input
+
+	ToCSINodeDriverPatchOutput() CSINodeDriverPatchOutput
+	ToCSINodeDriverPatchOutputWithContext(context.Context) CSINodeDriverPatchOutput
+}
+
+// CSINodeDriver holds information about the specification of one CSI driver installed on a node
+type CSINodeDriverPatchArgs struct {
+	// allocatable represents the volume resources of a node that are available for scheduling. This field is beta.
+	Allocatable VolumeNodeResourcesPtrInput `pulumi:"allocatable"`
+	// This is the name of the CSI driver that this object refers to. This MUST be the same name returned by the CSI GetPluginName() call for that driver.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// nodeID of the node from the driver point of view. This field enables Kubernetes to communicate with storage systems that do not share the same nomenclature for nodes. For example, Kubernetes may refer to a given node as "node1", but the storage system may refer to the same node as "nodeA". When Kubernetes issues a command to the storage system to attach a volume to a specific node, it can use this field to refer to the node name using the ID that the storage system will understand, e.g. "nodeA" instead of "node1". This field is required.
+	NodeID pulumi.StringPtrInput `pulumi:"nodeID"`
+	// topologyKeys is the list of keys supported by the driver. When a driver is initialized on a cluster, it provides a set of topology keys that it understands (e.g. "company.com/zone", "company.com/region"). When a driver is initialized on a node, it provides the same topology keys along with values. Kubelet will expose these topology keys as labels on its own node object. When Kubernetes does topology aware provisioning, it can use this list to determine which labels it should retrieve from the node object and pass back to the driver. It is possible for different nodes to use different topology keys. This can be empty if driver does not support topology.
+	TopologyKeys pulumi.StringArrayInput `pulumi:"topologyKeys"`
+}
+
+func (CSINodeDriverPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CSINodeDriverPatch)(nil)).Elem()
+}
+
+func (i CSINodeDriverPatchArgs) ToCSINodeDriverPatchOutput() CSINodeDriverPatchOutput {
+	return i.ToCSINodeDriverPatchOutputWithContext(context.Background())
+}
+
+func (i CSINodeDriverPatchArgs) ToCSINodeDriverPatchOutputWithContext(ctx context.Context) CSINodeDriverPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CSINodeDriverPatchOutput)
+}
+
+// CSINodeDriver holds information about the specification of one CSI driver installed on a node
+type CSINodeDriverPatchOutput struct{ *pulumi.OutputState }
+
+func (CSINodeDriverPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CSINodeDriverPatch)(nil)).Elem()
+}
+
+func (o CSINodeDriverPatchOutput) ToCSINodeDriverPatchOutput() CSINodeDriverPatchOutput {
+	return o
+}
+
+func (o CSINodeDriverPatchOutput) ToCSINodeDriverPatchOutputWithContext(ctx context.Context) CSINodeDriverPatchOutput {
+	return o
+}
+
+// allocatable represents the volume resources of a node that are available for scheduling. This field is beta.
+func (o CSINodeDriverPatchOutput) Allocatable() VolumeNodeResourcesPtrOutput {
+	return o.ApplyT(func(v CSINodeDriverPatch) *VolumeNodeResources { return v.Allocatable }).(VolumeNodeResourcesPtrOutput)
+}
+
+// This is the name of the CSI driver that this object refers to. This MUST be the same name returned by the CSI GetPluginName() call for that driver.
+func (o CSINodeDriverPatchOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CSINodeDriverPatch) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// nodeID of the node from the driver point of view. This field enables Kubernetes to communicate with storage systems that do not share the same nomenclature for nodes. For example, Kubernetes may refer to a given node as "node1", but the storage system may refer to the same node as "nodeA". When Kubernetes issues a command to the storage system to attach a volume to a specific node, it can use this field to refer to the node name using the ID that the storage system will understand, e.g. "nodeA" instead of "node1". This field is required.
+func (o CSINodeDriverPatchOutput) NodeID() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CSINodeDriverPatch) *string { return v.NodeID }).(pulumi.StringPtrOutput)
+}
+
+// topologyKeys is the list of keys supported by the driver. When a driver is initialized on a cluster, it provides a set of topology keys that it understands (e.g. "company.com/zone", "company.com/region"). When a driver is initialized on a node, it provides the same topology keys along with values. Kubelet will expose these topology keys as labels on its own node object. When Kubernetes does topology aware provisioning, it can use this list to determine which labels it should retrieve from the node object and pass back to the driver. It is possible for different nodes to use different topology keys. This can be empty if driver does not support topology.
+func (o CSINodeDriverPatchOutput) TopologyKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CSINodeDriverPatch) []string { return v.TopologyKeys }).(pulumi.StringArrayOutput)
+}
+
 // CSINodeList is a collection of CSINode objects.
 type CSINodeListType struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -753,6 +1287,88 @@ func (o CSINodeListTypeOutput) Metadata() metav1.ListMetaPtrOutput {
 	return o.ApplyT(func(v CSINodeListType) *metav1.ListMeta { return v.Metadata }).(metav1.ListMetaPtrOutput)
 }
 
+// CSINode holds information about all CSI drivers installed on a node. CSI drivers do not need to create the CSINode object directly. As long as they use the node-driver-registrar sidecar container, the kubelet will automatically populate the CSINode object for the CSI driver as part of kubelet plugin registration. CSINode has the same name as a node. If the object is missing, it means either there are no CSI Drivers available on the node, or the Kubelet version is low enough that it doesn't create this object. CSINode has an OwnerReference that points to the corresponding node object.
+type CSINodePatchType struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind *string `pulumi:"kind"`
+	// metadata.name must be the Kubernetes node name.
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	// spec is the specification of CSINode
+	Spec *CSINodeSpec `pulumi:"spec"`
+}
+
+// CSINodePatchTypeInput is an input type that accepts CSINodePatchTypeArgs and CSINodePatchTypeOutput values.
+// You can construct a concrete instance of `CSINodePatchTypeInput` via:
+//
+//          CSINodePatchTypeArgs{...}
+type CSINodePatchTypeInput interface {
+	pulumi.Input
+
+	ToCSINodePatchTypeOutput() CSINodePatchTypeOutput
+	ToCSINodePatchTypeOutputWithContext(context.Context) CSINodePatchTypeOutput
+}
+
+// CSINode holds information about all CSI drivers installed on a node. CSI drivers do not need to create the CSINode object directly. As long as they use the node-driver-registrar sidecar container, the kubelet will automatically populate the CSINode object for the CSI driver as part of kubelet plugin registration. CSINode has the same name as a node. If the object is missing, it means either there are no CSI Drivers available on the node, or the Kubelet version is low enough that it doesn't create this object. CSINode has an OwnerReference that points to the corresponding node object.
+type CSINodePatchTypeArgs struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// metadata.name must be the Kubernetes node name.
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	// spec is the specification of CSINode
+	Spec CSINodeSpecPtrInput `pulumi:"spec"`
+}
+
+func (CSINodePatchTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CSINodePatchType)(nil)).Elem()
+}
+
+func (i CSINodePatchTypeArgs) ToCSINodePatchTypeOutput() CSINodePatchTypeOutput {
+	return i.ToCSINodePatchTypeOutputWithContext(context.Background())
+}
+
+func (i CSINodePatchTypeArgs) ToCSINodePatchTypeOutputWithContext(ctx context.Context) CSINodePatchTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CSINodePatchTypeOutput)
+}
+
+// CSINode holds information about all CSI drivers installed on a node. CSI drivers do not need to create the CSINode object directly. As long as they use the node-driver-registrar sidecar container, the kubelet will automatically populate the CSINode object for the CSI driver as part of kubelet plugin registration. CSINode has the same name as a node. If the object is missing, it means either there are no CSI Drivers available on the node, or the Kubelet version is low enough that it doesn't create this object. CSINode has an OwnerReference that points to the corresponding node object.
+type CSINodePatchTypeOutput struct{ *pulumi.OutputState }
+
+func (CSINodePatchTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CSINodePatchType)(nil)).Elem()
+}
+
+func (o CSINodePatchTypeOutput) ToCSINodePatchTypeOutput() CSINodePatchTypeOutput {
+	return o
+}
+
+func (o CSINodePatchTypeOutput) ToCSINodePatchTypeOutputWithContext(ctx context.Context) CSINodePatchTypeOutput {
+	return o
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o CSINodePatchTypeOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CSINodePatchType) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o CSINodePatchTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CSINodePatchType) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// metadata.name must be the Kubernetes node name.
+func (o CSINodePatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v CSINodePatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+// spec is the specification of CSINode
+func (o CSINodePatchTypeOutput) Spec() CSINodeSpecPtrOutput {
+	return o.ApplyT(func(v CSINodePatchType) *CSINodeSpec { return v.Spec }).(CSINodeSpecPtrOutput)
+}
+
 // CSINodeSpec holds information about the specification of all CSI drivers installed on a node
 type CSINodeSpec struct {
 	// drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty.
@@ -788,6 +1404,47 @@ func (i CSINodeSpecArgs) ToCSINodeSpecOutputWithContext(ctx context.Context) CSI
 	return pulumi.ToOutputWithContext(ctx, i).(CSINodeSpecOutput)
 }
 
+func (i CSINodeSpecArgs) ToCSINodeSpecPtrOutput() CSINodeSpecPtrOutput {
+	return i.ToCSINodeSpecPtrOutputWithContext(context.Background())
+}
+
+func (i CSINodeSpecArgs) ToCSINodeSpecPtrOutputWithContext(ctx context.Context) CSINodeSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CSINodeSpecOutput).ToCSINodeSpecPtrOutputWithContext(ctx)
+}
+
+// CSINodeSpecPtrInput is an input type that accepts CSINodeSpecArgs, CSINodeSpecPtr and CSINodeSpecPtrOutput values.
+// You can construct a concrete instance of `CSINodeSpecPtrInput` via:
+//
+//          CSINodeSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type CSINodeSpecPtrInput interface {
+	pulumi.Input
+
+	ToCSINodeSpecPtrOutput() CSINodeSpecPtrOutput
+	ToCSINodeSpecPtrOutputWithContext(context.Context) CSINodeSpecPtrOutput
+}
+
+type csinodeSpecPtrType CSINodeSpecArgs
+
+func CSINodeSpecPtr(v *CSINodeSpecArgs) CSINodeSpecPtrInput {
+	return (*csinodeSpecPtrType)(v)
+}
+
+func (*csinodeSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CSINodeSpec)(nil)).Elem()
+}
+
+func (i *csinodeSpecPtrType) ToCSINodeSpecPtrOutput() CSINodeSpecPtrOutput {
+	return i.ToCSINodeSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *csinodeSpecPtrType) ToCSINodeSpecPtrOutputWithContext(ctx context.Context) CSINodeSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CSINodeSpecPtrOutput)
+}
+
 // CSINodeSpec holds information about the specification of all CSI drivers installed on a node
 type CSINodeSpecOutput struct{ *pulumi.OutputState }
 
@@ -803,9 +1460,108 @@ func (o CSINodeSpecOutput) ToCSINodeSpecOutputWithContext(ctx context.Context) C
 	return o
 }
 
+func (o CSINodeSpecOutput) ToCSINodeSpecPtrOutput() CSINodeSpecPtrOutput {
+	return o.ToCSINodeSpecPtrOutputWithContext(context.Background())
+}
+
+func (o CSINodeSpecOutput) ToCSINodeSpecPtrOutputWithContext(ctx context.Context) CSINodeSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CSINodeSpec) *CSINodeSpec {
+		return &v
+	}).(CSINodeSpecPtrOutput)
+}
+
 // drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty.
 func (o CSINodeSpecOutput) Drivers() CSINodeDriverArrayOutput {
 	return o.ApplyT(func(v CSINodeSpec) []CSINodeDriver { return v.Drivers }).(CSINodeDriverArrayOutput)
+}
+
+type CSINodeSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (CSINodeSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CSINodeSpec)(nil)).Elem()
+}
+
+func (o CSINodeSpecPtrOutput) ToCSINodeSpecPtrOutput() CSINodeSpecPtrOutput {
+	return o
+}
+
+func (o CSINodeSpecPtrOutput) ToCSINodeSpecPtrOutputWithContext(ctx context.Context) CSINodeSpecPtrOutput {
+	return o
+}
+
+func (o CSINodeSpecPtrOutput) Elem() CSINodeSpecOutput {
+	return o.ApplyT(func(v *CSINodeSpec) CSINodeSpec {
+		if v != nil {
+			return *v
+		}
+		var ret CSINodeSpec
+		return ret
+	}).(CSINodeSpecOutput)
+}
+
+// drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty.
+func (o CSINodeSpecPtrOutput) Drivers() CSINodeDriverArrayOutput {
+	return o.ApplyT(func(v *CSINodeSpec) []CSINodeDriver {
+		if v == nil {
+			return nil
+		}
+		return v.Drivers
+	}).(CSINodeDriverArrayOutput)
+}
+
+// CSINodeSpec holds information about the specification of all CSI drivers installed on a node
+type CSINodeSpecPatch struct {
+	// drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty.
+	Drivers []CSINodeDriver `pulumi:"drivers"`
+}
+
+// CSINodeSpecPatchInput is an input type that accepts CSINodeSpecPatchArgs and CSINodeSpecPatchOutput values.
+// You can construct a concrete instance of `CSINodeSpecPatchInput` via:
+//
+//          CSINodeSpecPatchArgs{...}
+type CSINodeSpecPatchInput interface {
+	pulumi.Input
+
+	ToCSINodeSpecPatchOutput() CSINodeSpecPatchOutput
+	ToCSINodeSpecPatchOutputWithContext(context.Context) CSINodeSpecPatchOutput
+}
+
+// CSINodeSpec holds information about the specification of all CSI drivers installed on a node
+type CSINodeSpecPatchArgs struct {
+	// drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty.
+	Drivers CSINodeDriverArrayInput `pulumi:"drivers"`
+}
+
+func (CSINodeSpecPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CSINodeSpecPatch)(nil)).Elem()
+}
+
+func (i CSINodeSpecPatchArgs) ToCSINodeSpecPatchOutput() CSINodeSpecPatchOutput {
+	return i.ToCSINodeSpecPatchOutputWithContext(context.Background())
+}
+
+func (i CSINodeSpecPatchArgs) ToCSINodeSpecPatchOutputWithContext(ctx context.Context) CSINodeSpecPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CSINodeSpecPatchOutput)
+}
+
+// CSINodeSpec holds information about the specification of all CSI drivers installed on a node
+type CSINodeSpecPatchOutput struct{ *pulumi.OutputState }
+
+func (CSINodeSpecPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CSINodeSpecPatch)(nil)).Elem()
+}
+
+func (o CSINodeSpecPatchOutput) ToCSINodeSpecPatchOutput() CSINodeSpecPatchOutput {
+	return o
+}
+
+func (o CSINodeSpecPatchOutput) ToCSINodeSpecPatchOutputWithContext(ctx context.Context) CSINodeSpecPatchOutput {
+	return o
+}
+
+// drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty.
+func (o CSINodeSpecPatchOutput) Drivers() CSINodeDriverArrayOutput {
+	return o.ApplyT(func(v CSINodeSpecPatch) []CSINodeDriver { return v.Drivers }).(CSINodeDriverArrayOutput)
 }
 
 // CSIStorageCapacity stores the result of one CSI GetCapacity call. For a given StorageClass, this describes the available capacity in a particular topology segment.  This can be used when considering where to instantiate new PersistentVolumes.
@@ -1092,6 +1848,163 @@ func (o CSIStorageCapacityListTypeOutput) Metadata() metav1.ListMetaPtrOutput {
 	return o.ApplyT(func(v CSIStorageCapacityListType) *metav1.ListMeta { return v.Metadata }).(metav1.ListMetaPtrOutput)
 }
 
+// CSIStorageCapacity stores the result of one CSI GetCapacity call. For a given StorageClass, this describes the available capacity in a particular topology segment.  This can be used when considering where to instantiate new PersistentVolumes.
+//
+// For example this can express things like: - StorageClass "standard" has "1234 GiB" available in "topology.kubernetes.io/zone=us-east1" - StorageClass "localssd" has "10 GiB" available in "kubernetes.io/hostname=knode-abc123"
+//
+// The following three cases all imply that no capacity is available for a certain combination: - no object exists with suitable topology and storage class name - such an object exists, but the capacity is unset - such an object exists, but the capacity is zero
+//
+// The producer of these objects can decide which approach is more suitable.
+//
+// They are consumed by the kube-scheduler when a CSI driver opts into capacity-aware scheduling with CSIDriverSpec.StorageCapacity. The scheduler compares the MaximumVolumeSize against the requested size of pending volumes to filter out unsuitable nodes. If MaximumVolumeSize is unset, it falls back to a comparison against the less precise Capacity. If that is also unset, the scheduler assumes that capacity is insufficient and tries some other node.
+type CSIStorageCapacityPatchType struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Capacity is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
+	//
+	// The semantic is currently (CSI spec 1.2) defined as: The available capacity, in bytes, of the storage that can be used to provision volumes. If not set, that information is currently unavailable.
+	Capacity *string `pulumi:"capacity"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind *string `pulumi:"kind"`
+	// MaximumVolumeSize is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
+	//
+	// This is defined since CSI spec 1.4.0 as the largest size that may be used in a CreateVolumeRequest.capacity_range.required_bytes field to create a volume with the same parameters as those in GetCapacityRequest. The corresponding value in the Kubernetes API is ResourceRequirements.Requests in a volume claim.
+	MaximumVolumeSize *string `pulumi:"maximumVolumeSize"`
+	// Standard object's metadata. The name has no particular meaning. It must be be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-<uuid>, a generated name, or a reverse-domain name which ends with the unique CSI driver name.
+	//
+	// Objects are namespaced.
+	//
+	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	// NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
+	NodeTopology *metav1.LabelSelector `pulumi:"nodeTopology"`
+	// The name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.
+	StorageClassName *string `pulumi:"storageClassName"`
+}
+
+// CSIStorageCapacityPatchTypeInput is an input type that accepts CSIStorageCapacityPatchTypeArgs and CSIStorageCapacityPatchTypeOutput values.
+// You can construct a concrete instance of `CSIStorageCapacityPatchTypeInput` via:
+//
+//          CSIStorageCapacityPatchTypeArgs{...}
+type CSIStorageCapacityPatchTypeInput interface {
+	pulumi.Input
+
+	ToCSIStorageCapacityPatchTypeOutput() CSIStorageCapacityPatchTypeOutput
+	ToCSIStorageCapacityPatchTypeOutputWithContext(context.Context) CSIStorageCapacityPatchTypeOutput
+}
+
+// CSIStorageCapacity stores the result of one CSI GetCapacity call. For a given StorageClass, this describes the available capacity in a particular topology segment.  This can be used when considering where to instantiate new PersistentVolumes.
+//
+// For example this can express things like: - StorageClass "standard" has "1234 GiB" available in "topology.kubernetes.io/zone=us-east1" - StorageClass "localssd" has "10 GiB" available in "kubernetes.io/hostname=knode-abc123"
+//
+// The following three cases all imply that no capacity is available for a certain combination: - no object exists with suitable topology and storage class name - such an object exists, but the capacity is unset - such an object exists, but the capacity is zero
+//
+// The producer of these objects can decide which approach is more suitable.
+//
+// They are consumed by the kube-scheduler when a CSI driver opts into capacity-aware scheduling with CSIDriverSpec.StorageCapacity. The scheduler compares the MaximumVolumeSize against the requested size of pending volumes to filter out unsuitable nodes. If MaximumVolumeSize is unset, it falls back to a comparison against the less precise Capacity. If that is also unset, the scheduler assumes that capacity is insufficient and tries some other node.
+type CSIStorageCapacityPatchTypeArgs struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Capacity is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
+	//
+	// The semantic is currently (CSI spec 1.2) defined as: The available capacity, in bytes, of the storage that can be used to provision volumes. If not set, that information is currently unavailable.
+	Capacity pulumi.StringPtrInput `pulumi:"capacity"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// MaximumVolumeSize is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
+	//
+	// This is defined since CSI spec 1.4.0 as the largest size that may be used in a CreateVolumeRequest.capacity_range.required_bytes field to create a volume with the same parameters as those in GetCapacityRequest. The corresponding value in the Kubernetes API is ResourceRequirements.Requests in a volume claim.
+	MaximumVolumeSize pulumi.StringPtrInput `pulumi:"maximumVolumeSize"`
+	// Standard object's metadata. The name has no particular meaning. It must be be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-<uuid>, a generated name, or a reverse-domain name which ends with the unique CSI driver name.
+	//
+	// Objects are namespaced.
+	//
+	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	// NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
+	NodeTopology metav1.LabelSelectorPtrInput `pulumi:"nodeTopology"`
+	// The name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.
+	StorageClassName pulumi.StringPtrInput `pulumi:"storageClassName"`
+}
+
+func (CSIStorageCapacityPatchTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CSIStorageCapacityPatchType)(nil)).Elem()
+}
+
+func (i CSIStorageCapacityPatchTypeArgs) ToCSIStorageCapacityPatchTypeOutput() CSIStorageCapacityPatchTypeOutput {
+	return i.ToCSIStorageCapacityPatchTypeOutputWithContext(context.Background())
+}
+
+func (i CSIStorageCapacityPatchTypeArgs) ToCSIStorageCapacityPatchTypeOutputWithContext(ctx context.Context) CSIStorageCapacityPatchTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CSIStorageCapacityPatchTypeOutput)
+}
+
+// CSIStorageCapacity stores the result of one CSI GetCapacity call. For a given StorageClass, this describes the available capacity in a particular topology segment.  This can be used when considering where to instantiate new PersistentVolumes.
+//
+// For example this can express things like: - StorageClass "standard" has "1234 GiB" available in "topology.kubernetes.io/zone=us-east1" - StorageClass "localssd" has "10 GiB" available in "kubernetes.io/hostname=knode-abc123"
+//
+// The following three cases all imply that no capacity is available for a certain combination: - no object exists with suitable topology and storage class name - such an object exists, but the capacity is unset - such an object exists, but the capacity is zero
+//
+// The producer of these objects can decide which approach is more suitable.
+//
+// They are consumed by the kube-scheduler when a CSI driver opts into capacity-aware scheduling with CSIDriverSpec.StorageCapacity. The scheduler compares the MaximumVolumeSize against the requested size of pending volumes to filter out unsuitable nodes. If MaximumVolumeSize is unset, it falls back to a comparison against the less precise Capacity. If that is also unset, the scheduler assumes that capacity is insufficient and tries some other node.
+type CSIStorageCapacityPatchTypeOutput struct{ *pulumi.OutputState }
+
+func (CSIStorageCapacityPatchTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CSIStorageCapacityPatchType)(nil)).Elem()
+}
+
+func (o CSIStorageCapacityPatchTypeOutput) ToCSIStorageCapacityPatchTypeOutput() CSIStorageCapacityPatchTypeOutput {
+	return o
+}
+
+func (o CSIStorageCapacityPatchTypeOutput) ToCSIStorageCapacityPatchTypeOutputWithContext(ctx context.Context) CSIStorageCapacityPatchTypeOutput {
+	return o
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o CSIStorageCapacityPatchTypeOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CSIStorageCapacityPatchType) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Capacity is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
+//
+// The semantic is currently (CSI spec 1.2) defined as: The available capacity, in bytes, of the storage that can be used to provision volumes. If not set, that information is currently unavailable.
+func (o CSIStorageCapacityPatchTypeOutput) Capacity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CSIStorageCapacityPatchType) *string { return v.Capacity }).(pulumi.StringPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o CSIStorageCapacityPatchTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CSIStorageCapacityPatchType) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// MaximumVolumeSize is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.
+//
+// This is defined since CSI spec 1.4.0 as the largest size that may be used in a CreateVolumeRequest.capacity_range.required_bytes field to create a volume with the same parameters as those in GetCapacityRequest. The corresponding value in the Kubernetes API is ResourceRequirements.Requests in a volume claim.
+func (o CSIStorageCapacityPatchTypeOutput) MaximumVolumeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CSIStorageCapacityPatchType) *string { return v.MaximumVolumeSize }).(pulumi.StringPtrOutput)
+}
+
+// Standard object's metadata. The name has no particular meaning. It must be be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-<uuid>, a generated name, or a reverse-domain name which ends with the unique CSI driver name.
+//
+// Objects are namespaced.
+//
+// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+func (o CSIStorageCapacityPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v CSIStorageCapacityPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+// NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
+func (o CSIStorageCapacityPatchTypeOutput) NodeTopology() metav1.LabelSelectorPtrOutput {
+	return o.ApplyT(func(v CSIStorageCapacityPatchType) *metav1.LabelSelector { return v.NodeTopology }).(metav1.LabelSelectorPtrOutput)
+}
+
+// The name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.
+func (o CSIStorageCapacityPatchTypeOutput) StorageClassName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CSIStorageCapacityPatchType) *string { return v.StorageClassName }).(pulumi.StringPtrOutput)
+}
+
 // StorageClass describes the parameters for a class of storage for which PersistentVolumes can be dynamically provisioned.
 //
 // StorageClasses are non-namespaced; the name of the storage class according to etcd is in ObjectMeta.Name.
@@ -1361,6 +2274,148 @@ func (o StorageClassListTypeOutput) Metadata() metav1.ListMetaPtrOutput {
 	return o.ApplyT(func(v StorageClassListType) *metav1.ListMeta { return v.Metadata }).(metav1.ListMetaPtrOutput)
 }
 
+// StorageClass describes the parameters for a class of storage for which PersistentVolumes can be dynamically provisioned.
+//
+// StorageClasses are non-namespaced; the name of the storage class according to etcd is in ObjectMeta.Name.
+type StorageClassPatchType struct {
+	// AllowVolumeExpansion shows whether the storage class allow volume expand
+	AllowVolumeExpansion *bool `pulumi:"allowVolumeExpansion"`
+	// Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.
+	AllowedTopologies []corev1.TopologySelectorTerm `pulumi:"allowedTopologies"`
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind *string `pulumi:"kind"`
+	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	// Dynamically provisioned PersistentVolumes of this storage class are created with these mountOptions, e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid.
+	MountOptions []string `pulumi:"mountOptions"`
+	// Parameters holds the parameters for the provisioner that should create volumes of this storage class.
+	Parameters map[string]string `pulumi:"parameters"`
+	// Provisioner indicates the type of the provisioner.
+	Provisioner *string `pulumi:"provisioner"`
+	// Dynamically provisioned PersistentVolumes of this storage class are created with this reclaimPolicy. Defaults to Delete.
+	ReclaimPolicy *string `pulumi:"reclaimPolicy"`
+	// VolumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.
+	VolumeBindingMode *string `pulumi:"volumeBindingMode"`
+}
+
+// StorageClassPatchTypeInput is an input type that accepts StorageClassPatchTypeArgs and StorageClassPatchTypeOutput values.
+// You can construct a concrete instance of `StorageClassPatchTypeInput` via:
+//
+//          StorageClassPatchTypeArgs{...}
+type StorageClassPatchTypeInput interface {
+	pulumi.Input
+
+	ToStorageClassPatchTypeOutput() StorageClassPatchTypeOutput
+	ToStorageClassPatchTypeOutputWithContext(context.Context) StorageClassPatchTypeOutput
+}
+
+// StorageClass describes the parameters for a class of storage for which PersistentVolumes can be dynamically provisioned.
+//
+// StorageClasses are non-namespaced; the name of the storage class according to etcd is in ObjectMeta.Name.
+type StorageClassPatchTypeArgs struct {
+	// AllowVolumeExpansion shows whether the storage class allow volume expand
+	AllowVolumeExpansion pulumi.BoolPtrInput `pulumi:"allowVolumeExpansion"`
+	// Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.
+	AllowedTopologies corev1.TopologySelectorTermArrayInput `pulumi:"allowedTopologies"`
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	// Dynamically provisioned PersistentVolumes of this storage class are created with these mountOptions, e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid.
+	MountOptions pulumi.StringArrayInput `pulumi:"mountOptions"`
+	// Parameters holds the parameters for the provisioner that should create volumes of this storage class.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	// Provisioner indicates the type of the provisioner.
+	Provisioner pulumi.StringPtrInput `pulumi:"provisioner"`
+	// Dynamically provisioned PersistentVolumes of this storage class are created with this reclaimPolicy. Defaults to Delete.
+	ReclaimPolicy pulumi.StringPtrInput `pulumi:"reclaimPolicy"`
+	// VolumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.
+	VolumeBindingMode pulumi.StringPtrInput `pulumi:"volumeBindingMode"`
+}
+
+func (StorageClassPatchTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageClassPatchType)(nil)).Elem()
+}
+
+func (i StorageClassPatchTypeArgs) ToStorageClassPatchTypeOutput() StorageClassPatchTypeOutput {
+	return i.ToStorageClassPatchTypeOutputWithContext(context.Background())
+}
+
+func (i StorageClassPatchTypeArgs) ToStorageClassPatchTypeOutputWithContext(ctx context.Context) StorageClassPatchTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageClassPatchTypeOutput)
+}
+
+// StorageClass describes the parameters for a class of storage for which PersistentVolumes can be dynamically provisioned.
+//
+// StorageClasses are non-namespaced; the name of the storage class according to etcd is in ObjectMeta.Name.
+type StorageClassPatchTypeOutput struct{ *pulumi.OutputState }
+
+func (StorageClassPatchTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageClassPatchType)(nil)).Elem()
+}
+
+func (o StorageClassPatchTypeOutput) ToStorageClassPatchTypeOutput() StorageClassPatchTypeOutput {
+	return o
+}
+
+func (o StorageClassPatchTypeOutput) ToStorageClassPatchTypeOutputWithContext(ctx context.Context) StorageClassPatchTypeOutput {
+	return o
+}
+
+// AllowVolumeExpansion shows whether the storage class allow volume expand
+func (o StorageClassPatchTypeOutput) AllowVolumeExpansion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StorageClassPatchType) *bool { return v.AllowVolumeExpansion }).(pulumi.BoolPtrOutput)
+}
+
+// Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.
+func (o StorageClassPatchTypeOutput) AllowedTopologies() corev1.TopologySelectorTermArrayOutput {
+	return o.ApplyT(func(v StorageClassPatchType) []corev1.TopologySelectorTerm { return v.AllowedTopologies }).(corev1.TopologySelectorTermArrayOutput)
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o StorageClassPatchTypeOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageClassPatchType) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o StorageClassPatchTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageClassPatchType) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+func (o StorageClassPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v StorageClassPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+// Dynamically provisioned PersistentVolumes of this storage class are created with these mountOptions, e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid.
+func (o StorageClassPatchTypeOutput) MountOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StorageClassPatchType) []string { return v.MountOptions }).(pulumi.StringArrayOutput)
+}
+
+// Parameters holds the parameters for the provisioner that should create volumes of this storage class.
+func (o StorageClassPatchTypeOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v StorageClassPatchType) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// Provisioner indicates the type of the provisioner.
+func (o StorageClassPatchTypeOutput) Provisioner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageClassPatchType) *string { return v.Provisioner }).(pulumi.StringPtrOutput)
+}
+
+// Dynamically provisioned PersistentVolumes of this storage class are created with this reclaimPolicy. Defaults to Delete.
+func (o StorageClassPatchTypeOutput) ReclaimPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageClassPatchType) *string { return v.ReclaimPolicy }).(pulumi.StringPtrOutput)
+}
+
+// VolumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.
+func (o StorageClassPatchTypeOutput) VolumeBindingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageClassPatchType) *string { return v.VolumeBindingMode }).(pulumi.StringPtrOutput)
+}
+
 // TokenRequest contains parameters of a service account token.
 type TokenRequest struct {
 	// Audience is the intended audience of the token in "TokenRequestSpec". It will default to the audiences of kube apiserver.
@@ -1468,6 +2523,70 @@ func (o TokenRequestArrayOutput) Index(i pulumi.IntInput) TokenRequestOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TokenRequest {
 		return vs[0].([]TokenRequest)[vs[1].(int)]
 	}).(TokenRequestOutput)
+}
+
+// TokenRequest contains parameters of a service account token.
+type TokenRequestPatch struct {
+	// Audience is the intended audience of the token in "TokenRequestSpec". It will default to the audiences of kube apiserver.
+	Audience *string `pulumi:"audience"`
+	// ExpirationSeconds is the duration of validity of the token in "TokenRequestSpec". It has the same default value of "ExpirationSeconds" in "TokenRequestSpec".
+	ExpirationSeconds *int `pulumi:"expirationSeconds"`
+}
+
+// TokenRequestPatchInput is an input type that accepts TokenRequestPatchArgs and TokenRequestPatchOutput values.
+// You can construct a concrete instance of `TokenRequestPatchInput` via:
+//
+//          TokenRequestPatchArgs{...}
+type TokenRequestPatchInput interface {
+	pulumi.Input
+
+	ToTokenRequestPatchOutput() TokenRequestPatchOutput
+	ToTokenRequestPatchOutputWithContext(context.Context) TokenRequestPatchOutput
+}
+
+// TokenRequest contains parameters of a service account token.
+type TokenRequestPatchArgs struct {
+	// Audience is the intended audience of the token in "TokenRequestSpec". It will default to the audiences of kube apiserver.
+	Audience pulumi.StringPtrInput `pulumi:"audience"`
+	// ExpirationSeconds is the duration of validity of the token in "TokenRequestSpec". It has the same default value of "ExpirationSeconds" in "TokenRequestSpec".
+	ExpirationSeconds pulumi.IntPtrInput `pulumi:"expirationSeconds"`
+}
+
+func (TokenRequestPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TokenRequestPatch)(nil)).Elem()
+}
+
+func (i TokenRequestPatchArgs) ToTokenRequestPatchOutput() TokenRequestPatchOutput {
+	return i.ToTokenRequestPatchOutputWithContext(context.Background())
+}
+
+func (i TokenRequestPatchArgs) ToTokenRequestPatchOutputWithContext(ctx context.Context) TokenRequestPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TokenRequestPatchOutput)
+}
+
+// TokenRequest contains parameters of a service account token.
+type TokenRequestPatchOutput struct{ *pulumi.OutputState }
+
+func (TokenRequestPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TokenRequestPatch)(nil)).Elem()
+}
+
+func (o TokenRequestPatchOutput) ToTokenRequestPatchOutput() TokenRequestPatchOutput {
+	return o
+}
+
+func (o TokenRequestPatchOutput) ToTokenRequestPatchOutputWithContext(ctx context.Context) TokenRequestPatchOutput {
+	return o
+}
+
+// Audience is the intended audience of the token in "TokenRequestSpec". It will default to the audiences of kube apiserver.
+func (o TokenRequestPatchOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TokenRequestPatch) *string { return v.Audience }).(pulumi.StringPtrOutput)
+}
+
+// ExpirationSeconds is the duration of validity of the token in "TokenRequestSpec". It has the same default value of "ExpirationSeconds" in "TokenRequestSpec".
+func (o TokenRequestPatchOutput) ExpirationSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TokenRequestPatch) *int { return v.ExpirationSeconds }).(pulumi.IntPtrOutput)
 }
 
 // VolumeAttachment captures the intent to attach or detach the specified volume to/from the specified node.
@@ -1694,6 +2813,103 @@ func (o VolumeAttachmentListTypeOutput) Metadata() metav1.ListMetaPtrOutput {
 	return o.ApplyT(func(v VolumeAttachmentListType) *metav1.ListMeta { return v.Metadata }).(metav1.ListMetaPtrOutput)
 }
 
+// VolumeAttachment captures the intent to attach or detach the specified volume to/from the specified node.
+//
+// VolumeAttachment objects are non-namespaced.
+type VolumeAttachmentPatchType struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind *string `pulumi:"kind"`
+	// Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	// Specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.
+	Spec *VolumeAttachmentSpec `pulumi:"spec"`
+	// Status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher.
+	Status *VolumeAttachmentStatus `pulumi:"status"`
+}
+
+// VolumeAttachmentPatchTypeInput is an input type that accepts VolumeAttachmentPatchTypeArgs and VolumeAttachmentPatchTypeOutput values.
+// You can construct a concrete instance of `VolumeAttachmentPatchTypeInput` via:
+//
+//          VolumeAttachmentPatchTypeArgs{...}
+type VolumeAttachmentPatchTypeInput interface {
+	pulumi.Input
+
+	ToVolumeAttachmentPatchTypeOutput() VolumeAttachmentPatchTypeOutput
+	ToVolumeAttachmentPatchTypeOutputWithContext(context.Context) VolumeAttachmentPatchTypeOutput
+}
+
+// VolumeAttachment captures the intent to attach or detach the specified volume to/from the specified node.
+//
+// VolumeAttachment objects are non-namespaced.
+type VolumeAttachmentPatchTypeArgs struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	// Specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.
+	Spec VolumeAttachmentSpecPtrInput `pulumi:"spec"`
+	// Status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher.
+	Status VolumeAttachmentStatusPtrInput `pulumi:"status"`
+}
+
+func (VolumeAttachmentPatchTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeAttachmentPatchType)(nil)).Elem()
+}
+
+func (i VolumeAttachmentPatchTypeArgs) ToVolumeAttachmentPatchTypeOutput() VolumeAttachmentPatchTypeOutput {
+	return i.ToVolumeAttachmentPatchTypeOutputWithContext(context.Background())
+}
+
+func (i VolumeAttachmentPatchTypeArgs) ToVolumeAttachmentPatchTypeOutputWithContext(ctx context.Context) VolumeAttachmentPatchTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachmentPatchTypeOutput)
+}
+
+// VolumeAttachment captures the intent to attach or detach the specified volume to/from the specified node.
+//
+// VolumeAttachment objects are non-namespaced.
+type VolumeAttachmentPatchTypeOutput struct{ *pulumi.OutputState }
+
+func (VolumeAttachmentPatchTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeAttachmentPatchType)(nil)).Elem()
+}
+
+func (o VolumeAttachmentPatchTypeOutput) ToVolumeAttachmentPatchTypeOutput() VolumeAttachmentPatchTypeOutput {
+	return o
+}
+
+func (o VolumeAttachmentPatchTypeOutput) ToVolumeAttachmentPatchTypeOutputWithContext(ctx context.Context) VolumeAttachmentPatchTypeOutput {
+	return o
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o VolumeAttachmentPatchTypeOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeAttachmentPatchType) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o VolumeAttachmentPatchTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeAttachmentPatchType) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+func (o VolumeAttachmentPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v VolumeAttachmentPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+// Specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.
+func (o VolumeAttachmentPatchTypeOutput) Spec() VolumeAttachmentSpecPtrOutput {
+	return o.ApplyT(func(v VolumeAttachmentPatchType) *VolumeAttachmentSpec { return v.Spec }).(VolumeAttachmentSpecPtrOutput)
+}
+
+// Status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher.
+func (o VolumeAttachmentPatchTypeOutput) Status() VolumeAttachmentStatusPtrOutput {
+	return o.ApplyT(func(v VolumeAttachmentPatchType) *VolumeAttachmentStatus { return v.Status }).(VolumeAttachmentStatusPtrOutput)
+}
+
 // VolumeAttachmentSource represents a volume that should be attached. Right now only PersistenVolumes can be attached via external attacher, in future we may allow also inline volumes in pods. Exactly one member can be set.
 type VolumeAttachmentSource struct {
 	// inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is beta-level and is only honored by servers that enabled the CSIMigration feature.
@@ -1733,6 +2949,47 @@ func (i VolumeAttachmentSourceArgs) ToVolumeAttachmentSourceOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachmentSourceOutput)
 }
 
+func (i VolumeAttachmentSourceArgs) ToVolumeAttachmentSourcePtrOutput() VolumeAttachmentSourcePtrOutput {
+	return i.ToVolumeAttachmentSourcePtrOutputWithContext(context.Background())
+}
+
+func (i VolumeAttachmentSourceArgs) ToVolumeAttachmentSourcePtrOutputWithContext(ctx context.Context) VolumeAttachmentSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachmentSourceOutput).ToVolumeAttachmentSourcePtrOutputWithContext(ctx)
+}
+
+// VolumeAttachmentSourcePtrInput is an input type that accepts VolumeAttachmentSourceArgs, VolumeAttachmentSourcePtr and VolumeAttachmentSourcePtrOutput values.
+// You can construct a concrete instance of `VolumeAttachmentSourcePtrInput` via:
+//
+//          VolumeAttachmentSourceArgs{...}
+//
+//  or:
+//
+//          nil
+type VolumeAttachmentSourcePtrInput interface {
+	pulumi.Input
+
+	ToVolumeAttachmentSourcePtrOutput() VolumeAttachmentSourcePtrOutput
+	ToVolumeAttachmentSourcePtrOutputWithContext(context.Context) VolumeAttachmentSourcePtrOutput
+}
+
+type volumeAttachmentSourcePtrType VolumeAttachmentSourceArgs
+
+func VolumeAttachmentSourcePtr(v *VolumeAttachmentSourceArgs) VolumeAttachmentSourcePtrInput {
+	return (*volumeAttachmentSourcePtrType)(v)
+}
+
+func (*volumeAttachmentSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeAttachmentSource)(nil)).Elem()
+}
+
+func (i *volumeAttachmentSourcePtrType) ToVolumeAttachmentSourcePtrOutput() VolumeAttachmentSourcePtrOutput {
+	return i.ToVolumeAttachmentSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *volumeAttachmentSourcePtrType) ToVolumeAttachmentSourcePtrOutputWithContext(ctx context.Context) VolumeAttachmentSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachmentSourcePtrOutput)
+}
+
 // VolumeAttachmentSource represents a volume that should be attached. Right now only PersistenVolumes can be attached via external attacher, in future we may allow also inline volumes in pods. Exactly one member can be set.
 type VolumeAttachmentSourceOutput struct{ *pulumi.OutputState }
 
@@ -1748,6 +3005,16 @@ func (o VolumeAttachmentSourceOutput) ToVolumeAttachmentSourceOutputWithContext(
 	return o
 }
 
+func (o VolumeAttachmentSourceOutput) ToVolumeAttachmentSourcePtrOutput() VolumeAttachmentSourcePtrOutput {
+	return o.ToVolumeAttachmentSourcePtrOutputWithContext(context.Background())
+}
+
+func (o VolumeAttachmentSourceOutput) ToVolumeAttachmentSourcePtrOutputWithContext(ctx context.Context) VolumeAttachmentSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeAttachmentSource) *VolumeAttachmentSource {
+		return &v
+	}).(VolumeAttachmentSourcePtrOutput)
+}
+
 // inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is beta-level and is only honored by servers that enabled the CSIMigration feature.
 func (o VolumeAttachmentSourceOutput) InlineVolumeSpec() corev1.PersistentVolumeSpecPtrOutput {
 	return o.ApplyT(func(v VolumeAttachmentSource) *corev1.PersistentVolumeSpec { return v.InlineVolumeSpec }).(corev1.PersistentVolumeSpecPtrOutput)
@@ -1756,6 +3023,114 @@ func (o VolumeAttachmentSourceOutput) InlineVolumeSpec() corev1.PersistentVolume
 // Name of the persistent volume to attach.
 func (o VolumeAttachmentSourceOutput) PersistentVolumeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeAttachmentSource) *string { return v.PersistentVolumeName }).(pulumi.StringPtrOutput)
+}
+
+type VolumeAttachmentSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeAttachmentSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeAttachmentSource)(nil)).Elem()
+}
+
+func (o VolumeAttachmentSourcePtrOutput) ToVolumeAttachmentSourcePtrOutput() VolumeAttachmentSourcePtrOutput {
+	return o
+}
+
+func (o VolumeAttachmentSourcePtrOutput) ToVolumeAttachmentSourcePtrOutputWithContext(ctx context.Context) VolumeAttachmentSourcePtrOutput {
+	return o
+}
+
+func (o VolumeAttachmentSourcePtrOutput) Elem() VolumeAttachmentSourceOutput {
+	return o.ApplyT(func(v *VolumeAttachmentSource) VolumeAttachmentSource {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeAttachmentSource
+		return ret
+	}).(VolumeAttachmentSourceOutput)
+}
+
+// inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is beta-level and is only honored by servers that enabled the CSIMigration feature.
+func (o VolumeAttachmentSourcePtrOutput) InlineVolumeSpec() corev1.PersistentVolumeSpecPtrOutput {
+	return o.ApplyT(func(v *VolumeAttachmentSource) *corev1.PersistentVolumeSpec {
+		if v == nil {
+			return nil
+		}
+		return v.InlineVolumeSpec
+	}).(corev1.PersistentVolumeSpecPtrOutput)
+}
+
+// Name of the persistent volume to attach.
+func (o VolumeAttachmentSourcePtrOutput) PersistentVolumeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeAttachmentSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PersistentVolumeName
+	}).(pulumi.StringPtrOutput)
+}
+
+// VolumeAttachmentSource represents a volume that should be attached. Right now only PersistenVolumes can be attached via external attacher, in future we may allow also inline volumes in pods. Exactly one member can be set.
+type VolumeAttachmentSourcePatch struct {
+	// inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is beta-level and is only honored by servers that enabled the CSIMigration feature.
+	InlineVolumeSpec *corev1.PersistentVolumeSpec `pulumi:"inlineVolumeSpec"`
+	// Name of the persistent volume to attach.
+	PersistentVolumeName *string `pulumi:"persistentVolumeName"`
+}
+
+// VolumeAttachmentSourcePatchInput is an input type that accepts VolumeAttachmentSourcePatchArgs and VolumeAttachmentSourcePatchOutput values.
+// You can construct a concrete instance of `VolumeAttachmentSourcePatchInput` via:
+//
+//          VolumeAttachmentSourcePatchArgs{...}
+type VolumeAttachmentSourcePatchInput interface {
+	pulumi.Input
+
+	ToVolumeAttachmentSourcePatchOutput() VolumeAttachmentSourcePatchOutput
+	ToVolumeAttachmentSourcePatchOutputWithContext(context.Context) VolumeAttachmentSourcePatchOutput
+}
+
+// VolumeAttachmentSource represents a volume that should be attached. Right now only PersistenVolumes can be attached via external attacher, in future we may allow also inline volumes in pods. Exactly one member can be set.
+type VolumeAttachmentSourcePatchArgs struct {
+	// inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is beta-level and is only honored by servers that enabled the CSIMigration feature.
+	InlineVolumeSpec corev1.PersistentVolumeSpecPtrInput `pulumi:"inlineVolumeSpec"`
+	// Name of the persistent volume to attach.
+	PersistentVolumeName pulumi.StringPtrInput `pulumi:"persistentVolumeName"`
+}
+
+func (VolumeAttachmentSourcePatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeAttachmentSourcePatch)(nil)).Elem()
+}
+
+func (i VolumeAttachmentSourcePatchArgs) ToVolumeAttachmentSourcePatchOutput() VolumeAttachmentSourcePatchOutput {
+	return i.ToVolumeAttachmentSourcePatchOutputWithContext(context.Background())
+}
+
+func (i VolumeAttachmentSourcePatchArgs) ToVolumeAttachmentSourcePatchOutputWithContext(ctx context.Context) VolumeAttachmentSourcePatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachmentSourcePatchOutput)
+}
+
+// VolumeAttachmentSource represents a volume that should be attached. Right now only PersistenVolumes can be attached via external attacher, in future we may allow also inline volumes in pods. Exactly one member can be set.
+type VolumeAttachmentSourcePatchOutput struct{ *pulumi.OutputState }
+
+func (VolumeAttachmentSourcePatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeAttachmentSourcePatch)(nil)).Elem()
+}
+
+func (o VolumeAttachmentSourcePatchOutput) ToVolumeAttachmentSourcePatchOutput() VolumeAttachmentSourcePatchOutput {
+	return o
+}
+
+func (o VolumeAttachmentSourcePatchOutput) ToVolumeAttachmentSourcePatchOutputWithContext(ctx context.Context) VolumeAttachmentSourcePatchOutput {
+	return o
+}
+
+// inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is beta-level and is only honored by servers that enabled the CSIMigration feature.
+func (o VolumeAttachmentSourcePatchOutput) InlineVolumeSpec() corev1.PersistentVolumeSpecPtrOutput {
+	return o.ApplyT(func(v VolumeAttachmentSourcePatch) *corev1.PersistentVolumeSpec { return v.InlineVolumeSpec }).(corev1.PersistentVolumeSpecPtrOutput)
+}
+
+// Name of the persistent volume to attach.
+func (o VolumeAttachmentSourcePatchOutput) PersistentVolumeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeAttachmentSourcePatch) *string { return v.PersistentVolumeName }).(pulumi.StringPtrOutput)
 }
 
 // VolumeAttachmentSpec is the specification of a VolumeAttachment request.
@@ -1801,6 +3176,47 @@ func (i VolumeAttachmentSpecArgs) ToVolumeAttachmentSpecOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachmentSpecOutput)
 }
 
+func (i VolumeAttachmentSpecArgs) ToVolumeAttachmentSpecPtrOutput() VolumeAttachmentSpecPtrOutput {
+	return i.ToVolumeAttachmentSpecPtrOutputWithContext(context.Background())
+}
+
+func (i VolumeAttachmentSpecArgs) ToVolumeAttachmentSpecPtrOutputWithContext(ctx context.Context) VolumeAttachmentSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachmentSpecOutput).ToVolumeAttachmentSpecPtrOutputWithContext(ctx)
+}
+
+// VolumeAttachmentSpecPtrInput is an input type that accepts VolumeAttachmentSpecArgs, VolumeAttachmentSpecPtr and VolumeAttachmentSpecPtrOutput values.
+// You can construct a concrete instance of `VolumeAttachmentSpecPtrInput` via:
+//
+//          VolumeAttachmentSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type VolumeAttachmentSpecPtrInput interface {
+	pulumi.Input
+
+	ToVolumeAttachmentSpecPtrOutput() VolumeAttachmentSpecPtrOutput
+	ToVolumeAttachmentSpecPtrOutputWithContext(context.Context) VolumeAttachmentSpecPtrOutput
+}
+
+type volumeAttachmentSpecPtrType VolumeAttachmentSpecArgs
+
+func VolumeAttachmentSpecPtr(v *VolumeAttachmentSpecArgs) VolumeAttachmentSpecPtrInput {
+	return (*volumeAttachmentSpecPtrType)(v)
+}
+
+func (*volumeAttachmentSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeAttachmentSpec)(nil)).Elem()
+}
+
+func (i *volumeAttachmentSpecPtrType) ToVolumeAttachmentSpecPtrOutput() VolumeAttachmentSpecPtrOutput {
+	return i.ToVolumeAttachmentSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *volumeAttachmentSpecPtrType) ToVolumeAttachmentSpecPtrOutputWithContext(ctx context.Context) VolumeAttachmentSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachmentSpecPtrOutput)
+}
+
 // VolumeAttachmentSpec is the specification of a VolumeAttachment request.
 type VolumeAttachmentSpecOutput struct{ *pulumi.OutputState }
 
@@ -1816,6 +3232,16 @@ func (o VolumeAttachmentSpecOutput) ToVolumeAttachmentSpecOutputWithContext(ctx 
 	return o
 }
 
+func (o VolumeAttachmentSpecOutput) ToVolumeAttachmentSpecPtrOutput() VolumeAttachmentSpecPtrOutput {
+	return o.ToVolumeAttachmentSpecPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeAttachmentSpecOutput) ToVolumeAttachmentSpecPtrOutputWithContext(ctx context.Context) VolumeAttachmentSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeAttachmentSpec) *VolumeAttachmentSpec {
+		return &v
+	}).(VolumeAttachmentSpecPtrOutput)
+}
+
 // Attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().
 func (o VolumeAttachmentSpecOutput) Attacher() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeAttachmentSpec) string { return v.Attacher }).(pulumi.StringOutput)
@@ -1829,6 +3255,133 @@ func (o VolumeAttachmentSpecOutput) NodeName() pulumi.StringOutput {
 // Source represents the volume that should be attached.
 func (o VolumeAttachmentSpecOutput) Source() VolumeAttachmentSourceOutput {
 	return o.ApplyT(func(v VolumeAttachmentSpec) VolumeAttachmentSource { return v.Source }).(VolumeAttachmentSourceOutput)
+}
+
+type VolumeAttachmentSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeAttachmentSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeAttachmentSpec)(nil)).Elem()
+}
+
+func (o VolumeAttachmentSpecPtrOutput) ToVolumeAttachmentSpecPtrOutput() VolumeAttachmentSpecPtrOutput {
+	return o
+}
+
+func (o VolumeAttachmentSpecPtrOutput) ToVolumeAttachmentSpecPtrOutputWithContext(ctx context.Context) VolumeAttachmentSpecPtrOutput {
+	return o
+}
+
+func (o VolumeAttachmentSpecPtrOutput) Elem() VolumeAttachmentSpecOutput {
+	return o.ApplyT(func(v *VolumeAttachmentSpec) VolumeAttachmentSpec {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeAttachmentSpec
+		return ret
+	}).(VolumeAttachmentSpecOutput)
+}
+
+// Attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().
+func (o VolumeAttachmentSpecPtrOutput) Attacher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeAttachmentSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Attacher
+	}).(pulumi.StringPtrOutput)
+}
+
+// The node that the volume should be attached to.
+func (o VolumeAttachmentSpecPtrOutput) NodeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeAttachmentSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NodeName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Source represents the volume that should be attached.
+func (o VolumeAttachmentSpecPtrOutput) Source() VolumeAttachmentSourcePtrOutput {
+	return o.ApplyT(func(v *VolumeAttachmentSpec) *VolumeAttachmentSource {
+		if v == nil {
+			return nil
+		}
+		return &v.Source
+	}).(VolumeAttachmentSourcePtrOutput)
+}
+
+// VolumeAttachmentSpec is the specification of a VolumeAttachment request.
+type VolumeAttachmentSpecPatch struct {
+	// Attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().
+	Attacher *string `pulumi:"attacher"`
+	// The node that the volume should be attached to.
+	NodeName *string `pulumi:"nodeName"`
+	// Source represents the volume that should be attached.
+	Source *VolumeAttachmentSource `pulumi:"source"`
+}
+
+// VolumeAttachmentSpecPatchInput is an input type that accepts VolumeAttachmentSpecPatchArgs and VolumeAttachmentSpecPatchOutput values.
+// You can construct a concrete instance of `VolumeAttachmentSpecPatchInput` via:
+//
+//          VolumeAttachmentSpecPatchArgs{...}
+type VolumeAttachmentSpecPatchInput interface {
+	pulumi.Input
+
+	ToVolumeAttachmentSpecPatchOutput() VolumeAttachmentSpecPatchOutput
+	ToVolumeAttachmentSpecPatchOutputWithContext(context.Context) VolumeAttachmentSpecPatchOutput
+}
+
+// VolumeAttachmentSpec is the specification of a VolumeAttachment request.
+type VolumeAttachmentSpecPatchArgs struct {
+	// Attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().
+	Attacher pulumi.StringPtrInput `pulumi:"attacher"`
+	// The node that the volume should be attached to.
+	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
+	// Source represents the volume that should be attached.
+	Source VolumeAttachmentSourcePtrInput `pulumi:"source"`
+}
+
+func (VolumeAttachmentSpecPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeAttachmentSpecPatch)(nil)).Elem()
+}
+
+func (i VolumeAttachmentSpecPatchArgs) ToVolumeAttachmentSpecPatchOutput() VolumeAttachmentSpecPatchOutput {
+	return i.ToVolumeAttachmentSpecPatchOutputWithContext(context.Background())
+}
+
+func (i VolumeAttachmentSpecPatchArgs) ToVolumeAttachmentSpecPatchOutputWithContext(ctx context.Context) VolumeAttachmentSpecPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachmentSpecPatchOutput)
+}
+
+// VolumeAttachmentSpec is the specification of a VolumeAttachment request.
+type VolumeAttachmentSpecPatchOutput struct{ *pulumi.OutputState }
+
+func (VolumeAttachmentSpecPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeAttachmentSpecPatch)(nil)).Elem()
+}
+
+func (o VolumeAttachmentSpecPatchOutput) ToVolumeAttachmentSpecPatchOutput() VolumeAttachmentSpecPatchOutput {
+	return o
+}
+
+func (o VolumeAttachmentSpecPatchOutput) ToVolumeAttachmentSpecPatchOutputWithContext(ctx context.Context) VolumeAttachmentSpecPatchOutput {
+	return o
+}
+
+// Attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().
+func (o VolumeAttachmentSpecPatchOutput) Attacher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeAttachmentSpecPatch) *string { return v.Attacher }).(pulumi.StringPtrOutput)
+}
+
+// The node that the volume should be attached to.
+func (o VolumeAttachmentSpecPatchOutput) NodeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeAttachmentSpecPatch) *string { return v.NodeName }).(pulumi.StringPtrOutput)
+}
+
+// Source represents the volume that should be attached.
+func (o VolumeAttachmentSpecPatchOutput) Source() VolumeAttachmentSourcePtrOutput {
+	return o.ApplyT(func(v VolumeAttachmentSpecPatch) *VolumeAttachmentSource { return v.Source }).(VolumeAttachmentSourcePtrOutput)
 }
 
 // VolumeAttachmentStatus is the status of a VolumeAttachment request.
@@ -2028,6 +3581,88 @@ func (o VolumeAttachmentStatusPtrOutput) DetachError() VolumeErrorPtrOutput {
 	}).(VolumeErrorPtrOutput)
 }
 
+// VolumeAttachmentStatus is the status of a VolumeAttachment request.
+type VolumeAttachmentStatusPatch struct {
+	// The last error encountered during attach operation, if any. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.
+	AttachError *VolumeError `pulumi:"attachError"`
+	// Indicates the volume is successfully attached. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.
+	Attached *bool `pulumi:"attached"`
+	// Upon successful attach, this field is populated with any information returned by the attach operation that must be passed into subsequent WaitForAttach or Mount calls. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.
+	AttachmentMetadata map[string]string `pulumi:"attachmentMetadata"`
+	// The last error encountered during detach operation, if any. This field must only be set by the entity completing the detach operation, i.e. the external-attacher.
+	DetachError *VolumeError `pulumi:"detachError"`
+}
+
+// VolumeAttachmentStatusPatchInput is an input type that accepts VolumeAttachmentStatusPatchArgs and VolumeAttachmentStatusPatchOutput values.
+// You can construct a concrete instance of `VolumeAttachmentStatusPatchInput` via:
+//
+//          VolumeAttachmentStatusPatchArgs{...}
+type VolumeAttachmentStatusPatchInput interface {
+	pulumi.Input
+
+	ToVolumeAttachmentStatusPatchOutput() VolumeAttachmentStatusPatchOutput
+	ToVolumeAttachmentStatusPatchOutputWithContext(context.Context) VolumeAttachmentStatusPatchOutput
+}
+
+// VolumeAttachmentStatus is the status of a VolumeAttachment request.
+type VolumeAttachmentStatusPatchArgs struct {
+	// The last error encountered during attach operation, if any. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.
+	AttachError VolumeErrorPtrInput `pulumi:"attachError"`
+	// Indicates the volume is successfully attached. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.
+	Attached pulumi.BoolPtrInput `pulumi:"attached"`
+	// Upon successful attach, this field is populated with any information returned by the attach operation that must be passed into subsequent WaitForAttach or Mount calls. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.
+	AttachmentMetadata pulumi.StringMapInput `pulumi:"attachmentMetadata"`
+	// The last error encountered during detach operation, if any. This field must only be set by the entity completing the detach operation, i.e. the external-attacher.
+	DetachError VolumeErrorPtrInput `pulumi:"detachError"`
+}
+
+func (VolumeAttachmentStatusPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeAttachmentStatusPatch)(nil)).Elem()
+}
+
+func (i VolumeAttachmentStatusPatchArgs) ToVolumeAttachmentStatusPatchOutput() VolumeAttachmentStatusPatchOutput {
+	return i.ToVolumeAttachmentStatusPatchOutputWithContext(context.Background())
+}
+
+func (i VolumeAttachmentStatusPatchArgs) ToVolumeAttachmentStatusPatchOutputWithContext(ctx context.Context) VolumeAttachmentStatusPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachmentStatusPatchOutput)
+}
+
+// VolumeAttachmentStatus is the status of a VolumeAttachment request.
+type VolumeAttachmentStatusPatchOutput struct{ *pulumi.OutputState }
+
+func (VolumeAttachmentStatusPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeAttachmentStatusPatch)(nil)).Elem()
+}
+
+func (o VolumeAttachmentStatusPatchOutput) ToVolumeAttachmentStatusPatchOutput() VolumeAttachmentStatusPatchOutput {
+	return o
+}
+
+func (o VolumeAttachmentStatusPatchOutput) ToVolumeAttachmentStatusPatchOutputWithContext(ctx context.Context) VolumeAttachmentStatusPatchOutput {
+	return o
+}
+
+// The last error encountered during attach operation, if any. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.
+func (o VolumeAttachmentStatusPatchOutput) AttachError() VolumeErrorPtrOutput {
+	return o.ApplyT(func(v VolumeAttachmentStatusPatch) *VolumeError { return v.AttachError }).(VolumeErrorPtrOutput)
+}
+
+// Indicates the volume is successfully attached. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.
+func (o VolumeAttachmentStatusPatchOutput) Attached() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VolumeAttachmentStatusPatch) *bool { return v.Attached }).(pulumi.BoolPtrOutput)
+}
+
+// Upon successful attach, this field is populated with any information returned by the attach operation that must be passed into subsequent WaitForAttach or Mount calls. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.
+func (o VolumeAttachmentStatusPatchOutput) AttachmentMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v VolumeAttachmentStatusPatch) map[string]string { return v.AttachmentMetadata }).(pulumi.StringMapOutput)
+}
+
+// The last error encountered during detach operation, if any. This field must only be set by the entity completing the detach operation, i.e. the external-attacher.
+func (o VolumeAttachmentStatusPatchOutput) DetachError() VolumeErrorPtrOutput {
+	return o.ApplyT(func(v VolumeAttachmentStatusPatch) *VolumeError { return v.DetachError }).(VolumeErrorPtrOutput)
+}
+
 // VolumeError captures an error encountered during a volume operation.
 type VolumeError struct {
 	// String detailing the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.
@@ -2187,6 +3822,70 @@ func (o VolumeErrorPtrOutput) Time() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// VolumeError captures an error encountered during a volume operation.
+type VolumeErrorPatch struct {
+	// String detailing the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.
+	Message *string `pulumi:"message"`
+	// Time the error was encountered.
+	Time *string `pulumi:"time"`
+}
+
+// VolumeErrorPatchInput is an input type that accepts VolumeErrorPatchArgs and VolumeErrorPatchOutput values.
+// You can construct a concrete instance of `VolumeErrorPatchInput` via:
+//
+//          VolumeErrorPatchArgs{...}
+type VolumeErrorPatchInput interface {
+	pulumi.Input
+
+	ToVolumeErrorPatchOutput() VolumeErrorPatchOutput
+	ToVolumeErrorPatchOutputWithContext(context.Context) VolumeErrorPatchOutput
+}
+
+// VolumeError captures an error encountered during a volume operation.
+type VolumeErrorPatchArgs struct {
+	// String detailing the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Time the error was encountered.
+	Time pulumi.StringPtrInput `pulumi:"time"`
+}
+
+func (VolumeErrorPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeErrorPatch)(nil)).Elem()
+}
+
+func (i VolumeErrorPatchArgs) ToVolumeErrorPatchOutput() VolumeErrorPatchOutput {
+	return i.ToVolumeErrorPatchOutputWithContext(context.Background())
+}
+
+func (i VolumeErrorPatchArgs) ToVolumeErrorPatchOutputWithContext(ctx context.Context) VolumeErrorPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeErrorPatchOutput)
+}
+
+// VolumeError captures an error encountered during a volume operation.
+type VolumeErrorPatchOutput struct{ *pulumi.OutputState }
+
+func (VolumeErrorPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeErrorPatch)(nil)).Elem()
+}
+
+func (o VolumeErrorPatchOutput) ToVolumeErrorPatchOutput() VolumeErrorPatchOutput {
+	return o
+}
+
+func (o VolumeErrorPatchOutput) ToVolumeErrorPatchOutputWithContext(ctx context.Context) VolumeErrorPatchOutput {
+	return o
+}
+
+// String detailing the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.
+func (o VolumeErrorPatchOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeErrorPatch) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Time the error was encountered.
+func (o VolumeErrorPatchOutput) Time() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeErrorPatch) *string { return v.Time }).(pulumi.StringPtrOutput)
+}
+
 // VolumeNodeResources is a set of resource limits for scheduling of volumes.
 type VolumeNodeResources struct {
 	// Maximum number of unique volumes managed by the CSI driver that can be used on a node. A volume that is both attached and mounted on a node is considered to be used once, not twice. The same rule applies for a unique volume that is shared among multiple pods on the same node. If this field is not specified, then the supported number of volumes on this node is unbounded.
@@ -2327,63 +4026,154 @@ func (o VolumeNodeResourcesPtrOutput) Count() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// VolumeNodeResources is a set of resource limits for scheduling of volumes.
+type VolumeNodeResourcesPatch struct {
+	// Maximum number of unique volumes managed by the CSI driver that can be used on a node. A volume that is both attached and mounted on a node is considered to be used once, not twice. The same rule applies for a unique volume that is shared among multiple pods on the same node. If this field is not specified, then the supported number of volumes on this node is unbounded.
+	Count *int `pulumi:"count"`
+}
+
+// VolumeNodeResourcesPatchInput is an input type that accepts VolumeNodeResourcesPatchArgs and VolumeNodeResourcesPatchOutput values.
+// You can construct a concrete instance of `VolumeNodeResourcesPatchInput` via:
+//
+//          VolumeNodeResourcesPatchArgs{...}
+type VolumeNodeResourcesPatchInput interface {
+	pulumi.Input
+
+	ToVolumeNodeResourcesPatchOutput() VolumeNodeResourcesPatchOutput
+	ToVolumeNodeResourcesPatchOutputWithContext(context.Context) VolumeNodeResourcesPatchOutput
+}
+
+// VolumeNodeResources is a set of resource limits for scheduling of volumes.
+type VolumeNodeResourcesPatchArgs struct {
+	// Maximum number of unique volumes managed by the CSI driver that can be used on a node. A volume that is both attached and mounted on a node is considered to be used once, not twice. The same rule applies for a unique volume that is shared among multiple pods on the same node. If this field is not specified, then the supported number of volumes on this node is unbounded.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+}
+
+func (VolumeNodeResourcesPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeNodeResourcesPatch)(nil)).Elem()
+}
+
+func (i VolumeNodeResourcesPatchArgs) ToVolumeNodeResourcesPatchOutput() VolumeNodeResourcesPatchOutput {
+	return i.ToVolumeNodeResourcesPatchOutputWithContext(context.Background())
+}
+
+func (i VolumeNodeResourcesPatchArgs) ToVolumeNodeResourcesPatchOutputWithContext(ctx context.Context) VolumeNodeResourcesPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeNodeResourcesPatchOutput)
+}
+
+// VolumeNodeResources is a set of resource limits for scheduling of volumes.
+type VolumeNodeResourcesPatchOutput struct{ *pulumi.OutputState }
+
+func (VolumeNodeResourcesPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeNodeResourcesPatch)(nil)).Elem()
+}
+
+func (o VolumeNodeResourcesPatchOutput) ToVolumeNodeResourcesPatchOutput() VolumeNodeResourcesPatchOutput {
+	return o
+}
+
+func (o VolumeNodeResourcesPatchOutput) ToVolumeNodeResourcesPatchOutputWithContext(ctx context.Context) VolumeNodeResourcesPatchOutput {
+	return o
+}
+
+// Maximum number of unique volumes managed by the CSI driver that can be used on a node. A volume that is both attached and mounted on a node is considered to be used once, not twice. The same rule applies for a unique volume that is shared among multiple pods on the same node. If this field is not specified, then the supported number of volumes on this node is unbounded.
+func (o VolumeNodeResourcesPatchOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VolumeNodeResourcesPatch) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CSIDriverTypeInput)(nil)).Elem(), CSIDriverTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CSIDriverTypeArrayInput)(nil)).Elem(), CSIDriverTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CSIDriverListTypeInput)(nil)).Elem(), CSIDriverListTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CSIDriverPatchTypeInput)(nil)).Elem(), CSIDriverPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CSIDriverSpecInput)(nil)).Elem(), CSIDriverSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CSIDriverSpecPtrInput)(nil)).Elem(), CSIDriverSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CSIDriverSpecPatchInput)(nil)).Elem(), CSIDriverSpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CSINodeTypeInput)(nil)).Elem(), CSINodeTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CSINodeTypeArrayInput)(nil)).Elem(), CSINodeTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CSINodeDriverInput)(nil)).Elem(), CSINodeDriverArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CSINodeDriverArrayInput)(nil)).Elem(), CSINodeDriverArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CSINodeDriverPatchInput)(nil)).Elem(), CSINodeDriverPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CSINodeListTypeInput)(nil)).Elem(), CSINodeListTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CSINodePatchTypeInput)(nil)).Elem(), CSINodePatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CSINodeSpecInput)(nil)).Elem(), CSINodeSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CSINodeSpecPtrInput)(nil)).Elem(), CSINodeSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CSINodeSpecPatchInput)(nil)).Elem(), CSINodeSpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CSIStorageCapacityTypeInput)(nil)).Elem(), CSIStorageCapacityTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CSIStorageCapacityTypeArrayInput)(nil)).Elem(), CSIStorageCapacityTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CSIStorageCapacityListTypeInput)(nil)).Elem(), CSIStorageCapacityListTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CSIStorageCapacityPatchTypeInput)(nil)).Elem(), CSIStorageCapacityPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageClassTypeInput)(nil)).Elem(), StorageClassTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageClassTypeArrayInput)(nil)).Elem(), StorageClassTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageClassListTypeInput)(nil)).Elem(), StorageClassListTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageClassPatchTypeInput)(nil)).Elem(), StorageClassPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TokenRequestInput)(nil)).Elem(), TokenRequestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TokenRequestArrayInput)(nil)).Elem(), TokenRequestArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TokenRequestPatchInput)(nil)).Elem(), TokenRequestPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachmentTypeInput)(nil)).Elem(), VolumeAttachmentTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachmentTypeArrayInput)(nil)).Elem(), VolumeAttachmentTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachmentListTypeInput)(nil)).Elem(), VolumeAttachmentListTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachmentPatchTypeInput)(nil)).Elem(), VolumeAttachmentPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachmentSourceInput)(nil)).Elem(), VolumeAttachmentSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachmentSourcePtrInput)(nil)).Elem(), VolumeAttachmentSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachmentSourcePatchInput)(nil)).Elem(), VolumeAttachmentSourcePatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachmentSpecInput)(nil)).Elem(), VolumeAttachmentSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachmentSpecPtrInput)(nil)).Elem(), VolumeAttachmentSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachmentSpecPatchInput)(nil)).Elem(), VolumeAttachmentSpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachmentStatusInput)(nil)).Elem(), VolumeAttachmentStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachmentStatusPtrInput)(nil)).Elem(), VolumeAttachmentStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachmentStatusPatchInput)(nil)).Elem(), VolumeAttachmentStatusPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeErrorInput)(nil)).Elem(), VolumeErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeErrorPtrInput)(nil)).Elem(), VolumeErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeErrorPatchInput)(nil)).Elem(), VolumeErrorPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeNodeResourcesInput)(nil)).Elem(), VolumeNodeResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeNodeResourcesPtrInput)(nil)).Elem(), VolumeNodeResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeNodeResourcesPatchInput)(nil)).Elem(), VolumeNodeResourcesPatchArgs{})
 	pulumi.RegisterOutputType(CSIDriverTypeOutput{})
 	pulumi.RegisterOutputType(CSIDriverTypeArrayOutput{})
 	pulumi.RegisterOutputType(CSIDriverListTypeOutput{})
+	pulumi.RegisterOutputType(CSIDriverPatchTypeOutput{})
 	pulumi.RegisterOutputType(CSIDriverSpecOutput{})
+	pulumi.RegisterOutputType(CSIDriverSpecPtrOutput{})
+	pulumi.RegisterOutputType(CSIDriverSpecPatchOutput{})
 	pulumi.RegisterOutputType(CSINodeTypeOutput{})
 	pulumi.RegisterOutputType(CSINodeTypeArrayOutput{})
 	pulumi.RegisterOutputType(CSINodeDriverOutput{})
 	pulumi.RegisterOutputType(CSINodeDriverArrayOutput{})
+	pulumi.RegisterOutputType(CSINodeDriverPatchOutput{})
 	pulumi.RegisterOutputType(CSINodeListTypeOutput{})
+	pulumi.RegisterOutputType(CSINodePatchTypeOutput{})
 	pulumi.RegisterOutputType(CSINodeSpecOutput{})
+	pulumi.RegisterOutputType(CSINodeSpecPtrOutput{})
+	pulumi.RegisterOutputType(CSINodeSpecPatchOutput{})
 	pulumi.RegisterOutputType(CSIStorageCapacityTypeOutput{})
 	pulumi.RegisterOutputType(CSIStorageCapacityTypeArrayOutput{})
 	pulumi.RegisterOutputType(CSIStorageCapacityListTypeOutput{})
+	pulumi.RegisterOutputType(CSIStorageCapacityPatchTypeOutput{})
 	pulumi.RegisterOutputType(StorageClassTypeOutput{})
 	pulumi.RegisterOutputType(StorageClassTypeArrayOutput{})
 	pulumi.RegisterOutputType(StorageClassListTypeOutput{})
+	pulumi.RegisterOutputType(StorageClassPatchTypeOutput{})
 	pulumi.RegisterOutputType(TokenRequestOutput{})
 	pulumi.RegisterOutputType(TokenRequestArrayOutput{})
+	pulumi.RegisterOutputType(TokenRequestPatchOutput{})
 	pulumi.RegisterOutputType(VolumeAttachmentTypeOutput{})
 	pulumi.RegisterOutputType(VolumeAttachmentTypeArrayOutput{})
 	pulumi.RegisterOutputType(VolumeAttachmentListTypeOutput{})
+	pulumi.RegisterOutputType(VolumeAttachmentPatchTypeOutput{})
 	pulumi.RegisterOutputType(VolumeAttachmentSourceOutput{})
+	pulumi.RegisterOutputType(VolumeAttachmentSourcePtrOutput{})
+	pulumi.RegisterOutputType(VolumeAttachmentSourcePatchOutput{})
 	pulumi.RegisterOutputType(VolumeAttachmentSpecOutput{})
+	pulumi.RegisterOutputType(VolumeAttachmentSpecPtrOutput{})
+	pulumi.RegisterOutputType(VolumeAttachmentSpecPatchOutput{})
 	pulumi.RegisterOutputType(VolumeAttachmentStatusOutput{})
 	pulumi.RegisterOutputType(VolumeAttachmentStatusPtrOutput{})
+	pulumi.RegisterOutputType(VolumeAttachmentStatusPatchOutput{})
 	pulumi.RegisterOutputType(VolumeErrorOutput{})
 	pulumi.RegisterOutputType(VolumeErrorPtrOutput{})
+	pulumi.RegisterOutputType(VolumeErrorPatchOutput{})
 	pulumi.RegisterOutputType(VolumeNodeResourcesOutput{})
 	pulumi.RegisterOutputType(VolumeNodeResourcesPtrOutput{})
+	pulumi.RegisterOutputType(VolumeNodeResourcesPatchOutput{})
 }

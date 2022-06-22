@@ -230,6 +230,97 @@ func (o CronJobListTypeOutput) Metadata() metav1.ListMetaPtrOutput {
 	return o.ApplyT(func(v CronJobListType) *metav1.ListMeta { return v.Metadata }).(metav1.ListMetaPtrOutput)
 }
 
+// CronJob represents the configuration of a single cron job.
+type CronJobPatchType struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind *string `pulumi:"kind"`
+	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	// Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Spec *CronJobSpec `pulumi:"spec"`
+	// Current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Status *CronJobStatus `pulumi:"status"`
+}
+
+// CronJobPatchTypeInput is an input type that accepts CronJobPatchTypeArgs and CronJobPatchTypeOutput values.
+// You can construct a concrete instance of `CronJobPatchTypeInput` via:
+//
+//          CronJobPatchTypeArgs{...}
+type CronJobPatchTypeInput interface {
+	pulumi.Input
+
+	ToCronJobPatchTypeOutput() CronJobPatchTypeOutput
+	ToCronJobPatchTypeOutputWithContext(context.Context) CronJobPatchTypeOutput
+}
+
+// CronJob represents the configuration of a single cron job.
+type CronJobPatchTypeArgs struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	// Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Spec CronJobSpecPtrInput `pulumi:"spec"`
+	// Current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Status CronJobStatusPtrInput `pulumi:"status"`
+}
+
+func (CronJobPatchTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CronJobPatchType)(nil)).Elem()
+}
+
+func (i CronJobPatchTypeArgs) ToCronJobPatchTypeOutput() CronJobPatchTypeOutput {
+	return i.ToCronJobPatchTypeOutputWithContext(context.Background())
+}
+
+func (i CronJobPatchTypeArgs) ToCronJobPatchTypeOutputWithContext(ctx context.Context) CronJobPatchTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CronJobPatchTypeOutput)
+}
+
+// CronJob represents the configuration of a single cron job.
+type CronJobPatchTypeOutput struct{ *pulumi.OutputState }
+
+func (CronJobPatchTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CronJobPatchType)(nil)).Elem()
+}
+
+func (o CronJobPatchTypeOutput) ToCronJobPatchTypeOutput() CronJobPatchTypeOutput {
+	return o
+}
+
+func (o CronJobPatchTypeOutput) ToCronJobPatchTypeOutputWithContext(ctx context.Context) CronJobPatchTypeOutput {
+	return o
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o CronJobPatchTypeOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CronJobPatchType) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o CronJobPatchTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CronJobPatchType) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+func (o CronJobPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v CronJobPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+// Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+func (o CronJobPatchTypeOutput) Spec() CronJobSpecPtrOutput {
+	return o.ApplyT(func(v CronJobPatchType) *CronJobSpec { return v.Spec }).(CronJobSpecPtrOutput)
+}
+
+// Current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+func (o CronJobPatchTypeOutput) Status() CronJobStatusPtrOutput {
+	return o.ApplyT(func(v CronJobPatchType) *CronJobStatus { return v.Status }).(CronJobStatusPtrOutput)
+}
+
 // CronJobSpec describes how the job execution will look like and when it will actually run.
 type CronJobSpec struct {
 	// Specifies how to treat concurrent executions of a Job. Valid values are: - "Allow" (default): allows CronJobs to run concurrently; - "Forbid": forbids concurrent runs, skipping next run if previous run hasn't finished yet; - "Replace": cancels currently running job and replaces it with a new one
@@ -503,6 +594,124 @@ func (o CronJobSpecPtrOutput) TimeZone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// CronJobSpec describes how the job execution will look like and when it will actually run.
+type CronJobSpecPatch struct {
+	// Specifies how to treat concurrent executions of a Job. Valid values are: - "Allow" (default): allows CronJobs to run concurrently; - "Forbid": forbids concurrent runs, skipping next run if previous run hasn't finished yet; - "Replace": cancels currently running job and replaces it with a new one
+	ConcurrencyPolicy *string `pulumi:"concurrencyPolicy"`
+	// The number of failed finished jobs to retain. Value must be non-negative integer. Defaults to 1.
+	FailedJobsHistoryLimit *int `pulumi:"failedJobsHistoryLimit"`
+	// Specifies the job that will be created when executing a CronJob.
+	JobTemplate *JobTemplateSpec `pulumi:"jobTemplate"`
+	// The schedule in Cron format, see https://en.wikipedia.org/wiki/Cron.
+	Schedule *string `pulumi:"schedule"`
+	// Optional deadline in seconds for starting the job if it misses scheduled time for any reason.  Missed jobs executions will be counted as failed ones.
+	StartingDeadlineSeconds *int `pulumi:"startingDeadlineSeconds"`
+	// The number of successful finished jobs to retain. Value must be non-negative integer. Defaults to 3.
+	SuccessfulJobsHistoryLimit *int `pulumi:"successfulJobsHistoryLimit"`
+	// This flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false.
+	Suspend *bool `pulumi:"suspend"`
+	// The time zone for the given schedule, see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones. If not specified, this will rely on the time zone of the kube-controller-manager process. ALPHA: This field is in alpha and must be enabled via the `CronJobTimeZone` feature gate.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// CronJobSpecPatchInput is an input type that accepts CronJobSpecPatchArgs and CronJobSpecPatchOutput values.
+// You can construct a concrete instance of `CronJobSpecPatchInput` via:
+//
+//          CronJobSpecPatchArgs{...}
+type CronJobSpecPatchInput interface {
+	pulumi.Input
+
+	ToCronJobSpecPatchOutput() CronJobSpecPatchOutput
+	ToCronJobSpecPatchOutputWithContext(context.Context) CronJobSpecPatchOutput
+}
+
+// CronJobSpec describes how the job execution will look like and when it will actually run.
+type CronJobSpecPatchArgs struct {
+	// Specifies how to treat concurrent executions of a Job. Valid values are: - "Allow" (default): allows CronJobs to run concurrently; - "Forbid": forbids concurrent runs, skipping next run if previous run hasn't finished yet; - "Replace": cancels currently running job and replaces it with a new one
+	ConcurrencyPolicy pulumi.StringPtrInput `pulumi:"concurrencyPolicy"`
+	// The number of failed finished jobs to retain. Value must be non-negative integer. Defaults to 1.
+	FailedJobsHistoryLimit pulumi.IntPtrInput `pulumi:"failedJobsHistoryLimit"`
+	// Specifies the job that will be created when executing a CronJob.
+	JobTemplate JobTemplateSpecPtrInput `pulumi:"jobTemplate"`
+	// The schedule in Cron format, see https://en.wikipedia.org/wiki/Cron.
+	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
+	// Optional deadline in seconds for starting the job if it misses scheduled time for any reason.  Missed jobs executions will be counted as failed ones.
+	StartingDeadlineSeconds pulumi.IntPtrInput `pulumi:"startingDeadlineSeconds"`
+	// The number of successful finished jobs to retain. Value must be non-negative integer. Defaults to 3.
+	SuccessfulJobsHistoryLimit pulumi.IntPtrInput `pulumi:"successfulJobsHistoryLimit"`
+	// This flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false.
+	Suspend pulumi.BoolPtrInput `pulumi:"suspend"`
+	// The time zone for the given schedule, see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones. If not specified, this will rely on the time zone of the kube-controller-manager process. ALPHA: This field is in alpha and must be enabled via the `CronJobTimeZone` feature gate.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (CronJobSpecPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CronJobSpecPatch)(nil)).Elem()
+}
+
+func (i CronJobSpecPatchArgs) ToCronJobSpecPatchOutput() CronJobSpecPatchOutput {
+	return i.ToCronJobSpecPatchOutputWithContext(context.Background())
+}
+
+func (i CronJobSpecPatchArgs) ToCronJobSpecPatchOutputWithContext(ctx context.Context) CronJobSpecPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CronJobSpecPatchOutput)
+}
+
+// CronJobSpec describes how the job execution will look like and when it will actually run.
+type CronJobSpecPatchOutput struct{ *pulumi.OutputState }
+
+func (CronJobSpecPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CronJobSpecPatch)(nil)).Elem()
+}
+
+func (o CronJobSpecPatchOutput) ToCronJobSpecPatchOutput() CronJobSpecPatchOutput {
+	return o
+}
+
+func (o CronJobSpecPatchOutput) ToCronJobSpecPatchOutputWithContext(ctx context.Context) CronJobSpecPatchOutput {
+	return o
+}
+
+// Specifies how to treat concurrent executions of a Job. Valid values are: - "Allow" (default): allows CronJobs to run concurrently; - "Forbid": forbids concurrent runs, skipping next run if previous run hasn't finished yet; - "Replace": cancels currently running job and replaces it with a new one
+func (o CronJobSpecPatchOutput) ConcurrencyPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CronJobSpecPatch) *string { return v.ConcurrencyPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The number of failed finished jobs to retain. Value must be non-negative integer. Defaults to 1.
+func (o CronJobSpecPatchOutput) FailedJobsHistoryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CronJobSpecPatch) *int { return v.FailedJobsHistoryLimit }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the job that will be created when executing a CronJob.
+func (o CronJobSpecPatchOutput) JobTemplate() JobTemplateSpecPtrOutput {
+	return o.ApplyT(func(v CronJobSpecPatch) *JobTemplateSpec { return v.JobTemplate }).(JobTemplateSpecPtrOutput)
+}
+
+// The schedule in Cron format, see https://en.wikipedia.org/wiki/Cron.
+func (o CronJobSpecPatchOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CronJobSpecPatch) *string { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+// Optional deadline in seconds for starting the job if it misses scheduled time for any reason.  Missed jobs executions will be counted as failed ones.
+func (o CronJobSpecPatchOutput) StartingDeadlineSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CronJobSpecPatch) *int { return v.StartingDeadlineSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The number of successful finished jobs to retain. Value must be non-negative integer. Defaults to 3.
+func (o CronJobSpecPatchOutput) SuccessfulJobsHistoryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CronJobSpecPatch) *int { return v.SuccessfulJobsHistoryLimit }).(pulumi.IntPtrOutput)
+}
+
+// This flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false.
+func (o CronJobSpecPatchOutput) Suspend() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CronJobSpecPatch) *bool { return v.Suspend }).(pulumi.BoolPtrOutput)
+}
+
+// The time zone for the given schedule, see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones. If not specified, this will rely on the time zone of the kube-controller-manager process. ALPHA: This field is in alpha and must be enabled via the `CronJobTimeZone` feature gate.
+func (o CronJobSpecPatchOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CronJobSpecPatch) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
 // CronJobStatus represents the current state of a cron job.
 type CronJobStatus struct {
 	// A list of pointers to currently running jobs.
@@ -679,6 +888,79 @@ func (o CronJobStatusPtrOutput) LastSuccessfulTime() pulumi.StringPtrOutput {
 		}
 		return v.LastSuccessfulTime
 	}).(pulumi.StringPtrOutput)
+}
+
+// CronJobStatus represents the current state of a cron job.
+type CronJobStatusPatch struct {
+	// A list of pointers to currently running jobs.
+	Active []corev1.ObjectReference `pulumi:"active"`
+	// Information when was the last time the job was successfully scheduled.
+	LastScheduleTime *string `pulumi:"lastScheduleTime"`
+	// Information when was the last time the job successfully completed.
+	LastSuccessfulTime *string `pulumi:"lastSuccessfulTime"`
+}
+
+// CronJobStatusPatchInput is an input type that accepts CronJobStatusPatchArgs and CronJobStatusPatchOutput values.
+// You can construct a concrete instance of `CronJobStatusPatchInput` via:
+//
+//          CronJobStatusPatchArgs{...}
+type CronJobStatusPatchInput interface {
+	pulumi.Input
+
+	ToCronJobStatusPatchOutput() CronJobStatusPatchOutput
+	ToCronJobStatusPatchOutputWithContext(context.Context) CronJobStatusPatchOutput
+}
+
+// CronJobStatus represents the current state of a cron job.
+type CronJobStatusPatchArgs struct {
+	// A list of pointers to currently running jobs.
+	Active corev1.ObjectReferenceArrayInput `pulumi:"active"`
+	// Information when was the last time the job was successfully scheduled.
+	LastScheduleTime pulumi.StringPtrInput `pulumi:"lastScheduleTime"`
+	// Information when was the last time the job successfully completed.
+	LastSuccessfulTime pulumi.StringPtrInput `pulumi:"lastSuccessfulTime"`
+}
+
+func (CronJobStatusPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CronJobStatusPatch)(nil)).Elem()
+}
+
+func (i CronJobStatusPatchArgs) ToCronJobStatusPatchOutput() CronJobStatusPatchOutput {
+	return i.ToCronJobStatusPatchOutputWithContext(context.Background())
+}
+
+func (i CronJobStatusPatchArgs) ToCronJobStatusPatchOutputWithContext(ctx context.Context) CronJobStatusPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CronJobStatusPatchOutput)
+}
+
+// CronJobStatus represents the current state of a cron job.
+type CronJobStatusPatchOutput struct{ *pulumi.OutputState }
+
+func (CronJobStatusPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CronJobStatusPatch)(nil)).Elem()
+}
+
+func (o CronJobStatusPatchOutput) ToCronJobStatusPatchOutput() CronJobStatusPatchOutput {
+	return o
+}
+
+func (o CronJobStatusPatchOutput) ToCronJobStatusPatchOutputWithContext(ctx context.Context) CronJobStatusPatchOutput {
+	return o
+}
+
+// A list of pointers to currently running jobs.
+func (o CronJobStatusPatchOutput) Active() corev1.ObjectReferenceArrayOutput {
+	return o.ApplyT(func(v CronJobStatusPatch) []corev1.ObjectReference { return v.Active }).(corev1.ObjectReferenceArrayOutput)
+}
+
+// Information when was the last time the job was successfully scheduled.
+func (o CronJobStatusPatchOutput) LastScheduleTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CronJobStatusPatch) *string { return v.LastScheduleTime }).(pulumi.StringPtrOutput)
+}
+
+// Information when was the last time the job successfully completed.
+func (o CronJobStatusPatchOutput) LastSuccessfulTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CronJobStatusPatch) *string { return v.LastSuccessfulTime }).(pulumi.StringPtrOutput)
 }
 
 // Job represents the configuration of a single job.
@@ -1022,6 +1304,106 @@ func (o JobConditionArrayOutput) Index(i pulumi.IntInput) JobConditionOutput {
 	}).(JobConditionOutput)
 }
 
+// JobCondition describes current state of a job.
+type JobConditionPatch struct {
+	// Last time the condition was checked.
+	LastProbeTime *string `pulumi:"lastProbeTime"`
+	// Last time the condition transit from one status to another.
+	LastTransitionTime *string `pulumi:"lastTransitionTime"`
+	// Human readable message indicating details about last transition.
+	Message *string `pulumi:"message"`
+	// (brief) reason for the condition's last transition.
+	Reason *string `pulumi:"reason"`
+	// Status of the condition, one of True, False, Unknown.
+	Status *string `pulumi:"status"`
+	// Type of job condition, Complete or Failed.
+	Type *string `pulumi:"type"`
+}
+
+// JobConditionPatchInput is an input type that accepts JobConditionPatchArgs and JobConditionPatchOutput values.
+// You can construct a concrete instance of `JobConditionPatchInput` via:
+//
+//          JobConditionPatchArgs{...}
+type JobConditionPatchInput interface {
+	pulumi.Input
+
+	ToJobConditionPatchOutput() JobConditionPatchOutput
+	ToJobConditionPatchOutputWithContext(context.Context) JobConditionPatchOutput
+}
+
+// JobCondition describes current state of a job.
+type JobConditionPatchArgs struct {
+	// Last time the condition was checked.
+	LastProbeTime pulumi.StringPtrInput `pulumi:"lastProbeTime"`
+	// Last time the condition transit from one status to another.
+	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
+	// Human readable message indicating details about last transition.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// (brief) reason for the condition's last transition.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// Status of the condition, one of True, False, Unknown.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Type of job condition, Complete or Failed.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (JobConditionPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobConditionPatch)(nil)).Elem()
+}
+
+func (i JobConditionPatchArgs) ToJobConditionPatchOutput() JobConditionPatchOutput {
+	return i.ToJobConditionPatchOutputWithContext(context.Background())
+}
+
+func (i JobConditionPatchArgs) ToJobConditionPatchOutputWithContext(ctx context.Context) JobConditionPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobConditionPatchOutput)
+}
+
+// JobCondition describes current state of a job.
+type JobConditionPatchOutput struct{ *pulumi.OutputState }
+
+func (JobConditionPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobConditionPatch)(nil)).Elem()
+}
+
+func (o JobConditionPatchOutput) ToJobConditionPatchOutput() JobConditionPatchOutput {
+	return o
+}
+
+func (o JobConditionPatchOutput) ToJobConditionPatchOutputWithContext(ctx context.Context) JobConditionPatchOutput {
+	return o
+}
+
+// Last time the condition was checked.
+func (o JobConditionPatchOutput) LastProbeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobConditionPatch) *string { return v.LastProbeTime }).(pulumi.StringPtrOutput)
+}
+
+// Last time the condition transit from one status to another.
+func (o JobConditionPatchOutput) LastTransitionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobConditionPatch) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
+}
+
+// Human readable message indicating details about last transition.
+func (o JobConditionPatchOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobConditionPatch) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// (brief) reason for the condition's last transition.
+func (o JobConditionPatchOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobConditionPatch) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+// Status of the condition, one of True, False, Unknown.
+func (o JobConditionPatchOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobConditionPatch) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Type of job condition, Complete or Failed.
+func (o JobConditionPatchOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobConditionPatch) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
 // JobList is a collection of jobs.
 type JobListType struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -1102,6 +1484,157 @@ func (o JobListTypeOutput) Kind() pulumi.StringPtrOutput {
 // Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 func (o JobListTypeOutput) Metadata() metav1.ListMetaPtrOutput {
 	return o.ApplyT(func(v JobListType) *metav1.ListMeta { return v.Metadata }).(metav1.ListMetaPtrOutput)
+}
+
+// Job represents the configuration of a single job.
+//
+// This resource waits until its status is ready before registering success
+// for create/update, and populating output properties from the current state of the resource.
+// The following conditions are used to determine whether the resource creation has
+// succeeded or failed:
+//
+// 1. The Job's '.status.startTime' is set, which indicates that the Job has started running.
+// 2. The Job's '.status.conditions' has a status of type 'Complete', and a 'status' set
+//    to 'True'.
+// 3. The Job's '.status.conditions' do not have a status of type 'Failed', with a
+//     'status' set to 'True'. If this condition is set, we should fail the Job immediately.
+//
+// If the Job has not reached a Ready state after 10 minutes, it will
+// time out and mark the resource update as Failed. You can override the default timeout value
+// by setting the 'customTimeouts' option on the resource.
+//
+// By default, if a resource failed to become ready in a previous update,
+// Pulumi will continue to wait for readiness on the next update. If you would prefer
+// to schedule a replacement for an unready resource on the next update, you can add the
+// "pulumi.com/replaceUnready": "true" annotation to the resource definition.
+type JobPatchType struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind *string `pulumi:"kind"`
+	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	// Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Spec *JobSpec `pulumi:"spec"`
+	// Current status of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Status *JobStatus `pulumi:"status"`
+}
+
+// JobPatchTypeInput is an input type that accepts JobPatchTypeArgs and JobPatchTypeOutput values.
+// You can construct a concrete instance of `JobPatchTypeInput` via:
+//
+//          JobPatchTypeArgs{...}
+type JobPatchTypeInput interface {
+	pulumi.Input
+
+	ToJobPatchTypeOutput() JobPatchTypeOutput
+	ToJobPatchTypeOutputWithContext(context.Context) JobPatchTypeOutput
+}
+
+// Job represents the configuration of a single job.
+//
+// This resource waits until its status is ready before registering success
+// for create/update, and populating output properties from the current state of the resource.
+// The following conditions are used to determine whether the resource creation has
+// succeeded or failed:
+//
+// 1. The Job's '.status.startTime' is set, which indicates that the Job has started running.
+// 2. The Job's '.status.conditions' has a status of type 'Complete', and a 'status' set
+//    to 'True'.
+// 3. The Job's '.status.conditions' do not have a status of type 'Failed', with a
+//     'status' set to 'True'. If this condition is set, we should fail the Job immediately.
+//
+// If the Job has not reached a Ready state after 10 minutes, it will
+// time out and mark the resource update as Failed. You can override the default timeout value
+// by setting the 'customTimeouts' option on the resource.
+//
+// By default, if a resource failed to become ready in a previous update,
+// Pulumi will continue to wait for readiness on the next update. If you would prefer
+// to schedule a replacement for an unready resource on the next update, you can add the
+// "pulumi.com/replaceUnready": "true" annotation to the resource definition.
+type JobPatchTypeArgs struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	// Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Spec JobSpecPtrInput `pulumi:"spec"`
+	// Current status of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Status JobStatusPtrInput `pulumi:"status"`
+}
+
+func (JobPatchTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobPatchType)(nil)).Elem()
+}
+
+func (i JobPatchTypeArgs) ToJobPatchTypeOutput() JobPatchTypeOutput {
+	return i.ToJobPatchTypeOutputWithContext(context.Background())
+}
+
+func (i JobPatchTypeArgs) ToJobPatchTypeOutputWithContext(ctx context.Context) JobPatchTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobPatchTypeOutput)
+}
+
+// Job represents the configuration of a single job.
+//
+// This resource waits until its status is ready before registering success
+// for create/update, and populating output properties from the current state of the resource.
+// The following conditions are used to determine whether the resource creation has
+// succeeded or failed:
+//
+// 1. The Job's '.status.startTime' is set, which indicates that the Job has started running.
+// 2. The Job's '.status.conditions' has a status of type 'Complete', and a 'status' set
+//    to 'True'.
+// 3. The Job's '.status.conditions' do not have a status of type 'Failed', with a
+//     'status' set to 'True'. If this condition is set, we should fail the Job immediately.
+//
+// If the Job has not reached a Ready state after 10 minutes, it will
+// time out and mark the resource update as Failed. You can override the default timeout value
+// by setting the 'customTimeouts' option on the resource.
+//
+// By default, if a resource failed to become ready in a previous update,
+// Pulumi will continue to wait for readiness on the next update. If you would prefer
+// to schedule a replacement for an unready resource on the next update, you can add the
+// "pulumi.com/replaceUnready": "true" annotation to the resource definition.
+type JobPatchTypeOutput struct{ *pulumi.OutputState }
+
+func (JobPatchTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobPatchType)(nil)).Elem()
+}
+
+func (o JobPatchTypeOutput) ToJobPatchTypeOutput() JobPatchTypeOutput {
+	return o
+}
+
+func (o JobPatchTypeOutput) ToJobPatchTypeOutputWithContext(ctx context.Context) JobPatchTypeOutput {
+	return o
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o JobPatchTypeOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobPatchType) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o JobPatchTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobPatchType) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+func (o JobPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v JobPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+// Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+func (o JobPatchTypeOutput) Spec() JobSpecPtrOutput {
+	return o.ApplyT(func(v JobPatchType) *JobSpec { return v.Spec }).(JobSpecPtrOutput)
+}
+
+// Current status of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+func (o JobPatchTypeOutput) Status() JobStatusPtrOutput {
+	return o.ApplyT(func(v JobPatchType) *JobStatus { return v.Status }).(JobStatusPtrOutput)
 }
 
 // JobSpec describes how the job execution will look like.
@@ -1439,6 +1972,160 @@ func (o JobSpecPtrOutput) TtlSecondsAfterFinished() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// JobSpec describes how the job execution will look like.
+type JobSpecPatch struct {
+	// Specifies the duration in seconds relative to the startTime that the job may be continuously active before the system tries to terminate it; value must be positive integer. If a Job is suspended (at creation or through an update), this timer will effectively be stopped and reset when the Job is resumed again.
+	ActiveDeadlineSeconds *int `pulumi:"activeDeadlineSeconds"`
+	// Specifies the number of retries before marking this job failed. Defaults to 6
+	BackoffLimit *int `pulumi:"backoffLimit"`
+	// CompletionMode specifies how Pod completions are tracked. It can be `NonIndexed` (default) or `Indexed`.
+	//
+	// `NonIndexed` means that the Job is considered complete when there have been .spec.completions successfully completed Pods. Each Pod completion is homologous to each other.
+	//
+	// `Indexed` means that the Pods of a Job get an associated completion index from 0 to (.spec.completions - 1), available in the annotation batch.kubernetes.io/job-completion-index. The Job is considered complete when there is one successfully completed Pod for each index. When value is `Indexed`, .spec.completions must be specified and `.spec.parallelism` must be less than or equal to 10^5. In addition, The Pod name takes the form `$(job-name)-$(index)-$(random-string)`, the Pod hostname takes the form `$(job-name)-$(index)`.
+	//
+	// More completion modes can be added in the future. If the Job controller observes a mode that it doesn't recognize, which is possible during upgrades due to version skew, the controller skips updates for the Job.
+	CompletionMode *string `pulumi:"completionMode"`
+	// Specifies the desired number of successfully finished pods the job should be run with.  Setting to nil means that the success of any pod signals the success of all pods, and allows parallelism to have any positive value.  Setting to 1 means that parallelism is limited to 1 and the success of that pod signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+	Completions *int `pulumi:"completions"`
+	// manualSelector controls generation of pod labels and pod selectors. Leave `manualSelector` unset unless you are certain what you are doing. When false or unset, the system pick labels unique to this job and appends those labels to the pod template.  When true, the user is responsible for picking unique labels and specifying the selector.  Failure to pick a unique label may cause this and other jobs to not function correctly.  However, You may see `manualSelector=true` in jobs that were created with the old `extensions/v1beta1` API. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/#specifying-your-own-pod-selector
+	ManualSelector *bool `pulumi:"manualSelector"`
+	// Specifies the maximum desired number of pods the job should run at any given time. The actual number of pods running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+	Parallelism *int `pulumi:"parallelism"`
+	// A label query over pods that should match the pod count. Normally, the system sets this field for you. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+	Selector *metav1.LabelSelector `pulumi:"selector"`
+	// Suspend specifies whether the Job controller should create Pods or not. If a Job is created with suspend set to true, no Pods are created by the Job controller. If a Job is suspended after creation (i.e. the flag goes from false to true), the Job controller will delete all active Pods associated with this Job. Users must design their workload to gracefully handle this. Suspending a Job will reset the StartTime field of the Job, effectively resetting the ActiveDeadlineSeconds timer too. Defaults to false.
+	Suspend *bool `pulumi:"suspend"`
+	// Describes the pod that will be created when executing a job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+	Template *corev1.PodTemplateSpec `pulumi:"template"`
+	// ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is unset, the Job won't be automatically deleted. If this field is set to zero, the Job becomes eligible to be deleted immediately after it finishes.
+	TtlSecondsAfterFinished *int `pulumi:"ttlSecondsAfterFinished"`
+}
+
+// JobSpecPatchInput is an input type that accepts JobSpecPatchArgs and JobSpecPatchOutput values.
+// You can construct a concrete instance of `JobSpecPatchInput` via:
+//
+//          JobSpecPatchArgs{...}
+type JobSpecPatchInput interface {
+	pulumi.Input
+
+	ToJobSpecPatchOutput() JobSpecPatchOutput
+	ToJobSpecPatchOutputWithContext(context.Context) JobSpecPatchOutput
+}
+
+// JobSpec describes how the job execution will look like.
+type JobSpecPatchArgs struct {
+	// Specifies the duration in seconds relative to the startTime that the job may be continuously active before the system tries to terminate it; value must be positive integer. If a Job is suspended (at creation or through an update), this timer will effectively be stopped and reset when the Job is resumed again.
+	ActiveDeadlineSeconds pulumi.IntPtrInput `pulumi:"activeDeadlineSeconds"`
+	// Specifies the number of retries before marking this job failed. Defaults to 6
+	BackoffLimit pulumi.IntPtrInput `pulumi:"backoffLimit"`
+	// CompletionMode specifies how Pod completions are tracked. It can be `NonIndexed` (default) or `Indexed`.
+	//
+	// `NonIndexed` means that the Job is considered complete when there have been .spec.completions successfully completed Pods. Each Pod completion is homologous to each other.
+	//
+	// `Indexed` means that the Pods of a Job get an associated completion index from 0 to (.spec.completions - 1), available in the annotation batch.kubernetes.io/job-completion-index. The Job is considered complete when there is one successfully completed Pod for each index. When value is `Indexed`, .spec.completions must be specified and `.spec.parallelism` must be less than or equal to 10^5. In addition, The Pod name takes the form `$(job-name)-$(index)-$(random-string)`, the Pod hostname takes the form `$(job-name)-$(index)`.
+	//
+	// More completion modes can be added in the future. If the Job controller observes a mode that it doesn't recognize, which is possible during upgrades due to version skew, the controller skips updates for the Job.
+	CompletionMode pulumi.StringPtrInput `pulumi:"completionMode"`
+	// Specifies the desired number of successfully finished pods the job should be run with.  Setting to nil means that the success of any pod signals the success of all pods, and allows parallelism to have any positive value.  Setting to 1 means that parallelism is limited to 1 and the success of that pod signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+	Completions pulumi.IntPtrInput `pulumi:"completions"`
+	// manualSelector controls generation of pod labels and pod selectors. Leave `manualSelector` unset unless you are certain what you are doing. When false or unset, the system pick labels unique to this job and appends those labels to the pod template.  When true, the user is responsible for picking unique labels and specifying the selector.  Failure to pick a unique label may cause this and other jobs to not function correctly.  However, You may see `manualSelector=true` in jobs that were created with the old `extensions/v1beta1` API. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/#specifying-your-own-pod-selector
+	ManualSelector pulumi.BoolPtrInput `pulumi:"manualSelector"`
+	// Specifies the maximum desired number of pods the job should run at any given time. The actual number of pods running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+	Parallelism pulumi.IntPtrInput `pulumi:"parallelism"`
+	// A label query over pods that should match the pod count. Normally, the system sets this field for you. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+	Selector metav1.LabelSelectorPtrInput `pulumi:"selector"`
+	// Suspend specifies whether the Job controller should create Pods or not. If a Job is created with suspend set to true, no Pods are created by the Job controller. If a Job is suspended after creation (i.e. the flag goes from false to true), the Job controller will delete all active Pods associated with this Job. Users must design their workload to gracefully handle this. Suspending a Job will reset the StartTime field of the Job, effectively resetting the ActiveDeadlineSeconds timer too. Defaults to false.
+	Suspend pulumi.BoolPtrInput `pulumi:"suspend"`
+	// Describes the pod that will be created when executing a job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+	Template corev1.PodTemplateSpecPtrInput `pulumi:"template"`
+	// ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is unset, the Job won't be automatically deleted. If this field is set to zero, the Job becomes eligible to be deleted immediately after it finishes.
+	TtlSecondsAfterFinished pulumi.IntPtrInput `pulumi:"ttlSecondsAfterFinished"`
+}
+
+func (JobSpecPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobSpecPatch)(nil)).Elem()
+}
+
+func (i JobSpecPatchArgs) ToJobSpecPatchOutput() JobSpecPatchOutput {
+	return i.ToJobSpecPatchOutputWithContext(context.Background())
+}
+
+func (i JobSpecPatchArgs) ToJobSpecPatchOutputWithContext(ctx context.Context) JobSpecPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobSpecPatchOutput)
+}
+
+// JobSpec describes how the job execution will look like.
+type JobSpecPatchOutput struct{ *pulumi.OutputState }
+
+func (JobSpecPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobSpecPatch)(nil)).Elem()
+}
+
+func (o JobSpecPatchOutput) ToJobSpecPatchOutput() JobSpecPatchOutput {
+	return o
+}
+
+func (o JobSpecPatchOutput) ToJobSpecPatchOutputWithContext(ctx context.Context) JobSpecPatchOutput {
+	return o
+}
+
+// Specifies the duration in seconds relative to the startTime that the job may be continuously active before the system tries to terminate it; value must be positive integer. If a Job is suspended (at creation or through an update), this timer will effectively be stopped and reset when the Job is resumed again.
+func (o JobSpecPatchOutput) ActiveDeadlineSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobSpecPatch) *int { return v.ActiveDeadlineSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of retries before marking this job failed. Defaults to 6
+func (o JobSpecPatchOutput) BackoffLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobSpecPatch) *int { return v.BackoffLimit }).(pulumi.IntPtrOutput)
+}
+
+// CompletionMode specifies how Pod completions are tracked. It can be `NonIndexed` (default) or `Indexed`.
+//
+// `NonIndexed` means that the Job is considered complete when there have been .spec.completions successfully completed Pods. Each Pod completion is homologous to each other.
+//
+// `Indexed` means that the Pods of a Job get an associated completion index from 0 to (.spec.completions - 1), available in the annotation batch.kubernetes.io/job-completion-index. The Job is considered complete when there is one successfully completed Pod for each index. When value is `Indexed`, .spec.completions must be specified and `.spec.parallelism` must be less than or equal to 10^5. In addition, The Pod name takes the form `$(job-name)-$(index)-$(random-string)`, the Pod hostname takes the form `$(job-name)-$(index)`.
+//
+// More completion modes can be added in the future. If the Job controller observes a mode that it doesn't recognize, which is possible during upgrades due to version skew, the controller skips updates for the Job.
+func (o JobSpecPatchOutput) CompletionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobSpecPatch) *string { return v.CompletionMode }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the desired number of successfully finished pods the job should be run with.  Setting to nil means that the success of any pod signals the success of all pods, and allows parallelism to have any positive value.  Setting to 1 means that parallelism is limited to 1 and the success of that pod signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+func (o JobSpecPatchOutput) Completions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobSpecPatch) *int { return v.Completions }).(pulumi.IntPtrOutput)
+}
+
+// manualSelector controls generation of pod labels and pod selectors. Leave `manualSelector` unset unless you are certain what you are doing. When false or unset, the system pick labels unique to this job and appends those labels to the pod template.  When true, the user is responsible for picking unique labels and specifying the selector.  Failure to pick a unique label may cause this and other jobs to not function correctly.  However, You may see `manualSelector=true` in jobs that were created with the old `extensions/v1beta1` API. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/#specifying-your-own-pod-selector
+func (o JobSpecPatchOutput) ManualSelector() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobSpecPatch) *bool { return v.ManualSelector }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the maximum desired number of pods the job should run at any given time. The actual number of pods running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+func (o JobSpecPatchOutput) Parallelism() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobSpecPatch) *int { return v.Parallelism }).(pulumi.IntPtrOutput)
+}
+
+// A label query over pods that should match the pod count. Normally, the system sets this field for you. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+func (o JobSpecPatchOutput) Selector() metav1.LabelSelectorPtrOutput {
+	return o.ApplyT(func(v JobSpecPatch) *metav1.LabelSelector { return v.Selector }).(metav1.LabelSelectorPtrOutput)
+}
+
+// Suspend specifies whether the Job controller should create Pods or not. If a Job is created with suspend set to true, no Pods are created by the Job controller. If a Job is suspended after creation (i.e. the flag goes from false to true), the Job controller will delete all active Pods associated with this Job. Users must design their workload to gracefully handle this. Suspending a Job will reset the StartTime field of the Job, effectively resetting the ActiveDeadlineSeconds timer too. Defaults to false.
+func (o JobSpecPatchOutput) Suspend() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobSpecPatch) *bool { return v.Suspend }).(pulumi.BoolPtrOutput)
+}
+
+// Describes the pod that will be created when executing a job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+func (o JobSpecPatchOutput) Template() corev1.PodTemplateSpecPtrOutput {
+	return o.ApplyT(func(v JobSpecPatch) *corev1.PodTemplateSpec { return v.Template }).(corev1.PodTemplateSpecPtrOutput)
+}
+
+// ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is unset, the Job won't be automatically deleted. If this field is set to zero, the Job becomes eligible to be deleted immediately after it finishes.
+func (o JobSpecPatchOutput) TtlSecondsAfterFinished() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobSpecPatch) *int { return v.TtlSecondsAfterFinished }).(pulumi.IntPtrOutput)
+}
+
 // JobStatus represents the current state of a Job.
 type JobStatus struct {
 	// The number of pending and running pods.
@@ -1759,6 +2446,154 @@ func (o JobStatusPtrOutput) UncountedTerminatedPods() UncountedTerminatedPodsPtr
 	}).(UncountedTerminatedPodsPtrOutput)
 }
 
+// JobStatus represents the current state of a Job.
+type JobStatusPatch struct {
+	// The number of pending and running pods.
+	Active *int `pulumi:"active"`
+	// CompletedIndexes holds the completed indexes when .spec.completionMode = "Indexed" in a text format. The indexes are represented as decimal integers separated by commas. The numbers are listed in increasing order. Three or more consecutive numbers are compressed and represented by the first and last element of the series, separated by a hyphen. For example, if the completed indexes are 1, 3, 4, 5 and 7, they are represented as "1,3-5,7".
+	CompletedIndexes *string `pulumi:"completedIndexes"`
+	// Represents time when the job was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. The completion time is only set when the job finishes successfully.
+	CompletionTime *string `pulumi:"completionTime"`
+	// The latest available observations of an object's current state. When a Job fails, one of the conditions will have type "Failed" and status true. When a Job is suspended, one of the conditions will have type "Suspended" and status true; when the Job is resumed, the status of this condition will become false. When a Job is completed, one of the conditions will have type "Complete" and status true. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+	Conditions []JobCondition `pulumi:"conditions"`
+	// The number of pods which reached phase Failed.
+	Failed *int `pulumi:"failed"`
+	// The number of pods which have a Ready condition.
+	//
+	// This field is beta-level. The job controller populates the field when the feature gate JobReadyPods is enabled (enabled by default).
+	Ready *int `pulumi:"ready"`
+	// Represents time when the job controller started processing a job. When a Job is created in the suspended state, this field is not set until the first time it is resumed. This field is reset every time a Job is resumed from suspension. It is represented in RFC3339 form and is in UTC.
+	StartTime *string `pulumi:"startTime"`
+	// The number of pods which reached phase Succeeded.
+	Succeeded *int `pulumi:"succeeded"`
+	// UncountedTerminatedPods holds the UIDs of Pods that have terminated but the job controller hasn't yet accounted for in the status counters.
+	//
+	// The job controller creates pods with a finalizer. When a pod terminates (succeeded or failed), the controller does three steps to account for it in the job status: (1) Add the pod UID to the arrays in this field. (2) Remove the pod finalizer. (3) Remove the pod UID from the arrays while increasing the corresponding
+	//     counter.
+	//
+	// This field is beta-level. The job controller only makes use of this field when the feature gate JobTrackingWithFinalizers is enabled (enabled by default). Old jobs might not be tracked using this field, in which case the field remains null.
+	UncountedTerminatedPods *UncountedTerminatedPods `pulumi:"uncountedTerminatedPods"`
+}
+
+// JobStatusPatchInput is an input type that accepts JobStatusPatchArgs and JobStatusPatchOutput values.
+// You can construct a concrete instance of `JobStatusPatchInput` via:
+//
+//          JobStatusPatchArgs{...}
+type JobStatusPatchInput interface {
+	pulumi.Input
+
+	ToJobStatusPatchOutput() JobStatusPatchOutput
+	ToJobStatusPatchOutputWithContext(context.Context) JobStatusPatchOutput
+}
+
+// JobStatus represents the current state of a Job.
+type JobStatusPatchArgs struct {
+	// The number of pending and running pods.
+	Active pulumi.IntPtrInput `pulumi:"active"`
+	// CompletedIndexes holds the completed indexes when .spec.completionMode = "Indexed" in a text format. The indexes are represented as decimal integers separated by commas. The numbers are listed in increasing order. Three or more consecutive numbers are compressed and represented by the first and last element of the series, separated by a hyphen. For example, if the completed indexes are 1, 3, 4, 5 and 7, they are represented as "1,3-5,7".
+	CompletedIndexes pulumi.StringPtrInput `pulumi:"completedIndexes"`
+	// Represents time when the job was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. The completion time is only set when the job finishes successfully.
+	CompletionTime pulumi.StringPtrInput `pulumi:"completionTime"`
+	// The latest available observations of an object's current state. When a Job fails, one of the conditions will have type "Failed" and status true. When a Job is suspended, one of the conditions will have type "Suspended" and status true; when the Job is resumed, the status of this condition will become false. When a Job is completed, one of the conditions will have type "Complete" and status true. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+	Conditions JobConditionArrayInput `pulumi:"conditions"`
+	// The number of pods which reached phase Failed.
+	Failed pulumi.IntPtrInput `pulumi:"failed"`
+	// The number of pods which have a Ready condition.
+	//
+	// This field is beta-level. The job controller populates the field when the feature gate JobReadyPods is enabled (enabled by default).
+	Ready pulumi.IntPtrInput `pulumi:"ready"`
+	// Represents time when the job controller started processing a job. When a Job is created in the suspended state, this field is not set until the first time it is resumed. This field is reset every time a Job is resumed from suspension. It is represented in RFC3339 form and is in UTC.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// The number of pods which reached phase Succeeded.
+	Succeeded pulumi.IntPtrInput `pulumi:"succeeded"`
+	// UncountedTerminatedPods holds the UIDs of Pods that have terminated but the job controller hasn't yet accounted for in the status counters.
+	//
+	// The job controller creates pods with a finalizer. When a pod terminates (succeeded or failed), the controller does three steps to account for it in the job status: (1) Add the pod UID to the arrays in this field. (2) Remove the pod finalizer. (3) Remove the pod UID from the arrays while increasing the corresponding
+	//     counter.
+	//
+	// This field is beta-level. The job controller only makes use of this field when the feature gate JobTrackingWithFinalizers is enabled (enabled by default). Old jobs might not be tracked using this field, in which case the field remains null.
+	UncountedTerminatedPods UncountedTerminatedPodsPtrInput `pulumi:"uncountedTerminatedPods"`
+}
+
+func (JobStatusPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatusPatch)(nil)).Elem()
+}
+
+func (i JobStatusPatchArgs) ToJobStatusPatchOutput() JobStatusPatchOutput {
+	return i.ToJobStatusPatchOutputWithContext(context.Background())
+}
+
+func (i JobStatusPatchArgs) ToJobStatusPatchOutputWithContext(ctx context.Context) JobStatusPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusPatchOutput)
+}
+
+// JobStatus represents the current state of a Job.
+type JobStatusPatchOutput struct{ *pulumi.OutputState }
+
+func (JobStatusPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatusPatch)(nil)).Elem()
+}
+
+func (o JobStatusPatchOutput) ToJobStatusPatchOutput() JobStatusPatchOutput {
+	return o
+}
+
+func (o JobStatusPatchOutput) ToJobStatusPatchOutputWithContext(ctx context.Context) JobStatusPatchOutput {
+	return o
+}
+
+// The number of pending and running pods.
+func (o JobStatusPatchOutput) Active() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobStatusPatch) *int { return v.Active }).(pulumi.IntPtrOutput)
+}
+
+// CompletedIndexes holds the completed indexes when .spec.completionMode = "Indexed" in a text format. The indexes are represented as decimal integers separated by commas. The numbers are listed in increasing order. Three or more consecutive numbers are compressed and represented by the first and last element of the series, separated by a hyphen. For example, if the completed indexes are 1, 3, 4, 5 and 7, they are represented as "1,3-5,7".
+func (o JobStatusPatchOutput) CompletedIndexes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatusPatch) *string { return v.CompletedIndexes }).(pulumi.StringPtrOutput)
+}
+
+// Represents time when the job was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. The completion time is only set when the job finishes successfully.
+func (o JobStatusPatchOutput) CompletionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatusPatch) *string { return v.CompletionTime }).(pulumi.StringPtrOutput)
+}
+
+// The latest available observations of an object's current state. When a Job fails, one of the conditions will have type "Failed" and status true. When a Job is suspended, one of the conditions will have type "Suspended" and status true; when the Job is resumed, the status of this condition will become false. When a Job is completed, one of the conditions will have type "Complete" and status true. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+func (o JobStatusPatchOutput) Conditions() JobConditionArrayOutput {
+	return o.ApplyT(func(v JobStatusPatch) []JobCondition { return v.Conditions }).(JobConditionArrayOutput)
+}
+
+// The number of pods which reached phase Failed.
+func (o JobStatusPatchOutput) Failed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobStatusPatch) *int { return v.Failed }).(pulumi.IntPtrOutput)
+}
+
+// The number of pods which have a Ready condition.
+//
+// This field is beta-level. The job controller populates the field when the feature gate JobReadyPods is enabled (enabled by default).
+func (o JobStatusPatchOutput) Ready() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobStatusPatch) *int { return v.Ready }).(pulumi.IntPtrOutput)
+}
+
+// Represents time when the job controller started processing a job. When a Job is created in the suspended state, this field is not set until the first time it is resumed. This field is reset every time a Job is resumed from suspension. It is represented in RFC3339 form and is in UTC.
+func (o JobStatusPatchOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatusPatch) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// The number of pods which reached phase Succeeded.
+func (o JobStatusPatchOutput) Succeeded() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobStatusPatch) *int { return v.Succeeded }).(pulumi.IntPtrOutput)
+}
+
+// UncountedTerminatedPods holds the UIDs of Pods that have terminated but the job controller hasn't yet accounted for in the status counters.
+//
+// The job controller creates pods with a finalizer. When a pod terminates (succeeded or failed), the controller does three steps to account for it in the job status: (1) Add the pod UID to the arrays in this field. (2) Remove the pod finalizer. (3) Remove the pod UID from the arrays while increasing the corresponding
+//     counter.
+//
+// This field is beta-level. The job controller only makes use of this field when the feature gate JobTrackingWithFinalizers is enabled (enabled by default). Old jobs might not be tracked using this field, in which case the field remains null.
+func (o JobStatusPatchOutput) UncountedTerminatedPods() UncountedTerminatedPodsPtrOutput {
+	return o.ApplyT(func(v JobStatusPatch) *UncountedTerminatedPods { return v.UncountedTerminatedPods }).(UncountedTerminatedPodsPtrOutput)
+}
+
 // JobTemplateSpec describes the data a Job should have when created from a template
 type JobTemplateSpec struct {
 	// Standard object's metadata of the jobs created from this template. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
@@ -1916,6 +2751,70 @@ func (o JobTemplateSpecPtrOutput) Spec() JobSpecPtrOutput {
 		}
 		return v.Spec
 	}).(JobSpecPtrOutput)
+}
+
+// JobTemplateSpec describes the data a Job should have when created from a template
+type JobTemplateSpecPatch struct {
+	// Standard object's metadata of the jobs created from this template. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	// Specification of the desired behavior of the job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Spec *JobSpec `pulumi:"spec"`
+}
+
+// JobTemplateSpecPatchInput is an input type that accepts JobTemplateSpecPatchArgs and JobTemplateSpecPatchOutput values.
+// You can construct a concrete instance of `JobTemplateSpecPatchInput` via:
+//
+//          JobTemplateSpecPatchArgs{...}
+type JobTemplateSpecPatchInput interface {
+	pulumi.Input
+
+	ToJobTemplateSpecPatchOutput() JobTemplateSpecPatchOutput
+	ToJobTemplateSpecPatchOutputWithContext(context.Context) JobTemplateSpecPatchOutput
+}
+
+// JobTemplateSpec describes the data a Job should have when created from a template
+type JobTemplateSpecPatchArgs struct {
+	// Standard object's metadata of the jobs created from this template. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	// Specification of the desired behavior of the job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Spec JobSpecPtrInput `pulumi:"spec"`
+}
+
+func (JobTemplateSpecPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateSpecPatch)(nil)).Elem()
+}
+
+func (i JobTemplateSpecPatchArgs) ToJobTemplateSpecPatchOutput() JobTemplateSpecPatchOutput {
+	return i.ToJobTemplateSpecPatchOutputWithContext(context.Background())
+}
+
+func (i JobTemplateSpecPatchArgs) ToJobTemplateSpecPatchOutputWithContext(ctx context.Context) JobTemplateSpecPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateSpecPatchOutput)
+}
+
+// JobTemplateSpec describes the data a Job should have when created from a template
+type JobTemplateSpecPatchOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateSpecPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateSpecPatch)(nil)).Elem()
+}
+
+func (o JobTemplateSpecPatchOutput) ToJobTemplateSpecPatchOutput() JobTemplateSpecPatchOutput {
+	return o
+}
+
+func (o JobTemplateSpecPatchOutput) ToJobTemplateSpecPatchOutputWithContext(ctx context.Context) JobTemplateSpecPatchOutput {
+	return o
+}
+
+// Standard object's metadata of the jobs created from this template. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+func (o JobTemplateSpecPatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v JobTemplateSpecPatch) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+// Specification of the desired behavior of the job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+func (o JobTemplateSpecPatchOutput) Spec() JobSpecPtrOutput {
+	return o.ApplyT(func(v JobTemplateSpecPatch) *JobSpec { return v.Spec }).(JobSpecPtrOutput)
 }
 
 // UncountedTerminatedPods holds UIDs of Pods that have terminated but haven't been accounted in Job status counters.
@@ -2077,45 +2976,127 @@ func (o UncountedTerminatedPodsPtrOutput) Succeeded() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// UncountedTerminatedPods holds UIDs of Pods that have terminated but haven't been accounted in Job status counters.
+type UncountedTerminatedPodsPatch struct {
+	// Failed holds UIDs of failed Pods.
+	Failed []string `pulumi:"failed"`
+	// Succeeded holds UIDs of succeeded Pods.
+	Succeeded []string `pulumi:"succeeded"`
+}
+
+// UncountedTerminatedPodsPatchInput is an input type that accepts UncountedTerminatedPodsPatchArgs and UncountedTerminatedPodsPatchOutput values.
+// You can construct a concrete instance of `UncountedTerminatedPodsPatchInput` via:
+//
+//          UncountedTerminatedPodsPatchArgs{...}
+type UncountedTerminatedPodsPatchInput interface {
+	pulumi.Input
+
+	ToUncountedTerminatedPodsPatchOutput() UncountedTerminatedPodsPatchOutput
+	ToUncountedTerminatedPodsPatchOutputWithContext(context.Context) UncountedTerminatedPodsPatchOutput
+}
+
+// UncountedTerminatedPods holds UIDs of Pods that have terminated but haven't been accounted in Job status counters.
+type UncountedTerminatedPodsPatchArgs struct {
+	// Failed holds UIDs of failed Pods.
+	Failed pulumi.StringArrayInput `pulumi:"failed"`
+	// Succeeded holds UIDs of succeeded Pods.
+	Succeeded pulumi.StringArrayInput `pulumi:"succeeded"`
+}
+
+func (UncountedTerminatedPodsPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UncountedTerminatedPodsPatch)(nil)).Elem()
+}
+
+func (i UncountedTerminatedPodsPatchArgs) ToUncountedTerminatedPodsPatchOutput() UncountedTerminatedPodsPatchOutput {
+	return i.ToUncountedTerminatedPodsPatchOutputWithContext(context.Background())
+}
+
+func (i UncountedTerminatedPodsPatchArgs) ToUncountedTerminatedPodsPatchOutputWithContext(ctx context.Context) UncountedTerminatedPodsPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UncountedTerminatedPodsPatchOutput)
+}
+
+// UncountedTerminatedPods holds UIDs of Pods that have terminated but haven't been accounted in Job status counters.
+type UncountedTerminatedPodsPatchOutput struct{ *pulumi.OutputState }
+
+func (UncountedTerminatedPodsPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UncountedTerminatedPodsPatch)(nil)).Elem()
+}
+
+func (o UncountedTerminatedPodsPatchOutput) ToUncountedTerminatedPodsPatchOutput() UncountedTerminatedPodsPatchOutput {
+	return o
+}
+
+func (o UncountedTerminatedPodsPatchOutput) ToUncountedTerminatedPodsPatchOutputWithContext(ctx context.Context) UncountedTerminatedPodsPatchOutput {
+	return o
+}
+
+// Failed holds UIDs of failed Pods.
+func (o UncountedTerminatedPodsPatchOutput) Failed() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UncountedTerminatedPodsPatch) []string { return v.Failed }).(pulumi.StringArrayOutput)
+}
+
+// Succeeded holds UIDs of succeeded Pods.
+func (o UncountedTerminatedPodsPatchOutput) Succeeded() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UncountedTerminatedPodsPatch) []string { return v.Succeeded }).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CronJobTypeInput)(nil)).Elem(), CronJobTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CronJobTypeArrayInput)(nil)).Elem(), CronJobTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CronJobListTypeInput)(nil)).Elem(), CronJobListTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CronJobPatchTypeInput)(nil)).Elem(), CronJobPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CronJobSpecInput)(nil)).Elem(), CronJobSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CronJobSpecPtrInput)(nil)).Elem(), CronJobSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CronJobSpecPatchInput)(nil)).Elem(), CronJobSpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CronJobStatusInput)(nil)).Elem(), CronJobStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CronJobStatusPtrInput)(nil)).Elem(), CronJobStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CronJobStatusPatchInput)(nil)).Elem(), CronJobStatusPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTypeInput)(nil)).Elem(), JobTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTypeArrayInput)(nil)).Elem(), JobTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConditionInput)(nil)).Elem(), JobConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobConditionArrayInput)(nil)).Elem(), JobConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConditionPatchInput)(nil)).Elem(), JobConditionPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobListTypeInput)(nil)).Elem(), JobListTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobPatchTypeInput)(nil)).Elem(), JobPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobSpecInput)(nil)).Elem(), JobSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobSpecPtrInput)(nil)).Elem(), JobSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobSpecPatchInput)(nil)).Elem(), JobSpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusInput)(nil)).Elem(), JobStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusPtrInput)(nil)).Elem(), JobStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusPatchInput)(nil)).Elem(), JobStatusPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateSpecInput)(nil)).Elem(), JobTemplateSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateSpecPtrInput)(nil)).Elem(), JobTemplateSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateSpecPatchInput)(nil)).Elem(), JobTemplateSpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UncountedTerminatedPodsInput)(nil)).Elem(), UncountedTerminatedPodsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UncountedTerminatedPodsPtrInput)(nil)).Elem(), UncountedTerminatedPodsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UncountedTerminatedPodsPatchInput)(nil)).Elem(), UncountedTerminatedPodsPatchArgs{})
 	pulumi.RegisterOutputType(CronJobTypeOutput{})
 	pulumi.RegisterOutputType(CronJobTypeArrayOutput{})
 	pulumi.RegisterOutputType(CronJobListTypeOutput{})
+	pulumi.RegisterOutputType(CronJobPatchTypeOutput{})
 	pulumi.RegisterOutputType(CronJobSpecOutput{})
 	pulumi.RegisterOutputType(CronJobSpecPtrOutput{})
+	pulumi.RegisterOutputType(CronJobSpecPatchOutput{})
 	pulumi.RegisterOutputType(CronJobStatusOutput{})
 	pulumi.RegisterOutputType(CronJobStatusPtrOutput{})
+	pulumi.RegisterOutputType(CronJobStatusPatchOutput{})
 	pulumi.RegisterOutputType(JobTypeOutput{})
 	pulumi.RegisterOutputType(JobTypeArrayOutput{})
 	pulumi.RegisterOutputType(JobConditionOutput{})
 	pulumi.RegisterOutputType(JobConditionArrayOutput{})
+	pulumi.RegisterOutputType(JobConditionPatchOutput{})
 	pulumi.RegisterOutputType(JobListTypeOutput{})
+	pulumi.RegisterOutputType(JobPatchTypeOutput{})
 	pulumi.RegisterOutputType(JobSpecOutput{})
 	pulumi.RegisterOutputType(JobSpecPtrOutput{})
+	pulumi.RegisterOutputType(JobSpecPatchOutput{})
 	pulumi.RegisterOutputType(JobStatusOutput{})
 	pulumi.RegisterOutputType(JobStatusPtrOutput{})
+	pulumi.RegisterOutputType(JobStatusPatchOutput{})
 	pulumi.RegisterOutputType(JobTemplateSpecOutput{})
 	pulumi.RegisterOutputType(JobTemplateSpecPtrOutput{})
+	pulumi.RegisterOutputType(JobTemplateSpecPatchOutput{})
 	pulumi.RegisterOutputType(UncountedTerminatedPodsOutput{})
 	pulumi.RegisterOutputType(UncountedTerminatedPodsPtrOutput{})
+	pulumi.RegisterOutputType(UncountedTerminatedPodsPatchOutput{})
 }

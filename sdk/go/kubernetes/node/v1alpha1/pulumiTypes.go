@@ -152,6 +152,61 @@ func (o OverheadPtrOutput) PodFixed() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// Overhead structure represents the resource overhead associated with running a pod.
+type OverheadPatch struct {
+	// PodFixed represents the fixed resource overhead associated with running a pod.
+	PodFixed map[string]string `pulumi:"podFixed"`
+}
+
+// OverheadPatchInput is an input type that accepts OverheadPatchArgs and OverheadPatchOutput values.
+// You can construct a concrete instance of `OverheadPatchInput` via:
+//
+//          OverheadPatchArgs{...}
+type OverheadPatchInput interface {
+	pulumi.Input
+
+	ToOverheadPatchOutput() OverheadPatchOutput
+	ToOverheadPatchOutputWithContext(context.Context) OverheadPatchOutput
+}
+
+// Overhead structure represents the resource overhead associated with running a pod.
+type OverheadPatchArgs struct {
+	// PodFixed represents the fixed resource overhead associated with running a pod.
+	PodFixed pulumi.StringMapInput `pulumi:"podFixed"`
+}
+
+func (OverheadPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OverheadPatch)(nil)).Elem()
+}
+
+func (i OverheadPatchArgs) ToOverheadPatchOutput() OverheadPatchOutput {
+	return i.ToOverheadPatchOutputWithContext(context.Background())
+}
+
+func (i OverheadPatchArgs) ToOverheadPatchOutputWithContext(ctx context.Context) OverheadPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OverheadPatchOutput)
+}
+
+// Overhead structure represents the resource overhead associated with running a pod.
+type OverheadPatchOutput struct{ *pulumi.OutputState }
+
+func (OverheadPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OverheadPatch)(nil)).Elem()
+}
+
+func (o OverheadPatchOutput) ToOverheadPatchOutput() OverheadPatchOutput {
+	return o
+}
+
+func (o OverheadPatchOutput) ToOverheadPatchOutputWithContext(ctx context.Context) OverheadPatchOutput {
+	return o
+}
+
+// PodFixed represents the fixed resource overhead associated with running a pod.
+func (o OverheadPatchOutput) PodFixed() pulumi.StringMapOutput {
+	return o.ApplyT(func(v OverheadPatch) map[string]string { return v.PodFixed }).(pulumi.StringMapOutput)
+}
+
 // RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is used to determine which container runtime is used to run all containers in a pod. RuntimeClasses are (currently) manually defined by a user or cluster provisioner, and referenced in the PodSpec. The Kubelet is responsible for resolving the RuntimeClassName reference before running the pod.  For more details, see https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md
 type RuntimeClassType struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -361,6 +416,88 @@ func (o RuntimeClassListTypeOutput) Metadata() metav1.ListMetaPtrOutput {
 	return o.ApplyT(func(v RuntimeClassListType) *metav1.ListMeta { return v.Metadata }).(metav1.ListMetaPtrOutput)
 }
 
+// RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is used to determine which container runtime is used to run all containers in a pod. RuntimeClasses are (currently) manually defined by a user or cluster provisioner, and referenced in the PodSpec. The Kubelet is responsible for resolving the RuntimeClassName reference before running the pod.  For more details, see https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md
+type RuntimeClassPatchType struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind *string `pulumi:"kind"`
+	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	// Specification of the RuntimeClass More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Spec *RuntimeClassSpec `pulumi:"spec"`
+}
+
+// RuntimeClassPatchTypeInput is an input type that accepts RuntimeClassPatchTypeArgs and RuntimeClassPatchTypeOutput values.
+// You can construct a concrete instance of `RuntimeClassPatchTypeInput` via:
+//
+//          RuntimeClassPatchTypeArgs{...}
+type RuntimeClassPatchTypeInput interface {
+	pulumi.Input
+
+	ToRuntimeClassPatchTypeOutput() RuntimeClassPatchTypeOutput
+	ToRuntimeClassPatchTypeOutputWithContext(context.Context) RuntimeClassPatchTypeOutput
+}
+
+// RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is used to determine which container runtime is used to run all containers in a pod. RuntimeClasses are (currently) manually defined by a user or cluster provisioner, and referenced in the PodSpec. The Kubelet is responsible for resolving the RuntimeClassName reference before running the pod.  For more details, see https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md
+type RuntimeClassPatchTypeArgs struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	// Specification of the RuntimeClass More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Spec RuntimeClassSpecPtrInput `pulumi:"spec"`
+}
+
+func (RuntimeClassPatchTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeClassPatchType)(nil)).Elem()
+}
+
+func (i RuntimeClassPatchTypeArgs) ToRuntimeClassPatchTypeOutput() RuntimeClassPatchTypeOutput {
+	return i.ToRuntimeClassPatchTypeOutputWithContext(context.Background())
+}
+
+func (i RuntimeClassPatchTypeArgs) ToRuntimeClassPatchTypeOutputWithContext(ctx context.Context) RuntimeClassPatchTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeClassPatchTypeOutput)
+}
+
+// RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is used to determine which container runtime is used to run all containers in a pod. RuntimeClasses are (currently) manually defined by a user or cluster provisioner, and referenced in the PodSpec. The Kubelet is responsible for resolving the RuntimeClassName reference before running the pod.  For more details, see https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md
+type RuntimeClassPatchTypeOutput struct{ *pulumi.OutputState }
+
+func (RuntimeClassPatchTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeClassPatchType)(nil)).Elem()
+}
+
+func (o RuntimeClassPatchTypeOutput) ToRuntimeClassPatchTypeOutput() RuntimeClassPatchTypeOutput {
+	return o
+}
+
+func (o RuntimeClassPatchTypeOutput) ToRuntimeClassPatchTypeOutputWithContext(ctx context.Context) RuntimeClassPatchTypeOutput {
+	return o
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o RuntimeClassPatchTypeOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeClassPatchType) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o RuntimeClassPatchTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeClassPatchType) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+func (o RuntimeClassPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v RuntimeClassPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+// Specification of the RuntimeClass More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+func (o RuntimeClassPatchTypeOutput) Spec() RuntimeClassSpecPtrOutput {
+	return o.ApplyT(func(v RuntimeClassPatchType) *RuntimeClassSpec { return v.Spec }).(RuntimeClassSpecPtrOutput)
+}
+
 // RuntimeClassSpec is a specification of a RuntimeClass. It contains parameters that are required to describe the RuntimeClass to the Container Runtime Interface (CRI) implementation, as well as any other components that need to understand how the pod will be run. The RuntimeClassSpec is immutable.
 type RuntimeClassSpec struct {
 	// Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md This field is alpha-level as of Kubernetes v1.15, and is only honored by servers that enable the PodOverhead feature.
@@ -404,6 +541,47 @@ func (i RuntimeClassSpecArgs) ToRuntimeClassSpecOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeClassSpecOutput)
 }
 
+func (i RuntimeClassSpecArgs) ToRuntimeClassSpecPtrOutput() RuntimeClassSpecPtrOutput {
+	return i.ToRuntimeClassSpecPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeClassSpecArgs) ToRuntimeClassSpecPtrOutputWithContext(ctx context.Context) RuntimeClassSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeClassSpecOutput).ToRuntimeClassSpecPtrOutputWithContext(ctx)
+}
+
+// RuntimeClassSpecPtrInput is an input type that accepts RuntimeClassSpecArgs, RuntimeClassSpecPtr and RuntimeClassSpecPtrOutput values.
+// You can construct a concrete instance of `RuntimeClassSpecPtrInput` via:
+//
+//          RuntimeClassSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type RuntimeClassSpecPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeClassSpecPtrOutput() RuntimeClassSpecPtrOutput
+	ToRuntimeClassSpecPtrOutputWithContext(context.Context) RuntimeClassSpecPtrOutput
+}
+
+type runtimeClassSpecPtrType RuntimeClassSpecArgs
+
+func RuntimeClassSpecPtr(v *RuntimeClassSpecArgs) RuntimeClassSpecPtrInput {
+	return (*runtimeClassSpecPtrType)(v)
+}
+
+func (*runtimeClassSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeClassSpec)(nil)).Elem()
+}
+
+func (i *runtimeClassSpecPtrType) ToRuntimeClassSpecPtrOutput() RuntimeClassSpecPtrOutput {
+	return i.ToRuntimeClassSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeClassSpecPtrType) ToRuntimeClassSpecPtrOutputWithContext(ctx context.Context) RuntimeClassSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeClassSpecPtrOutput)
+}
+
 // RuntimeClassSpec is a specification of a RuntimeClass. It contains parameters that are required to describe the RuntimeClass to the Container Runtime Interface (CRI) implementation, as well as any other components that need to understand how the pod will be run. The RuntimeClassSpec is immutable.
 type RuntimeClassSpecOutput struct{ *pulumi.OutputState }
 
@@ -419,6 +597,16 @@ func (o RuntimeClassSpecOutput) ToRuntimeClassSpecOutputWithContext(ctx context.
 	return o
 }
 
+func (o RuntimeClassSpecOutput) ToRuntimeClassSpecPtrOutput() RuntimeClassSpecPtrOutput {
+	return o.ToRuntimeClassSpecPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeClassSpecOutput) ToRuntimeClassSpecPtrOutputWithContext(ctx context.Context) RuntimeClassSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeClassSpec) *RuntimeClassSpec {
+		return &v
+	}).(RuntimeClassSpecPtrOutput)
+}
+
 // Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md This field is alpha-level as of Kubernetes v1.15, and is only honored by servers that enable the PodOverhead feature.
 func (o RuntimeClassSpecOutput) Overhead() OverheadPtrOutput {
 	return o.ApplyT(func(v RuntimeClassSpec) *Overhead { return v.Overhead }).(OverheadPtrOutput)
@@ -432,6 +620,133 @@ func (o RuntimeClassSpecOutput) RuntimeHandler() pulumi.StringOutput {
 // Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.
 func (o RuntimeClassSpecOutput) Scheduling() SchedulingPtrOutput {
 	return o.ApplyT(func(v RuntimeClassSpec) *Scheduling { return v.Scheduling }).(SchedulingPtrOutput)
+}
+
+type RuntimeClassSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeClassSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeClassSpec)(nil)).Elem()
+}
+
+func (o RuntimeClassSpecPtrOutput) ToRuntimeClassSpecPtrOutput() RuntimeClassSpecPtrOutput {
+	return o
+}
+
+func (o RuntimeClassSpecPtrOutput) ToRuntimeClassSpecPtrOutputWithContext(ctx context.Context) RuntimeClassSpecPtrOutput {
+	return o
+}
+
+func (o RuntimeClassSpecPtrOutput) Elem() RuntimeClassSpecOutput {
+	return o.ApplyT(func(v *RuntimeClassSpec) RuntimeClassSpec {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeClassSpec
+		return ret
+	}).(RuntimeClassSpecOutput)
+}
+
+// Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md This field is alpha-level as of Kubernetes v1.15, and is only honored by servers that enable the PodOverhead feature.
+func (o RuntimeClassSpecPtrOutput) Overhead() OverheadPtrOutput {
+	return o.ApplyT(func(v *RuntimeClassSpec) *Overhead {
+		if v == nil {
+			return nil
+		}
+		return v.Overhead
+	}).(OverheadPtrOutput)
+}
+
+// RuntimeHandler specifies the underlying runtime and configuration that the CRI implementation will use to handle pods of this class. The possible values are specific to the node & CRI configuration.  It is assumed that all handlers are available on every node, and handlers of the same name are equivalent on every node. For example, a handler called "runc" might specify that the runc OCI runtime (using native Linux containers) will be used to run the containers in a pod. The RuntimeHandler must conform to the DNS Label (RFC 1123) requirements and is immutable.
+func (o RuntimeClassSpecPtrOutput) RuntimeHandler() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeClassSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RuntimeHandler
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.
+func (o RuntimeClassSpecPtrOutput) Scheduling() SchedulingPtrOutput {
+	return o.ApplyT(func(v *RuntimeClassSpec) *Scheduling {
+		if v == nil {
+			return nil
+		}
+		return v.Scheduling
+	}).(SchedulingPtrOutput)
+}
+
+// RuntimeClassSpec is a specification of a RuntimeClass. It contains parameters that are required to describe the RuntimeClass to the Container Runtime Interface (CRI) implementation, as well as any other components that need to understand how the pod will be run. The RuntimeClassSpec is immutable.
+type RuntimeClassSpecPatch struct {
+	// Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md This field is alpha-level as of Kubernetes v1.15, and is only honored by servers that enable the PodOverhead feature.
+	Overhead *Overhead `pulumi:"overhead"`
+	// RuntimeHandler specifies the underlying runtime and configuration that the CRI implementation will use to handle pods of this class. The possible values are specific to the node & CRI configuration.  It is assumed that all handlers are available on every node, and handlers of the same name are equivalent on every node. For example, a handler called "runc" might specify that the runc OCI runtime (using native Linux containers) will be used to run the containers in a pod. The RuntimeHandler must conform to the DNS Label (RFC 1123) requirements and is immutable.
+	RuntimeHandler *string `pulumi:"runtimeHandler"`
+	// Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.
+	Scheduling *Scheduling `pulumi:"scheduling"`
+}
+
+// RuntimeClassSpecPatchInput is an input type that accepts RuntimeClassSpecPatchArgs and RuntimeClassSpecPatchOutput values.
+// You can construct a concrete instance of `RuntimeClassSpecPatchInput` via:
+//
+//          RuntimeClassSpecPatchArgs{...}
+type RuntimeClassSpecPatchInput interface {
+	pulumi.Input
+
+	ToRuntimeClassSpecPatchOutput() RuntimeClassSpecPatchOutput
+	ToRuntimeClassSpecPatchOutputWithContext(context.Context) RuntimeClassSpecPatchOutput
+}
+
+// RuntimeClassSpec is a specification of a RuntimeClass. It contains parameters that are required to describe the RuntimeClass to the Container Runtime Interface (CRI) implementation, as well as any other components that need to understand how the pod will be run. The RuntimeClassSpec is immutable.
+type RuntimeClassSpecPatchArgs struct {
+	// Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md This field is alpha-level as of Kubernetes v1.15, and is only honored by servers that enable the PodOverhead feature.
+	Overhead OverheadPtrInput `pulumi:"overhead"`
+	// RuntimeHandler specifies the underlying runtime and configuration that the CRI implementation will use to handle pods of this class. The possible values are specific to the node & CRI configuration.  It is assumed that all handlers are available on every node, and handlers of the same name are equivalent on every node. For example, a handler called "runc" might specify that the runc OCI runtime (using native Linux containers) will be used to run the containers in a pod. The RuntimeHandler must conform to the DNS Label (RFC 1123) requirements and is immutable.
+	RuntimeHandler pulumi.StringPtrInput `pulumi:"runtimeHandler"`
+	// Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.
+	Scheduling SchedulingPtrInput `pulumi:"scheduling"`
+}
+
+func (RuntimeClassSpecPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeClassSpecPatch)(nil)).Elem()
+}
+
+func (i RuntimeClassSpecPatchArgs) ToRuntimeClassSpecPatchOutput() RuntimeClassSpecPatchOutput {
+	return i.ToRuntimeClassSpecPatchOutputWithContext(context.Background())
+}
+
+func (i RuntimeClassSpecPatchArgs) ToRuntimeClassSpecPatchOutputWithContext(ctx context.Context) RuntimeClassSpecPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeClassSpecPatchOutput)
+}
+
+// RuntimeClassSpec is a specification of a RuntimeClass. It contains parameters that are required to describe the RuntimeClass to the Container Runtime Interface (CRI) implementation, as well as any other components that need to understand how the pod will be run. The RuntimeClassSpec is immutable.
+type RuntimeClassSpecPatchOutput struct{ *pulumi.OutputState }
+
+func (RuntimeClassSpecPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeClassSpecPatch)(nil)).Elem()
+}
+
+func (o RuntimeClassSpecPatchOutput) ToRuntimeClassSpecPatchOutput() RuntimeClassSpecPatchOutput {
+	return o
+}
+
+func (o RuntimeClassSpecPatchOutput) ToRuntimeClassSpecPatchOutputWithContext(ctx context.Context) RuntimeClassSpecPatchOutput {
+	return o
+}
+
+// Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md This field is alpha-level as of Kubernetes v1.15, and is only honored by servers that enable the PodOverhead feature.
+func (o RuntimeClassSpecPatchOutput) Overhead() OverheadPtrOutput {
+	return o.ApplyT(func(v RuntimeClassSpecPatch) *Overhead { return v.Overhead }).(OverheadPtrOutput)
+}
+
+// RuntimeHandler specifies the underlying runtime and configuration that the CRI implementation will use to handle pods of this class. The possible values are specific to the node & CRI configuration.  It is assumed that all handlers are available on every node, and handlers of the same name are equivalent on every node. For example, a handler called "runc" might specify that the runc OCI runtime (using native Linux containers) will be used to run the containers in a pod. The RuntimeHandler must conform to the DNS Label (RFC 1123) requirements and is immutable.
+func (o RuntimeClassSpecPatchOutput) RuntimeHandler() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeClassSpecPatch) *string { return v.RuntimeHandler }).(pulumi.StringPtrOutput)
+}
+
+// Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.
+func (o RuntimeClassSpecPatchOutput) Scheduling() SchedulingPtrOutput {
+	return o.ApplyT(func(v RuntimeClassSpecPatch) *Scheduling { return v.Scheduling }).(SchedulingPtrOutput)
 }
 
 // Scheduling specifies the scheduling constraints for nodes supporting a RuntimeClass.
@@ -593,21 +908,95 @@ func (o SchedulingPtrOutput) Tolerations() corev1.TolerationArrayOutput {
 	}).(corev1.TolerationArrayOutput)
 }
 
+// Scheduling specifies the scheduling constraints for nodes supporting a RuntimeClass.
+type SchedulingPatch struct {
+	// nodeSelector lists labels that must be present on nodes that support this RuntimeClass. Pods using this RuntimeClass can only be scheduled to a node matched by this selector. The RuntimeClass nodeSelector is merged with a pod's existing nodeSelector. Any conflicts will cause the pod to be rejected in admission.
+	NodeSelector map[string]string `pulumi:"nodeSelector"`
+	// tolerations are appended (excluding duplicates) to pods running with this RuntimeClass during admission, effectively unioning the set of nodes tolerated by the pod and the RuntimeClass.
+	Tolerations []corev1.Toleration `pulumi:"tolerations"`
+}
+
+// SchedulingPatchInput is an input type that accepts SchedulingPatchArgs and SchedulingPatchOutput values.
+// You can construct a concrete instance of `SchedulingPatchInput` via:
+//
+//          SchedulingPatchArgs{...}
+type SchedulingPatchInput interface {
+	pulumi.Input
+
+	ToSchedulingPatchOutput() SchedulingPatchOutput
+	ToSchedulingPatchOutputWithContext(context.Context) SchedulingPatchOutput
+}
+
+// Scheduling specifies the scheduling constraints for nodes supporting a RuntimeClass.
+type SchedulingPatchArgs struct {
+	// nodeSelector lists labels that must be present on nodes that support this RuntimeClass. Pods using this RuntimeClass can only be scheduled to a node matched by this selector. The RuntimeClass nodeSelector is merged with a pod's existing nodeSelector. Any conflicts will cause the pod to be rejected in admission.
+	NodeSelector pulumi.StringMapInput `pulumi:"nodeSelector"`
+	// tolerations are appended (excluding duplicates) to pods running with this RuntimeClass during admission, effectively unioning the set of nodes tolerated by the pod and the RuntimeClass.
+	Tolerations corev1.TolerationArrayInput `pulumi:"tolerations"`
+}
+
+func (SchedulingPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulingPatch)(nil)).Elem()
+}
+
+func (i SchedulingPatchArgs) ToSchedulingPatchOutput() SchedulingPatchOutput {
+	return i.ToSchedulingPatchOutputWithContext(context.Background())
+}
+
+func (i SchedulingPatchArgs) ToSchedulingPatchOutputWithContext(ctx context.Context) SchedulingPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulingPatchOutput)
+}
+
+// Scheduling specifies the scheduling constraints for nodes supporting a RuntimeClass.
+type SchedulingPatchOutput struct{ *pulumi.OutputState }
+
+func (SchedulingPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulingPatch)(nil)).Elem()
+}
+
+func (o SchedulingPatchOutput) ToSchedulingPatchOutput() SchedulingPatchOutput {
+	return o
+}
+
+func (o SchedulingPatchOutput) ToSchedulingPatchOutputWithContext(ctx context.Context) SchedulingPatchOutput {
+	return o
+}
+
+// nodeSelector lists labels that must be present on nodes that support this RuntimeClass. Pods using this RuntimeClass can only be scheduled to a node matched by this selector. The RuntimeClass nodeSelector is merged with a pod's existing nodeSelector. Any conflicts will cause the pod to be rejected in admission.
+func (o SchedulingPatchOutput) NodeSelector() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SchedulingPatch) map[string]string { return v.NodeSelector }).(pulumi.StringMapOutput)
+}
+
+// tolerations are appended (excluding duplicates) to pods running with this RuntimeClass during admission, effectively unioning the set of nodes tolerated by the pod and the RuntimeClass.
+func (o SchedulingPatchOutput) Tolerations() corev1.TolerationArrayOutput {
+	return o.ApplyT(func(v SchedulingPatch) []corev1.Toleration { return v.Tolerations }).(corev1.TolerationArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OverheadInput)(nil)).Elem(), OverheadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OverheadPtrInput)(nil)).Elem(), OverheadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OverheadPatchInput)(nil)).Elem(), OverheadPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeClassTypeInput)(nil)).Elem(), RuntimeClassTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeClassTypeArrayInput)(nil)).Elem(), RuntimeClassTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeClassListTypeInput)(nil)).Elem(), RuntimeClassListTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeClassPatchTypeInput)(nil)).Elem(), RuntimeClassPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeClassSpecInput)(nil)).Elem(), RuntimeClassSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeClassSpecPtrInput)(nil)).Elem(), RuntimeClassSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeClassSpecPatchInput)(nil)).Elem(), RuntimeClassSpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingInput)(nil)).Elem(), SchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingPtrInput)(nil)).Elem(), SchedulingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingPatchInput)(nil)).Elem(), SchedulingPatchArgs{})
 	pulumi.RegisterOutputType(OverheadOutput{})
 	pulumi.RegisterOutputType(OverheadPtrOutput{})
+	pulumi.RegisterOutputType(OverheadPatchOutput{})
 	pulumi.RegisterOutputType(RuntimeClassTypeOutput{})
 	pulumi.RegisterOutputType(RuntimeClassTypeArrayOutput{})
 	pulumi.RegisterOutputType(RuntimeClassListTypeOutput{})
+	pulumi.RegisterOutputType(RuntimeClassPatchTypeOutput{})
 	pulumi.RegisterOutputType(RuntimeClassSpecOutput{})
+	pulumi.RegisterOutputType(RuntimeClassSpecPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeClassSpecPatchOutput{})
 	pulumi.RegisterOutputType(SchedulingOutput{})
 	pulumi.RegisterOutputType(SchedulingPtrOutput{})
+	pulumi.RegisterOutputType(SchedulingPatchOutput{})
 }

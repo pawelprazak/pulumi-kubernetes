@@ -112,6 +112,61 @@ func (o AllowedCSIDriverArrayOutput) Index(i pulumi.IntInput) AllowedCSIDriverOu
 	}).(AllowedCSIDriverOutput)
 }
 
+// AllowedCSIDriver represents a single inline CSI Driver that is allowed to be used.
+type AllowedCSIDriverPatch struct {
+	// Name is the registered name of the CSI driver
+	Name *string `pulumi:"name"`
+}
+
+// AllowedCSIDriverPatchInput is an input type that accepts AllowedCSIDriverPatchArgs and AllowedCSIDriverPatchOutput values.
+// You can construct a concrete instance of `AllowedCSIDriverPatchInput` via:
+//
+//          AllowedCSIDriverPatchArgs{...}
+type AllowedCSIDriverPatchInput interface {
+	pulumi.Input
+
+	ToAllowedCSIDriverPatchOutput() AllowedCSIDriverPatchOutput
+	ToAllowedCSIDriverPatchOutputWithContext(context.Context) AllowedCSIDriverPatchOutput
+}
+
+// AllowedCSIDriver represents a single inline CSI Driver that is allowed to be used.
+type AllowedCSIDriverPatchArgs struct {
+	// Name is the registered name of the CSI driver
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AllowedCSIDriverPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllowedCSIDriverPatch)(nil)).Elem()
+}
+
+func (i AllowedCSIDriverPatchArgs) ToAllowedCSIDriverPatchOutput() AllowedCSIDriverPatchOutput {
+	return i.ToAllowedCSIDriverPatchOutputWithContext(context.Background())
+}
+
+func (i AllowedCSIDriverPatchArgs) ToAllowedCSIDriverPatchOutputWithContext(ctx context.Context) AllowedCSIDriverPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AllowedCSIDriverPatchOutput)
+}
+
+// AllowedCSIDriver represents a single inline CSI Driver that is allowed to be used.
+type AllowedCSIDriverPatchOutput struct{ *pulumi.OutputState }
+
+func (AllowedCSIDriverPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllowedCSIDriverPatch)(nil)).Elem()
+}
+
+func (o AllowedCSIDriverPatchOutput) ToAllowedCSIDriverPatchOutput() AllowedCSIDriverPatchOutput {
+	return o
+}
+
+func (o AllowedCSIDriverPatchOutput) ToAllowedCSIDriverPatchOutputWithContext(ctx context.Context) AllowedCSIDriverPatchOutput {
+	return o
+}
+
+// Name is the registered name of the CSI driver
+func (o AllowedCSIDriverPatchOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AllowedCSIDriverPatch) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
 // AllowedFlexVolume represents a single Flexvolume that is allowed to be used. Deprecated: use AllowedFlexVolume from policy API Group instead.
 type AllowedFlexVolume struct {
 	// driver is the name of the Flexvolume driver.
@@ -210,6 +265,61 @@ func (o AllowedFlexVolumeArrayOutput) Index(i pulumi.IntInput) AllowedFlexVolume
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AllowedFlexVolume {
 		return vs[0].([]AllowedFlexVolume)[vs[1].(int)]
 	}).(AllowedFlexVolumeOutput)
+}
+
+// AllowedFlexVolume represents a single Flexvolume that is allowed to be used. Deprecated: use AllowedFlexVolume from policy API Group instead.
+type AllowedFlexVolumePatch struct {
+	// driver is the name of the Flexvolume driver.
+	Driver *string `pulumi:"driver"`
+}
+
+// AllowedFlexVolumePatchInput is an input type that accepts AllowedFlexVolumePatchArgs and AllowedFlexVolumePatchOutput values.
+// You can construct a concrete instance of `AllowedFlexVolumePatchInput` via:
+//
+//          AllowedFlexVolumePatchArgs{...}
+type AllowedFlexVolumePatchInput interface {
+	pulumi.Input
+
+	ToAllowedFlexVolumePatchOutput() AllowedFlexVolumePatchOutput
+	ToAllowedFlexVolumePatchOutputWithContext(context.Context) AllowedFlexVolumePatchOutput
+}
+
+// AllowedFlexVolume represents a single Flexvolume that is allowed to be used. Deprecated: use AllowedFlexVolume from policy API Group instead.
+type AllowedFlexVolumePatchArgs struct {
+	// driver is the name of the Flexvolume driver.
+	Driver pulumi.StringPtrInput `pulumi:"driver"`
+}
+
+func (AllowedFlexVolumePatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllowedFlexVolumePatch)(nil)).Elem()
+}
+
+func (i AllowedFlexVolumePatchArgs) ToAllowedFlexVolumePatchOutput() AllowedFlexVolumePatchOutput {
+	return i.ToAllowedFlexVolumePatchOutputWithContext(context.Background())
+}
+
+func (i AllowedFlexVolumePatchArgs) ToAllowedFlexVolumePatchOutputWithContext(ctx context.Context) AllowedFlexVolumePatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AllowedFlexVolumePatchOutput)
+}
+
+// AllowedFlexVolume represents a single Flexvolume that is allowed to be used. Deprecated: use AllowedFlexVolume from policy API Group instead.
+type AllowedFlexVolumePatchOutput struct{ *pulumi.OutputState }
+
+func (AllowedFlexVolumePatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllowedFlexVolumePatch)(nil)).Elem()
+}
+
+func (o AllowedFlexVolumePatchOutput) ToAllowedFlexVolumePatchOutput() AllowedFlexVolumePatchOutput {
+	return o
+}
+
+func (o AllowedFlexVolumePatchOutput) ToAllowedFlexVolumePatchOutputWithContext(ctx context.Context) AllowedFlexVolumePatchOutput {
+	return o
+}
+
+// driver is the name of the Flexvolume driver.
+func (o AllowedFlexVolumePatchOutput) Driver() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AllowedFlexVolumePatch) *string { return v.Driver }).(pulumi.StringPtrOutput)
 }
 
 // AllowedHostPath defines the host volume conditions that will be enabled by a policy for pods to use. It requires the path prefix to be defined. Deprecated: use AllowedHostPath from policy API Group instead.
@@ -325,6 +435,76 @@ func (o AllowedHostPathArrayOutput) Index(i pulumi.IntInput) AllowedHostPathOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AllowedHostPath {
 		return vs[0].([]AllowedHostPath)[vs[1].(int)]
 	}).(AllowedHostPathOutput)
+}
+
+// AllowedHostPath defines the host volume conditions that will be enabled by a policy for pods to use. It requires the path prefix to be defined. Deprecated: use AllowedHostPath from policy API Group instead.
+type AllowedHostPathPatch struct {
+	// pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
+	//
+	// Examples: `/foo` would allow `/foo`, `/foo/` and `/foo/bar` `/foo` would not allow `/food` or `/etc/foo`
+	PathPrefix *string `pulumi:"pathPrefix"`
+	// when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
+	ReadOnly *bool `pulumi:"readOnly"`
+}
+
+// AllowedHostPathPatchInput is an input type that accepts AllowedHostPathPatchArgs and AllowedHostPathPatchOutput values.
+// You can construct a concrete instance of `AllowedHostPathPatchInput` via:
+//
+//          AllowedHostPathPatchArgs{...}
+type AllowedHostPathPatchInput interface {
+	pulumi.Input
+
+	ToAllowedHostPathPatchOutput() AllowedHostPathPatchOutput
+	ToAllowedHostPathPatchOutputWithContext(context.Context) AllowedHostPathPatchOutput
+}
+
+// AllowedHostPath defines the host volume conditions that will be enabled by a policy for pods to use. It requires the path prefix to be defined. Deprecated: use AllowedHostPath from policy API Group instead.
+type AllowedHostPathPatchArgs struct {
+	// pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
+	//
+	// Examples: `/foo` would allow `/foo`, `/foo/` and `/foo/bar` `/foo` would not allow `/food` or `/etc/foo`
+	PathPrefix pulumi.StringPtrInput `pulumi:"pathPrefix"`
+	// when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+}
+
+func (AllowedHostPathPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllowedHostPathPatch)(nil)).Elem()
+}
+
+func (i AllowedHostPathPatchArgs) ToAllowedHostPathPatchOutput() AllowedHostPathPatchOutput {
+	return i.ToAllowedHostPathPatchOutputWithContext(context.Background())
+}
+
+func (i AllowedHostPathPatchArgs) ToAllowedHostPathPatchOutputWithContext(ctx context.Context) AllowedHostPathPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AllowedHostPathPatchOutput)
+}
+
+// AllowedHostPath defines the host volume conditions that will be enabled by a policy for pods to use. It requires the path prefix to be defined. Deprecated: use AllowedHostPath from policy API Group instead.
+type AllowedHostPathPatchOutput struct{ *pulumi.OutputState }
+
+func (AllowedHostPathPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllowedHostPathPatch)(nil)).Elem()
+}
+
+func (o AllowedHostPathPatchOutput) ToAllowedHostPathPatchOutput() AllowedHostPathPatchOutput {
+	return o
+}
+
+func (o AllowedHostPathPatchOutput) ToAllowedHostPathPatchOutputWithContext(ctx context.Context) AllowedHostPathPatchOutput {
+	return o
+}
+
+// pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
+//
+// Examples: `/foo` would allow `/foo`, `/foo/` and `/foo/bar` `/foo` would not allow `/food` or `/etc/foo`
+func (o AllowedHostPathPatchOutput) PathPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AllowedHostPathPatch) *string { return v.PathPrefix }).(pulumi.StringPtrOutput)
+}
+
+// when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
+func (o AllowedHostPathPatchOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AllowedHostPathPatch) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
 
 // DaemonSet represents the configuration of a daemon set.
@@ -599,6 +779,97 @@ func (o DaemonSetConditionArrayOutput) Index(i pulumi.IntInput) DaemonSetConditi
 	}).(DaemonSetConditionOutput)
 }
 
+// DaemonSetCondition describes the state of a DaemonSet at a certain point.
+type DaemonSetConditionPatch struct {
+	// Last time the condition transitioned from one status to another.
+	LastTransitionTime *string `pulumi:"lastTransitionTime"`
+	// A human readable message indicating details about the transition.
+	Message *string `pulumi:"message"`
+	// The reason for the condition's last transition.
+	Reason *string `pulumi:"reason"`
+	// Status of the condition, one of True, False, Unknown.
+	Status *string `pulumi:"status"`
+	// Type of DaemonSet condition.
+	Type *string `pulumi:"type"`
+}
+
+// DaemonSetConditionPatchInput is an input type that accepts DaemonSetConditionPatchArgs and DaemonSetConditionPatchOutput values.
+// You can construct a concrete instance of `DaemonSetConditionPatchInput` via:
+//
+//          DaemonSetConditionPatchArgs{...}
+type DaemonSetConditionPatchInput interface {
+	pulumi.Input
+
+	ToDaemonSetConditionPatchOutput() DaemonSetConditionPatchOutput
+	ToDaemonSetConditionPatchOutputWithContext(context.Context) DaemonSetConditionPatchOutput
+}
+
+// DaemonSetCondition describes the state of a DaemonSet at a certain point.
+type DaemonSetConditionPatchArgs struct {
+	// Last time the condition transitioned from one status to another.
+	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
+	// A human readable message indicating details about the transition.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// The reason for the condition's last transition.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// Status of the condition, one of True, False, Unknown.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Type of DaemonSet condition.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (DaemonSetConditionPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaemonSetConditionPatch)(nil)).Elem()
+}
+
+func (i DaemonSetConditionPatchArgs) ToDaemonSetConditionPatchOutput() DaemonSetConditionPatchOutput {
+	return i.ToDaemonSetConditionPatchOutputWithContext(context.Background())
+}
+
+func (i DaemonSetConditionPatchArgs) ToDaemonSetConditionPatchOutputWithContext(ctx context.Context) DaemonSetConditionPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaemonSetConditionPatchOutput)
+}
+
+// DaemonSetCondition describes the state of a DaemonSet at a certain point.
+type DaemonSetConditionPatchOutput struct{ *pulumi.OutputState }
+
+func (DaemonSetConditionPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaemonSetConditionPatch)(nil)).Elem()
+}
+
+func (o DaemonSetConditionPatchOutput) ToDaemonSetConditionPatchOutput() DaemonSetConditionPatchOutput {
+	return o
+}
+
+func (o DaemonSetConditionPatchOutput) ToDaemonSetConditionPatchOutputWithContext(ctx context.Context) DaemonSetConditionPatchOutput {
+	return o
+}
+
+// Last time the condition transitioned from one status to another.
+func (o DaemonSetConditionPatchOutput) LastTransitionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaemonSetConditionPatch) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
+}
+
+// A human readable message indicating details about the transition.
+func (o DaemonSetConditionPatchOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaemonSetConditionPatch) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// The reason for the condition's last transition.
+func (o DaemonSetConditionPatchOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaemonSetConditionPatch) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+// Status of the condition, one of True, False, Unknown.
+func (o DaemonSetConditionPatchOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaemonSetConditionPatch) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Type of DaemonSet condition.
+func (o DaemonSetConditionPatchOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaemonSetConditionPatch) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
 // DaemonSetList is a collection of daemon sets.
 type DaemonSetListType struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -679,6 +950,97 @@ func (o DaemonSetListTypeOutput) Kind() pulumi.StringPtrOutput {
 // Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 func (o DaemonSetListTypeOutput) Metadata() metav1.ListMetaPtrOutput {
 	return o.ApplyT(func(v DaemonSetListType) *metav1.ListMeta { return v.Metadata }).(metav1.ListMetaPtrOutput)
+}
+
+// DaemonSet represents the configuration of a daemon set.
+type DaemonSetPatchType struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind *string `pulumi:"kind"`
+	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	// The desired behavior of this daemon set. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Spec *DaemonSetSpec `pulumi:"spec"`
+	// The current status of this daemon set. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Status *DaemonSetStatus `pulumi:"status"`
+}
+
+// DaemonSetPatchTypeInput is an input type that accepts DaemonSetPatchTypeArgs and DaemonSetPatchTypeOutput values.
+// You can construct a concrete instance of `DaemonSetPatchTypeInput` via:
+//
+//          DaemonSetPatchTypeArgs{...}
+type DaemonSetPatchTypeInput interface {
+	pulumi.Input
+
+	ToDaemonSetPatchTypeOutput() DaemonSetPatchTypeOutput
+	ToDaemonSetPatchTypeOutputWithContext(context.Context) DaemonSetPatchTypeOutput
+}
+
+// DaemonSet represents the configuration of a daemon set.
+type DaemonSetPatchTypeArgs struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	// The desired behavior of this daemon set. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Spec DaemonSetSpecPtrInput `pulumi:"spec"`
+	// The current status of this daemon set. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Status DaemonSetStatusPtrInput `pulumi:"status"`
+}
+
+func (DaemonSetPatchTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaemonSetPatchType)(nil)).Elem()
+}
+
+func (i DaemonSetPatchTypeArgs) ToDaemonSetPatchTypeOutput() DaemonSetPatchTypeOutput {
+	return i.ToDaemonSetPatchTypeOutputWithContext(context.Background())
+}
+
+func (i DaemonSetPatchTypeArgs) ToDaemonSetPatchTypeOutputWithContext(ctx context.Context) DaemonSetPatchTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaemonSetPatchTypeOutput)
+}
+
+// DaemonSet represents the configuration of a daemon set.
+type DaemonSetPatchTypeOutput struct{ *pulumi.OutputState }
+
+func (DaemonSetPatchTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaemonSetPatchType)(nil)).Elem()
+}
+
+func (o DaemonSetPatchTypeOutput) ToDaemonSetPatchTypeOutput() DaemonSetPatchTypeOutput {
+	return o
+}
+
+func (o DaemonSetPatchTypeOutput) ToDaemonSetPatchTypeOutputWithContext(ctx context.Context) DaemonSetPatchTypeOutput {
+	return o
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o DaemonSetPatchTypeOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaemonSetPatchType) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o DaemonSetPatchTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaemonSetPatchType) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+func (o DaemonSetPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v DaemonSetPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+// The desired behavior of this daemon set. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+func (o DaemonSetPatchTypeOutput) Spec() DaemonSetSpecPtrOutput {
+	return o.ApplyT(func(v DaemonSetPatchType) *DaemonSetSpec { return v.Spec }).(DaemonSetSpecPtrOutput)
+}
+
+// The current status of this daemon set. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+func (o DaemonSetPatchTypeOutput) Status() DaemonSetStatusPtrOutput {
+	return o.ApplyT(func(v DaemonSetPatchType) *DaemonSetStatus { return v.Status }).(DaemonSetStatusPtrOutput)
 }
 
 // DaemonSetSpec is the specification of a daemon set.
@@ -914,6 +1276,106 @@ func (o DaemonSetSpecPtrOutput) UpdateStrategy() DaemonSetUpdateStrategyPtrOutpu
 		}
 		return v.UpdateStrategy
 	}).(DaemonSetUpdateStrategyPtrOutput)
+}
+
+// DaemonSetSpec is the specification of a daemon set.
+type DaemonSetSpecPatch struct {
+	// The minimum number of seconds for which a newly created DaemonSet pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready).
+	MinReadySeconds *int `pulumi:"minReadySeconds"`
+	// The number of old history to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.
+	RevisionHistoryLimit *int `pulumi:"revisionHistoryLimit"`
+	// A label query over pods that are managed by the daemon set. Must match in order to be controlled. If empty, defaulted to labels on Pod template. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+	Selector *metav1.LabelSelector `pulumi:"selector"`
+	// An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector (or on every node if no node selector is specified). More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template
+	Template *corev1.PodTemplateSpec `pulumi:"template"`
+	// DEPRECATED. A sequence number representing a specific generation of the template. Populated by the system. It can be set only during the creation.
+	TemplateGeneration *int `pulumi:"templateGeneration"`
+	// An update strategy to replace existing DaemonSet pods with new pods.
+	UpdateStrategy *DaemonSetUpdateStrategy `pulumi:"updateStrategy"`
+}
+
+// DaemonSetSpecPatchInput is an input type that accepts DaemonSetSpecPatchArgs and DaemonSetSpecPatchOutput values.
+// You can construct a concrete instance of `DaemonSetSpecPatchInput` via:
+//
+//          DaemonSetSpecPatchArgs{...}
+type DaemonSetSpecPatchInput interface {
+	pulumi.Input
+
+	ToDaemonSetSpecPatchOutput() DaemonSetSpecPatchOutput
+	ToDaemonSetSpecPatchOutputWithContext(context.Context) DaemonSetSpecPatchOutput
+}
+
+// DaemonSetSpec is the specification of a daemon set.
+type DaemonSetSpecPatchArgs struct {
+	// The minimum number of seconds for which a newly created DaemonSet pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready).
+	MinReadySeconds pulumi.IntPtrInput `pulumi:"minReadySeconds"`
+	// The number of old history to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.
+	RevisionHistoryLimit pulumi.IntPtrInput `pulumi:"revisionHistoryLimit"`
+	// A label query over pods that are managed by the daemon set. Must match in order to be controlled. If empty, defaulted to labels on Pod template. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+	Selector metav1.LabelSelectorPtrInput `pulumi:"selector"`
+	// An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector (or on every node if no node selector is specified). More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template
+	Template corev1.PodTemplateSpecPtrInput `pulumi:"template"`
+	// DEPRECATED. A sequence number representing a specific generation of the template. Populated by the system. It can be set only during the creation.
+	TemplateGeneration pulumi.IntPtrInput `pulumi:"templateGeneration"`
+	// An update strategy to replace existing DaemonSet pods with new pods.
+	UpdateStrategy DaemonSetUpdateStrategyPtrInput `pulumi:"updateStrategy"`
+}
+
+func (DaemonSetSpecPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaemonSetSpecPatch)(nil)).Elem()
+}
+
+func (i DaemonSetSpecPatchArgs) ToDaemonSetSpecPatchOutput() DaemonSetSpecPatchOutput {
+	return i.ToDaemonSetSpecPatchOutputWithContext(context.Background())
+}
+
+func (i DaemonSetSpecPatchArgs) ToDaemonSetSpecPatchOutputWithContext(ctx context.Context) DaemonSetSpecPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaemonSetSpecPatchOutput)
+}
+
+// DaemonSetSpec is the specification of a daemon set.
+type DaemonSetSpecPatchOutput struct{ *pulumi.OutputState }
+
+func (DaemonSetSpecPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaemonSetSpecPatch)(nil)).Elem()
+}
+
+func (o DaemonSetSpecPatchOutput) ToDaemonSetSpecPatchOutput() DaemonSetSpecPatchOutput {
+	return o
+}
+
+func (o DaemonSetSpecPatchOutput) ToDaemonSetSpecPatchOutputWithContext(ctx context.Context) DaemonSetSpecPatchOutput {
+	return o
+}
+
+// The minimum number of seconds for which a newly created DaemonSet pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready).
+func (o DaemonSetSpecPatchOutput) MinReadySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaemonSetSpecPatch) *int { return v.MinReadySeconds }).(pulumi.IntPtrOutput)
+}
+
+// The number of old history to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.
+func (o DaemonSetSpecPatchOutput) RevisionHistoryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaemonSetSpecPatch) *int { return v.RevisionHistoryLimit }).(pulumi.IntPtrOutput)
+}
+
+// A label query over pods that are managed by the daemon set. Must match in order to be controlled. If empty, defaulted to labels on Pod template. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+func (o DaemonSetSpecPatchOutput) Selector() metav1.LabelSelectorPtrOutput {
+	return o.ApplyT(func(v DaemonSetSpecPatch) *metav1.LabelSelector { return v.Selector }).(metav1.LabelSelectorPtrOutput)
+}
+
+// An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector (or on every node if no node selector is specified). More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template
+func (o DaemonSetSpecPatchOutput) Template() corev1.PodTemplateSpecPtrOutput {
+	return o.ApplyT(func(v DaemonSetSpecPatch) *corev1.PodTemplateSpec { return v.Template }).(corev1.PodTemplateSpecPtrOutput)
+}
+
+// DEPRECATED. A sequence number representing a specific generation of the template. Populated by the system. It can be set only during the creation.
+func (o DaemonSetSpecPatchOutput) TemplateGeneration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaemonSetSpecPatch) *int { return v.TemplateGeneration }).(pulumi.IntPtrOutput)
+}
+
+// An update strategy to replace existing DaemonSet pods with new pods.
+func (o DaemonSetSpecPatchOutput) UpdateStrategy() DaemonSetUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v DaemonSetSpecPatch) *DaemonSetUpdateStrategy { return v.UpdateStrategy }).(DaemonSetUpdateStrategyPtrOutput)
 }
 
 // DaemonSetStatus represents the current status of a daemon set.
@@ -1227,6 +1689,142 @@ func (o DaemonSetStatusPtrOutput) UpdatedNumberScheduled() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// DaemonSetStatus represents the current status of a daemon set.
+type DaemonSetStatusPatch struct {
+	// Count of hash collisions for the DaemonSet. The DaemonSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.
+	CollisionCount *int `pulumi:"collisionCount"`
+	// Represents the latest available observations of a DaemonSet's current state.
+	Conditions []DaemonSetCondition `pulumi:"conditions"`
+	// The number of nodes that are running at least 1 daemon pod and are supposed to run the daemon pod. More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+	CurrentNumberScheduled *int `pulumi:"currentNumberScheduled"`
+	// The total number of nodes that should be running the daemon pod (including nodes correctly running the daemon pod). More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+	DesiredNumberScheduled *int `pulumi:"desiredNumberScheduled"`
+	// The number of nodes that should be running the daemon pod and have one or more of the daemon pod running and available (ready for at least spec.minReadySeconds)
+	NumberAvailable *int `pulumi:"numberAvailable"`
+	// The number of nodes that are running the daemon pod, but are not supposed to run the daemon pod. More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+	NumberMisscheduled *int `pulumi:"numberMisscheduled"`
+	// The number of nodes that should be running the daemon pod and have one or more of the daemon pod running and ready.
+	NumberReady *int `pulumi:"numberReady"`
+	// The number of nodes that should be running the daemon pod and have none of the daemon pod running and available (ready for at least spec.minReadySeconds)
+	NumberUnavailable *int `pulumi:"numberUnavailable"`
+	// The most recent generation observed by the daemon set controller.
+	ObservedGeneration *int `pulumi:"observedGeneration"`
+	// The total number of nodes that are running updated daemon pod
+	UpdatedNumberScheduled *int `pulumi:"updatedNumberScheduled"`
+}
+
+// DaemonSetStatusPatchInput is an input type that accepts DaemonSetStatusPatchArgs and DaemonSetStatusPatchOutput values.
+// You can construct a concrete instance of `DaemonSetStatusPatchInput` via:
+//
+//          DaemonSetStatusPatchArgs{...}
+type DaemonSetStatusPatchInput interface {
+	pulumi.Input
+
+	ToDaemonSetStatusPatchOutput() DaemonSetStatusPatchOutput
+	ToDaemonSetStatusPatchOutputWithContext(context.Context) DaemonSetStatusPatchOutput
+}
+
+// DaemonSetStatus represents the current status of a daemon set.
+type DaemonSetStatusPatchArgs struct {
+	// Count of hash collisions for the DaemonSet. The DaemonSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.
+	CollisionCount pulumi.IntPtrInput `pulumi:"collisionCount"`
+	// Represents the latest available observations of a DaemonSet's current state.
+	Conditions DaemonSetConditionArrayInput `pulumi:"conditions"`
+	// The number of nodes that are running at least 1 daemon pod and are supposed to run the daemon pod. More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+	CurrentNumberScheduled pulumi.IntPtrInput `pulumi:"currentNumberScheduled"`
+	// The total number of nodes that should be running the daemon pod (including nodes correctly running the daemon pod). More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+	DesiredNumberScheduled pulumi.IntPtrInput `pulumi:"desiredNumberScheduled"`
+	// The number of nodes that should be running the daemon pod and have one or more of the daemon pod running and available (ready for at least spec.minReadySeconds)
+	NumberAvailable pulumi.IntPtrInput `pulumi:"numberAvailable"`
+	// The number of nodes that are running the daemon pod, but are not supposed to run the daemon pod. More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+	NumberMisscheduled pulumi.IntPtrInput `pulumi:"numberMisscheduled"`
+	// The number of nodes that should be running the daemon pod and have one or more of the daemon pod running and ready.
+	NumberReady pulumi.IntPtrInput `pulumi:"numberReady"`
+	// The number of nodes that should be running the daemon pod and have none of the daemon pod running and available (ready for at least spec.minReadySeconds)
+	NumberUnavailable pulumi.IntPtrInput `pulumi:"numberUnavailable"`
+	// The most recent generation observed by the daemon set controller.
+	ObservedGeneration pulumi.IntPtrInput `pulumi:"observedGeneration"`
+	// The total number of nodes that are running updated daemon pod
+	UpdatedNumberScheduled pulumi.IntPtrInput `pulumi:"updatedNumberScheduled"`
+}
+
+func (DaemonSetStatusPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaemonSetStatusPatch)(nil)).Elem()
+}
+
+func (i DaemonSetStatusPatchArgs) ToDaemonSetStatusPatchOutput() DaemonSetStatusPatchOutput {
+	return i.ToDaemonSetStatusPatchOutputWithContext(context.Background())
+}
+
+func (i DaemonSetStatusPatchArgs) ToDaemonSetStatusPatchOutputWithContext(ctx context.Context) DaemonSetStatusPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaemonSetStatusPatchOutput)
+}
+
+// DaemonSetStatus represents the current status of a daemon set.
+type DaemonSetStatusPatchOutput struct{ *pulumi.OutputState }
+
+func (DaemonSetStatusPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaemonSetStatusPatch)(nil)).Elem()
+}
+
+func (o DaemonSetStatusPatchOutput) ToDaemonSetStatusPatchOutput() DaemonSetStatusPatchOutput {
+	return o
+}
+
+func (o DaemonSetStatusPatchOutput) ToDaemonSetStatusPatchOutputWithContext(ctx context.Context) DaemonSetStatusPatchOutput {
+	return o
+}
+
+// Count of hash collisions for the DaemonSet. The DaemonSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.
+func (o DaemonSetStatusPatchOutput) CollisionCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaemonSetStatusPatch) *int { return v.CollisionCount }).(pulumi.IntPtrOutput)
+}
+
+// Represents the latest available observations of a DaemonSet's current state.
+func (o DaemonSetStatusPatchOutput) Conditions() DaemonSetConditionArrayOutput {
+	return o.ApplyT(func(v DaemonSetStatusPatch) []DaemonSetCondition { return v.Conditions }).(DaemonSetConditionArrayOutput)
+}
+
+// The number of nodes that are running at least 1 daemon pod and are supposed to run the daemon pod. More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+func (o DaemonSetStatusPatchOutput) CurrentNumberScheduled() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaemonSetStatusPatch) *int { return v.CurrentNumberScheduled }).(pulumi.IntPtrOutput)
+}
+
+// The total number of nodes that should be running the daemon pod (including nodes correctly running the daemon pod). More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+func (o DaemonSetStatusPatchOutput) DesiredNumberScheduled() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaemonSetStatusPatch) *int { return v.DesiredNumberScheduled }).(pulumi.IntPtrOutput)
+}
+
+// The number of nodes that should be running the daemon pod and have one or more of the daemon pod running and available (ready for at least spec.minReadySeconds)
+func (o DaemonSetStatusPatchOutput) NumberAvailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaemonSetStatusPatch) *int { return v.NumberAvailable }).(pulumi.IntPtrOutput)
+}
+
+// The number of nodes that are running the daemon pod, but are not supposed to run the daemon pod. More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+func (o DaemonSetStatusPatchOutput) NumberMisscheduled() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaemonSetStatusPatch) *int { return v.NumberMisscheduled }).(pulumi.IntPtrOutput)
+}
+
+// The number of nodes that should be running the daemon pod and have one or more of the daemon pod running and ready.
+func (o DaemonSetStatusPatchOutput) NumberReady() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaemonSetStatusPatch) *int { return v.NumberReady }).(pulumi.IntPtrOutput)
+}
+
+// The number of nodes that should be running the daemon pod and have none of the daemon pod running and available (ready for at least spec.minReadySeconds)
+func (o DaemonSetStatusPatchOutput) NumberUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaemonSetStatusPatch) *int { return v.NumberUnavailable }).(pulumi.IntPtrOutput)
+}
+
+// The most recent generation observed by the daemon set controller.
+func (o DaemonSetStatusPatchOutput) ObservedGeneration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaemonSetStatusPatch) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
+}
+
+// The total number of nodes that are running updated daemon pod
+func (o DaemonSetStatusPatchOutput) UpdatedNumberScheduled() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DaemonSetStatusPatch) *int { return v.UpdatedNumberScheduled }).(pulumi.IntPtrOutput)
+}
+
 type DaemonSetUpdateStrategy struct {
 	// Rolling update config params. Present only if type = "RollingUpdate".
 	RollingUpdate *RollingUpdateDaemonSet `pulumi:"rollingUpdate"`
@@ -1381,6 +1979,67 @@ func (o DaemonSetUpdateStrategyPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type DaemonSetUpdateStrategyPatch struct {
+	// Rolling update config params. Present only if type = "RollingUpdate".
+	RollingUpdate *RollingUpdateDaemonSet `pulumi:"rollingUpdate"`
+	// Type of daemon set update. Can be "RollingUpdate" or "OnDelete". Default is OnDelete.
+	Type *string `pulumi:"type"`
+}
+
+// DaemonSetUpdateStrategyPatchInput is an input type that accepts DaemonSetUpdateStrategyPatchArgs and DaemonSetUpdateStrategyPatchOutput values.
+// You can construct a concrete instance of `DaemonSetUpdateStrategyPatchInput` via:
+//
+//          DaemonSetUpdateStrategyPatchArgs{...}
+type DaemonSetUpdateStrategyPatchInput interface {
+	pulumi.Input
+
+	ToDaemonSetUpdateStrategyPatchOutput() DaemonSetUpdateStrategyPatchOutput
+	ToDaemonSetUpdateStrategyPatchOutputWithContext(context.Context) DaemonSetUpdateStrategyPatchOutput
+}
+
+type DaemonSetUpdateStrategyPatchArgs struct {
+	// Rolling update config params. Present only if type = "RollingUpdate".
+	RollingUpdate RollingUpdateDaemonSetPtrInput `pulumi:"rollingUpdate"`
+	// Type of daemon set update. Can be "RollingUpdate" or "OnDelete". Default is OnDelete.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (DaemonSetUpdateStrategyPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaemonSetUpdateStrategyPatch)(nil)).Elem()
+}
+
+func (i DaemonSetUpdateStrategyPatchArgs) ToDaemonSetUpdateStrategyPatchOutput() DaemonSetUpdateStrategyPatchOutput {
+	return i.ToDaemonSetUpdateStrategyPatchOutputWithContext(context.Background())
+}
+
+func (i DaemonSetUpdateStrategyPatchArgs) ToDaemonSetUpdateStrategyPatchOutputWithContext(ctx context.Context) DaemonSetUpdateStrategyPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaemonSetUpdateStrategyPatchOutput)
+}
+
+type DaemonSetUpdateStrategyPatchOutput struct{ *pulumi.OutputState }
+
+func (DaemonSetUpdateStrategyPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaemonSetUpdateStrategyPatch)(nil)).Elem()
+}
+
+func (o DaemonSetUpdateStrategyPatchOutput) ToDaemonSetUpdateStrategyPatchOutput() DaemonSetUpdateStrategyPatchOutput {
+	return o
+}
+
+func (o DaemonSetUpdateStrategyPatchOutput) ToDaemonSetUpdateStrategyPatchOutputWithContext(ctx context.Context) DaemonSetUpdateStrategyPatchOutput {
+	return o
+}
+
+// Rolling update config params. Present only if type = "RollingUpdate".
+func (o DaemonSetUpdateStrategyPatchOutput) RollingUpdate() RollingUpdateDaemonSetPtrOutput {
+	return o.ApplyT(func(v DaemonSetUpdateStrategyPatch) *RollingUpdateDaemonSet { return v.RollingUpdate }).(RollingUpdateDaemonSetPtrOutput)
+}
+
+// Type of daemon set update. Can be "RollingUpdate" or "OnDelete". Default is OnDelete.
+func (o DaemonSetUpdateStrategyPatchOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaemonSetUpdateStrategyPatch) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // Deployment enables declarative updates for Pods and ReplicaSets.
@@ -1730,6 +2389,106 @@ func (o DeploymentConditionArrayOutput) Index(i pulumi.IntInput) DeploymentCondi
 	}).(DeploymentConditionOutput)
 }
 
+// DeploymentCondition describes the state of a deployment at a certain point.
+type DeploymentConditionPatch struct {
+	// Last time the condition transitioned from one status to another.
+	LastTransitionTime *string `pulumi:"lastTransitionTime"`
+	// The last time this condition was updated.
+	LastUpdateTime *string `pulumi:"lastUpdateTime"`
+	// A human readable message indicating details about the transition.
+	Message *string `pulumi:"message"`
+	// The reason for the condition's last transition.
+	Reason *string `pulumi:"reason"`
+	// Status of the condition, one of True, False, Unknown.
+	Status *string `pulumi:"status"`
+	// Type of deployment condition.
+	Type *string `pulumi:"type"`
+}
+
+// DeploymentConditionPatchInput is an input type that accepts DeploymentConditionPatchArgs and DeploymentConditionPatchOutput values.
+// You can construct a concrete instance of `DeploymentConditionPatchInput` via:
+//
+//          DeploymentConditionPatchArgs{...}
+type DeploymentConditionPatchInput interface {
+	pulumi.Input
+
+	ToDeploymentConditionPatchOutput() DeploymentConditionPatchOutput
+	ToDeploymentConditionPatchOutputWithContext(context.Context) DeploymentConditionPatchOutput
+}
+
+// DeploymentCondition describes the state of a deployment at a certain point.
+type DeploymentConditionPatchArgs struct {
+	// Last time the condition transitioned from one status to another.
+	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
+	// The last time this condition was updated.
+	LastUpdateTime pulumi.StringPtrInput `pulumi:"lastUpdateTime"`
+	// A human readable message indicating details about the transition.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// The reason for the condition's last transition.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// Status of the condition, one of True, False, Unknown.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Type of deployment condition.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (DeploymentConditionPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentConditionPatch)(nil)).Elem()
+}
+
+func (i DeploymentConditionPatchArgs) ToDeploymentConditionPatchOutput() DeploymentConditionPatchOutput {
+	return i.ToDeploymentConditionPatchOutputWithContext(context.Background())
+}
+
+func (i DeploymentConditionPatchArgs) ToDeploymentConditionPatchOutputWithContext(ctx context.Context) DeploymentConditionPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConditionPatchOutput)
+}
+
+// DeploymentCondition describes the state of a deployment at a certain point.
+type DeploymentConditionPatchOutput struct{ *pulumi.OutputState }
+
+func (DeploymentConditionPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentConditionPatch)(nil)).Elem()
+}
+
+func (o DeploymentConditionPatchOutput) ToDeploymentConditionPatchOutput() DeploymentConditionPatchOutput {
+	return o
+}
+
+func (o DeploymentConditionPatchOutput) ToDeploymentConditionPatchOutputWithContext(ctx context.Context) DeploymentConditionPatchOutput {
+	return o
+}
+
+// Last time the condition transitioned from one status to another.
+func (o DeploymentConditionPatchOutput) LastTransitionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentConditionPatch) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
+}
+
+// The last time this condition was updated.
+func (o DeploymentConditionPatchOutput) LastUpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentConditionPatch) *string { return v.LastUpdateTime }).(pulumi.StringPtrOutput)
+}
+
+// A human readable message indicating details about the transition.
+func (o DeploymentConditionPatchOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentConditionPatch) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// The reason for the condition's last transition.
+func (o DeploymentConditionPatchOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentConditionPatch) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+// Status of the condition, one of True, False, Unknown.
+func (o DeploymentConditionPatchOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentConditionPatch) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Type of deployment condition.
+func (o DeploymentConditionPatchOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentConditionPatch) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
 // DeploymentList is a list of Deployments.
 type DeploymentListType struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -1810,6 +2569,163 @@ func (o DeploymentListTypeOutput) Kind() pulumi.StringPtrOutput {
 // Standard list metadata.
 func (o DeploymentListTypeOutput) Metadata() metav1.ListMetaPtrOutput {
 	return o.ApplyT(func(v DeploymentListType) *metav1.ListMeta { return v.Metadata }).(metav1.ListMetaPtrOutput)
+}
+
+// Deployment enables declarative updates for Pods and ReplicaSets.
+//
+// This resource waits until its status is ready before registering success
+// for create/update, and populating output properties from the current state of the resource.
+// The following conditions are used to determine whether the resource creation has
+// succeeded or failed:
+//
+// 1. The Deployment has begun to be updated by the Deployment controller. If the current
+//    generation of the Deployment is > 1, then this means that the current generation must
+//    be different from the generation reported by the last outputs.
+// 2. There exists a ReplicaSet whose revision is equal to the current revision of the
+//    Deployment.
+// 3. The Deployment's '.status.conditions' has a status of type 'Available' whose 'status'
+//    member is set to 'True'.
+// 4. If the Deployment has generation > 1, then '.status.conditions' has a status of type
+//    'Progressing', whose 'status' member is set to 'True', and whose 'reason' is
+//    'NewReplicaSetAvailable'. For generation <= 1, this status field does not exist,
+//    because it doesn't do a rollout (i.e., it simply creates the Deployment and
+//    corresponding ReplicaSet), and therefore there is no rollout to mark as 'Progressing'.
+//
+// If the Deployment has not reached a Ready state after 10 minutes, it will
+// time out and mark the resource update as Failed. You can override the default timeout value
+// by setting the 'customTimeouts' option on the resource.
+type DeploymentPatchType struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind *string `pulumi:"kind"`
+	// Standard object metadata.
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	// Specification of the desired behavior of the Deployment.
+	Spec *DeploymentSpec `pulumi:"spec"`
+	// Most recently observed status of the Deployment.
+	Status *DeploymentStatus `pulumi:"status"`
+}
+
+// DeploymentPatchTypeInput is an input type that accepts DeploymentPatchTypeArgs and DeploymentPatchTypeOutput values.
+// You can construct a concrete instance of `DeploymentPatchTypeInput` via:
+//
+//          DeploymentPatchTypeArgs{...}
+type DeploymentPatchTypeInput interface {
+	pulumi.Input
+
+	ToDeploymentPatchTypeOutput() DeploymentPatchTypeOutput
+	ToDeploymentPatchTypeOutputWithContext(context.Context) DeploymentPatchTypeOutput
+}
+
+// Deployment enables declarative updates for Pods and ReplicaSets.
+//
+// This resource waits until its status is ready before registering success
+// for create/update, and populating output properties from the current state of the resource.
+// The following conditions are used to determine whether the resource creation has
+// succeeded or failed:
+//
+// 1. The Deployment has begun to be updated by the Deployment controller. If the current
+//    generation of the Deployment is > 1, then this means that the current generation must
+//    be different from the generation reported by the last outputs.
+// 2. There exists a ReplicaSet whose revision is equal to the current revision of the
+//    Deployment.
+// 3. The Deployment's '.status.conditions' has a status of type 'Available' whose 'status'
+//    member is set to 'True'.
+// 4. If the Deployment has generation > 1, then '.status.conditions' has a status of type
+//    'Progressing', whose 'status' member is set to 'True', and whose 'reason' is
+//    'NewReplicaSetAvailable'. For generation <= 1, this status field does not exist,
+//    because it doesn't do a rollout (i.e., it simply creates the Deployment and
+//    corresponding ReplicaSet), and therefore there is no rollout to mark as 'Progressing'.
+//
+// If the Deployment has not reached a Ready state after 10 minutes, it will
+// time out and mark the resource update as Failed. You can override the default timeout value
+// by setting the 'customTimeouts' option on the resource.
+type DeploymentPatchTypeArgs struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Standard object metadata.
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	// Specification of the desired behavior of the Deployment.
+	Spec DeploymentSpecPtrInput `pulumi:"spec"`
+	// Most recently observed status of the Deployment.
+	Status DeploymentStatusPtrInput `pulumi:"status"`
+}
+
+func (DeploymentPatchTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentPatchType)(nil)).Elem()
+}
+
+func (i DeploymentPatchTypeArgs) ToDeploymentPatchTypeOutput() DeploymentPatchTypeOutput {
+	return i.ToDeploymentPatchTypeOutputWithContext(context.Background())
+}
+
+func (i DeploymentPatchTypeArgs) ToDeploymentPatchTypeOutputWithContext(ctx context.Context) DeploymentPatchTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentPatchTypeOutput)
+}
+
+// Deployment enables declarative updates for Pods and ReplicaSets.
+//
+// This resource waits until its status is ready before registering success
+// for create/update, and populating output properties from the current state of the resource.
+// The following conditions are used to determine whether the resource creation has
+// succeeded or failed:
+//
+// 1. The Deployment has begun to be updated by the Deployment controller. If the current
+//    generation of the Deployment is > 1, then this means that the current generation must
+//    be different from the generation reported by the last outputs.
+// 2. There exists a ReplicaSet whose revision is equal to the current revision of the
+//    Deployment.
+// 3. The Deployment's '.status.conditions' has a status of type 'Available' whose 'status'
+//    member is set to 'True'.
+// 4. If the Deployment has generation > 1, then '.status.conditions' has a status of type
+//    'Progressing', whose 'status' member is set to 'True', and whose 'reason' is
+//    'NewReplicaSetAvailable'. For generation <= 1, this status field does not exist,
+//    because it doesn't do a rollout (i.e., it simply creates the Deployment and
+//    corresponding ReplicaSet), and therefore there is no rollout to mark as 'Progressing'.
+//
+// If the Deployment has not reached a Ready state after 10 minutes, it will
+// time out and mark the resource update as Failed. You can override the default timeout value
+// by setting the 'customTimeouts' option on the resource.
+type DeploymentPatchTypeOutput struct{ *pulumi.OutputState }
+
+func (DeploymentPatchTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentPatchType)(nil)).Elem()
+}
+
+func (o DeploymentPatchTypeOutput) ToDeploymentPatchTypeOutput() DeploymentPatchTypeOutput {
+	return o
+}
+
+func (o DeploymentPatchTypeOutput) ToDeploymentPatchTypeOutputWithContext(ctx context.Context) DeploymentPatchTypeOutput {
+	return o
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o DeploymentPatchTypeOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentPatchType) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o DeploymentPatchTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentPatchType) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Standard object metadata.
+func (o DeploymentPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v DeploymentPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+// Specification of the desired behavior of the Deployment.
+func (o DeploymentPatchTypeOutput) Spec() DeploymentSpecPtrOutput {
+	return o.ApplyT(func(v DeploymentPatchType) *DeploymentSpec { return v.Spec }).(DeploymentSpecPtrOutput)
+}
+
+// Most recently observed status of the Deployment.
+func (o DeploymentPatchTypeOutput) Status() DeploymentStatusPtrOutput {
+	return o.ApplyT(func(v DeploymentPatchType) *DeploymentStatus { return v.Status }).(DeploymentStatusPtrOutput)
 }
 
 // DEPRECATED. DeploymentRollback stores the information required to rollback a deployment.
@@ -1901,6 +2817,97 @@ func (o DeploymentRollbackOutput) RollbackTo() RollbackConfigOutput {
 // The annotations to be updated to a deployment
 func (o DeploymentRollbackOutput) UpdatedAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DeploymentRollback) map[string]string { return v.UpdatedAnnotations }).(pulumi.StringMapOutput)
+}
+
+// DEPRECATED. DeploymentRollback stores the information required to rollback a deployment.
+type DeploymentRollbackPatch struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind *string `pulumi:"kind"`
+	// Required: This must match the Name of a deployment.
+	Name *string `pulumi:"name"`
+	// The config of this deployment rollback.
+	RollbackTo *RollbackConfig `pulumi:"rollbackTo"`
+	// The annotations to be updated to a deployment
+	UpdatedAnnotations map[string]string `pulumi:"updatedAnnotations"`
+}
+
+// DeploymentRollbackPatchInput is an input type that accepts DeploymentRollbackPatchArgs and DeploymentRollbackPatchOutput values.
+// You can construct a concrete instance of `DeploymentRollbackPatchInput` via:
+//
+//          DeploymentRollbackPatchArgs{...}
+type DeploymentRollbackPatchInput interface {
+	pulumi.Input
+
+	ToDeploymentRollbackPatchOutput() DeploymentRollbackPatchOutput
+	ToDeploymentRollbackPatchOutputWithContext(context.Context) DeploymentRollbackPatchOutput
+}
+
+// DEPRECATED. DeploymentRollback stores the information required to rollback a deployment.
+type DeploymentRollbackPatchArgs struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Required: This must match the Name of a deployment.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The config of this deployment rollback.
+	RollbackTo RollbackConfigPtrInput `pulumi:"rollbackTo"`
+	// The annotations to be updated to a deployment
+	UpdatedAnnotations pulumi.StringMapInput `pulumi:"updatedAnnotations"`
+}
+
+func (DeploymentRollbackPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentRollbackPatch)(nil)).Elem()
+}
+
+func (i DeploymentRollbackPatchArgs) ToDeploymentRollbackPatchOutput() DeploymentRollbackPatchOutput {
+	return i.ToDeploymentRollbackPatchOutputWithContext(context.Background())
+}
+
+func (i DeploymentRollbackPatchArgs) ToDeploymentRollbackPatchOutputWithContext(ctx context.Context) DeploymentRollbackPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentRollbackPatchOutput)
+}
+
+// DEPRECATED. DeploymentRollback stores the information required to rollback a deployment.
+type DeploymentRollbackPatchOutput struct{ *pulumi.OutputState }
+
+func (DeploymentRollbackPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentRollbackPatch)(nil)).Elem()
+}
+
+func (o DeploymentRollbackPatchOutput) ToDeploymentRollbackPatchOutput() DeploymentRollbackPatchOutput {
+	return o
+}
+
+func (o DeploymentRollbackPatchOutput) ToDeploymentRollbackPatchOutputWithContext(ctx context.Context) DeploymentRollbackPatchOutput {
+	return o
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o DeploymentRollbackPatchOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentRollbackPatch) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o DeploymentRollbackPatchOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentRollbackPatch) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Required: This must match the Name of a deployment.
+func (o DeploymentRollbackPatchOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentRollbackPatch) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The config of this deployment rollback.
+func (o DeploymentRollbackPatchOutput) RollbackTo() RollbackConfigPtrOutput {
+	return o.ApplyT(func(v DeploymentRollbackPatch) *RollbackConfig { return v.RollbackTo }).(RollbackConfigPtrOutput)
+}
+
+// The annotations to be updated to a deployment
+func (o DeploymentRollbackPatchOutput) UpdatedAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeploymentRollbackPatch) map[string]string { return v.UpdatedAnnotations }).(pulumi.StringMapOutput)
 }
 
 // DeploymentSpec is the specification of the desired behavior of the Deployment.
@@ -2195,6 +3202,133 @@ func (o DeploymentSpecPtrOutput) Template() corev1.PodTemplateSpecPtrOutput {
 	}).(corev1.PodTemplateSpecPtrOutput)
 }
 
+// DeploymentSpec is the specification of the desired behavior of the Deployment.
+type DeploymentSpecPatch struct {
+	// Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)
+	MinReadySeconds *int `pulumi:"minReadySeconds"`
+	// Indicates that the deployment is paused and will not be processed by the deployment controller.
+	Paused *bool `pulumi:"paused"`
+	// The maximum time in seconds for a deployment to make progress before it is considered to be failed. The deployment controller will continue to process failed deployments and a condition with a ProgressDeadlineExceeded reason will be surfaced in the deployment status. Note that progress will not be estimated during the time a deployment is paused. This is set to the max value of int32 (i.e. 2147483647) by default, which means "no deadline".
+	ProgressDeadlineSeconds *int `pulumi:"progressDeadlineSeconds"`
+	// Number of desired pods. This is a pointer to distinguish between explicit zero and not specified. Defaults to 1.
+	Replicas *int `pulumi:"replicas"`
+	// The number of old ReplicaSets to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. This is set to the max value of int32 (i.e. 2147483647) by default, which means "retaining all old RelicaSets".
+	RevisionHistoryLimit *int `pulumi:"revisionHistoryLimit"`
+	// DEPRECATED. The config this deployment is rolling back to. Will be cleared after rollback is done.
+	RollbackTo *RollbackConfig `pulumi:"rollbackTo"`
+	// Label selector for pods. Existing ReplicaSets whose pods are selected by this will be the ones affected by this deployment.
+	Selector *metav1.LabelSelector `pulumi:"selector"`
+	// The deployment strategy to use to replace existing pods with new ones.
+	Strategy *DeploymentStrategy `pulumi:"strategy"`
+	// Template describes the pods that will be created.
+	Template *corev1.PodTemplateSpec `pulumi:"template"`
+}
+
+// DeploymentSpecPatchInput is an input type that accepts DeploymentSpecPatchArgs and DeploymentSpecPatchOutput values.
+// You can construct a concrete instance of `DeploymentSpecPatchInput` via:
+//
+//          DeploymentSpecPatchArgs{...}
+type DeploymentSpecPatchInput interface {
+	pulumi.Input
+
+	ToDeploymentSpecPatchOutput() DeploymentSpecPatchOutput
+	ToDeploymentSpecPatchOutputWithContext(context.Context) DeploymentSpecPatchOutput
+}
+
+// DeploymentSpec is the specification of the desired behavior of the Deployment.
+type DeploymentSpecPatchArgs struct {
+	// Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)
+	MinReadySeconds pulumi.IntPtrInput `pulumi:"minReadySeconds"`
+	// Indicates that the deployment is paused and will not be processed by the deployment controller.
+	Paused pulumi.BoolPtrInput `pulumi:"paused"`
+	// The maximum time in seconds for a deployment to make progress before it is considered to be failed. The deployment controller will continue to process failed deployments and a condition with a ProgressDeadlineExceeded reason will be surfaced in the deployment status. Note that progress will not be estimated during the time a deployment is paused. This is set to the max value of int32 (i.e. 2147483647) by default, which means "no deadline".
+	ProgressDeadlineSeconds pulumi.IntPtrInput `pulumi:"progressDeadlineSeconds"`
+	// Number of desired pods. This is a pointer to distinguish between explicit zero and not specified. Defaults to 1.
+	Replicas pulumi.IntPtrInput `pulumi:"replicas"`
+	// The number of old ReplicaSets to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. This is set to the max value of int32 (i.e. 2147483647) by default, which means "retaining all old RelicaSets".
+	RevisionHistoryLimit pulumi.IntPtrInput `pulumi:"revisionHistoryLimit"`
+	// DEPRECATED. The config this deployment is rolling back to. Will be cleared after rollback is done.
+	RollbackTo RollbackConfigPtrInput `pulumi:"rollbackTo"`
+	// Label selector for pods. Existing ReplicaSets whose pods are selected by this will be the ones affected by this deployment.
+	Selector metav1.LabelSelectorPtrInput `pulumi:"selector"`
+	// The deployment strategy to use to replace existing pods with new ones.
+	Strategy DeploymentStrategyPtrInput `pulumi:"strategy"`
+	// Template describes the pods that will be created.
+	Template corev1.PodTemplateSpecPtrInput `pulumi:"template"`
+}
+
+func (DeploymentSpecPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentSpecPatch)(nil)).Elem()
+}
+
+func (i DeploymentSpecPatchArgs) ToDeploymentSpecPatchOutput() DeploymentSpecPatchOutput {
+	return i.ToDeploymentSpecPatchOutputWithContext(context.Background())
+}
+
+func (i DeploymentSpecPatchArgs) ToDeploymentSpecPatchOutputWithContext(ctx context.Context) DeploymentSpecPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentSpecPatchOutput)
+}
+
+// DeploymentSpec is the specification of the desired behavior of the Deployment.
+type DeploymentSpecPatchOutput struct{ *pulumi.OutputState }
+
+func (DeploymentSpecPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentSpecPatch)(nil)).Elem()
+}
+
+func (o DeploymentSpecPatchOutput) ToDeploymentSpecPatchOutput() DeploymentSpecPatchOutput {
+	return o
+}
+
+func (o DeploymentSpecPatchOutput) ToDeploymentSpecPatchOutputWithContext(ctx context.Context) DeploymentSpecPatchOutput {
+	return o
+}
+
+// Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)
+func (o DeploymentSpecPatchOutput) MinReadySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentSpecPatch) *int { return v.MinReadySeconds }).(pulumi.IntPtrOutput)
+}
+
+// Indicates that the deployment is paused and will not be processed by the deployment controller.
+func (o DeploymentSpecPatchOutput) Paused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeploymentSpecPatch) *bool { return v.Paused }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum time in seconds for a deployment to make progress before it is considered to be failed. The deployment controller will continue to process failed deployments and a condition with a ProgressDeadlineExceeded reason will be surfaced in the deployment status. Note that progress will not be estimated during the time a deployment is paused. This is set to the max value of int32 (i.e. 2147483647) by default, which means "no deadline".
+func (o DeploymentSpecPatchOutput) ProgressDeadlineSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentSpecPatch) *int { return v.ProgressDeadlineSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Number of desired pods. This is a pointer to distinguish between explicit zero and not specified. Defaults to 1.
+func (o DeploymentSpecPatchOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentSpecPatch) *int { return v.Replicas }).(pulumi.IntPtrOutput)
+}
+
+// The number of old ReplicaSets to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. This is set to the max value of int32 (i.e. 2147483647) by default, which means "retaining all old RelicaSets".
+func (o DeploymentSpecPatchOutput) RevisionHistoryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentSpecPatch) *int { return v.RevisionHistoryLimit }).(pulumi.IntPtrOutput)
+}
+
+// DEPRECATED. The config this deployment is rolling back to. Will be cleared after rollback is done.
+func (o DeploymentSpecPatchOutput) RollbackTo() RollbackConfigPtrOutput {
+	return o.ApplyT(func(v DeploymentSpecPatch) *RollbackConfig { return v.RollbackTo }).(RollbackConfigPtrOutput)
+}
+
+// Label selector for pods. Existing ReplicaSets whose pods are selected by this will be the ones affected by this deployment.
+func (o DeploymentSpecPatchOutput) Selector() metav1.LabelSelectorPtrOutput {
+	return o.ApplyT(func(v DeploymentSpecPatch) *metav1.LabelSelector { return v.Selector }).(metav1.LabelSelectorPtrOutput)
+}
+
+// The deployment strategy to use to replace existing pods with new ones.
+func (o DeploymentSpecPatchOutput) Strategy() DeploymentStrategyPtrOutput {
+	return o.ApplyT(func(v DeploymentSpecPatch) *DeploymentStrategy { return v.Strategy }).(DeploymentStrategyPtrOutput)
+}
+
+// Template describes the pods that will be created.
+func (o DeploymentSpecPatchOutput) Template() corev1.PodTemplateSpecPtrOutput {
+	return o.ApplyT(func(v DeploymentSpecPatch) *corev1.PodTemplateSpec { return v.Template }).(corev1.PodTemplateSpecPtrOutput)
+}
+
 // DeploymentStatus is the most recently observed status of the Deployment.
 type DeploymentStatus struct {
 	// Total number of available pods (ready for at least minReadySeconds) targeted by this deployment.
@@ -2468,6 +3602,124 @@ func (o DeploymentStatusPtrOutput) UpdatedReplicas() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// DeploymentStatus is the most recently observed status of the Deployment.
+type DeploymentStatusPatch struct {
+	// Total number of available pods (ready for at least minReadySeconds) targeted by this deployment.
+	AvailableReplicas *int `pulumi:"availableReplicas"`
+	// Count of hash collisions for the Deployment. The Deployment controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ReplicaSet.
+	CollisionCount *int `pulumi:"collisionCount"`
+	// Represents the latest available observations of a deployment's current state.
+	Conditions []DeploymentCondition `pulumi:"conditions"`
+	// The generation observed by the deployment controller.
+	ObservedGeneration *int `pulumi:"observedGeneration"`
+	// Total number of ready pods targeted by this deployment.
+	ReadyReplicas *int `pulumi:"readyReplicas"`
+	// Total number of non-terminated pods targeted by this deployment (their labels match the selector).
+	Replicas *int `pulumi:"replicas"`
+	// Total number of unavailable pods targeted by this deployment. This is the total number of pods that are still required for the deployment to have 100% available capacity. They may either be pods that are running but not yet available or pods that still have not been created.
+	UnavailableReplicas *int `pulumi:"unavailableReplicas"`
+	// Total number of non-terminated pods targeted by this deployment that have the desired template spec.
+	UpdatedReplicas *int `pulumi:"updatedReplicas"`
+}
+
+// DeploymentStatusPatchInput is an input type that accepts DeploymentStatusPatchArgs and DeploymentStatusPatchOutput values.
+// You can construct a concrete instance of `DeploymentStatusPatchInput` via:
+//
+//          DeploymentStatusPatchArgs{...}
+type DeploymentStatusPatchInput interface {
+	pulumi.Input
+
+	ToDeploymentStatusPatchOutput() DeploymentStatusPatchOutput
+	ToDeploymentStatusPatchOutputWithContext(context.Context) DeploymentStatusPatchOutput
+}
+
+// DeploymentStatus is the most recently observed status of the Deployment.
+type DeploymentStatusPatchArgs struct {
+	// Total number of available pods (ready for at least minReadySeconds) targeted by this deployment.
+	AvailableReplicas pulumi.IntPtrInput `pulumi:"availableReplicas"`
+	// Count of hash collisions for the Deployment. The Deployment controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ReplicaSet.
+	CollisionCount pulumi.IntPtrInput `pulumi:"collisionCount"`
+	// Represents the latest available observations of a deployment's current state.
+	Conditions DeploymentConditionArrayInput `pulumi:"conditions"`
+	// The generation observed by the deployment controller.
+	ObservedGeneration pulumi.IntPtrInput `pulumi:"observedGeneration"`
+	// Total number of ready pods targeted by this deployment.
+	ReadyReplicas pulumi.IntPtrInput `pulumi:"readyReplicas"`
+	// Total number of non-terminated pods targeted by this deployment (their labels match the selector).
+	Replicas pulumi.IntPtrInput `pulumi:"replicas"`
+	// Total number of unavailable pods targeted by this deployment. This is the total number of pods that are still required for the deployment to have 100% available capacity. They may either be pods that are running but not yet available or pods that still have not been created.
+	UnavailableReplicas pulumi.IntPtrInput `pulumi:"unavailableReplicas"`
+	// Total number of non-terminated pods targeted by this deployment that have the desired template spec.
+	UpdatedReplicas pulumi.IntPtrInput `pulumi:"updatedReplicas"`
+}
+
+func (DeploymentStatusPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStatusPatch)(nil)).Elem()
+}
+
+func (i DeploymentStatusPatchArgs) ToDeploymentStatusPatchOutput() DeploymentStatusPatchOutput {
+	return i.ToDeploymentStatusPatchOutputWithContext(context.Background())
+}
+
+func (i DeploymentStatusPatchArgs) ToDeploymentStatusPatchOutputWithContext(ctx context.Context) DeploymentStatusPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStatusPatchOutput)
+}
+
+// DeploymentStatus is the most recently observed status of the Deployment.
+type DeploymentStatusPatchOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStatusPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStatusPatch)(nil)).Elem()
+}
+
+func (o DeploymentStatusPatchOutput) ToDeploymentStatusPatchOutput() DeploymentStatusPatchOutput {
+	return o
+}
+
+func (o DeploymentStatusPatchOutput) ToDeploymentStatusPatchOutputWithContext(ctx context.Context) DeploymentStatusPatchOutput {
+	return o
+}
+
+// Total number of available pods (ready for at least minReadySeconds) targeted by this deployment.
+func (o DeploymentStatusPatchOutput) AvailableReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentStatusPatch) *int { return v.AvailableReplicas }).(pulumi.IntPtrOutput)
+}
+
+// Count of hash collisions for the Deployment. The Deployment controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ReplicaSet.
+func (o DeploymentStatusPatchOutput) CollisionCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentStatusPatch) *int { return v.CollisionCount }).(pulumi.IntPtrOutput)
+}
+
+// Represents the latest available observations of a deployment's current state.
+func (o DeploymentStatusPatchOutput) Conditions() DeploymentConditionArrayOutput {
+	return o.ApplyT(func(v DeploymentStatusPatch) []DeploymentCondition { return v.Conditions }).(DeploymentConditionArrayOutput)
+}
+
+// The generation observed by the deployment controller.
+func (o DeploymentStatusPatchOutput) ObservedGeneration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentStatusPatch) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
+}
+
+// Total number of ready pods targeted by this deployment.
+func (o DeploymentStatusPatchOutput) ReadyReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentStatusPatch) *int { return v.ReadyReplicas }).(pulumi.IntPtrOutput)
+}
+
+// Total number of non-terminated pods targeted by this deployment (their labels match the selector).
+func (o DeploymentStatusPatchOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentStatusPatch) *int { return v.Replicas }).(pulumi.IntPtrOutput)
+}
+
+// Total number of unavailable pods targeted by this deployment. This is the total number of pods that are still required for the deployment to have 100% available capacity. They may either be pods that are running but not yet available or pods that still have not been created.
+func (o DeploymentStatusPatchOutput) UnavailableReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentStatusPatch) *int { return v.UnavailableReplicas }).(pulumi.IntPtrOutput)
+}
+
+// Total number of non-terminated pods targeted by this deployment that have the desired template spec.
+func (o DeploymentStatusPatchOutput) UpdatedReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentStatusPatch) *int { return v.UpdatedReplicas }).(pulumi.IntPtrOutput)
+}
+
 // DeploymentStrategy describes how to replace existing pods with new ones.
 type DeploymentStrategy struct {
 	// Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.
@@ -2625,6 +3877,70 @@ func (o DeploymentStrategyPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+// DeploymentStrategy describes how to replace existing pods with new ones.
+type DeploymentStrategyPatch struct {
+	// Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.
+	RollingUpdate *RollingUpdateDeployment `pulumi:"rollingUpdate"`
+	// Type of deployment. Can be "Recreate" or "RollingUpdate". Default is RollingUpdate.
+	Type *string `pulumi:"type"`
+}
+
+// DeploymentStrategyPatchInput is an input type that accepts DeploymentStrategyPatchArgs and DeploymentStrategyPatchOutput values.
+// You can construct a concrete instance of `DeploymentStrategyPatchInput` via:
+//
+//          DeploymentStrategyPatchArgs{...}
+type DeploymentStrategyPatchInput interface {
+	pulumi.Input
+
+	ToDeploymentStrategyPatchOutput() DeploymentStrategyPatchOutput
+	ToDeploymentStrategyPatchOutputWithContext(context.Context) DeploymentStrategyPatchOutput
+}
+
+// DeploymentStrategy describes how to replace existing pods with new ones.
+type DeploymentStrategyPatchArgs struct {
+	// Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.
+	RollingUpdate RollingUpdateDeploymentPtrInput `pulumi:"rollingUpdate"`
+	// Type of deployment. Can be "Recreate" or "RollingUpdate". Default is RollingUpdate.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (DeploymentStrategyPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStrategyPatch)(nil)).Elem()
+}
+
+func (i DeploymentStrategyPatchArgs) ToDeploymentStrategyPatchOutput() DeploymentStrategyPatchOutput {
+	return i.ToDeploymentStrategyPatchOutputWithContext(context.Background())
+}
+
+func (i DeploymentStrategyPatchArgs) ToDeploymentStrategyPatchOutputWithContext(ctx context.Context) DeploymentStrategyPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStrategyPatchOutput)
+}
+
+// DeploymentStrategy describes how to replace existing pods with new ones.
+type DeploymentStrategyPatchOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStrategyPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStrategyPatch)(nil)).Elem()
+}
+
+func (o DeploymentStrategyPatchOutput) ToDeploymentStrategyPatchOutput() DeploymentStrategyPatchOutput {
+	return o
+}
+
+func (o DeploymentStrategyPatchOutput) ToDeploymentStrategyPatchOutputWithContext(ctx context.Context) DeploymentStrategyPatchOutput {
+	return o
+}
+
+// Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.
+func (o DeploymentStrategyPatchOutput) RollingUpdate() RollingUpdateDeploymentPtrOutput {
+	return o.ApplyT(func(v DeploymentStrategyPatch) *RollingUpdateDeployment { return v.RollingUpdate }).(RollingUpdateDeploymentPtrOutput)
+}
+
+// Type of deployment. Can be "Recreate" or "RollingUpdate". Default is RollingUpdate.
+func (o DeploymentStrategyPatchOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStrategyPatch) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // FSGroupStrategyOptions defines the strategy type and options used to create the strategy. Deprecated: use FSGroupStrategyOptions from policy API Group instead.
@@ -2786,6 +4102,70 @@ func (o FSGroupStrategyOptionsPtrOutput) Rule() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// FSGroupStrategyOptions defines the strategy type and options used to create the strategy. Deprecated: use FSGroupStrategyOptions from policy API Group instead.
+type FSGroupStrategyOptionsPatch struct {
+	// ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
+	Ranges []IDRange `pulumi:"ranges"`
+	// rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
+	Rule *string `pulumi:"rule"`
+}
+
+// FSGroupStrategyOptionsPatchInput is an input type that accepts FSGroupStrategyOptionsPatchArgs and FSGroupStrategyOptionsPatchOutput values.
+// You can construct a concrete instance of `FSGroupStrategyOptionsPatchInput` via:
+//
+//          FSGroupStrategyOptionsPatchArgs{...}
+type FSGroupStrategyOptionsPatchInput interface {
+	pulumi.Input
+
+	ToFSGroupStrategyOptionsPatchOutput() FSGroupStrategyOptionsPatchOutput
+	ToFSGroupStrategyOptionsPatchOutputWithContext(context.Context) FSGroupStrategyOptionsPatchOutput
+}
+
+// FSGroupStrategyOptions defines the strategy type and options used to create the strategy. Deprecated: use FSGroupStrategyOptions from policy API Group instead.
+type FSGroupStrategyOptionsPatchArgs struct {
+	// ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
+	Ranges IDRangeArrayInput `pulumi:"ranges"`
+	// rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
+	Rule pulumi.StringPtrInput `pulumi:"rule"`
+}
+
+func (FSGroupStrategyOptionsPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FSGroupStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (i FSGroupStrategyOptionsPatchArgs) ToFSGroupStrategyOptionsPatchOutput() FSGroupStrategyOptionsPatchOutput {
+	return i.ToFSGroupStrategyOptionsPatchOutputWithContext(context.Background())
+}
+
+func (i FSGroupStrategyOptionsPatchArgs) ToFSGroupStrategyOptionsPatchOutputWithContext(ctx context.Context) FSGroupStrategyOptionsPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FSGroupStrategyOptionsPatchOutput)
+}
+
+// FSGroupStrategyOptions defines the strategy type and options used to create the strategy. Deprecated: use FSGroupStrategyOptions from policy API Group instead.
+type FSGroupStrategyOptionsPatchOutput struct{ *pulumi.OutputState }
+
+func (FSGroupStrategyOptionsPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FSGroupStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (o FSGroupStrategyOptionsPatchOutput) ToFSGroupStrategyOptionsPatchOutput() FSGroupStrategyOptionsPatchOutput {
+	return o
+}
+
+func (o FSGroupStrategyOptionsPatchOutput) ToFSGroupStrategyOptionsPatchOutputWithContext(ctx context.Context) FSGroupStrategyOptionsPatchOutput {
+	return o
+}
+
+// ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
+func (o FSGroupStrategyOptionsPatchOutput) Ranges() IDRangeArrayOutput {
+	return o.ApplyT(func(v FSGroupStrategyOptionsPatch) []IDRange { return v.Ranges }).(IDRangeArrayOutput)
+}
+
+// rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
+func (o FSGroupStrategyOptionsPatchOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FSGroupStrategyOptionsPatch) *string { return v.Rule }).(pulumi.StringPtrOutput)
+}
+
 // HTTPIngressPath associates a path regex with a backend. Incoming urls matching the path are forwarded to the backend.
 type HTTPIngressPath struct {
 	// Backend defines the referenced service endpoint to which the traffic will be forwarded to.
@@ -2934,6 +4314,109 @@ func (o HTTPIngressPathArrayOutput) Index(i pulumi.IntInput) HTTPIngressPathOutp
 	}).(HTTPIngressPathOutput)
 }
 
+// HTTPIngressPath associates a path regex with a backend. Incoming urls matching the path are forwarded to the backend.
+type HTTPIngressPathPatch struct {
+	// Backend defines the referenced service endpoint to which the traffic will be forwarded to.
+	Backend *IngressBackend `pulumi:"backend"`
+	// Path is an extended POSIX regex as defined by IEEE Std 1003.1, (i.e this follows the egrep/unix syntax, not the perl syntax) matched against the path of an incoming request. Currently it can contain characters disallowed from the conventional "path" part of a URL as defined by RFC 3986. Paths must begin with a '/'. If unspecified, the path defaults to a catch all sending traffic to the backend.
+	Path *string `pulumi:"path"`
+	// PathType determines the interpretation of the Path matching. PathType can be one of the following values: * Exact: Matches the URL path exactly. * Prefix: Matches based on a URL path prefix split by '/'. Matching is
+	//   done on a path element by element basis. A path element refers is the
+	//   list of labels in the path split by the '/' separator. A request is a
+	//   match for path p if every p is an element-wise prefix of p of the
+	//   request path. Note that if the last element of the path is a substring
+	//   of the last element in request path, it is not a match (e.g. /foo/bar
+	//   matches /foo/bar/baz, but does not match /foo/barbaz).
+	// * ImplementationSpecific: Interpretation of the Path matching is up to
+	//   the IngressClass. Implementations can treat this as a separate PathType
+	//   or treat it identically to Prefix or Exact path types.
+	//   Implementations are required to support all path types. Defaults to ImplementationSpecific.
+	PathType *string `pulumi:"pathType"`
+}
+
+// HTTPIngressPathPatchInput is an input type that accepts HTTPIngressPathPatchArgs and HTTPIngressPathPatchOutput values.
+// You can construct a concrete instance of `HTTPIngressPathPatchInput` via:
+//
+//          HTTPIngressPathPatchArgs{...}
+type HTTPIngressPathPatchInput interface {
+	pulumi.Input
+
+	ToHTTPIngressPathPatchOutput() HTTPIngressPathPatchOutput
+	ToHTTPIngressPathPatchOutputWithContext(context.Context) HTTPIngressPathPatchOutput
+}
+
+// HTTPIngressPath associates a path regex with a backend. Incoming urls matching the path are forwarded to the backend.
+type HTTPIngressPathPatchArgs struct {
+	// Backend defines the referenced service endpoint to which the traffic will be forwarded to.
+	Backend IngressBackendPtrInput `pulumi:"backend"`
+	// Path is an extended POSIX regex as defined by IEEE Std 1003.1, (i.e this follows the egrep/unix syntax, not the perl syntax) matched against the path of an incoming request. Currently it can contain characters disallowed from the conventional "path" part of a URL as defined by RFC 3986. Paths must begin with a '/'. If unspecified, the path defaults to a catch all sending traffic to the backend.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// PathType determines the interpretation of the Path matching. PathType can be one of the following values: * Exact: Matches the URL path exactly. * Prefix: Matches based on a URL path prefix split by '/'. Matching is
+	//   done on a path element by element basis. A path element refers is the
+	//   list of labels in the path split by the '/' separator. A request is a
+	//   match for path p if every p is an element-wise prefix of p of the
+	//   request path. Note that if the last element of the path is a substring
+	//   of the last element in request path, it is not a match (e.g. /foo/bar
+	//   matches /foo/bar/baz, but does not match /foo/barbaz).
+	// * ImplementationSpecific: Interpretation of the Path matching is up to
+	//   the IngressClass. Implementations can treat this as a separate PathType
+	//   or treat it identically to Prefix or Exact path types.
+	//   Implementations are required to support all path types. Defaults to ImplementationSpecific.
+	PathType pulumi.StringPtrInput `pulumi:"pathType"`
+}
+
+func (HTTPIngressPathPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HTTPIngressPathPatch)(nil)).Elem()
+}
+
+func (i HTTPIngressPathPatchArgs) ToHTTPIngressPathPatchOutput() HTTPIngressPathPatchOutput {
+	return i.ToHTTPIngressPathPatchOutputWithContext(context.Background())
+}
+
+func (i HTTPIngressPathPatchArgs) ToHTTPIngressPathPatchOutputWithContext(ctx context.Context) HTTPIngressPathPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HTTPIngressPathPatchOutput)
+}
+
+// HTTPIngressPath associates a path regex with a backend. Incoming urls matching the path are forwarded to the backend.
+type HTTPIngressPathPatchOutput struct{ *pulumi.OutputState }
+
+func (HTTPIngressPathPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HTTPIngressPathPatch)(nil)).Elem()
+}
+
+func (o HTTPIngressPathPatchOutput) ToHTTPIngressPathPatchOutput() HTTPIngressPathPatchOutput {
+	return o
+}
+
+func (o HTTPIngressPathPatchOutput) ToHTTPIngressPathPatchOutputWithContext(ctx context.Context) HTTPIngressPathPatchOutput {
+	return o
+}
+
+// Backend defines the referenced service endpoint to which the traffic will be forwarded to.
+func (o HTTPIngressPathPatchOutput) Backend() IngressBackendPtrOutput {
+	return o.ApplyT(func(v HTTPIngressPathPatch) *IngressBackend { return v.Backend }).(IngressBackendPtrOutput)
+}
+
+// Path is an extended POSIX regex as defined by IEEE Std 1003.1, (i.e this follows the egrep/unix syntax, not the perl syntax) matched against the path of an incoming request. Currently it can contain characters disallowed from the conventional "path" part of a URL as defined by RFC 3986. Paths must begin with a '/'. If unspecified, the path defaults to a catch all sending traffic to the backend.
+func (o HTTPIngressPathPatchOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HTTPIngressPathPatch) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// PathType determines the interpretation of the Path matching. PathType can be one of the following values: * Exact: Matches the URL path exactly. * Prefix: Matches based on a URL path prefix split by '/'. Matching is
+//   done on a path element by element basis. A path element refers is the
+//   list of labels in the path split by the '/' separator. A request is a
+//   match for path p if every p is an element-wise prefix of p of the
+//   request path. Note that if the last element of the path is a substring
+//   of the last element in request path, it is not a match (e.g. /foo/bar
+//   matches /foo/bar/baz, but does not match /foo/barbaz).
+// * ImplementationSpecific: Interpretation of the Path matching is up to
+//   the IngressClass. Implementations can treat this as a separate PathType
+//   or treat it identically to Prefix or Exact path types.
+//   Implementations are required to support all path types. Defaults to ImplementationSpecific.
+func (o HTTPIngressPathPatchOutput) PathType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HTTPIngressPathPatch) *string { return v.PathType }).(pulumi.StringPtrOutput)
+}
+
 // HTTPIngressRuleValue is a list of http selectors pointing to backends. In the example: http://<host>/<path>?<searchpart> -> backend where where parts of the url correspond to RFC 3986, this resource will be used to match against everything after the last '/' and before the first '?' or '#'.
 type HTTPIngressRuleValue struct {
 	// A collection of paths that map requests to backends.
@@ -3074,6 +4557,61 @@ func (o HTTPIngressRuleValuePtrOutput) Paths() HTTPIngressPathArrayOutput {
 	}).(HTTPIngressPathArrayOutput)
 }
 
+// HTTPIngressRuleValue is a list of http selectors pointing to backends. In the example: http://<host>/<path>?<searchpart> -> backend where where parts of the url correspond to RFC 3986, this resource will be used to match against everything after the last '/' and before the first '?' or '#'.
+type HTTPIngressRuleValuePatch struct {
+	// A collection of paths that map requests to backends.
+	Paths []HTTPIngressPath `pulumi:"paths"`
+}
+
+// HTTPIngressRuleValuePatchInput is an input type that accepts HTTPIngressRuleValuePatchArgs and HTTPIngressRuleValuePatchOutput values.
+// You can construct a concrete instance of `HTTPIngressRuleValuePatchInput` via:
+//
+//          HTTPIngressRuleValuePatchArgs{...}
+type HTTPIngressRuleValuePatchInput interface {
+	pulumi.Input
+
+	ToHTTPIngressRuleValuePatchOutput() HTTPIngressRuleValuePatchOutput
+	ToHTTPIngressRuleValuePatchOutputWithContext(context.Context) HTTPIngressRuleValuePatchOutput
+}
+
+// HTTPIngressRuleValue is a list of http selectors pointing to backends. In the example: http://<host>/<path>?<searchpart> -> backend where where parts of the url correspond to RFC 3986, this resource will be used to match against everything after the last '/' and before the first '?' or '#'.
+type HTTPIngressRuleValuePatchArgs struct {
+	// A collection of paths that map requests to backends.
+	Paths HTTPIngressPathArrayInput `pulumi:"paths"`
+}
+
+func (HTTPIngressRuleValuePatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HTTPIngressRuleValuePatch)(nil)).Elem()
+}
+
+func (i HTTPIngressRuleValuePatchArgs) ToHTTPIngressRuleValuePatchOutput() HTTPIngressRuleValuePatchOutput {
+	return i.ToHTTPIngressRuleValuePatchOutputWithContext(context.Background())
+}
+
+func (i HTTPIngressRuleValuePatchArgs) ToHTTPIngressRuleValuePatchOutputWithContext(ctx context.Context) HTTPIngressRuleValuePatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HTTPIngressRuleValuePatchOutput)
+}
+
+// HTTPIngressRuleValue is a list of http selectors pointing to backends. In the example: http://<host>/<path>?<searchpart> -> backend where where parts of the url correspond to RFC 3986, this resource will be used to match against everything after the last '/' and before the first '?' or '#'.
+type HTTPIngressRuleValuePatchOutput struct{ *pulumi.OutputState }
+
+func (HTTPIngressRuleValuePatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HTTPIngressRuleValuePatch)(nil)).Elem()
+}
+
+func (o HTTPIngressRuleValuePatchOutput) ToHTTPIngressRuleValuePatchOutput() HTTPIngressRuleValuePatchOutput {
+	return o
+}
+
+func (o HTTPIngressRuleValuePatchOutput) ToHTTPIngressRuleValuePatchOutputWithContext(ctx context.Context) HTTPIngressRuleValuePatchOutput {
+	return o
+}
+
+// A collection of paths that map requests to backends.
+func (o HTTPIngressRuleValuePatchOutput) Paths() HTTPIngressPathArrayOutput {
+	return o.ApplyT(func(v HTTPIngressRuleValuePatch) []HTTPIngressPath { return v.Paths }).(HTTPIngressPathArrayOutput)
+}
+
 // HostPortRange defines a range of host ports that will be enabled by a policy for pods to use.  It requires both the start and end to be defined. Deprecated: use HostPortRange from policy API Group instead.
 type HostPortRange struct {
 	// max is the end of the range, inclusive.
@@ -3183,6 +4721,70 @@ func (o HostPortRangeArrayOutput) Index(i pulumi.IntInput) HostPortRangeOutput {
 	}).(HostPortRangeOutput)
 }
 
+// HostPortRange defines a range of host ports that will be enabled by a policy for pods to use.  It requires both the start and end to be defined. Deprecated: use HostPortRange from policy API Group instead.
+type HostPortRangePatch struct {
+	// max is the end of the range, inclusive.
+	Max *int `pulumi:"max"`
+	// min is the start of the range, inclusive.
+	Min *int `pulumi:"min"`
+}
+
+// HostPortRangePatchInput is an input type that accepts HostPortRangePatchArgs and HostPortRangePatchOutput values.
+// You can construct a concrete instance of `HostPortRangePatchInput` via:
+//
+//          HostPortRangePatchArgs{...}
+type HostPortRangePatchInput interface {
+	pulumi.Input
+
+	ToHostPortRangePatchOutput() HostPortRangePatchOutput
+	ToHostPortRangePatchOutputWithContext(context.Context) HostPortRangePatchOutput
+}
+
+// HostPortRange defines a range of host ports that will be enabled by a policy for pods to use.  It requires both the start and end to be defined. Deprecated: use HostPortRange from policy API Group instead.
+type HostPortRangePatchArgs struct {
+	// max is the end of the range, inclusive.
+	Max pulumi.IntPtrInput `pulumi:"max"`
+	// min is the start of the range, inclusive.
+	Min pulumi.IntPtrInput `pulumi:"min"`
+}
+
+func (HostPortRangePatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostPortRangePatch)(nil)).Elem()
+}
+
+func (i HostPortRangePatchArgs) ToHostPortRangePatchOutput() HostPortRangePatchOutput {
+	return i.ToHostPortRangePatchOutputWithContext(context.Background())
+}
+
+func (i HostPortRangePatchArgs) ToHostPortRangePatchOutputWithContext(ctx context.Context) HostPortRangePatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostPortRangePatchOutput)
+}
+
+// HostPortRange defines a range of host ports that will be enabled by a policy for pods to use.  It requires both the start and end to be defined. Deprecated: use HostPortRange from policy API Group instead.
+type HostPortRangePatchOutput struct{ *pulumi.OutputState }
+
+func (HostPortRangePatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostPortRangePatch)(nil)).Elem()
+}
+
+func (o HostPortRangePatchOutput) ToHostPortRangePatchOutput() HostPortRangePatchOutput {
+	return o
+}
+
+func (o HostPortRangePatchOutput) ToHostPortRangePatchOutputWithContext(ctx context.Context) HostPortRangePatchOutput {
+	return o
+}
+
+// max is the end of the range, inclusive.
+func (o HostPortRangePatchOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HostPortRangePatch) *int { return v.Max }).(pulumi.IntPtrOutput)
+}
+
+// min is the start of the range, inclusive.
+func (o HostPortRangePatchOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HostPortRangePatch) *int { return v.Min }).(pulumi.IntPtrOutput)
+}
+
 // IDRange provides a min/max of an allowed range of IDs. Deprecated: use IDRange from policy API Group instead.
 type IDRange struct {
 	// max is the end of the range, inclusive.
@@ -3290,6 +4892,70 @@ func (o IDRangeArrayOutput) Index(i pulumi.IntInput) IDRangeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IDRange {
 		return vs[0].([]IDRange)[vs[1].(int)]
 	}).(IDRangeOutput)
+}
+
+// IDRange provides a min/max of an allowed range of IDs. Deprecated: use IDRange from policy API Group instead.
+type IDRangePatch struct {
+	// max is the end of the range, inclusive.
+	Max *int `pulumi:"max"`
+	// min is the start of the range, inclusive.
+	Min *int `pulumi:"min"`
+}
+
+// IDRangePatchInput is an input type that accepts IDRangePatchArgs and IDRangePatchOutput values.
+// You can construct a concrete instance of `IDRangePatchInput` via:
+//
+//          IDRangePatchArgs{...}
+type IDRangePatchInput interface {
+	pulumi.Input
+
+	ToIDRangePatchOutput() IDRangePatchOutput
+	ToIDRangePatchOutputWithContext(context.Context) IDRangePatchOutput
+}
+
+// IDRange provides a min/max of an allowed range of IDs. Deprecated: use IDRange from policy API Group instead.
+type IDRangePatchArgs struct {
+	// max is the end of the range, inclusive.
+	Max pulumi.IntPtrInput `pulumi:"max"`
+	// min is the start of the range, inclusive.
+	Min pulumi.IntPtrInput `pulumi:"min"`
+}
+
+func (IDRangePatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IDRangePatch)(nil)).Elem()
+}
+
+func (i IDRangePatchArgs) ToIDRangePatchOutput() IDRangePatchOutput {
+	return i.ToIDRangePatchOutputWithContext(context.Background())
+}
+
+func (i IDRangePatchArgs) ToIDRangePatchOutputWithContext(ctx context.Context) IDRangePatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IDRangePatchOutput)
+}
+
+// IDRange provides a min/max of an allowed range of IDs. Deprecated: use IDRange from policy API Group instead.
+type IDRangePatchOutput struct{ *pulumi.OutputState }
+
+func (IDRangePatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IDRangePatch)(nil)).Elem()
+}
+
+func (o IDRangePatchOutput) ToIDRangePatchOutput() IDRangePatchOutput {
+	return o
+}
+
+func (o IDRangePatchOutput) ToIDRangePatchOutputWithContext(ctx context.Context) IDRangePatchOutput {
+	return o
+}
+
+// max is the end of the range, inclusive.
+func (o IDRangePatchOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IDRangePatch) *int { return v.Max }).(pulumi.IntPtrOutput)
+}
+
+// min is the start of the range, inclusive.
+func (o IDRangePatchOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IDRangePatch) *int { return v.Min }).(pulumi.IntPtrOutput)
 }
 
 // DEPRECATED 1.9 - This group version of IPBlock is deprecated by networking/v1/IPBlock. IPBlock describes a particular CIDR (Ex. "192.168.1.1/24") that is allowed to the pods matched by a NetworkPolicySpec's podSelector. The except entry describes CIDRs that should not be included within this rule.
@@ -3449,6 +5115,70 @@ func (o IPBlockPtrOutput) Except() pulumi.StringArrayOutput {
 		}
 		return v.Except
 	}).(pulumi.StringArrayOutput)
+}
+
+// DEPRECATED 1.9 - This group version of IPBlock is deprecated by networking/v1/IPBlock. IPBlock describes a particular CIDR (Ex. "192.168.1.1/24") that is allowed to the pods matched by a NetworkPolicySpec's podSelector. The except entry describes CIDRs that should not be included within this rule.
+type IPBlockPatch struct {
+	// CIDR is a string representing the IP Block Valid examples are "192.168.1.1/24"
+	Cidr *string `pulumi:"cidr"`
+	// Except is a slice of CIDRs that should not be included within an IP Block Valid examples are "192.168.1.1/24" Except values will be rejected if they are outside the CIDR range
+	Except []string `pulumi:"except"`
+}
+
+// IPBlockPatchInput is an input type that accepts IPBlockPatchArgs and IPBlockPatchOutput values.
+// You can construct a concrete instance of `IPBlockPatchInput` via:
+//
+//          IPBlockPatchArgs{...}
+type IPBlockPatchInput interface {
+	pulumi.Input
+
+	ToIPBlockPatchOutput() IPBlockPatchOutput
+	ToIPBlockPatchOutputWithContext(context.Context) IPBlockPatchOutput
+}
+
+// DEPRECATED 1.9 - This group version of IPBlock is deprecated by networking/v1/IPBlock. IPBlock describes a particular CIDR (Ex. "192.168.1.1/24") that is allowed to the pods matched by a NetworkPolicySpec's podSelector. The except entry describes CIDRs that should not be included within this rule.
+type IPBlockPatchArgs struct {
+	// CIDR is a string representing the IP Block Valid examples are "192.168.1.1/24"
+	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
+	// Except is a slice of CIDRs that should not be included within an IP Block Valid examples are "192.168.1.1/24" Except values will be rejected if they are outside the CIDR range
+	Except pulumi.StringArrayInput `pulumi:"except"`
+}
+
+func (IPBlockPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IPBlockPatch)(nil)).Elem()
+}
+
+func (i IPBlockPatchArgs) ToIPBlockPatchOutput() IPBlockPatchOutput {
+	return i.ToIPBlockPatchOutputWithContext(context.Background())
+}
+
+func (i IPBlockPatchArgs) ToIPBlockPatchOutputWithContext(ctx context.Context) IPBlockPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IPBlockPatchOutput)
+}
+
+// DEPRECATED 1.9 - This group version of IPBlock is deprecated by networking/v1/IPBlock. IPBlock describes a particular CIDR (Ex. "192.168.1.1/24") that is allowed to the pods matched by a NetworkPolicySpec's podSelector. The except entry describes CIDRs that should not be included within this rule.
+type IPBlockPatchOutput struct{ *pulumi.OutputState }
+
+func (IPBlockPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IPBlockPatch)(nil)).Elem()
+}
+
+func (o IPBlockPatchOutput) ToIPBlockPatchOutput() IPBlockPatchOutput {
+	return o
+}
+
+func (o IPBlockPatchOutput) ToIPBlockPatchOutputWithContext(ctx context.Context) IPBlockPatchOutput {
+	return o
+}
+
+// CIDR is a string representing the IP Block Valid examples are "192.168.1.1/24"
+func (o IPBlockPatchOutput) Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IPBlockPatch) *string { return v.Cidr }).(pulumi.StringPtrOutput)
+}
+
+// Except is a slice of CIDRs that should not be included within an IP Block Valid examples are "192.168.1.1/24" Except values will be rejected if they are outside the CIDR range
+func (o IPBlockPatchOutput) Except() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IPBlockPatch) []string { return v.Except }).(pulumi.StringArrayOutput)
 }
 
 // Ingress is a collection of rules that allow inbound connections to reach the endpoints defined by a backend. An Ingress can be configured to give services externally-reachable urls, load balance traffic, terminate SSL, offer name based virtual hosting etc.
@@ -3807,6 +5537,79 @@ func (o IngressBackendPtrOutput) ServicePort() pulumi.AnyOutput {
 	}).(pulumi.AnyOutput)
 }
 
+// IngressBackend describes all endpoints for a given service and port.
+type IngressBackendPatch struct {
+	// Resource is an ObjectRef to another Kubernetes resource in the namespace of the Ingress object. If resource is specified, serviceName and servicePort must not be specified.
+	Resource *corev1.TypedLocalObjectReference `pulumi:"resource"`
+	// Specifies the name of the referenced service.
+	ServiceName *string `pulumi:"serviceName"`
+	// Specifies the port of the referenced service.
+	ServicePort interface{} `pulumi:"servicePort"`
+}
+
+// IngressBackendPatchInput is an input type that accepts IngressBackendPatchArgs and IngressBackendPatchOutput values.
+// You can construct a concrete instance of `IngressBackendPatchInput` via:
+//
+//          IngressBackendPatchArgs{...}
+type IngressBackendPatchInput interface {
+	pulumi.Input
+
+	ToIngressBackendPatchOutput() IngressBackendPatchOutput
+	ToIngressBackendPatchOutputWithContext(context.Context) IngressBackendPatchOutput
+}
+
+// IngressBackend describes all endpoints for a given service and port.
+type IngressBackendPatchArgs struct {
+	// Resource is an ObjectRef to another Kubernetes resource in the namespace of the Ingress object. If resource is specified, serviceName and servicePort must not be specified.
+	Resource corev1.TypedLocalObjectReferencePtrInput `pulumi:"resource"`
+	// Specifies the name of the referenced service.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+	// Specifies the port of the referenced service.
+	ServicePort pulumi.Input `pulumi:"servicePort"`
+}
+
+func (IngressBackendPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressBackendPatch)(nil)).Elem()
+}
+
+func (i IngressBackendPatchArgs) ToIngressBackendPatchOutput() IngressBackendPatchOutput {
+	return i.ToIngressBackendPatchOutputWithContext(context.Background())
+}
+
+func (i IngressBackendPatchArgs) ToIngressBackendPatchOutputWithContext(ctx context.Context) IngressBackendPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IngressBackendPatchOutput)
+}
+
+// IngressBackend describes all endpoints for a given service and port.
+type IngressBackendPatchOutput struct{ *pulumi.OutputState }
+
+func (IngressBackendPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressBackendPatch)(nil)).Elem()
+}
+
+func (o IngressBackendPatchOutput) ToIngressBackendPatchOutput() IngressBackendPatchOutput {
+	return o
+}
+
+func (o IngressBackendPatchOutput) ToIngressBackendPatchOutputWithContext(ctx context.Context) IngressBackendPatchOutput {
+	return o
+}
+
+// Resource is an ObjectRef to another Kubernetes resource in the namespace of the Ingress object. If resource is specified, serviceName and servicePort must not be specified.
+func (o IngressBackendPatchOutput) Resource() corev1.TypedLocalObjectReferencePtrOutput {
+	return o.ApplyT(func(v IngressBackendPatch) *corev1.TypedLocalObjectReference { return v.Resource }).(corev1.TypedLocalObjectReferencePtrOutput)
+}
+
+// Specifies the name of the referenced service.
+func (o IngressBackendPatchOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IngressBackendPatch) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the port of the referenced service.
+func (o IngressBackendPatchOutput) ServicePort() pulumi.AnyOutput {
+	return o.ApplyT(func(v IngressBackendPatch) interface{} { return v.ServicePort }).(pulumi.AnyOutput)
+}
+
 // IngressList is a collection of Ingress.
 type IngressListType struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -3887,6 +5690,139 @@ func (o IngressListTypeOutput) Kind() pulumi.StringPtrOutput {
 // Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 func (o IngressListTypeOutput) Metadata() metav1.ListMetaPtrOutput {
 	return o.ApplyT(func(v IngressListType) *metav1.ListMeta { return v.Metadata }).(metav1.ListMetaPtrOutput)
+}
+
+// Ingress is a collection of rules that allow inbound connections to reach the endpoints defined by a backend. An Ingress can be configured to give services externally-reachable urls, load balance traffic, terminate SSL, offer name based virtual hosting etc.
+//
+// This resource waits until its status is ready before registering success
+// for create/update, and populating output properties from the current state of the resource.
+// The following conditions are used to determine whether the resource creation has
+// succeeded or failed:
+//
+// 1.  Ingress object exists.
+// 2.  Endpoint objects exist with matching names for each Ingress path (except when Service
+//     type is ExternalName).
+// 3.  Ingress entry exists for '.status.loadBalancer.ingress'.
+//
+// If the Ingress has not reached a Ready state after 10 minutes, it will
+// time out and mark the resource update as Failed. You can override the default timeout value
+// by setting the 'customTimeouts' option on the resource.
+type IngressPatchType struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind *string `pulumi:"kind"`
+	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	// Spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Spec *IngressSpec `pulumi:"spec"`
+	// Status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Status *IngressStatus `pulumi:"status"`
+}
+
+// IngressPatchTypeInput is an input type that accepts IngressPatchTypeArgs and IngressPatchTypeOutput values.
+// You can construct a concrete instance of `IngressPatchTypeInput` via:
+//
+//          IngressPatchTypeArgs{...}
+type IngressPatchTypeInput interface {
+	pulumi.Input
+
+	ToIngressPatchTypeOutput() IngressPatchTypeOutput
+	ToIngressPatchTypeOutputWithContext(context.Context) IngressPatchTypeOutput
+}
+
+// Ingress is a collection of rules that allow inbound connections to reach the endpoints defined by a backend. An Ingress can be configured to give services externally-reachable urls, load balance traffic, terminate SSL, offer name based virtual hosting etc.
+//
+// This resource waits until its status is ready before registering success
+// for create/update, and populating output properties from the current state of the resource.
+// The following conditions are used to determine whether the resource creation has
+// succeeded or failed:
+//
+// 1.  Ingress object exists.
+// 2.  Endpoint objects exist with matching names for each Ingress path (except when Service
+//     type is ExternalName).
+// 3.  Ingress entry exists for '.status.loadBalancer.ingress'.
+//
+// If the Ingress has not reached a Ready state after 10 minutes, it will
+// time out and mark the resource update as Failed. You can override the default timeout value
+// by setting the 'customTimeouts' option on the resource.
+type IngressPatchTypeArgs struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	// Spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Spec IngressSpecPtrInput `pulumi:"spec"`
+	// Status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Status IngressStatusPtrInput `pulumi:"status"`
+}
+
+func (IngressPatchTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressPatchType)(nil)).Elem()
+}
+
+func (i IngressPatchTypeArgs) ToIngressPatchTypeOutput() IngressPatchTypeOutput {
+	return i.ToIngressPatchTypeOutputWithContext(context.Background())
+}
+
+func (i IngressPatchTypeArgs) ToIngressPatchTypeOutputWithContext(ctx context.Context) IngressPatchTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IngressPatchTypeOutput)
+}
+
+// Ingress is a collection of rules that allow inbound connections to reach the endpoints defined by a backend. An Ingress can be configured to give services externally-reachable urls, load balance traffic, terminate SSL, offer name based virtual hosting etc.
+//
+// This resource waits until its status is ready before registering success
+// for create/update, and populating output properties from the current state of the resource.
+// The following conditions are used to determine whether the resource creation has
+// succeeded or failed:
+//
+// 1.  Ingress object exists.
+// 2.  Endpoint objects exist with matching names for each Ingress path (except when Service
+//     type is ExternalName).
+// 3.  Ingress entry exists for '.status.loadBalancer.ingress'.
+//
+// If the Ingress has not reached a Ready state after 10 minutes, it will
+// time out and mark the resource update as Failed. You can override the default timeout value
+// by setting the 'customTimeouts' option on the resource.
+type IngressPatchTypeOutput struct{ *pulumi.OutputState }
+
+func (IngressPatchTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressPatchType)(nil)).Elem()
+}
+
+func (o IngressPatchTypeOutput) ToIngressPatchTypeOutput() IngressPatchTypeOutput {
+	return o
+}
+
+func (o IngressPatchTypeOutput) ToIngressPatchTypeOutputWithContext(ctx context.Context) IngressPatchTypeOutput {
+	return o
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o IngressPatchTypeOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IngressPatchType) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o IngressPatchTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IngressPatchType) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+func (o IngressPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v IngressPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+// Spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+func (o IngressPatchTypeOutput) Spec() IngressSpecPtrOutput {
+	return o.ApplyT(func(v IngressPatchType) *IngressSpec { return v.Spec }).(IngressSpecPtrOutput)
+}
+
+// Status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+func (o IngressPatchTypeOutput) Status() IngressStatusPtrOutput {
+	return o.ApplyT(func(v IngressPatchType) *IngressStatus { return v.Status }).(IngressStatusPtrOutput)
 }
 
 // IngressRule represents the rules mapping the paths under a specified host to the related backend services. Incoming requests are first evaluated for a host match, then routed to the backend associated with the matching IngressRuleValue.
@@ -4008,6 +5944,82 @@ func (o IngressRuleArrayOutput) Index(i pulumi.IntInput) IngressRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IngressRule {
 		return vs[0].([]IngressRule)[vs[1].(int)]
 	}).(IngressRuleOutput)
+}
+
+// IngressRule represents the rules mapping the paths under a specified host to the related backend services. Incoming requests are first evaluated for a host match, then routed to the backend associated with the matching IngressRuleValue.
+type IngressRulePatch struct {
+	// Host is the fully qualified domain name of a network host, as defined by RFC 3986. Note the following deviations from the "host" part of the URI as defined in the RFC: 1. IPs are not allowed. Currently an IngressRuleValue can only apply to the
+	// 	  IP in the Spec of the parent Ingress.
+	// 2. The `:` delimiter is not respected because ports are not allowed.
+	// 	  Currently the port of an Ingress is implicitly :80 for http and
+	// 	  :443 for https.
+	// Both these may change in the future. Incoming requests are matched against the host before the IngressRuleValue. If the host is unspecified, the Ingress routes all traffic based on the specified IngressRuleValue.
+	Host *string               `pulumi:"host"`
+	Http *HTTPIngressRuleValue `pulumi:"http"`
+}
+
+// IngressRulePatchInput is an input type that accepts IngressRulePatchArgs and IngressRulePatchOutput values.
+// You can construct a concrete instance of `IngressRulePatchInput` via:
+//
+//          IngressRulePatchArgs{...}
+type IngressRulePatchInput interface {
+	pulumi.Input
+
+	ToIngressRulePatchOutput() IngressRulePatchOutput
+	ToIngressRulePatchOutputWithContext(context.Context) IngressRulePatchOutput
+}
+
+// IngressRule represents the rules mapping the paths under a specified host to the related backend services. Incoming requests are first evaluated for a host match, then routed to the backend associated with the matching IngressRuleValue.
+type IngressRulePatchArgs struct {
+	// Host is the fully qualified domain name of a network host, as defined by RFC 3986. Note the following deviations from the "host" part of the URI as defined in the RFC: 1. IPs are not allowed. Currently an IngressRuleValue can only apply to the
+	// 	  IP in the Spec of the parent Ingress.
+	// 2. The `:` delimiter is not respected because ports are not allowed.
+	// 	  Currently the port of an Ingress is implicitly :80 for http and
+	// 	  :443 for https.
+	// Both these may change in the future. Incoming requests are matched against the host before the IngressRuleValue. If the host is unspecified, the Ingress routes all traffic based on the specified IngressRuleValue.
+	Host pulumi.StringPtrInput        `pulumi:"host"`
+	Http HTTPIngressRuleValuePtrInput `pulumi:"http"`
+}
+
+func (IngressRulePatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressRulePatch)(nil)).Elem()
+}
+
+func (i IngressRulePatchArgs) ToIngressRulePatchOutput() IngressRulePatchOutput {
+	return i.ToIngressRulePatchOutputWithContext(context.Background())
+}
+
+func (i IngressRulePatchArgs) ToIngressRulePatchOutputWithContext(ctx context.Context) IngressRulePatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IngressRulePatchOutput)
+}
+
+// IngressRule represents the rules mapping the paths under a specified host to the related backend services. Incoming requests are first evaluated for a host match, then routed to the backend associated with the matching IngressRuleValue.
+type IngressRulePatchOutput struct{ *pulumi.OutputState }
+
+func (IngressRulePatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressRulePatch)(nil)).Elem()
+}
+
+func (o IngressRulePatchOutput) ToIngressRulePatchOutput() IngressRulePatchOutput {
+	return o
+}
+
+func (o IngressRulePatchOutput) ToIngressRulePatchOutputWithContext(ctx context.Context) IngressRulePatchOutput {
+	return o
+}
+
+// Host is the fully qualified domain name of a network host, as defined by RFC 3986. Note the following deviations from the "host" part of the URI as defined in the RFC: 1. IPs are not allowed. Currently an IngressRuleValue can only apply to the
+// 	  IP in the Spec of the parent Ingress.
+// 2. The `:` delimiter is not respected because ports are not allowed.
+// 	  Currently the port of an Ingress is implicitly :80 for http and
+// 	  :443 for https.
+// Both these may change in the future. Incoming requests are matched against the host before the IngressRuleValue. If the host is unspecified, the Ingress routes all traffic based on the specified IngressRuleValue.
+func (o IngressRulePatchOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IngressRulePatch) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+func (o IngressRulePatchOutput) Http() HTTPIngressRuleValuePtrOutput {
+	return o.ApplyT(func(v IngressRulePatch) *HTTPIngressRuleValue { return v.Http }).(HTTPIngressRuleValuePtrOutput)
 }
 
 // IngressSpec describes the Ingress the user wishes to exist.
@@ -4207,6 +6219,88 @@ func (o IngressSpecPtrOutput) Tls() IngressTLSArrayOutput {
 	}).(IngressTLSArrayOutput)
 }
 
+// IngressSpec describes the Ingress the user wishes to exist.
+type IngressSpecPatch struct {
+	// A default backend capable of servicing requests that don't match any rule. At least one of 'backend' or 'rules' must be specified. This field is optional to allow the loadbalancer controller or defaulting logic to specify a global default.
+	Backend *IngressBackend `pulumi:"backend"`
+	// IngressClassName is the name of the IngressClass cluster resource. The associated IngressClass defines which controller will implement the resource. This replaces the deprecated `kubernetes.io/ingress.class` annotation. For backwards compatibility, when that annotation is set, it must be given precedence over this field. The controller may emit a warning if the field and annotation have different values. Implementations of this API should ignore Ingresses without a class specified. An IngressClass resource may be marked as default, which can be used to set a default value for this field. For more information, refer to the IngressClass documentation.
+	IngressClassName *string `pulumi:"ingressClassName"`
+	// A list of host rules used to configure the Ingress. If unspecified, or no rule matches, all traffic is sent to the default backend.
+	Rules []IngressRule `pulumi:"rules"`
+	// TLS configuration. Currently the Ingress only supports a single TLS port, 443. If multiple members of this list specify different hosts, they will be multiplexed on the same port according to the hostname specified through the SNI TLS extension, if the ingress controller fulfilling the ingress supports SNI.
+	Tls []IngressTLS `pulumi:"tls"`
+}
+
+// IngressSpecPatchInput is an input type that accepts IngressSpecPatchArgs and IngressSpecPatchOutput values.
+// You can construct a concrete instance of `IngressSpecPatchInput` via:
+//
+//          IngressSpecPatchArgs{...}
+type IngressSpecPatchInput interface {
+	pulumi.Input
+
+	ToIngressSpecPatchOutput() IngressSpecPatchOutput
+	ToIngressSpecPatchOutputWithContext(context.Context) IngressSpecPatchOutput
+}
+
+// IngressSpec describes the Ingress the user wishes to exist.
+type IngressSpecPatchArgs struct {
+	// A default backend capable of servicing requests that don't match any rule. At least one of 'backend' or 'rules' must be specified. This field is optional to allow the loadbalancer controller or defaulting logic to specify a global default.
+	Backend IngressBackendPtrInput `pulumi:"backend"`
+	// IngressClassName is the name of the IngressClass cluster resource. The associated IngressClass defines which controller will implement the resource. This replaces the deprecated `kubernetes.io/ingress.class` annotation. For backwards compatibility, when that annotation is set, it must be given precedence over this field. The controller may emit a warning if the field and annotation have different values. Implementations of this API should ignore Ingresses without a class specified. An IngressClass resource may be marked as default, which can be used to set a default value for this field. For more information, refer to the IngressClass documentation.
+	IngressClassName pulumi.StringPtrInput `pulumi:"ingressClassName"`
+	// A list of host rules used to configure the Ingress. If unspecified, or no rule matches, all traffic is sent to the default backend.
+	Rules IngressRuleArrayInput `pulumi:"rules"`
+	// TLS configuration. Currently the Ingress only supports a single TLS port, 443. If multiple members of this list specify different hosts, they will be multiplexed on the same port according to the hostname specified through the SNI TLS extension, if the ingress controller fulfilling the ingress supports SNI.
+	Tls IngressTLSArrayInput `pulumi:"tls"`
+}
+
+func (IngressSpecPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressSpecPatch)(nil)).Elem()
+}
+
+func (i IngressSpecPatchArgs) ToIngressSpecPatchOutput() IngressSpecPatchOutput {
+	return i.ToIngressSpecPatchOutputWithContext(context.Background())
+}
+
+func (i IngressSpecPatchArgs) ToIngressSpecPatchOutputWithContext(ctx context.Context) IngressSpecPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IngressSpecPatchOutput)
+}
+
+// IngressSpec describes the Ingress the user wishes to exist.
+type IngressSpecPatchOutput struct{ *pulumi.OutputState }
+
+func (IngressSpecPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressSpecPatch)(nil)).Elem()
+}
+
+func (o IngressSpecPatchOutput) ToIngressSpecPatchOutput() IngressSpecPatchOutput {
+	return o
+}
+
+func (o IngressSpecPatchOutput) ToIngressSpecPatchOutputWithContext(ctx context.Context) IngressSpecPatchOutput {
+	return o
+}
+
+// A default backend capable of servicing requests that don't match any rule. At least one of 'backend' or 'rules' must be specified. This field is optional to allow the loadbalancer controller or defaulting logic to specify a global default.
+func (o IngressSpecPatchOutput) Backend() IngressBackendPtrOutput {
+	return o.ApplyT(func(v IngressSpecPatch) *IngressBackend { return v.Backend }).(IngressBackendPtrOutput)
+}
+
+// IngressClassName is the name of the IngressClass cluster resource. The associated IngressClass defines which controller will implement the resource. This replaces the deprecated `kubernetes.io/ingress.class` annotation. For backwards compatibility, when that annotation is set, it must be given precedence over this field. The controller may emit a warning if the field and annotation have different values. Implementations of this API should ignore Ingresses without a class specified. An IngressClass resource may be marked as default, which can be used to set a default value for this field. For more information, refer to the IngressClass documentation.
+func (o IngressSpecPatchOutput) IngressClassName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IngressSpecPatch) *string { return v.IngressClassName }).(pulumi.StringPtrOutput)
+}
+
+// A list of host rules used to configure the Ingress. If unspecified, or no rule matches, all traffic is sent to the default backend.
+func (o IngressSpecPatchOutput) Rules() IngressRuleArrayOutput {
+	return o.ApplyT(func(v IngressSpecPatch) []IngressRule { return v.Rules }).(IngressRuleArrayOutput)
+}
+
+// TLS configuration. Currently the Ingress only supports a single TLS port, 443. If multiple members of this list specify different hosts, they will be multiplexed on the same port according to the hostname specified through the SNI TLS extension, if the ingress controller fulfilling the ingress supports SNI.
+func (o IngressSpecPatchOutput) Tls() IngressTLSArrayOutput {
+	return o.ApplyT(func(v IngressSpecPatch) []IngressTLS { return v.Tls }).(IngressTLSArrayOutput)
+}
+
 // IngressStatus describe the current state of the Ingress.
 type IngressStatus struct {
 	// LoadBalancer contains the current status of the load-balancer.
@@ -4347,6 +6441,61 @@ func (o IngressStatusPtrOutput) LoadBalancer() corev1.LoadBalancerStatusPtrOutpu
 	}).(corev1.LoadBalancerStatusPtrOutput)
 }
 
+// IngressStatus describe the current state of the Ingress.
+type IngressStatusPatch struct {
+	// LoadBalancer contains the current status of the load-balancer.
+	LoadBalancer *corev1.LoadBalancerStatus `pulumi:"loadBalancer"`
+}
+
+// IngressStatusPatchInput is an input type that accepts IngressStatusPatchArgs and IngressStatusPatchOutput values.
+// You can construct a concrete instance of `IngressStatusPatchInput` via:
+//
+//          IngressStatusPatchArgs{...}
+type IngressStatusPatchInput interface {
+	pulumi.Input
+
+	ToIngressStatusPatchOutput() IngressStatusPatchOutput
+	ToIngressStatusPatchOutputWithContext(context.Context) IngressStatusPatchOutput
+}
+
+// IngressStatus describe the current state of the Ingress.
+type IngressStatusPatchArgs struct {
+	// LoadBalancer contains the current status of the load-balancer.
+	LoadBalancer corev1.LoadBalancerStatusPtrInput `pulumi:"loadBalancer"`
+}
+
+func (IngressStatusPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressStatusPatch)(nil)).Elem()
+}
+
+func (i IngressStatusPatchArgs) ToIngressStatusPatchOutput() IngressStatusPatchOutput {
+	return i.ToIngressStatusPatchOutputWithContext(context.Background())
+}
+
+func (i IngressStatusPatchArgs) ToIngressStatusPatchOutputWithContext(ctx context.Context) IngressStatusPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IngressStatusPatchOutput)
+}
+
+// IngressStatus describe the current state of the Ingress.
+type IngressStatusPatchOutput struct{ *pulumi.OutputState }
+
+func (IngressStatusPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressStatusPatch)(nil)).Elem()
+}
+
+func (o IngressStatusPatchOutput) ToIngressStatusPatchOutput() IngressStatusPatchOutput {
+	return o
+}
+
+func (o IngressStatusPatchOutput) ToIngressStatusPatchOutputWithContext(ctx context.Context) IngressStatusPatchOutput {
+	return o
+}
+
+// LoadBalancer contains the current status of the load-balancer.
+func (o IngressStatusPatchOutput) LoadBalancer() corev1.LoadBalancerStatusPtrOutput {
+	return o.ApplyT(func(v IngressStatusPatch) *corev1.LoadBalancerStatus { return v.LoadBalancer }).(corev1.LoadBalancerStatusPtrOutput)
+}
+
 // IngressTLS describes the transport layer security associated with an Ingress.
 type IngressTLS struct {
 	// Hosts are a list of hosts included in the TLS certificate. The values in this list must match the name/s used in the tlsSecret. Defaults to the wildcard host setting for the loadbalancer controller fulfilling this Ingress, if left unspecified.
@@ -4454,6 +6603,70 @@ func (o IngressTLSArrayOutput) Index(i pulumi.IntInput) IngressTLSOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IngressTLS {
 		return vs[0].([]IngressTLS)[vs[1].(int)]
 	}).(IngressTLSOutput)
+}
+
+// IngressTLS describes the transport layer security associated with an Ingress.
+type IngressTLSPatch struct {
+	// Hosts are a list of hosts included in the TLS certificate. The values in this list must match the name/s used in the tlsSecret. Defaults to the wildcard host setting for the loadbalancer controller fulfilling this Ingress, if left unspecified.
+	Hosts []string `pulumi:"hosts"`
+	// SecretName is the name of the secret used to terminate SSL traffic on 443. Field is left optional to allow SSL routing based on SNI hostname alone. If the SNI host in a listener conflicts with the "Host" header field used by an IngressRule, the SNI host is used for termination and value of the Host header is used for routing.
+	SecretName *string `pulumi:"secretName"`
+}
+
+// IngressTLSPatchInput is an input type that accepts IngressTLSPatchArgs and IngressTLSPatchOutput values.
+// You can construct a concrete instance of `IngressTLSPatchInput` via:
+//
+//          IngressTLSPatchArgs{...}
+type IngressTLSPatchInput interface {
+	pulumi.Input
+
+	ToIngressTLSPatchOutput() IngressTLSPatchOutput
+	ToIngressTLSPatchOutputWithContext(context.Context) IngressTLSPatchOutput
+}
+
+// IngressTLS describes the transport layer security associated with an Ingress.
+type IngressTLSPatchArgs struct {
+	// Hosts are a list of hosts included in the TLS certificate. The values in this list must match the name/s used in the tlsSecret. Defaults to the wildcard host setting for the loadbalancer controller fulfilling this Ingress, if left unspecified.
+	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
+	// SecretName is the name of the secret used to terminate SSL traffic on 443. Field is left optional to allow SSL routing based on SNI hostname alone. If the SNI host in a listener conflicts with the "Host" header field used by an IngressRule, the SNI host is used for termination and value of the Host header is used for routing.
+	SecretName pulumi.StringPtrInput `pulumi:"secretName"`
+}
+
+func (IngressTLSPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressTLSPatch)(nil)).Elem()
+}
+
+func (i IngressTLSPatchArgs) ToIngressTLSPatchOutput() IngressTLSPatchOutput {
+	return i.ToIngressTLSPatchOutputWithContext(context.Background())
+}
+
+func (i IngressTLSPatchArgs) ToIngressTLSPatchOutputWithContext(ctx context.Context) IngressTLSPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IngressTLSPatchOutput)
+}
+
+// IngressTLS describes the transport layer security associated with an Ingress.
+type IngressTLSPatchOutput struct{ *pulumi.OutputState }
+
+func (IngressTLSPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngressTLSPatch)(nil)).Elem()
+}
+
+func (o IngressTLSPatchOutput) ToIngressTLSPatchOutput() IngressTLSPatchOutput {
+	return o
+}
+
+func (o IngressTLSPatchOutput) ToIngressTLSPatchOutputWithContext(ctx context.Context) IngressTLSPatchOutput {
+	return o
+}
+
+// Hosts are a list of hosts included in the TLS certificate. The values in this list must match the name/s used in the tlsSecret. Defaults to the wildcard host setting for the loadbalancer controller fulfilling this Ingress, if left unspecified.
+func (o IngressTLSPatchOutput) Hosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IngressTLSPatch) []string { return v.Hosts }).(pulumi.StringArrayOutput)
+}
+
+// SecretName is the name of the secret used to terminate SSL traffic on 443. Field is left optional to allow SSL routing based on SNI hostname alone. If the SNI host in a listener conflicts with the "Host" header field used by an IngressRule, the SNI host is used for termination and value of the Host header is used for routing.
+func (o IngressTLSPatchOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IngressTLSPatch) *string { return v.SecretName }).(pulumi.StringPtrOutput)
 }
 
 // DEPRECATED 1.9 - This group version of NetworkPolicy is deprecated by networking/v1/NetworkPolicy. NetworkPolicy describes what network traffic is allowed for a set of Pods
@@ -4692,6 +6905,70 @@ func (o NetworkPolicyEgressRuleArrayOutput) Index(i pulumi.IntInput) NetworkPoli
 	}).(NetworkPolicyEgressRuleOutput)
 }
 
+// DEPRECATED 1.9 - This group version of NetworkPolicyEgressRule is deprecated by networking/v1/NetworkPolicyEgressRule. NetworkPolicyEgressRule describes a particular set of traffic that is allowed out of pods matched by a NetworkPolicySpec's podSelector. The traffic must match both ports and to. This type is beta-level in 1.8
+type NetworkPolicyEgressRulePatch struct {
+	// List of destination ports for outgoing traffic. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list.
+	Ports []NetworkPolicyPort `pulumi:"ports"`
+	// List of destinations for outgoing traffic of pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all destinations (traffic not restricted by destination). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the to list.
+	To []NetworkPolicyPeer `pulumi:"to"`
+}
+
+// NetworkPolicyEgressRulePatchInput is an input type that accepts NetworkPolicyEgressRulePatchArgs and NetworkPolicyEgressRulePatchOutput values.
+// You can construct a concrete instance of `NetworkPolicyEgressRulePatchInput` via:
+//
+//          NetworkPolicyEgressRulePatchArgs{...}
+type NetworkPolicyEgressRulePatchInput interface {
+	pulumi.Input
+
+	ToNetworkPolicyEgressRulePatchOutput() NetworkPolicyEgressRulePatchOutput
+	ToNetworkPolicyEgressRulePatchOutputWithContext(context.Context) NetworkPolicyEgressRulePatchOutput
+}
+
+// DEPRECATED 1.9 - This group version of NetworkPolicyEgressRule is deprecated by networking/v1/NetworkPolicyEgressRule. NetworkPolicyEgressRule describes a particular set of traffic that is allowed out of pods matched by a NetworkPolicySpec's podSelector. The traffic must match both ports and to. This type is beta-level in 1.8
+type NetworkPolicyEgressRulePatchArgs struct {
+	// List of destination ports for outgoing traffic. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list.
+	Ports NetworkPolicyPortArrayInput `pulumi:"ports"`
+	// List of destinations for outgoing traffic of pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all destinations (traffic not restricted by destination). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the to list.
+	To NetworkPolicyPeerArrayInput `pulumi:"to"`
+}
+
+func (NetworkPolicyEgressRulePatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPolicyEgressRulePatch)(nil)).Elem()
+}
+
+func (i NetworkPolicyEgressRulePatchArgs) ToNetworkPolicyEgressRulePatchOutput() NetworkPolicyEgressRulePatchOutput {
+	return i.ToNetworkPolicyEgressRulePatchOutputWithContext(context.Background())
+}
+
+func (i NetworkPolicyEgressRulePatchArgs) ToNetworkPolicyEgressRulePatchOutputWithContext(ctx context.Context) NetworkPolicyEgressRulePatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPolicyEgressRulePatchOutput)
+}
+
+// DEPRECATED 1.9 - This group version of NetworkPolicyEgressRule is deprecated by networking/v1/NetworkPolicyEgressRule. NetworkPolicyEgressRule describes a particular set of traffic that is allowed out of pods matched by a NetworkPolicySpec's podSelector. The traffic must match both ports and to. This type is beta-level in 1.8
+type NetworkPolicyEgressRulePatchOutput struct{ *pulumi.OutputState }
+
+func (NetworkPolicyEgressRulePatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPolicyEgressRulePatch)(nil)).Elem()
+}
+
+func (o NetworkPolicyEgressRulePatchOutput) ToNetworkPolicyEgressRulePatchOutput() NetworkPolicyEgressRulePatchOutput {
+	return o
+}
+
+func (o NetworkPolicyEgressRulePatchOutput) ToNetworkPolicyEgressRulePatchOutputWithContext(ctx context.Context) NetworkPolicyEgressRulePatchOutput {
+	return o
+}
+
+// List of destination ports for outgoing traffic. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list.
+func (o NetworkPolicyEgressRulePatchOutput) Ports() NetworkPolicyPortArrayOutput {
+	return o.ApplyT(func(v NetworkPolicyEgressRulePatch) []NetworkPolicyPort { return v.Ports }).(NetworkPolicyPortArrayOutput)
+}
+
+// List of destinations for outgoing traffic of pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all destinations (traffic not restricted by destination). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the to list.
+func (o NetworkPolicyEgressRulePatchOutput) To() NetworkPolicyPeerArrayOutput {
+	return o.ApplyT(func(v NetworkPolicyEgressRulePatch) []NetworkPolicyPeer { return v.To }).(NetworkPolicyPeerArrayOutput)
+}
+
 // DEPRECATED 1.9 - This group version of NetworkPolicyIngressRule is deprecated by networking/v1/NetworkPolicyIngressRule. This NetworkPolicyIngressRule matches traffic if and only if the traffic matches both ports AND from.
 type NetworkPolicyIngressRule struct {
 	// List of sources which should be able to access the pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all sources (traffic not restricted by source). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the from list.
@@ -4801,6 +7078,70 @@ func (o NetworkPolicyIngressRuleArrayOutput) Index(i pulumi.IntInput) NetworkPol
 	}).(NetworkPolicyIngressRuleOutput)
 }
 
+// DEPRECATED 1.9 - This group version of NetworkPolicyIngressRule is deprecated by networking/v1/NetworkPolicyIngressRule. This NetworkPolicyIngressRule matches traffic if and only if the traffic matches both ports AND from.
+type NetworkPolicyIngressRulePatch struct {
+	// List of sources which should be able to access the pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all sources (traffic not restricted by source). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the from list.
+	From []NetworkPolicyPeer `pulumi:"from"`
+	// List of ports which should be made accessible on the pods selected for this rule. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list.
+	Ports []NetworkPolicyPort `pulumi:"ports"`
+}
+
+// NetworkPolicyIngressRulePatchInput is an input type that accepts NetworkPolicyIngressRulePatchArgs and NetworkPolicyIngressRulePatchOutput values.
+// You can construct a concrete instance of `NetworkPolicyIngressRulePatchInput` via:
+//
+//          NetworkPolicyIngressRulePatchArgs{...}
+type NetworkPolicyIngressRulePatchInput interface {
+	pulumi.Input
+
+	ToNetworkPolicyIngressRulePatchOutput() NetworkPolicyIngressRulePatchOutput
+	ToNetworkPolicyIngressRulePatchOutputWithContext(context.Context) NetworkPolicyIngressRulePatchOutput
+}
+
+// DEPRECATED 1.9 - This group version of NetworkPolicyIngressRule is deprecated by networking/v1/NetworkPolicyIngressRule. This NetworkPolicyIngressRule matches traffic if and only if the traffic matches both ports AND from.
+type NetworkPolicyIngressRulePatchArgs struct {
+	// List of sources which should be able to access the pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all sources (traffic not restricted by source). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the from list.
+	From NetworkPolicyPeerArrayInput `pulumi:"from"`
+	// List of ports which should be made accessible on the pods selected for this rule. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list.
+	Ports NetworkPolicyPortArrayInput `pulumi:"ports"`
+}
+
+func (NetworkPolicyIngressRulePatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPolicyIngressRulePatch)(nil)).Elem()
+}
+
+func (i NetworkPolicyIngressRulePatchArgs) ToNetworkPolicyIngressRulePatchOutput() NetworkPolicyIngressRulePatchOutput {
+	return i.ToNetworkPolicyIngressRulePatchOutputWithContext(context.Background())
+}
+
+func (i NetworkPolicyIngressRulePatchArgs) ToNetworkPolicyIngressRulePatchOutputWithContext(ctx context.Context) NetworkPolicyIngressRulePatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPolicyIngressRulePatchOutput)
+}
+
+// DEPRECATED 1.9 - This group version of NetworkPolicyIngressRule is deprecated by networking/v1/NetworkPolicyIngressRule. This NetworkPolicyIngressRule matches traffic if and only if the traffic matches both ports AND from.
+type NetworkPolicyIngressRulePatchOutput struct{ *pulumi.OutputState }
+
+func (NetworkPolicyIngressRulePatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPolicyIngressRulePatch)(nil)).Elem()
+}
+
+func (o NetworkPolicyIngressRulePatchOutput) ToNetworkPolicyIngressRulePatchOutput() NetworkPolicyIngressRulePatchOutput {
+	return o
+}
+
+func (o NetworkPolicyIngressRulePatchOutput) ToNetworkPolicyIngressRulePatchOutputWithContext(ctx context.Context) NetworkPolicyIngressRulePatchOutput {
+	return o
+}
+
+// List of sources which should be able to access the pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all sources (traffic not restricted by source). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the from list.
+func (o NetworkPolicyIngressRulePatchOutput) From() NetworkPolicyPeerArrayOutput {
+	return o.ApplyT(func(v NetworkPolicyIngressRulePatch) []NetworkPolicyPeer { return v.From }).(NetworkPolicyPeerArrayOutput)
+}
+
+// List of ports which should be made accessible on the pods selected for this rule. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list.
+func (o NetworkPolicyIngressRulePatchOutput) Ports() NetworkPolicyPortArrayOutput {
+	return o.ApplyT(func(v NetworkPolicyIngressRulePatch) []NetworkPolicyPort { return v.Ports }).(NetworkPolicyPortArrayOutput)
+}
+
 // DEPRECATED 1.9 - This group version of NetworkPolicyList is deprecated by networking/v1/NetworkPolicyList. Network Policy List is a list of NetworkPolicy objects.
 type NetworkPolicyListType struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -4881,6 +7222,88 @@ func (o NetworkPolicyListTypeOutput) Kind() pulumi.StringPtrOutput {
 // Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 func (o NetworkPolicyListTypeOutput) Metadata() metav1.ListMetaPtrOutput {
 	return o.ApplyT(func(v NetworkPolicyListType) *metav1.ListMeta { return v.Metadata }).(metav1.ListMetaPtrOutput)
+}
+
+// DEPRECATED 1.9 - This group version of NetworkPolicy is deprecated by networking/v1/NetworkPolicy. NetworkPolicy describes what network traffic is allowed for a set of Pods
+type NetworkPolicyPatchType struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind *string `pulumi:"kind"`
+	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	// Specification of the desired behavior for this NetworkPolicy.
+	Spec *NetworkPolicySpec `pulumi:"spec"`
+}
+
+// NetworkPolicyPatchTypeInput is an input type that accepts NetworkPolicyPatchTypeArgs and NetworkPolicyPatchTypeOutput values.
+// You can construct a concrete instance of `NetworkPolicyPatchTypeInput` via:
+//
+//          NetworkPolicyPatchTypeArgs{...}
+type NetworkPolicyPatchTypeInput interface {
+	pulumi.Input
+
+	ToNetworkPolicyPatchTypeOutput() NetworkPolicyPatchTypeOutput
+	ToNetworkPolicyPatchTypeOutputWithContext(context.Context) NetworkPolicyPatchTypeOutput
+}
+
+// DEPRECATED 1.9 - This group version of NetworkPolicy is deprecated by networking/v1/NetworkPolicy. NetworkPolicy describes what network traffic is allowed for a set of Pods
+type NetworkPolicyPatchTypeArgs struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	// Specification of the desired behavior for this NetworkPolicy.
+	Spec NetworkPolicySpecPtrInput `pulumi:"spec"`
+}
+
+func (NetworkPolicyPatchTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPolicyPatchType)(nil)).Elem()
+}
+
+func (i NetworkPolicyPatchTypeArgs) ToNetworkPolicyPatchTypeOutput() NetworkPolicyPatchTypeOutput {
+	return i.ToNetworkPolicyPatchTypeOutputWithContext(context.Background())
+}
+
+func (i NetworkPolicyPatchTypeArgs) ToNetworkPolicyPatchTypeOutputWithContext(ctx context.Context) NetworkPolicyPatchTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPolicyPatchTypeOutput)
+}
+
+// DEPRECATED 1.9 - This group version of NetworkPolicy is deprecated by networking/v1/NetworkPolicy. NetworkPolicy describes what network traffic is allowed for a set of Pods
+type NetworkPolicyPatchTypeOutput struct{ *pulumi.OutputState }
+
+func (NetworkPolicyPatchTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPolicyPatchType)(nil)).Elem()
+}
+
+func (o NetworkPolicyPatchTypeOutput) ToNetworkPolicyPatchTypeOutput() NetworkPolicyPatchTypeOutput {
+	return o
+}
+
+func (o NetworkPolicyPatchTypeOutput) ToNetworkPolicyPatchTypeOutputWithContext(ctx context.Context) NetworkPolicyPatchTypeOutput {
+	return o
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o NetworkPolicyPatchTypeOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkPolicyPatchType) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o NetworkPolicyPatchTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkPolicyPatchType) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+func (o NetworkPolicyPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v NetworkPolicyPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+// Specification of the desired behavior for this NetworkPolicy.
+func (o NetworkPolicyPatchTypeOutput) Spec() NetworkPolicySpecPtrOutput {
+	return o.ApplyT(func(v NetworkPolicyPatchType) *NetworkPolicySpec { return v.Spec }).(NetworkPolicySpecPtrOutput)
 }
 
 // DEPRECATED 1.9 - This group version of NetworkPolicyPeer is deprecated by networking/v1/NetworkPolicyPeer.
@@ -5013,6 +7436,91 @@ func (o NetworkPolicyPeerArrayOutput) Index(i pulumi.IntInput) NetworkPolicyPeer
 	}).(NetworkPolicyPeerOutput)
 }
 
+// DEPRECATED 1.9 - This group version of NetworkPolicyPeer is deprecated by networking/v1/NetworkPolicyPeer.
+type NetworkPolicyPeerPatch struct {
+	// IPBlock defines policy on a particular IPBlock. If this field is set then neither of the other fields can be.
+	IpBlock *IPBlock `pulumi:"ipBlock"`
+	// Selects Namespaces using cluster-scoped labels. This field follows standard label selector semantics; if present but empty, it selects all namespaces.
+	//
+	// If PodSelector is also set, then the NetworkPolicyPeer as a whole selects the Pods matching PodSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects all Pods in the Namespaces selected by NamespaceSelector.
+	NamespaceSelector *metav1.LabelSelector `pulumi:"namespaceSelector"`
+	// This is a label selector which selects Pods. This field follows standard label selector semantics; if present but empty, it selects all pods.
+	//
+	// If NamespaceSelector is also set, then the NetworkPolicyPeer as a whole selects the Pods matching PodSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects the Pods matching PodSelector in the policy's own Namespace.
+	PodSelector *metav1.LabelSelector `pulumi:"podSelector"`
+}
+
+// NetworkPolicyPeerPatchInput is an input type that accepts NetworkPolicyPeerPatchArgs and NetworkPolicyPeerPatchOutput values.
+// You can construct a concrete instance of `NetworkPolicyPeerPatchInput` via:
+//
+//          NetworkPolicyPeerPatchArgs{...}
+type NetworkPolicyPeerPatchInput interface {
+	pulumi.Input
+
+	ToNetworkPolicyPeerPatchOutput() NetworkPolicyPeerPatchOutput
+	ToNetworkPolicyPeerPatchOutputWithContext(context.Context) NetworkPolicyPeerPatchOutput
+}
+
+// DEPRECATED 1.9 - This group version of NetworkPolicyPeer is deprecated by networking/v1/NetworkPolicyPeer.
+type NetworkPolicyPeerPatchArgs struct {
+	// IPBlock defines policy on a particular IPBlock. If this field is set then neither of the other fields can be.
+	IpBlock IPBlockPtrInput `pulumi:"ipBlock"`
+	// Selects Namespaces using cluster-scoped labels. This field follows standard label selector semantics; if present but empty, it selects all namespaces.
+	//
+	// If PodSelector is also set, then the NetworkPolicyPeer as a whole selects the Pods matching PodSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects all Pods in the Namespaces selected by NamespaceSelector.
+	NamespaceSelector metav1.LabelSelectorPtrInput `pulumi:"namespaceSelector"`
+	// This is a label selector which selects Pods. This field follows standard label selector semantics; if present but empty, it selects all pods.
+	//
+	// If NamespaceSelector is also set, then the NetworkPolicyPeer as a whole selects the Pods matching PodSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects the Pods matching PodSelector in the policy's own Namespace.
+	PodSelector metav1.LabelSelectorPtrInput `pulumi:"podSelector"`
+}
+
+func (NetworkPolicyPeerPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPolicyPeerPatch)(nil)).Elem()
+}
+
+func (i NetworkPolicyPeerPatchArgs) ToNetworkPolicyPeerPatchOutput() NetworkPolicyPeerPatchOutput {
+	return i.ToNetworkPolicyPeerPatchOutputWithContext(context.Background())
+}
+
+func (i NetworkPolicyPeerPatchArgs) ToNetworkPolicyPeerPatchOutputWithContext(ctx context.Context) NetworkPolicyPeerPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPolicyPeerPatchOutput)
+}
+
+// DEPRECATED 1.9 - This group version of NetworkPolicyPeer is deprecated by networking/v1/NetworkPolicyPeer.
+type NetworkPolicyPeerPatchOutput struct{ *pulumi.OutputState }
+
+func (NetworkPolicyPeerPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPolicyPeerPatch)(nil)).Elem()
+}
+
+func (o NetworkPolicyPeerPatchOutput) ToNetworkPolicyPeerPatchOutput() NetworkPolicyPeerPatchOutput {
+	return o
+}
+
+func (o NetworkPolicyPeerPatchOutput) ToNetworkPolicyPeerPatchOutputWithContext(ctx context.Context) NetworkPolicyPeerPatchOutput {
+	return o
+}
+
+// IPBlock defines policy on a particular IPBlock. If this field is set then neither of the other fields can be.
+func (o NetworkPolicyPeerPatchOutput) IpBlock() IPBlockPtrOutput {
+	return o.ApplyT(func(v NetworkPolicyPeerPatch) *IPBlock { return v.IpBlock }).(IPBlockPtrOutput)
+}
+
+// Selects Namespaces using cluster-scoped labels. This field follows standard label selector semantics; if present but empty, it selects all namespaces.
+//
+// If PodSelector is also set, then the NetworkPolicyPeer as a whole selects the Pods matching PodSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects all Pods in the Namespaces selected by NamespaceSelector.
+func (o NetworkPolicyPeerPatchOutput) NamespaceSelector() metav1.LabelSelectorPtrOutput {
+	return o.ApplyT(func(v NetworkPolicyPeerPatch) *metav1.LabelSelector { return v.NamespaceSelector }).(metav1.LabelSelectorPtrOutput)
+}
+
+// This is a label selector which selects Pods. This field follows standard label selector semantics; if present but empty, it selects all pods.
+//
+// If NamespaceSelector is also set, then the NetworkPolicyPeer as a whole selects the Pods matching PodSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects the Pods matching PodSelector in the policy's own Namespace.
+func (o NetworkPolicyPeerPatchOutput) PodSelector() metav1.LabelSelectorPtrOutput {
+	return o.ApplyT(func(v NetworkPolicyPeerPatch) *metav1.LabelSelector { return v.PodSelector }).(metav1.LabelSelectorPtrOutput)
+}
+
 // DEPRECATED 1.9 - This group version of NetworkPolicyPort is deprecated by networking/v1/NetworkPolicyPort.
 type NetworkPolicyPort struct {
 	// If specified, the port on the given protocol.  This can either be a numerical or named port on a pod.  If this field is not provided, this matches all port names and numbers. If present, only traffic on the specified protocol AND port will be matched.
@@ -5120,6 +7628,70 @@ func (o NetworkPolicyPortArrayOutput) Index(i pulumi.IntInput) NetworkPolicyPort
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkPolicyPort {
 		return vs[0].([]NetworkPolicyPort)[vs[1].(int)]
 	}).(NetworkPolicyPortOutput)
+}
+
+// DEPRECATED 1.9 - This group version of NetworkPolicyPort is deprecated by networking/v1/NetworkPolicyPort.
+type NetworkPolicyPortPatch struct {
+	// If specified, the port on the given protocol.  This can either be a numerical or named port on a pod.  If this field is not provided, this matches all port names and numbers. If present, only traffic on the specified protocol AND port will be matched.
+	Port interface{} `pulumi:"port"`
+	// Optional.  The protocol (TCP, UDP, or SCTP) which traffic must match. If not specified, this field defaults to TCP.
+	Protocol *string `pulumi:"protocol"`
+}
+
+// NetworkPolicyPortPatchInput is an input type that accepts NetworkPolicyPortPatchArgs and NetworkPolicyPortPatchOutput values.
+// You can construct a concrete instance of `NetworkPolicyPortPatchInput` via:
+//
+//          NetworkPolicyPortPatchArgs{...}
+type NetworkPolicyPortPatchInput interface {
+	pulumi.Input
+
+	ToNetworkPolicyPortPatchOutput() NetworkPolicyPortPatchOutput
+	ToNetworkPolicyPortPatchOutputWithContext(context.Context) NetworkPolicyPortPatchOutput
+}
+
+// DEPRECATED 1.9 - This group version of NetworkPolicyPort is deprecated by networking/v1/NetworkPolicyPort.
+type NetworkPolicyPortPatchArgs struct {
+	// If specified, the port on the given protocol.  This can either be a numerical or named port on a pod.  If this field is not provided, this matches all port names and numbers. If present, only traffic on the specified protocol AND port will be matched.
+	Port pulumi.Input `pulumi:"port"`
+	// Optional.  The protocol (TCP, UDP, or SCTP) which traffic must match. If not specified, this field defaults to TCP.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+}
+
+func (NetworkPolicyPortPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPolicyPortPatch)(nil)).Elem()
+}
+
+func (i NetworkPolicyPortPatchArgs) ToNetworkPolicyPortPatchOutput() NetworkPolicyPortPatchOutput {
+	return i.ToNetworkPolicyPortPatchOutputWithContext(context.Background())
+}
+
+func (i NetworkPolicyPortPatchArgs) ToNetworkPolicyPortPatchOutputWithContext(ctx context.Context) NetworkPolicyPortPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPolicyPortPatchOutput)
+}
+
+// DEPRECATED 1.9 - This group version of NetworkPolicyPort is deprecated by networking/v1/NetworkPolicyPort.
+type NetworkPolicyPortPatchOutput struct{ *pulumi.OutputState }
+
+func (NetworkPolicyPortPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPolicyPortPatch)(nil)).Elem()
+}
+
+func (o NetworkPolicyPortPatchOutput) ToNetworkPolicyPortPatchOutput() NetworkPolicyPortPatchOutput {
+	return o
+}
+
+func (o NetworkPolicyPortPatchOutput) ToNetworkPolicyPortPatchOutputWithContext(ctx context.Context) NetworkPolicyPortPatchOutput {
+	return o
+}
+
+// If specified, the port on the given protocol.  This can either be a numerical or named port on a pod.  If this field is not provided, this matches all port names and numbers. If present, only traffic on the specified protocol AND port will be matched.
+func (o NetworkPolicyPortPatchOutput) Port() pulumi.AnyOutput {
+	return o.ApplyT(func(v NetworkPolicyPortPatch) interface{} { return v.Port }).(pulumi.AnyOutput)
+}
+
+// Optional.  The protocol (TCP, UDP, or SCTP) which traffic must match. If not specified, this field defaults to TCP.
+func (o NetworkPolicyPortPatchOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkPolicyPortPatch) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
 // DEPRECATED 1.9 - This group version of NetworkPolicySpec is deprecated by networking/v1/NetworkPolicySpec.
@@ -5317,6 +7889,88 @@ func (o NetworkPolicySpecPtrOutput) PolicyTypes() pulumi.StringArrayOutput {
 		}
 		return v.PolicyTypes
 	}).(pulumi.StringArrayOutput)
+}
+
+// DEPRECATED 1.9 - This group version of NetworkPolicySpec is deprecated by networking/v1/NetworkPolicySpec.
+type NetworkPolicySpecPatch struct {
+	// List of egress rules to be applied to the selected pods. Outgoing traffic is allowed if there are no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the traffic matches at least one egress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy limits all outgoing traffic (and serves solely to ensure that the pods it selects are isolated by default). This field is beta-level in 1.8
+	Egress []NetworkPolicyEgressRule `pulumi:"egress"`
+	// List of ingress rules to be applied to the selected pods. Traffic is allowed to a pod if there are no NetworkPolicies selecting the pod OR if the traffic source is the pod's local node, OR if the traffic matches at least one ingress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy does not allow any traffic (and serves solely to ensure that the pods it selects are isolated by default).
+	Ingress []NetworkPolicyIngressRule `pulumi:"ingress"`
+	// Selects the pods to which this NetworkPolicy object applies.  The array of ingress rules is applied to any pods selected by this field. Multiple network policies can select the same set of pods.  In this case, the ingress rules for each are combined additively. This field is NOT optional and follows standard label selector semantics. An empty podSelector matches all pods in this namespace.
+	PodSelector *metav1.LabelSelector `pulumi:"podSelector"`
+	// List of rule types that the NetworkPolicy relates to. Valid options are "Ingress", "Egress", or "Ingress,Egress". If this field is not specified, it will default based on the existence of Ingress or Egress rules; policies that contain an Egress section are assumed to affect Egress, and all policies (whether or not they contain an Ingress section) are assumed to affect Ingress. If you want to write an egress-only policy, you must explicitly specify policyTypes [ "Egress" ]. Likewise, if you want to write a policy that specifies that no egress is allowed, you must specify a policyTypes value that include "Egress" (since such a policy would not include an Egress section and would otherwise default to just [ "Ingress" ]). This field is beta-level in 1.8
+	PolicyTypes []string `pulumi:"policyTypes"`
+}
+
+// NetworkPolicySpecPatchInput is an input type that accepts NetworkPolicySpecPatchArgs and NetworkPolicySpecPatchOutput values.
+// You can construct a concrete instance of `NetworkPolicySpecPatchInput` via:
+//
+//          NetworkPolicySpecPatchArgs{...}
+type NetworkPolicySpecPatchInput interface {
+	pulumi.Input
+
+	ToNetworkPolicySpecPatchOutput() NetworkPolicySpecPatchOutput
+	ToNetworkPolicySpecPatchOutputWithContext(context.Context) NetworkPolicySpecPatchOutput
+}
+
+// DEPRECATED 1.9 - This group version of NetworkPolicySpec is deprecated by networking/v1/NetworkPolicySpec.
+type NetworkPolicySpecPatchArgs struct {
+	// List of egress rules to be applied to the selected pods. Outgoing traffic is allowed if there are no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the traffic matches at least one egress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy limits all outgoing traffic (and serves solely to ensure that the pods it selects are isolated by default). This field is beta-level in 1.8
+	Egress NetworkPolicyEgressRuleArrayInput `pulumi:"egress"`
+	// List of ingress rules to be applied to the selected pods. Traffic is allowed to a pod if there are no NetworkPolicies selecting the pod OR if the traffic source is the pod's local node, OR if the traffic matches at least one ingress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy does not allow any traffic (and serves solely to ensure that the pods it selects are isolated by default).
+	Ingress NetworkPolicyIngressRuleArrayInput `pulumi:"ingress"`
+	// Selects the pods to which this NetworkPolicy object applies.  The array of ingress rules is applied to any pods selected by this field. Multiple network policies can select the same set of pods.  In this case, the ingress rules for each are combined additively. This field is NOT optional and follows standard label selector semantics. An empty podSelector matches all pods in this namespace.
+	PodSelector metav1.LabelSelectorPtrInput `pulumi:"podSelector"`
+	// List of rule types that the NetworkPolicy relates to. Valid options are "Ingress", "Egress", or "Ingress,Egress". If this field is not specified, it will default based on the existence of Ingress or Egress rules; policies that contain an Egress section are assumed to affect Egress, and all policies (whether or not they contain an Ingress section) are assumed to affect Ingress. If you want to write an egress-only policy, you must explicitly specify policyTypes [ "Egress" ]. Likewise, if you want to write a policy that specifies that no egress is allowed, you must specify a policyTypes value that include "Egress" (since such a policy would not include an Egress section and would otherwise default to just [ "Ingress" ]). This field is beta-level in 1.8
+	PolicyTypes pulumi.StringArrayInput `pulumi:"policyTypes"`
+}
+
+func (NetworkPolicySpecPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPolicySpecPatch)(nil)).Elem()
+}
+
+func (i NetworkPolicySpecPatchArgs) ToNetworkPolicySpecPatchOutput() NetworkPolicySpecPatchOutput {
+	return i.ToNetworkPolicySpecPatchOutputWithContext(context.Background())
+}
+
+func (i NetworkPolicySpecPatchArgs) ToNetworkPolicySpecPatchOutputWithContext(ctx context.Context) NetworkPolicySpecPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPolicySpecPatchOutput)
+}
+
+// DEPRECATED 1.9 - This group version of NetworkPolicySpec is deprecated by networking/v1/NetworkPolicySpec.
+type NetworkPolicySpecPatchOutput struct{ *pulumi.OutputState }
+
+func (NetworkPolicySpecPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPolicySpecPatch)(nil)).Elem()
+}
+
+func (o NetworkPolicySpecPatchOutput) ToNetworkPolicySpecPatchOutput() NetworkPolicySpecPatchOutput {
+	return o
+}
+
+func (o NetworkPolicySpecPatchOutput) ToNetworkPolicySpecPatchOutputWithContext(ctx context.Context) NetworkPolicySpecPatchOutput {
+	return o
+}
+
+// List of egress rules to be applied to the selected pods. Outgoing traffic is allowed if there are no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the traffic matches at least one egress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy limits all outgoing traffic (and serves solely to ensure that the pods it selects are isolated by default). This field is beta-level in 1.8
+func (o NetworkPolicySpecPatchOutput) Egress() NetworkPolicyEgressRuleArrayOutput {
+	return o.ApplyT(func(v NetworkPolicySpecPatch) []NetworkPolicyEgressRule { return v.Egress }).(NetworkPolicyEgressRuleArrayOutput)
+}
+
+// List of ingress rules to be applied to the selected pods. Traffic is allowed to a pod if there are no NetworkPolicies selecting the pod OR if the traffic source is the pod's local node, OR if the traffic matches at least one ingress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy does not allow any traffic (and serves solely to ensure that the pods it selects are isolated by default).
+func (o NetworkPolicySpecPatchOutput) Ingress() NetworkPolicyIngressRuleArrayOutput {
+	return o.ApplyT(func(v NetworkPolicySpecPatch) []NetworkPolicyIngressRule { return v.Ingress }).(NetworkPolicyIngressRuleArrayOutput)
+}
+
+// Selects the pods to which this NetworkPolicy object applies.  The array of ingress rules is applied to any pods selected by this field. Multiple network policies can select the same set of pods.  In this case, the ingress rules for each are combined additively. This field is NOT optional and follows standard label selector semantics. An empty podSelector matches all pods in this namespace.
+func (o NetworkPolicySpecPatchOutput) PodSelector() metav1.LabelSelectorPtrOutput {
+	return o.ApplyT(func(v NetworkPolicySpecPatch) *metav1.LabelSelector { return v.PodSelector }).(metav1.LabelSelectorPtrOutput)
+}
+
+// List of rule types that the NetworkPolicy relates to. Valid options are "Ingress", "Egress", or "Ingress,Egress". If this field is not specified, it will default based on the existence of Ingress or Egress rules; policies that contain an Egress section are assumed to affect Egress, and all policies (whether or not they contain an Ingress section) are assumed to affect Ingress. If you want to write an egress-only policy, you must explicitly specify policyTypes [ "Egress" ]. Likewise, if you want to write a policy that specifies that no egress is allowed, you must specify a policyTypes value that include "Egress" (since such a policy would not include an Egress section and would otherwise default to just [ "Ingress" ]). This field is beta-level in 1.8
+func (o NetworkPolicySpecPatchOutput) PolicyTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkPolicySpecPatch) []string { return v.PolicyTypes }).(pulumi.StringArrayOutput)
 }
 
 // PodSecurityPolicy governs the ability to make requests that affect the Security Context that will be applied to a pod and container. Deprecated: use PodSecurityPolicy from policy API Group instead.
@@ -5526,6 +8180,88 @@ func (o PodSecurityPolicyListTypeOutput) Kind() pulumi.StringPtrOutput {
 // Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 func (o PodSecurityPolicyListTypeOutput) Metadata() metav1.ListMetaPtrOutput {
 	return o.ApplyT(func(v PodSecurityPolicyListType) *metav1.ListMeta { return v.Metadata }).(metav1.ListMetaPtrOutput)
+}
+
+// PodSecurityPolicy governs the ability to make requests that affect the Security Context that will be applied to a pod and container. Deprecated: use PodSecurityPolicy from policy API Group instead.
+type PodSecurityPolicyPatchType struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind *string `pulumi:"kind"`
+	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	// spec defines the policy enforced.
+	Spec *PodSecurityPolicySpec `pulumi:"spec"`
+}
+
+// PodSecurityPolicyPatchTypeInput is an input type that accepts PodSecurityPolicyPatchTypeArgs and PodSecurityPolicyPatchTypeOutput values.
+// You can construct a concrete instance of `PodSecurityPolicyPatchTypeInput` via:
+//
+//          PodSecurityPolicyPatchTypeArgs{...}
+type PodSecurityPolicyPatchTypeInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicyPatchTypeOutput() PodSecurityPolicyPatchTypeOutput
+	ToPodSecurityPolicyPatchTypeOutputWithContext(context.Context) PodSecurityPolicyPatchTypeOutput
+}
+
+// PodSecurityPolicy governs the ability to make requests that affect the Security Context that will be applied to a pod and container. Deprecated: use PodSecurityPolicy from policy API Group instead.
+type PodSecurityPolicyPatchTypeArgs struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	// spec defines the policy enforced.
+	Spec PodSecurityPolicySpecPtrInput `pulumi:"spec"`
+}
+
+func (PodSecurityPolicyPatchTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyPatchType)(nil)).Elem()
+}
+
+func (i PodSecurityPolicyPatchTypeArgs) ToPodSecurityPolicyPatchTypeOutput() PodSecurityPolicyPatchTypeOutput {
+	return i.ToPodSecurityPolicyPatchTypeOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicyPatchTypeArgs) ToPodSecurityPolicyPatchTypeOutputWithContext(ctx context.Context) PodSecurityPolicyPatchTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicyPatchTypeOutput)
+}
+
+// PodSecurityPolicy governs the ability to make requests that affect the Security Context that will be applied to a pod and container. Deprecated: use PodSecurityPolicy from policy API Group instead.
+type PodSecurityPolicyPatchTypeOutput struct{ *pulumi.OutputState }
+
+func (PodSecurityPolicyPatchTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicyPatchType)(nil)).Elem()
+}
+
+func (o PodSecurityPolicyPatchTypeOutput) ToPodSecurityPolicyPatchTypeOutput() PodSecurityPolicyPatchTypeOutput {
+	return o
+}
+
+func (o PodSecurityPolicyPatchTypeOutput) ToPodSecurityPolicyPatchTypeOutputWithContext(ctx context.Context) PodSecurityPolicyPatchTypeOutput {
+	return o
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o PodSecurityPolicyPatchTypeOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicyPatchType) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o PodSecurityPolicyPatchTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicyPatchType) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+func (o PodSecurityPolicyPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicyPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+// spec defines the policy enforced.
+func (o PodSecurityPolicyPatchTypeOutput) Spec() PodSecurityPolicySpecPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicyPatchType) *PodSecurityPolicySpec { return v.Spec }).(PodSecurityPolicySpecPtrOutput)
 }
 
 // PodSecurityPolicySpec defines the policy enforced. Deprecated: use PodSecurityPolicySpec from policy API Group instead.
@@ -6121,6 +8857,280 @@ func (o PodSecurityPolicySpecPtrOutput) Volumes() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// PodSecurityPolicySpec defines the policy enforced. Deprecated: use PodSecurityPolicySpec from policy API Group instead.
+type PodSecurityPolicySpecPatch struct {
+	// allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to true.
+	AllowPrivilegeEscalation *bool `pulumi:"allowPrivilegeEscalation"`
+	// AllowedCSIDrivers is a whitelist of inline CSI drivers that must be explicitly set to be embedded within a pod spec. An empty value indicates that any CSI driver can be used for inline ephemeral volumes.
+	AllowedCSIDrivers []AllowedCSIDriver `pulumi:"allowedCSIDrivers"`
+	// allowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field may be added at the pod author's discretion. You must not list a capability in both allowedCapabilities and requiredDropCapabilities.
+	AllowedCapabilities []string `pulumi:"allowedCapabilities"`
+	// allowedFlexVolumes is a whitelist of allowed Flexvolumes.  Empty or nil indicates that all Flexvolumes may be used.  This parameter is effective only when the usage of the Flexvolumes is allowed in the "volumes" field.
+	AllowedFlexVolumes []AllowedFlexVolume `pulumi:"allowedFlexVolumes"`
+	// allowedHostPaths is a white list of allowed host paths. Empty indicates that all host paths may be used.
+	AllowedHostPaths []AllowedHostPath `pulumi:"allowedHostPaths"`
+	// AllowedProcMountTypes is a whitelist of allowed ProcMountTypes. Empty or nil indicates that only the DefaultProcMountType may be used. This requires the ProcMountType feature flag to be enabled.
+	AllowedProcMountTypes []string `pulumi:"allowedProcMountTypes"`
+	// allowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to none. Each entry is either a plain sysctl name or ends in "*" in which case it is considered as a prefix of allowed sysctls. Single * means all unsafe sysctls are allowed. Kubelet has to whitelist all allowed unsafe sysctls explicitly to avoid rejection.
+	//
+	// Examples: e.g. "foo/*" allows "foo/bar", "foo/baz", etc. e.g. "foo.*" allows "foo.bar", "foo.baz", etc.
+	AllowedUnsafeSysctls []string `pulumi:"allowedUnsafeSysctls"`
+	// defaultAddCapabilities is the default set of capabilities that will be added to the container unless the pod spec specifically drops the capability.  You may not list a capability in both defaultAddCapabilities and requiredDropCapabilities. Capabilities added here are implicitly allowed, and need not be included in the allowedCapabilities list.
+	DefaultAddCapabilities []string `pulumi:"defaultAddCapabilities"`
+	// defaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than its parent process.
+	DefaultAllowPrivilegeEscalation *bool `pulumi:"defaultAllowPrivilegeEscalation"`
+	// forbiddenSysctls is a list of explicitly forbidden sysctls, defaults to none. Each entry is either a plain sysctl name or ends in "*" in which case it is considered as a prefix of forbidden sysctls. Single * means all sysctls are forbidden.
+	//
+	// Examples: e.g. "foo/*" forbids "foo/bar", "foo/baz", etc. e.g. "foo.*" forbids "foo.bar", "foo.baz", etc.
+	ForbiddenSysctls []string `pulumi:"forbiddenSysctls"`
+	// fsGroup is the strategy that will dictate what fs group is used by the SecurityContext.
+	FsGroup *FSGroupStrategyOptions `pulumi:"fsGroup"`
+	// hostIPC determines if the policy allows the use of HostIPC in the pod spec.
+	HostIPC *bool `pulumi:"hostIPC"`
+	// hostNetwork determines if the policy allows the use of HostNetwork in the pod spec.
+	HostNetwork *bool `pulumi:"hostNetwork"`
+	// hostPID determines if the policy allows the use of HostPID in the pod spec.
+	HostPID *bool `pulumi:"hostPID"`
+	// hostPorts determines which host port ranges are allowed to be exposed.
+	HostPorts []HostPortRange `pulumi:"hostPorts"`
+	// privileged determines if a pod can request to be run as privileged.
+	Privileged *bool `pulumi:"privileged"`
+	// readOnlyRootFilesystem when set to true will force containers to run with a read only root file system.  If the container specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the container may run with a read only root file system if it wishes but it will not be forced to.
+	ReadOnlyRootFilesystem *bool `pulumi:"readOnlyRootFilesystem"`
+	// requiredDropCapabilities are the capabilities that will be dropped from the container.  These are required to be dropped and cannot be added.
+	RequiredDropCapabilities []string `pulumi:"requiredDropCapabilities"`
+	// RunAsGroup is the strategy that will dictate the allowable RunAsGroup values that may be set. If this field is omitted, the pod's RunAsGroup can take any value. This field requires the RunAsGroup feature gate to be enabled.
+	RunAsGroup *RunAsGroupStrategyOptions `pulumi:"runAsGroup"`
+	// runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set.
+	RunAsUser *RunAsUserStrategyOptions `pulumi:"runAsUser"`
+	// runtimeClass is the strategy that will dictate the allowable RuntimeClasses for a pod. If this field is omitted, the pod's runtimeClassName field is unrestricted. Enforcement of this field depends on the RuntimeClass feature gate being enabled.
+	RuntimeClass *RuntimeClassStrategyOptions `pulumi:"runtimeClass"`
+	// seLinux is the strategy that will dictate the allowable labels that may be set.
+	SeLinux *SELinuxStrategyOptions `pulumi:"seLinux"`
+	// supplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.
+	SupplementalGroups *SupplementalGroupsStrategyOptions `pulumi:"supplementalGroups"`
+	// volumes is a white list of allowed volume plugins. Empty indicates that no volumes may be used. To allow all volumes you may use '*'.
+	Volumes []string `pulumi:"volumes"`
+}
+
+// PodSecurityPolicySpecPatchInput is an input type that accepts PodSecurityPolicySpecPatchArgs and PodSecurityPolicySpecPatchOutput values.
+// You can construct a concrete instance of `PodSecurityPolicySpecPatchInput` via:
+//
+//          PodSecurityPolicySpecPatchArgs{...}
+type PodSecurityPolicySpecPatchInput interface {
+	pulumi.Input
+
+	ToPodSecurityPolicySpecPatchOutput() PodSecurityPolicySpecPatchOutput
+	ToPodSecurityPolicySpecPatchOutputWithContext(context.Context) PodSecurityPolicySpecPatchOutput
+}
+
+// PodSecurityPolicySpec defines the policy enforced. Deprecated: use PodSecurityPolicySpec from policy API Group instead.
+type PodSecurityPolicySpecPatchArgs struct {
+	// allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to true.
+	AllowPrivilegeEscalation pulumi.BoolPtrInput `pulumi:"allowPrivilegeEscalation"`
+	// AllowedCSIDrivers is a whitelist of inline CSI drivers that must be explicitly set to be embedded within a pod spec. An empty value indicates that any CSI driver can be used for inline ephemeral volumes.
+	AllowedCSIDrivers AllowedCSIDriverArrayInput `pulumi:"allowedCSIDrivers"`
+	// allowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field may be added at the pod author's discretion. You must not list a capability in both allowedCapabilities and requiredDropCapabilities.
+	AllowedCapabilities pulumi.StringArrayInput `pulumi:"allowedCapabilities"`
+	// allowedFlexVolumes is a whitelist of allowed Flexvolumes.  Empty or nil indicates that all Flexvolumes may be used.  This parameter is effective only when the usage of the Flexvolumes is allowed in the "volumes" field.
+	AllowedFlexVolumes AllowedFlexVolumeArrayInput `pulumi:"allowedFlexVolumes"`
+	// allowedHostPaths is a white list of allowed host paths. Empty indicates that all host paths may be used.
+	AllowedHostPaths AllowedHostPathArrayInput `pulumi:"allowedHostPaths"`
+	// AllowedProcMountTypes is a whitelist of allowed ProcMountTypes. Empty or nil indicates that only the DefaultProcMountType may be used. This requires the ProcMountType feature flag to be enabled.
+	AllowedProcMountTypes pulumi.StringArrayInput `pulumi:"allowedProcMountTypes"`
+	// allowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to none. Each entry is either a plain sysctl name or ends in "*" in which case it is considered as a prefix of allowed sysctls. Single * means all unsafe sysctls are allowed. Kubelet has to whitelist all allowed unsafe sysctls explicitly to avoid rejection.
+	//
+	// Examples: e.g. "foo/*" allows "foo/bar", "foo/baz", etc. e.g. "foo.*" allows "foo.bar", "foo.baz", etc.
+	AllowedUnsafeSysctls pulumi.StringArrayInput `pulumi:"allowedUnsafeSysctls"`
+	// defaultAddCapabilities is the default set of capabilities that will be added to the container unless the pod spec specifically drops the capability.  You may not list a capability in both defaultAddCapabilities and requiredDropCapabilities. Capabilities added here are implicitly allowed, and need not be included in the allowedCapabilities list.
+	DefaultAddCapabilities pulumi.StringArrayInput `pulumi:"defaultAddCapabilities"`
+	// defaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than its parent process.
+	DefaultAllowPrivilegeEscalation pulumi.BoolPtrInput `pulumi:"defaultAllowPrivilegeEscalation"`
+	// forbiddenSysctls is a list of explicitly forbidden sysctls, defaults to none. Each entry is either a plain sysctl name or ends in "*" in which case it is considered as a prefix of forbidden sysctls. Single * means all sysctls are forbidden.
+	//
+	// Examples: e.g. "foo/*" forbids "foo/bar", "foo/baz", etc. e.g. "foo.*" forbids "foo.bar", "foo.baz", etc.
+	ForbiddenSysctls pulumi.StringArrayInput `pulumi:"forbiddenSysctls"`
+	// fsGroup is the strategy that will dictate what fs group is used by the SecurityContext.
+	FsGroup FSGroupStrategyOptionsPtrInput `pulumi:"fsGroup"`
+	// hostIPC determines if the policy allows the use of HostIPC in the pod spec.
+	HostIPC pulumi.BoolPtrInput `pulumi:"hostIPC"`
+	// hostNetwork determines if the policy allows the use of HostNetwork in the pod spec.
+	HostNetwork pulumi.BoolPtrInput `pulumi:"hostNetwork"`
+	// hostPID determines if the policy allows the use of HostPID in the pod spec.
+	HostPID pulumi.BoolPtrInput `pulumi:"hostPID"`
+	// hostPorts determines which host port ranges are allowed to be exposed.
+	HostPorts HostPortRangeArrayInput `pulumi:"hostPorts"`
+	// privileged determines if a pod can request to be run as privileged.
+	Privileged pulumi.BoolPtrInput `pulumi:"privileged"`
+	// readOnlyRootFilesystem when set to true will force containers to run with a read only root file system.  If the container specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the container may run with a read only root file system if it wishes but it will not be forced to.
+	ReadOnlyRootFilesystem pulumi.BoolPtrInput `pulumi:"readOnlyRootFilesystem"`
+	// requiredDropCapabilities are the capabilities that will be dropped from the container.  These are required to be dropped and cannot be added.
+	RequiredDropCapabilities pulumi.StringArrayInput `pulumi:"requiredDropCapabilities"`
+	// RunAsGroup is the strategy that will dictate the allowable RunAsGroup values that may be set. If this field is omitted, the pod's RunAsGroup can take any value. This field requires the RunAsGroup feature gate to be enabled.
+	RunAsGroup RunAsGroupStrategyOptionsPtrInput `pulumi:"runAsGroup"`
+	// runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set.
+	RunAsUser RunAsUserStrategyOptionsPtrInput `pulumi:"runAsUser"`
+	// runtimeClass is the strategy that will dictate the allowable RuntimeClasses for a pod. If this field is omitted, the pod's runtimeClassName field is unrestricted. Enforcement of this field depends on the RuntimeClass feature gate being enabled.
+	RuntimeClass RuntimeClassStrategyOptionsPtrInput `pulumi:"runtimeClass"`
+	// seLinux is the strategy that will dictate the allowable labels that may be set.
+	SeLinux SELinuxStrategyOptionsPtrInput `pulumi:"seLinux"`
+	// supplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.
+	SupplementalGroups SupplementalGroupsStrategyOptionsPtrInput `pulumi:"supplementalGroups"`
+	// volumes is a white list of allowed volume plugins. Empty indicates that no volumes may be used. To allow all volumes you may use '*'.
+	Volumes pulumi.StringArrayInput `pulumi:"volumes"`
+}
+
+func (PodSecurityPolicySpecPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicySpecPatch)(nil)).Elem()
+}
+
+func (i PodSecurityPolicySpecPatchArgs) ToPodSecurityPolicySpecPatchOutput() PodSecurityPolicySpecPatchOutput {
+	return i.ToPodSecurityPolicySpecPatchOutputWithContext(context.Background())
+}
+
+func (i PodSecurityPolicySpecPatchArgs) ToPodSecurityPolicySpecPatchOutputWithContext(ctx context.Context) PodSecurityPolicySpecPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodSecurityPolicySpecPatchOutput)
+}
+
+// PodSecurityPolicySpec defines the policy enforced. Deprecated: use PodSecurityPolicySpec from policy API Group instead.
+type PodSecurityPolicySpecPatchOutput struct{ *pulumi.OutputState }
+
+func (PodSecurityPolicySpecPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodSecurityPolicySpecPatch)(nil)).Elem()
+}
+
+func (o PodSecurityPolicySpecPatchOutput) ToPodSecurityPolicySpecPatchOutput() PodSecurityPolicySpecPatchOutput {
+	return o
+}
+
+func (o PodSecurityPolicySpecPatchOutput) ToPodSecurityPolicySpecPatchOutputWithContext(ctx context.Context) PodSecurityPolicySpecPatchOutput {
+	return o
+}
+
+// allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to true.
+func (o PodSecurityPolicySpecPatchOutput) AllowPrivilegeEscalation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *bool { return v.AllowPrivilegeEscalation }).(pulumi.BoolPtrOutput)
+}
+
+// AllowedCSIDrivers is a whitelist of inline CSI drivers that must be explicitly set to be embedded within a pod spec. An empty value indicates that any CSI driver can be used for inline ephemeral volumes.
+func (o PodSecurityPolicySpecPatchOutput) AllowedCSIDrivers() AllowedCSIDriverArrayOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []AllowedCSIDriver { return v.AllowedCSIDrivers }).(AllowedCSIDriverArrayOutput)
+}
+
+// allowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field may be added at the pod author's discretion. You must not list a capability in both allowedCapabilities and requiredDropCapabilities.
+func (o PodSecurityPolicySpecPatchOutput) AllowedCapabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []string { return v.AllowedCapabilities }).(pulumi.StringArrayOutput)
+}
+
+// allowedFlexVolumes is a whitelist of allowed Flexvolumes.  Empty or nil indicates that all Flexvolumes may be used.  This parameter is effective only when the usage of the Flexvolumes is allowed in the "volumes" field.
+func (o PodSecurityPolicySpecPatchOutput) AllowedFlexVolumes() AllowedFlexVolumeArrayOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []AllowedFlexVolume { return v.AllowedFlexVolumes }).(AllowedFlexVolumeArrayOutput)
+}
+
+// allowedHostPaths is a white list of allowed host paths. Empty indicates that all host paths may be used.
+func (o PodSecurityPolicySpecPatchOutput) AllowedHostPaths() AllowedHostPathArrayOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []AllowedHostPath { return v.AllowedHostPaths }).(AllowedHostPathArrayOutput)
+}
+
+// AllowedProcMountTypes is a whitelist of allowed ProcMountTypes. Empty or nil indicates that only the DefaultProcMountType may be used. This requires the ProcMountType feature flag to be enabled.
+func (o PodSecurityPolicySpecPatchOutput) AllowedProcMountTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []string { return v.AllowedProcMountTypes }).(pulumi.StringArrayOutput)
+}
+
+// allowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to none. Each entry is either a plain sysctl name or ends in "*" in which case it is considered as a prefix of allowed sysctls. Single * means all unsafe sysctls are allowed. Kubelet has to whitelist all allowed unsafe sysctls explicitly to avoid rejection.
+//
+// Examples: e.g. "foo/*" allows "foo/bar", "foo/baz", etc. e.g. "foo.*" allows "foo.bar", "foo.baz", etc.
+func (o PodSecurityPolicySpecPatchOutput) AllowedUnsafeSysctls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []string { return v.AllowedUnsafeSysctls }).(pulumi.StringArrayOutput)
+}
+
+// defaultAddCapabilities is the default set of capabilities that will be added to the container unless the pod spec specifically drops the capability.  You may not list a capability in both defaultAddCapabilities and requiredDropCapabilities. Capabilities added here are implicitly allowed, and need not be included in the allowedCapabilities list.
+func (o PodSecurityPolicySpecPatchOutput) DefaultAddCapabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []string { return v.DefaultAddCapabilities }).(pulumi.StringArrayOutput)
+}
+
+// defaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than its parent process.
+func (o PodSecurityPolicySpecPatchOutput) DefaultAllowPrivilegeEscalation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *bool { return v.DefaultAllowPrivilegeEscalation }).(pulumi.BoolPtrOutput)
+}
+
+// forbiddenSysctls is a list of explicitly forbidden sysctls, defaults to none. Each entry is either a plain sysctl name or ends in "*" in which case it is considered as a prefix of forbidden sysctls. Single * means all sysctls are forbidden.
+//
+// Examples: e.g. "foo/*" forbids "foo/bar", "foo/baz", etc. e.g. "foo.*" forbids "foo.bar", "foo.baz", etc.
+func (o PodSecurityPolicySpecPatchOutput) ForbiddenSysctls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []string { return v.ForbiddenSysctls }).(pulumi.StringArrayOutput)
+}
+
+// fsGroup is the strategy that will dictate what fs group is used by the SecurityContext.
+func (o PodSecurityPolicySpecPatchOutput) FsGroup() FSGroupStrategyOptionsPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *FSGroupStrategyOptions { return v.FsGroup }).(FSGroupStrategyOptionsPtrOutput)
+}
+
+// hostIPC determines if the policy allows the use of HostIPC in the pod spec.
+func (o PodSecurityPolicySpecPatchOutput) HostIPC() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *bool { return v.HostIPC }).(pulumi.BoolPtrOutput)
+}
+
+// hostNetwork determines if the policy allows the use of HostNetwork in the pod spec.
+func (o PodSecurityPolicySpecPatchOutput) HostNetwork() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *bool { return v.HostNetwork }).(pulumi.BoolPtrOutput)
+}
+
+// hostPID determines if the policy allows the use of HostPID in the pod spec.
+func (o PodSecurityPolicySpecPatchOutput) HostPID() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *bool { return v.HostPID }).(pulumi.BoolPtrOutput)
+}
+
+// hostPorts determines which host port ranges are allowed to be exposed.
+func (o PodSecurityPolicySpecPatchOutput) HostPorts() HostPortRangeArrayOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []HostPortRange { return v.HostPorts }).(HostPortRangeArrayOutput)
+}
+
+// privileged determines if a pod can request to be run as privileged.
+func (o PodSecurityPolicySpecPatchOutput) Privileged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *bool { return v.Privileged }).(pulumi.BoolPtrOutput)
+}
+
+// readOnlyRootFilesystem when set to true will force containers to run with a read only root file system.  If the container specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the container may run with a read only root file system if it wishes but it will not be forced to.
+func (o PodSecurityPolicySpecPatchOutput) ReadOnlyRootFilesystem() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *bool { return v.ReadOnlyRootFilesystem }).(pulumi.BoolPtrOutput)
+}
+
+// requiredDropCapabilities are the capabilities that will be dropped from the container.  These are required to be dropped and cannot be added.
+func (o PodSecurityPolicySpecPatchOutput) RequiredDropCapabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []string { return v.RequiredDropCapabilities }).(pulumi.StringArrayOutput)
+}
+
+// RunAsGroup is the strategy that will dictate the allowable RunAsGroup values that may be set. If this field is omitted, the pod's RunAsGroup can take any value. This field requires the RunAsGroup feature gate to be enabled.
+func (o PodSecurityPolicySpecPatchOutput) RunAsGroup() RunAsGroupStrategyOptionsPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *RunAsGroupStrategyOptions { return v.RunAsGroup }).(RunAsGroupStrategyOptionsPtrOutput)
+}
+
+// runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set.
+func (o PodSecurityPolicySpecPatchOutput) RunAsUser() RunAsUserStrategyOptionsPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *RunAsUserStrategyOptions { return v.RunAsUser }).(RunAsUserStrategyOptionsPtrOutput)
+}
+
+// runtimeClass is the strategy that will dictate the allowable RuntimeClasses for a pod. If this field is omitted, the pod's runtimeClassName field is unrestricted. Enforcement of this field depends on the RuntimeClass feature gate being enabled.
+func (o PodSecurityPolicySpecPatchOutput) RuntimeClass() RuntimeClassStrategyOptionsPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *RuntimeClassStrategyOptions { return v.RuntimeClass }).(RuntimeClassStrategyOptionsPtrOutput)
+}
+
+// seLinux is the strategy that will dictate the allowable labels that may be set.
+func (o PodSecurityPolicySpecPatchOutput) SeLinux() SELinuxStrategyOptionsPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *SELinuxStrategyOptions { return v.SeLinux }).(SELinuxStrategyOptionsPtrOutput)
+}
+
+// supplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.
+func (o PodSecurityPolicySpecPatchOutput) SupplementalGroups() SupplementalGroupsStrategyOptionsPtrOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) *SupplementalGroupsStrategyOptions { return v.SupplementalGroups }).(SupplementalGroupsStrategyOptionsPtrOutput)
+}
+
+// volumes is a white list of allowed volume plugins. Empty indicates that no volumes may be used. To allow all volumes you may use '*'.
+func (o PodSecurityPolicySpecPatchOutput) Volumes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PodSecurityPolicySpecPatch) []string { return v.Volumes }).(pulumi.StringArrayOutput)
+}
+
 // ReplicaSet ensures that a specified number of pod replicas are running at any given time.
 type ReplicaSetType struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -6393,6 +9403,97 @@ func (o ReplicaSetConditionArrayOutput) Index(i pulumi.IntInput) ReplicaSetCondi
 	}).(ReplicaSetConditionOutput)
 }
 
+// ReplicaSetCondition describes the state of a replica set at a certain point.
+type ReplicaSetConditionPatch struct {
+	// The last time the condition transitioned from one status to another.
+	LastTransitionTime *string `pulumi:"lastTransitionTime"`
+	// A human readable message indicating details about the transition.
+	Message *string `pulumi:"message"`
+	// The reason for the condition's last transition.
+	Reason *string `pulumi:"reason"`
+	// Status of the condition, one of True, False, Unknown.
+	Status *string `pulumi:"status"`
+	// Type of replica set condition.
+	Type *string `pulumi:"type"`
+}
+
+// ReplicaSetConditionPatchInput is an input type that accepts ReplicaSetConditionPatchArgs and ReplicaSetConditionPatchOutput values.
+// You can construct a concrete instance of `ReplicaSetConditionPatchInput` via:
+//
+//          ReplicaSetConditionPatchArgs{...}
+type ReplicaSetConditionPatchInput interface {
+	pulumi.Input
+
+	ToReplicaSetConditionPatchOutput() ReplicaSetConditionPatchOutput
+	ToReplicaSetConditionPatchOutputWithContext(context.Context) ReplicaSetConditionPatchOutput
+}
+
+// ReplicaSetCondition describes the state of a replica set at a certain point.
+type ReplicaSetConditionPatchArgs struct {
+	// The last time the condition transitioned from one status to another.
+	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
+	// A human readable message indicating details about the transition.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// The reason for the condition's last transition.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// Status of the condition, one of True, False, Unknown.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Type of replica set condition.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ReplicaSetConditionPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicaSetConditionPatch)(nil)).Elem()
+}
+
+func (i ReplicaSetConditionPatchArgs) ToReplicaSetConditionPatchOutput() ReplicaSetConditionPatchOutput {
+	return i.ToReplicaSetConditionPatchOutputWithContext(context.Background())
+}
+
+func (i ReplicaSetConditionPatchArgs) ToReplicaSetConditionPatchOutputWithContext(ctx context.Context) ReplicaSetConditionPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicaSetConditionPatchOutput)
+}
+
+// ReplicaSetCondition describes the state of a replica set at a certain point.
+type ReplicaSetConditionPatchOutput struct{ *pulumi.OutputState }
+
+func (ReplicaSetConditionPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicaSetConditionPatch)(nil)).Elem()
+}
+
+func (o ReplicaSetConditionPatchOutput) ToReplicaSetConditionPatchOutput() ReplicaSetConditionPatchOutput {
+	return o
+}
+
+func (o ReplicaSetConditionPatchOutput) ToReplicaSetConditionPatchOutputWithContext(ctx context.Context) ReplicaSetConditionPatchOutput {
+	return o
+}
+
+// The last time the condition transitioned from one status to another.
+func (o ReplicaSetConditionPatchOutput) LastTransitionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicaSetConditionPatch) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
+}
+
+// A human readable message indicating details about the transition.
+func (o ReplicaSetConditionPatchOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicaSetConditionPatch) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// The reason for the condition's last transition.
+func (o ReplicaSetConditionPatchOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicaSetConditionPatch) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+// Status of the condition, one of True, False, Unknown.
+func (o ReplicaSetConditionPatchOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicaSetConditionPatch) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Type of replica set condition.
+func (o ReplicaSetConditionPatchOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicaSetConditionPatch) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
 // ReplicaSetList is a collection of ReplicaSets.
 type ReplicaSetListType struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -6473,6 +9574,97 @@ func (o ReplicaSetListTypeOutput) Kind() pulumi.StringPtrOutput {
 // Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
 func (o ReplicaSetListTypeOutput) Metadata() metav1.ListMetaPtrOutput {
 	return o.ApplyT(func(v ReplicaSetListType) *metav1.ListMeta { return v.Metadata }).(metav1.ListMetaPtrOutput)
+}
+
+// ReplicaSet ensures that a specified number of pod replicas are running at any given time.
+type ReplicaSetPatchType struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind *string `pulumi:"kind"`
+	// If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	// Spec defines the specification of the desired behavior of the ReplicaSet. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Spec *ReplicaSetSpec `pulumi:"spec"`
+	// Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Status *ReplicaSetStatus `pulumi:"status"`
+}
+
+// ReplicaSetPatchTypeInput is an input type that accepts ReplicaSetPatchTypeArgs and ReplicaSetPatchTypeOutput values.
+// You can construct a concrete instance of `ReplicaSetPatchTypeInput` via:
+//
+//          ReplicaSetPatchTypeArgs{...}
+type ReplicaSetPatchTypeInput interface {
+	pulumi.Input
+
+	ToReplicaSetPatchTypeOutput() ReplicaSetPatchTypeOutput
+	ToReplicaSetPatchTypeOutputWithContext(context.Context) ReplicaSetPatchTypeOutput
+}
+
+// ReplicaSet ensures that a specified number of pod replicas are running at any given time.
+type ReplicaSetPatchTypeArgs struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	// Spec defines the specification of the desired behavior of the ReplicaSet. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Spec ReplicaSetSpecPtrInput `pulumi:"spec"`
+	// Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	Status ReplicaSetStatusPtrInput `pulumi:"status"`
+}
+
+func (ReplicaSetPatchTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicaSetPatchType)(nil)).Elem()
+}
+
+func (i ReplicaSetPatchTypeArgs) ToReplicaSetPatchTypeOutput() ReplicaSetPatchTypeOutput {
+	return i.ToReplicaSetPatchTypeOutputWithContext(context.Background())
+}
+
+func (i ReplicaSetPatchTypeArgs) ToReplicaSetPatchTypeOutputWithContext(ctx context.Context) ReplicaSetPatchTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicaSetPatchTypeOutput)
+}
+
+// ReplicaSet ensures that a specified number of pod replicas are running at any given time.
+type ReplicaSetPatchTypeOutput struct{ *pulumi.OutputState }
+
+func (ReplicaSetPatchTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicaSetPatchType)(nil)).Elem()
+}
+
+func (o ReplicaSetPatchTypeOutput) ToReplicaSetPatchTypeOutput() ReplicaSetPatchTypeOutput {
+	return o
+}
+
+func (o ReplicaSetPatchTypeOutput) ToReplicaSetPatchTypeOutputWithContext(ctx context.Context) ReplicaSetPatchTypeOutput {
+	return o
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o ReplicaSetPatchTypeOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicaSetPatchType) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o ReplicaSetPatchTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicaSetPatchType) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+func (o ReplicaSetPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v ReplicaSetPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+// Spec defines the specification of the desired behavior of the ReplicaSet. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+func (o ReplicaSetPatchTypeOutput) Spec() ReplicaSetSpecPtrOutput {
+	return o.ApplyT(func(v ReplicaSetPatchType) *ReplicaSetSpec { return v.Spec }).(ReplicaSetSpecPtrOutput)
+}
+
+// Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+func (o ReplicaSetPatchTypeOutput) Status() ReplicaSetStatusPtrOutput {
+	return o.ApplyT(func(v ReplicaSetPatchType) *ReplicaSetStatus { return v.Status }).(ReplicaSetStatusPtrOutput)
 }
 
 // ReplicaSetSpec is the specification of a ReplicaSet.
@@ -6670,6 +9862,88 @@ func (o ReplicaSetSpecPtrOutput) Template() corev1.PodTemplateSpecPtrOutput {
 		}
 		return v.Template
 	}).(corev1.PodTemplateSpecPtrOutput)
+}
+
+// ReplicaSetSpec is the specification of a ReplicaSet.
+type ReplicaSetSpecPatch struct {
+	// Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)
+	MinReadySeconds *int `pulumi:"minReadySeconds"`
+	// Replicas is the number of desired replicas. This is a pointer to distinguish between explicit zero and unspecified. Defaults to 1. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller
+	Replicas *int `pulumi:"replicas"`
+	// Selector is a label query over pods that should match the replica count. If the selector is empty, it is defaulted to the labels present on the pod template. Label keys and values that must match in order to be controlled by this replica set. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+	Selector *metav1.LabelSelector `pulumi:"selector"`
+	// Template is the object that describes the pod that will be created if insufficient replicas are detected. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template
+	Template *corev1.PodTemplateSpec `pulumi:"template"`
+}
+
+// ReplicaSetSpecPatchInput is an input type that accepts ReplicaSetSpecPatchArgs and ReplicaSetSpecPatchOutput values.
+// You can construct a concrete instance of `ReplicaSetSpecPatchInput` via:
+//
+//          ReplicaSetSpecPatchArgs{...}
+type ReplicaSetSpecPatchInput interface {
+	pulumi.Input
+
+	ToReplicaSetSpecPatchOutput() ReplicaSetSpecPatchOutput
+	ToReplicaSetSpecPatchOutputWithContext(context.Context) ReplicaSetSpecPatchOutput
+}
+
+// ReplicaSetSpec is the specification of a ReplicaSet.
+type ReplicaSetSpecPatchArgs struct {
+	// Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)
+	MinReadySeconds pulumi.IntPtrInput `pulumi:"minReadySeconds"`
+	// Replicas is the number of desired replicas. This is a pointer to distinguish between explicit zero and unspecified. Defaults to 1. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller
+	Replicas pulumi.IntPtrInput `pulumi:"replicas"`
+	// Selector is a label query over pods that should match the replica count. If the selector is empty, it is defaulted to the labels present on the pod template. Label keys and values that must match in order to be controlled by this replica set. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+	Selector metav1.LabelSelectorPtrInput `pulumi:"selector"`
+	// Template is the object that describes the pod that will be created if insufficient replicas are detected. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template
+	Template corev1.PodTemplateSpecPtrInput `pulumi:"template"`
+}
+
+func (ReplicaSetSpecPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicaSetSpecPatch)(nil)).Elem()
+}
+
+func (i ReplicaSetSpecPatchArgs) ToReplicaSetSpecPatchOutput() ReplicaSetSpecPatchOutput {
+	return i.ToReplicaSetSpecPatchOutputWithContext(context.Background())
+}
+
+func (i ReplicaSetSpecPatchArgs) ToReplicaSetSpecPatchOutputWithContext(ctx context.Context) ReplicaSetSpecPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicaSetSpecPatchOutput)
+}
+
+// ReplicaSetSpec is the specification of a ReplicaSet.
+type ReplicaSetSpecPatchOutput struct{ *pulumi.OutputState }
+
+func (ReplicaSetSpecPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicaSetSpecPatch)(nil)).Elem()
+}
+
+func (o ReplicaSetSpecPatchOutput) ToReplicaSetSpecPatchOutput() ReplicaSetSpecPatchOutput {
+	return o
+}
+
+func (o ReplicaSetSpecPatchOutput) ToReplicaSetSpecPatchOutputWithContext(ctx context.Context) ReplicaSetSpecPatchOutput {
+	return o
+}
+
+// Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)
+func (o ReplicaSetSpecPatchOutput) MinReadySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReplicaSetSpecPatch) *int { return v.MinReadySeconds }).(pulumi.IntPtrOutput)
+}
+
+// Replicas is the number of desired replicas. This is a pointer to distinguish between explicit zero and unspecified. Defaults to 1. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller
+func (o ReplicaSetSpecPatchOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReplicaSetSpecPatch) *int { return v.Replicas }).(pulumi.IntPtrOutput)
+}
+
+// Selector is a label query over pods that should match the replica count. If the selector is empty, it is defaulted to the labels present on the pod template. Label keys and values that must match in order to be controlled by this replica set. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+func (o ReplicaSetSpecPatchOutput) Selector() metav1.LabelSelectorPtrOutput {
+	return o.ApplyT(func(v ReplicaSetSpecPatch) *metav1.LabelSelector { return v.Selector }).(metav1.LabelSelectorPtrOutput)
+}
+
+// Template is the object that describes the pod that will be created if insufficient replicas are detected. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template
+func (o ReplicaSetSpecPatchOutput) Template() corev1.PodTemplateSpecPtrOutput {
+	return o.ApplyT(func(v ReplicaSetSpecPatch) *corev1.PodTemplateSpec { return v.Template }).(corev1.PodTemplateSpecPtrOutput)
 }
 
 // ReplicaSetStatus represents the current status of a ReplicaSet.
@@ -6907,6 +10181,106 @@ func (o ReplicaSetStatusPtrOutput) Replicas() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ReplicaSetStatus represents the current status of a ReplicaSet.
+type ReplicaSetStatusPatch struct {
+	// The number of available replicas (ready for at least minReadySeconds) for this replica set.
+	AvailableReplicas *int `pulumi:"availableReplicas"`
+	// Represents the latest available observations of a replica set's current state.
+	Conditions []ReplicaSetCondition `pulumi:"conditions"`
+	// The number of pods that have labels matching the labels of the pod template of the replicaset.
+	FullyLabeledReplicas *int `pulumi:"fullyLabeledReplicas"`
+	// ObservedGeneration reflects the generation of the most recently observed ReplicaSet.
+	ObservedGeneration *int `pulumi:"observedGeneration"`
+	// The number of ready replicas for this replica set.
+	ReadyReplicas *int `pulumi:"readyReplicas"`
+	// Replicas is the most recently oberved number of replicas. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller
+	Replicas *int `pulumi:"replicas"`
+}
+
+// ReplicaSetStatusPatchInput is an input type that accepts ReplicaSetStatusPatchArgs and ReplicaSetStatusPatchOutput values.
+// You can construct a concrete instance of `ReplicaSetStatusPatchInput` via:
+//
+//          ReplicaSetStatusPatchArgs{...}
+type ReplicaSetStatusPatchInput interface {
+	pulumi.Input
+
+	ToReplicaSetStatusPatchOutput() ReplicaSetStatusPatchOutput
+	ToReplicaSetStatusPatchOutputWithContext(context.Context) ReplicaSetStatusPatchOutput
+}
+
+// ReplicaSetStatus represents the current status of a ReplicaSet.
+type ReplicaSetStatusPatchArgs struct {
+	// The number of available replicas (ready for at least minReadySeconds) for this replica set.
+	AvailableReplicas pulumi.IntPtrInput `pulumi:"availableReplicas"`
+	// Represents the latest available observations of a replica set's current state.
+	Conditions ReplicaSetConditionArrayInput `pulumi:"conditions"`
+	// The number of pods that have labels matching the labels of the pod template of the replicaset.
+	FullyLabeledReplicas pulumi.IntPtrInput `pulumi:"fullyLabeledReplicas"`
+	// ObservedGeneration reflects the generation of the most recently observed ReplicaSet.
+	ObservedGeneration pulumi.IntPtrInput `pulumi:"observedGeneration"`
+	// The number of ready replicas for this replica set.
+	ReadyReplicas pulumi.IntPtrInput `pulumi:"readyReplicas"`
+	// Replicas is the most recently oberved number of replicas. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller
+	Replicas pulumi.IntPtrInput `pulumi:"replicas"`
+}
+
+func (ReplicaSetStatusPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicaSetStatusPatch)(nil)).Elem()
+}
+
+func (i ReplicaSetStatusPatchArgs) ToReplicaSetStatusPatchOutput() ReplicaSetStatusPatchOutput {
+	return i.ToReplicaSetStatusPatchOutputWithContext(context.Background())
+}
+
+func (i ReplicaSetStatusPatchArgs) ToReplicaSetStatusPatchOutputWithContext(ctx context.Context) ReplicaSetStatusPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicaSetStatusPatchOutput)
+}
+
+// ReplicaSetStatus represents the current status of a ReplicaSet.
+type ReplicaSetStatusPatchOutput struct{ *pulumi.OutputState }
+
+func (ReplicaSetStatusPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicaSetStatusPatch)(nil)).Elem()
+}
+
+func (o ReplicaSetStatusPatchOutput) ToReplicaSetStatusPatchOutput() ReplicaSetStatusPatchOutput {
+	return o
+}
+
+func (o ReplicaSetStatusPatchOutput) ToReplicaSetStatusPatchOutputWithContext(ctx context.Context) ReplicaSetStatusPatchOutput {
+	return o
+}
+
+// The number of available replicas (ready for at least minReadySeconds) for this replica set.
+func (o ReplicaSetStatusPatchOutput) AvailableReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReplicaSetStatusPatch) *int { return v.AvailableReplicas }).(pulumi.IntPtrOutput)
+}
+
+// Represents the latest available observations of a replica set's current state.
+func (o ReplicaSetStatusPatchOutput) Conditions() ReplicaSetConditionArrayOutput {
+	return o.ApplyT(func(v ReplicaSetStatusPatch) []ReplicaSetCondition { return v.Conditions }).(ReplicaSetConditionArrayOutput)
+}
+
+// The number of pods that have labels matching the labels of the pod template of the replicaset.
+func (o ReplicaSetStatusPatchOutput) FullyLabeledReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReplicaSetStatusPatch) *int { return v.FullyLabeledReplicas }).(pulumi.IntPtrOutput)
+}
+
+// ObservedGeneration reflects the generation of the most recently observed ReplicaSet.
+func (o ReplicaSetStatusPatchOutput) ObservedGeneration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReplicaSetStatusPatch) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
+}
+
+// The number of ready replicas for this replica set.
+func (o ReplicaSetStatusPatchOutput) ReadyReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReplicaSetStatusPatch) *int { return v.ReadyReplicas }).(pulumi.IntPtrOutput)
+}
+
+// Replicas is the most recently oberved number of replicas. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller
+func (o ReplicaSetStatusPatchOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReplicaSetStatusPatch) *int { return v.Replicas }).(pulumi.IntPtrOutput)
+}
+
 // DEPRECATED.
 type RollbackConfig struct {
 	// The revision to rollback to. If set to 0, rollback to the last revision.
@@ -7047,6 +10421,61 @@ func (o RollbackConfigPtrOutput) Revision() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// DEPRECATED.
+type RollbackConfigPatch struct {
+	// The revision to rollback to. If set to 0, rollback to the last revision.
+	Revision *int `pulumi:"revision"`
+}
+
+// RollbackConfigPatchInput is an input type that accepts RollbackConfigPatchArgs and RollbackConfigPatchOutput values.
+// You can construct a concrete instance of `RollbackConfigPatchInput` via:
+//
+//          RollbackConfigPatchArgs{...}
+type RollbackConfigPatchInput interface {
+	pulumi.Input
+
+	ToRollbackConfigPatchOutput() RollbackConfigPatchOutput
+	ToRollbackConfigPatchOutputWithContext(context.Context) RollbackConfigPatchOutput
+}
+
+// DEPRECATED.
+type RollbackConfigPatchArgs struct {
+	// The revision to rollback to. If set to 0, rollback to the last revision.
+	Revision pulumi.IntPtrInput `pulumi:"revision"`
+}
+
+func (RollbackConfigPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RollbackConfigPatch)(nil)).Elem()
+}
+
+func (i RollbackConfigPatchArgs) ToRollbackConfigPatchOutput() RollbackConfigPatchOutput {
+	return i.ToRollbackConfigPatchOutputWithContext(context.Background())
+}
+
+func (i RollbackConfigPatchArgs) ToRollbackConfigPatchOutputWithContext(ctx context.Context) RollbackConfigPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RollbackConfigPatchOutput)
+}
+
+// DEPRECATED.
+type RollbackConfigPatchOutput struct{ *pulumi.OutputState }
+
+func (RollbackConfigPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RollbackConfigPatch)(nil)).Elem()
+}
+
+func (o RollbackConfigPatchOutput) ToRollbackConfigPatchOutput() RollbackConfigPatchOutput {
+	return o
+}
+
+func (o RollbackConfigPatchOutput) ToRollbackConfigPatchOutputWithContext(ctx context.Context) RollbackConfigPatchOutput {
+	return o
+}
+
+// The revision to rollback to. If set to 0, rollback to the last revision.
+func (o RollbackConfigPatchOutput) Revision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RollbackConfigPatch) *int { return v.Revision }).(pulumi.IntPtrOutput)
+}
+
 // Spec to control the desired behavior of daemon set rolling update.
 type RollingUpdateDaemonSet struct {
 	// The maximum number of DaemonSet pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of total number of DaemonSet pods at the start of the update (ex: 10%). Absolute number is calculated from percentage by rounding up. This cannot be 0. Default value is 1. Example: when this is set to 30%, at most 30% of the total number of nodes that should be running the daemon pod (i.e. status.desiredNumberScheduled) can have their pods stopped for an update at any given time. The update starts by stopping at most 30% of those DaemonSet pods and then brings up new DaemonSet pods in their place. Once the new pods are available, it then proceeds onto other DaemonSet pods, thus ensuring that at least 70% of original number of DaemonSet pods are available at all times during the update.
@@ -7185,6 +10614,61 @@ func (o RollingUpdateDaemonSetPtrOutput) MaxUnavailable() pulumi.AnyOutput {
 		}
 		return v.MaxUnavailable
 	}).(pulumi.AnyOutput)
+}
+
+// Spec to control the desired behavior of daemon set rolling update.
+type RollingUpdateDaemonSetPatch struct {
+	// The maximum number of DaemonSet pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of total number of DaemonSet pods at the start of the update (ex: 10%). Absolute number is calculated from percentage by rounding up. This cannot be 0. Default value is 1. Example: when this is set to 30%, at most 30% of the total number of nodes that should be running the daemon pod (i.e. status.desiredNumberScheduled) can have their pods stopped for an update at any given time. The update starts by stopping at most 30% of those DaemonSet pods and then brings up new DaemonSet pods in their place. Once the new pods are available, it then proceeds onto other DaemonSet pods, thus ensuring that at least 70% of original number of DaemonSet pods are available at all times during the update.
+	MaxUnavailable interface{} `pulumi:"maxUnavailable"`
+}
+
+// RollingUpdateDaemonSetPatchInput is an input type that accepts RollingUpdateDaemonSetPatchArgs and RollingUpdateDaemonSetPatchOutput values.
+// You can construct a concrete instance of `RollingUpdateDaemonSetPatchInput` via:
+//
+//          RollingUpdateDaemonSetPatchArgs{...}
+type RollingUpdateDaemonSetPatchInput interface {
+	pulumi.Input
+
+	ToRollingUpdateDaemonSetPatchOutput() RollingUpdateDaemonSetPatchOutput
+	ToRollingUpdateDaemonSetPatchOutputWithContext(context.Context) RollingUpdateDaemonSetPatchOutput
+}
+
+// Spec to control the desired behavior of daemon set rolling update.
+type RollingUpdateDaemonSetPatchArgs struct {
+	// The maximum number of DaemonSet pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of total number of DaemonSet pods at the start of the update (ex: 10%). Absolute number is calculated from percentage by rounding up. This cannot be 0. Default value is 1. Example: when this is set to 30%, at most 30% of the total number of nodes that should be running the daemon pod (i.e. status.desiredNumberScheduled) can have their pods stopped for an update at any given time. The update starts by stopping at most 30% of those DaemonSet pods and then brings up new DaemonSet pods in their place. Once the new pods are available, it then proceeds onto other DaemonSet pods, thus ensuring that at least 70% of original number of DaemonSet pods are available at all times during the update.
+	MaxUnavailable pulumi.Input `pulumi:"maxUnavailable"`
+}
+
+func (RollingUpdateDaemonSetPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RollingUpdateDaemonSetPatch)(nil)).Elem()
+}
+
+func (i RollingUpdateDaemonSetPatchArgs) ToRollingUpdateDaemonSetPatchOutput() RollingUpdateDaemonSetPatchOutput {
+	return i.ToRollingUpdateDaemonSetPatchOutputWithContext(context.Background())
+}
+
+func (i RollingUpdateDaemonSetPatchArgs) ToRollingUpdateDaemonSetPatchOutputWithContext(ctx context.Context) RollingUpdateDaemonSetPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RollingUpdateDaemonSetPatchOutput)
+}
+
+// Spec to control the desired behavior of daemon set rolling update.
+type RollingUpdateDaemonSetPatchOutput struct{ *pulumi.OutputState }
+
+func (RollingUpdateDaemonSetPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RollingUpdateDaemonSetPatch)(nil)).Elem()
+}
+
+func (o RollingUpdateDaemonSetPatchOutput) ToRollingUpdateDaemonSetPatchOutput() RollingUpdateDaemonSetPatchOutput {
+	return o
+}
+
+func (o RollingUpdateDaemonSetPatchOutput) ToRollingUpdateDaemonSetPatchOutputWithContext(ctx context.Context) RollingUpdateDaemonSetPatchOutput {
+	return o
+}
+
+// The maximum number of DaemonSet pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of total number of DaemonSet pods at the start of the update (ex: 10%). Absolute number is calculated from percentage by rounding up. This cannot be 0. Default value is 1. Example: when this is set to 30%, at most 30% of the total number of nodes that should be running the daemon pod (i.e. status.desiredNumberScheduled) can have their pods stopped for an update at any given time. The update starts by stopping at most 30% of those DaemonSet pods and then brings up new DaemonSet pods in their place. Once the new pods are available, it then proceeds onto other DaemonSet pods, thus ensuring that at least 70% of original number of DaemonSet pods are available at all times during the update.
+func (o RollingUpdateDaemonSetPatchOutput) MaxUnavailable() pulumi.AnyOutput {
+	return o.ApplyT(func(v RollingUpdateDaemonSetPatch) interface{} { return v.MaxUnavailable }).(pulumi.AnyOutput)
 }
 
 // Spec to control the desired behavior of rolling update.
@@ -7346,6 +10830,70 @@ func (o RollingUpdateDeploymentPtrOutput) MaxUnavailable() pulumi.AnyOutput {
 	}).(pulumi.AnyOutput)
 }
 
+// Spec to control the desired behavior of rolling update.
+type RollingUpdateDeploymentPatch struct {
+	// The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. By default, a value of 1 is used. Example: when this is set to 30%, the new RC can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new RC can be scaled up further, ensuring that total number of pods running at any time during the update is at most 130% of desired pods.
+	MaxSurge interface{} `pulumi:"maxSurge"`
+	// The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. By default, a fixed value of 1 is used. Example: when this is set to 30%, the old RC can be scaled down to 70% of desired pods immediately when the rolling update starts. Once new pods are ready, old RC can be scaled down further, followed by scaling up the new RC, ensuring that the total number of pods available at all times during the update is at least 70% of desired pods.
+	MaxUnavailable interface{} `pulumi:"maxUnavailable"`
+}
+
+// RollingUpdateDeploymentPatchInput is an input type that accepts RollingUpdateDeploymentPatchArgs and RollingUpdateDeploymentPatchOutput values.
+// You can construct a concrete instance of `RollingUpdateDeploymentPatchInput` via:
+//
+//          RollingUpdateDeploymentPatchArgs{...}
+type RollingUpdateDeploymentPatchInput interface {
+	pulumi.Input
+
+	ToRollingUpdateDeploymentPatchOutput() RollingUpdateDeploymentPatchOutput
+	ToRollingUpdateDeploymentPatchOutputWithContext(context.Context) RollingUpdateDeploymentPatchOutput
+}
+
+// Spec to control the desired behavior of rolling update.
+type RollingUpdateDeploymentPatchArgs struct {
+	// The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. By default, a value of 1 is used. Example: when this is set to 30%, the new RC can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new RC can be scaled up further, ensuring that total number of pods running at any time during the update is at most 130% of desired pods.
+	MaxSurge pulumi.Input `pulumi:"maxSurge"`
+	// The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. By default, a fixed value of 1 is used. Example: when this is set to 30%, the old RC can be scaled down to 70% of desired pods immediately when the rolling update starts. Once new pods are ready, old RC can be scaled down further, followed by scaling up the new RC, ensuring that the total number of pods available at all times during the update is at least 70% of desired pods.
+	MaxUnavailable pulumi.Input `pulumi:"maxUnavailable"`
+}
+
+func (RollingUpdateDeploymentPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RollingUpdateDeploymentPatch)(nil)).Elem()
+}
+
+func (i RollingUpdateDeploymentPatchArgs) ToRollingUpdateDeploymentPatchOutput() RollingUpdateDeploymentPatchOutput {
+	return i.ToRollingUpdateDeploymentPatchOutputWithContext(context.Background())
+}
+
+func (i RollingUpdateDeploymentPatchArgs) ToRollingUpdateDeploymentPatchOutputWithContext(ctx context.Context) RollingUpdateDeploymentPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RollingUpdateDeploymentPatchOutput)
+}
+
+// Spec to control the desired behavior of rolling update.
+type RollingUpdateDeploymentPatchOutput struct{ *pulumi.OutputState }
+
+func (RollingUpdateDeploymentPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RollingUpdateDeploymentPatch)(nil)).Elem()
+}
+
+func (o RollingUpdateDeploymentPatchOutput) ToRollingUpdateDeploymentPatchOutput() RollingUpdateDeploymentPatchOutput {
+	return o
+}
+
+func (o RollingUpdateDeploymentPatchOutput) ToRollingUpdateDeploymentPatchOutputWithContext(ctx context.Context) RollingUpdateDeploymentPatchOutput {
+	return o
+}
+
+// The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. By default, a value of 1 is used. Example: when this is set to 30%, the new RC can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new RC can be scaled up further, ensuring that total number of pods running at any time during the update is at most 130% of desired pods.
+func (o RollingUpdateDeploymentPatchOutput) MaxSurge() pulumi.AnyOutput {
+	return o.ApplyT(func(v RollingUpdateDeploymentPatch) interface{} { return v.MaxSurge }).(pulumi.AnyOutput)
+}
+
+// The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. By default, a fixed value of 1 is used. Example: when this is set to 30%, the old RC can be scaled down to 70% of desired pods immediately when the rolling update starts. Once new pods are ready, old RC can be scaled down further, followed by scaling up the new RC, ensuring that the total number of pods available at all times during the update is at least 70% of desired pods.
+func (o RollingUpdateDeploymentPatchOutput) MaxUnavailable() pulumi.AnyOutput {
+	return o.ApplyT(func(v RollingUpdateDeploymentPatch) interface{} { return v.MaxUnavailable }).(pulumi.AnyOutput)
+}
+
 // RunAsGroupStrategyOptions defines the strategy type and any options used to create the strategy. Deprecated: use RunAsGroupStrategyOptions from policy API Group instead.
 type RunAsGroupStrategyOptions struct {
 	// ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
@@ -7503,6 +11051,70 @@ func (o RunAsGroupStrategyOptionsPtrOutput) Rule() pulumi.StringPtrOutput {
 		}
 		return &v.Rule
 	}).(pulumi.StringPtrOutput)
+}
+
+// RunAsGroupStrategyOptions defines the strategy type and any options used to create the strategy. Deprecated: use RunAsGroupStrategyOptions from policy API Group instead.
+type RunAsGroupStrategyOptionsPatch struct {
+	// ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
+	Ranges []IDRange `pulumi:"ranges"`
+	// rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
+	Rule *string `pulumi:"rule"`
+}
+
+// RunAsGroupStrategyOptionsPatchInput is an input type that accepts RunAsGroupStrategyOptionsPatchArgs and RunAsGroupStrategyOptionsPatchOutput values.
+// You can construct a concrete instance of `RunAsGroupStrategyOptionsPatchInput` via:
+//
+//          RunAsGroupStrategyOptionsPatchArgs{...}
+type RunAsGroupStrategyOptionsPatchInput interface {
+	pulumi.Input
+
+	ToRunAsGroupStrategyOptionsPatchOutput() RunAsGroupStrategyOptionsPatchOutput
+	ToRunAsGroupStrategyOptionsPatchOutputWithContext(context.Context) RunAsGroupStrategyOptionsPatchOutput
+}
+
+// RunAsGroupStrategyOptions defines the strategy type and any options used to create the strategy. Deprecated: use RunAsGroupStrategyOptions from policy API Group instead.
+type RunAsGroupStrategyOptionsPatchArgs struct {
+	// ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
+	Ranges IDRangeArrayInput `pulumi:"ranges"`
+	// rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
+	Rule pulumi.StringPtrInput `pulumi:"rule"`
+}
+
+func (RunAsGroupStrategyOptionsPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RunAsGroupStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (i RunAsGroupStrategyOptionsPatchArgs) ToRunAsGroupStrategyOptionsPatchOutput() RunAsGroupStrategyOptionsPatchOutput {
+	return i.ToRunAsGroupStrategyOptionsPatchOutputWithContext(context.Background())
+}
+
+func (i RunAsGroupStrategyOptionsPatchArgs) ToRunAsGroupStrategyOptionsPatchOutputWithContext(ctx context.Context) RunAsGroupStrategyOptionsPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RunAsGroupStrategyOptionsPatchOutput)
+}
+
+// RunAsGroupStrategyOptions defines the strategy type and any options used to create the strategy. Deprecated: use RunAsGroupStrategyOptions from policy API Group instead.
+type RunAsGroupStrategyOptionsPatchOutput struct{ *pulumi.OutputState }
+
+func (RunAsGroupStrategyOptionsPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RunAsGroupStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (o RunAsGroupStrategyOptionsPatchOutput) ToRunAsGroupStrategyOptionsPatchOutput() RunAsGroupStrategyOptionsPatchOutput {
+	return o
+}
+
+func (o RunAsGroupStrategyOptionsPatchOutput) ToRunAsGroupStrategyOptionsPatchOutputWithContext(ctx context.Context) RunAsGroupStrategyOptionsPatchOutput {
+	return o
+}
+
+// ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
+func (o RunAsGroupStrategyOptionsPatchOutput) Ranges() IDRangeArrayOutput {
+	return o.ApplyT(func(v RunAsGroupStrategyOptionsPatch) []IDRange { return v.Ranges }).(IDRangeArrayOutput)
+}
+
+// rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
+func (o RunAsGroupStrategyOptionsPatchOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RunAsGroupStrategyOptionsPatch) *string { return v.Rule }).(pulumi.StringPtrOutput)
 }
 
 // RunAsUserStrategyOptions defines the strategy type and any options used to create the strategy. Deprecated: use RunAsUserStrategyOptions from policy API Group instead.
@@ -7664,6 +11276,70 @@ func (o RunAsUserStrategyOptionsPtrOutput) Rule() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// RunAsUserStrategyOptions defines the strategy type and any options used to create the strategy. Deprecated: use RunAsUserStrategyOptions from policy API Group instead.
+type RunAsUserStrategyOptionsPatch struct {
+	// ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
+	Ranges []IDRange `pulumi:"ranges"`
+	// rule is the strategy that will dictate the allowable RunAsUser values that may be set.
+	Rule *string `pulumi:"rule"`
+}
+
+// RunAsUserStrategyOptionsPatchInput is an input type that accepts RunAsUserStrategyOptionsPatchArgs and RunAsUserStrategyOptionsPatchOutput values.
+// You can construct a concrete instance of `RunAsUserStrategyOptionsPatchInput` via:
+//
+//          RunAsUserStrategyOptionsPatchArgs{...}
+type RunAsUserStrategyOptionsPatchInput interface {
+	pulumi.Input
+
+	ToRunAsUserStrategyOptionsPatchOutput() RunAsUserStrategyOptionsPatchOutput
+	ToRunAsUserStrategyOptionsPatchOutputWithContext(context.Context) RunAsUserStrategyOptionsPatchOutput
+}
+
+// RunAsUserStrategyOptions defines the strategy type and any options used to create the strategy. Deprecated: use RunAsUserStrategyOptions from policy API Group instead.
+type RunAsUserStrategyOptionsPatchArgs struct {
+	// ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
+	Ranges IDRangeArrayInput `pulumi:"ranges"`
+	// rule is the strategy that will dictate the allowable RunAsUser values that may be set.
+	Rule pulumi.StringPtrInput `pulumi:"rule"`
+}
+
+func (RunAsUserStrategyOptionsPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RunAsUserStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (i RunAsUserStrategyOptionsPatchArgs) ToRunAsUserStrategyOptionsPatchOutput() RunAsUserStrategyOptionsPatchOutput {
+	return i.ToRunAsUserStrategyOptionsPatchOutputWithContext(context.Background())
+}
+
+func (i RunAsUserStrategyOptionsPatchArgs) ToRunAsUserStrategyOptionsPatchOutputWithContext(ctx context.Context) RunAsUserStrategyOptionsPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RunAsUserStrategyOptionsPatchOutput)
+}
+
+// RunAsUserStrategyOptions defines the strategy type and any options used to create the strategy. Deprecated: use RunAsUserStrategyOptions from policy API Group instead.
+type RunAsUserStrategyOptionsPatchOutput struct{ *pulumi.OutputState }
+
+func (RunAsUserStrategyOptionsPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RunAsUserStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (o RunAsUserStrategyOptionsPatchOutput) ToRunAsUserStrategyOptionsPatchOutput() RunAsUserStrategyOptionsPatchOutput {
+	return o
+}
+
+func (o RunAsUserStrategyOptionsPatchOutput) ToRunAsUserStrategyOptionsPatchOutputWithContext(ctx context.Context) RunAsUserStrategyOptionsPatchOutput {
+	return o
+}
+
+// ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
+func (o RunAsUserStrategyOptionsPatchOutput) Ranges() IDRangeArrayOutput {
+	return o.ApplyT(func(v RunAsUserStrategyOptionsPatch) []IDRange { return v.Ranges }).(IDRangeArrayOutput)
+}
+
+// rule is the strategy that will dictate the allowable RunAsUser values that may be set.
+func (o RunAsUserStrategyOptionsPatchOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RunAsUserStrategyOptionsPatch) *string { return v.Rule }).(pulumi.StringPtrOutput)
+}
+
 // RuntimeClassStrategyOptions define the strategy that will dictate the allowable RuntimeClasses for a pod.
 type RuntimeClassStrategyOptions struct {
 	// allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
@@ -7821,6 +11497,70 @@ func (o RuntimeClassStrategyOptionsPtrOutput) DefaultRuntimeClassName() pulumi.S
 		}
 		return v.DefaultRuntimeClassName
 	}).(pulumi.StringPtrOutput)
+}
+
+// RuntimeClassStrategyOptions define the strategy that will dictate the allowable RuntimeClasses for a pod.
+type RuntimeClassStrategyOptionsPatch struct {
+	// allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
+	AllowedRuntimeClassNames []string `pulumi:"allowedRuntimeClassNames"`
+	// defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
+	DefaultRuntimeClassName *string `pulumi:"defaultRuntimeClassName"`
+}
+
+// RuntimeClassStrategyOptionsPatchInput is an input type that accepts RuntimeClassStrategyOptionsPatchArgs and RuntimeClassStrategyOptionsPatchOutput values.
+// You can construct a concrete instance of `RuntimeClassStrategyOptionsPatchInput` via:
+//
+//          RuntimeClassStrategyOptionsPatchArgs{...}
+type RuntimeClassStrategyOptionsPatchInput interface {
+	pulumi.Input
+
+	ToRuntimeClassStrategyOptionsPatchOutput() RuntimeClassStrategyOptionsPatchOutput
+	ToRuntimeClassStrategyOptionsPatchOutputWithContext(context.Context) RuntimeClassStrategyOptionsPatchOutput
+}
+
+// RuntimeClassStrategyOptions define the strategy that will dictate the allowable RuntimeClasses for a pod.
+type RuntimeClassStrategyOptionsPatchArgs struct {
+	// allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
+	AllowedRuntimeClassNames pulumi.StringArrayInput `pulumi:"allowedRuntimeClassNames"`
+	// defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
+	DefaultRuntimeClassName pulumi.StringPtrInput `pulumi:"defaultRuntimeClassName"`
+}
+
+func (RuntimeClassStrategyOptionsPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeClassStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (i RuntimeClassStrategyOptionsPatchArgs) ToRuntimeClassStrategyOptionsPatchOutput() RuntimeClassStrategyOptionsPatchOutput {
+	return i.ToRuntimeClassStrategyOptionsPatchOutputWithContext(context.Background())
+}
+
+func (i RuntimeClassStrategyOptionsPatchArgs) ToRuntimeClassStrategyOptionsPatchOutputWithContext(ctx context.Context) RuntimeClassStrategyOptionsPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeClassStrategyOptionsPatchOutput)
+}
+
+// RuntimeClassStrategyOptions define the strategy that will dictate the allowable RuntimeClasses for a pod.
+type RuntimeClassStrategyOptionsPatchOutput struct{ *pulumi.OutputState }
+
+func (RuntimeClassStrategyOptionsPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeClassStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (o RuntimeClassStrategyOptionsPatchOutput) ToRuntimeClassStrategyOptionsPatchOutput() RuntimeClassStrategyOptionsPatchOutput {
+	return o
+}
+
+func (o RuntimeClassStrategyOptionsPatchOutput) ToRuntimeClassStrategyOptionsPatchOutputWithContext(ctx context.Context) RuntimeClassStrategyOptionsPatchOutput {
+	return o
+}
+
+// allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
+func (o RuntimeClassStrategyOptionsPatchOutput) AllowedRuntimeClassNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuntimeClassStrategyOptionsPatch) []string { return v.AllowedRuntimeClassNames }).(pulumi.StringArrayOutput)
+}
+
+// defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
+func (o RuntimeClassStrategyOptionsPatchOutput) DefaultRuntimeClassName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeClassStrategyOptionsPatch) *string { return v.DefaultRuntimeClassName }).(pulumi.StringPtrOutput)
 }
 
 // SELinuxStrategyOptions defines the strategy type and any options used to create the strategy. Deprecated: use SELinuxStrategyOptions from policy API Group instead.
@@ -7982,6 +11722,70 @@ func (o SELinuxStrategyOptionsPtrOutput) SeLinuxOptions() corev1.SELinuxOptionsP
 	}).(corev1.SELinuxOptionsPtrOutput)
 }
 
+// SELinuxStrategyOptions defines the strategy type and any options used to create the strategy. Deprecated: use SELinuxStrategyOptions from policy API Group instead.
+type SELinuxStrategyOptionsPatch struct {
+	// rule is the strategy that will dictate the allowable labels that may be set.
+	Rule *string `pulumi:"rule"`
+	// seLinuxOptions required to run as; required for MustRunAs More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+	SeLinuxOptions *corev1.SELinuxOptions `pulumi:"seLinuxOptions"`
+}
+
+// SELinuxStrategyOptionsPatchInput is an input type that accepts SELinuxStrategyOptionsPatchArgs and SELinuxStrategyOptionsPatchOutput values.
+// You can construct a concrete instance of `SELinuxStrategyOptionsPatchInput` via:
+//
+//          SELinuxStrategyOptionsPatchArgs{...}
+type SELinuxStrategyOptionsPatchInput interface {
+	pulumi.Input
+
+	ToSELinuxStrategyOptionsPatchOutput() SELinuxStrategyOptionsPatchOutput
+	ToSELinuxStrategyOptionsPatchOutputWithContext(context.Context) SELinuxStrategyOptionsPatchOutput
+}
+
+// SELinuxStrategyOptions defines the strategy type and any options used to create the strategy. Deprecated: use SELinuxStrategyOptions from policy API Group instead.
+type SELinuxStrategyOptionsPatchArgs struct {
+	// rule is the strategy that will dictate the allowable labels that may be set.
+	Rule pulumi.StringPtrInput `pulumi:"rule"`
+	// seLinuxOptions required to run as; required for MustRunAs More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+	SeLinuxOptions corev1.SELinuxOptionsPtrInput `pulumi:"seLinuxOptions"`
+}
+
+func (SELinuxStrategyOptionsPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SELinuxStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (i SELinuxStrategyOptionsPatchArgs) ToSELinuxStrategyOptionsPatchOutput() SELinuxStrategyOptionsPatchOutput {
+	return i.ToSELinuxStrategyOptionsPatchOutputWithContext(context.Background())
+}
+
+func (i SELinuxStrategyOptionsPatchArgs) ToSELinuxStrategyOptionsPatchOutputWithContext(ctx context.Context) SELinuxStrategyOptionsPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SELinuxStrategyOptionsPatchOutput)
+}
+
+// SELinuxStrategyOptions defines the strategy type and any options used to create the strategy. Deprecated: use SELinuxStrategyOptions from policy API Group instead.
+type SELinuxStrategyOptionsPatchOutput struct{ *pulumi.OutputState }
+
+func (SELinuxStrategyOptionsPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SELinuxStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (o SELinuxStrategyOptionsPatchOutput) ToSELinuxStrategyOptionsPatchOutput() SELinuxStrategyOptionsPatchOutput {
+	return o
+}
+
+func (o SELinuxStrategyOptionsPatchOutput) ToSELinuxStrategyOptionsPatchOutputWithContext(ctx context.Context) SELinuxStrategyOptionsPatchOutput {
+	return o
+}
+
+// rule is the strategy that will dictate the allowable labels that may be set.
+func (o SELinuxStrategyOptionsPatchOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SELinuxStrategyOptionsPatch) *string { return v.Rule }).(pulumi.StringPtrOutput)
+}
+
+// seLinuxOptions required to run as; required for MustRunAs More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+func (o SELinuxStrategyOptionsPatchOutput) SeLinuxOptions() corev1.SELinuxOptionsPtrOutput {
+	return o.ApplyT(func(v SELinuxStrategyOptionsPatch) *corev1.SELinuxOptions { return v.SeLinuxOptions }).(corev1.SELinuxOptionsPtrOutput)
+}
+
 // represents a scaling request for a resource.
 type Scale struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -8071,6 +11875,97 @@ func (o ScaleOutput) Spec() ScaleSpecPtrOutput {
 // current status of the scale. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status. Read-only.
 func (o ScaleOutput) Status() ScaleStatusPtrOutput {
 	return o.ApplyT(func(v Scale) *ScaleStatus { return v.Status }).(ScaleStatusPtrOutput)
+}
+
+// represents a scaling request for a resource.
+type ScalePatch struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind *string `pulumi:"kind"`
+	// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	// defines the behavior of the scale. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
+	Spec *ScaleSpec `pulumi:"spec"`
+	// current status of the scale. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status. Read-only.
+	Status *ScaleStatus `pulumi:"status"`
+}
+
+// ScalePatchInput is an input type that accepts ScalePatchArgs and ScalePatchOutput values.
+// You can construct a concrete instance of `ScalePatchInput` via:
+//
+//          ScalePatchArgs{...}
+type ScalePatchInput interface {
+	pulumi.Input
+
+	ToScalePatchOutput() ScalePatchOutput
+	ToScalePatchOutputWithContext(context.Context) ScalePatchOutput
+}
+
+// represents a scaling request for a resource.
+type ScalePatchArgs struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	// defines the behavior of the scale. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
+	Spec ScaleSpecPtrInput `pulumi:"spec"`
+	// current status of the scale. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status. Read-only.
+	Status ScaleStatusPtrInput `pulumi:"status"`
+}
+
+func (ScalePatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalePatch)(nil)).Elem()
+}
+
+func (i ScalePatchArgs) ToScalePatchOutput() ScalePatchOutput {
+	return i.ToScalePatchOutputWithContext(context.Background())
+}
+
+func (i ScalePatchArgs) ToScalePatchOutputWithContext(ctx context.Context) ScalePatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalePatchOutput)
+}
+
+// represents a scaling request for a resource.
+type ScalePatchOutput struct{ *pulumi.OutputState }
+
+func (ScalePatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalePatch)(nil)).Elem()
+}
+
+func (o ScalePatchOutput) ToScalePatchOutput() ScalePatchOutput {
+	return o
+}
+
+func (o ScalePatchOutput) ToScalePatchOutputWithContext(ctx context.Context) ScalePatchOutput {
+	return o
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o ScalePatchOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalePatch) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o ScalePatchOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalePatch) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
+func (o ScalePatchOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v ScalePatch) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+// defines the behavior of the scale. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
+func (o ScalePatchOutput) Spec() ScaleSpecPtrOutput {
+	return o.ApplyT(func(v ScalePatch) *ScaleSpec { return v.Spec }).(ScaleSpecPtrOutput)
+}
+
+// current status of the scale. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status. Read-only.
+func (o ScalePatchOutput) Status() ScaleStatusPtrOutput {
+	return o.ApplyT(func(v ScalePatch) *ScaleStatus { return v.Status }).(ScaleStatusPtrOutput)
 }
 
 // describes the attributes of a scale subresource
@@ -8211,6 +12106,61 @@ func (o ScaleSpecPtrOutput) Replicas() pulumi.IntPtrOutput {
 		}
 		return v.Replicas
 	}).(pulumi.IntPtrOutput)
+}
+
+// describes the attributes of a scale subresource
+type ScaleSpecPatch struct {
+	// desired number of instances for the scaled object.
+	Replicas *int `pulumi:"replicas"`
+}
+
+// ScaleSpecPatchInput is an input type that accepts ScaleSpecPatchArgs and ScaleSpecPatchOutput values.
+// You can construct a concrete instance of `ScaleSpecPatchInput` via:
+//
+//          ScaleSpecPatchArgs{...}
+type ScaleSpecPatchInput interface {
+	pulumi.Input
+
+	ToScaleSpecPatchOutput() ScaleSpecPatchOutput
+	ToScaleSpecPatchOutputWithContext(context.Context) ScaleSpecPatchOutput
+}
+
+// describes the attributes of a scale subresource
+type ScaleSpecPatchArgs struct {
+	// desired number of instances for the scaled object.
+	Replicas pulumi.IntPtrInput `pulumi:"replicas"`
+}
+
+func (ScaleSpecPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScaleSpecPatch)(nil)).Elem()
+}
+
+func (i ScaleSpecPatchArgs) ToScaleSpecPatchOutput() ScaleSpecPatchOutput {
+	return i.ToScaleSpecPatchOutputWithContext(context.Background())
+}
+
+func (i ScaleSpecPatchArgs) ToScaleSpecPatchOutputWithContext(ctx context.Context) ScaleSpecPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSpecPatchOutput)
+}
+
+// describes the attributes of a scale subresource
+type ScaleSpecPatchOutput struct{ *pulumi.OutputState }
+
+func (ScaleSpecPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScaleSpecPatch)(nil)).Elem()
+}
+
+func (o ScaleSpecPatchOutput) ToScaleSpecPatchOutput() ScaleSpecPatchOutput {
+	return o
+}
+
+func (o ScaleSpecPatchOutput) ToScaleSpecPatchOutputWithContext(ctx context.Context) ScaleSpecPatchOutput {
+	return o
+}
+
+// desired number of instances for the scaled object.
+func (o ScaleSpecPatchOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScaleSpecPatch) *int { return v.Replicas }).(pulumi.IntPtrOutput)
 }
 
 // represents the current status of a scale subresource.
@@ -8391,6 +12341,79 @@ func (o ScaleStatusPtrOutput) TargetSelector() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// represents the current status of a scale subresource.
+type ScaleStatusPatch struct {
+	// actual number of observed instances of the scaled object.
+	Replicas *int `pulumi:"replicas"`
+	// label query over pods that should match the replicas count. More info: http://kubernetes.io/docs/user-guide/labels#label-selectors
+	Selector map[string]string `pulumi:"selector"`
+	// label selector for pods that should match the replicas count. This is a serializated version of both map-based and more expressive set-based selectors. This is done to avoid introspection in the clients. The string will be in the same format as the query-param syntax. If the target type only supports map-based selectors, both this field and map-based selector field are populated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+	TargetSelector *string `pulumi:"targetSelector"`
+}
+
+// ScaleStatusPatchInput is an input type that accepts ScaleStatusPatchArgs and ScaleStatusPatchOutput values.
+// You can construct a concrete instance of `ScaleStatusPatchInput` via:
+//
+//          ScaleStatusPatchArgs{...}
+type ScaleStatusPatchInput interface {
+	pulumi.Input
+
+	ToScaleStatusPatchOutput() ScaleStatusPatchOutput
+	ToScaleStatusPatchOutputWithContext(context.Context) ScaleStatusPatchOutput
+}
+
+// represents the current status of a scale subresource.
+type ScaleStatusPatchArgs struct {
+	// actual number of observed instances of the scaled object.
+	Replicas pulumi.IntPtrInput `pulumi:"replicas"`
+	// label query over pods that should match the replicas count. More info: http://kubernetes.io/docs/user-guide/labels#label-selectors
+	Selector pulumi.StringMapInput `pulumi:"selector"`
+	// label selector for pods that should match the replicas count. This is a serializated version of both map-based and more expressive set-based selectors. This is done to avoid introspection in the clients. The string will be in the same format as the query-param syntax. If the target type only supports map-based selectors, both this field and map-based selector field are populated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+	TargetSelector pulumi.StringPtrInput `pulumi:"targetSelector"`
+}
+
+func (ScaleStatusPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScaleStatusPatch)(nil)).Elem()
+}
+
+func (i ScaleStatusPatchArgs) ToScaleStatusPatchOutput() ScaleStatusPatchOutput {
+	return i.ToScaleStatusPatchOutputWithContext(context.Background())
+}
+
+func (i ScaleStatusPatchArgs) ToScaleStatusPatchOutputWithContext(ctx context.Context) ScaleStatusPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleStatusPatchOutput)
+}
+
+// represents the current status of a scale subresource.
+type ScaleStatusPatchOutput struct{ *pulumi.OutputState }
+
+func (ScaleStatusPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScaleStatusPatch)(nil)).Elem()
+}
+
+func (o ScaleStatusPatchOutput) ToScaleStatusPatchOutput() ScaleStatusPatchOutput {
+	return o
+}
+
+func (o ScaleStatusPatchOutput) ToScaleStatusPatchOutputWithContext(ctx context.Context) ScaleStatusPatchOutput {
+	return o
+}
+
+// actual number of observed instances of the scaled object.
+func (o ScaleStatusPatchOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScaleStatusPatch) *int { return v.Replicas }).(pulumi.IntPtrOutput)
+}
+
+// label query over pods that should match the replicas count. More info: http://kubernetes.io/docs/user-guide/labels#label-selectors
+func (o ScaleStatusPatchOutput) Selector() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ScaleStatusPatch) map[string]string { return v.Selector }).(pulumi.StringMapOutput)
+}
+
+// label selector for pods that should match the replicas count. This is a serializated version of both map-based and more expressive set-based selectors. This is done to avoid introspection in the clients. The string will be in the same format as the query-param syntax. If the target type only supports map-based selectors, both this field and map-based selector field are populated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+func (o ScaleStatusPatchOutput) TargetSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScaleStatusPatch) *string { return v.TargetSelector }).(pulumi.StringPtrOutput)
+}
+
 // SupplementalGroupsStrategyOptions defines the strategy type and options used to create the strategy. Deprecated: use SupplementalGroupsStrategyOptions from policy API Group instead.
 type SupplementalGroupsStrategyOptions struct {
 	// ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
@@ -8550,209 +12573,371 @@ func (o SupplementalGroupsStrategyOptionsPtrOutput) Rule() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// SupplementalGroupsStrategyOptions defines the strategy type and options used to create the strategy. Deprecated: use SupplementalGroupsStrategyOptions from policy API Group instead.
+type SupplementalGroupsStrategyOptionsPatch struct {
+	// ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
+	Ranges []IDRange `pulumi:"ranges"`
+	// rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
+	Rule *string `pulumi:"rule"`
+}
+
+// SupplementalGroupsStrategyOptionsPatchInput is an input type that accepts SupplementalGroupsStrategyOptionsPatchArgs and SupplementalGroupsStrategyOptionsPatchOutput values.
+// You can construct a concrete instance of `SupplementalGroupsStrategyOptionsPatchInput` via:
+//
+//          SupplementalGroupsStrategyOptionsPatchArgs{...}
+type SupplementalGroupsStrategyOptionsPatchInput interface {
+	pulumi.Input
+
+	ToSupplementalGroupsStrategyOptionsPatchOutput() SupplementalGroupsStrategyOptionsPatchOutput
+	ToSupplementalGroupsStrategyOptionsPatchOutputWithContext(context.Context) SupplementalGroupsStrategyOptionsPatchOutput
+}
+
+// SupplementalGroupsStrategyOptions defines the strategy type and options used to create the strategy. Deprecated: use SupplementalGroupsStrategyOptions from policy API Group instead.
+type SupplementalGroupsStrategyOptionsPatchArgs struct {
+	// ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
+	Ranges IDRangeArrayInput `pulumi:"ranges"`
+	// rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
+	Rule pulumi.StringPtrInput `pulumi:"rule"`
+}
+
+func (SupplementalGroupsStrategyOptionsPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupplementalGroupsStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (i SupplementalGroupsStrategyOptionsPatchArgs) ToSupplementalGroupsStrategyOptionsPatchOutput() SupplementalGroupsStrategyOptionsPatchOutput {
+	return i.ToSupplementalGroupsStrategyOptionsPatchOutputWithContext(context.Background())
+}
+
+func (i SupplementalGroupsStrategyOptionsPatchArgs) ToSupplementalGroupsStrategyOptionsPatchOutputWithContext(ctx context.Context) SupplementalGroupsStrategyOptionsPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SupplementalGroupsStrategyOptionsPatchOutput)
+}
+
+// SupplementalGroupsStrategyOptions defines the strategy type and options used to create the strategy. Deprecated: use SupplementalGroupsStrategyOptions from policy API Group instead.
+type SupplementalGroupsStrategyOptionsPatchOutput struct{ *pulumi.OutputState }
+
+func (SupplementalGroupsStrategyOptionsPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SupplementalGroupsStrategyOptionsPatch)(nil)).Elem()
+}
+
+func (o SupplementalGroupsStrategyOptionsPatchOutput) ToSupplementalGroupsStrategyOptionsPatchOutput() SupplementalGroupsStrategyOptionsPatchOutput {
+	return o
+}
+
+func (o SupplementalGroupsStrategyOptionsPatchOutput) ToSupplementalGroupsStrategyOptionsPatchOutputWithContext(ctx context.Context) SupplementalGroupsStrategyOptionsPatchOutput {
+	return o
+}
+
+// ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.
+func (o SupplementalGroupsStrategyOptionsPatchOutput) Ranges() IDRangeArrayOutput {
+	return o.ApplyT(func(v SupplementalGroupsStrategyOptionsPatch) []IDRange { return v.Ranges }).(IDRangeArrayOutput)
+}
+
+// rule is the strategy that will dictate what supplemental groups is used in the SecurityContext.
+func (o SupplementalGroupsStrategyOptionsPatchOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SupplementalGroupsStrategyOptionsPatch) *string { return v.Rule }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedCSIDriverInput)(nil)).Elem(), AllowedCSIDriverArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedCSIDriverArrayInput)(nil)).Elem(), AllowedCSIDriverArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedCSIDriverPatchInput)(nil)).Elem(), AllowedCSIDriverPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedFlexVolumeInput)(nil)).Elem(), AllowedFlexVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedFlexVolumeArrayInput)(nil)).Elem(), AllowedFlexVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedFlexVolumePatchInput)(nil)).Elem(), AllowedFlexVolumePatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedHostPathInput)(nil)).Elem(), AllowedHostPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedHostPathArrayInput)(nil)).Elem(), AllowedHostPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedHostPathPatchInput)(nil)).Elem(), AllowedHostPathPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DaemonSetTypeInput)(nil)).Elem(), DaemonSetTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DaemonSetTypeArrayInput)(nil)).Elem(), DaemonSetTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DaemonSetConditionInput)(nil)).Elem(), DaemonSetConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DaemonSetConditionArrayInput)(nil)).Elem(), DaemonSetConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DaemonSetConditionPatchInput)(nil)).Elem(), DaemonSetConditionPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DaemonSetListTypeInput)(nil)).Elem(), DaemonSetListTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DaemonSetPatchTypeInput)(nil)).Elem(), DaemonSetPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DaemonSetSpecInput)(nil)).Elem(), DaemonSetSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DaemonSetSpecPtrInput)(nil)).Elem(), DaemonSetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DaemonSetSpecPatchInput)(nil)).Elem(), DaemonSetSpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DaemonSetStatusInput)(nil)).Elem(), DaemonSetStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DaemonSetStatusPtrInput)(nil)).Elem(), DaemonSetStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DaemonSetStatusPatchInput)(nil)).Elem(), DaemonSetStatusPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DaemonSetUpdateStrategyInput)(nil)).Elem(), DaemonSetUpdateStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DaemonSetUpdateStrategyPtrInput)(nil)).Elem(), DaemonSetUpdateStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DaemonSetUpdateStrategyPatchInput)(nil)).Elem(), DaemonSetUpdateStrategyPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentTypeInput)(nil)).Elem(), DeploymentTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentTypeArrayInput)(nil)).Elem(), DeploymentTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentConditionInput)(nil)).Elem(), DeploymentConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentConditionArrayInput)(nil)).Elem(), DeploymentConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentConditionPatchInput)(nil)).Elem(), DeploymentConditionPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentListTypeInput)(nil)).Elem(), DeploymentListTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentPatchTypeInput)(nil)).Elem(), DeploymentPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentRollbackInput)(nil)).Elem(), DeploymentRollbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentRollbackPatchInput)(nil)).Elem(), DeploymentRollbackPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentSpecInput)(nil)).Elem(), DeploymentSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentSpecPtrInput)(nil)).Elem(), DeploymentSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentSpecPatchInput)(nil)).Elem(), DeploymentSpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentStatusInput)(nil)).Elem(), DeploymentStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentStatusPtrInput)(nil)).Elem(), DeploymentStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentStatusPatchInput)(nil)).Elem(), DeploymentStatusPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentStrategyInput)(nil)).Elem(), DeploymentStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentStrategyPtrInput)(nil)).Elem(), DeploymentStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentStrategyPatchInput)(nil)).Elem(), DeploymentStrategyPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FSGroupStrategyOptionsInput)(nil)).Elem(), FSGroupStrategyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FSGroupStrategyOptionsPtrInput)(nil)).Elem(), FSGroupStrategyOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FSGroupStrategyOptionsPatchInput)(nil)).Elem(), FSGroupStrategyOptionsPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HTTPIngressPathInput)(nil)).Elem(), HTTPIngressPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HTTPIngressPathArrayInput)(nil)).Elem(), HTTPIngressPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPIngressPathPatchInput)(nil)).Elem(), HTTPIngressPathPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HTTPIngressRuleValueInput)(nil)).Elem(), HTTPIngressRuleValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HTTPIngressRuleValuePtrInput)(nil)).Elem(), HTTPIngressRuleValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HTTPIngressRuleValuePatchInput)(nil)).Elem(), HTTPIngressRuleValuePatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostPortRangeInput)(nil)).Elem(), HostPortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostPortRangeArrayInput)(nil)).Elem(), HostPortRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostPortRangePatchInput)(nil)).Elem(), HostPortRangePatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IDRangeInput)(nil)).Elem(), IDRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IDRangeArrayInput)(nil)).Elem(), IDRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IDRangePatchInput)(nil)).Elem(), IDRangePatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IPBlockInput)(nil)).Elem(), IPBlockArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IPBlockPtrInput)(nil)).Elem(), IPBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IPBlockPatchInput)(nil)).Elem(), IPBlockPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressTypeInput)(nil)).Elem(), IngressTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressTypeArrayInput)(nil)).Elem(), IngressTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressBackendInput)(nil)).Elem(), IngressBackendArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressBackendPtrInput)(nil)).Elem(), IngressBackendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IngressBackendPatchInput)(nil)).Elem(), IngressBackendPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressListTypeInput)(nil)).Elem(), IngressListTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IngressPatchTypeInput)(nil)).Elem(), IngressPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressRuleInput)(nil)).Elem(), IngressRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressRuleArrayInput)(nil)).Elem(), IngressRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IngressRulePatchInput)(nil)).Elem(), IngressRulePatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressSpecInput)(nil)).Elem(), IngressSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressSpecPtrInput)(nil)).Elem(), IngressSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IngressSpecPatchInput)(nil)).Elem(), IngressSpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressStatusInput)(nil)).Elem(), IngressStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressStatusPtrInput)(nil)).Elem(), IngressStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IngressStatusPatchInput)(nil)).Elem(), IngressStatusPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressTLSInput)(nil)).Elem(), IngressTLSArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressTLSArrayInput)(nil)).Elem(), IngressTLSArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IngressTLSPatchInput)(nil)).Elem(), IngressTLSPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyTypeInput)(nil)).Elem(), NetworkPolicyTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyTypeArrayInput)(nil)).Elem(), NetworkPolicyTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyEgressRuleInput)(nil)).Elem(), NetworkPolicyEgressRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyEgressRuleArrayInput)(nil)).Elem(), NetworkPolicyEgressRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyEgressRulePatchInput)(nil)).Elem(), NetworkPolicyEgressRulePatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyIngressRuleInput)(nil)).Elem(), NetworkPolicyIngressRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyIngressRuleArrayInput)(nil)).Elem(), NetworkPolicyIngressRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyIngressRulePatchInput)(nil)).Elem(), NetworkPolicyIngressRulePatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyListTypeInput)(nil)).Elem(), NetworkPolicyListTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyPatchTypeInput)(nil)).Elem(), NetworkPolicyPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyPeerInput)(nil)).Elem(), NetworkPolicyPeerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyPeerArrayInput)(nil)).Elem(), NetworkPolicyPeerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyPeerPatchInput)(nil)).Elem(), NetworkPolicyPeerPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyPortInput)(nil)).Elem(), NetworkPolicyPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyPortArrayInput)(nil)).Elem(), NetworkPolicyPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyPortPatchInput)(nil)).Elem(), NetworkPolicyPortPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicySpecInput)(nil)).Elem(), NetworkPolicySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicySpecPtrInput)(nil)).Elem(), NetworkPolicySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicySpecPatchInput)(nil)).Elem(), NetworkPolicySpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicyTypeInput)(nil)).Elem(), PodSecurityPolicyTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicyTypeArrayInput)(nil)).Elem(), PodSecurityPolicyTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicyListTypeInput)(nil)).Elem(), PodSecurityPolicyListTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicyPatchTypeInput)(nil)).Elem(), PodSecurityPolicyPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicySpecInput)(nil)).Elem(), PodSecurityPolicySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicySpecPtrInput)(nil)).Elem(), PodSecurityPolicySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PodSecurityPolicySpecPatchInput)(nil)).Elem(), PodSecurityPolicySpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaSetTypeInput)(nil)).Elem(), ReplicaSetTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaSetTypeArrayInput)(nil)).Elem(), ReplicaSetTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaSetConditionInput)(nil)).Elem(), ReplicaSetConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaSetConditionArrayInput)(nil)).Elem(), ReplicaSetConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaSetConditionPatchInput)(nil)).Elem(), ReplicaSetConditionPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaSetListTypeInput)(nil)).Elem(), ReplicaSetListTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaSetPatchTypeInput)(nil)).Elem(), ReplicaSetPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaSetSpecInput)(nil)).Elem(), ReplicaSetSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaSetSpecPtrInput)(nil)).Elem(), ReplicaSetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaSetSpecPatchInput)(nil)).Elem(), ReplicaSetSpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaSetStatusInput)(nil)).Elem(), ReplicaSetStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaSetStatusPtrInput)(nil)).Elem(), ReplicaSetStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaSetStatusPatchInput)(nil)).Elem(), ReplicaSetStatusPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RollbackConfigInput)(nil)).Elem(), RollbackConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RollbackConfigPtrInput)(nil)).Elem(), RollbackConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RollbackConfigPatchInput)(nil)).Elem(), RollbackConfigPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RollingUpdateDaemonSetInput)(nil)).Elem(), RollingUpdateDaemonSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RollingUpdateDaemonSetPtrInput)(nil)).Elem(), RollingUpdateDaemonSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RollingUpdateDaemonSetPatchInput)(nil)).Elem(), RollingUpdateDaemonSetPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RollingUpdateDeploymentInput)(nil)).Elem(), RollingUpdateDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RollingUpdateDeploymentPtrInput)(nil)).Elem(), RollingUpdateDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RollingUpdateDeploymentPatchInput)(nil)).Elem(), RollingUpdateDeploymentPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RunAsGroupStrategyOptionsInput)(nil)).Elem(), RunAsGroupStrategyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RunAsGroupStrategyOptionsPtrInput)(nil)).Elem(), RunAsGroupStrategyOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RunAsGroupStrategyOptionsPatchInput)(nil)).Elem(), RunAsGroupStrategyOptionsPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RunAsUserStrategyOptionsInput)(nil)).Elem(), RunAsUserStrategyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RunAsUserStrategyOptionsPtrInput)(nil)).Elem(), RunAsUserStrategyOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RunAsUserStrategyOptionsPatchInput)(nil)).Elem(), RunAsUserStrategyOptionsPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeClassStrategyOptionsInput)(nil)).Elem(), RuntimeClassStrategyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeClassStrategyOptionsPtrInput)(nil)).Elem(), RuntimeClassStrategyOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeClassStrategyOptionsPatchInput)(nil)).Elem(), RuntimeClassStrategyOptionsPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SELinuxStrategyOptionsInput)(nil)).Elem(), SELinuxStrategyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SELinuxStrategyOptionsPtrInput)(nil)).Elem(), SELinuxStrategyOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SELinuxStrategyOptionsPatchInput)(nil)).Elem(), SELinuxStrategyOptionsPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScaleInput)(nil)).Elem(), ScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalePatchInput)(nil)).Elem(), ScalePatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScaleSpecInput)(nil)).Elem(), ScaleSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScaleSpecPtrInput)(nil)).Elem(), ScaleSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScaleSpecPatchInput)(nil)).Elem(), ScaleSpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScaleStatusInput)(nil)).Elem(), ScaleStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScaleStatusPtrInput)(nil)).Elem(), ScaleStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScaleStatusPatchInput)(nil)).Elem(), ScaleStatusPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SupplementalGroupsStrategyOptionsInput)(nil)).Elem(), SupplementalGroupsStrategyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SupplementalGroupsStrategyOptionsPtrInput)(nil)).Elem(), SupplementalGroupsStrategyOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SupplementalGroupsStrategyOptionsPatchInput)(nil)).Elem(), SupplementalGroupsStrategyOptionsPatchArgs{})
 	pulumi.RegisterOutputType(AllowedCSIDriverOutput{})
 	pulumi.RegisterOutputType(AllowedCSIDriverArrayOutput{})
+	pulumi.RegisterOutputType(AllowedCSIDriverPatchOutput{})
 	pulumi.RegisterOutputType(AllowedFlexVolumeOutput{})
 	pulumi.RegisterOutputType(AllowedFlexVolumeArrayOutput{})
+	pulumi.RegisterOutputType(AllowedFlexVolumePatchOutput{})
 	pulumi.RegisterOutputType(AllowedHostPathOutput{})
 	pulumi.RegisterOutputType(AllowedHostPathArrayOutput{})
+	pulumi.RegisterOutputType(AllowedHostPathPatchOutput{})
 	pulumi.RegisterOutputType(DaemonSetTypeOutput{})
 	pulumi.RegisterOutputType(DaemonSetTypeArrayOutput{})
 	pulumi.RegisterOutputType(DaemonSetConditionOutput{})
 	pulumi.RegisterOutputType(DaemonSetConditionArrayOutput{})
+	pulumi.RegisterOutputType(DaemonSetConditionPatchOutput{})
 	pulumi.RegisterOutputType(DaemonSetListTypeOutput{})
+	pulumi.RegisterOutputType(DaemonSetPatchTypeOutput{})
 	pulumi.RegisterOutputType(DaemonSetSpecOutput{})
 	pulumi.RegisterOutputType(DaemonSetSpecPtrOutput{})
+	pulumi.RegisterOutputType(DaemonSetSpecPatchOutput{})
 	pulumi.RegisterOutputType(DaemonSetStatusOutput{})
 	pulumi.RegisterOutputType(DaemonSetStatusPtrOutput{})
+	pulumi.RegisterOutputType(DaemonSetStatusPatchOutput{})
 	pulumi.RegisterOutputType(DaemonSetUpdateStrategyOutput{})
 	pulumi.RegisterOutputType(DaemonSetUpdateStrategyPtrOutput{})
+	pulumi.RegisterOutputType(DaemonSetUpdateStrategyPatchOutput{})
 	pulumi.RegisterOutputType(DeploymentTypeOutput{})
 	pulumi.RegisterOutputType(DeploymentTypeArrayOutput{})
 	pulumi.RegisterOutputType(DeploymentConditionOutput{})
 	pulumi.RegisterOutputType(DeploymentConditionArrayOutput{})
+	pulumi.RegisterOutputType(DeploymentConditionPatchOutput{})
 	pulumi.RegisterOutputType(DeploymentListTypeOutput{})
+	pulumi.RegisterOutputType(DeploymentPatchTypeOutput{})
 	pulumi.RegisterOutputType(DeploymentRollbackOutput{})
+	pulumi.RegisterOutputType(DeploymentRollbackPatchOutput{})
 	pulumi.RegisterOutputType(DeploymentSpecOutput{})
 	pulumi.RegisterOutputType(DeploymentSpecPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentSpecPatchOutput{})
 	pulumi.RegisterOutputType(DeploymentStatusOutput{})
 	pulumi.RegisterOutputType(DeploymentStatusPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentStatusPatchOutput{})
 	pulumi.RegisterOutputType(DeploymentStrategyOutput{})
 	pulumi.RegisterOutputType(DeploymentStrategyPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentStrategyPatchOutput{})
 	pulumi.RegisterOutputType(FSGroupStrategyOptionsOutput{})
 	pulumi.RegisterOutputType(FSGroupStrategyOptionsPtrOutput{})
+	pulumi.RegisterOutputType(FSGroupStrategyOptionsPatchOutput{})
 	pulumi.RegisterOutputType(HTTPIngressPathOutput{})
 	pulumi.RegisterOutputType(HTTPIngressPathArrayOutput{})
+	pulumi.RegisterOutputType(HTTPIngressPathPatchOutput{})
 	pulumi.RegisterOutputType(HTTPIngressRuleValueOutput{})
 	pulumi.RegisterOutputType(HTTPIngressRuleValuePtrOutput{})
+	pulumi.RegisterOutputType(HTTPIngressRuleValuePatchOutput{})
 	pulumi.RegisterOutputType(HostPortRangeOutput{})
 	pulumi.RegisterOutputType(HostPortRangeArrayOutput{})
+	pulumi.RegisterOutputType(HostPortRangePatchOutput{})
 	pulumi.RegisterOutputType(IDRangeOutput{})
 	pulumi.RegisterOutputType(IDRangeArrayOutput{})
+	pulumi.RegisterOutputType(IDRangePatchOutput{})
 	pulumi.RegisterOutputType(IPBlockOutput{})
 	pulumi.RegisterOutputType(IPBlockPtrOutput{})
+	pulumi.RegisterOutputType(IPBlockPatchOutput{})
 	pulumi.RegisterOutputType(IngressTypeOutput{})
 	pulumi.RegisterOutputType(IngressTypeArrayOutput{})
 	pulumi.RegisterOutputType(IngressBackendOutput{})
 	pulumi.RegisterOutputType(IngressBackendPtrOutput{})
+	pulumi.RegisterOutputType(IngressBackendPatchOutput{})
 	pulumi.RegisterOutputType(IngressListTypeOutput{})
+	pulumi.RegisterOutputType(IngressPatchTypeOutput{})
 	pulumi.RegisterOutputType(IngressRuleOutput{})
 	pulumi.RegisterOutputType(IngressRuleArrayOutput{})
+	pulumi.RegisterOutputType(IngressRulePatchOutput{})
 	pulumi.RegisterOutputType(IngressSpecOutput{})
 	pulumi.RegisterOutputType(IngressSpecPtrOutput{})
+	pulumi.RegisterOutputType(IngressSpecPatchOutput{})
 	pulumi.RegisterOutputType(IngressStatusOutput{})
 	pulumi.RegisterOutputType(IngressStatusPtrOutput{})
+	pulumi.RegisterOutputType(IngressStatusPatchOutput{})
 	pulumi.RegisterOutputType(IngressTLSOutput{})
 	pulumi.RegisterOutputType(IngressTLSArrayOutput{})
+	pulumi.RegisterOutputType(IngressTLSPatchOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyTypeOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyTypeArrayOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyEgressRuleOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyEgressRuleArrayOutput{})
+	pulumi.RegisterOutputType(NetworkPolicyEgressRulePatchOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyIngressRuleOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyIngressRuleArrayOutput{})
+	pulumi.RegisterOutputType(NetworkPolicyIngressRulePatchOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyListTypeOutput{})
+	pulumi.RegisterOutputType(NetworkPolicyPatchTypeOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyPeerOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyPeerArrayOutput{})
+	pulumi.RegisterOutputType(NetworkPolicyPeerPatchOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyPortOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyPortArrayOutput{})
+	pulumi.RegisterOutputType(NetworkPolicyPortPatchOutput{})
 	pulumi.RegisterOutputType(NetworkPolicySpecOutput{})
 	pulumi.RegisterOutputType(NetworkPolicySpecPtrOutput{})
+	pulumi.RegisterOutputType(NetworkPolicySpecPatchOutput{})
 	pulumi.RegisterOutputType(PodSecurityPolicyTypeOutput{})
 	pulumi.RegisterOutputType(PodSecurityPolicyTypeArrayOutput{})
 	pulumi.RegisterOutputType(PodSecurityPolicyListTypeOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicyPatchTypeOutput{})
 	pulumi.RegisterOutputType(PodSecurityPolicySpecOutput{})
 	pulumi.RegisterOutputType(PodSecurityPolicySpecPtrOutput{})
+	pulumi.RegisterOutputType(PodSecurityPolicySpecPatchOutput{})
 	pulumi.RegisterOutputType(ReplicaSetTypeOutput{})
 	pulumi.RegisterOutputType(ReplicaSetTypeArrayOutput{})
 	pulumi.RegisterOutputType(ReplicaSetConditionOutput{})
 	pulumi.RegisterOutputType(ReplicaSetConditionArrayOutput{})
+	pulumi.RegisterOutputType(ReplicaSetConditionPatchOutput{})
 	pulumi.RegisterOutputType(ReplicaSetListTypeOutput{})
+	pulumi.RegisterOutputType(ReplicaSetPatchTypeOutput{})
 	pulumi.RegisterOutputType(ReplicaSetSpecOutput{})
 	pulumi.RegisterOutputType(ReplicaSetSpecPtrOutput{})
+	pulumi.RegisterOutputType(ReplicaSetSpecPatchOutput{})
 	pulumi.RegisterOutputType(ReplicaSetStatusOutput{})
 	pulumi.RegisterOutputType(ReplicaSetStatusPtrOutput{})
+	pulumi.RegisterOutputType(ReplicaSetStatusPatchOutput{})
 	pulumi.RegisterOutputType(RollbackConfigOutput{})
 	pulumi.RegisterOutputType(RollbackConfigPtrOutput{})
+	pulumi.RegisterOutputType(RollbackConfigPatchOutput{})
 	pulumi.RegisterOutputType(RollingUpdateDaemonSetOutput{})
 	pulumi.RegisterOutputType(RollingUpdateDaemonSetPtrOutput{})
+	pulumi.RegisterOutputType(RollingUpdateDaemonSetPatchOutput{})
 	pulumi.RegisterOutputType(RollingUpdateDeploymentOutput{})
 	pulumi.RegisterOutputType(RollingUpdateDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(RollingUpdateDeploymentPatchOutput{})
 	pulumi.RegisterOutputType(RunAsGroupStrategyOptionsOutput{})
 	pulumi.RegisterOutputType(RunAsGroupStrategyOptionsPtrOutput{})
+	pulumi.RegisterOutputType(RunAsGroupStrategyOptionsPatchOutput{})
 	pulumi.RegisterOutputType(RunAsUserStrategyOptionsOutput{})
 	pulumi.RegisterOutputType(RunAsUserStrategyOptionsPtrOutput{})
+	pulumi.RegisterOutputType(RunAsUserStrategyOptionsPatchOutput{})
 	pulumi.RegisterOutputType(RuntimeClassStrategyOptionsOutput{})
 	pulumi.RegisterOutputType(RuntimeClassStrategyOptionsPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeClassStrategyOptionsPatchOutput{})
 	pulumi.RegisterOutputType(SELinuxStrategyOptionsOutput{})
 	pulumi.RegisterOutputType(SELinuxStrategyOptionsPtrOutput{})
+	pulumi.RegisterOutputType(SELinuxStrategyOptionsPatchOutput{})
 	pulumi.RegisterOutputType(ScaleOutput{})
+	pulumi.RegisterOutputType(ScalePatchOutput{})
 	pulumi.RegisterOutputType(ScaleSpecOutput{})
 	pulumi.RegisterOutputType(ScaleSpecPtrOutput{})
+	pulumi.RegisterOutputType(ScaleSpecPatchOutput{})
 	pulumi.RegisterOutputType(ScaleStatusOutput{})
 	pulumi.RegisterOutputType(ScaleStatusPtrOutput{})
+	pulumi.RegisterOutputType(ScaleStatusPatchOutput{})
 	pulumi.RegisterOutputType(SupplementalGroupsStrategyOptionsOutput{})
 	pulumi.RegisterOutputType(SupplementalGroupsStrategyOptionsPtrOutput{})
+	pulumi.RegisterOutputType(SupplementalGroupsStrategyOptionsPatchOutput{})
 }

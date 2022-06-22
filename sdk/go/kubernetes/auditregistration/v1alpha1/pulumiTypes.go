@@ -214,6 +214,85 @@ func (o AuditSinkListTypeOutput) Metadata() metav1.ListMetaPtrOutput {
 	return o.ApplyT(func(v AuditSinkListType) *metav1.ListMeta { return v.Metadata }).(metav1.ListMetaPtrOutput)
 }
 
+// AuditSink represents a cluster level audit sink
+type AuditSinkPatchType struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind     *string            `pulumi:"kind"`
+	Metadata *metav1.ObjectMeta `pulumi:"metadata"`
+	// Spec defines the audit configuration spec
+	Spec *AuditSinkSpec `pulumi:"spec"`
+}
+
+// AuditSinkPatchTypeInput is an input type that accepts AuditSinkPatchTypeArgs and AuditSinkPatchTypeOutput values.
+// You can construct a concrete instance of `AuditSinkPatchTypeInput` via:
+//
+//          AuditSinkPatchTypeArgs{...}
+type AuditSinkPatchTypeInput interface {
+	pulumi.Input
+
+	ToAuditSinkPatchTypeOutput() AuditSinkPatchTypeOutput
+	ToAuditSinkPatchTypeOutputWithContext(context.Context) AuditSinkPatchTypeOutput
+}
+
+// AuditSink represents a cluster level audit sink
+type AuditSinkPatchTypeArgs struct {
+	// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind     pulumi.StringPtrInput     `pulumi:"kind"`
+	Metadata metav1.ObjectMetaPtrInput `pulumi:"metadata"`
+	// Spec defines the audit configuration spec
+	Spec AuditSinkSpecPtrInput `pulumi:"spec"`
+}
+
+func (AuditSinkPatchTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditSinkPatchType)(nil)).Elem()
+}
+
+func (i AuditSinkPatchTypeArgs) ToAuditSinkPatchTypeOutput() AuditSinkPatchTypeOutput {
+	return i.ToAuditSinkPatchTypeOutputWithContext(context.Background())
+}
+
+func (i AuditSinkPatchTypeArgs) ToAuditSinkPatchTypeOutputWithContext(ctx context.Context) AuditSinkPatchTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditSinkPatchTypeOutput)
+}
+
+// AuditSink represents a cluster level audit sink
+type AuditSinkPatchTypeOutput struct{ *pulumi.OutputState }
+
+func (AuditSinkPatchTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditSinkPatchType)(nil)).Elem()
+}
+
+func (o AuditSinkPatchTypeOutput) ToAuditSinkPatchTypeOutput() AuditSinkPatchTypeOutput {
+	return o
+}
+
+func (o AuditSinkPatchTypeOutput) ToAuditSinkPatchTypeOutputWithContext(ctx context.Context) AuditSinkPatchTypeOutput {
+	return o
+}
+
+// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+func (o AuditSinkPatchTypeOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuditSinkPatchType) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o AuditSinkPatchTypeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuditSinkPatchType) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+func (o AuditSinkPatchTypeOutput) Metadata() metav1.ObjectMetaPtrOutput {
+	return o.ApplyT(func(v AuditSinkPatchType) *metav1.ObjectMeta { return v.Metadata }).(metav1.ObjectMetaPtrOutput)
+}
+
+// Spec defines the audit configuration spec
+func (o AuditSinkPatchTypeOutput) Spec() AuditSinkSpecPtrOutput {
+	return o.ApplyT(func(v AuditSinkPatchType) *AuditSinkSpec { return v.Spec }).(AuditSinkSpecPtrOutput)
+}
+
 // AuditSinkSpec holds the spec for the audit sink
 type AuditSinkSpec struct {
 	// Policy defines the policy for selecting which events should be sent to the webhook required
@@ -373,6 +452,70 @@ func (o AuditSinkSpecPtrOutput) Webhook() WebhookPtrOutput {
 	}).(WebhookPtrOutput)
 }
 
+// AuditSinkSpec holds the spec for the audit sink
+type AuditSinkSpecPatch struct {
+	// Policy defines the policy for selecting which events should be sent to the webhook required
+	Policy *Policy `pulumi:"policy"`
+	// Webhook to send events required
+	Webhook *Webhook `pulumi:"webhook"`
+}
+
+// AuditSinkSpecPatchInput is an input type that accepts AuditSinkSpecPatchArgs and AuditSinkSpecPatchOutput values.
+// You can construct a concrete instance of `AuditSinkSpecPatchInput` via:
+//
+//          AuditSinkSpecPatchArgs{...}
+type AuditSinkSpecPatchInput interface {
+	pulumi.Input
+
+	ToAuditSinkSpecPatchOutput() AuditSinkSpecPatchOutput
+	ToAuditSinkSpecPatchOutputWithContext(context.Context) AuditSinkSpecPatchOutput
+}
+
+// AuditSinkSpec holds the spec for the audit sink
+type AuditSinkSpecPatchArgs struct {
+	// Policy defines the policy for selecting which events should be sent to the webhook required
+	Policy PolicyPtrInput `pulumi:"policy"`
+	// Webhook to send events required
+	Webhook WebhookPtrInput `pulumi:"webhook"`
+}
+
+func (AuditSinkSpecPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditSinkSpecPatch)(nil)).Elem()
+}
+
+func (i AuditSinkSpecPatchArgs) ToAuditSinkSpecPatchOutput() AuditSinkSpecPatchOutput {
+	return i.ToAuditSinkSpecPatchOutputWithContext(context.Background())
+}
+
+func (i AuditSinkSpecPatchArgs) ToAuditSinkSpecPatchOutputWithContext(ctx context.Context) AuditSinkSpecPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditSinkSpecPatchOutput)
+}
+
+// AuditSinkSpec holds the spec for the audit sink
+type AuditSinkSpecPatchOutput struct{ *pulumi.OutputState }
+
+func (AuditSinkSpecPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditSinkSpecPatch)(nil)).Elem()
+}
+
+func (o AuditSinkSpecPatchOutput) ToAuditSinkSpecPatchOutput() AuditSinkSpecPatchOutput {
+	return o
+}
+
+func (o AuditSinkSpecPatchOutput) ToAuditSinkSpecPatchOutputWithContext(ctx context.Context) AuditSinkSpecPatchOutput {
+	return o
+}
+
+// Policy defines the policy for selecting which events should be sent to the webhook required
+func (o AuditSinkSpecPatchOutput) Policy() PolicyPtrOutput {
+	return o.ApplyT(func(v AuditSinkSpecPatch) *Policy { return v.Policy }).(PolicyPtrOutput)
+}
+
+// Webhook to send events required
+func (o AuditSinkSpecPatchOutput) Webhook() WebhookPtrOutput {
+	return o.ApplyT(func(v AuditSinkSpecPatch) *Webhook { return v.Webhook }).(WebhookPtrOutput)
+}
+
 // Policy defines the configuration of how audit events are logged
 type Policy struct {
 	// The Level that all requests are recorded at. available options: None, Metadata, Request, RequestResponse required
@@ -530,6 +673,70 @@ func (o PolicyPtrOutput) Stages() pulumi.StringArrayOutput {
 		}
 		return v.Stages
 	}).(pulumi.StringArrayOutput)
+}
+
+// Policy defines the configuration of how audit events are logged
+type PolicyPatch struct {
+	// The Level that all requests are recorded at. available options: None, Metadata, Request, RequestResponse required
+	Level *string `pulumi:"level"`
+	// Stages is a list of stages for which events are created.
+	Stages []string `pulumi:"stages"`
+}
+
+// PolicyPatchInput is an input type that accepts PolicyPatchArgs and PolicyPatchOutput values.
+// You can construct a concrete instance of `PolicyPatchInput` via:
+//
+//          PolicyPatchArgs{...}
+type PolicyPatchInput interface {
+	pulumi.Input
+
+	ToPolicyPatchOutput() PolicyPatchOutput
+	ToPolicyPatchOutputWithContext(context.Context) PolicyPatchOutput
+}
+
+// Policy defines the configuration of how audit events are logged
+type PolicyPatchArgs struct {
+	// The Level that all requests are recorded at. available options: None, Metadata, Request, RequestResponse required
+	Level pulumi.StringPtrInput `pulumi:"level"`
+	// Stages is a list of stages for which events are created.
+	Stages pulumi.StringArrayInput `pulumi:"stages"`
+}
+
+func (PolicyPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyPatch)(nil)).Elem()
+}
+
+func (i PolicyPatchArgs) ToPolicyPatchOutput() PolicyPatchOutput {
+	return i.ToPolicyPatchOutputWithContext(context.Background())
+}
+
+func (i PolicyPatchArgs) ToPolicyPatchOutputWithContext(ctx context.Context) PolicyPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyPatchOutput)
+}
+
+// Policy defines the configuration of how audit events are logged
+type PolicyPatchOutput struct{ *pulumi.OutputState }
+
+func (PolicyPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyPatch)(nil)).Elem()
+}
+
+func (o PolicyPatchOutput) ToPolicyPatchOutput() PolicyPatchOutput {
+	return o
+}
+
+func (o PolicyPatchOutput) ToPolicyPatchOutputWithContext(ctx context.Context) PolicyPatchOutput {
+	return o
+}
+
+// The Level that all requests are recorded at. available options: None, Metadata, Request, RequestResponse required
+func (o PolicyPatchOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyPatch) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+// Stages is a list of stages for which events are created.
+func (o PolicyPatchOutput) Stages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PolicyPatch) []string { return v.Stages }).(pulumi.StringArrayOutput)
 }
 
 // ServiceReference holds a reference to Service.legacy.k8s.io
@@ -727,6 +934,88 @@ func (o ServiceReferencePtrOutput) Port() pulumi.IntPtrOutput {
 		}
 		return v.Port
 	}).(pulumi.IntPtrOutput)
+}
+
+// ServiceReference holds a reference to Service.legacy.k8s.io
+type ServiceReferencePatch struct {
+	// `name` is the name of the service. Required
+	Name *string `pulumi:"name"`
+	// `namespace` is the namespace of the service. Required
+	Namespace *string `pulumi:"namespace"`
+	// `path` is an optional URL path which will be sent in any request to this service.
+	Path *string `pulumi:"path"`
+	// If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).
+	Port *int `pulumi:"port"`
+}
+
+// ServiceReferencePatchInput is an input type that accepts ServiceReferencePatchArgs and ServiceReferencePatchOutput values.
+// You can construct a concrete instance of `ServiceReferencePatchInput` via:
+//
+//          ServiceReferencePatchArgs{...}
+type ServiceReferencePatchInput interface {
+	pulumi.Input
+
+	ToServiceReferencePatchOutput() ServiceReferencePatchOutput
+	ToServiceReferencePatchOutputWithContext(context.Context) ServiceReferencePatchOutput
+}
+
+// ServiceReference holds a reference to Service.legacy.k8s.io
+type ServiceReferencePatchArgs struct {
+	// `name` is the name of the service. Required
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// `namespace` is the namespace of the service. Required
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// `path` is an optional URL path which will be sent in any request to this service.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (ServiceReferencePatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceReferencePatch)(nil)).Elem()
+}
+
+func (i ServiceReferencePatchArgs) ToServiceReferencePatchOutput() ServiceReferencePatchOutput {
+	return i.ToServiceReferencePatchOutputWithContext(context.Background())
+}
+
+func (i ServiceReferencePatchArgs) ToServiceReferencePatchOutputWithContext(ctx context.Context) ServiceReferencePatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceReferencePatchOutput)
+}
+
+// ServiceReference holds a reference to Service.legacy.k8s.io
+type ServiceReferencePatchOutput struct{ *pulumi.OutputState }
+
+func (ServiceReferencePatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceReferencePatch)(nil)).Elem()
+}
+
+func (o ServiceReferencePatchOutput) ToServiceReferencePatchOutput() ServiceReferencePatchOutput {
+	return o
+}
+
+func (o ServiceReferencePatchOutput) ToServiceReferencePatchOutputWithContext(ctx context.Context) ServiceReferencePatchOutput {
+	return o
+}
+
+// `name` is the name of the service. Required
+func (o ServiceReferencePatchOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceReferencePatch) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// `namespace` is the namespace of the service. Required
+func (o ServiceReferencePatchOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceReferencePatch) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// `path` is an optional URL path which will be sent in any request to this service.
+func (o ServiceReferencePatchOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceReferencePatch) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).
+func (o ServiceReferencePatchOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceReferencePatch) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 // Webhook holds the configuration of the webhook
@@ -1114,6 +1403,179 @@ func (o WebhookClientConfigPtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// WebhookClientConfig contains the information to make a connection with the webhook
+type WebhookClientConfigPatch struct {
+	// `caBundle` is a PEM encoded CA bundle which will be used to validate the webhook's server certificate. If unspecified, system trust roots on the apiserver are used.
+	CaBundle *string `pulumi:"caBundle"`
+	// `service` is a reference to the service for this webhook. Either `service` or `url` must be specified.
+	//
+	// If the webhook is running within the cluster, then you should use `service`.
+	Service *ServiceReference `pulumi:"service"`
+	// `url` gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly one of `url` or `service` must be specified.
+	//
+	// The `host` should not refer to a service running in the cluster; use the `service` field instead. The host might be resolved via external DNS in some apiservers (e.g., `kube-apiserver` cannot resolve in-cluster DNS as that would be a layering violation). `host` may also be an IP address.
+	//
+	// Please note that using `localhost` or `127.0.0.1` as a `host` is risky unless you take great care to run this webhook on all hosts which run an apiserver which might need to make calls to this webhook. Such installs are likely to be non-portable, i.e., not easy to turn up in a new cluster.
+	//
+	// The scheme must be "https"; the URL must begin with "https://".
+	//
+	// A path is optional, and if present may be any string permissible in a URL. You may use the path to pass an arbitrary string to the webhook, for example, a cluster identifier.
+	//
+	// Attempting to use a user or basic auth e.g. "user:password@" is not allowed. Fragments ("#...") and query parameters ("?...") are not allowed, either.
+	Url *string `pulumi:"url"`
+}
+
+// WebhookClientConfigPatchInput is an input type that accepts WebhookClientConfigPatchArgs and WebhookClientConfigPatchOutput values.
+// You can construct a concrete instance of `WebhookClientConfigPatchInput` via:
+//
+//          WebhookClientConfigPatchArgs{...}
+type WebhookClientConfigPatchInput interface {
+	pulumi.Input
+
+	ToWebhookClientConfigPatchOutput() WebhookClientConfigPatchOutput
+	ToWebhookClientConfigPatchOutputWithContext(context.Context) WebhookClientConfigPatchOutput
+}
+
+// WebhookClientConfig contains the information to make a connection with the webhook
+type WebhookClientConfigPatchArgs struct {
+	// `caBundle` is a PEM encoded CA bundle which will be used to validate the webhook's server certificate. If unspecified, system trust roots on the apiserver are used.
+	CaBundle pulumi.StringPtrInput `pulumi:"caBundle"`
+	// `service` is a reference to the service for this webhook. Either `service` or `url` must be specified.
+	//
+	// If the webhook is running within the cluster, then you should use `service`.
+	Service ServiceReferencePtrInput `pulumi:"service"`
+	// `url` gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly one of `url` or `service` must be specified.
+	//
+	// The `host` should not refer to a service running in the cluster; use the `service` field instead. The host might be resolved via external DNS in some apiservers (e.g., `kube-apiserver` cannot resolve in-cluster DNS as that would be a layering violation). `host` may also be an IP address.
+	//
+	// Please note that using `localhost` or `127.0.0.1` as a `host` is risky unless you take great care to run this webhook on all hosts which run an apiserver which might need to make calls to this webhook. Such installs are likely to be non-portable, i.e., not easy to turn up in a new cluster.
+	//
+	// The scheme must be "https"; the URL must begin with "https://".
+	//
+	// A path is optional, and if present may be any string permissible in a URL. You may use the path to pass an arbitrary string to the webhook, for example, a cluster identifier.
+	//
+	// Attempting to use a user or basic auth e.g. "user:password@" is not allowed. Fragments ("#...") and query parameters ("?...") are not allowed, either.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (WebhookClientConfigPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookClientConfigPatch)(nil)).Elem()
+}
+
+func (i WebhookClientConfigPatchArgs) ToWebhookClientConfigPatchOutput() WebhookClientConfigPatchOutput {
+	return i.ToWebhookClientConfigPatchOutputWithContext(context.Background())
+}
+
+func (i WebhookClientConfigPatchArgs) ToWebhookClientConfigPatchOutputWithContext(ctx context.Context) WebhookClientConfigPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookClientConfigPatchOutput)
+}
+
+// WebhookClientConfig contains the information to make a connection with the webhook
+type WebhookClientConfigPatchOutput struct{ *pulumi.OutputState }
+
+func (WebhookClientConfigPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookClientConfigPatch)(nil)).Elem()
+}
+
+func (o WebhookClientConfigPatchOutput) ToWebhookClientConfigPatchOutput() WebhookClientConfigPatchOutput {
+	return o
+}
+
+func (o WebhookClientConfigPatchOutput) ToWebhookClientConfigPatchOutputWithContext(ctx context.Context) WebhookClientConfigPatchOutput {
+	return o
+}
+
+// `caBundle` is a PEM encoded CA bundle which will be used to validate the webhook's server certificate. If unspecified, system trust roots on the apiserver are used.
+func (o WebhookClientConfigPatchOutput) CaBundle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookClientConfigPatch) *string { return v.CaBundle }).(pulumi.StringPtrOutput)
+}
+
+// `service` is a reference to the service for this webhook. Either `service` or `url` must be specified.
+//
+// If the webhook is running within the cluster, then you should use `service`.
+func (o WebhookClientConfigPatchOutput) Service() ServiceReferencePtrOutput {
+	return o.ApplyT(func(v WebhookClientConfigPatch) *ServiceReference { return v.Service }).(ServiceReferencePtrOutput)
+}
+
+// `url` gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly one of `url` or `service` must be specified.
+//
+// The `host` should not refer to a service running in the cluster; use the `service` field instead. The host might be resolved via external DNS in some apiservers (e.g., `kube-apiserver` cannot resolve in-cluster DNS as that would be a layering violation). `host` may also be an IP address.
+//
+// Please note that using `localhost` or `127.0.0.1` as a `host` is risky unless you take great care to run this webhook on all hosts which run an apiserver which might need to make calls to this webhook. Such installs are likely to be non-portable, i.e., not easy to turn up in a new cluster.
+//
+// The scheme must be "https"; the URL must begin with "https://".
+//
+// A path is optional, and if present may be any string permissible in a URL. You may use the path to pass an arbitrary string to the webhook, for example, a cluster identifier.
+//
+// Attempting to use a user or basic auth e.g. "user:password@" is not allowed. Fragments ("#...") and query parameters ("?...") are not allowed, either.
+func (o WebhookClientConfigPatchOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookClientConfigPatch) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// Webhook holds the configuration of the webhook
+type WebhookPatch struct {
+	// ClientConfig holds the connection parameters for the webhook required
+	ClientConfig *WebhookClientConfig `pulumi:"clientConfig"`
+	// Throttle holds the options for throttling the webhook
+	Throttle *WebhookThrottleConfig `pulumi:"throttle"`
+}
+
+// WebhookPatchInput is an input type that accepts WebhookPatchArgs and WebhookPatchOutput values.
+// You can construct a concrete instance of `WebhookPatchInput` via:
+//
+//          WebhookPatchArgs{...}
+type WebhookPatchInput interface {
+	pulumi.Input
+
+	ToWebhookPatchOutput() WebhookPatchOutput
+	ToWebhookPatchOutputWithContext(context.Context) WebhookPatchOutput
+}
+
+// Webhook holds the configuration of the webhook
+type WebhookPatchArgs struct {
+	// ClientConfig holds the connection parameters for the webhook required
+	ClientConfig WebhookClientConfigPtrInput `pulumi:"clientConfig"`
+	// Throttle holds the options for throttling the webhook
+	Throttle WebhookThrottleConfigPtrInput `pulumi:"throttle"`
+}
+
+func (WebhookPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookPatch)(nil)).Elem()
+}
+
+func (i WebhookPatchArgs) ToWebhookPatchOutput() WebhookPatchOutput {
+	return i.ToWebhookPatchOutputWithContext(context.Background())
+}
+
+func (i WebhookPatchArgs) ToWebhookPatchOutputWithContext(ctx context.Context) WebhookPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookPatchOutput)
+}
+
+// Webhook holds the configuration of the webhook
+type WebhookPatchOutput struct{ *pulumi.OutputState }
+
+func (WebhookPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookPatch)(nil)).Elem()
+}
+
+func (o WebhookPatchOutput) ToWebhookPatchOutput() WebhookPatchOutput {
+	return o
+}
+
+func (o WebhookPatchOutput) ToWebhookPatchOutputWithContext(ctx context.Context) WebhookPatchOutput {
+	return o
+}
+
+// ClientConfig holds the connection parameters for the webhook required
+func (o WebhookPatchOutput) ClientConfig() WebhookClientConfigPtrOutput {
+	return o.ApplyT(func(v WebhookPatch) *WebhookClientConfig { return v.ClientConfig }).(WebhookClientConfigPtrOutput)
+}
+
+// Throttle holds the options for throttling the webhook
+func (o WebhookPatchOutput) Throttle() WebhookThrottleConfigPtrOutput {
+	return o.ApplyT(func(v WebhookPatch) *WebhookThrottleConfig { return v.Throttle }).(WebhookThrottleConfigPtrOutput)
+}
+
 // WebhookThrottleConfig holds the configuration for throttling events
 type WebhookThrottleConfig struct {
 	// ThrottleBurst is the maximum number of events sent at the same moment default 15 QPS
@@ -1273,35 +1735,113 @@ func (o WebhookThrottleConfigPtrOutput) Qps() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// WebhookThrottleConfig holds the configuration for throttling events
+type WebhookThrottleConfigPatch struct {
+	// ThrottleBurst is the maximum number of events sent at the same moment default 15 QPS
+	Burst *int `pulumi:"burst"`
+	// ThrottleQPS maximum number of batches per second default 10 QPS
+	Qps *int `pulumi:"qps"`
+}
+
+// WebhookThrottleConfigPatchInput is an input type that accepts WebhookThrottleConfigPatchArgs and WebhookThrottleConfigPatchOutput values.
+// You can construct a concrete instance of `WebhookThrottleConfigPatchInput` via:
+//
+//          WebhookThrottleConfigPatchArgs{...}
+type WebhookThrottleConfigPatchInput interface {
+	pulumi.Input
+
+	ToWebhookThrottleConfigPatchOutput() WebhookThrottleConfigPatchOutput
+	ToWebhookThrottleConfigPatchOutputWithContext(context.Context) WebhookThrottleConfigPatchOutput
+}
+
+// WebhookThrottleConfig holds the configuration for throttling events
+type WebhookThrottleConfigPatchArgs struct {
+	// ThrottleBurst is the maximum number of events sent at the same moment default 15 QPS
+	Burst pulumi.IntPtrInput `pulumi:"burst"`
+	// ThrottleQPS maximum number of batches per second default 10 QPS
+	Qps pulumi.IntPtrInput `pulumi:"qps"`
+}
+
+func (WebhookThrottleConfigPatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookThrottleConfigPatch)(nil)).Elem()
+}
+
+func (i WebhookThrottleConfigPatchArgs) ToWebhookThrottleConfigPatchOutput() WebhookThrottleConfigPatchOutput {
+	return i.ToWebhookThrottleConfigPatchOutputWithContext(context.Background())
+}
+
+func (i WebhookThrottleConfigPatchArgs) ToWebhookThrottleConfigPatchOutputWithContext(ctx context.Context) WebhookThrottleConfigPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookThrottleConfigPatchOutput)
+}
+
+// WebhookThrottleConfig holds the configuration for throttling events
+type WebhookThrottleConfigPatchOutput struct{ *pulumi.OutputState }
+
+func (WebhookThrottleConfigPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookThrottleConfigPatch)(nil)).Elem()
+}
+
+func (o WebhookThrottleConfigPatchOutput) ToWebhookThrottleConfigPatchOutput() WebhookThrottleConfigPatchOutput {
+	return o
+}
+
+func (o WebhookThrottleConfigPatchOutput) ToWebhookThrottleConfigPatchOutputWithContext(ctx context.Context) WebhookThrottleConfigPatchOutput {
+	return o
+}
+
+// ThrottleBurst is the maximum number of events sent at the same moment default 15 QPS
+func (o WebhookThrottleConfigPatchOutput) Burst() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WebhookThrottleConfigPatch) *int { return v.Burst }).(pulumi.IntPtrOutput)
+}
+
+// ThrottleQPS maximum number of batches per second default 10 QPS
+func (o WebhookThrottleConfigPatchOutput) Qps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WebhookThrottleConfigPatch) *int { return v.Qps }).(pulumi.IntPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditSinkTypeInput)(nil)).Elem(), AuditSinkTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditSinkTypeArrayInput)(nil)).Elem(), AuditSinkTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditSinkListTypeInput)(nil)).Elem(), AuditSinkListTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditSinkPatchTypeInput)(nil)).Elem(), AuditSinkPatchTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditSinkSpecInput)(nil)).Elem(), AuditSinkSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditSinkSpecPtrInput)(nil)).Elem(), AuditSinkSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditSinkSpecPatchInput)(nil)).Elem(), AuditSinkSpecPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyInput)(nil)).Elem(), PolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyPtrInput)(nil)).Elem(), PolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyPatchInput)(nil)).Elem(), PolicyPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceReferenceInput)(nil)).Elem(), ServiceReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceReferencePtrInput)(nil)).Elem(), ServiceReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceReferencePatchInput)(nil)).Elem(), ServiceReferencePatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookInput)(nil)).Elem(), WebhookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookPtrInput)(nil)).Elem(), WebhookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookClientConfigInput)(nil)).Elem(), WebhookClientConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookClientConfigPtrInput)(nil)).Elem(), WebhookClientConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebhookClientConfigPatchInput)(nil)).Elem(), WebhookClientConfigPatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebhookPatchInput)(nil)).Elem(), WebhookPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookThrottleConfigInput)(nil)).Elem(), WebhookThrottleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookThrottleConfigPtrInput)(nil)).Elem(), WebhookThrottleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebhookThrottleConfigPatchInput)(nil)).Elem(), WebhookThrottleConfigPatchArgs{})
 	pulumi.RegisterOutputType(AuditSinkTypeOutput{})
 	pulumi.RegisterOutputType(AuditSinkTypeArrayOutput{})
 	pulumi.RegisterOutputType(AuditSinkListTypeOutput{})
+	pulumi.RegisterOutputType(AuditSinkPatchTypeOutput{})
 	pulumi.RegisterOutputType(AuditSinkSpecOutput{})
 	pulumi.RegisterOutputType(AuditSinkSpecPtrOutput{})
+	pulumi.RegisterOutputType(AuditSinkSpecPatchOutput{})
 	pulumi.RegisterOutputType(PolicyOutput{})
 	pulumi.RegisterOutputType(PolicyPtrOutput{})
+	pulumi.RegisterOutputType(PolicyPatchOutput{})
 	pulumi.RegisterOutputType(ServiceReferenceOutput{})
 	pulumi.RegisterOutputType(ServiceReferencePtrOutput{})
+	pulumi.RegisterOutputType(ServiceReferencePatchOutput{})
 	pulumi.RegisterOutputType(WebhookOutput{})
 	pulumi.RegisterOutputType(WebhookPtrOutput{})
 	pulumi.RegisterOutputType(WebhookClientConfigOutput{})
 	pulumi.RegisterOutputType(WebhookClientConfigPtrOutput{})
+	pulumi.RegisterOutputType(WebhookClientConfigPatchOutput{})
+	pulumi.RegisterOutputType(WebhookPatchOutput{})
 	pulumi.RegisterOutputType(WebhookThrottleConfigOutput{})
 	pulumi.RegisterOutputType(WebhookThrottleConfigPtrOutput{})
+	pulumi.RegisterOutputType(WebhookThrottleConfigPatchOutput{})
 }
